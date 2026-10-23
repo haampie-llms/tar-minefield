@@ -57,7 +57,6 @@ TARFILE = (
     "with tarfile.open(sys.argv[1]) as t:\n"
     "    t.extractall(sys.argv[2], filter=sys.argv[3])\n"
 )
-UNTAR = "import sys; sys.path.insert(0, sys.argv[3]); import untar; untar.extract(sys.argv[1], sys.argv[2])\n"
 
 
 def implementations(work):
@@ -78,13 +77,8 @@ def implementations(work):
     python = sys.executable
     pyversion = f"CPython {sys.version.split()[0]}"
     for f in ("fully_trusted", "tar", "data"):
-        found.append((f"tarfile, filter={f}", pyversion, "extract",
+        found.append((f"Python tarfile, filter={f}", pyversion, "extract",
                       lambda a, d, f=f: [python, "-I", "-c", TARFILE, a, d, f]))
-    untar = os.path.expanduser("~/untar")
-    if os.path.exists(os.path.join(untar, "untar.py")):
-        commit = first_line(["git", "-C", untar, "rev-parse", "--short=12", "HEAD"])
-        found.append(("untar", f"untar {commit}", "extract",
-                      lambda a, d: [python, "-I", "-c", UNTAR, a, d, untar]))
     build = os.path.join(work, "build")
     os.makedirs(build, exist_ok=True)
     if shutil.which("go"):
@@ -417,7 +411,7 @@ def group(name):
         return 0
     if name in ("GNU tar", "BusyBox tar", "7-Zip"):
         return 1
-    if name.startswith(("tarfile", "untar")):
+    if name.startswith("Python tarfile"):
         return 2
     return 3
 

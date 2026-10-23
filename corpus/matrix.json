@@ -73,6 +73,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -130,47 +166,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": "            ^^^^^^\n  File \"/home/bot/untar/untar.py\", line 307, in __iter__\n    self._end()\n    ~~~~~~~~~^^\n  File \"/home/bot/untar/untar.py\", line 259, in _end\n    raise Error(\"Archive contains data after the end-of-archive marker\")\nuntar.Error: Archive contains data after the end-of-archive marker",
-    "outside": {},
-    "tree": {}
    }
   },
   "i_end_lone_zero_block": {
@@ -246,6 +241,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -303,47 +334,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": "line 303, in __iter__\n    header = self._header()\n  File \"/home/bot/untar/untar.py\", line 266, in _header\n    if self._read(_BLOCK) != _EOF_BLOCK:\n       ~~~~~~~~~~^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 233, in _read\n    raise Error(\"Archive is truncated\")\nuntar.Error: Archive is truncated",
-    "outside": {},
-    "tree": {}
    }
   },
   "i_end_missing": {
@@ -419,6 +409,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -476,47 +502,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": "  File \"/home/bot/untar/untar.py\", line 303, in __iter__\n    header = self._header()\n  File \"/home/bot/untar/untar.py\", line 263, in _header\n    header = self._read(_BLOCK)\n  File \"/home/bot/untar/untar.py\", line 233, in _read\n    raise Error(\"Archive is truncated\")\nuntar.Error: Archive is truncated",
-    "outside": {},
-    "tree": {}
    }
   },
   "i_magic_version_nuls": {
@@ -592,6 +577,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": "failed to iterate over archive",
     "outside": {},
@@ -642,54 +663,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
    }
   },
   "i_name_dot": {
@@ -765,6 +738,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -822,54 +831,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
    }
   },
   "i_name_leading_dot_slash": {
@@ -945,6 +906,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -1002,54 +999,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
    }
   },
   "i_pax_global_comment_after_members": {
@@ -1161,6 +1110,60 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -1242,78 +1245,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
    }
   },
   "i_symlink_absolute": {
@@ -1377,6 +1308,31 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": "  File \"/usr/lib/python3.14/tarfile.py\", line 865, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n  File \"/usr/lib/python3.14/tarfile.py\", line 832, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'link' is a link to an absolute path",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "link": {
+      "kind": "symlink",
+      "target": "/tar-minefield-nonexistent"
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "link": {
+      "kind": "symlink",
+      "target": "/tar-minefield-nonexistent"
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -1421,41 +1377,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": "  File \"/usr/lib/python3.14/tarfile.py\", line 865, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n  File \"/usr/lib/python3.14/tarfile.py\", line 832, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'link' is a link to an absolute path",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "link": {
-      "kind": "symlink",
-      "target": "/tar-minefield-nonexistent"
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "link": {
-      "kind": "symlink",
-      "target": "/tar-minefield-nonexistent"
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "link": {
-      "kind": "symlink",
-      "target": "/tar-minefield-nonexistent"
-     }
-    }
    }
   },
   "n_checksum_signed": {
@@ -1517,6 +1438,42 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": "failed to iterate over archive",
     "outside": {},
@@ -1546,54 +1503,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
    }
   },
   "n_end_archive_after": {
@@ -1669,6 +1578,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -1726,47 +1671,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": "            ^^^^^^\n  File \"/home/bot/untar/untar.py\", line 307, in __iter__\n    self._end()\n    ~~~~~~~~~^^\n  File \"/home/bot/untar/untar.py\", line 259, in _end\n    raise Error(\"Archive contains data after the end-of-archive marker\")\nuntar.Error: Archive contains data after the end-of-archive marker",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_end_truncated_in_member": {
@@ -1835,6 +1739,42 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": "5, in makefile\n    copyfileobj(source, target, tarinfo.size, ReadError, bufsize)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 257, in copyfileobj\n    raise exception(\"unexpected end of data\")\ntarfile.ReadError: unexpected end of data",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": "5, in makefile\n    copyfileobj(source, target, tarinfo.size, ReadError, bufsize)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 257, in copyfileobj\n    raise exception(\"unexpected end of data\")\ntarfile.ReadError: unexpected end of data",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": "5, in makefile\n    copyfileobj(source, target, tarinfo.size, ReadError, bufsize)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 257, in copyfileobj\n    raise exception(\"unexpected end of data\")\ntarfile.ReadError: unexpected end of data",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": "failed to unpack `DEST/a`",
     "outside": {},
@@ -1892,47 +1832,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": "5, in makefile\n    copyfileobj(source, target, tarinfo.size, ReadError, bufsize)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 257, in copyfileobj\n    raise exception(\"unexpected end of data\")\ntarfile.ReadError: unexpected end of data",
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": "5, in makefile\n    copyfileobj(source, target, tarinfo.size, ReadError, bufsize)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 257, in copyfileobj\n    raise exception(\"unexpected end of data\")\ntarfile.ReadError: unexpected end of data",
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": "5, in makefile\n    copyfileobj(source, target, tarinfo.size, ReadError, bufsize)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 257, in copyfileobj\n    raise exception(\"unexpected end of data\")\ntarfile.ReadError: unexpected end of data",
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     }
-    }
-   },
-   "untar": {
-    "error": "ks(_BUF))\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 782, in _file\n    for data in chunks:\n                ^^^^^^\n  File \"/home/bot/untar/untar.py\", line 279, in chunks\n    raise Error(\"Archive is truncated\")\nuntar.Error: Archive is truncated",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_end_zero_block_then_member": {
@@ -2014,6 +1913,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -2083,47 +2018,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": "xtract\n    for member in reader:\n                  ^^^^^^\n  File \"/home/bot/untar/untar.py\", line 303, in __iter__\n    header = self._header()\n  File \"/home/bot/untar/untar.py\", line 267, in _header\n    raise Error(\"Archive contains a lone zero block\")\nuntar.Error: Archive contains a lone zero block",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_extended_pax_path_and_gnu_long_name": {
@@ -2199,6 +2093,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-gnu": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-gnu": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-gnu": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": "failed to iterate over archive",
     "outside": {},
@@ -2249,47 +2179,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "from-gnu": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "from-gnu": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "from-gnu": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "untar": {
-    "error": " File \"/home/bot/untar/untar.py\", line 994, in extract\n    for member in reader:\n                  ^^^^^^\n  File \"/home/bot/untar/untar.py\", line 336, in __iter__\n    raise Error(\"Archive contains both a pax path and a GNU long name\")\nuntar.Error: Archive contains both a pax path and a GNU long name",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_extended_pax_size_before_gnu_long": {
@@ -2371,6 +2260,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "long-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "long-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "long-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -2428,47 +2353,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "long-name": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
-      "size": 512
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "long-name": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
-      "size": 512
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "long-name": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
-      "size": 512
-     }
-    }
-   },
-   "untar": {
-    "error": "y\", line 994, in extract\n    for member in reader:\n                  ^^^^^^\n  File \"/home/bot/untar/untar.py\", line 380, in __iter__\n    raise Error(\n        f\"Archive contains {name} with pax size {pax_size} and size {size}\"\n    )\nuntar.Error: Archive contains long-name with pax size 512 and size 0",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_extended_two_pax_headers": {
@@ -2544,6 +2428,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "first": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "first": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "first": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": "failed to iterate over archive",
     "outside": {},
@@ -2587,47 +2507,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "first": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "first": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "first": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "untar": {
-    "error": "^\n  File \"/home/bot/untar/untar.py\", line 994, in extract\n    for member in reader:\n                  ^^^^^^\n  File \"/home/bot/untar/untar.py\", line 327, in __iter__\n    raise Error(f\"Archive contains two {kind!r} headers for one member\")\nuntar.Error: Archive contains two b'x' headers for one member",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_format_star": {
@@ -2721,6 +2600,51 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -2790,66 +2714,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dir": {
-      "kind": "directory"
-     },
-     "dir/a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dir": {
-      "kind": "directory"
-     },
-     "dir/a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dir": {
-      "kind": "directory"
-     },
-     "dir/a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dir": {
-      "kind": "directory"
-     },
-     "dir/a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
    }
   },
   "n_gnu_prefix_field": {
@@ -2934,6 +2798,51 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "15000000000": {
+      "kind": "directory"
+     },
+     "15000000000/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "15000000000": {
+      "kind": "directory"
+     },
+     "15000000000/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "15000000000": {
+      "kind": "directory"
+     },
+     "15000000000/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -2991,56 +2900,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "15000000000": {
-      "kind": "directory"
-     },
-     "15000000000/a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "15000000000": {
-      "kind": "directory"
-     },
-     "15000000000/a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "15000000000": {
-      "kind": "directory"
-     },
-     "15000000000/a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": "y\", line 994, in extract\n    for member in reader:\n                  ^^^^^^\n  File \"/home/bot/untar/untar.py\", line 355, in __iter__\n    raise Error(\n        \"Archive contains a name prefix in a header that is not ustar\"\n    )\nuntar.Error: Archive contains a name prefix in a header that is not ustar",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_hardlink_missing_target": {
@@ -3074,6 +2933,21 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": "^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'missing' not found\"",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": "^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'missing' not found\"",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=tar": {
+    "error": "^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'missing' not found\"",
+    "outside": {},
+    "tree": {}
+   },
    "Rust astral-tokio-tar": {
     "error": "failed to unpack `DEST/h`",
     "outside": {},
@@ -3103,26 +2977,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": "^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'missing' not found\"",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": "^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'missing' not found\"",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=tar": {
-    "error": "^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'missing' not found\"",
-    "outside": {},
-    "tree": {}
-   },
-   "untar": {
-    "error": "\", line 995, in extract\n    extractor.add(member, reader)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 850, in add\n    raise Error(\n        f\"Archive hardlinks {member.linkname}, which is not extracted\"\n    )\nuntar.Error: Archive hardlinks missing, which is not extracted",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_hardlink_to_itself": {
@@ -3191,6 +3045,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": "failed to unpack `DEST/a`",
     "outside": {},
@@ -3234,54 +3124,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
    }
   },
   "n_hardlink_to_later_member": {
@@ -3362,6 +3204,21 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": "^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'f' not found\"",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": "^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'f' not found\"",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=tar": {
+    "error": "^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'f' not found\"",
+    "outside": {},
+    "tree": {}
+   },
    "Rust astral-tokio-tar": {
     "error": "failed to unpack `DEST/h`",
     "outside": {},
@@ -3398,26 +3255,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": "^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'f' not found\"",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": "^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'f' not found\"",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=tar": {
-    "error": "^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'f' not found\"",
-    "outside": {},
-    "tree": {}
-   },
-   "untar": {
-    "error": "tar.py\", line 995, in extract\n    extractor.add(member, reader)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 850, in add\n    raise Error(\n        f\"Archive hardlinks {member.linkname}, which is not extracted\"\n    )\nuntar.Error: Archive hardlinks f, which is not extracted",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_hardlink_to_symlink": {
@@ -3528,6 +3365,72 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "f": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "h": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "s": {
+      "kind": "symlink",
+      "target": "f"
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "f": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "h": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "s": {
+      "kind": "symlink",
+      "target": "f"
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "f": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "h": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "s": {
+      "kind": "symlink",
+      "target": "f"
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -3609,92 +3512,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "f": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
-      "size": 2
-     },
-     "h": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
-      "size": 2
-     },
-     "s": {
-      "kind": "symlink",
-      "target": "f"
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "f": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
-      "size": 2
-     },
-     "h": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
-      "size": 2
-     },
-     "s": {
-      "kind": "symlink",
-      "target": "f"
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "f": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
-      "size": 2
-     },
-     "h": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
-      "size": 2
-     },
-     "s": {
-      "kind": "symlink",
-      "target": "f"
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "f": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
-      "size": 2
-     },
-     "h": {
-      "kind": "symlink",
-      "target": "f"
-     },
-     "s": {
-      "kind": "symlink",
-      "target": "f"
-     }
-    }
    }
   },
   "n_kind_trailing_slash_file": {
@@ -3757,6 +3574,42 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -3808,47 +3661,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     }
-    }
-   },
-   "untar": {
-    "error": " extract\n    extractor.add(member, reader)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 816, in add\n    raise Error(\n        f\"Archive contains non-directory {member.name} named like a directory\"\n    )\nuntar.Error: Archive contains non-directory a/ named like a directory",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_linkname_on_file": {
@@ -3917,6 +3729,42 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
+      "size": 19
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
+      "size": 19
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
+      "size": 19
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -3960,54 +3808,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
-      "size": 19
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
-      "size": 19
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
-      "size": 19
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
-      "size": 19
-     }
-    }
    }
   },
   "n_magic_odd_version": {
@@ -4076,6 +3876,42 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -4133,54 +3969,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
    }
   },
   "n_name_absolute": {
@@ -4242,6 +4030,35 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "tar-minefield-absolute": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "3b7f22a5047de6b9d309eaf4177f04f29cf5fb3ddd008137ce35ac23f466b13b",
+      "size": 89
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": "\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '/tar-minefield-absolute'",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "tar-minefield-absolute": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "3b7f22a5047de6b9d309eaf4177f04f29cf5fb3ddd008137ce35ac23f466b13b",
+      "size": 89
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -4292,40 +4109,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "tar-minefield-absolute": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "3b7f22a5047de6b9d309eaf4177f04f29cf5fb3ddd008137ce35ac23f466b13b",
-      "size": 89
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": "\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '/tar-minefield-absolute'",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "tar-minefield-absolute": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "3b7f22a5047de6b9d309eaf4177f04f29cf5fb3ddd008137ce35ac23f466b13b",
-      "size": 89
-     }
-    }
-   },
-   "untar": {
-    "error": "ader)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 811, in add\n    parts = _parts(member.name)\n  File \"/home/bot/untar/untar.py\", line 467, in _parts\n    raise Error(f\"Archive contains unsafe path {name}\")\nuntar.Error: Archive contains unsafe path /tar-minefield-absolute",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_name_backslash": {
@@ -4401,6 +4184,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\\b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
+      "size": 21
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\\b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
+      "size": 21
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\\b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
+      "size": 21
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -4458,54 +4277,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a\\b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
-      "size": 21
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a\\b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
-      "size": 21
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a\\b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
-      "size": 21
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a\\b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
-      "size": 21
-     }
-    }
    }
   },
   "n_name_bytes_after_nul": {
@@ -4581,6 +4352,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
+      "size": 10
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
+      "size": 10
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
+      "size": 10
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -4638,54 +4445,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
-      "size": 10
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
-      "size": 10
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
-      "size": 10
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
-      "size": 10
-     }
-    }
    }
   },
   "n_name_control_character": {
@@ -4761,6 +4520,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\nb": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
+      "size": 21
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\nb": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
+      "size": 21
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\nb": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
+      "size": 21
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -4818,54 +4613,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a\nb": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
-      "size": 21
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a\nb": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
-      "size": 21
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a\nb": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
-      "size": 21
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a\nb": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
-      "size": 21
-     }
-    }
    }
   },
   "n_name_dotdot": {
@@ -4932,6 +4679,32 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": "True)\n  File \"/usr/lib/python3.14/tarfile.py\", line 797, in _get_filtered_attrs\n    raise OutsideDestinationError(member, target_path)\ntarfile.OutsideDestinationError: 'tar-minefield/../../tar-minefield-escaped' would be extracted to 'ROOT/x/y/tar-minefield-escaped', which is outside the destination",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {
+     "x/y/tar-minefield-escaped": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "fc503701b7c2d35ae68aaa9df3f75232b90d497dc21bbba36c43d5d91194ec27",
+      "size": 85
+     }
+    },
+    "tree": {
+     "tar-minefield": {
+      "kind": "directory"
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": "alse)\n  File \"/usr/lib/python3.14/tarfile.py\", line 797, in _get_filtered_attrs\n    raise OutsideDestinationError(member, target_path)\ntarfile.OutsideDestinationError: 'tar-minefield/../../tar-minefield-escaped' would be extracted to 'ROOT/x/y/tar-minefield-escaped', which is outside the destination",
+    "outside": {},
+    "tree": {}
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -4961,37 +4734,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": "True)\n  File \"/usr/lib/python3.14/tarfile.py\", line 797, in _get_filtered_attrs\n    raise OutsideDestinationError(member, target_path)\ntarfile.OutsideDestinationError: 'tar-minefield/../../tar-minefield-escaped' would be extracted to 'ROOT/x/y/tar-minefield-escaped', which is outside the destination",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {
-     "x/y/tar-minefield-escaped": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "fc503701b7c2d35ae68aaa9df3f75232b90d497dc21bbba36c43d5d91194ec27",
-      "size": 85
-     }
-    },
-    "tree": {
-     "tar-minefield": {
-      "kind": "directory"
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": "alse)\n  File \"/usr/lib/python3.14/tarfile.py\", line 797, in _get_filtered_attrs\n    raise OutsideDestinationError(member, target_path)\ntarfile.OutsideDestinationError: 'tar-minefield/../../tar-minefield-escaped' would be extracted to 'ROOT/x/y/tar-minefield-escaped', which is outside the destination",
-    "outside": {},
-    "tree": {}
-   },
-   "untar": {
-    "error": "~~~~~^^^^^^^^^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 811, in add\n    parts = _parts(member.name)\n  File \"/home/bot/untar/untar.py\", line 467, in _parts\n    raise Error(f\"Archive contains unsafe path {name}\")\nuntar.Error: Archive contains unsafe path tar-minefield/../../tar-minefield-escaped",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_name_empty": {
@@ -5032,6 +4774,21 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": ", in _extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nIsADirectoryError: [Errno 21] Is a directory: 'DEST'",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": ", in _extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nIsADirectoryError: [Errno 21] Is a directory: 'DEST'",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=tar": {
+    "error": ", in _extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nIsADirectoryError: [Errno 21] Is a directory: 'DEST'",
+    "outside": {},
+    "tree": {}
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -5061,26 +4818,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": ", in _extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nIsADirectoryError: [Errno 21] Is a directory: 'DEST'",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": ", in _extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nIsADirectoryError: [Errno 21] Is a directory: 'DEST'",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=tar": {
-    "error": ", in _extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nIsADirectoryError: [Errno 21] Is a directory: 'DEST'",
-    "outside": {},
-    "tree": {}
-   },
-   "untar": {
-    "error": " line 812, in add\n    self._track(member, parts)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 799, in _track\n    raise Error(\n        f\"Archive contains non-directory {member.name} where a directory is\"\n    )\nuntar.Error: Archive contains non-directory  where a directory is",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_name_not_utf8": {
@@ -5156,6 +4893,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "caf\udce9": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
+      "size": 8
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "caf\udce9": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
+      "size": 8
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "caf\udce9": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
+      "size": 8
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -5213,54 +4986,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "caf\udce9": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
-      "size": 8
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "caf\udce9": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
-      "size": 8
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "caf\udce9": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
-      "size": 8
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "caf\udce9": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
-      "size": 8
-     }
-    }
    }
   },
   "n_number_size_gap": {
@@ -5346,6 +5071,21 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": "lly:\\n{error_msgs_summary}\")\ntarfile.ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": "lly:\\n{error_msgs_summary}\")\ntarfile.ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=tar": {
+    "error": "lly:\\n{error_msgs_summary}\")\ntarfile.ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
+    "outside": {},
+    "tree": {}
+   },
    "Rust astral-tokio-tar": {
     "error": "failed to iterate over archive",
     "outside": {},
@@ -5401,26 +5141,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": "lly:\\n{error_msgs_summary}\")\ntarfile.ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": "lly:\\n{error_msgs_summary}\")\ntarfile.ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=tar": {
-    "error": "lly:\\n{error_msgs_summary}\")\ntarfile.ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
-    "outside": {},
-    "tree": {}
-   },
-   "untar": {
-    "error": "__\n    size = _int(header[124:136])\n  File \"/home/bot/untar/untar.py\", line 109, in _int\n    return _octal(field)\n  File \"/home/bot/untar/untar.py\", line 118, in _octal\n    raise Error(f\"Archive contains an invalid number {field!r}\")\nuntar.Error: Archive contains an invalid number b'000000 1000\\x00'",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_pax_global_between_extended_and_member": {
@@ -5496,6 +5216,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-pax": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-pax": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-pax": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -5553,54 +5309,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "from-pax": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "from-pax": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "from-pax": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "from-pax": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
    }
   },
   "n_pax_global_path": {
@@ -5700,6 +5408,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "global-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "global-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "global-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -5781,47 +5525,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "global-name": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "global-name": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "global-name": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": "ot/untar/untar.py\", line 994, in extract\n    for member in reader:\n                  ^^^^^^\n  File \"/home/bot/untar/untar.py\", line 321, in __iter__\n    raise Error(\n        \"Archive contains a global pax path, linkpath or size\"\n    )\nuntar.Error: Archive contains a global pax path, linkpath or size",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_pax_newline_in_path": {
@@ -5897,6 +5600,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "good\n1 path=evil": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "good\n1 path=evil": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "good\n1 path=evil": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -5954,54 +5693,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "good\n1 path=evil": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "good\n1 path=evil": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "good\n1 path=evil": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "good\n1 path=evil": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
    }
   },
   "n_pax_nul_in_path": {
@@ -6056,6 +5747,21 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": " \"/usr/lib/python3.14/tarfile.py\", line 794, in _get_filtered_attrs\n    target_path = os.path.realpath(os.path.join(dest_path, name),\n                                   strict=os.path.ALLOW_MISSING)\n  File \"<frozen posixpath>\", line 457, in realpath\nValueError: lstat: embedded null character in path",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": "tarfile.py\", line 2638, in _extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nValueError: embedded null byte",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=tar": {
+    "error": " \"/usr/lib/python3.14/tarfile.py\", line 794, in _get_filtered_attrs\n    target_path = os.path.realpath(os.path.join(dest_path, name),\n                                   strict=os.path.ALLOW_MISSING)\n  File \"<frozen posixpath>\", line 457, in realpath\nValueError: lstat: embedded null character in path",
+    "outside": {},
+    "tree": {}
+   },
    "Rust astral-tokio-tar": {
     "error": "failed to unpack `DEST/a\u0000b`",
     "outside": {},
@@ -6099,26 +5805,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": " \"/usr/lib/python3.14/tarfile.py\", line 794, in _get_filtered_attrs\n    target_path = os.path.realpath(os.path.join(dest_path, name),\n                                   strict=os.path.ALLOW_MISSING)\n  File \"<frozen posixpath>\", line 457, in realpath\nValueError: lstat: embedded null character in path",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": "tarfile.py\", line 2638, in _extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nValueError: embedded null byte",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=tar": {
-    "error": " \"/usr/lib/python3.14/tarfile.py\", line 794, in _get_filtered_attrs\n    target_path = os.path.realpath(os.path.join(dest_path, name),\n                                   strict=os.path.ALLOW_MISSING)\n  File \"<frozen posixpath>\", line 457, in realpath\nValueError: lstat: embedded null character in path",
-    "outside": {},
-    "tree": {}
-   },
-   "untar": {
-    "error": "^^^^^^\n  File \"/home/bot/untar/untar.py\", line 994, in extract\n    for member in reader:\n                  ^^^^^^\n  File \"/home/bot/untar/untar.py\", line 341, in __iter__\n    raise Error(f\"Archive contains an invalid pax {key} {pax[key]!r}\")\nuntar.Error: Archive contains an invalid pax path 'a\\x00b'",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_pax_repeated_key": {
@@ -6194,6 +5880,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "second": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "second": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "second": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -6251,54 +5973,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "second": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "second": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "second": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "second": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
-      "size": 12
-     }
-    }
    }
   },
   "n_pax_size_disagrees": {
@@ -6404,6 +6078,60 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -6485,65 +6213,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     },
-     "smuggled": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     },
-     "smuggled": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     },
-     "smuggled": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     }
-    }
-   },
-   "untar": {
-    "error": "/untar.py\", line 994, in extract\n    for member in reader:\n                  ^^^^^^\n  File \"/home/bot/untar/untar.py\", line 380, in __iter__\n    raise Error(\n        f\"Archive contains {name} with pax size {pax_size} and size {size}\"\n    )\nuntar.Error: Archive contains a with pax size 0 and size 512",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_pax_size_on_dir": {
@@ -6615,6 +6284,51 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -6672,56 +6386,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dir": {
-      "kind": "directory"
-     },
-     "dir/smuggled": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dir": {
-      "kind": "directory"
-     },
-     "dir/smuggled": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dir": {
-      "kind": "directory"
-     },
-     "dir/smuggled": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
-     }
-    }
-   },
-   "untar": {
-    "error": "ntar.py\", line 994, in extract\n    for member in reader:\n                  ^^^^^^\n  File \"/home/bot/untar/untar.py\", line 380, in __iter__\n    raise Error(\n        f\"Archive contains {name} with pax size {pax_size} and size {size}\"\n    )\nuntar.Error: Archive contains dir with pax size 512 and size 0",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_symlink_trailing_slash": {
@@ -6795,6 +6459,45 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "link": {
+      "kind": "symlink",
+      "target": "target"
+     },
+     "target": {
+      "kind": "directory"
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "link": {
+      "kind": "symlink",
+      "target": "target"
+     },
+     "target": {
+      "kind": "directory"
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "link": {
+      "kind": "symlink",
+      "target": "target"
+     },
+     "target": {
+      "kind": "directory"
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -6856,50 +6559,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "link": {
-      "kind": "symlink",
-      "target": "target"
-     },
-     "target": {
-      "kind": "directory"
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "link": {
-      "kind": "symlink",
-      "target": "target"
-     },
-     "target": {
-      "kind": "directory"
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "link": {
-      "kind": "symlink",
-      "target": "target"
-     },
-     "target": {
-      "kind": "directory"
-     }
-    }
-   },
-   "untar": {
-    "error": "tract\n    extractor.add(member, reader)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 816, in add\n    raise Error(\n        f\"Archive contains non-directory {member.name} named like a directory\"\n    )\nuntar.Error: Archive contains non-directory link/ named like a directory",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_tree_duplicate_file_differs": {
@@ -6975,6 +6634,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "761d1fb145ca8c7130231412276df60f34dd34554c4d174b973a45e3222475a9",
+      "size": 5
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "761d1fb145ca8c7130231412276df60f34dd34554c4d174b973a45e3222475a9",
+      "size": 5
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "761d1fb145ca8c7130231412276df60f34dd34554c4d174b973a45e3222475a9",
+      "size": 5
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -7032,47 +6727,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "761d1fb145ca8c7130231412276df60f34dd34554c4d174b973a45e3222475a9",
-      "size": 5
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "761d1fb145ca8c7130231412276df60f34dd34554c4d174b973a45e3222475a9",
-      "size": 5
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "761d1fb145ca8c7130231412276df60f34dd34554c4d174b973a45e3222475a9",
-      "size": 5
-     }
-    }
-   },
-   "untar": {
-    "error": ".py\", line 830, in add\n    self._file(parent, parts[-1], mode, reader.chunks(_BUF))\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 780, in _file\n    fd = os.open(path, _FILE_FLAGS, mode, dir_fd=dir_fd)\nFileExistsError: [Errno 17] File exists: 'a'",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_tree_duplicate_file_dir": {
@@ -7136,6 +6790,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": "usr/lib/python3.14/tarfile.py\", line 2640, in _extract_member\n    self.makedir(tarinfo, targetpath)\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2672, in makedir\n    os.mkdir(targetpath)\n    ~~~~~~~~^^^^^^^^^^^^\nFileExistsError: [Errno 17] File exists: 'DEST/a'",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "294e546a0ce055e7407284ba86ac4b30e651ef32238105f76bdbc94d9f4e110a",
+      "size": 13
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": "3.14/tarfile.py\", line 2640, in _extract_member\n    self.makedir(tarinfo, targetpath)\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2676, in makedir\n    os.mkdir(targetpath, 0o700)\n    ~~~~~~~~^^^^^^^^^^^^^^^^^^^\nFileExistsError: [Errno 17] File exists: 'DEST/a'",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "294e546a0ce055e7407284ba86ac4b30e651ef32238105f76bdbc94d9f4e110a",
+      "size": 13
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": "3.14/tarfile.py\", line 2640, in _extract_member\n    self.makedir(tarinfo, targetpath)\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2676, in makedir\n    os.mkdir(targetpath, 0o700)\n    ~~~~~~~~^^^^^^^^^^^^^^^^^^^\nFileExistsError: [Errno 17] File exists: 'DEST/a'",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "294e546a0ce055e7407284ba86ac4b30e651ef32238105f76bdbc94d9f4e110a",
+      "size": 13
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": "failed to unpack `DEST/a`",
     "outside": {},
@@ -7187,47 +6877,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": "usr/lib/python3.14/tarfile.py\", line 2640, in _extract_member\n    self.makedir(tarinfo, targetpath)\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2672, in makedir\n    os.mkdir(targetpath)\n    ~~~~~~~~^^^^^^^^^^^^\nFileExistsError: [Errno 17] File exists: 'DEST/a'",
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "294e546a0ce055e7407284ba86ac4b30e651ef32238105f76bdbc94d9f4e110a",
-      "size": 13
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": "3.14/tarfile.py\", line 2640, in _extract_member\n    self.makedir(tarinfo, targetpath)\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2676, in makedir\n    os.mkdir(targetpath, 0o700)\n    ~~~~~~~~^^^^^^^^^^^^^^^^^^^\nFileExistsError: [Errno 17] File exists: 'DEST/a'",
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "294e546a0ce055e7407284ba86ac4b30e651ef32238105f76bdbc94d9f4e110a",
-      "size": 13
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": "3.14/tarfile.py\", line 2640, in _extract_member\n    self.makedir(tarinfo, targetpath)\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2676, in makedir\n    os.mkdir(targetpath, 0o700)\n    ~~~~~~~~^^^^^^^^^^^^^^^^^^^\nFileExistsError: [Errno 17] File exists: 'DEST/a'",
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "294e546a0ce055e7407284ba86ac4b30e651ef32238105f76bdbc94d9f4e110a",
-      "size": 13
-     }
-    }
-   },
-   "untar": {
-    "error": "ile \"/home/bot/untar/untar.py\", line 742, in _dir\n    d = _open_dir(parent, name)\n  File \"/home/bot/untar/untar.py\", line 534, in _open_dir\n    raise Error(\n        f\"Archive writes through {name}, which is not a directory\"\n    ) from e\nuntar.Error: Archive writes through a, which is not a directory",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_tree_duplicate_file_identical": {
@@ -7303,6 +6952,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
+      "size": 5
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
+      "size": 5
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
+      "size": 5
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -7360,47 +7045,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
-      "size": 5
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
-      "size": 5
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
-      "size": 5
-     }
-    }
-   },
-   "untar": {
-    "error": ".py\", line 830, in add\n    self._file(parent, parts[-1], mode, reader.chunks(_BUF))\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 780, in _file\n    fd = os.open(path, _FILE_FLAGS, mode, dir_fd=dir_fd)\nFileExistsError: [Errno 17] File exists: 'a'",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_tree_symlink_then_file": {
@@ -7476,6 +7120,54 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "kind": "symlink",
+      "target": "target"
+     },
+     "target": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
+      "size": 28
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "kind": "symlink",
+      "target": "target"
+     },
+     "target": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
+      "size": 28
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "kind": "symlink",
+      "target": "target"
+     },
+     "target": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
+      "size": 28
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -7533,59 +7225,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "kind": "symlink",
-      "target": "target"
-     },
-     "target": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
-      "size": 28
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "kind": "symlink",
-      "target": "target"
-     },
-     "target": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
-      "size": 28
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "kind": "symlink",
-      "target": "target"
-     },
-     "target": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
-      "size": 28
-     }
-    }
-   },
-   "untar": {
-    "error": ".py\", line 830, in add\n    self._file(parent, parts[-1], mode, reader.chunks(_BUF))\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 780, in _file\n    fd = os.open(path, _FILE_FLAGS, mode, dir_fd=dir_fd)\nFileExistsError: [Errno 17] File exists: 'a'",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_tree_through_symlink": {
@@ -7663,6 +7302,38 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": "filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n  File \"/usr/lib/python3.14/tarfile.py\", line 852, in _get_filtered_attrs\n    raise LinkOutsideDestinationError(member, target_path)\ntarfile.LinkOutsideDestinationError: 'd' would link to 'ROOT/x/y', which is outside the destination",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {
+     "x/y/tar-minefield-through-symlink": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "3b7f22a5047de6b9d309eaf4177f04f29cf5fb3ddd008137ce35ac23f466b13b",
+      "size": 89
+     }
+    },
+    "tree": {
+     "d": {
+      "kind": "symlink",
+      "target": ".."
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": " False)\n  File \"/usr/lib/python3.14/tarfile.py\", line 797, in _get_filtered_attrs\n    raise OutsideDestinationError(member, target_path)\ntarfile.OutsideDestinationError: 'd/tar-minefield-through-symlink' would be extracted to 'ROOT/x/y/tar-minefield-through-symlink', which is outside the destination",
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "symlink",
+      "target": ".."
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": "trying to unpack outside of destination path: DEST",
     "outside": {},
@@ -7712,43 +7383,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": "filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n  File \"/usr/lib/python3.14/tarfile.py\", line 852, in _get_filtered_attrs\n    raise LinkOutsideDestinationError(member, target_path)\ntarfile.LinkOutsideDestinationError: 'd' would link to 'ROOT/x/y', which is outside the destination",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {
-     "x/y/tar-minefield-through-symlink": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "3b7f22a5047de6b9d309eaf4177f04f29cf5fb3ddd008137ce35ac23f466b13b",
-      "size": 89
-     }
-    },
-    "tree": {
-     "d": {
-      "kind": "symlink",
-      "target": ".."
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": " False)\n  File \"/usr/lib/python3.14/tarfile.py\", line 797, in _get_filtered_attrs\n    raise OutsideDestinationError(member, target_path)\ntarfile.OutsideDestinationError: 'd/tar-minefield-through-symlink' would be extracted to 'ROOT/x/y/tar-minefield-through-symlink', which is outside the destination",
-    "outside": {},
-    "tree": {
-     "d": {
-      "kind": "symlink",
-      "target": ".."
-     }
-    }
-   },
-   "untar": {
-    "error": "ile \"/home/bot/untar/untar.py\", line 742, in _dir\n    d = _open_dir(parent, name)\n  File \"/home/bot/untar/untar.py\", line 534, in _open_dir\n    raise Error(\n        f\"Archive writes through {name}, which is not a directory\"\n    ) from e\nuntar.Error: Archive writes through d, which is not a directory",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_tree_under_file": {
@@ -7839,6 +7473,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": "/lib/python3.14/tarfile.py\", line 794, in _get_filtered_attrs\n    target_path = os.path.realpath(os.path.join(dest_path, name),\n                                   strict=os.path.ALLOW_MISSING)\n  File \"<frozen posixpath>\", line 460, in realpath\nNotADirectoryError: [Errno 20] Not a directory: 'DEST/a'",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
+      "size": 7
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": "extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nNotADirectoryError: [Errno 20] Not a directory: 'DEST/a/b'",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
+      "size": 7
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": "/lib/python3.14/tarfile.py\", line 794, in _get_filtered_attrs\n    target_path = os.path.realpath(os.path.join(dest_path, name),\n                                   strict=os.path.ALLOW_MISSING)\n  File \"<frozen posixpath>\", line 460, in realpath\nNotADirectoryError: [Errno 20] Not a directory: 'DEST/a'",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
+      "size": 7
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": "failed to unpack `DEST/a/b`",
     "outside": {},
@@ -7896,47 +7566,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": "/lib/python3.14/tarfile.py\", line 794, in _get_filtered_attrs\n    target_path = os.path.realpath(os.path.join(dest_path, name),\n                                   strict=os.path.ALLOW_MISSING)\n  File \"<frozen posixpath>\", line 460, in realpath\nNotADirectoryError: [Errno 20] Not a directory: 'DEST/a'",
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
-      "size": 7
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": "extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nNotADirectoryError: [Errno 20] Not a directory: 'DEST/a/b'",
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
-      "size": 7
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": "/lib/python3.14/tarfile.py\", line 794, in _get_filtered_attrs\n    target_path = os.path.realpath(os.path.join(dest_path, name),\n                                   strict=os.path.ALLOW_MISSING)\n  File \"<frozen posixpath>\", line 460, in realpath\nNotADirectoryError: [Errno 20] Not a directory: 'DEST/a'",
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
-      "size": 7
-     }
-    }
-   },
-   "untar": {
-    "error": "ile \"/home/bot/untar/untar.py\", line 742, in _dir\n    d = _open_dir(parent, name)\n  File \"/home/bot/untar/untar.py\", line 534, in _open_dir\n    raise Error(\n        f\"Archive writes through {name}, which is not a directory\"\n    ) from e\nuntar.Error: Archive writes through a, which is not a directory",
-    "outside": {},
-    "tree": {}
    }
   },
   "n_type_unknown": {
@@ -7992,6 +7621,35 @@
     "outside": {},
     "tree": {}
    },
+   "Python tarfile, filter=data": {
+    "error": "red, path)\n  File \"/usr/lib/python3.14/tarfile.py\", line 865, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n  File \"/usr/lib/python3.14/tarfile.py\", line 816, in _get_filtered_attrs\n    raise SpecialFileError(member)\ntarfile.SpecialFileError: 'unknown' is a special file",
+    "outside": {},
+    "tree": {}
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "unknown": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "unknown": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -8035,40 +7693,6 @@
     "error": "rejected",
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": "red, path)\n  File \"/usr/lib/python3.14/tarfile.py\", line 865, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n  File \"/usr/lib/python3.14/tarfile.py\", line 816, in _get_filtered_attrs\n    raise SpecialFileError(member)\ntarfile.SpecialFileError: 'unknown' is a special file",
-    "outside": {},
-    "tree": {}
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "unknown": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
-      "size": 512
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "unknown": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
-      "size": 512
-     }
-    }
-   },
-   "untar": {
-    "error": " 995, in extract\n    extractor.add(member, reader)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"/home/bot/untar/untar.py\", line 854, in add\n    raise Error(\n        f\"Archive contains {member.name} of unsupported type {member.type!r}\"\n    )\nuntar.Error: Archive contains unknown of unsupported type b'Z'",
-    "outside": {},
-    "tree": {}
    }
   },
   "y_gnu_long_name": {
@@ -8162,6 +7786,51 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -8231,66 +7900,6 @@
     "error": null,
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
-      "kind": "directory"
-     },
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
-      "size": 5
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
-      "kind": "directory"
-     },
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
-      "size": 5
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
-      "kind": "directory"
-     },
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
-      "size": 5
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
-      "kind": "directory"
-     },
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
-      "size": 5
-     }
-    }
    }
   },
   "y_name_fills_field": {
@@ -8366,6 +7975,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
+      "size": 5
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
+      "size": 5
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
+      "size": 5
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -8423,54 +8068,6 @@
     "error": null,
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
-      "size": 5
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
-      "size": 5
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
-      "size": 5
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
-      "size": 5
-     }
-    }
    }
   },
   "y_number_leading_space": {
@@ -8546,6 +8143,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
+      "size": 7
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
+      "size": 7
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
+      "size": 7
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -8603,54 +8236,6 @@
     "error": null,
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
-      "size": 7
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
-      "size": 7
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
-      "size": 7
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
-      "size": 7
-     }
-    }
    }
   },
   "y_pax_global_comment": {
@@ -8744,6 +8329,51 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "project": {
+      "kind": "directory"
+     },
+     "project/README": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
+      "size": 6
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "project": {
+      "kind": "directory"
+     },
+     "project/README": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
+      "size": 6
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "project": {
+      "kind": "directory"
+     },
+     "project/README": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
+      "size": 6
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -8813,66 +8443,6 @@
     "error": null,
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "project": {
-      "kind": "directory"
-     },
-     "project/README": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
-      "size": 6
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "project": {
-      "kind": "directory"
-     },
-     "project/README": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
-      "size": 6
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "project": {
-      "kind": "directory"
-     },
-     "project/README": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
-      "size": 6
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "project": {
-      "kind": "directory"
-     },
-     "project/README": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
-      "size": 6
-     }
-    }
    }
   },
   "y_pax_long_name": {
@@ -8966,6 +8536,51 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -9035,66 +8650,6 @@
     "error": null,
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
-      "kind": "directory"
-     },
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
-      "size": 5
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
-      "kind": "directory"
-     },
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
-      "size": 5
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
-      "kind": "directory"
-     },
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
-      "size": 5
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
-      "kind": "directory"
-     },
-     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
-      "size": 5
-     }
-    }
    }
   },
   "y_tree_dir_after_contents": {
@@ -9188,6 +8743,51 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -9257,66 +8857,6 @@
     "error": null,
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "d": {
-      "kind": "directory"
-     },
-     "d/a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "d": {
-      "kind": "directory"
-     },
-     "d/a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "d": {
-      "kind": "directory"
-     },
-     "d/a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "d": {
-      "kind": "directory"
-     },
-     "d/a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     }
-    }
    }
   },
   "y_tree_duplicate_dir": {
@@ -9392,6 +8932,42 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/sub": {
+      "kind": "directory"
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/sub": {
+      "kind": "directory"
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/sub": {
+      "kind": "directory"
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -9449,54 +9025,6 @@
     "error": null,
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "d": {
-      "kind": "directory"
-     },
-     "d/sub": {
-      "kind": "directory"
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "d": {
-      "kind": "directory"
-     },
-     "d/sub": {
-      "kind": "directory"
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "d": {
-      "kind": "directory"
-     },
-     "d/sub": {
-      "kind": "directory"
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "d": {
-      "kind": "directory"
-     },
-     "d/sub": {
-      "kind": "directory"
-     }
-    }
    }
   },
   "y_ustar_prefix": {
@@ -9590,6 +9118,51 @@
      }
     }
    },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
+      "kind": "directory"
+     },
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
+      "size": 9
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
+      "kind": "directory"
+     },
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
+      "size": 9
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
+      "kind": "directory"
+     },
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
+      "size": 9
+     }
+    }
+   },
    "Rust astral-tokio-tar": {
     "error": null,
     "outside": {},
@@ -9659,66 +9232,6 @@
     "error": null,
     "outside": {},
     "tree": null
-   },
-   "tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
-      "kind": "directory"
-     },
-     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
-      "size": 9
-     }
-    }
-   },
-   "tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
-      "kind": "directory"
-     },
-     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
-      "size": 9
-     }
-    }
-   },
-   "tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
-      "kind": "directory"
-     },
-     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
-      "size": 9
-     }
-    }
-   },
-   "untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
-      "kind": "directory"
-     },
-     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
-      "size": 9
-     }
-    }
    }
   }
  },
@@ -9740,23 +9253,18 @@
   },
   {
    "kind": "extract",
-   "name": "tarfile, filter=fully_trusted",
+   "name": "Python tarfile, filter=fully_trusted",
    "version": "CPython 3.14.4"
   },
   {
    "kind": "extract",
-   "name": "tarfile, filter=tar",
+   "name": "Python tarfile, filter=tar",
    "version": "CPython 3.14.4"
   },
   {
    "kind": "extract",
-   "name": "tarfile, filter=data",
+   "name": "Python tarfile, filter=data",
    "version": "CPython 3.14.4"
-  },
-  {
-   "kind": "extract",
-   "name": "untar",
-   "version": "untar 2305390138cf"
   },
   {
    "kind": "list",
