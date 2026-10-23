@@ -553,6 +553,7 @@ def svg_style():
     return (
         f"<style>text{{font-family:{FONT};font-size:12px;fill:#1f2328}}.head{{font-weight:600}}"
         f".cell{{font-size:11px;font-weight:700;text-anchor:middle}}.rule{{stroke:#d0d7de}}{colours}"
+        ".hit{fill:transparent}a.row:hover .hit{fill:#eaeef2}a.row:hover .name{text-decoration:underline}"
         '</style><rect width="100%" height="100%" fill="#ffffff"/>'
     )
 
@@ -623,15 +624,20 @@ def svg(results, cases, link=None):
             out.append(f'<line class="rule" x1="10" x2="{x - gap}" y1="{y + 10}" y2="{y + 10}"/>'
                        f'<text class="head" x="10" y="{y + 26}">{esc(GROUPS[previous])}</text>')
             y += 34
-        text = (f'<text x="{left - 10}" y="{y + ch / 2 + 4}" text-anchor="end">'
-                f"{esc(label(case, info))}</text>")
-        out.append(f'<a href="{esc(link(case))}">{text}</a>' if link else text)
+        # with links, the whole row is one, over a rect that highlights it on hover
+        if link:
+            out.append(f'<a class="row" href="{esc(link(case))}"><rect class="hit" x="10" '
+                       f'y="{y - gap / 2}" width="{x - gap - 10}" height="{ch + gap}" rx="3"/>')
+        out.append(f'<text class="name" x="{left - 10}" y="{y + ch / 2 + 4}" text-anchor="end">'
+                   f"{esc(label(case, info))}</text>")
         cells, letters = case_cells(info, results["cases"][case], names)
         trees = {v: k for k, v in letters.items()}
         for n in names:
             letter = cells[n].lstrip("✅⚠️⛔❌💥\ufe0f")
             title = f"{n}: {label(case, info)}" + (f", tree {letter}: {trees[letter]}" if letter in trees else "")
             out.append(cell_svg(xs[n], y, cw, ch, cells[n], title.replace("`", "")))
+        if link:
+            out.append("</a>")
         y += ch + gap
     legend, y = legend_svg(left, y + 24)
     out.append(legend)
