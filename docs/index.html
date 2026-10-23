@@ -38,10 +38,10 @@ has the numbers per ecosystem.</p>
 <h3>To accept</h3>
 <table><colgroup><col style="width: 12%"><col style="width: 24%"><col style="width: 50%"><col style="width: 14%"></colgroup><tr><th>identifier</th><th>name</th><th>what it is</th><th class=n>prevalence</th></tr>
 <tr><td><a href="F01.html"><code>F01</code></a></td><td>number-leading-space</td><td>Number fields padded with spaces rather than zeros, as old tars wrote them.</td><td class=n>1.31%</td></tr>
-<tr><td><a href="G01.html"><code>G01</code></a></td><td>pax-global-comment</td><td>The global pax header with only a <code>comment</code>, as <code>git archive</code> writes it.</td><td class=n></td></tr>
-<tr><td><a href="N01.html"><code>N01</code></a></td><td>gnu-long-name</td><td>A name over 100 bytes, in a GNU long name.</td><td class=n></td></tr>
+<tr><td><a href="G01.html"><code>G01</code></a></td><td>pax-global-comment</td><td>The global pax header with only a <code>comment</code>, as <code>git archive</code> writes it.</td><td class=n>unknown</td></tr>
+<tr><td><a href="N01.html"><code>N01</code></a></td><td>gnu-long-name</td><td>A name over 100 bytes, in a GNU long name.</td><td class=n>unknown</td></tr>
 <tr><td><a href="N02.html"><code>N02</code></a></td><td>name-fills-field</td><td>A name of exactly 100 bytes, which fills the name field without a NUL.</td><td class=n>11.90%</td></tr>
-<tr><td><a href="N03.html"><code>N03</code></a></td><td>pax-long-name</td><td>A name over 100 bytes, in a pax <code>path</code>.</td><td class=n></td></tr>
+<tr><td><a href="N03.html"><code>N03</code></a></td><td>pax-long-name</td><td>A name over 100 bytes, in a pax <code>path</code>.</td><td class=n>unknown</td></tr>
 <tr><td><a href="N04.html"><code>N04</code></a></td><td>ustar-prefix</td><td>A long name split between the ustar prefix and name fields.</td><td class=n>9.95%</td></tr>
 <tr><td><a href="S01.html"><code>S01</code></a></td><td>tree-dir-after-contents</td><td>A directory after its contents.</td><td class=n>1.37%</td></tr>
 <tr><td><a href="S02.html"><code>S02</code></a></td><td>tree-duplicate-dir</td><td>The same directory twice, as <code>tar cf x.tar d d/sub</code> writes.</td><td class=n>0.25%</td></tr></table>
@@ -59,7 +59,7 @@ has the numbers per ecosystem.</p>
 <table><colgroup><col style="width: 12%"><col style="width: 24%"><col style="width: 50%"><col style="width: 14%"></colgroup><tr><th>identifier</th><th>name</th><th>what it is</th><th class=n>prevalence</th></tr>
 <tr><td><a href="F06.html"><code>F06</code></a></td><td>checksum-signed</td><td>A checksum that only matches as the signed sum of the header.</td><td class=n>0.00%</td></tr>
 <tr><td><a href="F07.html"><code>F07</code></a></td><td>end-archive-after</td><td>Another archive after the end-of-archive marker.</td><td class=n>&lt;0.01%</td></tr>
-<tr><td><a href="F08.html"><code>F08</code></a></td><td>end-truncated-in-member</td><td>An archive that ends inside the data of a member.</td><td class=n></td></tr>
+<tr><td><a href="F08.html"><code>F08</code></a></td><td>end-truncated-in-member</td><td>An archive that ends inside the data of a member.</td><td class=n>unknown</td></tr>
 <tr><td><a href="F09.html"><code>F09</code></a></td><td>end-zero-block-then-member</td><td>A zero block, then another member: the end of the archive, or not?</td><td class=n>0.01%</td></tr>
 <tr><td><a href="F10.html"><code>F10</code></a></td><td>extended-pax-size-before-gnu-long</td><td>A pax <code>size</code> followed by a GNU long name: which of them does the size apply to?</td><td class=n>0.00%</td></tr>
 <tr><td><a href="F11.html"><code>F11</code></a></td><td>magic-odd-version</td><td>The POSIX magic with a version that is neither <code>00</code> nor NULs.</td><td class=n>0.10%</td></tr>
