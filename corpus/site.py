@@ -37,20 +37,37 @@ OUTCOMES = {
     "❌": "another tree, or rejects",
     "💥": "writes outside the destination",
 }
+# Tables of one kind have the same columns, in the same widths
+COLUMNS = {
+    "cases": [("code", 9), ("name", 27), ("what it is", 50), ("tarballs", 14, "n")],
+    "data": [("dataset", 25), ("assessed", 25, "n"), ("with it", 25, "n"),
+             ("rejected for it by the default policy", 25, "n")],
+    "implementations": [("implementation", 21), ("version", 21), ("outcome", 18),
+                        ("what it makes of it", 40)],
+}
 STYLE = """\
 body { max-width: 66rem; margin: 0 auto; padding: 1rem; font: 16px/1.5 system-ui, sans-serif;
        color: #1f2328; background: #ffffff; }
 a { color: #0969da; }
 code, pre { font: 0.875em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
 pre { background: #f6f8fa; padding: 0.75rem; overflow-x: auto; }
-table { border-collapse: collapse; margin: 1rem 0; }
-th, td { border: 1px solid #d0d7de; padding: 0.25rem 0.5rem; text-align: left; vertical-align: top; }
+table { border-collapse: collapse; margin: 1rem 0; width: 100%; table-layout: fixed; }
+th, td { border: 1px solid #d0d7de; padding: 0.25rem 0.5rem; text-align: left;
+         vertical-align: baseline; overflow-wrap: anywhere; }
 th { background: #f6f8fa; }
-td.n { text-align: right; white-space: nowrap; }
+td.n, th.n { text-align: right; }
 svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
 dt { font-weight: 600; }
 """
+
+
+def table(kind, rows):
+    """A table of a kind of COLUMNS, with rows of HTML."""
+    columns = COLUMNS[kind]
+    cols = "".join(f'<col style="width: {c[1]}%">' for c in columns)
+    head = "".join(f"<th class=n>{c[0]}</th>" if c[2:] else f"<th>{c[0]}</th>" for c in columns)
+    return f"<table><colgroup>{cols}</colgroup><tr>{head}</tr>\n" + "\n".join(rows) + "</table>"
 
 
 def inline(text):
@@ -138,8 +155,7 @@ def data_section(features, names, short, rated, union):
     return (
         "<p>Tarballs of the scans with " + ", ".join(f"<code>{f}</code>" for f in features)
         + ". Where there are none, the share is the 95% upper bound of the rate, by the rule of "
-        "three.</p>\n<table><tr><th>dataset</th><th>assessed</th><th>with it</th>"
-        "<th>rejected for it by the default policy</th></tr>\n" + "\n".join(rows) + "</table>\n"
+        "three.</p>\n" + table("data", rows) + "\n"
         + ("<p>For example: " + ", ".join(html.escape(e) for e in examples) + ".</p>"
            if examples else "")
     )
@@ -167,8 +183,7 @@ def implementations_section(case, info, results):
             what = "the tree of the case" if info["verdict"] != "n" else ""
         rows.append(f"<tr><td>{html.escape(n)}</td><td>{html.escape(versions.get(n, ''))}</td>"
                     f"<td>{symbol} {OUTCOMES[symbol]}</td><td>{what}</td></tr>")
-    return ("<table><tr><th>implementation</th><th>version</th><th>outcome</th>"
-            "<th>what it makes of it</th></tr>\n" + "\n".join(rows) + "</table>")
+    return table("implementations", rows)
 
 
 def case_page(case, info, previous, following, results, data):
@@ -233,8 +248,7 @@ def index_page(cases, results, data):
                         f"<td>{html.escape(name)}</td><td>{inline(info['description'])}</td>"
                         f"<td class=n>{share}</td></tr>")
         sections.append(f"<h3>{html.escape(matrix.GROUPS[group].capitalize())}</h3>\n"
-                        "<table><tr><th>code</th><th>name</th><th>what it is</th>"
-                        "<th>tarballs</th></tr>\n" + "\n".join(rows) + "</table>")
+                        + table("cases", rows))
     body = f"""<h1>tar-minefield</h1>
 <p>A corpus of tar archives with verdicts, for parsers that reject what readers can disagree on,
 and what {len(results["implementations"])} implementations make of each. Every case has a code:

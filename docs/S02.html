@@ -92,7 +92,7 @@ Seen in: dozens of tarballs: see `tree.duplicate.dir-dir` in data/STRICT.md.
 <p>The tree that a parser must extract: <code>d/</code>, <code>d/sub/</code>.</p>
 <h2>In real tarballs</h2>
 <p>Tarballs of the scans with <code>tree.duplicate.dir-dir</code>. Where there are none, the share is the 95% upper bound of the rate, by the rule of three.</p>
-<table><tr><th>dataset</th><th>assessed</th><th>with it</th><th>rejected for it by the default policy</th></tr>
+<table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>dataset</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
 <tr><td>guix</td><td class=n>10168</td><td class=n>7 (0.07%)</td><td class=n>0</td></tr>
 <tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0 (&lt;1.8%)</td><td class=n>0</td></tr>
 <tr><td>nix</td><td class=n>18990</td><td class=n>11 (0.06%)</td><td class=n>0</td></tr>
@@ -100,7 +100,7 @@ Seen in: dozens of tarballs: see `tree.duplicate.dir-dir` in data/STRICT.md.
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>157 (0.25%)</td><td class=n>0</td></tr></table>
 <p>For example: rpm@4.20.1, subed@1.5.4, x42-plugins@20230701, ivy@0.15.1, btrfs-progs@v7.0, zynaddsubfx@3.0.6, bbdb@3.2.2.4, besu@24.1.2.</p>
 <h2>What implementations make of it</h2>
-<table><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>

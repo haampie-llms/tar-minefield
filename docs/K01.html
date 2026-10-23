@@ -63,7 +63,7 @@ Seen in: v7 archives only, such as sendmail 8.18.2, tcp_wrappers 7.6 and unclutt
 </details>
 <h2>In real tarballs</h2>
 <p>Tarballs of the scans with <code>name.trailing-slash-on-file</code>. Where there are none, the share is the 95% upper bound of the rate, by the rule of three.</p>
-<table><tr><th>dataset</th><th>assessed</th><th>with it</th><th>rejected for it by the default policy</th></tr>
+<table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>dataset</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
 <tr><td>guix</td><td class=n>10168</td><td class=n>1 (0.01%)</td><td class=n>1</td></tr>
 <tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0 (&lt;1.8%)</td><td class=n>0</td></tr>
 <tr><td>nix</td><td class=n>18990</td><td class=n>4 (0.02%)</td><td class=n>4</td></tr>
@@ -71,7 +71,7 @@ Seen in: v7 archives only, such as sendmail 8.18.2, tcp_wrappers 7.6 and unclutt
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>6 (0.01%)</td><td class=n>6</td></tr></table>
 <p>For example: tcp_wrappers_7.6, sendmail.8.18.2, unclutter@8, ztools@731, screen@3.7.1, cdd@0.61a.</p>
 <h2>What implementations make of it</h2>
-<table><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>⚠️ accepts</td><td>tree A: <code>a/</code></td></tr>
