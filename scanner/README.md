@@ -9,8 +9,8 @@ strict parser can be checked against them before anyone adopts them (see
 - `run.py sample` picks a sample from a list of tarballs, and `run.py scan` downloads and scans
   it. Tarballs are streamed: they are not written to disk, unless they are cached.
 - `report.py` summarizes results as Markdown.
-- `spack_list.py` lists the tarballs of Spack's builtin repository, and `live_bootstrap_list.py`
-  those of live-bootstrap. Lists for other ecosystems go next to them, as `<ecosystem>_list.py`.
+- `spack_list.py`, `nix_list.py` and `live_bootstrap_list.py` list the tarballs of Spack's
+  builtin repository, nixpkgs and live-bootstrap. Lists for other ecosystems go next to them, as `<ecosystem>_list.py`.
 
 Run the scripts with `python -I`: they handle untrusted data, and should not import modules from
 the current directory.
@@ -62,8 +62,8 @@ servers that are gone.
 Content-addressed mirrors that serve tarballs by sha256:
 
 - Spack: `https://mirror.spack.io/_source-cache/archive/<sha256[:2]>/<sha256>.<ext>`
-- Nix: `https://tarballs.nixos.org/sha256/<sha256>` (hex works, and redirects). nixpkgs'
-  `maintainers/scripts/find-tarballs.nix` lists the tarballs of all packages; it needs Nix.
+- Nix: `https://tarballs.nixos.org/sha256/<sha256>` (hex works, and redirects), which has about
+  half of them. `nix_list.py` says how to list them: see `data/nix/2026-10-23/RUN.md`.
 - Guix: `https://guix.gnu.org/sources.json` lists sources with their `integrity`, which is an
   SRI hash (`sha256-<base64>`): convert it to hex.
 
@@ -81,7 +81,9 @@ Other sources worth scanning:
 The sampler takes half latest versions of distinct packages and half older versions of other
 packages. Without `latest`, every tarball counts as older. Its order depends only on the seed and
 the names of packages and checksums of tarballs, so the sample of a slightly different list is
-mostly the same.
+mostly the same. `run.py fraction LIST P SEED` instead takes about a fraction P of the tarballs,
+each by its sha256 alone: a list can be sampled while it is made, and a larger P only adds
+tarballs.
 
 ## Results
 

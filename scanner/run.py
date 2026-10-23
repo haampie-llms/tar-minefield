@@ -1,12 +1,18 @@
 """Download a sample of tarballs and scan them.
 
     python -I scanner/run.py sample LIST N SEED > SAMPLE
+    python -I scanner/run.py fraction LIST P SEED > SAMPLE
     python -I scanner/run.py scan SAMPLE OUT [--untar PATH] [--jobs N] [--reuse FILE]...
         [--cache DIR [--cache-size GB]]
 
 `sample` takes the output of spack_list.py and picks N/2 latest versions of distinct packages,
 and N/2 older versions of other distinct packages, in an order that is random but determined by
 SEED and the names of packages and checksums of tarballs.
+
+`fraction` takes every tarball whose rank, by SEED and its sha256, is in the lowest fraction P of
+all ranks: a sample of about P of the list. Whether a tarball is in it does not depend on the
+rest of the list, so a list can be sampled while it is made, and the sample with a larger P
+contains the one with a smaller P: a sample can be extended without scanning anything again.
 
 `scan` downloads each tarball from the first of its `urls` that works, scans it while it
 downloads, checks its sha256, and appends a JSON line to OUT. Tarballs are not written to disk
@@ -90,6 +96,15 @@ def sample(path, n, seed):
     for p in older:
         versions = [t for t in by_package[p] if not t.get("latest")]
         print(json.dumps(min(versions, key=lambda t: rank(seed, t["sha256"]))))
+
+
+def fraction(path, p, seed):
+    seen = set()
+    for line in open(path):
+        t = json.loads(line)
+        if t["sha256"] not in seen and int(rank(seed, t["sha256"]), 16) < p * 16**64:
+            seen.add(t["sha256"])
+            print(line, end="")
 
 
 # Extracts a tar archive from stdin with untar from argv[1], into argv[2]
@@ -479,6 +494,8 @@ def main():
     args = sys.argv[1:]
     if args[0] == "sample":
         sample(args[1], int(args[2]), int(args[3]))
+    elif args[0] == "fraction":
+        fraction(args[1], float(args[2]), int(args[3]))
     elif args[0] == "scan":
         untar_path = args[args.index("--untar") + 1] if "--untar" in args else None
         jobs = int(args[args.index("--jobs") + 1]) if "--jobs" in args else 8
