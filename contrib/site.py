@@ -193,8 +193,7 @@ def data_section(features, names, short, rated, union):
     with them: a sentence where it rejects all or none of them for the features, and a column
     where it rejects some."""
     if not features:
-        return ("<p>No feature of the scanner is about this case alone: an archive like it is "
-                "one that the scanner cannot read, <code>scan.error</code>.</p>")
+        return "<p>This case is not measured in source tarballs on its own.</p>"
 
     def has(r):
         return any(f in r["features"] for f in features)
@@ -373,8 +372,8 @@ block, what every implementation makes of it, and how common it is in source tar
 <h2 id="policy">Policy</h2>
 <p>The default policy accepts, tolerates or rejects each case below, based on data from the
 {len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and live-bootstrap.</p>
-<p>Prevalence: the share of those tarballs that have the feature of the case, and blank where the
-scanner has no feature for it. The page of a case has the numbers per ecosystem.</p>
+<p>Prevalence: the share of those tarballs that have the feature of the case. The page of a case
+has the numbers per ecosystem.</p>
 {chr(10).join(sections)}
 """
     intro = re.sub(r"<[^>]+>", "", readme_intro().split("</p>", 1)[0])
