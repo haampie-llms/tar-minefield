@@ -45,6 +45,7 @@ COLUMNS = {
     "data": [("ecosystem", 25), ("tarballs", 25, "n"), ("with it", 25, "n"), ("share", 25, "n")],
     "data-policy": [("ecosystem", 20), ("tarballs", 20, "n"), ("with it", 20, "n"),
                     ("share", 20, "n"), ("rejected by the default policy", 20, "n")],
+    "tarballs": [("ecosystem", 25), ("tarballs", 25, "n"), ("rejected", 25, "n"), ("share", 25, "n")],
     "implementations": [("implementation", 21), ("version", 21), ("outcome", 18),
                         ("what it makes of it", 40)],
 }
@@ -331,6 +332,21 @@ def seen_in_problems(cases, union):
     return problems
 
 
+def tarballs_section(names, short, rated, union):
+    """What the default policy rejects of the source tarballs, per ecosystem."""
+    rows = []
+    for n, rs in [(short[n], rated[n]) for n in names] + [("all, distinct", union)]:
+        j = sum(not strict.passes_default(r) for r in rs)
+        rows.append(f"<tr><td>{html.escape(n)}</td><td class=n>{len(rs):,}</td>"
+                    f"<td class=n>{j:,}</td><td class=n>{on_point(prevalence(j, len(rs))) if j else ''}</td></tr>")
+    rejected = sum(not strict.passes_default(r) for r in union)
+    accepted = strict.percent(len(union) - rejected, len(union))
+    return (f'<h2 id="tarballs">Source tarballs</h2>\n<p>The default policy accepts {accepted} of the '
+            f"{len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and live-bootstrap, "
+            f"and rejects {rejected:,}. The page of a case says how many of them have it.</p>\n"
+            + table("tarballs", rows))
+
+
 def index_page(cases, results, data):
     names, short, rated, union = data
     groups = {}
@@ -358,6 +374,7 @@ block, what every implementation makes of it, and how common it is in source tar
 <h2>What implementations make of every case</h2>
 <p>Click a case for its page; hover over a cell for the tree.</p>
 <div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["id"] + ".html")}</div>
+{tarballs_section(names, short, rated, union)}
 <h2 id="cases">The cases</h2>
 <p>Prevalence: the share of the {len(union)} distinct release tarballs of Spack, nixpkgs, Guix and
 live-bootstrap that have the feature of the case; none, if no tarball has it. A dash: the scanner
