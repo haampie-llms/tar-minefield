@@ -1,5 +1,5 @@
 {
- "code": "F14",
+ "id": "F14",
  "verdict": "reject",
  "description": "A pax `size` that disagrees with the header's size, which hides a header from one implementation.",
  "features": [

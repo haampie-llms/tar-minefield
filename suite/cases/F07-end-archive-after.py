@@ -9,7 +9,7 @@ Seen in: glibmm 2.16.0, which is the whole archive twice, jmol 14.8.0 and common
 """
 
 VERDICT = "reject"
-CODE = "F07"
+ID = "F07"
 FEATURES = ['end.archive-after']
 
 

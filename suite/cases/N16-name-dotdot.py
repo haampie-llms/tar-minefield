@@ -9,7 +9,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "N16"
+ID = "N16"
 FEATURES = ["name.dotdot"]
 
 

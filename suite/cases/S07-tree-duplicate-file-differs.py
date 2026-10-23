@@ -12,7 +12,7 @@ the default policy rejects those too, as an implementation would have to compare
 """
 
 VERDICT = "reject"
-CODE = "S07"
+ID = "S07"
 FEATURES = ["tree.duplicate.file-file"]
 
 

@@ -1,5 +1,5 @@
 {
- "code": "F02",
+ "id": "F02",
  "verdict": "tolerate",
  "description": "Data after the end-of-archive marker that is not a header, which is ignored.",
  "features": [

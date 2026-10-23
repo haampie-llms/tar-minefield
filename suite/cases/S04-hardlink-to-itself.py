@@ -8,7 +8,7 @@ Seen in: xscreensaver 6.12 and atari++ 1.85.
 """
 
 VERDICT = "reject"
-CODE = "S04"
+ID = "S04"
 FEATURES = ['hardlink.to-itself']
 
 

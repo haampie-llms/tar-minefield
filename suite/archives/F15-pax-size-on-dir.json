@@ -1,5 +1,5 @@
 {
- "code": "F15",
+ "id": "F15",
  "verdict": "reject",
  "description": "A pax `size` on a directory, which hides a header from the implementations that honor it.",
  "features": [

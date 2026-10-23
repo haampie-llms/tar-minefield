@@ -8,7 +8,7 @@ Seen in: texi2html 5.0 and gstreamer-docs 1.28.1.
 """
 
 VERDICT = "reject"
-CODE = "N13"
+ID = "N13"
 FEATURES = ['name.backslash']
 
 

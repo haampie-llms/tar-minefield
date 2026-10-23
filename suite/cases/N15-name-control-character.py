@@ -9,7 +9,7 @@ Seen in: cdrtools 3.02a09, wgrib2 3.6.0 and apktool 2.6.0.
 """
 
 VERDICT = "reject"
-CODE = "N15"
+ID = "N15"
 FEATURES = ['name.control-character']
 
 

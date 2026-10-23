@@ -9,7 +9,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "F12"
+ID = "F12"
 FEATURES = ['number.size.gap-in-digits']
 
 

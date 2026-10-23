@@ -9,7 +9,7 @@ N20, pax-repeated-key.
 """
 
 VERDICT = "reject"
-CODE = "N09"
+ID = "N09"
 FEATURES = ['extended.two-pax-headers']
 
 

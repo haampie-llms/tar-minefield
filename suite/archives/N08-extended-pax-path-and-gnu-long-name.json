@@ -1,5 +1,5 @@
 {
- "code": "N08",
+ "id": "N08",
  "verdict": "reject",
  "description": "A pax `path` and a GNU long name for one member, and a third name in its header.",
  "features": [

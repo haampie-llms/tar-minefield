@@ -3,9 +3,9 @@
     python -I suite/generate.py            # write archives/
     python -I suite/generate.py --check    # fail if archives/ is not what the scripts write
 
-For each case `<case>.py`, named by its code, such as `F15-pax-size-on-dir.py`, archives/ has
+For each case `<case>.py`, named by its identifier, such as `F15-pax-size-on-dir.py`, archives/ has
 `<case>.tar`, the dump of its blocks `<case>.txt`, a map of them `<case>.svg`, and `<case>.json`:
-its code, its verdict, the features of tarscan.py that it is about, and for the cases to accept
+its identifier, its verdict, the features of tarscan.py that it is about, and for the cases to accept
 and the tolerated ones the tree an implementation must extract.
 
 It needs nothing outside suite/ but the Python standard library.
@@ -50,21 +50,21 @@ def tree(entries):
 
 def generate():
     """{file name: bytes} of every case."""
-    files, codes = {}, {}
+    files, ids = {}, {}
     for name in sorted(os.listdir(CASES)):
         if not name.endswith(".py"):
             continue
         case = name[:-3]
         module = load(os.path.join(CASES, name))
-        assert re.fullmatch(r"[FNKSG]\d\d", module.CODE), f"{case}: a code such as F01"
-        assert case.startswith(module.CODE + "-"), f"{case}: the name starts with its code"
+        assert re.fullmatch(r"[FNKSG]\d\d", module.ID), f"{case}: an identifier such as F01"
+        assert case.startswith(module.ID + "-"), f"{case}: the name starts with its identifier"
         assert module.VERDICT in VERDICTS, f"{case}: a verdict of {sorted(VERDICTS)}"
-        assert module.CODE not in codes, f"{case}: the code of {codes.get(module.CODE)}"
-        codes[module.CODE] = case
+        assert module.ID not in ids, f"{case}: the identifier of {ids.get(module.ID)}"
+        ids[module.ID] = case
         archive = Archive()
         module.build(archive)
         expected = {
-            "code": module.CODE,
+            "id": module.ID,
             "verdict": module.VERDICT,
             "description": module.__doc__.strip().split("\n")[0],
             "features": getattr(module, "FEATURES", []),

@@ -1,5 +1,5 @@
 {
- "code": "G03",
+ "id": "G03",
  "verdict": "reject",
  "description": "A global pax header between an extended header and its member.",
  "features": [

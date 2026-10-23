@@ -8,7 +8,7 @@ Seen in: bgen 1.1.7.
 """
 
 VERDICT = "reject"
-CODE = "K02"
+ID = "K02"
 FEATURES = ['linkname.on-file']
 
 

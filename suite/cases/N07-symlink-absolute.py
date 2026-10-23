@@ -9,7 +9,7 @@ Seen in: tachyon 0.99.5, notmuch 0.40 and others: see contrib/data/STRICT.md.
 L = lambda path, target: {"path": path, "kind": "symlink", "target": target}
 
 VERDICT = "tolerate"
-CODE = "N07"
+ID = "N07"
 FEATURES = ['symlink.absolute']
 TREE = [L('link', '/tar-minefield-nonexistent')]
 

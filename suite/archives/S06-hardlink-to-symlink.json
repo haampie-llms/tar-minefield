@@ -1,5 +1,5 @@
 {
- "code": "S06",
+ "id": "S06",
  "verdict": "reject",
  "description": "A hardlink to a symlink: a link to the symlink, or to its target?",
  "features": [

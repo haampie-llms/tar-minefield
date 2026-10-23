@@ -1,5 +1,5 @@
 {
- "code": "K02",
+ "id": "K02",
  "verdict": "reject",
  "description": "A regular file with a link target.",
  "features": [

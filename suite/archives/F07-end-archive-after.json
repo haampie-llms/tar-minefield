@@ -1,5 +1,5 @@
 {
- "code": "F07",
+ "id": "F07",
  "verdict": "reject",
  "description": "Another archive after the end-of-archive marker.",
  "features": [

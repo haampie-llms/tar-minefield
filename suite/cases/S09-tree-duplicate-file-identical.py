@@ -8,7 +8,7 @@ Seen in: tarballs of `cabal sdist`, such as string-conversions 0.4.0.1 and multi
 """
 
 VERDICT = "reject"
-CODE = "S09"
+ID = "S09"
 FEATURES = ['tree.duplicate.file-file']
 
 

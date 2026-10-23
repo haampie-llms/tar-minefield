@@ -1,5 +1,5 @@
 {
- "code": "S04",
+ "id": "S04",
  "verdict": "reject",
  "description": "A hardlink to itself.",
  "features": [

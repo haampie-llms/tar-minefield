@@ -1,5 +1,5 @@
 {
- "code": "N06",
+ "id": "N06",
  "verdict": "tolerate",
  "description": "`./a`, which is the path `a`.",
  "features": [

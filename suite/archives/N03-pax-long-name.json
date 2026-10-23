@@ -1,5 +1,5 @@
 {
- "code": "N03",
+ "id": "N03",
  "verdict": "accept",
  "description": "A name over 100 bytes, in a pax `path`.",
  "features": [],

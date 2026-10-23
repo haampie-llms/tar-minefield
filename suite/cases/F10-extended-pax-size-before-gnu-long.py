@@ -10,7 +10,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "F10"
+ID = "F10"
 FEATURES = ['extended.pax-size-before-gnu-long']
 
 

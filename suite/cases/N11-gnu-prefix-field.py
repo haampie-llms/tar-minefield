@@ -9,7 +9,7 @@ Seen in: no source tarball with times there.
 """
 
 VERDICT = "reject"
-CODE = "N11"
+ID = "N11"
 FEATURES = ['gnu.atime-ctime']
 
 

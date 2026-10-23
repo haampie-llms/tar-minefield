@@ -1,5 +1,5 @@
 {
- "code": "F12",
+ "id": "F12",
  "verdict": "reject",
  "description": "A size with a space among its digits: implementations read two sizes.",
  "features": [

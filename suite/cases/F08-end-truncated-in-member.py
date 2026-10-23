@@ -9,7 +9,7 @@ Seen in: no source tarball, where a damaged download fails its sha256.
 """
 
 VERDICT = "reject"
-CODE = "F08"
+ID = "F08"
 FEATURES = []
 
 

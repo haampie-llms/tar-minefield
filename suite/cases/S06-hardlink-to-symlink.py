@@ -8,7 +8,7 @@ Seen in: octa 8.4.
 """
 
 VERDICT = "reject"
-CODE = "S06"
+ID = "S06"
 FEATURES = ['hardlink.to-symlink']
 
 

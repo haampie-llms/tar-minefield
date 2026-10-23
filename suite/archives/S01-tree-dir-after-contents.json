@@ -1,5 +1,5 @@
 {
- "code": "S01",
+ "id": "S01",
  "verdict": "accept",
  "description": "A directory after its contents.",
  "features": [],

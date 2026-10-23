@@ -7,7 +7,7 @@ contrib/data/STRICT.md.
 F = lambda path, contents: {"path": path, "kind": "file", "contents": contents, "executable": False}
 
 VERDICT = "accept"
-CODE = "F01"
+ID = "F01"
 FEATURES = []
 TREE = [F('a', b'spaces\n')]
 

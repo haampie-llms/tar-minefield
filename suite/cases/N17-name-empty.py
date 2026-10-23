@@ -8,7 +8,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "N17"
+ID = "N17"
 FEATURES = ['name.empty']
 
 

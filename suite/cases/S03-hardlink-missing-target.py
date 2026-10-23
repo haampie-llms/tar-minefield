@@ -8,7 +8,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "S03"
+ID = "S03"
 FEATURES = ['hardlink.missing-target']
 
 

@@ -8,7 +8,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "S11"
+ID = "S11"
 FEATURES = ['tree.through-symlink']
 
 

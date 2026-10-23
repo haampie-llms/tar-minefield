@@ -9,7 +9,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "F06"
+ID = "F06"
 FEATURES = ['checksum.signed']
 
 

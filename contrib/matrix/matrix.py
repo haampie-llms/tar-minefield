@@ -38,7 +38,7 @@ ROOT = os.path.dirname(os.path.dirname(HERE))
 ARCHIVES = os.path.join(ROOT, "suite", "archives")
 RUNNERS = os.path.join(HERE, "runners")
 TIMEOUT = 60
-# GitHub Pages, from docs/, which contrib/site.py writes: a page per case, named by its code
+# GitHub Pages, from docs/, which contrib/site.py writes: a page per case, named by its identifier
 SITE = "https://haampie-llms.github.io/tar-minefield/"
 
 
@@ -388,19 +388,19 @@ def category(info):
 
 
 def label(case, info):
-    """The code of a case and its name: `F15 pax-size-on-dir`, of `F15-pax-size-on-dir`."""
+    """The identifier of a case and its name: `F15 pax-size-on-dir`, of `F15-pax-size-on-dir`."""
     return case.replace("-", " ", 1)
 
 
 def load_cases():
-    """The cases, in the order of GROUPS, and by code in each group."""
+    """The cases, in the order of GROUPS, and by identifier in each group."""
     cases = {}
     for name in sorted(os.listdir(ARCHIVES)):
         if name.endswith(".json"):
             with open(os.path.join(ARCHIVES, name)) as f:
                 cases[name[:-5]] = json.load(f)
     order = list(GROUPS)
-    return dict(sorted(cases.items(), key=lambda kv: (order.index(category(kv[1])), kv[1]["code"])))
+    return dict(sorted(cases.items(), key=lambda kv: (order.index(category(kv[1])), kv[1]["id"])))
 
 
 def main():
@@ -581,7 +581,7 @@ def legend_svg(x, y):
 
 def svg(results, cases, link=None):
     """Every implementation in columns; in rows, the outcomes of all cases first, as a bar per
-    implementation, then every case, labelled by its code and name, and with link(case) a link
+    implementation, then every case, labelled by its identifier and name, and with link(case) a link
     to its page. Links work where the SVG is part of the page, not where it is an image."""
     names = columns(results)
     counts = {n: {} for n in names}
@@ -704,11 +704,11 @@ def table(results, cases):
             previous = category(info)
             lines.append(f"| **{GROUPS[previous]}** |" + " |" * len(names))
         cells, letters = case_cells(info, results["cases"][case], names)
-        code, name = label(case, info).split(" ", 1)
-        lines.append(f"| [{code}]({SITE}{code}.html) {name} | "
+        ident, name = label(case, info).split(" ", 1)
+        lines.append(f"| [{ident}]({SITE}{ident}.html) {name} | "
                      + " | ".join(cells[n] for n in names) + " |")
         if letters:
-            notes.append(f"- {code} {name}: " + "; ".join(f"{l}: {k}" for k, l in letters.items()))
+            notes.append(f"- {ident} {name}: " + "; ".join(f"{l}: {k}" for k, l in letters.items()))
     total = totals(results, cases, names)
     lines.append("| **total** | " + " | ".join(total[n] for n in names) + " |")
     lines += ["", "## Trees", "", "What the implementations that accept a case extract, where it is"

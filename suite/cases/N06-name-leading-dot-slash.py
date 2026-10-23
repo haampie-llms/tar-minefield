@@ -10,7 +10,7 @@ Seen in: hdf5 1.10.11, numdiff 5.9.0 and others: see contrib/data/STRICT.md.
 """
 
 VERDICT = "tolerate"
-CODE = "N06"
+ID = "N06"
 FEATURES = ["name.leading-dot-slash"]
 TREE = [
     {"path": "a", "kind": "file", "contents": b"a\n", "executable": False},

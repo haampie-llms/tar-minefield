@@ -8,7 +8,7 @@ Seen in: libmygpo-qt 1.2.0, with xattr keys.
 """
 
 VERDICT = "reject"
-CODE = "N20"
+ID = "N20"
 FEATURES = ['pax.repeated-key']
 
 

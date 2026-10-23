@@ -4,7 +4,7 @@
 
 Every case must make tarscan.py report its features. The default policy of strict.py must reject
 the cases to reject, accept the tolerated cases only by its rules, and accept the cases to accept
-without them. And the letter of the code of a case must be the level of its features. That tests
+without them. And the letter of the identifier of a case must be the level of its features. That tests
 the scanner and the policy against cases defined by their bytes, which a reviewer checks by
 reading the scripts and dumps of suite/.
 """
@@ -47,9 +47,9 @@ def check():
         if verdict == "accept" and strict_found:
             problems.append(f"{case}: a strict criterion rejects it: {sorted(strict_found)}")
         levels = {strict.classify(f)[1] for f in expected["features"]} - {None} or {"framing"}
-        level = strict.LEVELS["FNKSG".index(expected["code"][0])]
+        level = strict.LEVELS["FNKSG".index(expected["id"][0])]
         if verdict != "accept" and level not in levels:
-            problems.append(f"{case}: the code {expected['code']} is not of the level {levels}")
+            problems.append(f"{case}: the identifier {expected['id']} is not of the level {levels}")
         print(f"{case}: {sorted(found)}")
     return problems
 

@@ -9,7 +9,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "F16"
+ID = "F16"
 FEATURES = ['type.unknown-Z']
 
 

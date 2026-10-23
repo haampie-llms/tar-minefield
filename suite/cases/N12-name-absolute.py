@@ -9,7 +9,7 @@ Seen in: dtv-scan-tables (`/usr/share/dvb/`) and masurca 3.3.1.
 """
 
 VERDICT = "reject"
-CODE = "N12"
+ID = "N12"
 FEATURES = ['name.absolute']
 
 

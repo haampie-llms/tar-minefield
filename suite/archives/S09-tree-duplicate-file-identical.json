@@ -1,5 +1,5 @@
 {
- "code": "S09",
+ "id": "S09",
  "verdict": "reject",
  "description": "The same file twice, with the same contents.",
  "features": [

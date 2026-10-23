@@ -8,7 +8,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "K03"
+ID = "K03"
 FEATURES = ['name.trailing-slash-on-symlink']
 
 

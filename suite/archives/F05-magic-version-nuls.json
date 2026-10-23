@@ -1,5 +1,5 @@
 {
- "code": "F05",
+ "id": "F05",
  "verdict": "tolerate",
  "description": "The POSIX magic with NULs for its version, `ustar\u0000\u0000\u0000`, as some Java archivers write.",
  "features": [

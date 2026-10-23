@@ -8,7 +8,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "N19"
+ID = "N19"
 FEATURES = ['pax.nul-in-value.path']
 
 

@@ -11,7 +11,7 @@ Seen in: no source tarball. Newlines in pax values are only in xattrs, such as M
 """
 
 VERDICT = "reject"
-CODE = "F13"
+ID = "F13"
 FEATURES = ['pax.newline-in-value.path']
 
 

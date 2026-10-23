@@ -1,5 +1,5 @@
 {
- "code": "G04",
+ "id": "G04",
  "verdict": "reject",
  "description": "A global pax header with a `path`.",
  "features": [

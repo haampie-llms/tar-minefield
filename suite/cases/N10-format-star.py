@@ -8,7 +8,7 @@ Seen in: berkeley-db 18.1.40 and ncurses 5.9.
 """
 
 VERDICT = "reject"
-CODE = "N10"
+ID = "N10"
 FEATURES = ['format.star']
 
 

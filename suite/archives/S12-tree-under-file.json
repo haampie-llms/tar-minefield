@@ -1,5 +1,5 @@
 {
- "code": "S12",
+ "id": "S12",
  "verdict": "reject",
  "description": "A member under a file.",
  "features": [

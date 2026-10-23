@@ -1,5 +1,5 @@
 {
- "code": "G01",
+ "id": "G01",
  "verdict": "accept",
  "description": "The global pax header with only a `comment`, as `git archive` writes it.",
  "features": [],

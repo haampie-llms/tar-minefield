@@ -8,7 +8,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "G04"
+ID = "G04"
 FEATURES = ['pax-global.path']
 
 

@@ -8,7 +8,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "S08"
+ID = "S08"
 FEATURES = ['tree.duplicate.file-dir']
 
 

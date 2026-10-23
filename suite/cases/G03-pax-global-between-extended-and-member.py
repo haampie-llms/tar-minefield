@@ -9,7 +9,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "G03"
+ID = "G03"
 FEATURES = ['pax-global.between-extended-and-member']
 
 

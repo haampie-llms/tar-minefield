@@ -1,5 +1,5 @@
 {
- "code": "F03",
+ "id": "F03",
  "verdict": "tolerate",
  "description": "An end-of-archive marker of one zero block, not two.",
  "features": [

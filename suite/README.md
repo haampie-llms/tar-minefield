@@ -16,7 +16,7 @@ Every case is an uncompressed archive, `archives/<case>.tar`, with its manifest
 
 ```json
 {
- "code": "N07",
+ "id": "N07",
  "verdict": "tolerate",
  "description": "A symlink to an absolute path, created as it is.",
  "features": ["symlink.absolute"],
@@ -31,8 +31,8 @@ Every case is an uncompressed archive, `archives/<case>.tar`, with its manifest
   (`file`, `directory` or `symlink`), the `target` of a symlink, and of a file its `size`,
   `sha256` and whether it is `executable`. An extraction passes if it has exactly these paths,
   and every entry has the values the manifest gives. It is absent from the cases to reject.
-- `code`: the case's level and number, such as `N07`; it names the case, and stays with it.
-  Its letter is the level: F framing, N names, K kinds, S order and state, G global pax headers.
+- `id`: the case's identifier, such as `N07`, which stays with it. Its letter is the level: F
+  framing, N names, K kinds, S order and state, G global pax headers.
 - `features`: what [the scanner](../contrib/scanner) reports of the archive, for reference.
 
 The suite needs nothing but the archives and their manifests: copy `archives/`, or this
@@ -62,6 +62,6 @@ Generation is deterministic, with the Python standard library only.
 [contrib/scanner](../contrib/scanner) checks the scanner and the default policy against the
 cases.
 
-A new case is a script in `cases/`, named by its code and a few words, with `CODE`, `VERDICT`
+A new case is a script in `cases/`, named by its identifier and a few words, with `ID`, `VERDICT`
 (`"reject"`, `"accept"` or `"tolerate"`), `FEATURES`, `TREE` unless it is to reject, and a
-`build(archive)` function. Its code is the next free number of its letter.
+`build(archive)` function. Its identifier is the next free number of its letter.

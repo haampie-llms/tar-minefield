@@ -1,5 +1,5 @@
 {
- "code": "N17",
+ "id": "N17",
  "verdict": "reject",
  "description": "A member with an empty name.",
  "features": [

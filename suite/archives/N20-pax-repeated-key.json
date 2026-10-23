@@ -1,5 +1,5 @@
 {
- "code": "N20",
+ "id": "N20",
  "verdict": "reject",
  "description": "One pax key twice in one extended header.",
  "features": [

@@ -1,5 +1,5 @@
 {
- "code": "S08",
+ "id": "S08",
  "verdict": "reject",
  "description": "A file, then a directory of the same name.",
  "features": [

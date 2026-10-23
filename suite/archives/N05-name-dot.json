@@ -1,5 +1,5 @@
 {
- "code": "N05",
+ "id": "N05",
  "verdict": "tolerate",
  "description": "A member named `./`, the root of the tree, as `tar cf x.tar .` writes first.",
  "features": [

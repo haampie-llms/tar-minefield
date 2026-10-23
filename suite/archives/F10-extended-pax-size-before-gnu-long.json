@@ -1,5 +1,5 @@
 {
- "code": "F10",
+ "id": "F10",
  "verdict": "reject",
  "description": "A pax `size` followed by a GNU long name: which of them does the size apply to?",
  "features": [

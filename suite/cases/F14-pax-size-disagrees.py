@@ -9,7 +9,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "F14"
+ID = "F14"
 FEATURES = ["pax.size-disagrees"]
 
 

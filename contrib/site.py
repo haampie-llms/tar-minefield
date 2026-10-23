@@ -1,4 +1,4 @@
-"""Write the site of the test suite, for GitHub Pages: a page per case, named by its code, and an index.
+"""Write the site of the test suite, for GitHub Pages: a page per case, named by its identifier, and an index.
 
     python -I contrib/site.py docs contrib/data/*/*/results.jsonl
 
@@ -41,7 +41,7 @@ OUTCOMES = {
 }
 # Tables of one kind have the same columns, in the same widths
 COLUMNS = {
-    "cases": [("code", 9), ("name", 27), ("what it is", 50), ("prevalence", 14, "n")],
+    "cases": [("identifier", 12), ("name", 24), ("what it is", 50), ("prevalence", 14, "n")],
     "data": [("ecosystem", 25), ("tarballs", 25, "n"), ("with it", 25, "n"), ("share", 25, "n")],
     "data-policy": [("ecosystem", 20), ("tarballs", 20, "n"), ("with it", 20, "n"),
                     ("share", 20, "n"), ("rejected by the default policy", 20, "n")],
@@ -257,7 +257,7 @@ def implementations_section(case, info, results):
 
 
 def case_page(case, info, previous, following, results, data):
-    code, name = matrix.label(case, info).split(" ", 1)
+    ident, name = matrix.label(case, info).split(" ", 1)
     with open(os.path.join(CASES, case + ".py")) as f:
         doc = f.read().split('"""')[1]
     with open(os.path.join(matrix.ARCHIVES, case + ".svg")) as f:
@@ -270,12 +270,12 @@ def case_page(case, info, previous, following, results, data):
     nav = ['<a href="index.html">all cases</a>']
     for rel, other in (("previous", previous), ("next", following)):
         if other:
-            nav.append(f'{rel}: <a href="{other[1]["code"]}.html">'
+            nav.append(f'{rel}: <a href="{other[1]["id"]}.html">'
                        f"{html.escape(matrix.label(*other))}</a>")
-    level = strict.LEVELS["FNKSG".index(code[0])]
+    level = strict.LEVELS["FNKSG".index(ident[0])]
     files = f"{REPO}/blob/main/suite"
     body = f"""<nav>{" · ".join(nav)}</nav>
-<h1><code>{code}</code> {html.escape(name)}</h1>
+<h1><code>{ident}</code> {html.escape(name)}</h1>
 <p>{inline(info["description"])}</p>
 <dl>
 <dt>Verdict</dt><dd>{VERDICTS[info["verdict"]]}</dd>
@@ -306,7 +306,7 @@ def case_page(case, info, previous, following, results, data):
     body += ("<h2>What implementations make of it</h2>\n"
              + implementations_section(case, info, results) + "\n")
     body += "<h2>Prevalence in source tarballs</h2>\n" + data_section(features, *data) + "\n"
-    return page(f"{code} {name} · tar-minefield", body)
+    return page(f"{ident} {name} · tar-minefield", body)
 
 
 def seen_in_problems(cases, union):
@@ -336,26 +336,24 @@ def index_page(cases, results, data):
     for group, members in groups.items():
         rows = []
         for case, info in members:
-            code, name = matrix.label(case, info).split(" ", 1)
+            ident, name = matrix.label(case, info).split(" ", 1)
             features = features_of(case, info)
             k = sum(1 for r in union if any(f in r["features"] for f in features))
             share = prevalence(k, len(union)) if features else "–"
-            rows.append(f'<tr><td><a href="{code}.html"><code>{code}</code></a></td>'
+            rows.append(f'<tr><td><a href="{ident}.html"><code>{ident}</code></a></td>'
                         f"<td>{html.escape(name)}</td><td>{inline(info['description'])}</td>"
                         f"<td class=n>{on_point(share)}</td></tr>")
         sections.append(f"<h3>{html.escape(matrix.GROUPS[group].capitalize())}</h3>\n"
                         + table("cases", rows))
     body = f"""<h1>tar-minefield</h1>
 {readme_intro()}
-<p>Every case has a code: its letter is the level of the catalogue of
-<a href="{REPO}/blob/main/METHOD.md">METHOD.md</a>, F framing, N names, K kinds, S order and
-state, G global pax headers. A code stays with its case; new cases get new codes. See the
-<a href="{REPO}">repository</a> for the method and the data. The explanations of the cases are
-written by hand; the numbers, outcomes, block maps and dumps are generated from the archives, the
-source tarballs and the runs of the implementations.</p>
+<p>Each case has a permanent identifier, such as F15, whose letter is its level:
+<strong>F</strong> framing, <strong>N</strong> names, <strong>K</strong> kinds, <strong>S</strong>
+order and state, <strong>G</strong> global pax headers. A case's page shows its archive block by
+block, what every implementation makes of it, and how common it is in source tarballs.</p>
 <h2>What implementations make of every case</h2>
 <p>Click a case for its page; hover over a cell for the tree.</p>
-<div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["code"] + ".html")}</div>
+<div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["id"] + ".html")}</div>
 <h2 id="cases">The cases</h2>
 <p>Prevalence: the share of the {len(union)} distinct release tarballs of Spack, nixpkgs, Guix and
 live-bootstrap that have the feature of the case; none, if no tarball has it. A dash: the scanner
@@ -388,7 +386,7 @@ def main():
     for i, (case, info) in enumerate(ordered):
         previous = ordered[i - 1] if i else None
         following = ordered[i + 1] if i + 1 < len(ordered) else None
-        files[info["code"] + ".html"] = case_page(case, info, previous, following, results, data)
+        files[info["id"] + ".html"] = case_page(case, info, previous, following, results, data)
     for name, text in files.items():
         with open(os.path.join(out, name), "w") as f:
             f.write(text)

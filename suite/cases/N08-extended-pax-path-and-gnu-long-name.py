@@ -9,7 +9,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "N08"
+ID = "N08"
 FEATURES = ['extended.pax-path-and-gnu-long-name']
 
 

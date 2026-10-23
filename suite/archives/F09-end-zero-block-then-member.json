@@ -1,5 +1,5 @@
 {
- "code": "F09",
+ "id": "F09",
  "verdict": "reject",
  "description": "A zero block, then another member: the end of the archive, or not?",
  "features": [

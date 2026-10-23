@@ -1,5 +1,5 @@
 {
- "code": "N16",
+ "id": "N16",
  "verdict": "reject",
  "description": "`..` in a name, which climbs out of the directory the archive is extracted to.",
  "features": [

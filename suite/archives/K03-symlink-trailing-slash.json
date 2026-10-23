@@ -1,5 +1,5 @@
 {
- "code": "K03",
+ "id": "K03",
  "verdict": "reject",
  "description": "A symlink whose name ends in a slash.",
  "features": [

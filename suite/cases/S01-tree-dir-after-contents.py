@@ -7,7 +7,7 @@ F = lambda path, contents: {"path": path, "kind": "file", "contents": contents, 
 D = lambda path: {"path": path, "kind": "directory"}
 
 VERDICT = "accept"
-CODE = "S01"
+ID = "S01"
 FEATURES = []
 TREE = [D('d'), F('d/a', b'a\n')]
 

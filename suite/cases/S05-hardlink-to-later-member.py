@@ -8,7 +8,7 @@ Seen in: no source tarball.
 """
 
 VERDICT = "reject"
-CODE = "S05"
+ID = "S05"
 FEATURES = ['hardlink.to-later-member']
 
 
