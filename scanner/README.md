@@ -9,8 +9,8 @@ strict parser can be checked against them before anyone adopts them (see
 - `run.py sample` picks a sample from a list of tarballs, and `run.py scan` downloads and scans
   it. Tarballs are streamed: they are never written to disk.
 - `report.py` summarizes results as Markdown.
-- `spack_list.py` lists the tarballs of Spack's builtin repository. Lists for other ecosystems
-  go next to it, as `<ecosystem>_list.py`.
+- `spack_list.py` lists the tarballs of Spack's builtin repository, and `live_bootstrap_list.py`
+  those of live-bootstrap. Lists for other ecosystems go next to them, as `<ecosystem>_list.py`.
 
 Run the scripts with `python -I`: they handle untrusted data, and should not import modules from
 the current directory.
@@ -63,8 +63,12 @@ Other sources worth scanning:
 
 - [live-bootstrap](https://github.com/fosslinux/live-bootstrap): the old tarballs needed to
   bootstrap a GNU/Linux system from source, so a likely place for historical edge cases. Each
-  `steps/<step>/sources` has lines `f <url> <sha256> [<name>]`. There are a few hundred, so scan
-  all of them rather than a sample.
+  `steps/<step>/sources` has lines `f <url> <sha256> [<name>]`, and `g <repo>~<ref> <url> <sha256>
+  [<name>]` for tarballs of git references. There are under 200, so scan all of them rather than
+  a sample. Its mirrors (`live-bootstrap.stikonas.eu`, `samuelt.me/pub/live-bootstrap`) serve
+  every file by name, also those it makes with `git archive`, and are much faster than the GNU
+  upstreams. Two are `.tar.lzma`, which `tarscan.py` does not detect: see
+  `data/live-bootstrap/2026-10-23/RUN.md`.
 
 The sampler takes half latest versions of distinct packages and half older versions of other
 packages. Without `latest`, every tarball counts as older. Its order depends only on the seed and

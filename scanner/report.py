@@ -27,7 +27,7 @@ def origin(url):
         return "cran/bioconductor"
     if "cpan" in host:
         return "cpan"
-    if "gnu.org" in host:
+    if "gnu.org" in host or url.split("/")[3:4] == ["gnu"]:
         return "gnu"
     return "other"
 
