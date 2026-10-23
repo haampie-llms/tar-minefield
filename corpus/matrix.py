@@ -393,14 +393,20 @@ def totals(results, cases, names):
     return {n: " ".join(f"{s}{counts[n][s]}" for s in ORDER if counts[n].get(s)) for n in names}
 
 
-# SVG: the classes of outcomes, their colours in light and dark mode, what they mean, and a mark
-# that tells them apart without colour
+# SVG: the classes of outcomes; their colours in light and dark mode, as (cell, mark): pale cells,
+# as a grid of saturated ones flickers at its crossings; what they mean; and a mark that tells
+# them apart without colour
 CLASSES = {
-    "✅": ("ok", "#1a7f37", "#238636", "as the verdict says: rejects an n_ case, extracts the tree of the others", "✓"),
-    "⚠️": ("warn", "#bf8700", "#9e6a03", "accepts an n_ case, which a strict parser rejects", "!"),
-    "⛔": ("stop", "#6e7781", "#6e7681", "rejects an i_ case, which a strict parser may", "–"),
-    "❌": ("bad", "#cf222e", "#da3633", "rejects a y_ case, or extracts another tree than its manifest", "✗"),
-    "💥": ("boom", "#8250df", "#8957e5", "writes outside the destination", "↑"),
+    "✅": ("ok", ("#dafbe1", "#1a7f37"), ("#12301e", "#3fb950"),
+          "as the verdict says: rejects an n_ case, extracts the tree of the others", "✓"),
+    "⚠️": ("warn", ("#fff1c2", "#9a6700"), ("#3a2c08", "#d29922"),
+           "accepts an n_ case, which a strict parser rejects", "!"),
+    "⛔": ("stop", ("#eaeef2", "#57606a"), ("#262c33", "#8b949e"),
+           "rejects an i_ case, which a strict parser may", "–"),
+    "❌": ("bad", ("#ffd8d3", "#cf222e"), ("#40151b", "#f85149"),
+           "rejects a y_ case, or extracts another tree than its manifest", "✗"),
+    "💥": ("boom", ("#efe2ff", "#8250df"), ("#2e1f4d", "#a371f7"),
+           "writes outside the destination", "↑"),
 }
 FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
 
@@ -421,13 +427,13 @@ def esc(text):
 
 
 def svg_style():
-    light = "".join(f".{c[0]}{{fill:{c[1]}}}" for c in CLASSES.values())
-    dark = "".join(f".{c[0]}{{fill:{c[2]}}}" for c in CLASSES.values())
+    light = "".join(f".{c[0]}{{fill:{c[1][0]}}}.{c[0]}-ink{{fill:{c[1][1]}}}" for c in CLASSES.values())
+    dark = "".join(f".{c[0]}{{fill:{c[2][0]}}}.{c[0]}-ink{{fill:{c[2][1]}}}" for c in CLASSES.values())
     return (
         f"<style>text{{font-family:{FONT};font-size:12px;fill:#1f2328}}.head{{font-weight:600}}"
-        ".cell{fill:#fff;font-size:11px;font-weight:600;text-anchor:middle}"
+        ".cell{font-size:11px;font-weight:700;text-anchor:middle}"
         f".rule{{stroke:#d0d7de}}{light}"
-        "@media (prefers-color-scheme: dark){text{fill:#e6edf3}.cell{fill:#fff}.rule{stroke:#30363d}"
+        "@media (prefers-color-scheme: dark){text{fill:#e6edf3}.rule{stroke:#30363d}"
         f"{dark}}}</style>"
     )
 
@@ -438,7 +444,7 @@ def cell_svg(x, y, w, h, symbol, title):
     base = next(c for c in CLASSES if symbol.startswith(c))
     cls, mark = CLASSES[base][0], CLASSES[base][4]
     return (f'<g><title>{esc(title)}</title><rect class="{cls}" x="{x}" y="{y}" width="{w}" '
-            f'height="{h}" rx="3"/><text class="cell" x="{x + w / 2}" y="{y + h / 2 + 4}">{mark}'
+            f'height="{h}" rx="3"/><text class="cell {cls}-ink" x="{x + w / 2}" y="{y + h / 2 + 4}">{mark}'
             "</text></g>")
 
 
@@ -446,7 +452,7 @@ def legend_svg(x, y):
     out = []
     for c in CLASSES.values():
         out.append(f'<rect class="{c[0]}" x="{x}" y="{y - 12}" width="16" height="16" rx="3"/>'
-                   f'<text class="cell" x="{x + 8}" y="{y}">{c[4]}</text>'
+                   f'<text class="cell {c[0]}-ink" x="{x + 8}" y="{y}">{c[4]}</text>'
                    f'<text x="{x + 22}" y="{y}">{esc(c[3])}</text>')
         y += 21
     return "".join(out), y
@@ -462,7 +468,7 @@ def svg(results, cases):
             symbol = outcome(info, results["cases"][case][n])[0]
             counts[n][symbol] = counts[n].get(symbol, 0) + 1
     left = 20 + 7 * max(len(c) for c in cases)
-    cw, ch, gap, top = 22, 16, 3, 230
+    cw, ch, gap, top = 22, 16, 2, 230
     xs, x, previous = {}, left, None
     for n in names:
         if previous is not None and group(n) != group(previous):
@@ -485,7 +491,8 @@ def svg(results, cases):
                        f'<rect class="{CLASSES[symbol][0]}" x="{xs[n]}" y="{bottom - h:.1f}" '
                        f'width="{cw}" height="{h:.1f}"/>')
             if h >= 14:
-                out.append(f'<text class="cell" x="{xs[n] + cw / 2}" y="{bottom - h / 2 + 4:.1f}">{k}</text>')
+                out.append(f'<text class="cell {CLASSES[symbol][0]}-ink" x="{xs[n] + cw / 2}" '
+                           f'y="{bottom - h / 2 + 4:.1f}">{k}</text>')
             out.append("</g>")
             bottom -= h
     y += bar
