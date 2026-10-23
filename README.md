@@ -18,9 +18,9 @@ records every feature that METHOD.md lists as an ambiguity:
 |---|---|---|---|---|---|---|---|
 | live-bootstrap | 171 | 171 | 0 | 74 | 1.1 | 919,348 | gnu 98, other 24, cpan 20 |
 | nix | 19086 | 19012 | 22 | 17955 | 78.3 | 11,659,428 | other 11987, pypi 3846, cpan 1899 |
-| guix | 10200 | 10161 | 31 | 9637 | 76.6 | 22,054,817 | other 3838, cran/bioconductor 2805, pypi 1697 |
-| spack | 10607 | 10567 | 0 | 3492 | 239.2 | 30,097,753 | github-archive 3045, pypi 2818, other 1794 |
-| all, distinct | 36327 | 36176 | 48 | 27729 | 381.0 | 59,286,258 | |
+| guix | 10178 | 10139 | 31 | 9628 | 67.2 | 18,410,708 | other 3819, cran/bioconductor 2804, pypi 1696 |
+| spack | 12881 | 12823 | 0 | 3831 | 284.4 | 39,251,526 | github-archive 3822, pypi 3364, other 2149 |
+| all, distinct | 38537 | 38368 | 48 | 28030 | 416.5 | 64,743,280 | |
 
 Tarballs that are not scanned could not be downloaded from any URL. Not assessed: in a compression that the scanner does not read (`.tar.lz`, `.tar.zst`). Latest: the latest version of a package in its repository.
 
@@ -33,37 +33,37 @@ years      live-bootstrap   nix  guix spack   all
 1992–1993               1     1     1     0     3  #
 1994–1995               3     9     2     5    16  #
 1996–1997               3     4     1     1     9  #
-1998–1999               3    17    11     3    29  #
-2000–2001               4    48    18     5    64  #
-2002–2003              14    75    45    21   125  #
-2004–2005               2   165    74    39   231  #
-2006–2007              11   144    80    30   219  #
-2008–2009               8   321   144    77   462  ###
-2010–2011               5   429   172   128   645  ####
-2012–2013               8   652   310   251  1041  ######
-2014–2015               1  1034   424   504  1715  ###########
-2016–2017               8  1304   562   913  2507  ###############
-2018–2019              18  1510   765  1467  3371  #####################
-2020–2021              28  1537   917  1873  3944  ########################
-2022–2023              24  1929  1538  2245  5195  ################################
-2024–2025              29  2563  2345  2157  6485  ########################################
-2026–2027               1  2871  1771   559  5000  ###############################
-fixed                   0  4201   913   230  4820  ##############################
-unknown                 0   149    60    53   235  #
+1998–1999               3    17    11     4    30  #
+2000–2001               4    48    18     6    65  #
+2002–2003              14    75    45    24   128  #
+2004–2005               2   165    74    49   240  #
+2006–2007              11   144    80    36   225  #
+2008–2009               8   321   144    88   473  ###
+2010–2011               5   429   172   143   660  ####
+2012–2013               8   652   310   295  1085  ######
+2014–2015               1  1034   423   587  1794  ##########
+2016–2017               8  1304   561  1112  2700  ################
+2018–2019              18  1510   765  1770  3670  #####################
+2020–2021              28  1537   916  2291  4356  #########################
+2022–2023              24  1929  1534  2746  5687  #################################
+2024–2025              29  2563  2339  2639  6947  ########################################
+2026–2027               1  2871  1762   681  5108  #############################
+fixed                   0  4201   913   280  4870  ############################
+unknown                 0   149    60    60   242  #
 ```
 
 Fixed: every member has an mtime that a producer writes in place of the real one, such as `cabal sdist` (2001-09-09) on Hackage and hatchling (2020-02-02) on PyPI, so these tarballs are not dated: 1970-01-01 00:00, 2000-01-01 00:00, 2000-07-19 22:00, 2001-09-09 01:46, 2006-07-24 01:21, 2020-02-02 00:00, 2022-11-09 12:37. Unknown: no mtime after 1980.
 
 ### What a strict parser accepts
 
-Of 36128 distinct tarballs, 35797 pass every criterion. The criterion that rejects the most tarballs on its own is `tree.duplicate.file-file`.
+Of 38320 distinct tarballs, 37967 pass every criterion. The criterion that rejects the most tarballs on its own is `name.leading-dot-slash`.
 
-| dataset | assessed | pass all criteria | of latest versions | pass if `tree.duplicate.file-file` were allowed | untar extracts |
+| dataset | assessed | pass all criteria | of latest versions | pass if `name.leading-dot-slash` were allowed | untar extracts |
 |---|---|---|---|---|---|
 | live-bootstrap | 171 | 171 (100.00%) | 74 (100.00%) | 171 (100.00%) | 171 (100.00%) |
-| nix | 18990 | 18833 (99.17%) | 17809 (99.19%) | 18890 (99.47%) | 18912 (99.59%) |
-| guix | 10130 | 10029 (99.00%) | 9555 (99.15%) | 10045 (99.16%) | 10092 (99.62%) |
-| spack | 10567 | 10469 (99.07%) | 3458 (99.03%) | 10473 (99.11%) | 10531 (99.66%) |
+| nix | 18990 | 18833 (99.17%) | 17809 (99.19%) | 18849 (99.26%) | 18912 (99.59%) |
+| guix | 10108 | 10012 (99.05%) | 9548 (99.17%) | 10029 (99.22%) | 10070 (99.62%) |
+| spack | 12823 | 12698 (99.03%) | 3793 (99.01%) | 12742 (99.37%) | 12784 (99.70%) |
 
 Generated by `scanner/strict.py` from 4 scans: the details are in [data/STRICT.md](data/STRICT.md).
 <!-- end strict.py -->
