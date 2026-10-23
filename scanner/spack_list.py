@@ -15,6 +15,8 @@ import spack.repo
 import spack.spec
 
 MIRROR = "https://mirror.spack.io/_source-cache/archive"
+# Not file:// or paths: those are local copies of tarballs that need a manual download
+SCHEMES = ("https://", "http://", "ftp://")
 TAR_EXTENSIONS = ("tar", "tar.gz", "tgz", "tar.bz2", "tbz2", "tbz", "tar.xz", "txz")
 
 
@@ -30,7 +32,7 @@ def tarballs(pkg_cls):
         if type(fetcher) is not spack.fetch_strategy.URLFetchStrategy or not fetcher.digest:
             continue
         ext = meta.get("extension") or spack.mirrors.layout._determine_extension(fetcher)
-        if ext not in TAR_EXTENSIONS or not fetcher.url.startswith(("https://", "http://")):
+        if ext not in TAR_EXTENSIONS or not fetcher.url.startswith(SCHEMES):
             continue
         found.append(
             {

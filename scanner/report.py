@@ -1,10 +1,15 @@
 """Summarize the output of run.py as Markdown.
 
-python -I scanner/report.py OUT [TITLE] > REPORT.md
+    python -I scanner/report.py [--title TITLE] RESULTS... > REPORT.md
+
+With several results files, features and producers are counted over the distinct tarballs (by
+sha256) of all of them, and rates are given per file: each file is a sample of its own
+population, so its rates do not pool with others. A file is named by its directory under data/.
 """
 
 import collections
 import json
+import os
 import re
 import sys
 import time
@@ -85,17 +90,77 @@ def counter(c, n=4):
     return ", ".join(f"{k} {v}" for k, v in c.most_common(n))
 
 
+def dataset_name(path):
+    parts = os.path.abspath(path).split(os.sep)
+    if "data" in parts[:-1]:
+        return "/".join(parts[len(parts) - parts[::-1].index("data") : -1])
+    return path
+
+
+def load(paths):
+    """The distinct tarballs of all results files, each with the datasets it is in; and the rows
+    of each file."""
+    union = {}
+    datasets = {}
+    for path in paths:
+        name = dataset_name(path)
+        datasets[name] = [json.loads(line) for line in open(path)]
+        for r in datasets[name]:
+            if r["sha256"] in union:
+                u = union[r["sha256"]]
+                u["datasets"].append(name)
+                u["latest"] = u.get("latest") or r.get("latest")
+                if "features" in r and "features" not in u:
+                    union[r["sha256"]] = dict(r, datasets=u["datasets"], latest=u["latest"])
+            else:
+                union[r["sha256"]] = dict(r, datasets=[name])
+    return list(union.values()), datasets
+
+
+def dataset_table(datasets):
+    print("| dataset | tarballs | scanned | latest | untar rejects | latest | filesystem only |")
+    print("|---|---|---|---|---|---|---|")
+    for name, rows in datasets.items():
+        scanned = [r for r in rows if "features" in r]
+        latest = [r for r in scanned if r.get("latest")]
+        rejected = [r for r in scanned if r.get("untar_error") and not filesystem_only(r)]
+        rl = [r for r in rejected if r.get("latest")]
+        local = [r for r in scanned if r.get("untar_error") and filesystem_only(r)]
+        tested = [r for r in scanned if "untar" in r or "untar_error" in r]
+        if not tested:
+            print(f"| {name} | {len(rows)} | {len(scanned)} | {len(latest)} | | | |")
+            continue
+        print(
+            f"| {name} | {len(rows)} | {len(scanned)} | {len(latest)} | {len(rejected)} "
+            f"({percent(len(rejected), len(scanned))}) | {len(rl)} "
+            f"({percent(len(rl), len(latest))}) | {len(local)} |"
+        )
+
+
+def percent(n, total):
+    return f"{100 * n / total:.2f}%" if total else "–"
+
+
 def main():
-    rows = [json.loads(line) for line in open(sys.argv[1])]
+    args = sys.argv[1:]
+    title = "Scan of tarballs"
+    if args[:1] == ["--title"]:
+        title, args = args[1], args[2:]
+    rows, datasets = load(args)
     scanned = [r for r in rows if "features" in r]
     failed = [r for r in rows if "download_error" in r]
     crashed = [r for r in rows if "scan_crash" in r]
     latest = sum(1 for r in scanned if r.get("latest"))
 
-    title = sys.argv[2] if len(sys.argv) > 2 else "Scan of tarballs"
     print(f"# {title}\n")
+    if len(datasets) > 1:
+        print(
+            "Rates are per dataset. Counts below are of the distinct tarballs of all datasets.\n"
+        )
+        dataset_table(datasets)
+        print()
     print(
-        f"- sampled: {len(rows)}, scanned: {len(scanned)} ({latest} latest versions, "
+        f"- tarballs: {len(rows)}, scanned: {len(scanned)} ({latest} latest versions, "
         f"{len(scanned) - latest} older)"
     )
     print(f"- not downloaded: {len(failed)}, scanner crashed: {len(crashed)}")

@@ -166,8 +166,8 @@ class Hashing:
 def fetch_and_scan(url, t, untar_path, workdir):
     """Scan the tarball at url while it downloads, and extract it with untar if a path is given.
     Return the result, or an error if it could not be downloaded or its sha256 is wrong."""
-    if not url.startswith(("https://", "http://")):
-        return None, "not an http(s) URL"
+    if not url.startswith(("https://", "http://", "ftp://")):
+        return None, "not a URL to download from"
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     untar = Untar(untar_path, os.path.join(workdir, "untar")) if untar_path else None
     result = {}
@@ -248,7 +248,7 @@ def scan(sample_path, out_path, untar_path=None, jobs=8, reuse=()):
         for t in [t for t in todo if t["sha256"] in known]:
             r = known[t["sha256"]]
             copied = {k: r[k] for k in SCAN_FIELDS if k in r}
-            out.write(json.dumps(dict(t, **copied, reused_from=r.get("source"))) + "\n")
+            out.write(json.dumps(dict(t, **copied, source=r.get("source"), reused=True)) + "\n")
     todo = [t for t in todo if t["sha256"] not in known]
     print(f"{len(done)} done, {len(todo)} to go", file=sys.stderr)
     with multiprocessing.Pool(jobs) as pool, open(out_path, "a") as out:

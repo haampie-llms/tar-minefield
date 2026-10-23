@@ -47,7 +47,9 @@ A list has one JSON object per line, for one tarball:
 | `latest` | optional: whether this is the latest version of the package |
 
 Other fields are kept as they are. Only list tarballs that anyone can download: skip packages
-that need a manual download or a license.
+that need a manual download or a license. Tarballs that cannot be downloaded from any of their
+URLs are recorded with a `download_error`, and otherwise ignored: many old ones are only on ftp
+servers that are gone.
 
 Content-addressed mirrors that serve tarballs by sha256:
 
@@ -76,7 +78,8 @@ mostly the same.
 | field | |
 |---|---|
 | `scanner`, `untar` | versions: the first 12 hex digits of the sha256 of `tarscan.py` and `untar.py` |
-| `source` | the URL it was downloaded from, or `reused_from` if its results were copied |
+| `source` | the URL it was downloaded from |
+| `reused` | true if its results were copied from another results file, with `--reuse` |
 | `bytes` | the size of the tarball |
 | `members`, `kinds` | number of members, by kind |
 | `features` | how often each feature occurs: the names are defined in `tarscan.py` |
@@ -103,3 +106,9 @@ Each scan goes in `data/<ecosystem>/<date>/`, with:
 - `REPORT.md`: the output of `report.py`,
 - `RUN.md`: the commands, the commits of this repository, of the ecosystem's package
   repository and of untar, and the platform and filesystem the scan ran on.
+
+`data/REPORT.md` combines all scans:
+
+```console
+$ python -I scanner/report.py --title "All scans" data/*/*/results.jsonl > data/REPORT.md
+```
