@@ -9,8 +9,8 @@ How many release tarballs a strict tar parser would accept, if it rejected every
 | live-bootstrap | 171 | 171 | 0 | 74 | 1.1 | 919,348 | gnu 98, other 24, cpan 20 |
 | nix | 19086 | 19012 | 22 | 17955 | 78.3 | 11,659,428 | other 11987, pypi 3846, cpan 1899 |
 | guix | 10200 | 10199 | 31 | 9674 | 76.7 | 22,063,418 | other 3845, cran/bioconductor 2833, pypi 1697 |
-| spack | 34058 | 33852 | 0 | 6252 | 426.7 | 94,078,203 | github-archive 10927, pypi 8207, other 5853 |
-| all, distinct | 59248 | 58971 | 48 | 30183 | 561.8 | 119,491,390 | |
+| spack | 34931 | 34725 | 0 | 6533 | 476.0 | 98,459,145 | github-archive 11190, pypi 8459, other 6003 |
+| all, distinct | 60121 | 59844 | 48 | 30464 | 611.1 | 123,872,332 | |
 
 Tarballs that are not scanned could not be downloaded from any URL. Not assessed: in a compression that the scanner does not read (`.tar.lz`, `.tar.zst`). Latest: the latest version of a package in its repository.
 
@@ -25,21 +25,21 @@ years      live-bootstrap   nix  guix spack   all
 1996–1997               3     4     1     1     9  #
 1998–1999               3    17    11     8    34  #
 2000–2001               4    48    18    19    76  #
-2002–2003              14    75    46    38   142  #
-2004–2005               2   165    74    82   272  #
-2006–2007              11   144    80    94   283  #
-2008–2009               8   321   144   213   594  ##
-2010–2011               5   429   172   326   832  ###
-2012–2013               8   652   310   721  1502  #####
-2014–2015               1  1034   424  1472  2661  ##########
-2016–2017               8  1304   564  2947  4506  ################
-2018–2019              18  1510   770  4635  6502  #######################
-2020–2021              28  1537   925  6389  8400  ##############################
-2022–2023              24  1929  1544  7387 10234  #####################################
-2024–2025              29  2563  2357  6996 11162  ########################################
-2026–2027               1  2871  1775  1602  6016  ######################
-fixed                   0  4210   918   771  5359  ###################
-unknown                 0   149    60   141   323  #
+2002–2003              14    75    46    40   144  #
+2004–2005               2   165    74    84   274  #
+2006–2007              11   144    80    95   284  #
+2008–2009               8   321   144   220   601  ##
+2010–2011               5   429   172   338   844  ###
+2012–2013               8   652   310   734  1515  #####
+2014–2015               1  1034   424  1513  2702  ##########
+2016–2017               8  1304   564  3022  4581  ################
+2018–2019              18  1510   770  4775  6642  #######################
+2020–2021              28  1537   925  6556  8567  ##############################
+2022–2023              24  1929  1544  7550 10397  #####################################
+2024–2025              29  2563  2357  7180 11346  ########################################
+2026–2027               1  2871  1775  1651  6065  #####################
+fixed                   0  4210   918   786  5374  ###################
+unknown                 0   149    60   143   325  #
 ```
 
 Fixed: every member has an mtime that a producer writes in place of the real one, such as `cabal sdist` (2001-09-09) on Hackage and hatchling (2020-02-02) on PyPI, so these tarballs are not dated: 1970-01-01 00:00, 1985-10-26 08:15, 2000-01-01 00:00, 2000-07-19 22:00, 2001-09-09 01:46, 2006-07-24 01:21, 2020-02-02 00:00, 2022-11-09 12:37. Unknown: no mtime after 1980.
@@ -52,7 +52,7 @@ A tarball passes if it has none of the strict criteria below. untar is the stric
 | live-bootstrap | 171 | 171 (100.00%) | 74 (100.00%) | 171 (100.00%) | 171 (100.00%) |
 | nix | 18990 | 18833 (99.17%) | 17809 (99.19%) | 18849 (99.26%) | 18912 (99.59%) |
 | guix | 10168 | 10067 (99.01%) | 9592 (99.15%) | 10084 (99.17%) | 10130 (99.63%) |
-| spack | 33852 | 33522 (99.03%) | 6197 (99.12%) | 33639 (99.37%) | 33814 (99.89%) |
+| spack | 34725 | 34383 (99.02%) | 6473 (99.08%) | 34503 (99.36%) | 34687 (99.89%) |
 
 ## Criteria
 
@@ -60,7 +60,7 @@ Tarballs that each criterion rejects, per dataset. Alone: tarballs of all datase
 
 | level | criterion | live-bootstrap | nix | guix | spack | alone | examples |
 |---|---|---|---|---|---|---|---|
-| framing | `magic.posix-with-odd-version`: POSIX magic with a version other than `00` | 0 | 9 (0.05%) | 18 (0.18%) | 26 (0.08%) | 29 | hadoop@3.4.2-src, bsf-bin@2.4.0, org.apache.felix.main.distribution@7.0.5 |
+| framing | `magic.posix-with-odd-version`: POSIX magic with a version other than `00` | 0 | 9 (0.05%) | 18 (0.18%) | 27 (0.08%) | 30 | hadoop@3.4.2-src, bsf-bin@2.4.0, org.apache.felix.main.distribution@7.0.5 |
 | framing | `end.data-after`: data other than zeros after the end-of-archive marker | 0 | 8 (0.04%) | 10 (0.10%) | 6 (0.02%) | 5 | bsf-bin@2.4.0, psutils-p17, Logfile-Rotate@1.04 |
 | framing | `end.missing`: no end-of-archive marker | 0 | 4 (0.02%) | 6 (0.06%) | 9 (0.03%) | 19 | SDL2_ttf@2.24.0, SDL2_image@2.8.12, ruby@3.4.11 |
 | framing | `pax.newline-in-value.SCHILY.xattr.*`: a newline in a pax value, where readers split lines | 0 | 7 (0.04%) | 2 (0.02%) | 5 (0.01%) | 12 | Minion@10.31, Term-ReadLine-Gnu@1.47, ack@v3.10.0 |
@@ -69,29 +69,30 @@ Tarballs that each criterion rejects, per dataset. Alone: tarballs of all datase
 | framing | `end.lone-zero-block`: an end-of-archive marker of one zero block, not two | 0 | 5 (0.03%) | 0 | 0 | 5 | eng-rus, srecord@1.64, cdi2iso@0.1-src |
 | framing | `end.archive-after`: another archive after the end-of-archive marker | 0 | 0 | 1 (0.01%) | 3 (0.01%) | 2 | commons-jexl@2.1.1-src, jmol@14.8.0, glibmm@2.4.8 |
 | framing | `pax.size-on-dir`: a pax size on a member without data | 0 | 1 (0.01%) | 0 | 0 | 1 | llama_index_workflows@2.26.0 |
-| name | `name.leading-dot-slash`: `./a`, which some readers make `a` | 0 | 35 (0.18%) | 31 (0.30%) | 124 (0.37%) | 144 | curie@v1.0, hdf5@1.10.11, NNPDF@31_nnlo_as_0118 |
-| name | `symlink.absolute`: a symlink to an absolute path | 0 | 15 (0.08%) | 13 (0.13%) | 55 (0.16%) | 75 | live.2026.01.12, imapsync@2.314, notmuch@0.40 |
-| name | `name.dot`: a member named `.` or `./` | 0 | 18 (0.09%) | 13 (0.13%) | 7 (0.02%) | 0 | partclone-utils@0.4.3, cmucl@21d-x86-linux, phinger-cursors-variants |
+| name | `name.leading-dot-slash`: `./a`, which some readers make `a` | 0 | 35 (0.18%) | 31 (0.30%) | 128 (0.37%) | 147 | curie@v1.0, hdf5@1.10.11, NNPDF@31_nnlo_as_0118 |
+| name | `symlink.absolute`: a symlink to an absolute path | 0 | 15 (0.08%) | 13 (0.13%) | 58 (0.17%) | 77 | live.2026.01.12, imapsync@2.314, notmuch@0.40 |
+| name | `name.dot`: a member named `.` or `./` | 0 | 18 (0.09%) | 13 (0.13%) | 8 (0.02%) | 0 | partclone-utils@0.4.3, cmucl@21d-x86-linux, phinger-cursors-variants |
 | name | `name.dot-component`: `a/./b` | 0 | 5 (0.03%) | 4 (0.04%) | 1 (0.00%) | 8 | besu@24.1.2, lightweight-testing@0.1, ghc@9.0.2-x86_64-deb10-linux |
-| name | `name.control-character`: a control character in a name | 0 | 1 (0.01%) | 0 | 7 (0.02%) | 8 | cdrtools@3.02a09, wgrib2@3.6.0, apktool@2.6.0 |
+| name | `name.control-character`: a control character in a name | 0 | 1 (0.01%) | 0 | 8 (0.02%) | 8 | cdrtools@3.02a09, wgrib2@3.6.0, apktool@2.6.0 |
 | name | `name.backslash`: `\`, a separator on Windows | 0 | 1 (0.01%) | 2 (0.02%) | 2 (0.01%) | 4 | texi2html@5.0, gstreamer-docs@1.28.1, texi2html@5.0 |
 | name | `name.not-utf8`: a name that is not UTF-8 | 0 | 2 (0.01%) | 0 | 0 | 2 | aspell-is@0.51.1-0, aspell-nb@0.50.1-0 |
 | name | `name.absolute`: an absolute name | 0 | 1 (0.01%) | 0 | 1 (0.00%) | 2 | dtv-scan-tables@2024-03-24-7098bdd27548, masurca@3.3.1 |
-| name | `name.double-slash`: `a//b` | 0 | 1 (0.01%) | 0 | 0 | 0 | ghc@9.0.2-x86_64-deb10-linux |
-| name | `pax.key-in-two-headers.LIBARCHIVE.xattr.*`: a pax key in two extended headers of one member | 0 | 0 | 1 (0.01%) | 0 | 0 | libmygpo-qt.1.2.0 |
-| name | `pax.key-in-two-headers.SCHILY.xattr.*`: a pax key in two extended headers of one member | 0 | 0 | 1 (0.01%) | 0 | 0 | libmygpo-qt.1.2.0 |
+| name | `name.double-slash`: `a//b` | 0 | 1 (0.01%) | 0 | 1 (0.00%) | 1 | ghc@9.0.2-x86_64-deb10-linux, shapemapper@2.1.5 |
 | name | `pax.repeated-key`: a pax key twice in one extended header | 0 | 0 | 1 (0.01%) | 0 | 0 | libmygpo-qt.1.2.0 |
+| name | `pax.key-in-two-headers.SCHILY.xattr.*`: a pax key in two extended headers of one member | 0 | 0 | 1 (0.01%) | 0 | 0 | libmygpo-qt.1.2.0 |
+| name | `pax.key-in-two-headers.LIBARCHIVE.xattr.*`: a pax key in two extended headers of one member | 0 | 0 | 1 (0.01%) | 0 | 0 | libmygpo-qt.1.2.0 |
 | name | `format.star`: star's prefix field | 0 | 0 | 0 | 1 (0.00%) | 1 | berkeley-db@18.1.40 |
 | kind | `name.trailing-slash-on-file`: a regular file named like a directory, `a/` | 0 | 4 (0.02%) | 1 (0.01%) | 1 (0.00%) | 0 | sendmail.8.18.2, tcp_wrappers_7.6, unclutter@8 |
 | kind | `linkname.on-dir`: a link target on a member that is not a link | 0 | 0 | 0 | 1 (0.00%) | 0 | bgen@1.1.7 |
 | kind | `linkname.on-file`: a link target on a member that is not a link | 0 | 0 | 0 | 1 (0.00%) | 0 | bgen@1.1.7 |
 | order and state | `tree.duplicate.file-file`: the same file twice | 0 | 59 (0.31%) | 17 (0.17%) | 14 (0.04%) | 76 | snap-loader-static@1.0.0.1, htn@0.1.0.0, shelly-extra@0.3.0.2 |
-| order and state | `tree.duplicate.file-hardlink`: one path as two members | 0 | 1 (0.01%) | 2 (0.02%) | 12 (0.04%) | 0 | atari++_1.85, xscreensaver@6.12, ghc@7.8.4-x86_64-unknown-linux-deb7 |
-| order and state | `hardlink.to-itself`: a hardlink to itself | 0 | 1 (0.01%) | 2 (0.02%) | 12 (0.04%) | 0 | atari++_1.85, xscreensaver@6.12, ghc@7.8.4-x86_64-unknown-linux-deb7 |
+| order and state | `tree.duplicate.file-hardlink`: one path as two members | 0 | 1 (0.01%) | 2 (0.02%) | 13 (0.04%) | 0 | atari++_1.85, xscreensaver@6.12, ghc@7.8.4-x86_64-unknown-linux-deb7 |
+| order and state | `hardlink.to-itself`: a hardlink to itself | 0 | 1 (0.01%) | 2 (0.02%) | 13 (0.04%) | 0 | atari++_1.85, xscreensaver@6.12, ghc@7.8.4-x86_64-unknown-linux-deb7 |
 | order and state | `tree.under-file`: a member under a file or a symlink | 0 | 3 (0.02%) | 1 (0.01%) | 1 (0.00%) | 0 | sendmail.8.18.2, tcp_wrappers_7.6, unclutter@8 |
-| global pax headers | `pax-global.after-members`: a global header after the first member | 0 | 7 (0.04%) | 6 (0.06%) | 68 (0.20%) | 78 | inform@6.44-r3, rpm@4.20.1, mupdf@1.28.5-source |
+| order and state | `hardlink.to-symlink`: a hardlink to a symlink | 0 | 0 | 0 | 1 (0.00%) | 1 | octa@8.4 |
+| global pax headers | `pax-global.after-members`: a global header after the first member | 0 | 7 (0.04%) | 6 (0.06%) | 69 (0.20%) | 79 | inform@6.44-r3, rpm@4.20.1, mupdf@1.28.5-source |
 
-Other criteria reject no tarball here. That is no proof that they cost nothing: with 95% confidence, each rejects less than 1.8% of live-bootstrap, 0.016% of nix, 0.03% of guix, 0.0089% of spack.
+Other criteria reject no tarball here. That is no proof that they cost nothing: with 95% confidence, each rejects less than 1.8% of live-bootstrap, 0.016% of nix, 0.03% of guix, 0.0086% of spack.
 
 ## Allowed features
 
@@ -99,31 +100,31 @@ Not ambiguous, or confined to fields outside the tree. Tarballs of all datasets:
 
 | feature | why it is allowed | tarballs |
 |---|---|---|
-| `name.fills-field` | a name of exactly 100 bytes, without NUL (`y_`) | 6736 |
-| `ustar.prefix` | the ustar prefix field (`y_`) | 5673 |
-| `type.nul` | the typeflag NUL of regular files, from before POSIX | 3338 |
-| `v7.bytes-after-linkname` | bytes in fields that v7 headers do not use | 2687 |
-| `name.dir-without-trailing-slash` | a directory without a trailing slash: the typeflag says | 1100 |
-| `tree.dir-after-contents` | directories after their contents (`y_`) | 851 |
-| `number.size.leading-space` | octal padded with spaces, not zeros, which readers read alike | 799 |
-| `name.non-ascii` | UTF-8 names | 684 |
-| `number.uid.no-digits` | outside the tree | 252 |
-| `number.gid.no-digits` | outside the tree | 252 |
-| `tree.duplicate.dir-dir` | the same directory twice (`y_`) | 148 |
-| `number.uid.leading-space` | octal padded with spaces, not zeros, which readers read alike | 141 |
-| `number.gid.leading-space` | octal padded with spaces, not zeros, which readers read alike | 141 |
-| `number.uid.base256` | outside the tree | 141 |
-| `number.gid.base256` | outside the tree | 137 |
-| `number.mode.leading-space` | octal padded with spaces, not zeros, which readers read alike | 131 |
+| `name.fills-field` | a name of exactly 100 bytes, without NUL (`y_`) | 6873 |
+| `ustar.prefix` | the ustar prefix field (`y_`) | 5790 |
+| `type.nul` | the typeflag NUL of regular files, from before POSIX | 3400 |
+| `v7.bytes-after-linkname` | bytes in fields that v7 headers do not use | 2734 |
+| `name.dir-without-trailing-slash` | a directory without a trailing slash: the typeflag says | 1102 |
+| `tree.dir-after-contents` | directories after their contents (`y_`) | 852 |
+| `number.size.leading-space` | octal padded with spaces, not zeros, which readers read alike | 801 |
+| `name.non-ascii` | UTF-8 names | 695 |
+| `number.uid.no-digits` | outside the tree | 259 |
+| `number.gid.no-digits` | outside the tree | 259 |
+| `tree.duplicate.dir-dir` | the same directory twice (`y_`) | 151 |
+| `number.uid.base256` | outside the tree | 145 |
+| `number.uid.leading-space` | octal padded with spaces, not zeros, which readers read alike | 142 |
+| `number.gid.leading-space` | octal padded with spaces, not zeros, which readers read alike | 142 |
+| `number.gid.base256` | outside the tree | 140 |
+| `number.mode.leading-space` | octal padded with spaces, not zeros, which readers read alike | 132 |
 | `number.mtime.leading-space` | octal padded with spaces, not zeros, which readers read alike | 64 |
 | `pax.nul-in-value.SCHILY.xattr.*` | NUL in xattrs, which are outside the tree | 31 |
 | `name.not-nfc` | names not in NFC: one tree, which macOS may not hold | 28 |
-| `linkname.no-nul` | a link name of exactly 100 bytes, without NUL | 22 |
+| `linkname.no-nul` | a link name of exactly 100 bytes, without NUL | 23 |
 | `pax.LIBARCHIVE.creationtime` | vendor pax keys outside the tree | 18 |
 | `number.uid.no-terminator` | outside the tree | 12 |
 | `number.gid.no-terminator` | outside the tree | 11 |
 | `number.mtime.no-digits` | outside the tree | 2 |
 | `pax.LIBARCHIVE.symlinktype` | vendor pax keys outside the tree | 1 |
 
-Names that some filesystems cannot hold, so that extraction fails there only: `platform.case-collision` 637, `platform.windows-reserved-name` 401, `platform.windows-invalid-character` 177, `platform.windows-trailing-dot-or-space` 31, `platform.normalization-collision` 20.
+Names that some filesystems cannot hold, so that extraction fails there only: `platform.case-collision` 654, `platform.windows-reserved-name` 415, `platform.windows-invalid-character` 180, `platform.windows-trailing-dot-or-space` 32, `platform.normalization-collision` 20.
 
