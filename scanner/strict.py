@@ -34,7 +34,6 @@ STRICT = [
     ("scan.error", "framing", "the scanner could not read past a header"),
     ("checksum.*", "framing", "a checksum that matches only one way of summing"),
     # Number fields that shape the tree are one criterion per problem: see criterion()
-    ("number.[*].leading-space", "framing", "leading spaces in a size, mode or checksum"),
     ("number.[*].*", "framing", "a size, mode or checksum written in a way that readers differ on"),
     ("number.size.*", "framing", "a size written in a way that readers differ on"),
     ("number.chksum.*", "framing", "a checksum field written in a way that readers differ on"),
@@ -106,6 +105,7 @@ ALLOWED = [
     ("name.dir-without-trailing-slash", "a directory without a trailing slash: the typeflag says"),
     ("ustar.prefix", "the ustar prefix field (`y_`)"),
     ("number.size.base256", "base-256 sizes of files over 8 GiB (`y_`)"),
+    ("number.*.leading-space", "octal padded with spaces, not zeros, which readers read alike"),
     ("number.uid.*", "outside the tree"),
     ("number.gid.*", "outside the tree"),
     ("number.mtime.*", "outside the tree"),

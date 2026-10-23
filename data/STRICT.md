@@ -46,12 +46,12 @@ Fixed: every member has an mtime that a producer writes in place of the real one
 
 A tarball passes if it has none of the strict criteria below. untar is the strict extractor of [untar](https://github.com/haampie/untar), as a policy that exists.
 
-| dataset | assessed | pass all criteria | of latest versions | pass if `number.*.leading-space` were allowed | untar extracts |
+| dataset | assessed | pass all criteria | of latest versions | pass if `tree.duplicate.file-file` were allowed | untar extracts |
 |---|---|---|---|---|---|
-| live-bootstrap | 171 | 163 (95.32%) | 74 (100.00%) | 171 (100.00%) | 171 (100.00%) |
-| nix | 18990 | 18308 (96.41%) | 17285 (96.27%) | 18833 (99.17%) | 18912 (99.59%) |
-| spack/2026-10-23-b | 1981 | 1934 (97.63%) | 960 (96.77%) | 1955 (98.69%) | 1963 (99.09%) |
-| spack/2026-10-23 | 1990 | 1955 (98.24%) | 970 (97.59%) | 1971 (99.05%) | 1978 (99.40%) |
+| live-bootstrap | 171 | 171 (100.00%) | 74 (100.00%) | 171 (100.00%) | 171 (100.00%) |
+| nix | 18990 | 18833 (99.17%) | 17809 (99.19%) | 18890 (99.47%) | 18912 (99.59%) |
+| spack/2026-10-23-b | 1981 | 1955 (98.69%) | 976 (98.39%) | 1957 (98.79%) | 1963 (99.09%) |
+| spack/2026-10-23 | 1990 | 1971 (99.05%) | 983 (98.89%) | 1971 (99.05%) | 1978 (99.40%) |
 
 ## Criteria
 
@@ -59,17 +59,16 @@ Tarballs that each criterion rejects, per dataset. Alone: tarballs of all datase
 
 | level | criterion | live-bootstrap | nix | spack/2026-10-23-b | spack/2026-10-23 | alone | examples |
 |---|---|---|---|---|---|---|---|
-| framing | `number.*.leading-space`: leading spaces in a size, mode or checksum | 8 (4.68%) | 545 (2.87%) | 27 (1.36%) | 19 (0.95%) | 548 | gzip@1.2.4, tar@1.12, grep@2.4 |
-| framing | `magic.posix-with-odd-version`: POSIX magic with a version other than `00` | 0 | 9 (0.05%) | 5 (0.25%) | 3 (0.15%) | 0 | hadoop@3.4.2-src, bsf-bin@2.4.0, org.apache.felix.main.distribution@7.0.5 |
-| framing | `end.data-after`: data other than zeros after the end-of-archive marker | 0 | 8 (0.04%) | 2 (0.10%) | 0 | 2 | bsf-bin@2.4.0, psutils-p17, Logfile-Rotate@1.04 |
+| framing | `magic.posix-with-odd-version`: POSIX magic with a version other than `00` | 0 | 9 (0.05%) | 5 (0.25%) | 3 (0.15%) | 12 | hadoop@3.4.2-src, bsf-bin@2.4.0, org.apache.felix.main.distribution@7.0.5 |
+| framing | `end.data-after`: data other than zeros after the end-of-archive marker | 0 | 8 (0.04%) | 2 (0.10%) | 0 | 4 | bsf-bin@2.4.0, psutils-p17, Logfile-Rotate@1.04 |
 | framing | `pax.newline-in-value.SCHILY.xattr.*`: a newline in a pax value, where readers split lines | 0 | 7 (0.04%) | 1 (0.05%) | 0 | 7 | Module-Find@0.16, Minion@10.31, Term-ReadLine-Gnu@1.47 |
 | framing | `end.missing`: no end-of-archive marker | 0 | 4 (0.02%) | 1 (0.05%) | 0 | 5 | SDL2_ttf@2.24.0, SDL2_image@2.8.12, ruby@3.4.11 |
-| framing | `end.lone-zero-block`: an end-of-archive marker of one zero block, not two | 0 | 5 (0.03%) | 0 | 0 | 0 | eng-rus, srecord@1.64, cdi2iso@0.1-src |
+| framing | `end.lone-zero-block`: an end-of-archive marker of one zero block, not two | 0 | 5 (0.03%) | 0 | 0 | 5 | eng-rus, srecord@1.64, cdi2iso@0.1-src |
 | framing | `pax.size-on-dir`: a pax size on a member without data | 0 | 1 (0.01%) | 0 | 0 | 1 | llama_index_workflows@2.26.0 |
-| framing | `scan.error`: the scanner could not read past a header | 0 | 0 | 1 (0.05%) | 0 | 0 | commons-logging@1.1.1 |
 | framing | `end.zero-block-before-member`: a zero block, then more members | 0 | 0 | 1 (0.05%) | 0 | 0 | commons-logging@1.1.1 |
+| framing | `scan.error`: the scanner could not read past a header | 0 | 0 | 1 (0.05%) | 0 | 0 | commons-logging@1.1.1 |
 | framing | `end.archive-after`: another archive after the end-of-archive marker | 0 | 0 | 1 (0.05%) | 0 | 1 | glibmm@2.16.0 |
-| name | `name.leading-dot-slash`: `./a`, which some readers make `a` | 0 | 35 (0.18%) | 6 (0.30%) | 7 (0.35%) | 27 | curie@v1.0, hdf5@1.10.11, NNPDF@31_nnlo_as_0118 |
+| name | `name.leading-dot-slash`: `./a`, which some readers make `a` | 0 | 35 (0.18%) | 6 (0.30%) | 7 (0.35%) | 28 | curie@v1.0, hdf5@1.10.11, NNPDF@31_nnlo_as_0118 |
 | name | `symlink.absolute`: a symlink to an absolute path | 0 | 15 (0.08%) | 3 (0.15%) | 4 (0.20%) | 19 | live.2026.01.12, imapsync@2.314, notmuch@0.40 |
 | name | `name.dot`: a member named `.` or `./` | 0 | 18 (0.09%) | 1 (0.05%) | 0 | 0 | partclone-utils@0.4.3, cmucl@21d-x86-linux, phinger-cursors-variants |
 | name | `name.dot-component`: `a/./b` | 0 | 5 (0.03%) | 0 | 0 | 4 | besu@24.1.2, lightweight-testing@0.1, ghc@9.0.2-x86_64-deb10-linux |
@@ -82,8 +81,8 @@ Tarballs that each criterion rejects, per dataset. Alone: tarballs of all datase
 | kind | `name.trailing-slash-on-file`: a regular file named like a directory, `a/` | 0 | 4 (0.02%) | 1 (0.05%) | 0 | 0 | sendmail.8.18.2, tcp_wrappers_7.6, unclutter@8 |
 | order and state | `tree.duplicate.file-file`: the same file twice | 0 | 59 (0.31%) | 3 (0.15%) | 0 | 59 | snap-loader-static@1.0.0.1, htn@0.1.0.0, shelly-extra@0.3.0.2 |
 | order and state | `tree.under-file`: a member under a file or a symlink | 0 | 3 (0.02%) | 1 (0.05%) | 0 | 0 | sendmail.8.18.2, tcp_wrappers_7.6, unclutter@8 |
-| order and state | `hardlink.to-itself`: a hardlink to itself | 0 | 1 (0.01%) | 1 (0.05%) | 0 | 0 | atari++_1.85, atlas@3.11.41 |
 | order and state | `tree.duplicate.file-hardlink`: one path as two members | 0 | 1 (0.01%) | 1 (0.05%) | 0 | 0 | atari++_1.85, atlas@3.11.41 |
+| order and state | `hardlink.to-itself`: a hardlink to itself | 0 | 1 (0.01%) | 1 (0.05%) | 0 | 0 | atari++_1.85, atlas@3.11.41 |
 | order and state | `hardlink.to-symlink`: a hardlink to a symlink | 0 | 0 | 0 | 1 (0.05%) | 1 | octa@8.4 |
 | global pax headers | `pax-global.after-members`: a global header after the first member | 0 | 7 (0.04%) | 3 (0.15%) | 2 (0.10%) | 10 | inform@6.44-r3, rpm@4.20.1, mupdf@1.28.5-source |
 
@@ -101,12 +100,14 @@ Not ambiguous, or confined to fields outside the tree. Tarballs of all datasets:
 | `name.dir-without-trailing-slash` | a directory without a trailing slash: the typeflag says | 833 |
 | `v7.bytes-after-linkname` | bytes in fields that v7 headers do not use | 756 |
 | `tree.dir-after-contents` | directories after their contents (`y_`) | 754 |
+| `number.size.leading-space` | octal padded with spaces, not zeros, which readers read alike | 577 |
 | `name.non-ascii` | UTF-8 names | 113 |
 | `number.uid.no-digits` | outside the tree | 88 |
 | `number.gid.no-digits` | outside the tree | 88 |
-| `number.uid.leading-space` | outside the tree | 82 |
-| `number.gid.leading-space` | outside the tree | 82 |
-| `number.mtime.leading-space` | outside the tree | 49 |
+| `number.uid.leading-space` | octal padded with spaces, not zeros, which readers read alike | 82 |
+| `number.gid.leading-space` | octal padded with spaces, not zeros, which readers read alike | 82 |
+| `number.mode.leading-space` | octal padded with spaces, not zeros, which readers read alike | 75 |
+| `number.mtime.leading-space` | octal padded with spaces, not zeros, which readers read alike | 49 |
 | `number.uid.base256` | outside the tree | 45 |
 | `number.gid.base256` | outside the tree | 40 |
 | `pax.nul-in-value.SCHILY.xattr.*` | NUL in xattrs, which are outside the tree | 18 |
