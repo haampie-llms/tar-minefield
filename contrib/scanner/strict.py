@@ -387,9 +387,9 @@ def reject_table(names, short, rated, union):
 def readme(path, datasets, names, short, rated, rows, union):
     default = sum(not passes_default(r) for r in union)
     block = (
-        f"**The default policy accepts {percent(len(union) - default, len(union))} of "
-        f"{len(union):,} source tarballs** of Spack, nixpkgs, Guix and live-bootstrap: it rejects "
-        f"{default}. [The website]({SITE}#tarballs) has the numbers per ecosystem and per case."
+        f"**It accepts {percent(len(union) - default, len(union))} of {len(union):,} source "
+        f"tarballs** of Spack, nixpkgs, Guix and live-bootstrap, and rejects {default}: see the "
+        f"[numbers per ecosystem]({SITE}#tarballs)."
     )
     text = open(path).read()
     begin, end = "<!-- begin strict.py -->", "<!-- end strict.py -->"

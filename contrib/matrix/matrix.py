@@ -663,7 +663,7 @@ def readme(path, results, cases):
     lines = [
         f"What {len(impls)} implementations make of the {len(cases)} cases: a row per case, by "
         "level, and a column per implementation, with the outcomes of all cases at the top. "
-        f"[The site]({SITE}) has a page per case.",
+        f"[The website]({SITE}) has a page per case.",
         "",
         "[![What every implementation makes of every case of the test suite. Outcomes of all cases: "
         + "; ".join(f"{n}: {total[n]}" for n in names) + f"](contrib/matrix/matrix.svg)]({SITE})",
