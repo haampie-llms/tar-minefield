@@ -1954,12 +1954,12 @@
     }
    },
    "Perl Archive::Tar": {
-    "error": "Symlink 'link' has absolute target. Not extracting under SECURE EXTRACT MODE at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'link' at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'link'",
+    "error": "Symlink 'link' has absolute target. Not extracting under SECURE EXTRACT MODE at corpus/runners/perl/extract.pl line 14.\nCould not extract 'link' at corpus/runners/perl/extract.pl line 14.\nCould not extract 'link'",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=data": {
-    "error": "  File \"/usr/lib/python3.14/tarfile.py\", line 865, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n  File \"/usr/lib/python3.14/tarfile.py\", line 832, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'link' is a link to an absolute path",
+    "error": "AbsoluteLinkError: 'link' is a link to an absolute path",
     "outside": {},
     "tree": {}
    },
@@ -2136,7 +2136,7 @@
     }
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [26] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [27] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [28] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "This does not appear to be a TAR file/stream \u2014 incorrect header checksum = 3785; should be 4041. Note: Tar.jl does not handle decompression; if the tarball is compressed you must use an external command like `gzcat` or package like CodecZlib.jl to decompress it. See the README file for examples.",
     "outside": {},
     "tree": {}
    },
@@ -2604,17 +2604,17 @@
     "tree": {}
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [26] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [27] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [28] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "EOFError: read end of file",
     "outside": {},
     "tree": {}
    },
    "Perl Archive::Tar": {
-    "error": "Read error on tarfile (missing data) 'a' at offset unknown at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 12.\nRead error on tarfile (missing data) 'a' at offset unknown",
+    "error": "Read error on tarfile (missing data) 'a' at offset unknown at corpus/runners/perl/extract.pl line 12.\nRead error on tarfile (missing data) 'a' at offset unknown",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=data": {
-    "error": "5, in makefile\n    copyfileobj(source, target, tarinfo.size, ReadError, bufsize)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 257, in copyfileobj\n    raise exception(\"unexpected end of data\")\ntarfile.ReadError: unexpected end of data",
+    "error": "ReadError: unexpected end of data",
     "outside": {},
     "tree": {
      "a": {
@@ -2626,7 +2626,7 @@
     }
    },
    "Python tarfile, filter=fully_trusted": {
-    "error": "5, in makefile\n    copyfileobj(source, target, tarinfo.size, ReadError, bufsize)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 257, in copyfileobj\n    raise exception(\"unexpected end of data\")\ntarfile.ReadError: unexpected end of data",
+    "error": "ReadError: unexpected end of data",
     "outside": {},
     "tree": {
      "a": {
@@ -2638,7 +2638,7 @@
     }
    },
    "Python tarfile, filter=tar": {
-    "error": "5, in makefile\n    copyfileobj(source, target, tarinfo.size, ReadError, bufsize)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 257, in copyfileobj\n    raise exception(\"unexpected end of data\")\ntarfile.ReadError: unexpected end of data",
+    "error": "ReadError: unexpected end of data",
     "outside": {},
     "tree": {
      "a": {
@@ -3890,7 +3890,7 @@
     }
    },
    "Perl Archive::Tar": {
-    "error": "Invalid header block at offset unknown at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 12.\na : checksum error at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 12.\na : checksum error",
+    "error": "Invalid header block at offset unknown at corpus/runners/perl/extract.pl line 12.\na : checksum error at corpus/runners/perl/extract.pl line 12.\na : checksum error",
     "outside": {},
     "tree": {}
    },
@@ -4377,27 +4377,27 @@
     }
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [19] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [20] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [21] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "Tarball contains hardlink with non-existent target:\n- path = \"h\"\n- target = \"missing\"\nRefusing to extract \u2014 possible attack!",
     "outside": {},
     "tree": {}
    },
    "Perl Archive::Tar": {
-    "error": "Making hard link from 'missing' to 'DEST/h' failed at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'h' at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'h'",
+    "error": "Making hard link from 'missing' to 'DEST/h' failed at corpus/runners/perl/extract.pl line 14.\nCould not extract 'h' at corpus/runners/perl/extract.pl line 14.\nCould not extract 'h'",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=data": {
-    "error": "^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'missing' not found\"",
+    "error": "KeyError: \"linkname 'missing' not found\"",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=fully_trusted": {
-    "error": "^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'missing' not found\"",
+    "error": "KeyError: \"linkname 'missing' not found\"",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=tar": {
-    "error": "^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'missing' not found\"",
+    "error": "KeyError: \"linkname 'missing' not found\"",
     "outside": {},
     "tree": {}
    },
@@ -4543,7 +4543,7 @@
     }
    },
    "Perl Archive::Tar": {
-    "error": "Making hard link from 'a' to 'DEST/a' failed at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'a' at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'a'",
+    "error": "Making hard link from 'a' to 'DEST/a' failed at corpus/runners/perl/extract.pl line 14.\nCould not extract 'a' at corpus/runners/perl/extract.pl line 14.\nCould not extract 'a'",
     "outside": {},
     "tree": {}
    },
@@ -4779,27 +4779,27 @@
     }
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [19] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [20] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [21] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "Tarball contains hardlink with non-existent target:\n- path = \"h\"\n- target = \"f\"\nRefusing to extract \u2014 possible attack!",
     "outside": {},
     "tree": {}
    },
    "Perl Archive::Tar": {
-    "error": "Making hard link from 'f' to 'DEST/h' failed at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'h' at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'h'",
+    "error": "Making hard link from 'f' to 'DEST/h' failed at corpus/runners/perl/extract.pl line 14.\nCould not extract 'h' at corpus/runners/perl/extract.pl line 14.\nCould not extract 'h'",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=data": {
-    "error": "^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'f' not found\"",
+    "error": "KeyError: \"linkname 'f' not found\"",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=fully_trusted": {
-    "error": "^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'f' not found\"",
+    "error": "KeyError: \"linkname 'f' not found\"",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=tar": {
-    "error": "^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2763, in makelink_with_filter\n    unfiltered = self._find_link_target(tarinfo)\n  File \"/usr/lib/python3.14/tarfile.py\", line 2986, in _find_link_target\n    raise KeyError(\"linkname %r not found\" % linkname)\nKeyError: \"linkname 'f' not found\"",
+    "error": "KeyError: \"linkname 'f' not found\"",
     "outside": {},
     "tree": {}
    },
@@ -5022,7 +5022,7 @@
     }
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [19] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [20] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [21] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "Tarball contains hardlink with f target:\n- path = \"h\"\n- target = \"s\"\nRefusing to extract \u2014 possible attack!",
     "outside": {},
     "tree": {}
    },
@@ -5337,7 +5337,7 @@
     }
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [20] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [21] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [22] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "non-directory path ending with '/'\nTar.Header(\"a/\", :file, 0o644, 0, \"\")",
     "outside": {},
     "tree": {}
    },
@@ -5564,7 +5564,7 @@
     }
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [20] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [21] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [22] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "non-link with link path\nTar.Header(\"a\", :file, 0o644, 19, \"target\")",
     "outside": {},
     "tree": {}
    },
@@ -5788,7 +5788,7 @@
     }
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [26] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [27] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [28] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "This does not appear to be a TAR file/stream \u2014 invalid version string for tar file: \"01\". Note: Tar.jl does not handle decompression; if the tarball is compressed you must use an external command like `gzcat` or package like CodecZlib.jl to decompress it. See the README file for examples.",
     "outside": {},
     "tree": {}
    },
@@ -6012,12 +6012,12 @@
     "tree": {}
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [20] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [21] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [22] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "path is absolute\nTar.Header(\"/tar-minefield-absolute\", :file, 0o644, 89, \"\")",
     "outside": {},
     "tree": {}
    },
    "Perl Archive::Tar": {
-    "error": "absolute paths under SECURE EXTRACT MODE at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract '/tar-minefield-absolute' at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract '/tar-minefield-absolute'",
+    "error": "Entry '/tar-minefield-absolute' is an absolute path. Not extracting absolute paths under SECURE EXTRACT MODE at corpus/runners/perl/extract.pl line 14.\nCould not extract '/tar-minefield-absolute' at corpus/runners/perl/extract.pl line 14.\nCould not extract '/tar-minefield-absolute'",
     "outside": {},
     "tree": {}
    },
@@ -6034,7 +6034,7 @@
     }
    },
    "Python tarfile, filter=fully_trusted": {
-    "error": "\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '/tar-minefield-absolute'",
+    "error": "PermissionError: [Errno 13] Permission denied: '/tar-minefield-absolute'",
     "outside": {},
     "tree": {}
    },
@@ -6948,17 +6948,17 @@
     "tree": {}
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [20] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [21] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [22] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "path contains '..' component\nTar.Header(\"tar-minefield/../../tar-minefield-escaped\", :file, 0o644, 85, \"\")",
     "outside": {},
     "tree": {}
    },
    "Perl Archive::Tar": {
-    "error": "MODE at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'tar-minefield/../../tar-minefield-escaped' at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'tar-minefield/../../tar-minefield-escaped'",
+    "error": "ttempting to leave the current working directory. Not extracting under SECURE EXTRACT MODE at corpus/runners/perl/extract.pl line 14.\nCould not extract 'tar-minefield/../../tar-minefield-escaped' at corpus/runners/perl/extract.pl line 14.\nCould not extract 'tar-minefield/../../tar-minefield-escaped'",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=data": {
-    "error": "True)\n  File \"/usr/lib/python3.14/tarfile.py\", line 797, in _get_filtered_attrs\n    raise OutsideDestinationError(member, target_path)\ntarfile.OutsideDestinationError: 'tar-minefield/../../tar-minefield-escaped' would be extracted to 'ROOT/x/y/tar-minefield-escaped', which is outside the destination",
+    "error": "OutsideDestinationError: 'tar-minefield/../../tar-minefield-escaped' would be extracted to 'ROOT/x/y/tar-minefield-escaped', which is outside the destination",
     "outside": {},
     "tree": {}
    },
@@ -6979,7 +6979,7 @@
     }
    },
    "Python tarfile, filter=tar": {
-    "error": "alse)\n  File \"/usr/lib/python3.14/tarfile.py\", line 797, in _get_filtered_attrs\n    raise OutsideDestinationError(member, target_path)\ntarfile.OutsideDestinationError: 'tar-minefield/../../tar-minefield-escaped' would be extracted to 'ROOT/x/y/tar-minefield-escaped', which is outside the destination",
+    "error": "OutsideDestinationError: 'tar-minefield/../../tar-minefield-escaped' would be extracted to 'ROOT/x/y/tar-minefield-escaped', which is outside the destination",
     "outside": {},
     "tree": {}
    },
@@ -7100,7 +7100,7 @@
     "tree": {}
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [20] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [21] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [22] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "path is empty\nTar.Header(\"\", :file, 0o644, 8, \"\")",
     "outside": {},
     "tree": {}
    },
@@ -7110,17 +7110,17 @@
     "tree": {}
    },
    "Python tarfile, filter=data": {
-    "error": ", in _extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nIsADirectoryError: [Errno 21] Is a directory: 'DEST'",
+    "error": "IsADirectoryError: [Errno 21] Is a directory: 'DEST'",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=fully_trusted": {
-    "error": ", in _extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nIsADirectoryError: [Errno 21] Is a directory: 'DEST'",
+    "error": "IsADirectoryError: [Errno 21] Is a directory: 'DEST'",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=tar": {
-    "error": ", in _extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nIsADirectoryError: [Errno 21] Is a directory: 'DEST'",
+    "error": "IsADirectoryError: [Errno 21] Is a directory: 'DEST'",
     "outside": {},
     "tree": {}
    },
@@ -7538,17 +7538,17 @@
     }
    },
    "Python tarfile, filter=data": {
-    "error": "lly:\\n{error_msgs_summary}\")\ntarfile.ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
+    "error": "ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=fully_trusted": {
-    "error": "lly:\\n{error_msgs_summary}\")\ntarfile.ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
+    "error": "ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=tar": {
-    "error": "lly:\\n{error_msgs_summary}\")\ntarfile.ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
+    "error": "ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
     "outside": {},
     "tree": {}
    },
@@ -8601,7 +8601,7 @@
     "tree": {}
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [20] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [21] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [22] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "path contains NUL bytes\nTar.Header(\"a\\0b\", :file, 0o644, 12, \"\")",
     "outside": {},
     "tree": {}
    },
@@ -8618,17 +8618,17 @@
     }
    },
    "Python tarfile, filter=data": {
-    "error": " \"/usr/lib/python3.14/tarfile.py\", line 794, in _get_filtered_attrs\n    target_path = os.path.realpath(os.path.join(dest_path, name),\n                                   strict=os.path.ALLOW_MISSING)\n  File \"<frozen posixpath>\", line 457, in realpath\nValueError: lstat: embedded null character in path",
+    "error": "ValueError: lstat: embedded null character in path",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=fully_trusted": {
-    "error": "tarfile.py\", line 2638, in _extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nValueError: embedded null byte",
+    "error": "ValueError: embedded null byte",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=tar": {
-    "error": " \"/usr/lib/python3.14/tarfile.py\", line 794, in _get_filtered_attrs\n    target_path = os.path.realpath(os.path.join(dest_path, name),\n                                   strict=os.path.ALLOW_MISSING)\n  File \"<frozen posixpath>\", line 457, in realpath\nValueError: lstat: embedded null character in path",
+    "error": "ValueError: lstat: embedded null character in path",
     "outside": {},
     "tree": {}
    },
@@ -9438,7 +9438,7 @@
     }
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [20] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [21] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [22] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "directory with non-zero size\nTar.Header(\"dir/\", :directory, 0o755, 512, \"\")",
     "outside": {},
     "tree": {}
    },
@@ -9721,12 +9721,12 @@
     }
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [20] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [21] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [22] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "non-directory path ending with '/'\nTar.Header(\"link/\", :symlink, 0o644, 0, \"target\")",
     "outside": {},
     "tree": {}
    },
    "Perl Archive::Tar": {
-    "error": "Could not remove old file 'DEST/link/': Is a directory at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'link/' at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'link/'",
+    "error": "Could not remove old file 'DEST/link/': Is a directory at corpus/runners/perl/extract.pl line 14.\nCould not extract 'link/' at corpus/runners/perl/extract.pl line 14.\nCould not extract 'link/'",
     "outside": {},
     "tree": {
      "link": {
@@ -10221,7 +10221,7 @@
     }
    },
    "Perl Archive::Tar": {
-    "error": "Could not extract 'a/' at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'a/'",
+    "error": "Could not extract 'a/' at corpus/runners/perl/extract.pl line 14.\nCould not extract 'a/'",
     "outside": {},
     "tree": {
      "a": {
@@ -10233,7 +10233,7 @@
     }
    },
    "Python tarfile, filter=data": {
-    "error": "usr/lib/python3.14/tarfile.py\", line 2640, in _extract_member\n    self.makedir(tarinfo, targetpath)\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2672, in makedir\n    os.mkdir(targetpath)\n    ~~~~~~~~^^^^^^^^^^^^\nFileExistsError: [Errno 17] File exists: 'DEST/a'",
+    "error": "FileExistsError: [Errno 17] File exists: 'DEST/a'",
     "outside": {},
     "tree": {
      "a": {
@@ -10245,7 +10245,7 @@
     }
    },
    "Python tarfile, filter=fully_trusted": {
-    "error": "3.14/tarfile.py\", line 2640, in _extract_member\n    self.makedir(tarinfo, targetpath)\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2676, in makedir\n    os.mkdir(targetpath, 0o700)\n    ~~~~~~~~^^^^^^^^^^^^^^^^^^^\nFileExistsError: [Errno 17] File exists: 'DEST/a'",
+    "error": "FileExistsError: [Errno 17] File exists: 'DEST/a'",
     "outside": {},
     "tree": {
      "a": {
@@ -10257,7 +10257,7 @@
     }
    },
    "Python tarfile, filter=tar": {
-    "error": "3.14/tarfile.py\", line 2640, in _extract_member\n    self.makedir(tarinfo, targetpath)\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2676, in makedir\n    os.mkdir(targetpath, 0o700)\n    ~~~~~~~~^^^^^^^^^^^^^^^^^^^\nFileExistsError: [Errno 17] File exists: 'DEST/a'",
+    "error": "FileExistsError: [Errno 17] File exists: 'DEST/a'",
     "outside": {},
     "tree": {
      "a": {
@@ -10975,17 +10975,17 @@
     }
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [19] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [20] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [21] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "Tarball contains path with symlink prefix:\n- path = \"d/tar-minefield-through-symlink\"\n- prefix = \"d\"\nRefusing to extract \u2014 possible attack!",
     "outside": {},
     "tree": {}
    },
    "Perl Archive::Tar": {
-    "error": "Symlink 'd' target attempts traversal. Not extracting under SECURE EXTRACT MODE at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'd' at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'd'",
+    "error": "Symlink 'd' target attempts traversal. Not extracting under SECURE EXTRACT MODE at corpus/runners/perl/extract.pl line 14.\nCould not extract 'd' at corpus/runners/perl/extract.pl line 14.\nCould not extract 'd'",
     "outside": {},
     "tree": {}
    },
    "Python tarfile, filter=data": {
-    "error": "filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n  File \"/usr/lib/python3.14/tarfile.py\", line 852, in _get_filtered_attrs\n    raise LinkOutsideDestinationError(member, target_path)\ntarfile.LinkOutsideDestinationError: 'd' would link to 'ROOT/x/y', which is outside the destination",
+    "error": "LinkOutsideDestinationError: 'd' would link to 'ROOT/x/y', which is outside the destination",
     "outside": {},
     "tree": {}
    },
@@ -11007,7 +11007,7 @@
     }
    },
    "Python tarfile, filter=tar": {
-    "error": " False)\n  File \"/usr/lib/python3.14/tarfile.py\", line 797, in _get_filtered_attrs\n    raise OutsideDestinationError(member, target_path)\ntarfile.OutsideDestinationError: 'd/tar-minefield-through-symlink' would be extracted to 'ROOT/x/y/tar-minefield-through-symlink', which is outside the destination",
+    "error": "OutsideDestinationError: 'd/tar-minefield-through-symlink' would be extracted to 'ROOT/x/y/tar-minefield-through-symlink', which is outside the destination",
     "outside": {},
     "tree": {
      "d": {
@@ -11229,7 +11229,7 @@
     }
    },
    "Perl Archive::Tar": {
-    "error": "Could not extract 'a/b' at /home/bot/temporary-projects/tar-minefield/corpus/runners/perl/extract.pl line 14.\nCould not extract 'a/b'",
+    "error": "Could not extract 'a/b' at corpus/runners/perl/extract.pl line 14.\nCould not extract 'a/b'",
     "outside": {},
     "tree": {
      "a": {
@@ -11241,7 +11241,7 @@
     }
    },
    "Python tarfile, filter=data": {
-    "error": "/lib/python3.14/tarfile.py\", line 794, in _get_filtered_attrs\n    target_path = os.path.realpath(os.path.join(dest_path, name),\n                                   strict=os.path.ALLOW_MISSING)\n  File \"<frozen posixpath>\", line 460, in realpath\nNotADirectoryError: [Errno 20] Not a directory: 'DEST/a'",
+    "error": "NotADirectoryError: [Errno 20] Not a directory: 'DEST/a'",
     "outside": {},
     "tree": {
      "a": {
@@ -11253,7 +11253,7 @@
     }
    },
    "Python tarfile, filter=fully_trusted": {
-    "error": "extract_member\n    self.makefile(tarinfo, targetpath)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/tarfile.py\", line 2687, in makefile\n    with bltn_open(targetpath, \"wb\") as target:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^\nNotADirectoryError: [Errno 20] Not a directory: 'DEST/a/b'",
+    "error": "NotADirectoryError: [Errno 20] Not a directory: 'DEST/a/b'",
     "outside": {},
     "tree": {
      "a": {
@@ -11265,7 +11265,7 @@
     }
    },
    "Python tarfile, filter=tar": {
-    "error": "/lib/python3.14/tarfile.py\", line 794, in _get_filtered_attrs\n    target_path = os.path.realpath(os.path.join(dest_path, name),\n                                   strict=os.path.ALLOW_MISSING)\n  File \"<frozen posixpath>\", line 460, in realpath\nNotADirectoryError: [Errno 20] Not a directory: 'DEST/a'",
+    "error": "NotADirectoryError: [Errno 20] Not a directory: 'DEST/a'",
     "outside": {},
     "tree": {
      "a": {
@@ -11449,7 +11449,7 @@
     }
    },
    "Julia Tar.jl": {
-    "error": "s/julia/extract.jl:7\n [20] include(mod::Module, _path::String)\n    @ Base ./Base.jl:309\n [21] exec_options(opts::Base.JLOptions)\n    @ Base ./client.jl:344\n [22] _start()\n    @ Base ./client.jl:577\nin expression starting at /home/bot/temporary-projects/tar-minefield/corpus/runners/julia/extract.jl:7",
+    "error": "unsupported entry type\nTar.Header(\"unknown\", :Z, 0o644, 512, \"\")",
     "outside": {},
     "tree": {}
    },
@@ -11466,7 +11466,7 @@
     }
    },
    "Python tarfile, filter=data": {
-    "error": "red, path)\n  File \"/usr/lib/python3.14/tarfile.py\", line 865, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n  File \"/usr/lib/python3.14/tarfile.py\", line 816, in _get_filtered_attrs\n    raise SpecialFileError(member)\ntarfile.SpecialFileError: 'unknown' is a special file",
+    "error": "SpecialFileError: 'unknown' is a special file",
     "outside": {},
     "tree": {}
    },

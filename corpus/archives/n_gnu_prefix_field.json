@@ -1,4 +1,5 @@
 {
+ "code": "N11",
  "verdict": "n",
  "description": "The prefix field of a header with GNU magic, which GNU tar uses for times.",
  "features": [

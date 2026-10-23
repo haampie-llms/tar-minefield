@@ -1,4 +1,5 @@
 {
+ "code": "S02",
  "verdict": "y",
  "description": "The same directory twice, as `tar cf x.tar d d/sub` writes.",
  "features": [],

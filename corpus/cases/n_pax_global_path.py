@@ -8,6 +8,7 @@ Seen in: no tarball of the scans.
 """
 
 VERDICT = "n"
+CODE = "G04"
 FEATURES = ['pax-global.path']
 
 

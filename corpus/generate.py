@@ -4,8 +4,8 @@
     python -I corpus/generate.py --check    # fail if archives/ is not what the scripts write
     python -I corpus/generate.py --scan     # also check what scanner/tarscan.py makes of them
 
-For each case `<case>.py`, archives/ has `<case>.tar`, the dump of its blocks `<case>.txt`, and
-`<case>.json`: its verdict, the features of tarscan.py that it is about, and for the cases that a
+For each case `<case>.py`, archives/ has `<case>.tar`, the dump of its blocks `<case>.txt`, a
+map of them `<case>.svg`, and `<case>.json`: its verdict, the features of tarscan.py that it is about, and for the cases that a
 parser accepts, `y_` and `i_`, the tree it must extract.
 
 --scan checks that tarscan.py reports the features of every case, and that the default policy
@@ -19,15 +19,19 @@ import importlib.util
 import io
 import json
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from blocks import Archive  # noqa: E402
+from blocks import Archive, block_map  # noqa: E402
 
 CASES = os.path.join(HERE, "cases")
 ARCHIVES = os.path.join(HERE, "archives")
 VERDICTS = {"n": "rejected", "y": "accepted", "i": "accepted by the default policy"}
+# The letter of a code is the level of the catalogue: of METHOD.md, and LEVELS of strict.py
+LETTERS = {"F": "framing", "N": "name", "K": "kind", "S": "order and state",
+           "G": "global pax headers"}
 
 
 def load(path):
@@ -52,25 +56,31 @@ def tree(entries):
 
 def generate():
     """{file name: bytes} of every case."""
-    files = {}
+    files, codes = {}, {}
     for name in sorted(os.listdir(CASES)):
         if not name.endswith(".py"):
             continue
         case = name[:-3]
         module = load(os.path.join(CASES, name))
         assert case.startswith(module.VERDICT + "_"), f"{case}: the name starts with its verdict"
+        assert re.fullmatch(r"[FNKSG]\d\d", module.CODE), f"{case}: a code such as F01"
+        assert module.CODE not in codes, f"{case}: the code of {codes.get(module.CODE)}"
+        codes[module.CODE] = case
         archive = Archive()
         module.build(archive)
         expected = {
+            "code": module.CODE,
             "verdict": module.VERDICT,
             "description": module.__doc__.strip().split("\n")[0],
             "features": getattr(module, "FEATURES", []),
         }
         if module.VERDICT in ("y", "i"):
             expected["tree"] = tree(module.TREE)
-        header = f"{case}: {VERDICTS[module.VERDICT]}\n\n{module.__doc__.strip()}\n\n"
+        header = f"{module.CODE} {case}: {VERDICTS[module.VERDICT]}\n\n{module.__doc__.strip()}\n\n"
         files[f"{case}.tar"] = archive.bytes()
         files[f"{case}.txt"] = (header + archive.dump()).encode()
+        files[f"{case}.svg"] = block_map(
+            archive, f"{module.CODE} {case}: every block of the archive").encode()
         files[f"{case}.json"] = (json.dumps(expected, indent=1) + "\n").encode()
     return files
 
@@ -101,6 +111,9 @@ def scan(files):
                             f"{sorted(rejected)}, strict {sorted(strict_found)}")
         if verdict == "y" and strict_found:
             problems.append(f"{case}: a strict criterion rejects it: {sorted(strict_found)}")
+        levels = {strict.classify(f)[1] for f in expected["features"]} - {None} or {"framing"}
+        if verdict != "y" and LETTERS[expected["code"][0]] not in levels:
+            problems.append(f"{case}: the code {expected['code']} is not of the level {levels}")
         print(f"{case}: {sorted(found)}")
     return problems
 

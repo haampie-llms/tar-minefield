@@ -1,4 +1,5 @@
 {
+ "code": "S07",
  "verdict": "n",
  "description": "The same file twice, with different contents: the first copy, or the last?",
  "features": [

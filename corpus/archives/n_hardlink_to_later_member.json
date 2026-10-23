@@ -1,4 +1,5 @@
 {
+ "code": "S05",
  "verdict": "n",
  "description": "A hardlink to a member that comes later.",
  "features": [

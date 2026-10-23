@@ -9,6 +9,7 @@ F = lambda path, contents: {"path": path, "kind": "file", "contents": contents, 
 D = lambda path: {"path": path, "kind": "directory"}
 
 VERDICT = "y"
+CODE = "N03"
 FEATURES = []
 TREE = [D('dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'), F('dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', b'long\n')]
 

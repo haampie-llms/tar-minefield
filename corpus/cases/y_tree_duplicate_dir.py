@@ -6,6 +6,7 @@ Seen in: dozens of tarballs: see `tree.duplicate.dir-dir` in data/STRICT.md.
 D = lambda path: {"path": path, "kind": "directory"}
 
 VERDICT = "y"
+CODE = "S02"
 FEATURES = []
 TREE = [D('d'), D('d/sub')]
 

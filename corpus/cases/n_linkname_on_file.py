@@ -8,6 +8,7 @@ Seen in: bgen 1.1.7.
 """
 
 VERDICT = "n"
+CODE = "K02"
 FEATURES = ['linkname.on-file']
 
 

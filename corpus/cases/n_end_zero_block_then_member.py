@@ -9,6 +9,7 @@ Seen in: jakarta-oro 2.0.8, PullParser 2.1.10 and commons-cli 1.2-src.
 """
 
 VERDICT = "n"
+CODE = "F09"
 FEATURES = ['end.zero-block-before-member']
 
 

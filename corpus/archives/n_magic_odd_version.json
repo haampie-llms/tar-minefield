@@ -1,4 +1,5 @@
 {
+ "code": "F11",
  "verdict": "n",
  "description": "The POSIX magic with a version that is neither `00` nor NULs.",
  "features": [

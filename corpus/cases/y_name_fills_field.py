@@ -6,6 +6,7 @@ Seen in: thousands of tarballs: see `name.fills-field` in data/STRICT.md.
 F = lambda path, contents: {"path": path, "kind": "file", "contents": contents, "executable": False}
 
 VERDICT = "y"
+CODE = "N02"
 FEATURES = []
 TREE = [F('nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn', b'full\n')]
 

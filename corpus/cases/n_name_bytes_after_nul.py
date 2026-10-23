@@ -8,6 +8,7 @@ Seen in: no tarball of the scans.
 """
 
 VERDICT = "n"
+CODE = "N14"
 FEATURES = ['name.bytes-after-nul']
 
 

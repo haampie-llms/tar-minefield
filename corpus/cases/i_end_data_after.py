@@ -6,6 +6,7 @@ Seen in: tcp_wrappers 7.6, commons-lang 2.6 and xml-commons-resolver 1.2.
 F = lambda path, contents: {"path": path, "kind": "file", "contents": contents, "executable": False}
 
 VERDICT = "i"
+CODE = "F02"
 FEATURES = ['end.data-after']
 TREE = [F('a', b'a\n')]
 

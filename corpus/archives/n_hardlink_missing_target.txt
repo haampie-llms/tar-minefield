@@ -1,4 +1,4 @@
-n_hardlink_missing_target: rejected
+S03 n_hardlink_missing_target: rejected
 
 A hardlink to a member that is not in the archive.
 

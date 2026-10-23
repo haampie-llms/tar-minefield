@@ -1,4 +1,4 @@
-i_end_lone_zero_block: accepted by the default policy
+F03 i_end_lone_zero_block: accepted by the default policy
 
 An end-of-archive marker of one zero block, not two.
 

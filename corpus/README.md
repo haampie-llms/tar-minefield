@@ -4,6 +4,11 @@ Tar archives, each with a verdict, as [METHOD.md](../METHOD.md) describes: `n_` 
 parser rejects, `y_` cases every parser accepts, and `i_` cases that the default policy accepts.
 [MATRIX.md](MATRIX.md) shows what implementations make of each case.
 
+Every case has a code, such as `F15`, whose letter is its level in METHOD.md: F framing, N names,
+K kinds, S order and state, G global pax headers. A code stays with its case, and a new case gets
+the next free number of its letter. The [site](https://haampie-llms.github.io/tar-minefield/) has
+a page per code.
+
 **Some archives escape the directory they are extracted to in lenient extractors.** Their files
 are harmless, and say in their names and contents what happened, but extract them in a
 throwaway directory.
@@ -11,11 +16,13 @@ throwaway directory.
 ## Layout
 
 - `archives/<case>.tar`: the archive, uncompressed.
-- `archives/<case>.json`: its verdict, the features of `scanner/tarscan.py` it is about, and for
+- `archives/<case>.json`: its code, its verdict, the features of `scanner/tarscan.py` it is about, and for
   `y_` and `i_` cases the tree a parser must extract: path, kind, and for files their size,
   sha256 and whether they are executable.
 - `archives/<case>.txt`: what the case is about, and every block of the archive with its offset
   and, for headers, every field with its raw bytes.
+- `archives/<case>.svg`: a map of its blocks, every one 512 bytes to scale, with the fields of
+  headers where they are, and the bytes that the case writes itself marked.
 - `cases/<case>.py`: the script that writes it, whose docstring explains the case: the decision
   point where readers differ, where the scans saw it, and what implementations do with it.
 - `blocks.py`: writes archives from raw 512-byte blocks, and describes each block as it writes
@@ -33,7 +40,7 @@ Generation is deterministic, with the Python standard library only. `--scan` che
 `tarscan.py` reports the features of each case, and that the default policy of
 `scanner/strict.py` rejects the `n_` cases and accepts the others.
 
-A new case is a script in `cases/`, named for its verdict and level, with `VERDICT`, `FEATURES`,
+A new case is a script in `cases/`, named for its verdict and level, with `VERDICT`, `CODE`, `FEATURES`,
 `TREE` for `y_` and `i_` cases, and a `build(archive)` function.
 
 ## What implementations make of it
@@ -53,3 +60,14 @@ the untar of live-bootstrap (with git and a C compiler), bsdtar, BusyBox, 7-Zip,
 (cabal), Java (with the jars of `runners/java/jars.txt`, which it downloads and checks), Ruby,
 Perl, Julia and Node.js: each on PATH, or in an environment variable of its name in capitals,
 such as `$JULIA`.
+
+## The site
+
+```console
+$ python -I corpus/site.py docs data/*/*/results.jsonl
+```
+
+writes `docs/`, which GitHub Pages serves: an index with the matrix, and a page per case with its
+explanation, its block map and dump, how many tarballs of the scans have its feature and how many
+of those the default policy rejects, and what every implementation makes of it, from
+`matrix.json`. Plain HTML and CSS, without scripts, all of it generated.

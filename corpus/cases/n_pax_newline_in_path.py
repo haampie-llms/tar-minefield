@@ -11,6 +11,7 @@ accepts as xattrs are not extracted.
 """
 
 VERDICT = "n"
+CODE = "F13"
 FEATURES = ['pax.newline-in-value.path']
 
 

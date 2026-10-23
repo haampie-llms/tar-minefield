@@ -1,4 +1,5 @@
 {
+ "code": "F08",
  "verdict": "n",
  "description": "An archive that ends inside the data of a member.",
  "features": []

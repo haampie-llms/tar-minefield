@@ -1,4 +1,5 @@
 {
+ "code": "F06",
  "verdict": "n",
  "description": "A checksum that only matches as the signed sum of the header.",
  "features": [

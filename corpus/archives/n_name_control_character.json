@@ -1,4 +1,5 @@
 {
+ "code": "N15",
  "verdict": "n",
  "description": "A control character in a name, here a newline.",
  "features": [

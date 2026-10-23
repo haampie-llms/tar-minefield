@@ -1,4 +1,4 @@
-n_end_zero_block_then_member: rejected
+F09 n_end_zero_block_then_member: rejected
 
 A zero block, then another member: the end of the archive, or not?
 

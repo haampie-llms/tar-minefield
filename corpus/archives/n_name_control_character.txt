@@ -1,4 +1,4 @@
-n_name_control_character: rejected
+N15 n_name_control_character: rejected
 
 A control character in a name, here a newline.
 

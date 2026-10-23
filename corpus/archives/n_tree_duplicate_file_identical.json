@@ -1,4 +1,5 @@
 {
+ "code": "S09",
  "verdict": "n",
  "description": "The same file twice, with the same contents.",
  "features": [

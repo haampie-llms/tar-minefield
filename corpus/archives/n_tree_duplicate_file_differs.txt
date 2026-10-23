@@ -1,4 +1,4 @@
-n_tree_duplicate_file_differs: rejected
+S07 n_tree_duplicate_file_differs: rejected
 
 The same file twice, with different contents: the first copy, or the last?
 

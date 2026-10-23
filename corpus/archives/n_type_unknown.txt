@@ -1,4 +1,4 @@
-n_type_unknown: rejected
+F16 n_type_unknown: rejected
 
 An unknown typeflag with a size: data, or no data?
 

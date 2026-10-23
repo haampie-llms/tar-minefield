@@ -10,6 +10,7 @@ Seen in: v7 archives only, such as sendmail 8.18.2, tcp_wrappers 7.6 and unclutt
 """
 
 VERDICT = "n"
+CODE = "K01"
 FEATURES = ["name.trailing-slash-on-file"]
 
 

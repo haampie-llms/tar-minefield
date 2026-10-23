@@ -1,4 +1,4 @@
-n_tree_symlink_then_file: rejected
+S10 n_tree_symlink_then_file: rejected
 
 A symlink, then a file of the same name: replace the link, or write through it?
 

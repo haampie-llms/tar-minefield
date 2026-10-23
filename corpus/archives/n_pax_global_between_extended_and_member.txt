@@ -1,4 +1,4 @@
-n_pax_global_between_extended_and_member: rejected
+G03 n_pax_global_between_extended_and_member: rejected
 
 A global pax header between an extended header and its member.
 

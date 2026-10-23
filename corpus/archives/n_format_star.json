@@ -1,4 +1,5 @@
 {
+ "code": "N10",
  "verdict": "n",
  "description": "star's prefix field, which is shorter than ustar's.",
  "features": [

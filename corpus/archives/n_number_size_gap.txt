@@ -1,4 +1,4 @@
-n_number_size_gap: rejected
+F12 n_number_size_gap: rejected
 
 A size with a space among its digits: readers read two sizes.
 

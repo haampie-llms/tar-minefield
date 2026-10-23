@@ -9,6 +9,7 @@ Seen in: no tarball of the scans with times there.
 """
 
 VERDICT = "n"
+CODE = "N11"
 FEATURES = ['gnu.atime-ctime']
 
 

@@ -9,6 +9,7 @@ Seen in: SDL2_image 2.8.8, ruby 4.0.5 and fastcap 2.0-18Sep92.
 F = lambda path, contents: {"path": path, "kind": "file", "contents": contents, "executable": False}
 
 VERDICT = "i"
+CODE = "F04"
 FEATURES = ['end.missing']
 TREE = [F('a', b'a\n')]
 

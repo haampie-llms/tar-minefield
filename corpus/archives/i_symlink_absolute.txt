@@ -1,4 +1,4 @@
-i_symlink_absolute: accepted by the default policy
+N07 i_symlink_absolute: accepted by the default policy
 
 A symlink to an absolute path, created as it is.
 

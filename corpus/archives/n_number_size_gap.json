@@ -1,4 +1,5 @@
 {
+ "code": "F12",
  "verdict": "n",
  "description": "A size with a space among its digits: readers read two sizes.",
  "features": [

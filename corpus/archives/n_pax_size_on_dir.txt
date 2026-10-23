@@ -1,4 +1,4 @@
-n_pax_size_on_dir: rejected
+F15 n_pax_size_on_dir: rejected
 
 A pax `size` on a directory, which hides a header from the readers that honor it.
 

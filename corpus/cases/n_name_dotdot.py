@@ -9,6 +9,7 @@ Seen in: no tarball of the scans.
 """
 
 VERDICT = "n"
+CODE = "N16"
 FEATURES = ["name.dotdot"]
 
 

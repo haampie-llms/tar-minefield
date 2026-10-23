@@ -1,4 +1,4 @@
-n_hardlink_to_later_member: rejected
+S05 n_hardlink_to_later_member: rejected
 
 A hardlink to a member that comes later.
 

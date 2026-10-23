@@ -1,4 +1,4 @@
-i_name_dot: accepted by the default policy
+N05 i_name_dot: accepted by the default policy
 
 A member named `./`, the root of the tree, as `tar cf x.tar .` writes first.
 

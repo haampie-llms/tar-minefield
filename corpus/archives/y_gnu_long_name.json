@@ -1,4 +1,5 @@
 {
+ "code": "N01",
  "verdict": "y",
  "description": "A name over 100 bytes, in a GNU long name.",
  "features": [],

@@ -9,6 +9,7 @@ Seen in: no tarball of the scans, where a damaged download fails its sha256.
 """
 
 VERDICT = "n"
+CODE = "F08"
 FEATURES = []
 
 

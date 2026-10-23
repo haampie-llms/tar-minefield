@@ -1,4 +1,4 @@
-i_end_missing: accepted by the default policy
+F04 i_end_missing: accepted by the default policy
 
 No end-of-archive marker: the archive ends after a complete member.
 

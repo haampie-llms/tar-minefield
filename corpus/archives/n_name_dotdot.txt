@@ -1,4 +1,4 @@
-n_name_dotdot: rejected
+N16 n_name_dotdot: rejected
 
 `..` in a name, which climbs out of the directory the archive is extracted to.
 

@@ -1,4 +1,5 @@
 {
+ "code": "N06",
  "verdict": "i",
  "description": "`./a`, which is the path `a`.",
  "features": [

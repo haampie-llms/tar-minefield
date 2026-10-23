@@ -1,4 +1,5 @@
 {
+ "code": "N18",
  "verdict": "n",
  "description": "A name that is not UTF-8.",
  "features": [

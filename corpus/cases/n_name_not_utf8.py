@@ -8,6 +8,7 @@ Seen in: aspell-is 0.51.1-0 and aspell-nb 0.50.1-0.
 """
 
 VERDICT = "n"
+CODE = "N18"
 FEATURES = ['name.not-utf8']
 
 

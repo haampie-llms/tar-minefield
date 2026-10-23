@@ -1,4 +1,4 @@
-n_extended_pax_path_and_gnu_long_name: rejected
+N08 n_extended_pax_path_and_gnu_long_name: rejected
 
 A pax `path` and a GNU long name for one member, and a third name in its header.
 

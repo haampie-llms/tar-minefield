@@ -8,6 +8,7 @@ Seen in: no tarball of the scans.
 """
 
 VERDICT = "n"
+CODE = "K03"
 FEATURES = ['name.trailing-slash-on-symlink']
 
 

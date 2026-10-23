@@ -1,4 +1,4 @@
-i_name_leading_dot_slash: accepted by the default policy
+N06 i_name_leading_dot_slash: accepted by the default policy
 
 `./a`, which is the path `a`.
 

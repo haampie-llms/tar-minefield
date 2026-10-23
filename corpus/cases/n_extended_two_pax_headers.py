@@ -8,6 +8,7 @@ Seen in: libmygpo-qt 1.2.0, with the same xattr keys in two headers.
 """
 
 VERDICT = "n"
+CODE = "N09"
 FEATURES = ['extended.two-pax-headers']
 
 

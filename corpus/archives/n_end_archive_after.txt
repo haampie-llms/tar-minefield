@@ -1,4 +1,4 @@
-n_end_archive_after: rejected
+F07 n_end_archive_after: rejected
 
 Another archive after the end-of-archive marker.
 

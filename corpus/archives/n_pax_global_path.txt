@@ -1,4 +1,4 @@
-n_pax_global_path: rejected
+G04 n_pax_global_path: rejected
 
 A global pax header with a `path`.
 

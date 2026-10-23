@@ -1,4 +1,4 @@
-n_symlink_trailing_slash: rejected
+K03 n_symlink_trailing_slash: rejected
 
 A symlink whose name ends in a slash.
 

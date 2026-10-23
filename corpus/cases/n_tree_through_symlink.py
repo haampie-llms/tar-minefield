@@ -8,6 +8,7 @@ Seen in: no tarball of the scans.
 """
 
 VERDICT = "n"
+CODE = "S11"
 FEATURES = ['tree.through-symlink']
 
 

@@ -1,4 +1,5 @@
 {
+ "code": "N04",
  "verdict": "y",
  "description": "A long name split between the ustar prefix and name fields.",
  "features": [],

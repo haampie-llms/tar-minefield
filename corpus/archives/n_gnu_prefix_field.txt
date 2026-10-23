@@ -1,4 +1,4 @@
-n_gnu_prefix_field: rejected
+N11 n_gnu_prefix_field: rejected
 
 The prefix field of a header with GNU magic, which GNU tar uses for times.
 

@@ -1,4 +1,4 @@
-n_kind_trailing_slash_file: rejected
+K01 n_kind_trailing_slash_file: rejected
 
 A regular file whose name ends in a slash: a file, or a directory?
 

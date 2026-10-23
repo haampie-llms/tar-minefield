@@ -6,6 +6,7 @@ Seen in: guile 2.0.9 and others: see data/STRICT.md.
 F = lambda path, contents: {"path": path, "kind": "file", "contents": contents, "executable": False}
 
 VERDICT = "i"
+CODE = "N05"
 FEATURES = ['name.dot']
 TREE = [F('a', b'a\n')]
 

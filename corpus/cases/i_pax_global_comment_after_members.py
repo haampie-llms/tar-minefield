@@ -6,6 +6,7 @@ Seen in: rpm 4.20.1 and x42-plugins 20230701.
 F = lambda path, contents: {"path": path, "kind": "file", "contents": contents, "executable": False}
 
 VERDICT = "i"
+CODE = "G02"
 FEATURES = ['pax-global.after-members']
 TREE = [F('a', b'a\n'), F('b', b'b\n')]
 

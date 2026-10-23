@@ -1,4 +1,4 @@
-n_checksum_signed: rejected
+F06 n_checksum_signed: rejected
 
 A checksum that only matches as the signed sum of the header.
 

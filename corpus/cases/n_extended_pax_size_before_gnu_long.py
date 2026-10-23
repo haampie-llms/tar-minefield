@@ -10,6 +10,7 @@ Seen in: no tarball of the scans.
 """
 
 VERDICT = "n"
+CODE = "F10"
 FEATURES = ['extended.pax-size-before-gnu-long']
 
 

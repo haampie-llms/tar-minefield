@@ -1,4 +1,5 @@
 {
+ "code": "F09",
  "verdict": "n",
  "description": "A zero block, then another member: the end of the archive, or not?",
  "features": [

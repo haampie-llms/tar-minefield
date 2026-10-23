@@ -1,4 +1,5 @@
 {
+ "code": "F02",
  "verdict": "i",
  "description": "Data after the end-of-archive marker that is not a header, which is ignored.",
  "features": [

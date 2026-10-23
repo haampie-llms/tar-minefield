@@ -12,6 +12,7 @@ the default policy rejects those too, as a reader would have to compare the copi
 """
 
 VERDICT = "n"
+CODE = "S07"
 FEATURES = ["tree.duplicate.file-file"]
 
 

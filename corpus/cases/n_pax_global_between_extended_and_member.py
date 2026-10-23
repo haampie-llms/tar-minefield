@@ -8,6 +8,7 @@ Seen in: no tarball of the scans.
 """
 
 VERDICT = "n"
+CODE = "G03"
 FEATURES = ['pax-global.between-extended-and-member']
 
 

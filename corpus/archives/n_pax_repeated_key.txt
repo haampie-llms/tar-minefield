@@ -1,4 +1,4 @@
-n_pax_repeated_key: rejected
+N20 n_pax_repeated_key: rejected
 
 One pax key twice in one extended header.
 

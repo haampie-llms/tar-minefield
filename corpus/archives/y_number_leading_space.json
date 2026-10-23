@@ -1,4 +1,5 @@
 {
+ "code": "F01",
  "verdict": "y",
  "description": "Number fields padded with spaces rather than zeros, as old tars wrote them.",
  "features": [],

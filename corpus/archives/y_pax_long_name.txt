@@ -1,4 +1,4 @@
-y_pax_long_name: accepted
+N03 y_pax_long_name: accepted
 
 A name over 100 bytes, in a pax `path`.
 

@@ -8,6 +8,7 @@ Seen in: every tarball that `git archive` made, such as GitHub's release tarball
 """
 
 VERDICT = "y"
+CODE = "G01"
 TREE = [
     {"path": "project", "kind": "directory"},
     {"path": "project/README", "kind": "file", "contents": b"hello\n", "executable": False},

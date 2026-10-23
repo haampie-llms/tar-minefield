@@ -7,6 +7,7 @@ F = lambda path, contents: {"path": path, "kind": "file", "contents": contents, 
 D = lambda path: {"path": path, "kind": "directory"}
 
 VERDICT = "y"
+CODE = "N04"
 FEATURES = []
 TREE = [D('pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp'), F('pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file', b'prefixed\n')]
 

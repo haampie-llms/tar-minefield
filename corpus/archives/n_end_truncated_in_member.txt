@@ -1,4 +1,4 @@
-n_end_truncated_in_member: rejected
+F08 n_end_truncated_in_member: rejected
 
 An archive that ends inside the data of a member.
 

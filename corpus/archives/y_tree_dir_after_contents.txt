@@ -1,4 +1,4 @@
-y_tree_dir_after_contents: accepted
+S01 y_tree_dir_after_contents: accepted
 
 A directory after its contents.
 

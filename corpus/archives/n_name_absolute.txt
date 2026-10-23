@@ -1,4 +1,4 @@
-n_name_absolute: rejected
+N12 n_name_absolute: rejected
 
 An absolute name, which points outside the directory the archive is extracted to.
 

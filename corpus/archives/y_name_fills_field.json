@@ -1,4 +1,5 @@
 {
+ "code": "N02",
  "verdict": "y",
  "description": "A name of exactly 100 bytes, which fills the name field without a NUL.",
  "features": [],

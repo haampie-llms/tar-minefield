@@ -1,4 +1,5 @@
 {
+ "code": "N07",
  "verdict": "i",
  "description": "A symlink to an absolute path, created as it is.",
  "features": [

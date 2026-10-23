@@ -1,4 +1,4 @@
-n_extended_pax_size_before_gnu_long: rejected
+F10 n_extended_pax_size_before_gnu_long: rejected
 
 A pax `size` followed by a GNU long name: which of them does the size apply to?
 

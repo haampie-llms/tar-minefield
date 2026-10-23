@@ -1,4 +1,4 @@
-n_tree_under_file: rejected
+S12 n_tree_under_file: rejected
 
 A member under a file.
 

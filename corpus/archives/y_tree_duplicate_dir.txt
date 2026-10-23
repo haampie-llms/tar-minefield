@@ -1,4 +1,4 @@
-y_tree_duplicate_dir: accepted
+S02 y_tree_duplicate_dir: accepted
 
 The same directory twice, as `tar cf x.tar d d/sub` writes.
 

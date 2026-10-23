@@ -8,6 +8,7 @@ Seen in: no tarball of the scans.
 """
 
 VERDICT = "n"
+CODE = "N19"
 FEATURES = ['pax.nul-in-value.path']
 
 

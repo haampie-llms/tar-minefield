@@ -1,4 +1,5 @@
 {
+ "code": "S11",
  "verdict": "n",
  "description": "A member written through a symlink, which points out of the destination.",
  "features": [

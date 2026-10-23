@@ -1,4 +1,4 @@
-n_linkname_on_file: rejected
+K02 n_linkname_on_file: rejected
 
 A regular file with a link target.
 

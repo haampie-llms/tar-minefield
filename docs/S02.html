@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S02 tree-duplicate-dir · tar-minefield</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav><a href="index.html">all cases</a> · previous: <a href="S01.html">S01 tree-dir-after-contents</a> · next: <a href="F02.html">F02 end-data-after</a></nav>
+<h1><code>S02</code> tree-duplicate-dir</h1>
+<p>The same directory twice, as <code>tar cf x.tar d d/sub</code> writes.</p>
+<dl>
+<dt>Verdict</dt><dd>accepted: every parser must extract its tree</dd>
+<dt>Level</dt><dd>order and state</dd>
+<dt>Default policy</dt><dd>accepts it, as it allows <code>tree.duplicate.dir-dir</code>: the same directory twice (<code>y_</code>)</dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/y_tree_duplicate_dir.py">the script</a>,
+<a href="https://github.com/haampie-llms/tar-minefield/raw/main/corpus/archives/y_tree_duplicate_dir.tar">the archive</a>,
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/y_tree_duplicate_dir.txt">every block as text</a></dd>
+</dl>
+<h2>The case</h2>
+<p><strong>Seen in:</strong> dozens of tarballs: see <code>tree.duplicate.dir-dir</code> in data/STRICT.md.</p>
+<h2>The archive</h2>
+<p>Every block of 512 bytes, to scale, with its offset. Hover over a field for its bytes.</p>
+<div class="wide"><svg xmlns="http://www.w3.org/2000/svg" width="858" height="372" viewBox="0 0 858 372" role="img"><title>S02 y_tree_duplicate_dir: every block of the archive</title><style>text{font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;font-size:12px;fill:#1f2328}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;fill:#59636e}.accent{fill:#bc4c00;font-weight:600}.small{font-size:10px;text-anchor:middle;fill:#59636e}.field{fill:#ffffff;stroke:#59636e;stroke-width:0.75}.nul{fill:#ffffff}.text{fill:#54aeff}.space{fill:#b6e3ff}.control{fill:#fb8f44}.high{fill:#c297ff}.mark{fill:none;stroke:#bc4c00;stroke-width:2}</style><rect width="100%" height="100%" fill="#ffffff"/><text class="mono" x="4" y="17">0x000000</text><text x="76" y="17">header: directory</text><g><title>name [0,100): &quot;d/&quot; + 98 NUL</title><rect class="field" x="76" y="22" width="150" height="18"/><rect class="text" x="76" y="22" width="3" height="18"/></g><text class="small" x="151" y="51">name</text><g><title>mode [100,108): &quot;0000755&quot; + NUL, 755 (octal)</title><rect class="field" x="226" y="22" width="12" height="18"/><rect class="text" x="226" y="22" width="10.5" height="18"/></g><g><title>uid [108,116): &quot;0000000&quot; + NUL, 0</title><rect class="field" x="238" y="22" width="12" height="18"/><rect class="text" x="238" y="22" width="10.5" height="18"/></g><g><title>gid [116,124): &quot;0000000&quot; + NUL, 0</title><rect class="field" x="250" y="22" width="12" height="18"/><rect class="text" x="250" y="22" width="10.5" height="18"/></g><g><title>size [124,136): &quot;00000000000&quot; + NUL, 0</title><rect class="field" x="262" y="22" width="18" height="18"/><rect class="text" x="262" y="22" width="16.5" height="18"/></g><g><title>mtime [136,148): &quot;00000000000&quot; + NUL, 0</title><rect class="field" x="280" y="22" width="18" height="18"/><rect class="text" x="280" y="22" width="16.5" height="18"/></g><g><title>chksum [148,156): &quot;007430\0 &quot;, 3864: the unsigned sum of the header, this field as spaces</title><rect class="field" x="298" y="22" width="12" height="18"/><rect class="text" x="298" y="22" width="9" height="18"/><rect class="space" x="308.5" y="22" width="1.5" height="18"/></g><g><title>typeflag [156,157): &quot;5&quot;, directory</title><rect class="field" x="310" y="22" width="1.5" height="18"/><rect class="text" x="310" y="22" width="1.5" height="18"/></g><g><title>linkname [157,257): 100 NUL</title><rect class="field" x="311.5" y="22" width="150" height="18"/></g><text class="small" x="386.5" y="51">linkname</text><g><title>magic [257,263): &quot;ustar&quot; + NUL</title><rect class="field" x="461.5" y="22" width="9" height="18"/><rect class="text" x="461.5" y="22" width="7.5" height="18"/></g><g><title>version [263,265): &quot;00&quot;</title><rect class="field" x="470.5" y="22" width="3" height="18"/><rect class="text" x="470.5" y="22" width="3" height="18"/></g><g><title>uname [265,297): 32 NUL</title><rect class="field" x="473.5" y="22" width="48" height="18"/></g><text class="small" x="497.5" y="51">uname</text><g><title>gname [297,329): 32 NUL</title><rect class="field" x="521.5" y="22" width="48" height="18"/></g><text class="small" x="545.5" y="51">gname</text><g><title>devmajor [329,337): &quot;0000000&quot; + NUL, 0</title><rect class="field" x="569.5" y="22" width="12" height="18"/><rect class="text" x="569.5" y="22" width="10.5" height="18"/></g><g><title>devminor [337,345): &quot;0000000&quot; + NUL, 0</title><rect class="field" x="581.5" y="22" width="12" height="18"/><rect class="text" x="581.5" y="22" width="10.5" height="18"/></g><g><title>prefix [345,500): 155 NUL</title><rect class="field" x="593.5" y="22" width="232.5" height="18"/></g><text class="small" x="709.75" y="51">prefix</text><g><title>pad [500,512): 12 NUL</title><rect class="field" x="826" y="22" width="18" height="18"/></g><text class="mono" x="76" y="66">name &quot;d/&quot; + 98 NUL</text><text class="mono" x="4" y="93">0x000200</text><text x="76" y="93">header: directory</text><g><title>name [0,100): &quot;d/sub/&quot; + 94 NUL</title><rect class="field" x="76" y="98" width="150" height="18"/><rect class="text" x="76" y="98" width="9" height="18"/></g><text class="small" x="151" y="127">name</text><g><title>mode [100,108): &quot;0000755&quot; + NUL, 755 (octal)</title><rect class="field" x="226" y="98" width="12" height="18"/><rect class="text" x="226" y="98" width="10.5" height="18"/></g><g><title>uid [108,116): &quot;0000000&quot; + NUL, 0</title><rect class="field" x="238" y="98" width="12" height="18"/><rect class="text" x="238" y="98" width="10.5" height="18"/></g><g><title>gid [116,124): &quot;0000000&quot; + NUL, 0</title><rect class="field" x="250" y="98" width="12" height="18"/><rect class="text" x="250" y="98" width="10.5" height="18"/></g><g><title>size [124,136): &quot;00000000000&quot; + NUL, 0</title><rect class="field" x="262" y="98" width="18" height="18"/><rect class="text" x="262" y="98" width="16.5" height="18"/></g><g><title>mtime [136,148): &quot;00000000000&quot; + NUL, 0</title><rect class="field" x="280" y="98" width="18" height="18"/><rect class="text" x="280" y="98" width="16.5" height="18"/></g><g><title>chksum [148,156): &quot;010221\0 &quot;, 4241: the unsigned sum of the header, this field as spaces</title><rect class="field" x="298" y="98" width="12" height="18"/><rect class="text" x="298" y="98" width="9" height="18"/><rect class="space" x="308.5" y="98" width="1.5" height="18"/></g><g><title>typeflag [156,157): &quot;5&quot;, directory</title><rect class="field" x="310" y="98" width="1.5" height="18"/><rect class="text" x="310" y="98" width="1.5" height="18"/></g><g><title>linkname [157,257): 100 NUL</title><rect class="field" x="311.5" y="98" width="150" height="18"/></g><text class="small" x="386.5" y="127">linkname</text><g><title>magic [257,263): &quot;ustar&quot; + NUL</title><rect class="field" x="461.5" y="98" width="9" height="18"/><rect class="text" x="461.5" y="98" width="7.5" height="18"/></g><g><title>version [263,265): &quot;00&quot;</title><rect class="field" x="470.5" y="98" width="3" height="18"/><rect class="text" x="470.5" y="98" width="3" height="18"/></g><g><title>uname [265,297): 32 NUL</title><rect class="field" x="473.5" y="98" width="48" height="18"/></g><text class="small" x="497.5" y="127">uname</text><g><title>gname [297,329): 32 NUL</title><rect class="field" x="521.5" y="98" width="48" height="18"/></g><text class="small" x="545.5" y="127">gname</text><g><title>devmajor [329,337): &quot;0000000&quot; + NUL, 0</title><rect class="field" x="569.5" y="98" width="12" height="18"/><rect class="text" x="569.5" y="98" width="10.5" height="18"/></g><g><title>devminor [337,345): &quot;0000000&quot; + NUL, 0</title><rect class="field" x="581.5" y="98" width="12" height="18"/><rect class="text" x="581.5" y="98" width="10.5" height="18"/></g><g><title>prefix [345,500): 155 NUL</title><rect class="field" x="593.5" y="98" width="232.5" height="18"/></g><text class="small" x="709.75" y="127">prefix</text><g><title>pad [500,512): 12 NUL</title><rect class="field" x="826" y="98" width="18" height="18"/></g><text class="mono" x="76" y="142">name &quot;d/sub/&quot; + 94 NUL</text><text class="mono" x="4" y="169">0x000400</text><text x="76" y="169">header: directory</text><g><title>name [0,100): &quot;d/sub/&quot; + 94 NUL</title><rect class="field" x="76" y="174" width="150" height="18"/><rect class="text" x="76" y="174" width="9" height="18"/></g><text class="small" x="151" y="203">name</text><g><title>mode [100,108): &quot;0000755&quot; + NUL, 755 (octal)</title><rect class="field" x="226" y="174" width="12" height="18"/><rect class="text" x="226" y="174" width="10.5" height="18"/></g><g><title>uid [108,116): &quot;0000000&quot; + NUL, 0</title><rect class="field" x="238" y="174" width="12" height="18"/><rect class="text" x="238" y="174" width="10.5" height="18"/></g><g><title>gid [116,124): &quot;0000000&quot; + NUL, 0</title><rect class="field" x="250" y="174" width="12" height="18"/><rect class="text" x="250" y="174" width="10.5" height="18"/></g><g><title>size [124,136): &quot;00000000000&quot; + NUL, 0</title><rect class="field" x="262" y="174" width="18" height="18"/><rect class="text" x="262" y="174" width="16.5" height="18"/></g><g><title>mtime [136,148): &quot;00000000000&quot; + NUL, 0</title><rect class="field" x="280" y="174" width="18" height="18"/><rect class="text" x="280" y="174" width="16.5" height="18"/></g><g><title>chksum [148,156): &quot;010221\0 &quot;, 4241: the unsigned sum of the header, this field as spaces</title><rect class="field" x="298" y="174" width="12" height="18"/><rect class="text" x="298" y="174" width="9" height="18"/><rect class="space" x="308.5" y="174" width="1.5" height="18"/></g><g><title>typeflag [156,157): &quot;5&quot;, directory</title><rect class="field" x="310" y="174" width="1.5" height="18"/><rect class="text" x="310" y="174" width="1.5" height="18"/></g><g><title>linkname [157,257): 100 NUL</title><rect class="field" x="311.5" y="174" width="150" height="18"/></g><text class="small" x="386.5" y="203">linkname</text><g><title>magic [257,263): &quot;ustar&quot; + NUL</title><rect class="field" x="461.5" y="174" width="9" height="18"/><rect class="text" x="461.5" y="174" width="7.5" height="18"/></g><g><title>version [263,265): &quot;00&quot;</title><rect class="field" x="470.5" y="174" width="3" height="18"/><rect class="text" x="470.5" y="174" width="3" height="18"/></g><g><title>uname [265,297): 32 NUL</title><rect class="field" x="473.5" y="174" width="48" height="18"/></g><text class="small" x="497.5" y="203">uname</text><g><title>gname [297,329): 32 NUL</title><rect class="field" x="521.5" y="174" width="48" height="18"/></g><text class="small" x="545.5" y="203">gname</text><g><title>devmajor [329,337): &quot;0000000&quot; + NUL, 0</title><rect class="field" x="569.5" y="174" width="12" height="18"/><rect class="text" x="569.5" y="174" width="10.5" height="18"/></g><g><title>devminor [337,345): &quot;0000000&quot; + NUL, 0</title><rect class="field" x="581.5" y="174" width="12" height="18"/><rect class="text" x="581.5" y="174" width="10.5" height="18"/></g><g><title>prefix [345,500): 155 NUL</title><rect class="field" x="593.5" y="174" width="232.5" height="18"/></g><text class="small" x="709.75" y="203">prefix</text><g><title>pad [500,512): 12 NUL</title><rect class="field" x="826" y="174" width="18" height="18"/></g><text class="mono" x="76" y="218">name &quot;d/sub/&quot; + 94 NUL</text><text class="mono" x="4" y="245">0x000600</text><text x="76" y="245">2 zero blocks: the end-of-archive marker</text><g><title>bytes 0 to 512 of 1024: 512 NUL</title><rect class="field" x="76" y="250" width="768" height="18"/></g><text class="mono" x="4" y="293">0x000800</text><text x="76" y="293">2 zero blocks, continued</text><g><title>bytes 512 to 1024 of 1024: 512 NUL</title><rect class="field" x="76" y="298" width="768" height="18"/></g><text class="mono" x="4" y="341">0x000a00</text><text x="76" y="341">end of file</text><rect class="field nul" x="76" y="354" width="12" height="12"/><text x="92" y="364">NUL</text><rect class="field text" x="124" y="354" width="12" height="12"/><text x="140" y="364">printable ASCII</text><rect class="field space" x="244" y="354" width="12" height="12"/><text x="260" y="364">space</text><rect class="field control" x="304" y="354" width="12" height="12"/><text x="320" y="364">control character, such as a newline</text><rect class="field high" x="550" y="354" width="12" height="12"/><text x="566" y="364">byte over 0x7f</text><rect class="field mark" x="664" y="354" width="12" height="12"/><text x="680" y="364">written by the case itself</text></svg>
+</div>
+<details><summary>Every block, as text</summary>
+<pre>S02 y_tree_duplicate_dir: accepted
+
+The same directory twice, as `tar cf x.tar d d/sub` writes.
+
+Seen in: dozens of tarballs: see `tree.duplicate.dir-dir` in data/STRICT.md.
+
+0x000000  header: directory
+          name     [  0,100)  &quot;d/&quot; + 98 NUL
+          mode     [100,108)  &quot;0000755&quot; + NUL  755 (octal)
+          uid      [108,116)  &quot;0000000&quot; + NUL  0
+          gid      [116,124)  &quot;0000000&quot; + NUL  0
+          size     [124,136)  &quot;00000000000&quot; + NUL  0
+          mtime    [136,148)  &quot;00000000000&quot; + NUL  0
+          chksum   [148,156)  &quot;007430\0 &quot;  3864: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  &quot;5&quot;  directory
+          linkname [157,257)  100 NUL
+          magic    [257,263)  &quot;ustar&quot; + NUL
+          version  [263,265)  &quot;00&quot;
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  &quot;0000000&quot; + NUL  0
+          devminor [337,345)  &quot;0000000&quot; + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000200  header: directory
+          name     [  0,100)  &quot;d/sub/&quot; + 94 NUL
+          mode     [100,108)  &quot;0000755&quot; + NUL  755 (octal)
+          uid      [108,116)  &quot;0000000&quot; + NUL  0
+          gid      [116,124)  &quot;0000000&quot; + NUL  0
+          size     [124,136)  &quot;00000000000&quot; + NUL  0
+          mtime    [136,148)  &quot;00000000000&quot; + NUL  0
+          chksum   [148,156)  &quot;010221\0 &quot;  4241: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  &quot;5&quot;  directory
+          linkname [157,257)  100 NUL
+          magic    [257,263)  &quot;ustar&quot; + NUL
+          version  [263,265)  &quot;00&quot;
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  &quot;0000000&quot; + NUL  0
+          devminor [337,345)  &quot;0000000&quot; + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000400  header: directory
+          name     [  0,100)  &quot;d/sub/&quot; + 94 NUL
+          mode     [100,108)  &quot;0000755&quot; + NUL  755 (octal)
+          uid      [108,116)  &quot;0000000&quot; + NUL  0
+          gid      [116,124)  &quot;0000000&quot; + NUL  0
+          size     [124,136)  &quot;00000000000&quot; + NUL  0
+          mtime    [136,148)  &quot;00000000000&quot; + NUL  0
+          chksum   [148,156)  &quot;010221\0 &quot;  4241: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  &quot;5&quot;  directory
+          linkname [157,257)  100 NUL
+          magic    [257,263)  &quot;ustar&quot; + NUL
+          version  [263,265)  &quot;00&quot;
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  &quot;0000000&quot; + NUL  0
+          devminor [337,345)  &quot;0000000&quot; + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000600  2 zero blocks: the end-of-archive marker
+0x000a00  end of file
+</pre>
+</details>
+<p>The tree that a parser must extract: <code>d/</code>, <code>d/sub/</code>.</p>
+<h2>In real tarballs</h2>
+<p>Tarballs of the scans with <code>tree.duplicate.dir-dir</code>. Where there are none, the share is the 95% upper bound of the rate, by the rule of three.</p>
+<table><tr><th>dataset</th><th>assessed</th><th>with it</th><th>rejected for it by the default policy</th></tr>
+<tr><td>guix</td><td class=n>10168</td><td class=n>7 (0.07%)</td><td class=n>0</td></tr>
+<tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0 (&lt;1.8%)</td><td class=n>0</td></tr>
+<tr><td>nix</td><td class=n>18990</td><td class=n>11 (0.06%)</td><td class=n>0</td></tr>
+<tr><td>spack</td><td class=n>37554</td><td class=n>140 (0.37%)</td><td class=n>0</td></tr>
+<tr><td>all, distinct</td><td class=n>62622</td><td class=n>157 (0.25%)</td><td class=n>0</td></tr></table>
+<p>For example: rpm@4.20.1, subed@1.5.4, x42-plugins@20230701, ivy@0.15.1, btrfs-progs@v7.0, zynaddsubfx@3.0.6, bbdb@3.2.2.4, besu@24.1.2.</p>
+<h2>What implementations make of it</h2>
+<table><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>bsdtar</td><td>bsdtar 3.8.5 - libarchive 3.8.5</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>live-bootstrap untar</td><td>mescc-tools-extra a151c245e512, built with cc</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>live-bootstrap untar, --non-strict</td><td>mescc-tools-extra a151c245e512, built with cc</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>BusyBox tar</td><td>BusyBox v1.37.0 (Ubuntu 1:1.37.0-7ubuntu1)</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>7-Zip</td><td>7-Zip 26.00 (x64)</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>Python tarfile, filter=fully_trusted</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>Python tarfile, filter=tar</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>Python tarfile, filter=data</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>Go archive/tar</td><td>archive/tar of go1.26.8</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>Rust tar</td><td>tar 0.4.46, unpack</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>Rust astral-tokio-tar</td><td>astral-tokio-tar 0.7.0, unpack</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>Haskell tar</td><td>tar 0.7.2.0, extract, of GHC 9.10</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>Java Commons Compress</td><td>Commons Compress 1.28.0, Expander, on Java 25.0.4.1</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>RubyGems</td><td>RubyGems 3.6.7 of Ruby 3.3.8, extract_tar_gz</td><td>❌ another tree, or rejects</td><td>tree A: <code>d/</code></td></tr>
+<tr><td>Perl Archive::Tar</td><td>Archive::Tar 3.02_001 of Perl v5.40.1</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>Julia Tar.jl</td><td>Tar 1.10.0 of Julia 1.13.2</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>node-tar</td><td>tar 7.5.22</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>node-tar, strict</td><td>tar 7.5.22</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr></table>
+
+<hr>
+<p>Generated by <code>corpus/site.py</code> of <a href="https://github.com/haampie-llms/tar-minefield">tar-minefield</a>.</p>
+</body>
+</html>

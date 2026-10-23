@@ -1,4 +1,4 @@
-i_pax_global_comment_after_members: accepted by the default policy
+G02 i_pax_global_comment_after_members: accepted by the default policy
 
 A global pax header with only a `comment`, after the first member.
 

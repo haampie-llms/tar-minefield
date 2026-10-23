@@ -9,6 +9,7 @@ Seen in: only the version of NULs, as in commons-lang 2.6 and apache-solr 3.6.2.
 """
 
 VERDICT = "n"
+CODE = "F11"
 FEATURES = ['magic.posix-with-odd-version']
 
 

@@ -1,4 +1,4 @@
-n_hardlink_to_itself: rejected
+S04 n_hardlink_to_itself: rejected
 
 A hardlink to itself.
 

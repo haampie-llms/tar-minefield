@@ -38,6 +38,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ARCHIVES = os.path.join(HERE, "archives")
 RUNNERS = os.path.join(HERE, "runners")
 TIMEOUT = 60
+# GitHub Pages, from docs/, which corpus/site.py writes: a page per case, named by its code
+SITE = "https://haampie-llms.github.io/tar-minefield/"
 
 
 def run(cmd, **kw):
@@ -55,8 +57,11 @@ def first_line(cmd):
 
 TARFILE = (
     "import sys, tarfile\n"
-    "with tarfile.open(sys.argv[1]) as t:\n"
-    "    t.extractall(sys.argv[2], filter=sys.argv[3])\n"
+    "try:\n"
+    "    with tarfile.open(sys.argv[1]) as t:\n"
+    "        t.extractall(sys.argv[2], filter=sys.argv[3])\n"
+    "except Exception as e:\n"
+    "    sys.exit(f'{type(e).__name__}: {e}')\n"
 )
 
 
@@ -264,7 +269,8 @@ def extract(command, archive, root):
     error = None
     if code != 0:
         error = (err.strip() or out.strip() or f"status {code}")
-        error = error.replace(dest, "DEST").replace(root, "ROOT")[-300:]
+        error = error.replace(dest, "DEST").replace(root, "ROOT")
+        error = error.replace(os.path.dirname(HERE) + os.sep, "")[-300:]
     return error, tree, outside
 
 
@@ -381,15 +387,20 @@ def category(info):
     return levels[0] if levels else "framing"
 
 
+def label(case, info):
+    """The code of a case and its name without the verdict: `F15 pax-size-on-dir`."""
+    return f"{info['code']} {case.split('_', 1)[1].replace('_', '-')}"
+
+
 def load_cases():
-    """The cases, in the order of GROUPS, and by name in each group."""
+    """The cases, in the order of GROUPS, and by code in each group."""
     cases = {}
     for name in sorted(os.listdir(ARCHIVES)):
         if name.endswith(".json"):
             with open(os.path.join(ARCHIVES, name)) as f:
                 cases[name[:-5]] = json.load(f)
     order = list(GROUPS)
-    return dict(sorted(cases.items(), key=lambda kv: (order.index(category(kv[1])), kv[0])))
+    return dict(sorted(cases.items(), key=lambda kv: (order.index(category(kv[1])), kv[1]["code"])))
 
 
 def main():
@@ -424,7 +435,8 @@ def main():
                     error, tree = apply(listing["members"])
                     error = listing.get("error") or error
                 except ValueError:
-                    error, tree = (err.strip() or f"status {code}")[-300:], {}
+                    error = err.strip().replace(os.path.dirname(HERE) + os.sep, "")
+                    error, tree = (error or f"status {code}")[-300:], {}
                 outside = {}
             row[name] = {"error": error, "tree": tree, "outside": outside}
         results["cases"][case] = row
@@ -546,16 +558,17 @@ def legend_svg(x, y):
     return "".join(out), y
 
 
-def svg(results, cases):
+def svg(results, cases, link=None):
     """Every implementation in columns; in rows, the outcomes of all cases first, as a bar per
-    implementation, then every case."""
+    implementation, then every case, labelled by its code and name, and with link(case) a link
+    to its page. Links work where the SVG is part of the page, not where it is an image."""
     names = columns(results)
     counts = {n: {} for n in names}
     for case, info in cases.items():
         for n in names:
             symbol = outcome(info, results["cases"][case][n])[0]
             counts[n][symbol] = counts[n].get(symbol, 0) + 1
-    left = 20 + 7 * max(len(c) for c in cases)
+    left = 20 + 7 * max(len(label(c, i)) for c, i in cases.items())
     cw, ch, gap, top = 22, 16, 2, 230
     xs, x, previous = {}, left, None
     for n in names:
@@ -591,12 +604,14 @@ def svg(results, cases):
             out.append(f'<line class="rule" x1="10" x2="{x - gap}" y1="{y + 10}" y2="{y + 10}"/>'
                        f'<text class="head" x="10" y="{y + 26}">{esc(GROUPS[previous])}</text>')
             y += 34
-        out.append(f'<text x="{left - 10}" y="{y + ch / 2 + 4}" text-anchor="end">{esc(case)}</text>')
+        text = (f'<text x="{left - 10}" y="{y + ch / 2 + 4}" text-anchor="end">'
+                f"{esc(label(case, info))}</text>")
+        out.append(f'<a href="{esc(link(case))}">{text}</a>' if link else text)
         cells, letters = case_cells(info, results["cases"][case], names)
         trees = {v: k for k, v in letters.items()}
         for n in names:
             letter = cells[n].lstrip("✅⚠️⛔❌💥\ufe0f")
-            title = f"{n}: {case}" + (f", tree {letter}: {trees[letter]}" if letter in trees else "")
+            title = f"{n}: {label(case, info)}" + (f", tree {letter}: {trees[letter]}" if letter in trees else "")
             out.append(cell_svg(xs[n], y, cw, ch, cells[n], title.replace("`", "")))
         y += ch + gap
     legend, y = legend_svg(left, y + 24)
@@ -621,8 +636,11 @@ def readme(path, results, cases):
     total = totals(results, cases, names)
     lines = [
         f"Every case of the corpus, {len(cases)} of them, extracted by every implementation, and "
-        "the outcomes of all cases at the top. [corpus/MATRIX.md](corpus/MATRIX.md) has the same as "
-        "a table, with the versions and which tree each letter is.",
+        "the outcomes of all cases at the top. Each case has a code, whose letter is its level: F "
+        "framing, N names, K kinds, S order and state, G global pax headers. [The site]"
+        f"({SITE}) has a page for each, with its archive block by block, how many scanned "
+        "tarballs have it, and what every implementation makes of it; "
+        "[corpus/MATRIX.md](corpus/MATRIX.md) has the matrix as a table.",
         "",
         "![What every implementation makes of every case of the corpus. Outcomes of all cases: "
         + "; ".join(f"{n}: {total[n]}" for n in names) + "](corpus/matrix.svg)",
@@ -668,9 +686,11 @@ def table(results, cases):
             previous = category(info)
             lines.append(f"| **{GROUPS[previous]}** |" + " |" * len(names))
         cells, letters = case_cells(info, results["cases"][case], names)
-        lines.append(f"| `{case}` | " + " | ".join(cells[n] for n in names) + " |")
+        code, name = label(case, info).split(" ", 1)
+        lines.append(f"| [{code}]({SITE}{code}.html) {name} | "
+                     + " | ".join(cells[n] for n in names) + " |")
         if letters:
-            notes.append(f"- `{case}`: " + "; ".join(f"{l}: {k}" for k, l in letters.items()))
+            notes.append(f"- {code} {name}: " + "; ".join(f"{l}: {k}" for k, l in letters.items()))
     total = totals(results, cases, names)
     lines.append("| **total** | " + " | ".join(total[n] for n in names) + " |")
     lines += ["", "## Trees", "", "What the implementations that accept a case extract, where it is"

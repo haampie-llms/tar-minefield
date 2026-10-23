@@ -1,4 +1,4 @@
-i_end_data_after: accepted by the default policy
+F02 i_end_data_after: accepted by the default policy
 
 Data after the end-of-archive marker that is not a header, which is ignored.
 

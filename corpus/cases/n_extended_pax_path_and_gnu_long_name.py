@@ -9,6 +9,7 @@ Seen in: no tarball of the scans.
 """
 
 VERDICT = "n"
+CODE = "N08"
 FEATURES = ['extended.pax-path-and-gnu-long-name']
 
 

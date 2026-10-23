@@ -6,6 +6,7 @@ Seen in: hundreds of tarballs, many from CPAN: see `number.*.leading-space` in d
 F = lambda path, contents: {"path": path, "kind": "file", "contents": contents, "executable": False}
 
 VERDICT = "y"
+CODE = "F01"
 FEATURES = []
 TREE = [F('a', b'spaces\n')]
 

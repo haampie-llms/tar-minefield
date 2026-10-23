@@ -1,4 +1,4 @@
-y_number_leading_space: accepted
+F01 y_number_leading_space: accepted
 
 Number fields padded with spaces rather than zeros, as old tars wrote them.
 

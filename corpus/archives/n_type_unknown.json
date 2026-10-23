@@ -1,4 +1,5 @@
 {
+ "code": "F16",
  "verdict": "n",
  "description": "An unknown typeflag with a size: data, or no data?",
  "features": [

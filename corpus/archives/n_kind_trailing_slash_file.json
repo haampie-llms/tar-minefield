@@ -1,4 +1,5 @@
 {
+ "code": "K01",
  "verdict": "n",
  "description": "A regular file whose name ends in a slash: a file, or a directory?",
  "features": [

@@ -8,6 +8,7 @@ Seen in: no tarball of the scans.
 """
 
 VERDICT = "n"
+CODE = "S08"
 FEATURES = ['tree.duplicate.file-dir']
 
 

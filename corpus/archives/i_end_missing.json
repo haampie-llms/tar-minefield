@@ -1,4 +1,5 @@
 {
+ "code": "F04",
  "verdict": "i",
  "description": "No end-of-archive marker: the archive ends after a complete member.",
  "features": [

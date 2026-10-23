@@ -1,4 +1,4 @@
-n_hardlink_to_symlink: rejected
+S06 n_hardlink_to_symlink: rejected
 
 A hardlink to a symlink: a link to the symlink, or to its target?
 

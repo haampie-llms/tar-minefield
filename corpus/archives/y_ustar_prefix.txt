@@ -1,4 +1,4 @@
-y_ustar_prefix: accepted
+N04 y_ustar_prefix: accepted
 
 A long name split between the ustar prefix and name fields.
 

@@ -1,4 +1,4 @@
-y_gnu_long_name: accepted
+N01 y_gnu_long_name: accepted
 
 A name over 100 bytes, in a GNU long name.
 

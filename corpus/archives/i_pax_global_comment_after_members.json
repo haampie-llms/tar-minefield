@@ -1,4 +1,5 @@
 {
+ "code": "G02",
  "verdict": "i",
  "description": "A global pax header with only a `comment`, after the first member.",
  "features": [

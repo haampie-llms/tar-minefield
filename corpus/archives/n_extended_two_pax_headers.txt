@@ -1,4 +1,4 @@
-n_extended_two_pax_headers: rejected
+N09 n_extended_two_pax_headers: rejected
 
 Two pax extended headers for one member, with different paths.
 

@@ -12,6 +12,7 @@ Seen in: llama_index_workflows 2.26.0, with a pax size on a directory.
 """
 
 VERDICT = "n"
+CODE = "F15"
 FEATURES = ["pax.size-on-dir"]
 
 

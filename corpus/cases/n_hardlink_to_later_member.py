@@ -8,6 +8,7 @@ Seen in: no tarball of the scans.
 """
 
 VERDICT = "n"
+CODE = "S05"
 FEATURES = ['hardlink.to-later-member']
 
 

@@ -1,4 +1,4 @@
-y_pax_global_comment: accepted
+G01 y_pax_global_comment: accepted
 
 The global pax header with only a `comment`, as `git archive` writes it.
 

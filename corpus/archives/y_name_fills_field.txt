@@ -1,4 +1,4 @@
-y_name_fills_field: accepted
+N02 y_name_fills_field: accepted
 
 A name of exactly 100 bytes, which fills the name field without a NUL.
 

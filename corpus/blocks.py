@@ -149,7 +149,9 @@ class Archive:
         block[148 : 148 + len(chksum)] = chksum
         fields.append(("chksum", 148, 8, meaning))
         fields.sort(key=lambda f: f[1])
-        details = [(f, o, w, bytes(block[o : o + w]), m) for f, o, w, m in fields]
+        # fields that the case writes itself: as raw bytes, or by a keyword
+        explicit = set(raw) | {k for k in NUMBERS if isinstance(values[k], bytes)}
+        details = [(f, o, w, bytes(block[o : o + w]), m, f in explicit) for f, o, w, m in fields]
         title = f"header: {TYPES.get(typeflag, 'unknown type')}" + (f", {note}" if note else "")
         self._add(bytes(block), title, details)
         return self
@@ -221,8 +223,140 @@ class Archive:
                 if isinstance(d, str):
                     out.append(f"          {d}")
                 else:
-                    field, start, width, raw, meaning = d
+                    field, start, width, raw, meaning, _ = d
                     line = f"          {field:<9}[{start:3},{start + width:3})  {show(raw)}"
                     out.append(line + (f"  {meaning}" if meaning else ""))
         out.append(f"{self.size:#08x}  end of file")
         return "\n".join(out) + "\n"
+
+
+# The block map: every block a row of its 512 bytes, at a fixed width per byte, so that fields
+# are where they are in the archive. Bytes are coloured by their class, in runs of one class:
+# (class, colour, what it is).
+BYTE_CLASSES = [
+    ("nul", "#ffffff", "NUL"),
+    ("text", "#54aeff", "printable ASCII"),
+    ("space", "#b6e3ff", "space"),
+    ("control", "#fb8f44", "control character, such as a newline"),
+    ("high", "#c297ff", "byte over 0x7f"),
+]
+FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+
+
+def byte_class(b):
+    if b == 0:
+        return "nul"
+    if b == 32:
+        return "space"
+    if b < 32 or b == 127:
+        return "control"
+    return "high" if b > 127 else "text"
+
+
+def esc(text):
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
+def runs(data, x, y, scale, h):
+    """The bytes of data as rectangles, one per run of bytes of one class."""
+    out, start = [], 0
+    for i in range(1, len(data) + 1):
+        if i == len(data) or byte_class(data[i]) != byte_class(data[start]):
+            cls = byte_class(data[start])
+            if cls != "nul":
+                out.append(f'<rect class="{cls}" x="{x + start * scale:g}" y="{y}" '
+                           f'width="{(i - start) * scale:g}" height="{h}"/>')
+            start = i
+    return "".join(out)
+
+
+def callouts(items, left, right, y):
+    """Texts in monospace at the x of what they are about, packed into as few lines as fit
+    without overlapping, from y down: (svg, the y below them)."""
+    lines, out = [], []
+    for x, text, cls in items:
+        w = 6.6 * len(text)
+        x = min(x, right - w)
+        for i, end in enumerate(lines):
+            if x >= end + 12:
+                lines[i] = x + w
+                break
+        else:
+            i = len(lines)
+            lines.append(x + w)
+        out.append(f'<text class="{cls}" x="{x:g}" y="{y + 12 + 14 * i}">{esc(text)}</text>')
+    return "".join(out), y + 14 * len(lines) + (4 if lines else 0)
+
+
+def block_map(archive, title):
+    """The archive as an SVG: a row per block, with its offset and what it is, and its bytes to
+    scale. In headers, every field is at its offset and named where the name fits, and has its
+    bytes and meaning in a hover title; names, link names and the fields that the case writes
+    itself are written out below, those in an accent. Below data, its text."""
+    scale, left, h = 1.5, 76, 18
+    right = left + BLOCK * scale
+    out, y = [], 6
+    for offset, data, what, details in archive.blocks:
+        for k in range(0, len(data), BLOCK):
+            block = data[k : k + BLOCK]
+            label = what if k == 0 else f"{what.split(':')[0]}, continued"
+            out.append(f'<text class="mono" x="4" y="{y + 11}">{offset + k:#08x}</text>'
+                       f'<text x="{left}" y="{y + 11}">{esc(label)}</text>')
+            y += 16
+            if k == 0 and details and not isinstance(details[0], str):
+                texts = []
+                for field, start, w, raw, meaning, explicit in details:
+                    x = left + start * scale
+                    hover = f"{field} [{start},{start + w}): {show(raw)}" + (
+                        f", {meaning}" if meaning else "")
+                    out.append(f'<g><title>{esc(hover)}</title><rect class="field" x="{x:g}" '
+                               f'y="{y}" width="{w * scale:g}" height="{h}"/>'
+                               f"{runs(raw, x, y, scale, h)}</g>")
+                    if w * scale >= 6 * len(field) + 4:
+                        out.append(f'<text class="small" x="{x + w * scale / 2:g}" '
+                                   f'y="{y + h + 11}">{esc(field)}</text>')
+                    if explicit or (field in ("name", "linkname") and raw.strip(b"\0")):
+                        texts.append((x, f"{field} {show(raw)}", "mono accent" if explicit
+                                      else "mono"))
+                for field, start, w, raw, meaning, explicit in details:
+                    if explicit:
+                        out.append(f'<rect class="mark" x="{left + start * scale - 1:g}" '
+                                   f'y="{y - 1}" width="{w * scale + 2:g}" height="{h + 2}"/>')
+                svg, y = callouts(texts, left, right, y + h + 14)
+                out.append(svg)
+            else:
+                lines = [d for d in details if isinstance(d, str)]
+                hover = "; ".join(lines) or "512 NUL"
+                if len(data) > BLOCK:
+                    hover = f"bytes {k} to {k + BLOCK} of {len(data)}: {hover}"
+                out.append(f'<g><title>{esc(hover)}</title><rect class="field" x="{left}" '
+                           f'y="{y}" width="{BLOCK * scale:g}" height="{h}"/>'
+                           f"{runs(block, left, y, scale, h)}</g>")
+                y += h + 4
+                if k == 0:
+                    for line in lines[1:]:
+                        if len(line) > 116:
+                            line = line[:115] + "…"
+                        out.append(f'<text class="mono" x="{left}" y="{y + 12}">{esc(line)}</text>')
+                        y += 14
+            y += 10
+    out.append(f'<text class="mono" x="4" y="{y + 11}">{archive.size:#08x}</text>'
+               f'<text x="{left}" y="{y + 11}">end of file</text>')
+    y += 34
+    x = left
+    for cls, _, meaning in BYTE_CLASSES + [("mark", None, "written by the case itself")]:
+        out.append(f'<rect class="field {cls}" x="{x}" y="{y - 10}" width="12" height="12"/>'
+                   f'<text x="{x + 16}" y="{y}">{esc(meaning)}</text>')
+        x += 16 + 6 * len(meaning) + 14
+    width, height = max(right, x) + 8, y + 8
+    colours = "".join(f".{c}{{fill:{colour}}}" for c, colour, _ in BYTE_CLASSES)
+    style = (f"<style>text{{font-family:{FONT};font-size:12px;fill:#1f2328}}"
+             ".mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;"
+             "font-size:11px;fill:#59636e}.accent{fill:#bc4c00;font-weight:600}"
+             ".small{font-size:10px;text-anchor:middle;fill:#59636e}"
+             f".field{{fill:#ffffff;stroke:#59636e;stroke-width:0.75}}{colours}"
+             ".mark{fill:none;stroke:#bc4c00;stroke-width:2}</style>"
+             '<rect width="100%" height="100%" fill="#ffffff"/>')
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{width:g}" height="{height}" '
+            f'viewBox="0 0 {width:g} {height}" role="img"><title>{esc(title)}</title>{style}'
+            f'{"".join(out)}</svg>\n')

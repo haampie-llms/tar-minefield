@@ -1,4 +1,4 @@
-n_tree_duplicate_file_dir: rejected
+S08 n_tree_duplicate_file_dir: rejected
 
 A file, then a directory of the same name.
 

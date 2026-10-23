@@ -1,4 +1,5 @@
 {
+ "code": "F03",
  "verdict": "i",
  "description": "An end-of-archive marker of one zero block, not two.",
  "features": [

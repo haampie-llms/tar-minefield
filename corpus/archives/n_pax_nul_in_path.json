@@ -1,4 +1,5 @@
 {
+ "code": "N19",
  "verdict": "n",
  "description": "A NUL inside a pax `path`.",
  "features": [

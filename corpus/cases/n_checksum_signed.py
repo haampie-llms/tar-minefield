@@ -9,6 +9,7 @@ Seen in: no tarball of the scans.
 """
 
 VERDICT = "n"
+CODE = "F06"
 FEATURES = ['checksum.signed']
 
 

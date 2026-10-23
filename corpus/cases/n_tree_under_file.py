@@ -8,6 +8,7 @@ Seen in: sendmail 8.18.2 and unclutter 8, where the file is a v7 directory named
 """
 
 VERDICT = "n"
+CODE = "S12"
 FEATURES = ['tree.under-file']
 
 
