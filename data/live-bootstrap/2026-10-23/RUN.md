@@ -13,10 +13,11 @@ $ python -I scanner/report.py --title "Scan of 171 live-bootstrap tarballs" resu
   `steps/*/sources` list 426 files, of which 171 distinct tarballs of 74 packages: the rest are
   text files, zip files and duplicates. Every tarball is scanned, not a sample. 23 are made by
   live-bootstrap's `mirror.sh` with `git archive` (mostly gnulib), and have no upstream URL.
-- untar: `464647b69df6c3bf53ab740bff40281af407e342` (0.2.0), `untar.py` version `b2cd8ae76874`.
-  This is a later untar than the Spack scans used, so `--reuse` of their results does not apply;
-  only 3 tarballs are in both anyway (bzip2 1.0.8 and patch 2.8 in 2026-10-23, musl 1.1.24 in
-  2026-10-23-b), and their features are the same.
+- untar: `2305390138cf436059b89b7b15146dc5213a3ba5`, `untar.py` version `51a9c3aa565c`, the same
+  as for the Spack scans. The first version of this dataset was scanned with untar 0.2.0
+  (`464647b69df6`, `untar.py` version `b2cd8ae76874`), by mistake; the results were the same.
+  Only 3 tarballs are also in the Spack scans (bzip2 1.0.8 and patch 2.8 in 2026-10-23,
+  musl 1.1.24 in 2026-10-23-b), and their features are the same there.
 - Platform: Ubuntu 26.04 (Linux 7.0) on x86_64, Python 3.14.4. untar extracted to tmpfs, which is
   case-sensitive, so no failures are caused by the filesystem.
 
