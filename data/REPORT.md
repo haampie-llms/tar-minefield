@@ -7,17 +7,17 @@ Rates are per dataset. Counts below are of the distinct tarballs of all datasets
 | live-bootstrap/2026-10-23 | 171 | 171 | 74 | 0 (0.00%) | 0 (0.00%) | 0 |
 | nix/2026-10-23 | 19086 | 19012 | 17977 | 100 (0.53%) | 94 (0.52%) | 0 |
 | guix/2026-10-23 | 10200 | 10199 | 9705 | 69 (0.68%) | 64 (0.66%) | 0 |
-| spack/2026-10-23-c | 19557 | 19454 | 4894 | 29 (0.15%) | 10 (0.20%) | 21 |
+| spack/2026-10-23-c | 26571 | 26430 | 5976 | 35 (0.13%) | 11 (0.18%) | 21 |
 
-- tarballs: 45104, scanned: 44929 (29098 latest versions, 15831 older)
-- not downloaded: 175, scanner crashed: 0
-- downloaded from the first of their URLs (a mirror): 34642
-- copied from other scans with `--reuse`: 3370, read from `--cache`: 32; sources by host: mirror.spack.io 18007, tarballs.nixos.org 9418, bordeaux.guix.gnu.org 7090, hackage.haskell.org 6143, files.pythonhosted.org 1506, download.kde.org 488
-- size: 591.8 GB compressed
-- origins: other 17497, pypi 9794, github-archive 6102, cran/bioconductor 5115, cpan 2544, github-release 2501, gnu 994, gitlab 382
-- producers: ustar 13471, GNU format 13180, git archive 7642, Python tarfile (pax) 7440, v7 2434, GNU tar (pax) 602, libarchive (pax) 65, none 49, posix-version-0000 45, star 1
-- compression: gzip 39023, xz 3436, bzip2 1778, none 690
-- scanner stopped early: 54
+- tarballs: 51971, scanned: 51758 (30090 latest versions, 21668 older)
+- not downloaded: 213, scanner crashed: 0
+- downloaded from the first of their URLs (a mirror): 41456
+- copied from other scans with `--reuse`: 3370, read from `--cache`: 32; sources by host: mirror.spack.io 24821, tarballs.nixos.org 9418, bordeaux.guix.gnu.org 7090, hackage.haskell.org 6143, files.pythonhosted.org 1507, download.kde.org 488
+- size: 808.1 GB compressed
+- origins: other 18734, pypi 11394, github-archive 8442, cran/bioconductor 5897, github-release 3037, cpan 2601, gnu 1111, gitlab 542
+- producers: GNU format 15087, ustar 14050, git archive 10410, Python tarfile (pax) 8503, v7 2824, GNU tar (pax) 712, libarchive (pax) 70, posix-version-0000 51, none 49, star 2
+- compression: gzip 45247, xz 3745, bzip2 2055, none 709
+- scanner stopped early: 55
   - ocrad@0.29: invalid checksum at offset 0
   - git-warp-time@1.0.0: invalid checksum at offset 0
   - wget@1.25.0: invalid checksum at offset 0
@@ -72,6 +72,7 @@ Rates are per dataset. Counts below are of the distinct tarballs of all datasets
   - fcitx5-qt@5.1.14: invalid checksum at offset 0
   - commons-logging@1.1.1: invalid checksum at offset 3452928
   - py-multiprocess@0.70.12.2: invalid checksum at offset 0
+  - aida@3.2.1: invalid checksum at offset 2802176
 - untar skipped mozjs@115.28.0: no disk space: OSError: [Errno 122] Disk quota exceeded
 - untar skipped gromacs@2024.5: no disk space: OSError: [Errno 122] Disk quota exceeded
 - untar skipped root@6.34.04: no disk space: OSError: [Errno 122] Disk quota exceeded
@@ -406,22 +407,122 @@ Rates are per dataset. Counts below are of the distinct tarballs of all datasets
 - untar skipped gdal@3.9.1: no disk space: OSError: [Errno 122] Disk quota exceeded
 - untar skipped mariadb@10.8.8: no disk space: OSError: [Errno 122] Disk quota exceeded
 - untar skipped nvhpc@22.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped nvhpc@21.2: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped nvhpc@23.3: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped rocm-gdb@7.1.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped py-workload-automation@2.6.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped mono@5.4.1.7: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped hadoop@2.10.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped embree@3.12.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.3.6: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped freesurfer@7.1.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped elfutils@0.189: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped rust-bootstrap@1.76.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped heyoka@2.0.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped rust-bootstrap@1.73.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped qgis@3.40.6: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped py-nbclassic@1.0.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped rust-bootstrap@1.88.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped cudnn@9.11.0.98-12: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.1.67: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped nvhpc@24.9: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped llvm@22.1.8: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.4.10: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped comgr@7.1.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped py-gevent@21.8.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped freesurfer@7.3.2: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped nvhpc@24.7: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped heyoka@0.20.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped gmsh@4.12.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped llvm-amdgpu@6.0.2: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped root@6.34.08: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.2.14: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.6.34: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped votca@2022: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.2.3: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped q-e-sirius@1.0.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped llvm@21.1.7: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped qt@5.15.11: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped totalview@2026.1-x86-64: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped nvhpc@23.11: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped nvhpc@22.3: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.6.16: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped qgis@3.22.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped eospac@6.5.12: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped ompss-2@2021.11.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped nvhpc@21.11: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped qt@5.15.9: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped nvhpc@21.3: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.10.2: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped qgis@3.4.15: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped py-globus-sdk@3.44.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped btllib@1.7.6: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped heyoka@5.0.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.3.2: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped cudnn@9.8.0.87-11: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.1.14: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.1.75: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped tblite@0.4.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped gcc@5.2.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped cudnn@9.17.0.29-13: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.6.2: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped cudnn@8.7.0.84-11.8: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped petsc@3.21.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.5.6: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.2.4: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped q-e-sirius@1.0.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.1.99: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.7.7: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.0.15: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped mpich@3.3.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped mariadb-c-client@3.3.2: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped bml@2.1.2: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped rocmlir@6.0.2: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped conduit@0.8.3: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped root@6.30.00: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped root@6.28.10: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.10: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped comgr@7.14.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped composable-kernel@7.2.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped rocblas@5.7.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.8.5: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped flume@1.11.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped boost@1.57.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped openssl@3.1.8: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped opencascade@7.5.3p4: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped libgit2@0.28.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped comgr@7.2.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped nvhpc@22.11: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped eospac@6.5.10: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped rocblas@7.1.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.1.90: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped mozjs@140.7.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.1.69: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped linux-external-modules@6.1.37: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped cudnn@8.0.4.30-11.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped llvm@22.1.6: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped nvhpc@21.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped abinit@9.6.1: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped gcc@6.3.0: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped hadoop@3.3.4: no disk space: OSError: [Errno 122] Disk quota exceeded
+- untar skipped nvhpc@25.5: no disk space: OSError: [Errno 122] Disk quota exceeded
 
 Failed only because of the case-insensitive filesystem of the scanning machine, not counted as rejections: 21, 6 latest (cmaq@5.3; linux-external-modules@6.0.7; mpich@4.2.0; pagit@1.01; py-healpy@1.13.0; rdma-core@42.5).
 
 ## untar
 
-Rejects 180 of 44929 (0.4%); 152 of 29098 latest versions (0.5%).
+Rejects 186 of 51758 (0.4%); 153 of 30090 latest versions (0.5%).
 
 | reason | tarballs | latest | origins | producers | examples |
 |---|---|---|---|---|---|
-| FileExistsError: [Errno N] File exists: '…' | 75 | 64 | other 68, pypi 4, github-release 3 | ustar 55, git archive 7, GNU format 6 | snap-loader-static@1.0.0.1; htn@0.1.0.0; shelly-extra@0.3.0.2 |
+| FileExistsError: [Errno N] File exists: '…' | 77 | 64 | other 70, pypi 4, github-release 3 | ustar 55, GNU format 8, git archive 7 | snap-loader-static@1.0.0.1; htn@0.1.0.0; shelly-extra@0.3.0.2 |
 | Archive contains an invalid number b'…' | 49 | 48 | other 23, gnu 16, github-release 9 | none 49 | ocrad@0.29; git-warp-time@1.0.0; wget@1.25.0 |
 | Archive contains data after the end-of-archive marker | 29 | 22 | other 26, cpan 1, github-release 1 | posix-version-0000 17, v7 9, ustar 2 | bsf-bin@2.4.0; psutils-p17@; Logfile-Rotate@1.04 |
-| Archive is truncated | 20 | 13 | other 20 | ustar 14, GNU format 4, v7 2 | SDL2_ttf@2.24.0; SDL2_image@2.8.12; eng-rus@ |
-| Archive contains a lone zero block | 5 | 3 | other 5 | posix-version-0000 5 | jakarta-oro@2.0.8; PullParser@2.1.10; commons-cli@1.2-src |
+| Archive is truncated | 22 | 13 | other 22 | ustar 16, GNU format 4, v7 2 | SDL2_ttf@2.24.0; SDL2_image@2.8.12; eng-rus@ |
+| Archive contains a lone zero block | 6 | 4 | other 6 | posix-version-0000 6 | jakarta-oro@2.0.8; PullParser@2.1.10; commons-cli@1.2-src |
 | Archive contains unsafe path … | 1 | 1 | other 1 | git archive 1 | dtv-scan-tables@2024-03-24-7098bdd27548 |
 | Archive contains forktty-N.N/pipe of unsupported type b'…' | 1 | 1 | other 1 | GNU format 1 | forktty@1.3 |
+| Archive contains a name prefix in a header that is not ustar | 1 | 0 | other 1 | v7 1 | gtkmm@2.4.11 |
 
 ## Features
 
@@ -429,58 +530,58 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 
 | feature | tarballs | latest | origins | producers | years | untar rejects | examples |
 |---|---|---|---|---|---|---|---|
-| `name.fills-field` | 4226 | 1402 | github-archive 1331, other 1285, pypi 944 | git archive 1817, GNU format 1020, Python tarfile (pax) 836 | 1970–2026 | 22 | texinfo@7.2 `texinfo-7.2/tp/t/results/init_files_tests/documentation_exam`; linux@4.14.336 `linux-4.14.336/Documentation/devicetree/bindings/interrupt-c` |
-| `ustar.prefix` | 3452 | 1090 | github-archive 1806, other 695, cpan 433 | git archive 2394, ustar 1002, GNU tar (pax) 34 | 1981–2026 | 21 | texinfo@7.2 `split_test_before_first_node.info`; linux@4.14.336 `samsung,exynos4210-combiner.txt` |
-| `type.nul` | 2484 | 1540 | other 1648, gnu 377, github-release 369 | v7 2413, GNU format 71 | 1970–2026 | 11 | make@3.82 `make-3.82/vmsfunctions.c`; gzip@1.2.4 `gzip-1.2.4/README` |
-| `v7.bytes-after-linkname` | 1938 | 1135 | other 1328, gnu 302, github-release 292 | v7 1938 | 1970–2026 | 5 | make@3.82 `make-3.82/`; m4@1.4.7 `m4-1.4.7/` |
-| `name.dir-without-trailing-slash` | 1052 | 920 | cpan 553, github-release 301, other 179 | ustar 953, GNU format 85, GNU tar (pax) 14 | 1970–2026 | 0 | oyacc@6.6 `oyacc-6.6`; perl@5.15.7 `perl-5.15.7` |
-| `tree.dir-after-contents` | 835 | 774 | other 779, cpan 28, pypi 19 | ustar 790, GNU format 24, posix-version-0000 11 | 1970–2026 | 10 | streaming-utils@0.2.6.0 `streaming-utils-0.2.6.0/Streaming/`; distributed-closure@0.5.0.0 `distributed-closure-0.5.0.0/src/Data/Profunctor/` |
-| `number.size.leading-space` | 753 | 703 | cpan 633, other 100, gnu 13 | ustar 628, GNU format 47, posix-version-0000 45 | 1992–2026 | 34 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
-| `name.non-ascii` | 437 | 119 | other 180, github-archive 123, pypi 89 | git archive 164, GNU format 129, Python tarfile (pax) 73 | 2004–2026 | 1 | kbd@1.15 `kbd-1.15/doc/utf/♪♬`; gcc@15.2.0 `gcc-15.2.0/gcc/testsuite/go.test/test/fixedbugs/issue27836.d` |
-| `platform.case-collision` | 422 | 104 | other 304, github-release 53, github-archive 30 | git archive 235, GNU format 80, v7 53 | 1980–2026 | 22 | perl@5.003 `perl5-perl-5.003/configure`; perl@5.004_05 `perl5.004_05/Configure` |
-| `platform.windows-reserved-name` | 269 | 34 | other 204, github-release 38, github-archive 23 | git archive 174, GNU format 40, GNU tar (pax) 32 | 1994–2026 | 3 | perl@5.000 `perl5-perl-5.000/hints/aux.sh`; perl@5.003 `perl5-perl-5.003/hints/aux.sh` |
-| `number.gid.no-digits` | 185 | 104 | pypi 140, other 34, github-release 10 | GNU format 135, ustar 38, posix-version-0000 11 | 1970–2026 | 0 | hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt`; ipv8_rust_tunnels@0.1.53 `ipv8_rust_tunnels-0.1.53/PKG-INFO` |
-| `number.uid.no-digits` | 185 | 104 | pypi 140, other 34, github-release 10 | GNU format 135, ustar 38, posix-version-0000 11 | 1970–2026 | 0 | hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt`; ipv8_rust_tunnels@0.1.53 `ipv8_rust_tunnels-0.1.53/PKG-INFO` |
-| `name.leading-dot-slash` | 143 | 69 | other 106, github-release 19, gnu 9 | GNU format 119, ustar 20, GNU tar (pax) 2 | 1970–2026 | 1 | curie@v1.0 `./LICENSE`; hdf5@1.10.11 `./hdf5-1.10.11/` |
-| `number.gid.leading-space` | 127 | 93 | other 99, gnu 12, cpan 11 | GNU format 46, posix-version-0000 44, v7 33 | 1992–2026 | 34 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
-| `number.uid.leading-space` | 127 | 93 | other 99, gnu 12, cpan 11 | GNU format 46, posix-version-0000 44, v7 33 | 1992–2026 | 34 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
-| `number.mode.leading-space` | 119 | 85 | other 91, gnu 12, cpan 11 | posix-version-0000 43, GNU format 41, v7 32 | 1992–2026 | 30 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
-| `platform.windows-invalid-character` | 111 | 57 | other 63, github-archive 34, github-release 5 | git archive 56, GNU format 31, ustar 11 | 2003–2026 | 3 | xitomatl_0.0.0-akku.208.62a8243_repack@ `fmt/let-optionals*.larceny.sls`; courier-unicode@2.6.0 `courier-unicode-2.6.0/man/unicode::ucs_4.3` |
-| `number.uid.base256` | 98 | 67 | pypi 43, other 26, cpan 14 | GNU format 85, libarchive (pax) 13 | 2008–2026 | 0 | leo@2_v1.7.0 `leo2/`; Bytes-Random-Secure-Tiny@1.011 `Bytes-Random-Secure-Tiny-1.011/` |
-| `number.gid.base256` | 94 | 63 | pypi 43, other 22, github-release 17 | GNU format 81, libarchive (pax) 13 | 2008–2026 | 0 | Bytes-Random-Secure-Tiny@1.011 `Bytes-Random-Secure-Tiny-1.011/`; pyannotate@1.2.0 `pyannotate-1.2.0/` |
-| `tree.duplicate.dir-dir` | 91 | 24 | github-release 49, other 39, gnu 3 | git archive 55, ustar 31, GNU format 4 | 2018–2026 | 3 | besu@24.1.2 `besu-24.1.2/./`; lightweight-testing@0.1 `lightweight-testing-0.1/./` |
-| `tree.duplicate.file-file` | 75 | 64 | other 68, pypi 4, github-release 3 | ustar 55, git archive 7, GNU format 6 | 1970–2026 | 75 | snap-loader-static@1.0.0.1 `snap-loader-static-1.0.0.1/LICENSE`; htn@0.1.0.0 `htn-0.1.0.0/src/Algorithms/Htn.hs` |
-| `number.mtime.leading-space` | 62 | 49 | other 40, gnu 11, cpan 10 | GNU format 39, v7 17, ustar 3 | 1992–2013 | 12 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
-| `symlink.absolute` | 51 | 35 | other 28, github-archive 16, github-release 6 | git archive 21, GNU format 20, GNU tar (pax) 4 | 2006–2026 | 1 | live.2026.01.12@ `live/testProgs/whiteroom.mp3`; imapsync@2.314 `imapsync-2.314/X/fullchain.pem` |
-| `pax-global.after-members` | 48 | 14 | github-release 32, other 16 | git archive 48 | 2019–2026 | 1 | inform@6.44-r3 `pax_global_header`; rpm@4.20.1 `pax_global_header` |
-| `magic.posix-with-odd-version` | 45 | 29 | other 41, github-release 4 | posix-version-0000 45 | 2003–2026 | 23 | hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt`; bsf-bin@2.4.0 `bsf-2.4.0/` |
-| `name.dot` | 37 | 21 | other 17, github-release 12, gnu 7 | GNU format 36, v7 1 | 1970–2026 | 1 | partclone-utils@0.4.3 `./`; cmucl@21d-x86-linux `./` |
-| `pax.nul-in-value.SCHILY.xattr.*` | 25 | 23 | other 11, cpan 10, github-release 4 | libarchive (pax) 25 | 2019–2026 | 0 | Crypt-X509@0.55 `Crypt-X509-0.55/PaxHeader/README`; djview@4.12.3 `PaxHeader/djview-4.12.3` |
-| `platform.windows-trailing-dot-or-space` | 25 | 15 | other 17, pypi 4, github-archive 3 | git archive 8, v7 6, Python tarfile (pax) 5 | 1994–2026 | 0 | perl@5.000 `perl5-perl-5.000/vms/makefile.`; Python@2.3.7 `Python-2.3.7/Mac/IDE scripts/Search Python Documentation...` |
+| `name.fills-field` | 5498 | 1504 | github-archive 1889, other 1565, pypi 1163 | git archive 2570, GNU format 1264, Python tarfile (pax) 1013 | 1970–2026 | 22 | texinfo@7.2 `texinfo-7.2/tp/t/results/init_files_tests/documentation_exam`; linux@4.14.336 `linux-4.14.336/Documentation/devicetree/bindings/interrupt-c` |
+| `ustar.prefix` | 4549 | 1190 | github-archive 2536, other 866, github-release 455 | git archive 3351, ustar 1128, GNU tar (pax) 46 | 1980–2026 | 21 | texinfo@7.2 `split_test_before_first_node.info`; linux@4.14.336 `samsung,exynos4210-combiner.txt` |
+| `type.nul` | 2888 | 1596 | other 1892, github-release 448, gnu 439 | v7 2803, GNU format 85 | 1970–2026 | 12 | make@3.82 `make-3.82/vmsfunctions.c`; gzip@1.2.4 `gzip-1.2.4/README` |
+| `v7.bytes-after-linkname` | 2290 | 1177 | other 1551, gnu 362, github-release 357 | v7 2290 | 1970–2026 | 6 | make@3.82 `make-3.82/`; m4@1.4.7 `m4-1.4.7/` |
+| `name.dir-without-trailing-slash` | 1084 | 933 | cpan 568, github-release 303, other 191 | ustar 973, GNU format 96, GNU tar (pax) 15 | 1970–2026 | 0 | oyacc@6.6 `oyacc-6.6`; perl@5.15.7 `perl-5.15.7` |
+| `tree.dir-after-contents` | 845 | 777 | other 784, cpan 30, pypi 22 | ustar 795, GNU format 27, posix-version-0000 12 | 1970–2026 | 10 | streaming-utils@0.2.6.0 `streaming-utils-0.2.6.0/Streaming/`; distributed-closure@0.5.0.0 `distributed-closure-0.5.0.0/src/Data/Profunctor/` |
+| `number.size.leading-space` | 777 | 715 | cpan 650, other 104, gnu 13 | ustar 645, posix-version-0000 51, GNU format 48 | 1992–2026 | 35 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
+| `platform.case-collision` | 565 | 110 | other 410, github-release 70, github-archive 43 | git archive 330, GNU format 103, v7 67 | 1980–2026 | 22 | perl@5.003 `perl5-perl-5.003/configure`; perl@5.004_05 `perl5.004_05/Configure` |
+| `name.non-ascii` | 551 | 131 | other 213, github-archive 170, pypi 115 | git archive 222, GNU format 145, Python tarfile (pax) 93 | 2004–2026 | 1 | kbd@1.15 `kbd-1.15/doc/utf/♪♬`; gcc@15.2.0 `gcc-15.2.0/gcc/testsuite/go.test/test/fixedbugs/issue27836.d` |
+| `platform.windows-reserved-name` | 363 | 36 | other 274, github-release 55, github-archive 30 | git archive 242, GNU tar (pax) 49, GNU format 48 | 1994–2026 | 3 | perl@5.000 `perl5-perl-5.000/hints/aux.sh`; perl@5.003 `perl5-perl-5.003/hints/aux.sh` |
+| `number.gid.no-digits` | 222 | 109 | pypi 167, other 41, github-release 13 | GNU format 161, ustar 45, posix-version-0000 15 | 1970–2026 | 0 | hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt`; ipv8_rust_tunnels@0.1.53 `ipv8_rust_tunnels-0.1.53/PKG-INFO` |
+| `number.uid.no-digits` | 222 | 109 | pypi 167, other 41, github-release 13 | GNU format 161, ustar 45, posix-version-0000 15 | 1970–2026 | 0 | hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt`; ipv8_rust_tunnels@0.1.53 `ipv8_rust_tunnels-0.1.53/PKG-INFO` |
+| `name.leading-dot-slash` | 170 | 76 | other 127, github-release 22, gnu 9 | GNU format 140, ustar 26, GNU tar (pax) 2 | 1970–2026 | 1 | curie@v1.0 `./LICENSE`; hdf5@1.10.11 `./hdf5-1.10.11/` |
+| `platform.windows-invalid-character` | 144 | 61 | other 82, github-archive 47, github-release 6 | git archive 78, GNU format 38, ustar 15 | 2003–2026 | 3 | xitomatl_0.0.0-akku.208.62a8243_repack@ `fmt/let-optionals*.larceny.sls`; courier-unicode@2.6.0 `courier-unicode-2.6.0/man/unicode::ucs_4.3` |
+| `number.gid.leading-space` | 134 | 94 | other 103, gnu 12, cpan 11 | posix-version-0000 50, GNU format 47, v7 33 | 1992–2026 | 35 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
+| `number.uid.leading-space` | 134 | 94 | other 103, gnu 12, cpan 11 | posix-version-0000 50, GNU format 47, v7 33 | 1992–2026 | 35 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
+| `number.mode.leading-space` | 126 | 86 | other 95, gnu 12, cpan 11 | posix-version-0000 49, GNU format 42, v7 32 | 1992–2026 | 31 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
+| `number.uid.base256` | 119 | 73 | pypi 53, other 31, github-release 20 | GNU format 105, libarchive (pax) 14 | 2008–2026 | 0 | leo@2_v1.7.0 `leo2/`; Bytes-Random-Secure-Tiny@1.011 `Bytes-Random-Secure-Tiny-1.011/` |
+| `tree.duplicate.dir-dir` | 113 | 26 | github-release 59, other 51, gnu 3 | git archive 69, ustar 37, GNU format 5 | 2018–2026 | 3 | besu@24.1.2 `besu-24.1.2/./`; lightweight-testing@0.1 `lightweight-testing-0.1/./` |
+| `number.gid.base256` | 112 | 68 | pypi 50, other 27, github-release 23 | GNU format 98, libarchive (pax) 14 | 2008–2026 | 0 | Bytes-Random-Secure-Tiny@1.011 `Bytes-Random-Secure-Tiny-1.011/`; pyannotate@1.2.0 `pyannotate-1.2.0/` |
+| `tree.duplicate.file-file` | 77 | 64 | other 70, pypi 4, github-release 3 | ustar 55, GNU format 8, git archive 7 | 1970–2026 | 77 | snap-loader-static@1.0.0.1 `snap-loader-static-1.0.0.1/LICENSE`; htn@0.1.0.0 `htn-0.1.0.0/src/Algorithms/Htn.hs` |
+| `symlink.absolute` | 65 | 35 | other 31, github-archive 24, github-release 9 | git archive 29, GNU format 25, GNU tar (pax) 5 | 2006–2026 | 1 | live.2026.01.12@ `live/testProgs/whiteroom.mp3`; imapsync@2.314 `imapsync-2.314/X/fullchain.pem` |
+| `number.mtime.leading-space` | 64 | 50 | other 42, gnu 11, cpan 10 | GNU format 40, v7 17, posix-version-0000 4 | 1992–2013 | 13 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
+| `pax-global.after-members` | 55 | 15 | github-release 38, other 17 | git archive 55 | 2018–2026 | 1 | inform@6.44-r3 `pax_global_header`; rpm@4.20.1 `pax_global_header` |
+| `magic.posix-with-odd-version` | 51 | 30 | other 44, github-release 7 | posix-version-0000 51 | 2003–2026 | 24 | hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt`; bsf-bin@2.4.0 `bsf-2.4.0/` |
+| `name.dot` | 40 | 24 | other 20, github-release 12, gnu 7 | GNU format 39, v7 1 | 1970–2026 | 1 | partclone-utils@0.4.3 `./`; cmucl@21d-x86-linux `./` |
+| `pax.nul-in-value.SCHILY.xattr.*` | 28 | 24 | other 12, cpan 10, github-release 6 | libarchive (pax) 27, git archive 1 | 2018–2026 | 0 | Crypt-X509@0.55 `Crypt-X509-0.55/PaxHeader/README`; djview@4.12.3 `PaxHeader/djview-4.12.3` |
+| `platform.windows-trailing-dot-or-space` | 26 | 15 | other 18, pypi 4, github-archive 3 | git archive 8, v7 7, Python tarfile (pax) 5 | 1994–2026 | 0 | perl@5.000 `perl5-perl-5.000/vms/makefile.`; Python@2.3.7 `Python-2.3.7/Mac/IDE scripts/Search Python Documentation...` |
 | `end.data-after` | 24 | 20 | other 21, cpan 1, github-release 1 | posix-version-0000 15, v7 6, ustar 2 | 1995–2026 | 24 | bsf-bin@2.4.0 `bsf-2.4.0/samples/xsl/table-data.xml`; psutils-p17@ `psutils/showchar.sh` |
 | `linkname.no-nul` | 23 | 8 | other 19, github-release 4 | GNU format 18, Python tarfile (pax) 3, git archive 2 | 2023–2026 | 0 | ghc@9.12.4-src `ghc-9.12.4/libraries/Cabal/cabal-testsuite/PackageTests/Requ`; nextcloud@34.0.5 `nextcloud/apps/app_api/js/app_api-vendors-node_modules_nextc` |
-| `end.missing` | 17 | 8 | other 17 | ustar 16, v7 1 | 1992–2026 | 15 | SDL2_ttf@2.24.0 `SDL2_ttf-2.24.0/external/harfbuzz/README`; SDL2_image@2.8.12 `SDL2_image-2.8.12/Xcode/macOS/SDL2.framework/Resources` |
-| `hardlink.to-itself` | 15 | 3 | other 15 | GNU format 14, GNU tar (pax) 1 | 2012–2022 | 0 | atari++_1.85@ `atari++/winmain.cpp`; xscreensaver@6.12 `xscreensaver-6.12/driver/wayland-dpy.c` |
-| `pax.LIBARCHIVE.creationtime` | 15 | 8 | other 6, github-release 6, cpan 2 | libarchive (pax) 14, GNU tar (pax) 1 | 2015–2025 | 0 | leo@2_v1.7.0 `leo2/`; Proc-Wait3@0.05 `Proc-Wait3-0.05/Changes` |
-| `tree.duplicate.file-hardlink` | 15 | 3 | other 15 | GNU format 14, GNU tar (pax) 1 | 2012–2022 | 0 | atari++_1.85@ `atari++/winmain.cpp`; xscreensaver@6.12 `xscreensaver-6.12/driver/wayland-dpy.c` |
-| `name.not-nfc` | 11 | 3 | github-archive 6, pypi 3, other 2 | git archive 6, GNU format 4, Python tarfile (pax) 1 | 2016–2026 | 0 | discount@2.2.7d `discount-2.2.7d/tests/muñoz.t`; discount@3.0.2.0 `discount-3.0.2.0/tests/muñoz.t` |
+| `end.missing` | 19 | 8 | other 19 | ustar 18, v7 1 | 1992–2026 | 17 | SDL2_ttf@2.24.0 `SDL2_ttf-2.24.0/external/harfbuzz/README`; SDL2_image@2.8.12 `SDL2_image-2.8.12/Xcode/macOS/SDL2.framework/Resources` |
+| `hardlink.to-itself` | 19 | 3 | other 19 | GNU format 18, GNU tar (pax) 1 | 2012–2022 | 0 | atari++_1.85@ `atari++/winmain.cpp`; xscreensaver@6.12 `xscreensaver-6.12/driver/wayland-dpy.c` |
+| `tree.duplicate.file-hardlink` | 19 | 3 | other 19 | GNU format 18, GNU tar (pax) 1 | 2012–2022 | 0 | atari++_1.85@ `atari++/winmain.cpp`; xscreensaver@6.12 `xscreensaver-6.12/driver/wayland-dpy.c` |
+| `pax.LIBARCHIVE.creationtime` | 17 | 9 | other 7, github-release 7, cpan 2 | libarchive (pax) 16, GNU tar (pax) 1 | 2014–2025 | 0 | leo@2_v1.7.0 `leo2/`; Proc-Wait3@0.05 `Proc-Wait3-0.05/Changes` |
+| `name.not-nfc` | 15 | 3 | github-archive 9, pypi 4, other 2 | git archive 9, GNU format 5, Python tarfile (pax) 1 | 2016–2026 | 0 | discount@2.2.7d `discount-2.2.7d/tests/muñoz.t`; discount@3.0.2.0 `discount-3.0.2.0/tests/muñoz.t` |
 | `number.uid.no-terminator` | 11 | 11 | cpan 11 | ustar 11 | 2014–2022 | 0 | App-rainbarf@1.4 `App-rainbarf-1.4`; JSON-WebToken@0.10 `Build.PL` |
 | `number.gid.no-terminator` | 10 | 10 | cpan 10 | ustar 10 | 2014–2022 | 0 | App-rainbarf@1.4 `App-rainbarf-1.4`; JSON-WebToken@0.10 `Build.PL` |
+| `pax.newline-in-value.SCHILY.xattr.*` | 10 | 10 | cpan 5, other 4, github-release 1 | libarchive (pax) 10 | 2018–2025 | 0 | Minion@10.31 `Minion-10.31/lib/Mojolicious/Plugin/Minion/resources/public/`; Term-ReadLine-Gnu@1.47 `Term-ReadLine-Gnu-1.47/t/comptest/PaxHeader/README` |
 | `name.dot-component` | 9 | 6 | other 9 | ustar 4, GNU format 4, GNU tar (pax) 1 | 2012–2026 | 0 | besu@24.1.2 `besu-24.1.2/./`; lightweight-testing@0.1 `lightweight-testing-0.1/./` |
-| `pax.newline-in-value.SCHILY.xattr.*` | 9 | 9 | cpan 5, other 3, github-release 1 | libarchive (pax) 9 | 2020–2025 | 0 | Minion@10.31 `Minion-10.31/lib/Mojolicious/Plugin/Minion/resources/public/`; Term-ReadLine-Gnu@1.47 `Term-ReadLine-Gnu-1.47/t/comptest/PaxHeader/README` |
+| `platform.normalization-collision` | 9 | 1 | github-archive 9 | git archive 9 | 2016–2020 | 0 | plexus-archiver@4.2.2 `plexus-archiver-plexus-archiver-4.2.2/src/test/resources/utf`; lmod@7.8.15 `Lmod-7.8.15/contrib/Presentations/Keynote_Lmod_SC14-Calcul_Q` |
+| `end.zero-block-before-member` | 6 | 4 | other 6 | posix-version-0000 6 | 2003–2009 | 6 | jakarta-oro@2.0.8 `jakarta-oro-2.0.8/jakarta-oro-2.0.8.jar`; PullParser@2.1.10 `PullParser2.1.10/src/java/x2/README.txt` |
 | `name.control-character` | 6 | 1 | github-archive 4, other 1, github-release 1 | git archive 5, ustar 1 | 2009–2025 | 0 | cdrtools@3.02a09 `cdrtools-3.02/libfind/ifpdi`; apktool@2.6.1 `Apktool-2.6.1/brut.apktool/apktool-lib/src/test/resources/aa` |
 | `name.trailing-slash-on-file` | 6 | 5 | other 5, gnu 1 | v7 6 | 1994–2023 | 4 | sendmail.8.18.2@ `sendmail-8.18.2/`; tcp_wrappers_7.6@ `tcp_wrappers_7.6/` |
-| `platform.normalization-collision` | 6 | 1 | github-archive 6 | git archive 6 | 2016–2020 | 0 | plexus-archiver@4.2.2 `plexus-archiver-plexus-archiver-4.2.2/src/test/resources/utf`; lmod@7.8.15 `Lmod-7.8.15/contrib/Presentations/Keynote_Lmod_SC14-Calcul_Q` |
 | `end.archive-after` | 5 | 2 | other 5 | v7 3, posix-version-0000 2 | 2005–2016 | 5 | commons-jexl@2.1.1-src `commons-jexl-2.1.1-src/jexl2-compat/src/main/java/org/apache`; glibmm@2.16.0 `glibmm-2.16.0/` |
 | `end.lone-zero-block` | 5 | 5 | other 5 | GNU format 4, v7 1 | 1998–2014 | 5 | eng-rus@ `eng-rus.index`; srecord@1.64 `srecord-1.64/debian/srecord.install` |
-| `end.zero-block-before-member` | 5 | 3 | other 5 | posix-version-0000 5 | 2003–2009 | 5 | jakarta-oro@2.0.8 `jakarta-oro-2.0.8/jakarta-oro-2.0.8.jar`; PullParser@2.1.10 `PullParser2.1.10/src/java/x2/README.txt` |
 | `tree.under-file` | 5 | 4 | other 4, gnu 1 | v7 5 | 1994–2023 | 3 | sendmail.8.18.2@ `sendmail-8.18.2/Makefile`; tcp_wrappers_7.6@ `tcp_wrappers_7.6/README` |
 | `name.backslash` | 3 | 3 | gnu 1, other 1, github-archive 1 | ustar 1, Python tarfile (pax) 1, git archive 1 | 2010–2026 | 0 | texi2html@5.0 `texi2html-5.0/test/info_coverage/f--ile""\.png`; gstreamer-docs@1.28.1 `gstreamer-docs-1.28.1/html/assets/js/search/hotdoc_fragments` |
+| `format.star` | 2 | 1 | gnu 1, other 1 | star 2 | 2010–2020 | 0 | ncurses@5.9 `ncurses-5.9/`; berkeley-db@18.1.40 `db-18.1.40/` |
 | `name.double-slash` | 2 | 0 | other 1, github-release 1 | GNU format 2 | 2019–2021 | 0 | ghc@9.0.2-x86_64-deb10-linux `ghc-9.0.2/libraries/ghc-bignum/dist-install/build/include//H`; shapemapper@2.1.5 `shapemapper-2.1.5-source-only//shapemapper` |
 | `name.not-utf8` | 2 | 2 | gnu 2 | GNU format 2 | 2004–2004 | 0 | aspell-is@0.51.1-0 `aspell-is-0.51.1-0/\xedslenska.alias`; aspell-nb@0.50.1-0 `aspell-nb-0.50.1-0/bokm\xe5l.alias` |
 | `number.mtime.no-digits` | 2 | 2 | github-release 2 | ustar 2 | 2025–2026 | 0 | camunda-modeler@5.52.0-linux-x64 `camunda-modeler-5.52.0-linux-x64/`; stretchly@1.19.0 `Stretchly-1.19.0/` |
 | `pax.LIBARCHIVE.symlinktype` | 2 | 2 | other 2 | libarchive (pax) 2 | 2023–2025 | 0 | crow-translate@4.0.2 `crow-translate/src/3rdparty/espeak-ng/src/include/espeak/spe`; win-file@5.45 `file/src/file-FILE5_45/src/.libs/libmagic.la` |
-| `format.star` | 1 | 0 | gnu 1 | star 1 | 2010–2010 | 0 | ncurses@5.9 `ncurses-5.9/` |
 | `hardlink.to-symlink` | 1 | 1 | other 1 | GNU format 1 | 2020–2020 | 0 | octa@8.4 `OCTA84/Python37/bin/python` |
 | `linkname.on-dir` | 1 | 1 | other 1 | ustar 1 | 2020–2020 | 0 | bgen@1.1.7 `BGEN-6ac2d582f9/doc/wiki` |
 | `linkname.on-file` | 1 | 1 | other 1 | ustar 1 | 2020–2020 | 0 | bgen@1.1.7 `BGEN-6ac2d582f9/doc/html/spec/v1.1.html` |
@@ -492,15 +593,15 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 
 ## Fingerprints
 
-- magic (tarballs using each): posix 29220, gnu 13252, v7 2434, posix-version-0000 45, star 1
-- size (tarballs using each): dn 42413, ds 1698, sdn 632, sds 121, dsn 20
-- mode (tarballs using each): dn 43036, dsn 1673, ds 148, sdsn 111, sdn 8
-- checksum (tarballs using each): dns 34970, dn 8869, sdns 728, d 360, x 35, dsn 27, sdsn 16, ds 12, sdn 6, xdx 6, xd 3, sds 3
-- pax_header_name (tarballs using each): ././@PaxHeader 7439, */PaxHeaders/* 333, ./PaxHeaders/* 271, */PaxHeaders.N/* 241, H.paxheader 210, ./PaxHeaders.N/* 196, */PaxHeader/* 62, * 35, PaxHeader/* 35, ./PaxHeaders.X/* 28, */PaxHeaders 25, */PaxHea 25
-- extended_sequence (tarballs using each): - 37527, x 8323, L 1410, KL 11, K 9
-- gnu_long_name (tarballs using each): ././@LongLink 1410
-- end (tarballs using each): padded-to-10240 34351, unpadded 10502
-- zero_blocks_after_end (tarballs using each): 0 12705, 11 1764, 6 1741, 9 1735, 17 1726, 16 1716, 10 1712, 14 1700, 12 1697, 7 1696, 8 1691, 4 1683
-- pax_keys (tarballs using each): mtime 7847, path 1863, atime 475, ctime 462, uid 82, gid 64, LIBARCHIVE.xattr.* 32, SCHILY.xattr.* 31, LIBARCHIVE.creationtime 14, SCHILY.dev 13, SCHILY.ino 13, SCHILY.nlink 13
-- pax_global_keys (tarballs using each): comment 7642
+- magic (tarballs using each): posix 33746, gnu 15172, v7 2824, posix-version-0000 51, star 2
+- size (tarballs using each): dn 48989, ds 1922, sdn 649, sds 128, dsn 26
+- mode (tarballs using each): dn 49629, dsn 1895, ds 164, sdsn 118, sdn 8
+- checksum (tarballs using each): dns 38937, dn 11736, sdns 752, d 360, x 36, dsn 33, sdsn 16, ds 13, sdn 6, xdx 6, xd 3, sds 3
+- pax_header_name (tarballs using each): ././@PaxHeader 8502, */PaxHeaders/* 362, */PaxHeaders.N/* 317, ./PaxHeaders/* 296, H.paxheader 275, ./PaxHeaders.N/* 259, */PaxHeader/* 67, * 39, PaxHeader/* 38, */PaxHeaders.N 34, ./PaxHeaders.X/* 33, */PaxHeaders 29
+- extended_sequence (tarballs using each): - 43319, x 9567, L 1720, KL 11, K 9
+- gnu_long_name (tarballs using each): ././@LongLink 1720
+- end (tarballs using each): padded-to-10240 40951, unpadded 10728
+- zero_blocks_after_end (tarballs using each): 0 13269, 9 2082, 11 2081, 17 2048, 7 2043, 6 2040, 10 2039, 16 2031, 3 2031, 12 2030, 4 2026, 15 2020
+- pax_keys (tarballs using each): mtime 8969, path 2245, atime 569, ctime 555, uid 93, gid 71, LIBARCHIVE.xattr.* 35, SCHILY.xattr.* 34, LIBARCHIVE.creationtime 16, SCHILY.dev 15, SCHILY.ino 15, SCHILY.nlink 15
+- pax_global_keys (tarballs using each): comment 10410
 - compression layer: several streams 5, trailing zeros 2

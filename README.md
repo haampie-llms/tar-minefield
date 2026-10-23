@@ -19,8 +19,8 @@ records every feature that METHOD.md lists as an ambiguity:
 | live-bootstrap | 171 | 171 | 0 | 74 | 1.1 | 919,348 | gnu 98, other 24, cpan 20 |
 | nix | 19086 | 19012 | 22 | 17955 | 78.3 | 11,659,428 | other 11987, pypi 3846, cpan 1899 |
 | guix | 10200 | 10199 | 31 | 9674 | 76.7 | 22,063,418 | other 3845, cran/bioconductor 2833, pypi 1697 |
-| spack | 19575 | 19472 | 0 | 4900 | 451.7 | 64,410,577 | github-archive 6006, pypi 4928, other 3372 |
-| all, distinct | 45122 | 44947 | 48 | 29056 | 591.2 | 92,431,083 | |
+| spack | 26615 | 26473 | 0 | 5980 | 671.1 | 90,854,548 | github-archive 8354, pypi 6579, other 4643 |
+| all, distinct | 52015 | 51801 | 48 | 30046 | 807.9 | 117,273,168 | |
 
 Tarballs that are not scanned could not be downloaded from any URL. Not assessed: in a compression that the scanner does not read (`.tar.lz`, `.tar.zst`). Latest: the latest version of a package in its repository.
 
@@ -28,42 +28,42 @@ Tarballs by the median mtime of their members, which dates most of them:
 
 ```
 years      live-bootstrap   nix  guix spack   all
-1981–1989               0    11     7     6    21  #
+1981–1989               0     2     2     3     4  #
 1990–1991               0     0     1     0     1  #
 1992–1993               1     1     1     0     3  #
 1994–1995               3     9     2     6    17  #
 1996–1997               3     4     1     2    10  #
-1998–1999               3    17    11     6    32  #
-2000–2001               4    48    18    12    71  #
-2002–2003              14    75    46    28   133  #
-2004–2005               2   165    74    62   252  #
-2006–2007              11   144    80    62   251  #
-2008–2009               8   321   144   126   510  ##
-2010–2011               5   429   172   202   715  ###
-2012–2013               8   652   310   432  1222  ######
-2014–2015               1  1034   424   849  2051  ##########
-2016–2017               8  1304   564  1708  3291  ################
-2018–2019              18  1510   770  2655  4552  ######################
-2020–2021              28  1537   925  3559  5609  ###########################
-2022–2023              24  1929  1544  4240  7163  ###################################
-2024–2025              29  2563  2357  4012  8299  ########################################
-2026–2027               1  2871  1775  1006  5437  ##########################
-fixed                   0  4201   913   422  5010  ########################
-unknown                 0   149    60    77   259  #
+1998–1999               3    17    11     7    33  #
+2000–2001               4    48    18    13    72  #
+2002–2003              14    75    46    32   137  #
+2004–2005               2   165    74    75   265  #
+2006–2007              11   144    80    75   264  #
+2008–2009               8   321   144   173   556  ##
+2010–2011               5   429   172   259   771  ###
+2012–2013               8   652   310   564  1350  ######
+2014–2015               1  1034   424  1167  2365  ##########
+2016–2017               8  1304   564  2289  3859  ################
+2018–2019              18  1510   770  3555  5440  ######################
+2020–2021              28  1537   925  4885  6920  ############################
+2022–2023              24  1929  1544  5818  8710  ####################################
+2024–2025              29  2563  2357  5494  9728  ########################################
+2026–2027               1  2871  1775  1350  5773  ########################
+fixed                   0  4210   918   592  5189  #####################
+unknown                 0   149    60   114   296  #
 ```
 
-Fixed: every member has an mtime that a producer writes in place of the real one, such as `cabal sdist` (2001-09-09) on Hackage and hatchling (2020-02-02) on PyPI, so these tarballs are not dated: 1970-01-01 00:00, 2000-01-01 00:00, 2000-07-19 22:00, 2001-09-09 01:46, 2006-07-24 01:21, 2020-02-02 00:00, 2022-11-09 12:37. Unknown: no mtime after 1980.
+Fixed: every member has an mtime that a producer writes in place of the real one, such as `cabal sdist` (2001-09-09) on Hackage and hatchling (2020-02-02) on PyPI, so these tarballs are not dated: 1970-01-01 00:00, 1985-10-26 08:15, 2000-01-01 00:00, 2000-07-19 22:00, 2001-09-09 01:46, 2006-07-24 01:21, 2020-02-02 00:00, 2022-11-09 12:37. Unknown: no mtime after 1980.
 
 ### What a strict parser accepts
 
-Of 44899 distinct tarballs, 44458 pass every criterion. The criterion that rejects the most tarballs on its own is `name.leading-dot-slash`.
+Of 51753 distinct tarballs, 51247 pass every criterion. The criterion that rejects the most tarballs on its own is `name.leading-dot-slash`.
 
 | dataset | assessed | pass all criteria | of latest versions | pass if `name.leading-dot-slash` were allowed | untar extracts |
 |---|---|---|---|---|---|
 | live-bootstrap | 171 | 171 (100.00%) | 74 (100.00%) | 171 (100.00%) | 171 (100.00%) |
 | nix | 18990 | 18833 (99.17%) | 17809 (99.19%) | 18849 (99.26%) | 18912 (99.59%) |
 | guix | 10168 | 10067 (99.01%) | 9592 (99.15%) | 10084 (99.17%) | 10130 (99.63%) |
-| spack | 19472 | 19263 (98.93%) | 4847 (98.92%) | 19339 (99.32%) | 19422 (99.74%) |
+| spack | 26473 | 26199 (98.96%) | 5915 (98.91%) | 26299 (99.34%) | 26417 (99.79%) |
 
 Generated by `scanner/strict.py` from 4 scans: the details are in [data/STRICT.md](data/STRICT.md).
 <!-- end strict.py -->
