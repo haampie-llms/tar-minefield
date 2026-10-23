@@ -1,0 +1,105 @@
+# Scanning real tarballs
+
+These scripts measure which tar features real release tarballs use, so that the rules of a
+strict parser can be checked against them before anyone adopts them (see
+[METHOD.md](../METHOD.md)). They use the Python standard library only, and Python 3.8 or later.
+
+- `tarscan.py` reads the headers of an archive, skips its data, and reports every feature it
+  finds, without stopping at the first one. It is independent of any tar implementation.
+- `run.py sample` picks a sample from a list of tarballs, and `run.py scan` downloads and scans
+  it. Tarballs are streamed: they are never written to disk.
+- `report.py` summarizes results as Markdown.
+- `spack_list.py` lists the tarballs of Spack's builtin repository. Lists for other ecosystems
+  go next to it, as `<ecosystem>_list.py`.
+
+Run the scripts with `python -I`: they handle untrusted data, and should not import modules from
+the current directory.
+
+## Workflow
+
+```console
+$ python -I scanner/run.py sample list.jsonl 2000 0 > sample.jsonl
+$ python -I scanner/run.py scan sample.jsonl results.jsonl --untar ~/untar --jobs 8 \
+      --reuse data/spack/2026-10-23/results.jsonl
+$ python -I scanner/report.py results.jsonl "Scan of 2000 Spack tarballs" > REPORT.md
+```
+
+An interrupted `scan` continues where it stopped when run again with the same output.
+
+`--untar PATH` also extracts every tarball with [untar](https://github.com/haampie/untar) from
+the checkout at PATH, in a child process that reads from a pipe. Leave it out to scan only.
+
+`--reuse FILE` copies results for tarballs (by sha256) that FILE has from the same versions of
+the scanner and untar, instead of downloading them again. Pass the results of every ecosystem
+scanned so far: ecosystems share many tarballs, GNU releases above all. Each ecosystem is still
+sampled in full, so its fractions are unbiased.
+
+## Lists
+
+A list has one JSON object per line, for one tarball:
+
+| field | |
+|---|---|
+| `package`, `version` | required |
+| `sha256` | required, in hex: downloads are checked against it |
+| `url` | required: where the tarball comes from, used to group results by origin |
+| `urls` | optional: where to download it, in order. Put a content-addressed mirror first, and `url` last |
+| `latest` | optional: whether this is the latest version of the package |
+
+Other fields are kept as they are. Only list tarballs that anyone can download: skip packages
+that need a manual download or a license.
+
+Content-addressed mirrors that serve tarballs by sha256:
+
+- Spack: `https://mirror.spack.io/_source-cache/archive/<sha256[:2]>/<sha256>.<ext>`
+- Nix: `https://tarballs.nixos.org/sha256/<sha256>` (hex works, and redirects). nixpkgs'
+  `maintainers/scripts/find-tarballs.nix` lists the tarballs of all packages; it needs Nix.
+- Guix: `https://guix.gnu.org/sources.json` lists sources with their `integrity`, which is an
+  SRI hash (`sha256-<base64>`): convert it to hex.
+
+Other sources worth scanning:
+
+- [live-bootstrap](https://github.com/fosslinux/live-bootstrap): the old tarballs needed to
+  bootstrap a GNU/Linux system from source, so a likely place for historical edge cases. Each
+  `steps/<step>/sources` has lines `f <url> <sha256> [<name>]`. There are a few hundred, so scan
+  all of them rather than a sample.
+
+The sampler takes half latest versions of distinct packages and half older versions of other
+packages. Without `latest`, every tarball counts as older. Its order depends only on the seed and
+the names of packages and checksums of tarballs, so the sample of a slightly different list is
+mostly the same.
+
+## Results
+
+`run.py scan` writes the fields of the list entry, plus:
+
+| field | |
+|---|---|
+| `scanner`, `untar` | versions: the first 12 hex digits of the sha256 of `tarscan.py` and `untar.py` |
+| `source` | the URL it was downloaded from, or `reused_from` if its results were copied |
+| `bytes` | the size of the tarball |
+| `members`, `kinds` | number of members, by kind |
+| `features` | how often each feature occurs: the names are defined in `tarscan.py` |
+| `examples` | up to 3 member names per feature |
+| `fingerprint` | how fields are written, to identify the program that wrote the tarball |
+| `mtime` | the smallest, median and largest mtime of members, which dates the tarball |
+| `compression` | the format, number of streams, and bytes after the last one |
+| `error` | why the scanner stopped early, if it did: features before that point are counted |
+| `untar_error` | untar's error, or null if it extracted the tarball |
+| `untar_skipped` | why untar did not finish, where that says nothing about the tarball (no disk space) |
+| `download_error` | instead of all of the above, if no URL worked |
+
+Features under `platform.*` are names that some filesystems cannot hold: they are not ambiguous,
+and untar failing on them depends on the machine (see METHOD.md). The report counts failures
+caused only by the case-insensitive filesystem of the scanning machine apart from rejections, so
+say which filesystem a scan ran on.
+
+## Data
+
+Each scan goes in `data/<ecosystem>/<date>/`, with:
+
+- `sample.jsonl`: the sample, so the scan can be repeated,
+- `results.jsonl`: the output of `run.py scan`,
+- `REPORT.md`: the output of `report.py`,
+- `RUN.md`: the commands, the commits of this repository, of the ecosystem's package
+  repository and of untar, and the platform and filesystem the scan ran on.
