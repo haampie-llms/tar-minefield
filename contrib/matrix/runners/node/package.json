@@ -1,0 +1,9 @@
+{
+  "name": "runner",
+  "private": true,
+  "description": "Extract a tar archive with node-tar, for contrib/matrix/matrix.py",
+  "type": "module",
+  "dependencies": {
+    "tar": "7.5.22"
+  }
+}

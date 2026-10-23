@@ -17,7 +17,8 @@ cases are produced so that anyone can audit them. It is a working draft.
 | **feature** | What the scanner reports of an archive, such as `name.leading-dot-slash`. |
 | **criterion** | A feature that is an ambiguity, for which a strict parser may reject an archive. The [catalogue](#initial-catalogue) lists them. |
 | **policy** | The criteria a strict parser rejects: either *every criterion*, or the [default policy](#the-default-policy). |
-| **case** | An archive of the corpus, named by its code (its level and a number) and a few words, such as `F15-pax-size-on-dir`, with a verdict, and a manifest unless it is to reject. |
+| **test suite** | The archives of [suite/](suite), each a case, for implementations to run against. |
+| **case** | An archive of the test suite, named by its code (its level and a number) and a few words, such as `F15-pax-size-on-dir`, with a verdict, and a manifest unless it is to reject. |
 | **verdict** | What a case requires: **reject**, a strict parser must reject it; **accept**, every implementation must accept it; **tolerate**, a strict parser may reject it, and the default policy accepts it. See [Verdicts](#verdicts). |
 | **manifest** | The tree an implementation must extract from a case to accept or a tolerated case, if it accepts it. |
 | **outcome** | What an implementation makes of a case: ✅ as its verdict says, ⚠️ accepts a case to reject, ⛔ rejects a tolerated case, ❌ rejects a case to accept or extracts another tree than the manifest, 💥 writes outside its destination. |
@@ -25,14 +26,14 @@ cases are produced so that anyone can audit them. It is a working draft.
 
 ## Goal
 
-A corpus of tar archives, each with a verdict, that any tar implementation can run against: a
+A test suite of tar archives, each with a verdict, that any tar implementation can run against: a
 reference for what a strict parser rejects, what it must accept, and what it must make of the
 archives it accepts.
 
-The corpus is not limited to archives on which today's implementations disagree. Disagreement
+The test suite is not limited to archives on which today's implementations disagree. Disagreement
 between, say, GNU tar and Python's `tarfile` is evidence of an ambiguity, but an archive that every
 known implementation interprets the same way can still be ambiguous: it only takes the next
-implementation to make the other reasonable choice. The corpus records both.
+implementation to make the other reasonable choice. The test suite records both.
 
 ## Scope
 
@@ -150,8 +151,8 @@ parser would trip over:
 - pax headers for long names and links, GNU long names and links, and the ustar prefix,
 - names of exactly 100 bytes, with no NUL,
 - number fields padded with leading zeros or leading spaces, and terminated by a space, a NUL,
-  or both: many CPAN tarballs, and those of old GNU tar, pad with spaces, and the scans of
-  [data/](data) find no tarball where implementations read such a field differently,
+  or both: many CPAN tarballs, and those of old GNU tar, pad with spaces, and
+  [the scans](contrib/data) find no tarball where implementations read such a field differently,
 - base-256 sizes of files over 8 GiB,
 - vendor pax keys that do not affect the tree, such as `LIBARCHIVE.xattr.*` and `SCHILY.*` from
   macOS and star, and the AppleDouble `._` files next to them,
@@ -170,10 +171,10 @@ which may change.
 
 ### The default policy
 
-The scans of [data/](data) decided it: the default policy rejects every case to reject, and
-accepts the tolerated cases, which extract the tree in their manifest. Its table is `DEFAULT` in
-`scanner/strict.py`, and [data/STRICT.md](data/STRICT.md) gives what it costs. The tolerated cases
-are:
+[The scans](contrib/data) decided it: the default policy rejects every case to reject, and accepts
+the tolerated cases, which extract the tree in their manifest. Its table is `DEFAULT` in
+`contrib/scanner/strict.py`, and [contrib/data/STRICT.md](contrib/data/STRICT.md) gives what it
+costs. The tolerated cases are:
 
 - names that refer to the same path, normalized to it: `./a` is `a`, `.` is the root, and
   `a/./b` and `a//b` are `a/b`. Duplicates are found among the normalized paths, so normalizing
@@ -243,7 +244,7 @@ Tarballs are deduplicated by checksum, since the three overlap a lot, GNU releas
 
 ### A scanner, not an extractor
 
-Running a dozen extractors over the corpus is slow, and makes every change of policy a new run.
+Running a dozen extractors over the test suite is slow, and makes every change of policy a new run.
 Instead, a scanner reads only the headers of each tarball, skips the data, and records every
 feature from the catalogue it finds, as one JSON line per tarball keyed by its checksum. It does
 not stop at the first problem. A strictness policy is then a query over that table, and debating
@@ -282,12 +283,12 @@ review.
 
 ## Auditability
 
-People should be able to trust the corpus without trusting its binary files.
+People should be able to trust the test suite without trusting its binary files.
 
 - Every archive is produced by a small script that uses the Python standard library only, and
   builds the archive from raw 512-byte blocks with a short shared helper. Scripts never use
   `tarfile` or any other implementation under test: they normalize what they write, and the
-  corpus would then test them against themselves. Each script explains its case in a docstring.
+  test suite would then test them against themselves. Each script explains its case in a docstring.
 - Generation is deterministic: no clocks, no randomness, no dependency on the machine.
 - The archives are checked into git, and CI regenerates them and fails on any difference. So
   every byte can be traced to a script that a reviewer can read.
@@ -302,7 +303,7 @@ People should be able to trust the corpus without trusting its binary files.
 - Cases are written from scratch, in our own words, also where they reproduce a known CVE: no
   archive or test is copied from another project.
 - Payloads are harmless. Cases about traversal write marker files with obvious names, and the
-  README warns that the corpus contains archives that escape their destination in lenient
+  README warns that the test suite contains archives that escape their destination in lenient
   extractors.
 - The table produced by the scanner is published too: anyone can download the same tarballs by
   checksum, check it, and apply their own policy.
@@ -313,7 +314,7 @@ The generators and the scanner are themselves tools that read or write tar, writ
 and a reader may ask who checks them. The answer differs for each part, and in none of them is
 it a single implementation that has to be taken on trust.
 
-- **The corpus** is trusted for its bytes, not for its generators. A generator only writes
+- **The test suite** is trusted for its bytes, not for its generators. A generator only writes
   bytes, and does not parse anything. Its output is checked into git with an annotated dump, and
   a reviewer can check both by hand against the case's description and the specification it
   cites. CI checks that the generators still produce exactly those bytes.
@@ -328,11 +329,11 @@ it a single implementation that has to be taken on trust.
   languages and three independent code bases. Where they disagree, the tarball is ambiguous,
   which is what we look for.
 - **A second scanner** in another language, written from this document by someone who has not
-  read `tarscan.py`, must produce the same output on the corpus and on real tarballs. Two
+  read `tarscan.py`, must produce the same output on the test suite and on real tarballs. Two
   independent implementations that agree catch what one implementation tested against itself
-  cannot. It also suits the implementations we hope will run the corpus, many of which are in
+  cannot. It also suits the implementations we hope will run the test suite, many of which are in
   Go and Rust.
-- **The corpus tests the scanner.** Every case to reject and every tolerated case must make the
+- **The test suite tests the scanner.** Every case to reject and every tolerated case must make the
   scanner report its feature, and every case to accept must make it report exactly the members in
   its manifest. That is
   not circular, because the cases are defined by reviewed bytes, not by the scanner's output.

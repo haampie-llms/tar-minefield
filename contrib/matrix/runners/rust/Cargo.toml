@@ -1,0 +1,11 @@
+[package]
+name = "runner"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# Extract a tar archive with the unpack of a Rust tar library, for contrib/matrix/matrix.py.
+[dependencies]
+tar = "=0.4.46"
+astral-tokio-tar = "=0.7.0"
+tokio = { version = "1", features = ["rt", "fs"] }
