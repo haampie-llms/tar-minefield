@@ -122,8 +122,14 @@ Each scan goes in `data/<ecosystem>/<date>/`, with:
 - `RUN.md`: the commands, the commits of this repository, of the ecosystem's package
   repository and of untar, and the platform and filesystem the scan ran on.
 
-`data/REPORT.md` combines all scans:
+`data/REPORT.md` combines all scans, `data/STRICT.md` gives the pass rates of a strict parser,
+and the summary of those in the top-level README is generated too:
 
 ```console
 $ python -I scanner/report.py --title "All scans" data/*/*/results.jsonl > data/REPORT.md
+$ python -I scanner/strict.py data/*/*/results.jsonl > data/STRICT.md
+$ python -I scanner/strict.py --readme README.md data/*/*/results.jsonl
 ```
+
+`strict.py` decides which features a strict parser rejects, in its tables `STRICT` and
+`ALLOWED`: a policy is a change to those.
