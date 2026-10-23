@@ -10,7 +10,7 @@ in order. The two policies of `scanner/strict.py` are from what `tarscan.py` rep
 - ❌ rejects a `y_` case, or extracts another tree than the manifest of a `y_` or `i_` case
 - 💥 writes outside the destination
 
-![Every case of the corpus, in rows, and what every implementation makes of it, in columns: the table below as a picture](matrix-all.svg)
+![Every case of the corpus, in rows, and what every implementation makes of it, in columns: the table below as a picture](matrix.svg)
 
 | implementation | version | how |
 |---|---|---|
