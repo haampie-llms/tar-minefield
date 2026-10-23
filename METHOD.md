@@ -250,6 +250,50 @@ People should be able to trust the corpus without trusting its binary files.
 - The table produced by the scanner is published too: anyone can download the same tarballs by
   checksum, check it, and apply their own policy.
 
+## Trusting the tools
+
+The generators and the scanner are themselves tools that read or write tar, written in Python,
+and a reader may ask who checks them. The answer differs for each part, and in none of them is
+it a single implementation that has to be taken on trust.
+
+- **The corpus** is trusted for its bytes, not for its generators. A generator only writes
+  bytes, and does not parse anything. Its output is checked into git with an annotated dump, and
+  a reviewer can check both by hand against the case's description and the specification it
+  cites. CI checks that the generators still produce exactly those bytes.
+- **The verdicts** come from the specifications, the reasoning recorded with each case, and the
+  interpretation matrix of real implementations, never from our scanner.
+- **The scanner** is a measuring instrument: if it frames an archive differently from the
+  implementations it stands in for, the statistics are wrong. So it is checked against them.
+  For every tarball, it will record where each header starts and the name it gives the member,
+  as one framing digest. GNU tar (`tar -tvR` prints the block of each header), bsdtar and
+  `tarfile` (`TarInfo.offset`) can produce the same list. On the tarballs where they agree with
+  each other, which is nearly all of them, they then check the scanner's framing, in two
+  languages and three independent code bases. Where they disagree, the tarball is ambiguous,
+  which is what we look for.
+- **A second scanner** in another language, written from this document by someone who has not
+  read `tarscan.py`, must produce the same output on the corpus and on real tarballs. Two
+  independent implementations that agree catch what one implementation tested against itself
+  cannot. It also suits the implementations we hope will run the corpus, many of which are in
+  Go and Rust.
+- **The corpus tests the scanner.** Every `n_` and `i_` case must make the scanner report its
+  feature, and every `y_` case must make it report exactly the members in its manifest. That is
+  not circular, because the cases are defined by reviewed bytes, not by the scanner's output.
+  Differential fuzzing covers the rest: archives from a writer must be reported with exactly the
+  members that were written.
+
+Python is a deliberate choice, not a weakness to apologize for. It is memory-safe, while many
+tar vulnerabilities were memory errors in C. Its integers do not overflow, which rules out a
+class of tar bugs in sizes, base-256 numbers and sums of sizes. And it is easy to read, which
+matters most for code that people are asked to audit. Its weaknesses here are speed, which does
+not matter, and dynamic typing, which tests cover. The scripts use the standard library only, so
+the code to trust is CPython and this repository. CPython's decompressors are C, but compression
+is outside the scope, for now.
+
+In the long run, the reference should be a document rather than code: a strict profile of tar,
+with the rules for every header field and a grammar of pax records, cited by every case. Our
+scripts and untar are then implementations of it, and agreement between them and an independent
+implementation is the evidence that they are correct.
+
 ## Prior art
 
 Test suites that became references for implementations, and how:
