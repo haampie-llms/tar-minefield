@@ -235,6 +235,44 @@ def histogram(datasets, union):
     return "\n".join(lines), fixed
 
 
+def scanned_section(datasets, names, short, rated, rows, union):
+    """The datasets, and a histogram of when their tarballs were made."""
+    lines = [
+        "| dataset | tarballs | scanned | not assessed | latest | GB | members | origins |",
+        "|---|---|---|---|---|---|---|---|",
+    ]
+    for n in names:
+        scanned = [r for r in datasets[n] if "features" in r]
+        gb = sum(r.get("bytes") or 0 for r in scanned) / 1e9
+        members = sum(r.get("members") or 0 for r in scanned)
+        latest = sum(1 for r in rated[n] if r.get("latest"))
+        origins = collections.Counter(origin(r["url"]) for r in scanned)
+        top = ", ".join(f"{k} {v}" for k, v in origins.most_common(3))
+        lines.append(
+            f"| {short[n]} | {len(datasets[n])} | {len(scanned)} | "
+            f"{len(scanned) - len(rated[n])} | {latest} | {gb:.1f} | {members:,} | {top} |"
+        )
+    gb = sum(r.get("bytes") or 0 for r in union) / 1e9
+    scanned = sum(1 for r in rows if "features" in r)
+    lines.append(
+        f"| all, distinct | {len(rows)} | {scanned} | {scanned - len(union)} | "
+        f"{sum(1 for r in union if r.get('latest'))} | {gb:.1f} | "
+        f"{sum(r.get('members') or 0 for r in union):,} | |"
+    )
+    chart, fixed = histogram(datasets, rows)
+    dates = ", ".join(time.strftime("%Y-%m-%d %H:%M", time.gmtime(t)) for t in sorted(fixed))
+    return "\n".join(lines) + (
+        "\n\nTarballs that are not scanned could not be downloaded from any URL. Not assessed: in "
+        "a compression that the scanner does not read (`.tar.lz`, `.tar.zst`). Latest: the latest "
+        "version of a package in its repository.\n\n"
+        "Tarballs by the median mtime of their members, which dates most of them:\n\n"
+        f"```\n{chart}\n```\n\n"
+        "Fixed: every member has an mtime that a producer writes in place of the real one, such "
+        "as `cabal sdist` (2001-09-09) on Hackage and hatchling (2020-02-02) on PyPI, so these "
+        f"tarballs are not dated: {dates}. Unknown: no mtime after 1980."
+    )
+
+
 def passes(r, allowed=()):
     return not (strict_features(r) - set(allowed))
 
@@ -277,10 +315,13 @@ def costliest(union):
     return sole.most_common(1)[0][0] if sole else None
 
 
-def readme(path, names, short, rated, union):
+def readme(path, datasets, names, short, rated, rows, union):
     top = costliest(union)
     allowed = (top,) if top else ()
     block = (
+        "### What was scanned\n\n"
+        + scanned_section(datasets, names, short, rated, rows, union)
+        + "\n\n### What a strict parser accepts\n\n"
         f"Of {len(union)} distinct tarballs, {sum(passes(r) for r in union)} pass every criterion. "
         f"The criterion that rejects the most tarballs on its own is `{top}`.\n\n"
         + pass_table(names, short, rated, allowed)
@@ -306,7 +347,7 @@ def main():
     rated = {n: [r for r in datasets[n] if assessed(r)] for n in names}
     union = [r for r in rows if assessed(r)]
     if readme_path:
-        readme(readme_path, names, short, rated, union)
+        readme(readme_path, datasets, names, short, rated, rows, union)
         return
 
     print("# Strict parsing of real tarballs\n")
@@ -317,39 +358,7 @@ def main():
     )
 
     print("## What was scanned\n")
-    print("| dataset | tarballs | scanned | not assessed | latest | GB | members | origins |")
-    print("|---|---|---|---|---|---|---|---|")
-    for n in names:
-        scanned = [r for r in datasets[n] if "features" in r]
-        gb = sum(r.get("bytes") or 0 for r in scanned) / 1e9
-        members = sum(r.get("members") or 0 for r in scanned)
-        latest = sum(1 for r in rated[n] if r.get("latest"))
-        origins = collections.Counter(origin(r["url"]) for r in scanned)
-        top = ", ".join(f"{k} {v}" for k, v in origins.most_common(3))
-        print(
-            f"| {short[n]} | {len(datasets[n])} | {len(scanned)} | "
-            f"{len(scanned) - len(rated[n])} | {latest} | {gb:.1f} | {members:,} | {top} |"
-        )
-    gb = sum(r.get("bytes") or 0 for r in union) / 1e9
-    print(f"| all, distinct | {len(rows)} | | | {sum(1 for r in union if r.get('latest'))} | "
-          f"{gb:.1f} | {sum(r.get('members') or 0 for r in union):,} | |\n")
-    print(
-        "Not downloaded: tarballs that no URL serves any more. Not assessed: in a compression "
-        "that the scanner does not read (`.tar.lz`, `.tar.zst`). Latest: the latest version "
-        "of a package in its repository.\n"
-    )
-    print("Tarballs by the median mtime of their members, which dates most of them:\n")
-    chart, fixed = histogram(datasets, rows)
-    print("```")
-    print(chart)
-    print("```\n")
-    print(
-        "Fixed: every member has an mtime that a producer writes in place of the real one, such "
-        "as `cabal sdist` (2001-09-09) on Hackage and hatchling (2020-02-02) on PyPI, so these "
-        "tarballs are not dated: "
-        + ", ".join(time.strftime("%Y-%m-%d %H:%M", time.gmtime(t)) for t in sorted(fixed))
-        + ". Unknown: no mtime after 1980.\n"
-    )
+    print(scanned_section(datasets, names, short, rated, rows, union))
 
     print("## Pass rates\n")
     print(

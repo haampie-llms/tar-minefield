@@ -12,6 +12,49 @@ scanner reads the headers of real release tarballs from Spack, nixpkgs and live-
 records every feature that METHOD.md lists as an ambiguity:
 
 <!-- begin strict.py -->
+### What was scanned
+
+| dataset | tarballs | scanned | not assessed | latest | GB | members | origins |
+|---|---|---|---|---|---|---|---|
+| live-bootstrap | 171 | 171 | 0 | 74 | 1.1 | 919,348 | gnu 98, other 24, cpan 20 |
+| nix | 19086 | 19012 | 22 | 17955 | 78.3 | 11,659,428 | other 11987, pypi 3846, cpan 1899 |
+| spack/2026-10-23-b | 1989 | 1981 | 0 | 992 | 35.7 | 2,714,433 | pypi 621, github-archive 519, cran/bioconductor 305 |
+| spack/2026-10-23 | 2000 | 1990 | 0 | 994 | 30.9 | 2,476,245 | pypi 647, github-archive 518, other 322 |
+| all, distinct | 22805 | 22714 | 22 | 19669 | 142.7 | 17,432,121 | |
+
+Tarballs that are not scanned could not be downloaded from any URL. Not assessed: in a compression that the scanner does not read (`.tar.lz`, `.tar.zst`). Latest: the latest version of a package in its repository.
+
+Tarballs by the median mtime of their members, which dates most of them:
+
+```
+years      live-bootstrap   nix spack/2026-10-23-b spack/2026-10-23   all
+1981–1989               0    11                  1                2    14  #
+1992–1993               1     1                  0                0     2  #
+1994–1995               3     9                  0                1    13  #
+1996–1997               3     4                  1                0     8  #
+1998–1999               3    17                  1                1    20  #
+2000–2001               4    48                  1                1    53  #
+2002–2003              14    75                  5                3    96  #
+2004–2005               2   165                 10                4   179  ##
+2006–2007              11   144                  7                5   163  ##
+2008–2009               8   321                 15               18   357  ###
+2010–2011               5   429                 21               42   485  #####
+2012–2013               8   652                 54               55   747  #######
+2014–2015               1  1034                110               96  1216  ###########
+2016–2017               8  1304                191              195  1653  ###############
+2018–2019              18  1510                304              270  2039  ###################
+2020–2021              28  1537                320              343  2169  ####################
+2022–2023              24  1934                390              393  2662  #########################
+2024–2025              29  2563                369              389  3265  ###############################
+2026–2027               1  2871                133              117  3097  #############################
+fixed                   0  4196                 43               45  4276  ########################################
+unknown                 0   149                  5               10   162  ##
+```
+
+Fixed: every member has an mtime that a producer writes in place of the real one, such as `cabal sdist` (2001-09-09) on Hackage and hatchling (2020-02-02) on PyPI, so these tarballs are not dated: 1970-01-01 00:00, 2000-01-01 00:00, 2000-07-19 22:00, 2001-09-09 01:46, 2006-07-24 01:21, 2020-02-02 00:00. Unknown: no mtime after 1980.
+
+### What a strict parser accepts
+
 Of 22692 distinct tarballs, 21944 pass every criterion. The criterion that rejects the most tarballs on its own is `number.*.leading-space`.
 
 | dataset | assessed | pass all criteria | of latest versions | pass if `number.*.leading-space` were allowed | untar extracts |

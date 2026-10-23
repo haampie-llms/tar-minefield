@@ -10,9 +10,9 @@ How many release tarballs a strict tar parser would accept, if it rejected every
 | nix | 19086 | 19012 | 22 | 17955 | 78.3 | 11,659,428 | other 11987, pypi 3846, cpan 1899 |
 | spack/2026-10-23-b | 1989 | 1981 | 0 | 992 | 35.7 | 2,714,433 | pypi 621, github-archive 519, cran/bioconductor 305 |
 | spack/2026-10-23 | 2000 | 1990 | 0 | 994 | 30.9 | 2,476,245 | pypi 647, github-archive 518, other 322 |
-| all, distinct | 22805 | | | 19669 | 142.7 | 17,432,121 | |
+| all, distinct | 22805 | 22714 | 22 | 19669 | 142.7 | 17,432,121 | |
 
-Not downloaded: tarballs that no URL serves any more. Not assessed: in a compression that the scanner does not read (`.tar.lz`, `.tar.zst`). Latest: the latest version of a package in its repository.
+Tarballs that are not scanned could not be downloaded from any URL. Not assessed: in a compression that the scanner does not read (`.tar.lz`, `.tar.zst`). Latest: the latest version of a package in its repository.
 
 Tarballs by the median mtime of their members, which dates most of them:
 
@@ -42,7 +42,6 @@ unknown                 0   149                  5               10   162  ##
 ```
 
 Fixed: every member has an mtime that a producer writes in place of the real one, such as `cabal sdist` (2001-09-09) on Hackage and hatchling (2020-02-02) on PyPI, so these tarballs are not dated: 1970-01-01 00:00, 2000-01-01 00:00, 2000-07-19 22:00, 2001-09-09 01:46, 2006-07-24 01:21, 2020-02-02 00:00. Unknown: no mtime after 1980.
-
 ## Pass rates
 
 A tarball passes if it has none of the strict criteria below. untar is the strict extractor of [untar](https://github.com/haampie/untar), as a policy that exists.
@@ -83,8 +82,8 @@ Tarballs that each criterion rejects, per dataset. Alone: tarballs of all datase
 | kind | `name.trailing-slash-on-file`: a regular file named like a directory, `a/` | 0 | 4 (0.02%) | 1 (0.05%) | 0 | 0 | sendmail.8.18.2, tcp_wrappers_7.6, unclutter@8 |
 | order and state | `tree.duplicate.file-file`: the same file twice | 0 | 59 (0.31%) | 3 (0.15%) | 0 | 59 | snap-loader-static@1.0.0.1, htn@0.1.0.0, shelly-extra@0.3.0.2 |
 | order and state | `tree.under-file`: a member under a file or a symlink | 0 | 3 (0.02%) | 1 (0.05%) | 0 | 0 | sendmail.8.18.2, tcp_wrappers_7.6, unclutter@8 |
-| order and state | `tree.duplicate.file-hardlink`: one path as two members | 0 | 1 (0.01%) | 1 (0.05%) | 0 | 0 | atari++_1.85, atlas@3.11.41 |
 | order and state | `hardlink.to-itself`: a hardlink to itself | 0 | 1 (0.01%) | 1 (0.05%) | 0 | 0 | atari++_1.85, atlas@3.11.41 |
+| order and state | `tree.duplicate.file-hardlink`: one path as two members | 0 | 1 (0.01%) | 1 (0.05%) | 0 | 0 | atari++_1.85, atlas@3.11.41 |
 | order and state | `hardlink.to-symlink`: a hardlink to a symlink | 0 | 0 | 0 | 1 (0.05%) | 1 | octa@8.4 |
 | global pax headers | `pax-global.after-members`: a global header after the first member | 0 | 7 (0.04%) | 3 (0.15%) | 2 (0.10%) | 10 | inform@6.44-r3, rpm@4.20.1, mupdf@1.28.5-source |
 
