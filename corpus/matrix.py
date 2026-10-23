@@ -485,19 +485,19 @@ def totals(results, cases, names):
     return {n: " ".join(f"{s}{counts[n][s]}" for s in ORDER if counts[n].get(s)) for n in names}
 
 
-# SVG: the classes of outcomes; their colours in light and dark mode, as (cell, mark): pale cells,
-# as a grid of saturated ones flickers at its crossings; what they mean; and a mark that tells
-# them apart without colour
+# SVG: the classes of outcomes; their colours as (cell, mark): pale cells, as a grid of saturated
+# ones flickers at its crossings; what they mean; and a mark that tells them apart without colour.
+# The SVG has a white background of its own, so that it looks the same in light and dark mode.
 CLASSES = {
-    "✅": ("ok", ("#b4f1c3", "#116329"), ("#1a4a2b", "#56d364"),
+    "✅": ("ok", ("#b4f1c3", "#116329"),
           "as the verdict says: rejects an n_ case, extracts the tree of the others", "✓"),
-    "⚠️": ("warn", ("#ffe08a", "#7d4e00"), ("#5a4310", "#e3b341"),
+    "⚠️": ("warn", ("#ffe08a", "#7d4e00"),
            "accepts an n_ case, which a strict parser rejects", "!"),
-    "⛔": ("stop", ("#d0d7de", "#424a53"), ("#3a424c", "#b1bac4"),
+    "⛔": ("stop", ("#d0d7de", "#424a53"),
            "rejects an i_ case, which a strict parser may", "–"),
-    "❌": ("bad", ("#ffc1ba", "#a40e26"), ("#5e1d26", "#ff7b72"),
+    "❌": ("bad", ("#ffc1ba", "#a40e26"),
            "rejects a y_ case, or extracts another tree than its manifest", "✗"),
-    "💥": ("boom", ("#dcc8ff", "#6639ba"), ("#45307a", "#bc8cff"),
+    "💥": ("boom", ("#dcc8ff", "#6639ba"),
            "writes outside the destination", "↑"),
 }
 FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
@@ -518,14 +518,11 @@ def esc(text):
 
 
 def svg_style():
-    light = "".join(f".{c[0]}{{fill:{c[1][0]}}}.{c[0]}-ink{{fill:{c[1][1]}}}" for c in CLASSES.values())
-    dark = "".join(f".{c[0]}{{fill:{c[2][0]}}}.{c[0]}-ink{{fill:{c[2][1]}}}" for c in CLASSES.values())
+    colours = "".join(f".{c[0]}{{fill:{c[1][0]}}}.{c[0]}-ink{{fill:{c[1][1]}}}" for c in CLASSES.values())
     return (
         f"<style>text{{font-family:{FONT};font-size:12px;fill:#1f2328}}.head{{font-weight:600}}"
-        ".cell{font-size:11px;font-weight:700;text-anchor:middle}"
-        f".rule{{stroke:#d0d7de}}{light}"
-        "@media (prefers-color-scheme: dark){text{fill:#e6edf3}.rule{stroke:#30363d}"
-        f"{dark}}}</style>"
+        f".cell{{font-size:11px;font-weight:700;text-anchor:middle}}.rule{{stroke:#d0d7de}}{colours}"
+        '</style><rect width="100%" height="100%" fill="#ffffff"/>'
     )
 
 
@@ -533,7 +530,7 @@ def cell_svg(x, y, w, h, symbol, title):
     """A cell, coloured and marked by its outcome. The letters of trees are left to MATRIX.md,
     which lists the trees: the hover title names the tree."""
     base = next(c for c in CLASSES if symbol.startswith(c))
-    cls, mark = CLASSES[base][0], CLASSES[base][4]
+    cls, mark = CLASSES[base][0], CLASSES[base][3]
     return (f'<g><title>{esc(title)}</title><rect class="{cls}" x="{x}" y="{y}" width="{w}" '
             f'height="{h}" rx="3"/><text class="cell {cls}-ink" x="{x + w / 2}" y="{y + h / 2 + 4}">{mark}'
             "</text></g>")
@@ -543,8 +540,8 @@ def legend_svg(x, y):
     out = []
     for c in CLASSES.values():
         out.append(f'<rect class="{c[0]}" x="{x}" y="{y - 12}" width="16" height="16" rx="3"/>'
-                   f'<text class="cell {c[0]}-ink" x="{x + 8}" y="{y}">{c[4]}</text>'
-                   f'<text x="{x + 22}" y="{y}">{esc(c[3])}</text>')
+                   f'<text class="cell {c[0]}-ink" x="{x + 8}" y="{y}">{c[3]}</text>'
+                   f'<text x="{x + 22}" y="{y}">{esc(c[2])}</text>')
         y += 21
     return "".join(out), y
 
@@ -578,7 +575,7 @@ def svg(results, cases):
             if not k:
                 continue
             h = bar * k / len(cases)
-            out.append(f'<g><title>{esc(n)}: {k} of {len(cases)}, {esc(CLASSES[symbol][3])}</title>'
+            out.append(f'<g><title>{esc(n)}: {k} of {len(cases)}, {esc(CLASSES[symbol][2])}</title>'
                        f'<rect class="{CLASSES[symbol][0]}" x="{xs[n]}" y="{bottom - h:.1f}" '
                        f'width="{cw}" height="{h:.1f}"/>')
             if h >= 14:
