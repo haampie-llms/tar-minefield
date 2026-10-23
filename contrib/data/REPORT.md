@@ -3,11 +3,11 @@
 Rates are per ecosystem. Counts below are of the distinct tarballs of all ecosystems.
 
 | ecosystem | tarballs | scanned | latest | untar rejects | latest | filesystem only |
-|---|---|---|---|---|---|---|
-| guix/2026-10-23 | 10200 | 10199 | 9705 | 69 (0.68%) | 64 (0.66%) | 0 |
+|---|---:|---:|---:|---:|---:|---:|
+| guix/2026-10-23 | 10,200 | 10,199 | 9,705 | 69 (0.68%) | 64 (0.66%) | 0 |
 | live-bootstrap/2026-10-23 | 171 | 171 | 74 | 0 (0.00%) | 0 (0.00%) | 0 |
-| nix/2026-10-23 | 19086 | 19012 | 17977 | 100 (0.53%) | 94 (0.52%) | 0 |
-| spack/2026-10-23 | 37757 | 37554 | 7723 | 47 (0.13%) | 13 (0.17%) | 0 |
+| nix/2026-10-23 | 19,086 | 19,012 | 17,977 | 100 (0.53%) | 94 (0.52%) | 0 |
+| spack/2026-10-23 | 37,757 | 37,554 | 7,723 | 47 (0.13%) | 13 (0.17%) | 0 |
 
 - tarballs: 62947, scanned: 62670 (31701 latest versions, 30969 older)
 - not downloaded: 277, scanner crashed: 0
@@ -182,7 +182,7 @@ Rates are per ecosystem. Counts below are of the distinct tarballs of all ecosys
 Rejects 198 of 62670 (0.3%); 155 of 31701 latest versions (0.5%).
 
 | reason | tarballs | latest | origins | producers | examples |
-|---|---|---|---|---|---|
+|---|---:|---:|---|---|---|
 | FileExistsError: [Errno N] File exists: '…' | 81 | 65 | other 72, github-release 5, pypi 4 | ustar 58, GNU format 9, git archive 7 | string-conversions@0.4.0.1; notmuch@0.40; multipart@0.2.1 |
 | Archive contains an invalid number b'…' | 49 | 48 | other 23, gnu 16, github-release 9 | none 49 | ocrad@0.29; wget@1.25.0; ddrescue@1.30 |
 | Archive contains data after the end-of-archive marker | 30 | 23 | other 27, cpan 1, github-release 1 | posix-version-0000 18, v7 9, ustar 2 | tcp_wrappers_7.6@; commons-lang@2.6-src; xml-commons-resolver@1.2 |
@@ -197,12 +197,12 @@ Rejects 198 of 62670 (0.3%); 155 of 31701 latest versions (0.5%).
 Number of tarballs with each feature, of which latest versions; their origins, producers and median mtime years, and what untar did with them.
 
 | feature | tarballs | latest | origins | producers | years | untar rejects | examples |
-|---|---|---|---|---|---|---|---|
-| `name.fills-field` | 7452 | 1675 | github-archive 2752, other 1981, pypi 1527 | git archive 3690, GNU format 1602, Python tarfile (pax) 1312 | 1970–2026 | 20 | dbus@1.16.2 `dbus-1.16.2/test/data/systemd-activation/com.example.SendDen`; qtserialbus-everywhere-src@6.12.0 `qtserialbus-everywhere-src-6.12.0/tests/auto/qcanuniqueiddes` |
-| `ustar.prefix` | 6233 | 1343 | github-archive 3688, other 1120, github-release 620 | git archive 4805, ustar 1332, GNU tar (pax) 63 | 1980–2026 | 22 | Data-Stream-Bulk@0.11 `README`; CatalystX-Component-Traits@0.19 `README` |
-| `type.nul` | 3541 | 1689 | other 2311, github-release 575, gnu 511 | v7 3431, GNU format 110 | 1970–2026 | 10 | libofa@0.9.3 `libofa-0.9.3/README`; libdvbpsi@1.3.3 `libdvbpsi-1.3.3/.auto/missing` |
-| `v7.bytes-after-linkname` | 2843 | 1245 | other 1920, github-release 466, gnu 427 | v7 2843 | 1970–2026 | 4 | libofa@0.9.3 `libofa-0.9.3/`; libdvbpsi@1.3.3 `libdvbpsi-1.3.3/` |
-| `name.dir-without-trailing-slash` | 1121 | 944 | cpan 590, github-release 303, other 206 | ustar 1001, GNU format 104, GNU tar (pax) 16 | 1970–2026 | 1 | Catalyst-DispatchType-Regex@5.90035 `Catalyst-DispatchType-Regex-5.90035`; Test-Future-IO-Impl@0.14 `Test-Future-IO-Impl-0.14` |
+|---|---:|---:|---|---|---|---:|---|
+| `name.fills-field` | 7,452 | 1,675 | github-archive 2752, other 1981, pypi 1527 | git archive 3690, GNU format 1602, Python tarfile (pax) 1312 | 1970–2026 | 20 | dbus@1.16.2 `dbus-1.16.2/test/data/systemd-activation/com.example.SendDen`; qtserialbus-everywhere-src@6.12.0 `qtserialbus-everywhere-src-6.12.0/tests/auto/qcanuniqueiddes` |
+| `ustar.prefix` | 6,233 | 1,343 | github-archive 3688, other 1120, github-release 620 | git archive 4805, ustar 1332, GNU tar (pax) 63 | 1980–2026 | 22 | Data-Stream-Bulk@0.11 `README`; CatalystX-Component-Traits@0.19 `README` |
+| `type.nul` | 3,541 | 1,689 | other 2311, github-release 575, gnu 511 | v7 3431, GNU format 110 | 1970–2026 | 10 | libofa@0.9.3 `libofa-0.9.3/README`; libdvbpsi@1.3.3 `libdvbpsi-1.3.3/.auto/missing` |
+| `v7.bytes-after-linkname` | 2,843 | 1,245 | other 1920, github-release 466, gnu 427 | v7 2843 | 1970–2026 | 4 | libofa@0.9.3 `libofa-0.9.3/`; libdvbpsi@1.3.3 `libdvbpsi-1.3.3/` |
+| `name.dir-without-trailing-slash` | 1,121 | 944 | cpan 590, github-release 303, other 206 | ustar 1001, GNU format 104, GNU tar (pax) 16 | 1970–2026 | 1 | Catalyst-DispatchType-Regex@5.90035 `Catalyst-DispatchType-Regex-5.90035`; Test-Future-IO-Impl@0.14 `Test-Future-IO-Impl-0.14` |
 | `tree.dir-after-contents` | 858 | 779 | other 788, cpan 32, pypi 22 | ustar 798, GNU format 27, posix-version-0000 13 | 1970–2026 | 10 | network-control@0.1.7 `network-control-0.1.7/test/`; shelly@1.12.1.1 `shelly-1.12.1.1/test/` |
 | `number.size.leading-space` | 819 | 726 | cpan 674, other 117, gnu 14 | ustar 669, posix-version-0000 60, GNU format 51 | 1990–2026 | 37 | Catalyst-DispatchType-Regex@5.90035 `Catalyst-DispatchType-Regex-5.90035`; Test-Future-IO-Impl@0.14 `Test-Future-IO-Impl-0.14` |
 | `platform.case-collision` | 799 | 123 | other 565, github-release 109, github-archive 69 | git archive 476, GNU format 142, v7 86 | 1980–2026 | 1 | bsd-games@2.17 `bsd-games-2.17/tests/morse.sos`; sword@1.9.0 `sword-1.9.0/bindings/objc/SWORD/` |

@@ -42,9 +42,9 @@ OUTCOMES = {
 # Tables of one kind have the same columns, in the same widths
 COLUMNS = {
     "cases": [("code", 9), ("name", 27), ("what it is", 50), ("prevalence", 14, "n")],
-    "data": [("ecosystem", 34), ("tarballs", 33, "n"), ("with it", 33, "n")],
-    "data-policy": [("ecosystem", 25), ("tarballs", 25, "n"), ("with it", 25, "n"),
-                    ("rejected by the default policy", 25, "n")],
+    "data": [("ecosystem", 25), ("tarballs", 25, "n"), ("with it", 25, "n"), ("share", 25, "n")],
+    "data-policy": [("ecosystem", 20), ("tarballs", 20, "n"), ("with it", 20, "n"),
+                    ("share", 20, "n"), ("rejected by the default policy", 20, "n")],
     "implementations": [("implementation", 21), ("version", 21), ("outcome", 18),
                         ("what it makes of it", 40)],
 }
@@ -58,7 +58,8 @@ table { border-collapse: collapse; margin: 1rem 0; width: 100%; table-layout: fi
 th, td { border: 1px solid #d0d7de; padding: 0.25rem 0.5rem; text-align: left;
          vertical-align: baseline; overflow-wrap: anywhere; }
 th { background: #f6f8fa; }
-td.n, th.n { text-align: right; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+.frac { display: inline-block; min-width: 6.5ch; text-align: left; }
 svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
 dt { font-weight: 600; }
@@ -74,12 +75,50 @@ def prevalence(k, n):
     return f"{100 * k / n:.2g}%" if k else "none"
 
 
+def on_point(share):
+    """A share as HTML that lines up on its decimal point in a right-aligned column: what comes
+    after the point is left-aligned in a box of its own, of the same width in every row."""
+    whole, point, rest = share.partition(".")
+    if not point and share.endswith("%"):
+        whole, rest = share[:-1], "%"
+    return f'{html.escape(whole)}<span class=frac>{point}{html.escape(rest)}</span>'
+
+
 def table(kind, rows):
     """A table of a kind of COLUMNS, with rows of HTML."""
     columns = COLUMNS[kind]
     cols = "".join(f'<col style="width: {c[1]}%">' for c in columns)
     head = "".join(f"<th class=n>{c[0]}</th>" if c[2:] else f"<th>{c[0]}</th>" for c in columns)
     return f"<table><colgroup>{cols}</colgroup><tr>{head}</tr>\n" + "\n".join(rows) + "</table>"
+
+
+def readme_intro():
+    """The introduction of the README, between its title and its first section, as HTML: so that
+    the site says what the README says. Links into the repository go to GitHub, and the link to
+    the site itself to the list of cases."""
+    with open(os.path.join(matrix.ROOT, "README.md")) as f:
+        text = f.read().split("\n## ", 1)[0].split("\n", 1)[1]
+
+    def markdown(p):
+        out = []
+        for i, part in enumerate(p.split("`")):
+            if i % 2:
+                out.append(f"<code>{html.escape(part)}</code>")
+                continue
+            part = html.escape(part, quote=False)
+            part = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", part)
+            part = re.sub(r"\*(.+?)\*", r"<em>\1</em>", part)
+            out.append(re.sub(r"\[(.+?)\]\((.+?)\)", lambda m: f'<a href="{href(m.group(2))}">'
+                              f"{m.group(1)}</a>", part))
+        return "".join(out)
+
+    def href(url):
+        if url.rstrip("/") == matrix.SITE.rstrip("/"):
+            return "#cases"
+        return url if re.match(r"https?:", url) else f"{REPO}/blob/main/{url}"
+
+    return "\n".join(f"<p>{markdown(' '.join(p.split()))}</p>"
+                     for p in text.strip().split("\n\n"))
 
 
 def inline(text):
@@ -171,7 +210,7 @@ def data_section(features, names, short, rated, union):
     mixed = 0 < j < k
     rows = []
     for n, total, k, j in counts:
-        cells = [html.escape(n), str(total), f"{k} ({prevalence(k, total)})" if k else "0"]
+        cells = [html.escape(n), f"{total:,}", f"{k:,}", on_point(prevalence(k, total)) if k else ""]
         cells += [str(j)] if mixed else []
         rows.append("<tr><td>" + "</td><td class=n>".join(cells) + "</td></tr>")
     examples = []
@@ -303,22 +342,21 @@ def index_page(cases, results, data):
             share = prevalence(k, len(union)) if features else "–"
             rows.append(f'<tr><td><a href="{code}.html"><code>{code}</code></a></td>'
                         f"<td>{html.escape(name)}</td><td>{inline(info['description'])}</td>"
-                        f"<td class=n>{share}</td></tr>")
+                        f"<td class=n>{on_point(share)}</td></tr>")
         sections.append(f"<h3>{html.escape(matrix.GROUPS[group].capitalize())}</h3>\n"
                         + table("cases", rows))
     body = f"""<h1>tar-minefield</h1>
-<p>A test suite of tar archives with verdicts, for strict parsers, which reject what implementations
-can disagree on, and what {len(results["implementations"])} implementations make of each. Every
-case has a code: its letter is the level of the catalogue of
-<a href="{REPO}/blob/main/METHOD.md">METHOD.md</a>, F framing, N names, K kinds, S order and state,
-G global pax headers. A code stays with its case;
-new cases get new codes. See the <a href="{REPO}">repository</a> for the method and the data.
-The explanations of the cases are written by hand; the numbers, outcomes, block maps and dumps
-are generated from the archives, the source tarballs and the runs of the implementations.</p>
+{readme_intro()}
+<p>Every case has a code: its letter is the level of the catalogue of
+<a href="{REPO}/blob/main/METHOD.md">METHOD.md</a>, F framing, N names, K kinds, S order and
+state, G global pax headers. A code stays with its case; new cases get new codes. See the
+<a href="{REPO}">repository</a> for the method and the data. The explanations of the cases are
+written by hand; the numbers, outcomes, block maps and dumps are generated from the archives, the
+source tarballs and the runs of the implementations.</p>
 <h2>What implementations make of every case</h2>
 <p>Click a case for its page; hover over a cell for the tree.</p>
 <div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["code"] + ".html")}</div>
-<h2>The cases</h2>
+<h2 id="cases">The cases</h2>
 <p>Prevalence: the share of the {len(union)} distinct release tarballs of Spack, nixpkgs, Guix and
 live-bootstrap that have the feature of the case; none, if no tarball has it. A dash: the scanner
 has no feature for the case. The page of a case has the numbers per ecosystem.</p>

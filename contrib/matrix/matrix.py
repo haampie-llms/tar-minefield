@@ -470,9 +470,30 @@ LEGEND = [
     "- ❌ rejects a case to accept, or extracts another tree than its manifest",
     "- 💥 writes outside the destination",
 ]
+# The order of the columns, roughly by how widely used an implementation is: command-line tools,
+# then libraries by the popularity of their language, and niche tools last. Others go at the end.
+POPULARITY = [
+    "GNU tar", "bsdtar", "BusyBox tar", "7-Zip",
+    "Python tarfile, filter=data", "Python tarfile, filter=tar",
+    "Python tarfile, filter=fully_trusted",
+    "node-tar", "node-tar, strict",
+    "Java Commons Compress",
+    "Go archive/tar", "Go archive/tar, tarinsecurepath=0",
+    "Rust tar", "Rust astral-tokio-tar",
+    "RubyGems", "Perl Archive::Tar", "Haskell tar", "Julia Tar.jl",
+    "live-bootstrap untar", "live-bootstrap untar, --non-strict",
+]
+
+
+def ordered(results):
+    """The implementations of the results, in the order of POPULARITY."""
+    rank = {n: i for i, n in enumerate(POPULARITY)}
+    return sorted(results["implementations"], key=lambda i: rank.get(i["name"], len(rank)))
+
+
 def columns(results):
     return ["strict.py: every criterion", "strict.py: default policy"] + [
-        i["name"] for i in results["implementations"]]
+        i["name"] for i in ordered(results)]
 
 
 def case_cells(info, row, names):
@@ -517,10 +538,10 @@ FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-se
 
 def group(name):
     """The group of an implementation, which the SVG separates from the next by a gap: the
-    policies, the command-line tools, and then the libraries of each language."""
+    policies, the command-line tools, the libraries of each language, and live-bootstrap."""
     if name.startswith("strict.py"):
         return "policy"
-    if name in ("GNU tar", "bsdtar", "BusyBox tar", "7-Zip") or name.startswith("live-bootstrap"):
+    if name in ("GNU tar", "bsdtar", "BusyBox tar", "7-Zip"):
         return "tool"
     return name.split()[0].replace("RubyGems", "Ruby").replace("node-tar,", "node-tar")
 
@@ -670,7 +691,7 @@ def table(results, cases):
         "| implementation | version | how |",
         "|---|---|---|",
     ]
-    for i in results["implementations"]:
+    for i in ordered(results):
         how = "extracts" if i["kind"] == "extract" else "lists, applied in order"
         lines.append(f"| {i['name']} | {i['version']} | {how} |")
     lines.append("")

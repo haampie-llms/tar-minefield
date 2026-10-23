@@ -8,6 +8,8 @@ population, so its rates do not pool with others. A file is named by its directo
 """
 
 import collections
+import contextlib
+import io
 import json
 import os
 import re
@@ -140,6 +142,36 @@ def dataset_table(datasets):
 
 def percent(n, total):
     return f"{100 * n / total:.2f}%" if total else "–"
+
+
+# A cell of a number, or of a count and its share, such as `10,168`, `76.5` or `28 (0.28%)`
+NUMBER = re.compile(r"[\d,]+(\.\d+)?( \(\d+(\.\d+)?%\))?|–")
+
+
+def tidy_tables(text):
+    """Markdown with the columns of its tables that hold only numbers right-aligned, and those
+    numbers with thousands separators."""
+    lines, out, i = text.split("\n"), [], 0
+    while i < len(lines):
+        if not (lines[i].startswith("|") and i + 1 < len(lines)
+                and re.fullmatch(r"\|(---\|)+", lines[i + 1])):
+            out.append(lines[i])
+            i += 1
+            continue
+        j = i + 2
+        while j < len(lines) and lines[j].startswith("| "):
+            j += 1
+        rows = [line[2:-2].split(" | ") for line in lines[i + 2:j]]
+        width = lines[i + 1].count("---")
+        numeric = [bool(rows) and all(c < len(r) and NUMBER.fullmatch(r[c]) for r in rows)
+                   for c in range(width)]
+        out += [lines[i], "|" + "".join("---:|" if n else "---|" for n in numeric)]
+        for r in rows:
+            cells = [re.sub(r"(?<![\d.,])\d{4,}(?!\d)", lambda m: f"{int(m.group()):,}", cell)
+                     if c < width and numeric[c] else cell for c, cell in enumerate(r)]
+            out.append("| " + " | ".join(cells) + " |")
+        i = j
+    return "\n".join(out)
 
 
 def main():
@@ -282,4 +314,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    with contextlib.redirect_stdout(io.StringIO()) as out:
+        main()
+    print(tidy_tables(out.getvalue()), end="")

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>S11 tree-through-symlink · tar-minefield</title>
-<link rel="stylesheet" href="style.css?dfafe6ef">
+<link rel="stylesheet" href="style.css?00cc4a09">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="S10.html">S10 tree-symlink-then-file</a> · next: <a href="S12.html">S12 tree-under-file</a></nav>
@@ -252,32 +252,32 @@ Seen in: no source tarball.
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>error: tar: d/tar-minefield-through-symlink: Cannot open: Not a directory tar: Exiting with failure status due to previous errors</td></tr>
 <tr><td>bsdtar</td><td>bsdtar 3.8.5 - libarchive 3.8.5</td><td>✅ as the verdict says</td><td>error: d/tar-minefield-through-symlink: Cannot extract through symlink d/tar-minefield-through-symlink: Success bsdtar: Error exit delayed from previous errors.</td></tr>
-<tr><td>live-bootstrap untar</td><td>mescc-tools-extra a151c245e512, built with cc</td><td>💥 writes outside the destination</td><td>writes outside: <code>x/y/tar-minefield-through-symlink</code> (89 B, 3b7f22a5)</td></tr>
-<tr><td>live-bootstrap untar, --non-strict</td><td>mescc-tools-extra a151c245e512, built with cc</td><td>💥 writes outside the destination</td><td>writes outside: <code>x/y/tar-minefield-through-symlink</code> (89 B, 3b7f22a5)</td></tr>
 <tr><td>BusyBox tar</td><td>BusyBox v1.37.0 (Ubuntu 1:1.37.0-7ubuntu1)</td><td>✅ as the verdict says</td><td>error: tar: can&#x27;t create symlink &#x27;d&#x27; to &#x27;..&#x27;</td></tr>
 <tr><td>7-Zip</td><td>7-Zip 26.00 (x64)</td><td>✅ as the verdict says</td><td>error: ERROR: Cannot open output file : errno=20 : Not a directory : DEST/d/tar-minefield-through-symlink ERROR: Dangerous link path was ignored : d : ..</td></tr>
-<tr><td>Python tarfile, filter=fully_trusted</td><td>CPython 3.14.4</td><td>💥 writes outside the destination</td><td>writes outside: <code>x/y/tar-minefield-through-symlink</code> (89 B, 3b7f22a5)</td></tr>
-<tr><td>Python tarfile, filter=tar</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: OutsideDestinationError: &#x27;d/tar-minefield-through-symlink&#x27; would be extracted to &#x27;ROOT/x/y/tar-minefield-through-symlink&#x27;, which is outside the destination</td></tr>
 <tr><td>Python tarfile, filter=data</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: LinkOutsideDestinationError: &#x27;d&#x27; would link to &#x27;ROOT/x/y&#x27;, which is outside the destination</td></tr>
-<tr><td>Go archive/tar</td><td>archive/tar of go1.26.8</td><td>⚠️ accepts</td><td>tree A: <code>d</code> → <code>..</code>, <code>d/tar-minefield-through-symlink</code> (89 B, 3b7f22a5)</td></tr>
-<tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>⚠️ accepts</td><td>tree A: <code>d</code> → <code>..</code>, <code>d/tar-minefield-through-symlink</code> (89 B, 3b7f22a5)</td></tr>
+<tr><td>Python tarfile, filter=tar</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: OutsideDestinationError: &#x27;d/tar-minefield-through-symlink&#x27; would be extracted to &#x27;ROOT/x/y/tar-minefield-through-symlink&#x27;, which is outside the destination</td></tr>
+<tr><td>Python tarfile, filter=fully_trusted</td><td>CPython 3.14.4</td><td>💥 writes outside the destination</td><td>writes outside: <code>x/y/tar-minefield-through-symlink</code> (89 B, 3b7f22a5)</td></tr>
+<tr><td>node-tar</td><td>tar 7.5.22</td><td>⚠️ accepts</td><td>tree A: <code>d/</code>, <code>d/tar-minefield-through-symlink</code> (89 B, 3b7f22a5)</td></tr>
+<tr><td>node-tar, strict</td><td>tar 7.5.22</td><td>✅ as the verdict says</td><td>error: Error: TAR_ENTRY_ERROR: linkpath escapes extraction directory</td></tr>
+<tr><td>Java Commons Compress</td><td>Commons Compress 1.28.0, Expander, on Java 25.0.4.1</td><td>✅ as the verdict says</td><td>error: java.nio.file.FileAlreadyExistsException: DEST/d</td></tr>
+<tr><td>Go archive/tar</td><td>archive/tar of go1.26.8</td><td>⚠️ accepts</td><td>tree B: <code>d</code> → <code>..</code>, <code>d/tar-minefield-through-symlink</code> (89 B, 3b7f22a5)</td></tr>
+<tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>⚠️ accepts</td><td>tree B: <code>d</code> → <code>..</code>, <code>d/tar-minefield-through-symlink</code> (89 B, 3b7f22a5)</td></tr>
 <tr><td>Rust tar</td><td>tar 0.4.46, unpack</td><td>✅ as the verdict says</td><td>error: trying to unpack outside of destination path: DEST</td></tr>
 <tr><td>Rust astral-tokio-tar</td><td>astral-tokio-tar 0.7.0, unpack</td><td>✅ as the verdict says</td><td>error: trying to unpack outside of destination path: DEST</td></tr>
-<tr><td>Haskell tar</td><td>tar 0.7.2.0, extract, of GHC 9.10</td><td>✅ as the verdict says</td><td>error: Unsafe link target in tar archive: &quot;./..&quot;</td></tr>
-<tr><td>Java Commons Compress</td><td>Commons Compress 1.28.0, Expander, on Java 25.0.4.1</td><td>✅ as the verdict says</td><td>error: java.nio.file.FileAlreadyExistsException: DEST/d</td></tr>
 <tr><td>RubyGems</td><td>RubyGems 3.6.7 of Ruby 3.3.8, extract_tar_gz</td><td>✅ as the verdict says</td><td>error: Gem::Package::SymlinkError: installing symlink &#x27;d&#x27; pointing to parent path ROOT/x/y of DEST is not allowed</td></tr>
 <tr><td>Perl Archive::Tar</td><td>Archive::Tar 3.02_001 of Perl v5.40.1</td><td>✅ as the verdict says</td><td>error: Symlink &#x27;d&#x27; target attempts traversal. Not extracting under SECURE EXTRACT MODE at contrib/matrix/runners/perl/extract.pl line 14. Could not extract &#x27;d&#x27; at contrib/matrix/runners/perl/extract.pl line…</td></tr>
+<tr><td>Haskell tar</td><td>tar 0.7.2.0, extract, of GHC 9.10</td><td>✅ as the verdict says</td><td>error: Unsafe link target in tar archive: &quot;./..&quot;</td></tr>
 <tr><td>Julia Tar.jl</td><td>Tar 1.10.0 of Julia 1.13.2</td><td>✅ as the verdict says</td><td>error: Tarball contains path with symlink prefix: - path = &quot;d/tar-minefield-through-symlink&quot; - prefix = &quot;d&quot; Refusing to extract — possible attack!</td></tr>
-<tr><td>node-tar</td><td>tar 7.5.22</td><td>⚠️ accepts</td><td>tree B: <code>d/</code>, <code>d/tar-minefield-through-symlink</code> (89 B, 3b7f22a5)</td></tr>
-<tr><td>node-tar, strict</td><td>tar 7.5.22</td><td>✅ as the verdict says</td><td>error: Error: TAR_ENTRY_ERROR: linkpath escapes extraction directory</td></tr></table>
+<tr><td>live-bootstrap untar</td><td>mescc-tools-extra a151c245e512, built with cc</td><td>💥 writes outside the destination</td><td>writes outside: <code>x/y/tar-minefield-through-symlink</code> (89 B, 3b7f22a5)</td></tr>
+<tr><td>live-bootstrap untar, --non-strict</td><td>mescc-tools-extra a151c245e512, built with cc</td><td>💥 writes outside the destination</td><td>writes outside: <code>x/y/tar-minefield-through-symlink</code> (89 B, 3b7f22a5)</td></tr></table>
 <h2>Prevalence in source tarballs</h2>
 <p>Release tarballs of Spack, nixpkgs, Guix and live-bootstrap with <code>tree.through-symlink</code>.</p>
-<table><colgroup><col style="width: 34%"><col style="width: 33%"><col style="width: 33%"></colgroup><tr><th>ecosystem</th><th class=n>tarballs</th><th class=n>with it</th></tr>
-<tr><td>guix</td><td class=n>10168</td><td class=n>0</td></tr>
-<tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0</td></tr>
-<tr><td>nix</td><td class=n>18990</td><td class=n>0</td></tr>
-<tr><td>spack</td><td class=n>37554</td><td class=n>0</td></tr>
-<tr><td>all, distinct</td><td class=n>62622</td><td class=n>0</td></tr></table>
+<table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>ecosystem</th><th class=n>tarballs</th><th class=n>with it</th><th class=n>share</th></tr>
+<tr><td>guix</td><td class=n>10,168</td><td class=n>0</td><td class=n></td></tr>
+<tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0</td><td class=n></td></tr>
+<tr><td>nix</td><td class=n>18,990</td><td class=n>0</td><td class=n></td></tr>
+<tr><td>spack</td><td class=n>37,554</td><td class=n>0</td><td class=n></td></tr>
+<tr><td>all, distinct</td><td class=n>62,622</td><td class=n>0</td><td class=n></td></tr></table>
 
 
 <hr>

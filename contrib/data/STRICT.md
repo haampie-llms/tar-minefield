@@ -5,12 +5,12 @@ How many release tarballs a strict tar parser rejects: with every criterion, eac
 ## What was scanned
 
 | ecosystem | tarballs | scanned | not assessed | latest | GB | members | origins |
-|---|---|---|---|---|---|---|---|
-| guix | 10200 | 10199 | 31 | 9674 | 76.7 | 22,063,418 | other 3845, cran/bioconductor 2833, pypi 1697 |
+|---|---:|---:|---:|---:|---:|---|---|
+| guix | 10,200 | 10,199 | 31 | 9,674 | 76.7 | 22,063,418 | other 3,845, cran/bioconductor 2,833, pypi 1,697 |
 | live-bootstrap | 171 | 171 | 0 | 74 | 1.1 | 919,348 | gnu 98, other 24, cpan 20 |
-| nix | 19086 | 19012 | 22 | 17955 | 78.3 | 11,659,428 | other 11987, pypi 3846, cpan 1899 |
-| spack | 37757 | 37554 | 0 | 7723 | 1080.9 | 127,668,354 | github-archive 11999, pypi 9237, other 6683 |
-| all, distinct | 62947 | 62670 | 48 | 31653 | 1215.8 | 152,809,810 | |
+| nix | 19,086 | 19,012 | 22 | 17,955 | 78.3 | 11,659,428 | other 11,987, pypi 3,846, cpan 1,899 |
+| spack | 37,757 | 37,554 | 0 | 7,723 | 1,080.9 | 127,668,354 | github-archive 11,999, pypi 9,237, other 6,683 |
+| all, distinct | 62,947 | 62,670 | 48 | 31,653 | 1,215.8 | 152,809,810 | |
 
 Tarballs that are not scanned could not be downloaded from any URL. Not assessed: in a compression that the scanner does not read (`.tar.lz`, `.tar.zst`). Latest: the latest version of a package in its repository.
 
@@ -49,19 +49,19 @@ Fixed: every member has an mtime that a producer writes in place of the real one
 **The default policy rejects 151 of 62,622 release tarballs (0.24%); rejecting every criterion would reject 622 (0.99%).** The criterion that rejects the most tarballs on its own is `tree.duplicate.file-file` of the default policy, and `name.leading-dot-slash` of every criterion.
 
 | ecosystem | tarballs | GB | rejected: every criterion | rejected: default policy |
-|---|---|---|---|---|
+|---|---:|---:|---:|---:|
 | guix | 10,168 | 76.5 | 101 (0.99%) | 28 (0.28%) |
 | live-bootstrap | 171 | 1.1 | 0 (0.00%) | 0 (0.00%) |
 | nix | 18,990 | 77.7 | 157 (0.83%) | 70 (0.37%) |
-| spack | 37,554 | 1080.9 | 392 (1.04%) | 67 (0.18%) |
-| **all, distinct** | 62,622 | 1215.8 | 622 (0.99%) | 151 (0.24%) |
+| spack | 37,554 | 1,080.9 | 392 (1.04%) | 67 (0.18%) |
+| **all, distinct** | 62,622 | 1,215.8 | 622 (0.99%) | 151 (0.24%) |
 
 ## The default policy
 
 The strict criteria that the default policy lets through, and how; it rejects all other criteria. Tarballs: of all ecosystems, with the feature where the policy lets it through.
 
 | criterion | how | why | tarballs |
-|---|---|---|---|
+|---|---|---|---:|
 | `name.leading-dot-slash` | normalize | `./a` is `a` | 205 |
 | `name.dot` | normalize | `.` is the root of the tree | 42 |
 | `name.dot-component` | normalize | `a/./b` is `a/b` | 10 |
@@ -80,7 +80,7 @@ The strict criteria that the default policy lets through, and how; it rejects al
 Tarballs that each criterion rejects, per ecosystem. Default: what the default policy does with it. Alone: tarballs of all ecosystems that only this criterion rejects, which allowing it would let through.
 
 | level | criterion | default | guix | live-bootstrap | nix | spack | alone | examples |
-|---|---|---|---|---|---|---|---|---|
+|---|---|---|---:|---:|---:|---:|---:|---|
 | framing | `magic.posix-with-odd-version`: POSIX magic with a version other than `00` | accept | 18 (0.18%) | 0 | 9 (0.05%) | 33 (0.09%) | 34 | commons-lang@2.6-src, apache-solr@3.6.2-src, commons-logging@1.2-src |
 | framing | `end.data-after`: data other than zeros after the end-of-archive marker | accept | 10 (0.10%) | 0 | 8 (0.04%) | 8 (0.02%) | 5 | tcp_wrappers_7.6, commons-lang@2.6-src, xml-commons-resolver@1.2 |
 | framing | `end.missing`: no end-of-archive marker | accept | 6 (0.06%) | 0 | 4 (0.02%) | 12 (0.03%) | 22 | SDL2_image@2.8.8, ruby@4.0.5, fastcap@2.0-18Sep92 |
@@ -120,12 +120,12 @@ Other criteria reject no tarball here. That is no proof that they cost nothing: 
 Not ambiguous, or confined to fields outside the tree. Tarballs of all ecosystems:
 
 | feature | why it is allowed | tarballs |
-|---|---|---|
-| `name.fills-field` | a name of exactly 100 bytes, without NUL (to accept) | 7452 |
-| `ustar.prefix` | the ustar prefix field (to accept) | 6233 |
-| `type.nul` | the typeflag NUL of regular files, from before POSIX | 3541 |
-| `v7.bytes-after-linkname` | bytes in fields that v7 headers do not use | 2843 |
-| `name.dir-without-trailing-slash` | a directory without a trailing slash: the typeflag says | 1121 |
+|---|---|---:|
+| `name.fills-field` | a name of exactly 100 bytes, without NUL (to accept) | 7,452 |
+| `ustar.prefix` | the ustar prefix field (to accept) | 6,233 |
+| `type.nul` | the typeflag NUL of regular files, from before POSIX | 3,541 |
+| `v7.bytes-after-linkname` | bytes in fields that v7 headers do not use | 2,843 |
+| `name.dir-without-trailing-slash` | a directory without a trailing slash: the typeflag says | 1,121 |
 | `tree.dir-after-contents` | directories after their contents (to accept) | 858 |
 | `number.size.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 819 |
 | `name.non-ascii` | UTF-8 names | 752 |

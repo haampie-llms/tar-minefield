@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>S05 hardlink-to-later-member · tar-minefield</title>
-<link rel="stylesheet" href="style.css?dfafe6ef">
+<link rel="stylesheet" href="style.css?00cc4a09">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="S04.html">S04 hardlink-to-itself</a> · next: <a href="S06.html">S06 hardlink-to-symlink</a></nav>
@@ -252,32 +252,32 @@ Seen in: no source tarball.
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>error: tar: h: Cannot hard link to ‘f’: No such file or directory tar: Exiting with failure status due to previous errors</td></tr>
 <tr><td>bsdtar</td><td>bsdtar 3.8.5 - libarchive 3.8.5</td><td>✅ as the verdict says</td><td>error: h: Hard-link target &#x27;f&#x27; does not exist.: No such file or directory bsdtar: Error exit delayed from previous errors.</td></tr>
-<tr><td>live-bootstrap untar</td><td>mescc-tools-extra a151c245e512, built with cc</td><td>✅ as the verdict says</td><td>error: unable to create hardlinks</td></tr>
-<tr><td>live-bootstrap untar, --non-strict</td><td>mescc-tools-extra a151c245e512, built with cc</td><td>⚠️ accepts</td><td>tree A: <code>f</code> (2 B, 092fcfbb)</td></tr>
-<tr><td>BusyBox tar</td><td>BusyBox v1.37.0 (Ubuntu 1:1.37.0-7ubuntu1)</td><td>⚠️ accepts</td><td>tree B: <code>f</code> (2 B, 092fcfbb), <code>h</code> (2 B, 092fcfbb)</td></tr>
-<tr><td>7-Zip</td><td>7-Zip 26.00 (x64)</td><td>⚠️ accepts</td><td>tree B: <code>f</code> (2 B, 092fcfbb), <code>h</code> (2 B, 092fcfbb)</td></tr>
-<tr><td>Python tarfile, filter=fully_trusted</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: KeyError: &quot;linkname &#x27;f&#x27; not found&quot;</td></tr>
-<tr><td>Python tarfile, filter=tar</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: KeyError: &quot;linkname &#x27;f&#x27; not found&quot;</td></tr>
+<tr><td>BusyBox tar</td><td>BusyBox v1.37.0 (Ubuntu 1:1.37.0-7ubuntu1)</td><td>⚠️ accepts</td><td>tree A: <code>f</code> (2 B, 092fcfbb), <code>h</code> (2 B, 092fcfbb)</td></tr>
+<tr><td>7-Zip</td><td>7-Zip 26.00 (x64)</td><td>⚠️ accepts</td><td>tree A: <code>f</code> (2 B, 092fcfbb), <code>h</code> (2 B, 092fcfbb)</td></tr>
 <tr><td>Python tarfile, filter=data</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: KeyError: &quot;linkname &#x27;f&#x27; not found&quot;</td></tr>
+<tr><td>Python tarfile, filter=tar</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: KeyError: &quot;linkname &#x27;f&#x27; not found&quot;</td></tr>
+<tr><td>Python tarfile, filter=fully_trusted</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: KeyError: &quot;linkname &#x27;f&#x27; not found&quot;</td></tr>
+<tr><td>node-tar</td><td>tar 7.5.22</td><td>⚠️ accepts</td><td>tree B: <code>f</code> (2 B, 092fcfbb)</td></tr>
+<tr><td>node-tar, strict</td><td>tar 7.5.22</td><td>✅ as the verdict says</td><td>error: Error: ENOENT: no such file or directory, link &#x27;DEST/f&#x27; -&gt; &#x27;DEST/h&#x27;</td></tr>
+<tr><td>Java Commons Compress</td><td>Commons Compress 1.28.0, Expander, on Java 25.0.4.1</td><td>⚠️ accepts</td><td>tree C: <code>f</code> (2 B, 092fcfbb), <code>h</code> (0 B, e3b0c442)</td></tr>
 <tr><td>Go archive/tar</td><td>archive/tar of go1.26.8</td><td>✅ as the verdict says</td><td>error: hardlink to &#x27;f&#x27;, which is not there</td></tr>
 <tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>✅ as the verdict says</td><td>error: hardlink to &#x27;f&#x27;, which is not there</td></tr>
 <tr><td>Rust tar</td><td>tar 0.4.46, unpack</td><td>✅ as the verdict says</td><td>error: failed to unpack `DEST/h`</td></tr>
 <tr><td>Rust astral-tokio-tar</td><td>astral-tokio-tar 0.7.0, unpack</td><td>✅ as the verdict says</td><td>error: failed to unpack `DEST/h`</td></tr>
-<tr><td>Haskell tar</td><td>tar 0.7.2.0, extract, of GHC 9.10</td><td>⚠️ accepts</td><td>tree B: <code>f</code> (2 B, 092fcfbb), <code>h</code> (2 B, 092fcfbb)</td></tr>
-<tr><td>Java Commons Compress</td><td>Commons Compress 1.28.0, Expander, on Java 25.0.4.1</td><td>⚠️ accepts</td><td>tree C: <code>f</code> (2 B, 092fcfbb), <code>h</code> (0 B, e3b0c442)</td></tr>
-<tr><td>RubyGems</td><td>RubyGems 3.6.7 of Ruby 3.3.8, extract_tar_gz</td><td>⚠️ accepts</td><td>tree A: <code>f</code> (2 B, 092fcfbb)</td></tr>
+<tr><td>RubyGems</td><td>RubyGems 3.6.7 of Ruby 3.3.8, extract_tar_gz</td><td>⚠️ accepts</td><td>tree B: <code>f</code> (2 B, 092fcfbb)</td></tr>
 <tr><td>Perl Archive::Tar</td><td>Archive::Tar 3.02_001 of Perl v5.40.1</td><td>✅ as the verdict says</td><td>error: Making hard link from &#x27;f&#x27; to &#x27;DEST/h&#x27; failed at contrib/matrix/runners/perl/extract.pl line 14. Could not extract &#x27;h&#x27; at contrib/matrix/runners/perl/extract.pl line 14. Could not extract &#x27;h&#x27;</td></tr>
+<tr><td>Haskell tar</td><td>tar 0.7.2.0, extract, of GHC 9.10</td><td>⚠️ accepts</td><td>tree A: <code>f</code> (2 B, 092fcfbb), <code>h</code> (2 B, 092fcfbb)</td></tr>
 <tr><td>Julia Tar.jl</td><td>Tar 1.10.0 of Julia 1.13.2</td><td>✅ as the verdict says</td><td>error: Tarball contains hardlink with non-existent target: - path = &quot;h&quot; - target = &quot;f&quot; Refusing to extract — possible attack!</td></tr>
-<tr><td>node-tar</td><td>tar 7.5.22</td><td>⚠️ accepts</td><td>tree A: <code>f</code> (2 B, 092fcfbb)</td></tr>
-<tr><td>node-tar, strict</td><td>tar 7.5.22</td><td>✅ as the verdict says</td><td>error: Error: ENOENT: no such file or directory, link &#x27;DEST/f&#x27; -&gt; &#x27;DEST/h&#x27;</td></tr></table>
+<tr><td>live-bootstrap untar</td><td>mescc-tools-extra a151c245e512, built with cc</td><td>✅ as the verdict says</td><td>error: unable to create hardlinks</td></tr>
+<tr><td>live-bootstrap untar, --non-strict</td><td>mescc-tools-extra a151c245e512, built with cc</td><td>⚠️ accepts</td><td>tree B: <code>f</code> (2 B, 092fcfbb)</td></tr></table>
 <h2>Prevalence in source tarballs</h2>
 <p>Release tarballs of Spack, nixpkgs, Guix and live-bootstrap with <code>hardlink.to-later-member</code>.</p>
-<table><colgroup><col style="width: 34%"><col style="width: 33%"><col style="width: 33%"></colgroup><tr><th>ecosystem</th><th class=n>tarballs</th><th class=n>with it</th></tr>
-<tr><td>guix</td><td class=n>10168</td><td class=n>0</td></tr>
-<tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0</td></tr>
-<tr><td>nix</td><td class=n>18990</td><td class=n>0</td></tr>
-<tr><td>spack</td><td class=n>37554</td><td class=n>0</td></tr>
-<tr><td>all, distinct</td><td class=n>62622</td><td class=n>0</td></tr></table>
+<table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>ecosystem</th><th class=n>tarballs</th><th class=n>with it</th><th class=n>share</th></tr>
+<tr><td>guix</td><td class=n>10,168</td><td class=n>0</td><td class=n></td></tr>
+<tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0</td><td class=n></td></tr>
+<tr><td>nix</td><td class=n>18,990</td><td class=n>0</td><td class=n></td></tr>
+<tr><td>spack</td><td class=n>37,554</td><td class=n>0</td><td class=n></td></tr>
+<tr><td>all, distinct</td><td class=n>62,622</td><td class=n>0</td><td class=n></td></tr></table>
 
 
 <hr>
