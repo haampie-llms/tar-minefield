@@ -25,9 +25,12 @@ and of untar, as the start of the sha256 of their source.
 
 With --reuse FILE (repeatable), tarballs that FILE has results for, from the same versions of
 the scanner and untar, are not downloaded: their results are copied. So ecosystems that share
-tarballs are each sampled in full, while every tarball is downloaded once. With --untar, each tarball is also extracted by
-untar from PATH, in a child process that reads the decompressed archive from a pipe, and its
-error recorded. If untar runs out of disk space, that is recorded apart from its errors.
+tarballs are each sampled in full, while every tarball is downloaded once.
+
+With --untar, each tarball is also extracted by untar from PATH, in a child process that reads
+the decompressed archive from a pipe, and its error recorded. If untar runs out of disk space,
+that is recorded apart from its errors, and --reuse does not copy it: remove those lines from
+OUT and run again, with more space, to extract them.
 
 With --cache DIR, downloads are also kept in DIR, by sha256, up to --cache-size GB (50 by
 default): the least recently used are removed first, and tarballs over a tenth of that are not
@@ -458,13 +461,14 @@ def version(path):
 
 
 def reusable(paths, untar_path):
-    """Results in paths, by sha256, from this scanner and untar."""
+    """Results in paths, by sha256, from this scanner and untar, where untar was not skipped."""
     untar = version(os.path.join(untar_path, "untar.py")) if untar_path else None
     found = {}
     for path in paths:
         for line in open(path):
             r = json.loads(line)
-            if "features" in r and r.get("scanner") == SCANNER and r.get("untar") == untar:
+            if "features" in r and r.get("scanner") == SCANNER and r.get("untar") == untar \
+                    and not r.get("untar_skipped"):
                 found.setdefault(r["sha256"], r)
     return found
 

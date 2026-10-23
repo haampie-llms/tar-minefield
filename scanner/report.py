@@ -13,6 +13,7 @@ import os
 import re
 import sys
 import time
+import urllib.parse
 
 
 def origin(url):
@@ -166,6 +167,13 @@ def main():
     print(f"- not downloaded: {len(failed)}, scanner crashed: {len(crashed)}")
     first = sum(r.get("source") in ("mirror", (r.get("urls") or [None])[0]) for r in scanned)
     print(f"- downloaded from the first of their URLs (a mirror): {first}")
+    hosts = collections.Counter(urllib.parse.urlsplit(r.get("source") or "").netloc for r in scanned)
+    print(
+        f"- copied from other scans with `--reuse`: {sum(1 for r in scanned if r.get('reused'))}, "
+        f"read from `--cache`: {sum(1 for r in scanned if r.get('cached'))}; "
+        f"sources by host: {counter(hosts, 6)}"
+    )
+    print(f"- size: {sum(r.get('bytes', 0) for r in scanned) / 1e9:.1f} GB compressed")
     print(f"- origins: {counter(collections.Counter(origin(r['url']) for r in scanned), 10)}")
     print(f"- producers: {counter(collections.Counter(producer(r) for r in scanned), 10)}")
     print(
