@@ -7,7 +7,7 @@ strict parser can be checked against them before anyone adopts them (see
 - `tarscan.py` reads the headers of an archive, skips its data, and reports every feature it
   finds, without stopping at the first one. It is independent of any tar implementation.
 - `run.py sample` picks a sample from a list of tarballs, and `run.py scan` downloads and scans
-  it. Tarballs are streamed: they are never written to disk.
+  it. Tarballs are streamed: they are not written to disk, unless they are cached.
 - `report.py` summarizes results as Markdown.
 - `spack_list.py` lists the tarballs of Spack's builtin repository, and `live_bootstrap_list.py`
   those of live-bootstrap. Lists for other ecosystems go next to them, as `<ecosystem>_list.py`.
@@ -33,6 +33,14 @@ the checkout at PATH, in a child process that reads from a pipe. Leave it out to
 the scanner and untar, instead of downloading them again. Pass the results of every ecosystem
 scanned so far: ecosystems share many tarballs, GNU releases above all. Each ecosystem is still
 sampled in full, so its fractions are unbiased.
+
+`--cache DIR` also keeps downloaded tarballs in DIR, by sha256, up to `--cache-size GB` (50 by
+default), and scans them from there in later runs: a new version of the scanner or untar then
+needs no downloads. The least recently used tarballs are removed first, but never those the
+current run used: runs read tarballs in the same order, so plain LRU would remove each one just
+before it is needed. Tarballs over a tenth of the size are not kept. Workers share DIR without
+locks, and so can several runs. The files in it are compressed tarballs with their URL on the
+first line, and are never extracted there.
 
 ## Lists
 
@@ -84,6 +92,7 @@ mostly the same.
 | `scanner`, `untar` | versions: the first 12 hex digits of the sha256 of `tarscan.py` and `untar.py` |
 | `source` | the URL it was downloaded from |
 | `reused` | true if its results were copied from another results file, with `--reuse` |
+| `cached` | true if it was read from `--cache`: `source` is where it was downloaded from before |
 | `bytes` | the size of the tarball |
 | `members`, `kinds` | number of members, by kind |
 | `features` | how often each feature occurs: the names are defined in `tarscan.py` |
