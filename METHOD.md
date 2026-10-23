@@ -53,8 +53,8 @@ Ambiguities differ in how much damage they allow, roughly in this order:
 
 Framing:
 
-- Number fields: a leading NUL (GNU tar skips it, `tarfile` stops at it), leading or trailing
-  spaces, spaces inside, no terminator, digits 8 and 9, an empty field, base-256 (positive and
+- Number fields: a leading NUL (GNU tar skips it, `tarfile` stops at it), spaces or NULs
+  between digits, no terminator, digits 8 and 9, an empty field, base-256 (positive and
   negative).
 - Checksums: signed versus unsigned sums, and the formats of the checksum field.
 - Sizes of members that carry no data in some readers: directories, hardlinks, symlinks,
@@ -125,7 +125,9 @@ passes. They cover what real archives contain and what a careless strict parser 
   release tarball,
 - pax headers for long names and links, GNU long names and links, and the ustar prefix,
 - names of exactly 100 bytes, with no NUL,
-- number fields terminated by a space, a NUL, or both,
+- number fields padded with leading zeros or leading spaces, and terminated by a space, a NUL,
+  or both: many CPAN tarballs, and those of old GNU tar, pad with spaces, and the scans of
+  [data/](data) find no tarball where readers read such a field differently,
 - base-256 sizes of files over 8 GiB,
 - vendor pax keys that do not affect the tree, such as `LIBARCHIVE.xattr.*` and `SCHILY.*` from
   macOS and star, and the AppleDouble `._` files next to them,
