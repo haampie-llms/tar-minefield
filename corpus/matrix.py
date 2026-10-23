@@ -393,14 +393,13 @@ def totals(results, cases, names):
     return {n: " ".join(f"{s}{counts[n][s]}" for s in ORDER if counts[n].get(s)) for n in names}
 
 
-# SVG: the classes of outcomes, their colours in light and dark mode, and their meaning
+# SVG: the classes of outcomes, their colours in light and dark mode, and what they mean
 CLASSES = {
-    "✅": ("ok", "#1a7f37", "#238636", "✓", "as the verdict says"),
-    "⚠️": ("warn", "#bf8700", "#9e6a03", "",
-           "accepts an n_ case: one letter per tree it extracts; in a row, other letters are other trees"),
-    "⛔": ("stop", "#6e7781", "#6e7681", "–", "rejects an i_ case, which a strict parser may"),
-    "❌": ("bad", "#cf222e", "#da3633", "✗", "rejects a y_ case, or extracts another tree"),
-    "💥": ("boom", "#8250df", "#8957e5", "!", "writes outside the destination"),
+    "✅": ("ok", "#1a7f37", "#238636", "as the verdict says: rejects an n_ case, extracts the tree of the others"),
+    "⚠️": ("warn", "#bf8700", "#9e6a03", "accepts an n_ case, which a strict parser rejects"),
+    "⛔": ("stop", "#6e7781", "#6e7681", "rejects an i_ case, which a strict parser may"),
+    "❌": ("bad", "#cf222e", "#da3633", "rejects a y_ case, or extracts another tree than its manifest"),
+    "💥": ("boom", "#8250df", "#8957e5", "writes outside the destination"),
 }
 FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
 
@@ -433,23 +432,18 @@ def svg_style():
 
 
 def cell_svg(x, y, w, h, symbol, title):
-    """A cell: its colour from the symbol, and the letter of a tree, or a mark."""
-    base, letter = symbol[:2] if symbol.startswith("⚠️") else symbol[:1], ""
-    if symbol.startswith("⚠️"):
-        base, letter = "⚠️", symbol[2:]
-    elif symbol.startswith("❌") and len(symbol) > 1:
-        base, letter = "❌", symbol[1:]
-    cls, _, _, mark, _ = CLASSES[base]
-    return (f'<g><title>{esc(title)}</title><rect class="{cls}" x="{x}" y="{y}" width="{w}" '
-            f'height="{h}" rx="3"/><text class="cell" x="{x + w / 2}" y="{y + h / 2 + 4}">'
-            f"{esc(letter or mark)}</text></g>")
+    """A cell, coloured by its outcome. The letters of trees are left to MATRIX.md, which lists
+    the trees: the hover title names the tree."""
+    base = next(c for c in CLASSES if symbol.startswith(c))
+    return (f'<g><title>{esc(title)}</title><rect class="{CLASSES[base][0]}" x="{x}" y="{y}" '
+            f'width="{w}" height="{h}" rx="3"/></g>')
 
 
 def legend_svg(x, y):
     out = []
     for c in CLASSES.values():
         out.append(f'<rect class="{c[0]}" x="{x}" y="{y - 10}" width="12" height="12" rx="2"/>'
-                   f'<text x="{x + 18}" y="{y}">{esc(c[4])}</text>')
+                   f'<text x="{x + 18}" y="{y}">{esc(c[3])}</text>')
         y += 18
     return "".join(out), y
 
@@ -483,7 +477,7 @@ def svg(results, cases):
             if not k:
                 continue
             h = bar * k / len(cases)
-            out.append(f'<g><title>{esc(n)}: {k} of {len(cases)}, {esc(CLASSES[symbol][4])}</title>'
+            out.append(f'<g><title>{esc(n)}: {k} of {len(cases)}, {esc(CLASSES[symbol][3])}</title>'
                        f'<rect class="{CLASSES[symbol][0]}" x="{xs[n]}" y="{bottom - h:.1f}" '
                        f'width="{cw}" height="{h:.1f}"/>')
             if h >= 14:
