@@ -280,8 +280,7 @@ def main():
             results = json.load(f)
         cases = load_cases()
         readme(sys.argv[2], results, cases)
-        with open(os.path.join(HERE, "MATRIX.md"), "w") as f:
-            f.write(table(results, cases))
+        write_outputs(results, cases)
         return
     work = os.path.abspath(sys.argv[1])
     cases = load_cases()
@@ -315,8 +314,7 @@ def main():
     with open(os.path.join(HERE, "matrix.json"), "w") as f:
         json.dump(results, f, indent=1, sort_keys=True)
         f.write("\n")
-    with open(os.path.join(HERE, "MATRIX.md"), "w") as f:
-        f.write(table(results, cases))
+    write_outputs(results, cases)
 
 
 def outcome(case, r):
@@ -381,6 +379,158 @@ def totals(results, cases, names):
     return {n: " ".join(f"{s}{counts[n][s]}" for s in ORDER if counts[n].get(s)) for n in names}
 
 
+# SVG: the classes of outcomes, their colours in light and dark mode, and their meaning
+CLASSES = {
+    "✅": ("ok", "#1a7f37", "#238636", "✓", "as the verdict says"),
+    "⚠️": ("warn", "#bf8700", "#9e6a03", "", "accepts an n_ case: the letter tells the trees apart"),
+    "⛔": ("stop", "#6e7781", "#6e7681", "–", "rejects an i_ case, which a strict parser may"),
+    "❌": ("bad", "#cf222e", "#da3633", "✗", "rejects a y_ case, or extracts another tree"),
+    "💥": ("boom", "#8250df", "#8957e5", "!", "writes outside the destination"),
+}
+FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+
+
+def group(name):
+    """Groups of implementations, which the SVGs separate by a gap."""
+    if name.startswith("strict.py"):
+        return 0
+    if name in ("GNU tar", "BusyBox tar", "7-Zip"):
+        return 1
+    if name.startswith(("tarfile", "untar")):
+        return 2
+    return 3
+
+
+def esc(text):
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
+def svg_style():
+    light = "".join(f".{c[0]}{{fill:{c[1]}}}" for c in CLASSES.values())
+    dark = "".join(f".{c[0]}{{fill:{c[2]}}}" for c in CLASSES.values())
+    return (
+        f"<style>text{{font-family:{FONT};font-size:12px;fill:#1f2328}}"
+        ".cell{fill:#fff;font-size:11px;font-weight:600;text-anchor:middle}"
+        f".rule{{stroke:#d0d7de}}{light}"
+        "@media (prefers-color-scheme: dark){text{fill:#e6edf3}.cell{fill:#fff}.rule{stroke:#30363d}"
+        f"{dark}}}</style>"
+    )
+
+
+def cell_svg(x, y, w, h, symbol, title):
+    """A cell: its colour from the symbol, and the letter of a tree, or a mark."""
+    base, letter = symbol[:2] if symbol.startswith("⚠️") else symbol[:1], ""
+    if symbol.startswith("⚠️"):
+        base, letter = "⚠️", symbol[2:]
+    elif symbol.startswith("❌") and len(symbol) > 1:
+        base, letter = "❌", symbol[1:]
+    cls, _, _, mark, _ = CLASSES[base]
+    return (f'<g><title>{esc(title)}</title><rect class="{cls}" x="{x}" y="{y}" width="{w}" '
+            f'height="{h}" rx="3"/><text class="cell" x="{x + w / 2}" y="{y + h / 2 + 4}">'
+            f"{esc(letter or mark)}</text></g>")
+
+
+def legend_svg(x, y):
+    out = []
+    for c in CLASSES.values():
+        out.append(f'<rect class="{c[0]}" x="{x}" y="{y - 10}" width="12" height="12" rx="2"/>'
+                   f'<text x="{x + 18}" y="{y}">{esc(c[4])}</text>')
+        y += 18
+    return "".join(out), y
+
+
+def svg_summary(results, cases):
+    """The summary of the README: implementations in rows, the cases of KEY in columns, and a bar
+    of the outcomes of all cases."""
+    names = columns(results)
+    cells = {case: case_cells(cases[case], results["cases"][case], names)[0] for case, _ in KEY}
+    counts = {n: {} for n in names}
+    for case, info in cases.items():
+        for n in names:
+            sym = outcome(info, results["cases"][case][n])[0]
+            counts[n][sym] = counts[n].get(sym, 0) + 1
+    left, cw, ch, gap, top = 230, 30, 22, 4, 150
+    bar_x, bar_w = left + len(KEY) * (cw + gap) + 16, 260
+    out, y = [], top
+    for i, (case, label) in enumerate(KEY):
+        x = left + i * (cw + gap) + cw / 2
+        out.append(f'<text transform="translate({x + 4},{top - 8}) rotate(-50)">{esc(label.replace("`", ""))}</text>')
+    out.append(f'<text x="{bar_x}" y="{top - 8}">all {len(cases)} cases</text>')
+    previous = None
+    for n in names:
+        if previous is not None and group(n) != group(previous):
+            y += 10
+            out.append(f'<line class="rule" x1="0" x2="{bar_x + bar_w}" y1="{y - 7}" y2="{y - 7}"/>')
+        previous = n
+        out.append(f'<text x="{left - 10}" y="{y + ch / 2 + 4}" text-anchor="end">{esc(n)}</text>')
+        for i, (case, label) in enumerate(KEY):
+            out.append(cell_svg(left + i * (cw + gap), y, cw, ch, cells[case][n], f"{n}: {case}"))
+        x = bar_x
+        for sym in ORDER:
+            k = counts[n].get(sym, 0)
+            if not k:
+                continue
+            w = bar_w * k / len(cases)
+            cls = CLASSES[sym][0]
+            out.append(f'<g><title>{esc(n)}: {k} {esc(CLASSES[sym][4])}</title><rect class="{cls}" '
+                       f'x="{x:.1f}" y="{y}" width="{w:.1f}" height="{ch}"/>')
+            if w >= 18:
+                out.append(f'<text class="cell" x="{x + w / 2:.1f}" y="{y + ch / 2 + 4}">{k}</text>')
+            out.append("</g>")
+            x += w
+        y += ch + gap
+    legend, y = legend_svg(left, y + 24)
+    out.append(legend)
+    width, height = bar_x + bar_w + 10, y + 4
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
+            f'viewBox="0 0 {width} {height}" role="img"><title>What implementations make of the '
+            f'cases of the corpus</title>{svg_style()}{"".join(out)}</svg>\n')
+
+
+def svg_full(results, cases):
+    """Every case in rows, every implementation in columns."""
+    names = columns(results)
+    left = 20 + 7 * max(len(c) for c in cases)
+    cw, ch, gap, top = 22, 16, 3, 230
+    xs, x, previous = {}, left, None
+    for n in names:
+        if previous is not None and group(n) != group(previous):
+            x += 10
+        xs[n], previous, x = x, n, x + cw + gap
+    out, y = [], top
+    for n in names:
+        out.append(f'<text transform="translate({xs[n] + cw / 2 + 4},{top - 8}) rotate(-60)">{esc(n)}</text>')
+    previous = None
+    for case, info in cases.items():
+        if previous is not None and case[0] != previous[0]:
+            y += 8
+        previous = case
+        out.append(f'<text x="{left - 10}" y="{y + ch / 2 + 4}" text-anchor="end">{esc(case)}</text>')
+        cells, letters = case_cells(info, results["cases"][case], names)
+        trees = {v: k for k, v in letters.items()}
+        for n in names:
+            letter = cells[n].lstrip("✅⚠️⛔❌💥\ufe0f")
+            title = f"{n}: {case}" + (f", tree {letter}: {trees[letter]}" if letter in trees else "")
+            out.append(cell_svg(xs[n], y, cw, ch, cells[n], title.replace("`", "")))
+        y += ch + gap
+    legend, y = legend_svg(left, y + 24)
+    out.append(legend)
+    # the rotated name of the last column reaches past it, by the cosine of 60°
+    width, height = int(x + 20 + 7 * len(names[-1]) / 2), y + 4
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
+            f'viewBox="0 0 {width} {height}" role="img"><title>What implementations make of every '
+            f'case of the corpus</title>{svg_style()}{"".join(out)}</svg>\n')
+
+
+def write_outputs(results, cases):
+    """MATRIX.md and the SVGs, from the results."""
+    for name, data in (("MATRIX.md", table(results, cases)),
+                       ("matrix.svg", svg_summary(results, cases)),
+                       ("matrix-all.svg", svg_full(results, cases))):
+        with open(os.path.join(HERE, name), "w") as f:
+            f.write(data)
+
+
 def readme(path, results, cases):
     """The summary in the README: every implementation, on the cases of KEY and in total."""
     names = columns(results)
@@ -388,16 +538,20 @@ def readme(path, results, cases):
     total = totals(results, cases, names)
     lines = [
         f"Every case of the corpus, {len(cases)} of them, extracted by every implementation: here a "
-        "few that show how they differ, and the totals. "
+        "few that show how they differ, and the outcomes of all of them. "
         "[corpus/MATRIX.md](corpus/MATRIX.md) has every case, the versions, and which tree each "
         "letter is.",
         "",
         "| implementation | " + " | ".join(label for _, label in KEY) + " | all cases |",
         "|---|" + "---|" * (len(KEY) + 1),
     ]
-    for n in names:
-        lines.append(f"| {n} | " + " | ".join(cells[c][n] for c, _ in KEY) + f" | {total[n]} |")
-    lines += [""] + LEGEND + ["", "Generated by `corpus/matrix.py` from `corpus/matrix.json`."]
+    lines = lines[:1] + [
+        "",
+        "![What implementations make of a few cases of the corpus, and of all of them: "
+        + "; ".join(f"{n}: {total[n]}" for n in names) + "](corpus/matrix.svg)",
+        "",
+        "Generated by `corpus/matrix.py` from `corpus/matrix.json`.",
+    ]
     block = "\n".join(lines)
     text = open(path).read()
     begin, end = "<!-- begin matrix.py -->", "<!-- end matrix.py -->"
@@ -417,6 +571,9 @@ def table(results, cases):
         "in order. The two policies of `scanner/strict.py` are from what `tarscan.py` reports.",
         "",
     ] + LEGEND + [
+        "",
+        "![Every case of the corpus, in rows, and what every implementation makes of it, in columns:"
+        " the table below as a picture](matrix-all.svg)",
         "",
         "| implementation | version | how |",
         "|---|---|---|",
