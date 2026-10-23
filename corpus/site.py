@@ -108,6 +108,17 @@ def page(title, body):
     )
 
 
+def hexdump(data):
+    """Bytes as `xxd` writes them, so that `xxd -r` makes them again."""
+    lines = []
+    for i in range(0, len(data), 16):
+        row = data[i : i + 16]
+        hexes = " ".join(row[j : j + 2].hex() for j in range(0, len(row), 2))
+        text = "".join(chr(b) if 32 <= b < 127 else "." for b in row)
+        lines.append(f"{i:08x}: {hexes:<39}  {text}")
+    return "\n".join(lines) + "\n"
+
+
 def error_line(error):
     """An error on one line, shortened."""
     line = " ".join(error.split())
@@ -204,6 +215,8 @@ def case_page(case, info, previous, following, results, data):
         block_map = f.read()
     with open(os.path.join(matrix.ARCHIVES, case + ".txt")) as f:
         dump = f.read()
+    with open(os.path.join(matrix.ARCHIVES, case + ".tar"), "rb") as f:
+        archive = f.read()
     features = features_of(case, info)
     nav = ['<a href="index.html">all cases</a>']
     for rel, other in (("previous", previous), ("next", following)):
@@ -230,6 +243,10 @@ def case_page(case, info, previous, following, results, data):
 <div class="wide">{block_map}</div>
 <details><summary>Every block, as text</summary>
 <pre>{html.escape(dump)}</pre>
+</details>
+<details><summary>Every byte, as a hex dump</summary>
+<p>As <code>xxd</code> writes it: <code>xxd -r</code> makes the archive of it.</p>
+<pre>{html.escape(hexdump(archive))}</pre>
 </details>
 """
     if info["verdict"] != "n":
