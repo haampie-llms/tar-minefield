@@ -1,0 +1,280 @@
+# Method
+
+This document describes how tar-minefield decides which archives a strict tar parser must
+reject, how it keeps that set small enough that strict parsers stay practical, and how its test
+cases are produced so that anyone can audit them. It is a working draft.
+
+## Goal
+
+A corpus of tar archives, each with a verdict, that any tar implementation can run against: a
+reference for what a strict parser rejects, what it must accept, and what it must make of the
+archives it accepts.
+
+The corpus is not limited to archives on which today's implementations disagree. Disagreement
+between, say, GNU tar and Python's `tarfile` is evidence of an ambiguity, but an archive that every
+known reader interprets the same way can still be ambiguous: it only takes the next
+implementation to make the other reasonable choice. The corpus records both.
+
+## Scope
+
+The tar layer only: the input is the decompressed byte stream. Ambiguities in compression
+formats are real and interact with tar (see [Future work](#future-work)), but are out of scope for
+now.
+
+The interpretation that matters is the one relevant to distributing software. An archive maps to
+a tree of entries, each with
+
+- a path,
+- a kind: regular file, directory, symlink or hardlink,
+- the contents of a regular file, or the target of a link,
+- whether a regular file is executable.
+
+Fields outside this model (mtime, uid, gid, uname, gname, xattrs, device numbers, most of the
+mode) are not restored by an extractor for software distribution, so an ambiguity confined to
+them is harmless. Stating this up front is what keeps strictness in check: a parser can be strict
+about every field that shapes the tree and lenient about everything else.
+
+## When an archive is ambiguous
+
+An archive is ambiguous if two readers, each following a defensible reading of POSIX, the GNU tar
+documentation or long-standing practice, produce different trees from it. For each case we name
+the *decision point*: the place in a reader where two reasonable choices exist.
+
+Ambiguities differ in how much damage they allow, roughly in this order:
+
+1. **Framing**: where a member's data ends and the next header begins. A reader that frames an
+   archive differently sees different members, so whole files can be hidden from one reader and
+   visible to another.
+2. **Name**: which of several fields gives a member its path, and how a path is normalized.
+3. **Kind**: whether a member is a file, a directory or a link.
+4. **Order and state**: what happens when members interact, through duplicate paths or links.
+
+### Initial catalogue
+
+Framing:
+
+- Number fields: a leading NUL (GNU tar skips it, `tarfile` stops at it), leading or trailing
+  spaces, spaces inside, no terminator, digits 8 and 9, an empty field, base-256 (positive and
+  negative).
+- Checksums: signed versus unsigned sums, and the formats of the checksum field.
+- Sizes of members that carry no data in some readers: directories, hardlinks, symlinks,
+  devices, fifos.
+- Unknown typeflags: POSIX treats them as regular files with data, a reader may also skip them
+  without data.
+- GNU's old sparse (`S`), multivolume (`M`), volume label (`V`) and dumpdir (`D`) headers, and
+  contiguous files (`7`).
+- A pax `size` that disagrees with the header's size, a pax `size` on a member that has no data,
+  and a pax `size` applied to an extended header rather than to the member, which is the bug class
+  of CVE-2025-62518 (tokio-tar), GHSA-3pv8-6f4r-ffg2 (tar-rs) and CVE-2026-53655 (node-tar).
+- pax record framing: the length counts itself, leading zeros in the length, data after the last
+  record, records not ending in a newline, values that contain a newline (records are delimited by
+  length, so a reader that splits on lines sees different records), keys with whitespace (GNU tar
+  strips it, `tarfile` does not).
+- The end of the archive: a lone zero block, zero blocks followed by more members (GNU tar's
+  `--ignore-zeros`), data other than zeros after the end-of-archive marker, no marker at all.
+- Recognizing a header: v7 headers without magic, the POSIX magic `ustar\0` with the GNU version
+  field and vice versa, damaged magic.
+
+Name:
+
+- Several sources for one name: a pax `path`, a GNU long name (`L`), the ustar prefix and name,
+  the star prefix, Solaris `X` headers, two extended headers of one kind, or one of each.
+- The prefix field in a header with GNU magic, which GNU tar uses for times in incremental
+  archives (`tarfile` reads it as a prefix: gh-155629).
+- pax keys that change the name or kind from inside: `GNU.sparse.name`, `SCHILY.filetype`.
+- NUL inside a pax path or GNU long name, and GNU long names padded with NULs or spaces.
+- `hdrcharset=BINARY`, names that are not UTF-8.
+- Normalization: `./a` and `a`, `a//b`, `a/./b`, a trailing slash, `.`, an empty name, `\` as a
+  separator on Windows, drive letters.
+- Collisions that depend on the filesystem: names that differ only in case or Unicode
+  normalization extract to one entry on macOS and Windows and to two on Linux.
+- The same questions for link targets: `linkpath`, GNU long links (`K`) and the linkname field.
+
+Kind:
+
+- A regular file whose name ends in a slash: the historical convention for directories. GNU tar
+  1.35, `tarfile` and Ubuntu's patched GNU tar 1.35 make three different trees of one archive.
+- A trailing slash on the name of a link.
+
+Order and state:
+
+- Duplicate paths: file and file (last wins, or first wins), file and directory, directory and
+  directory, symlink and file (replace the symlink, or write through it).
+- Writing through a symlink: a member `a/b` after a symlink `a`.
+- Hardlinks to a later member, to a member that does not exist, to a directory, to a symlink (link
+  the symlink or its target), to themselves, or to a target spelled differently from the member
+  it names (`./a` and `a`).
+
+Global pax headers:
+
+- `path`, `linkpath` or `size` in a global header.
+- A global header between an extended header and its member.
+- Empty values, which in POSIX remove an earlier global value.
+
+## Verdicts
+
+As in Nicolas Seriot's JSONTestSuite, every case is named by its verdict:
+
+- `n_`: a strict parser rejects it.
+- `y_`: every parser accepts it, and extracts the tree in its manifest.
+- `i_`: ambiguous in principle, but common enough in real archives that rejecting it has a real
+  cost. A strict parser may reject it; if it accepts it, it extracts the tree in its manifest.
+
+The `y_` cases are as important as the `n_` cases: without them, a parser that rejects everything
+passes. They cover what real archives contain and what a careless strict parser would trip over:
+
+- the global pax header with only a `comment` that `git archive` writes, and so every GitHub
+  release tarball,
+- pax headers for long names and links, GNU long names and links, and the ustar prefix,
+- names of exactly 100 bytes, with no NUL,
+- number fields terminated by a space, a NUL, or both,
+- base-256 sizes of files over 8 GiB,
+- vendor pax keys that do not affect the tree, such as `LIBARCHIVE.xattr.*` and `SCHILY.*` from
+  macOS and star, and the AppleDouble `._` files next to them,
+- directories after their contents, and parent directories that have no member of their own,
+- the same directory listed twice, as `tar cf x.tar dir dir/sub` writes.
+
+Each case also records what is known about it:
+
+- **observed**: implementations disagree today, with their names and versions,
+- **historical**: implementations disagreed, and one was changed (for example gh-155629),
+- **latent**: no known implementations disagree, with an argument why one could.
+
+Whether an ambiguous case is `n_` or `i_` is decided by measurement, as described next.
+
+## Not too strict: measuring real archives
+
+A strict parser is useless if it rejects the tarballs people actually download. The question is
+what fraction of real release tarballs each rule rejects, and the package repositories of Spack,
+Nix and Guix answer it: each lists tens of thousands of tarballs, from decades of releases,
+pinned by checksum.
+
+### Sources
+
+- Spack: the `builtin` repository has about 41,000 `sha256` checksums, of which some are patches
+  and resources rather than tarballs. Spack's source mirror is content-addressed, at
+  `https://mirror.spack.io/_source-cache/archive/<sha256[:2]>/<sha256>.<ext>`.
+- Nix: `maintainers/scripts/find-tarballs.nix` in nixpkgs lists the tarballs of all packages, and
+  `https://tarballs.nixos.org/sha256/<sha256>` serves them by checksum.
+- Guix: `https://guix.gnu.org/sources.json` lists the sources of all packages with their
+  checksums, for Software Heritage. Disarchive's database records the headers of the tarballs it
+  can reassemble, which may allow some analysis without downloads.
+
+Tarballs are deduplicated by checksum, since the three overlap a lot, GNU releases especially.
+
+### A scanner, not an extractor
+
+Running a dozen extractors over the corpus is slow, and makes every change of policy a new run.
+Instead, a scanner reads only the headers of each tarball, skips the data, and records every
+feature from the catalogue it finds, as one JSON line per tarball keyed by its checksum. It does
+not stop at the first problem. A strictness policy is then a query over that table, and debating
+it costs no downloads.
+
+The scanner also records what identifies the producer of a tarball: the magic, how number fields
+are padded, the `git archive` comment, uname and gname, the mtimes of the entries (which also date
+the tarball). "Rule R rejects 0.4% of tarballs, all made by GNU tar 1.13 before 2004" is
+actionable where "0.4%" is not.
+
+### What to report
+
+For each rule:
+
+- the fraction of distinct tarballs it rejects,
+- the fraction of packages with any version it rejects,
+- the fraction of packages whose latest version it rejects, which is what decides whether a rule
+  is practical,
+- the producers and years of the tarballs it rejects.
+
+The first run is on a sample of about 2,000 tarballs, stratified by repository and age.
+
+### Who pays for ambiguity
+
+Package managers that hash only the tarball (Spack, Guix's `url-fetch`, and about a quarter of
+nixpkgs) are exposed to ambiguity silently: a different extractor gives different sources for the
+same hash. Package managers that hash the extracted tree, such as Nix's `fetchzip`, see a
+different interpretation as a hash mismatch: it breaks a build, but loudly. Those tree hashes are
+also an oracle: extracting with a strict parser and comparing the hash checks its interpretation
+against the one Nix recorded.
+
+For the tarballs that are pinned by checksum, strictness can come with an allowlist: a reviewed
+list of checksums, each with the hash of the tree it must extract to. Then the rare legacy
+tarball keeps working, with its interpretation pinned, and a strict parser's cost is a one-time
+review.
+
+## Auditability
+
+People should be able to trust the corpus without trusting its binary files.
+
+- Every archive is produced by a small script that uses the Python standard library only, and
+  builds the archive from raw 512-byte blocks with a short shared helper. Scripts never use
+  `tarfile` or any other implementation under test: they normalize what they write, and the
+  corpus would then test them against themselves. Each script explains its case in a docstring.
+- Generation is deterministic: no clocks, no randomness, no dependency on the machine.
+- The archives are checked into git, and CI regenerates them and fails on any difference. So
+  every byte can be traced to a script that a reviewer can read.
+- Next to each archive is a generated, annotated dump: every header block with its offset, its
+  fields, their raw bytes and their meaning. A change to a case is then a readable diff.
+- Expected trees are plain manifests (path, kind, sha256 of the contents, link target,
+  executable), rather than a single hash.
+- The interpretation of every case by every implementation we track (GNU tar, bsdtar, busybox,
+  star, CPython's `tarfile`, Go's `archive/tar`, Rust's `tar`, node-tar, 7-Zip, Apache Commons
+  Compress, .NET's `System.Formats.Tar`, ...) is produced in CI at pinned versions, and published
+  as data. Claims like "GNU tar does X" can then be checked by running them again.
+- Cases are written from scratch, in our own words, also where they reproduce a known CVE: no
+  archive or test is copied from another project.
+- Payloads are harmless. Cases about traversal write marker files with obvious names, and the
+  README warns that the corpus contains archives that escape their destination in lenient
+  extractors.
+- The table produced by the scanner is published too: anyone can download the same tarballs by
+  checksum, check it, and apply their own policy.
+
+## Prior art
+
+Test suites that became references for implementations, and how:
+
+- [JSONTestSuite](https://github.com/nst/JSONTestSuite), from Nicolas Seriot's
+  [Parsing JSON is a Minefield](https://seriot.ch/projects/parsing_json.html): the `y_`/`n_`/`i_`
+  verdicts and a published matrix of how each parser handles each case. Implementations such as
+  [JSON-GLib](https://gitlab.gnome.org/GNOME/json-glib/-/merge_requests/63) and
+  [Wuffs](https://skia.googlesource.com/external/github.com/google/wuffs/+/HEAD/script/run-json-test-suite.sh)
+  run it.
+- [x509-limbo](https://github.com/C2SP/x509-limbo): test vectors for X.509 path validation,
+  generated by code, with results across implementations. Go's `crypto/x509` runs it in its own
+  [tests](https://tip.golang.org/src/crypto/x509/x509limbo_test.go), with a justification for
+  every case where it deliberately differs.
+- html5lib-tests, toml-test, test262: suites shared by most implementations of their format.
+
+Work on archives specifically:
+
+- [My ZIP isn't your ZIP](https://www.usenix.org/conference/usenixsecurity25/presentation/you)
+  (USENIX Security 2025) and its fuzzer [ZipDiff](https://github.com/ouuan/ZipDiff): 50 ZIP
+  parsers, 14 types of ambiguity. It led to fixes such as uv's CVE-2025-54368.
+- Michał Górny's [Portability of tar features](https://mgorny.pl/articles/portability-of-tar-features.html):
+  which tar formats and features each implementation reads and writes. It is about portability,
+  not ambiguity, and is from 2018.
+- star's [`tartest`](https://freshports.org/archivers/tartest) and test archives, which check
+  POSIX.1-1990 conformance. GNU tar can run star's archives in its
+  [own tests](https://git.cworth.org/git/tar/tree/tests/star/README), disabled by default.
+- The test suites of libarchive, GNU tar, Go's `archive/tar` and CPython's `tarfile`, each written
+  for one implementation.
+- [Multi-interpretable tarballs](https://stoppels.ch/2026/10/22/multi-interpretable-tarballs.html),
+  and [untar](https://github.com/haampie/untar), whose rules are the first candidate policy.
+
+## Future work
+
+- Compression formats: gzip files with several members, which some decoders stop after the first
+  of; bzip2 and xz files with several streams; xz stream padding; zstd skippable frames; data
+  after the compressed stream; gzip header CRCs and sizes. They interact with tar: a first stream
+  that holds a complete archive, followed by a second stream that holds another, extracts
+  differently depending on the decoder, unless the parser refuses data after the end-of-archive
+  marker.
+- Polyglots: files that are valid tar and valid ZIP, or tar and something else.
+- Writers: which implementations produce archives that strict parsers reject.
+
+## Open questions
+
+- Is a single verdict per case enough, or do some cases need a verdict per use (software
+  distribution versus backups, where owners and modes matter)?
+- Which normalizations of names are interpretation (`./a` is `a`) and which are a reason to
+  reject?
+- How should a rule that only old tarballs break be handled: `i_`, or `n_` with an allowlist?
