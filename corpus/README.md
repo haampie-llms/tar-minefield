@@ -2,7 +2,7 @@
 
 Tar archives, each with a verdict, as [METHOD.md](../METHOD.md) describes: `n_` cases a strict
 parser rejects, `y_` cases every parser accepts, and `i_` cases that the default policy accepts.
-It has its first cases; the others of the catalogue follow.
+[MATRIX.md](MATRIX.md) shows what implementations make of each case.
 
 **Some archives escape the directory they are extracted to in lenient extractors.** Their files
 are harmless, and say in their names and contents what happened, but extract them in a
@@ -35,3 +35,18 @@ Generation is deterministic, with the Python standard library only. `--scan` che
 
 A new case is a script in `cases/`, named for its verdict and level, with `VERDICT`, `FEATURES`,
 `TREE` for `y_` and `i_` cases, and a `build(archive)` function.
+
+## What implementations make of it
+
+```console
+$ python -I corpus/matrix.py WORK
+```
+
+extracts every case with every implementation it finds, and writes `matrix.json` and the table
+in `MATRIX.md` from it. Libraries without an extractor, such as Go's `archive/tar`, list the
+members, which are then applied in order. WORK holds the builds of the programs in `runners/`,
+whose dependencies are pinned, and the extractions: each in a directory of its own, two levels
+below a directory that catches what is written outside it. Run it in a throwaway directory, or a
+container, as some cases escape in lenient extractors. It uses what is installed: GNU tar,
+BusyBox, 7-Zip, CPython's `tarfile` with each of its filters, untar (in `~/untar`), Go, Rust,
+Node.js, and Julia (on PATH, or as `$JULIA`).

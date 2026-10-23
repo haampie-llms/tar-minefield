@@ -1,0 +1,7 @@
+{
+ "verdict": "n",
+ "description": "The same file twice, with the same contents.",
+ "features": [
+  "tree.duplicate.file-file"
+ ]
+}

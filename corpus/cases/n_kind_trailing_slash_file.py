@@ -7,8 +7,6 @@ file with a trailing slash.
 
 Decision point: whether the typeflag or the trailing slash decides the kind.
 Seen in: v7 archives only, such as sendmail 8.18.2, tcp_wrappers 7.6 and unclutter 8.
-Observed: GNU tar 1.35 and 7-Zip 26.00 list a directory; BusyBox 1.37.0 and the tarfile of
-CPython 3.14.4 a regular file.
 """
 
 VERDICT = "n"

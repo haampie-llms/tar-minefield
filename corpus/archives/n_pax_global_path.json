@@ -1,0 +1,7 @@
+{
+ "verdict": "n",
+ "description": "A global pax header with a `path`.",
+ "features": [
+  "pax-global.path"
+ ]
+}

@@ -9,8 +9,6 @@ a header that only one reader sees.
 
 Decision point: whether a pax `size` applies to a member that has no data.
 Seen in: llama_index_workflows 2.26.0, with a pax size on a directory.
-Observed: GNU tar 1.35 and 7-Zip 26.00 list `dir/` only; BusyBox 1.37.0 and the tarfile of
-CPython 3.14.4 list `dir/` and `dir/smuggled`.
 """
 
 VERDICT = "n"

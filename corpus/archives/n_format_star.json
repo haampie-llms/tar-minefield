@@ -1,0 +1,7 @@
+{
+ "verdict": "n",
+ "description": "star's prefix field, which is shorter than ustar's.",
+ "features": [
+  "format.star"
+ ]
+}

@@ -1,0 +1,7 @@
+{
+ "verdict": "n",
+ "description": "A regular file with a link target.",
+ "features": [
+  "linkname.on-file"
+ ]
+}

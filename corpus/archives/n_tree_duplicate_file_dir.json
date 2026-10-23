@@ -1,0 +1,7 @@
+{
+ "verdict": "n",
+ "description": "A file, then a directory of the same name.",
+ "features": [
+  "tree.duplicate.file-dir"
+ ]
+}

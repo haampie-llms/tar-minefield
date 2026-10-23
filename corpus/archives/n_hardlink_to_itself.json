@@ -1,0 +1,7 @@
+{
+ "verdict": "n",
+ "description": "A hardlink to itself.",
+ "features": [
+  "hardlink.to-itself"
+ ]
+}

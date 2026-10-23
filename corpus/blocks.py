@@ -115,8 +115,9 @@ class Archive:
             "pad": b"",
         }
         for key, value in raw.items():
-            assert key in values, key
-            values[key] = value
+            if key != "chksum":
+                assert key in values, key
+                values[key] = value
         block = bytearray(BLOCK)
         fields = []
         for field, offset, width in FIELDS:
@@ -133,7 +134,12 @@ class Archive:
             if field == "typeflag":
                 meaning = TYPES.get(value, "unknown typeflag")
             fields.append((field, offset, width, meaning))
-        if "chksum" in raw:
+        if raw.get("chksum") == "signed":
+            block[148:156] = b" " * 8
+            total = sum(b - 256 if b > 127 else b for b in block)
+            chksum = b"%06o\0 " % total
+            meaning = f"{total}: the signed sum of the header, as some old tars computed it"
+        elif "chksum" in raw:
             chksum, meaning = raw["chksum"], "given"
         else:
             block[148:156] = b" " * 8
@@ -160,7 +166,8 @@ class Archive:
         return self
 
     def file(self, name, content, note="", **raw):
-        return self.header(name, b"0", len(content), note, **raw).data(content)
+        size = raw.pop("size", len(content))
+        return self.header(name, b"0", size, note, **raw).data(content)
 
     def directory(self, name, note="", **raw):
         return self.header(name, b"5", 0, note, **raw)
@@ -178,6 +185,20 @@ class Archive:
         lines = [f"{len(data)} bytes of pax records, then {-len(data) % BLOCK} NUL"]
         lines += [show(pax_record(k, v)) for k, v in records]
         self._add(data + bytes(-len(data) % BLOCK), "data: pax records", lines)
+        return self
+
+    def gnu_long(self, name, typeflag=b"L", note=""):
+        """A GNU long name (L) or long link name (K) for the next member, ended by a NUL."""
+        data = name + b"\0"
+        self.header(b"././@LongLink", typeflag, len(data), note, magic=b"ustar ", version=b" \0")
+        lines = [f"{len(data)} bytes: the name and a NUL, then {-len(data) % BLOCK} NUL", show(data)]
+        self._add(data + bytes(-len(data) % BLOCK), "data: GNU long name", lines)
+        return self
+
+    def raw(self, data, title):
+        """Bytes as they are, padded with NULs to a whole block."""
+        padded = data + bytes(-len(data) % BLOCK)
+        self._add(padded, title, [f"{len(data)} bytes, then {len(padded) - len(data)} NUL", show(data)])
         return self
 
     def zeros(self, count=1, note=""):

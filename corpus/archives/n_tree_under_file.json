@@ -1,0 +1,7 @@
+{
+ "verdict": "n",
+ "description": "A member under a file.",
+ "features": [
+  "tree.under-file"
+ ]
+}

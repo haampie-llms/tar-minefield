@@ -1,0 +1,7 @@
+{
+ "verdict": "n",
+ "description": "A symlink whose name ends in a slash.",
+ "features": [
+  "name.trailing-slash-on-symlink"
+ ]
+}

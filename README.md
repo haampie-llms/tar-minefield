@@ -72,6 +72,7 @@ Latest versions: of the default policy. untar extracts: of the tarballs it ran t
 
 - [METHOD.md](METHOD.md): the method, and the catalogue of ambiguities.
 - [corpus/](corpus): the cases, the scripts that write them, and how to check them.
+  [corpus/MATRIX.md](corpus/MATRIX.md) shows what a dozen implementations make of each case.
 - [scanner/](scanner): the scanner, and how to scan more tarballs.
 - [data/](data): the scans, each with a `RUN.md` on how it was made.
   [data/STRICT.md](data/STRICT.md) has the pass rate of every criterion, and

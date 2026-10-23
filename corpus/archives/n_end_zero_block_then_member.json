@@ -1,0 +1,7 @@
+{
+ "verdict": "n",
+ "description": "A zero block, then another member: the end of the archive, or not?",
+ "features": [
+  "end.zero-block-before-member"
+ ]
+}

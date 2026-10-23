@@ -1,0 +1,15 @@
+{
+ "verdict": "y",
+ "description": "The same directory twice, as `tar cf x.tar d d/sub` writes.",
+ "features": [],
+ "tree": [
+  {
+   "path": "d",
+   "kind": "directory"
+  },
+  {
+   "path": "d/sub",
+   "kind": "directory"
+  }
+ ]
+}

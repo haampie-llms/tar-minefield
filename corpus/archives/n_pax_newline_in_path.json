@@ -1,0 +1,7 @@
+{
+ "verdict": "n",
+ "description": "A newline in a pax `path`, where readers that split records on lines see another record.",
+ "features": [
+  "pax.newline-in-value.path"
+ ]
+}

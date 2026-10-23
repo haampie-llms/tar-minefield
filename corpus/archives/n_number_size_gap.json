@@ -1,0 +1,7 @@
+{
+ "verdict": "n",
+ "description": "A size with a space among its digits: readers read two sizes.",
+ "features": [
+  "number.size.gap-in-digits"
+ ]
+}
