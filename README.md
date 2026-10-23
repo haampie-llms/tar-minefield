@@ -1,4 +1,4 @@
-# tar-minefield
+# Tar file extraction test suite
 
 This repo provides an extensive **test suite for tar file extraction**, with the goal to ensure implementations extract tar archives the same way.
 
