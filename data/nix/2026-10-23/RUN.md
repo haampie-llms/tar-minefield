@@ -18,13 +18,15 @@ $ nix-instantiate --eval --json --strict -E \
 $ python -I scanner/nix_list.py mirrors.json chunk-*-files.json > sample.jsonl
 $ TMPDIR=~/.cache/tar-minefield-tmp python -I scanner/run.py scan sample.jsonl results.jsonl \
       --untar ~/untar --jobs 8 --cache ~/.cache/tar-minefield \
-      --reuse ../../spack/2026-10-23/results.jsonl --reuse ../../spack/2026-10-23-b/results.jsonl \
-      --reuse ../../live-bootstrap/2026-10-23/results.jsonl
+      --reuse ../../guix/2026-10-23/results.jsonl --reuse ../../live-bootstrap/2026-10-23/results.jsonl
 $ python -I scanner/report.py --title "Scan of all 19086 nixpkgs tarballs" results.jsonl > REPORT.md
 ```
 
 The scan started on the chunks that were evaluated, and was run again as more were: `run.py
-scan` skips the tarballs it has.
+scan` skips the tarballs it has. It first reused the results of two samples of Spack, scanned on
+macOS, which are no longer in this repository. Their 210 rows were removed from `results.jsonl`
+and scanned again on Linux, with `--reuse` of the Guix scan, which copied 2 of them; the features
+and untar's results of all 210 were the same as on macOS.
 
 - Scanner: `tarscan.py` version `25bfa32e6e71`.
 - Packages: nixpkgs `75ba83324cc35b3e156ac46ee379f38e8f0b1808` (2026-10-23), 25,703 jobs for
@@ -43,10 +45,12 @@ versions of a package (`latest` is the highest). It has whole package ecosystems
 packages included: 7,190 tarballs (38%) are from Hackage, 3,851 from PyPI and 1,899 from CPAN.
 Read results by origin, so that one producer, such as `cabal sdist`, does not dominate.
 
-Downloads: 9,190 from tarballs.nixos.org, the others from their upstream URLs, which nixpkgs
-lists after it: the mirror does not have about half of them, Hackage's above all. 74 could not
-be downloaded from any URL. 217 were reused from the Spack and live-bootstrap scans. 78 GB in
-35 minutes.
+Downloads: tarballs.nixos.org first, then the upstream URLs, which nixpkgs lists after it: the
+mirror does not have about half of them, Hackage's above all. REPORT.md counts the downloads by
+host, and those that could not be downloaded from any URL: on tarballs.nixos.org, which they
+are all tried on first, they failed with 404, so they are not transient errors of the mirror.
+Their upstream URLs mostly fail with 404 too, and some serve a file with a different sha256. The
+first run took 35 minutes.
 
 22 tarballs are `.tar.lz` (11) and `.tar.zst` (11), which `tarscan.py` does not decompress. It
 scans them as uncompressed, stops at the first header (`invalid checksum at offset 0`), and untar
