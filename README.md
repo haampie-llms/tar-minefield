@@ -1,6 +1,18 @@
 # tar-minefield
 
-**A test suite for tar parsers that refuse to guess, and the data that shows refusing is affordable.**
+This repo provides an extensive **test suite for tar file extraction**, with the goal to ensure implementations extract tar archives the same way.
+
+There are dozens of implementations of tar file extraction out there, from command lines tools to libraries for programming languages. Because the tar file format leaves room for interpreteration, different implementations can extract certain crafted tar files in different ways.
+
+This is a security concern: for example, a security scanner could see different files than what is ultimately extracted.
+
+By assigning identifiers to these ambiguities, and providing test cases and usage data, the hope is that tar implementations can converge on a strict parser and identical behavior.
+
+## Examples
+
+...
+
+By giving these ambiguities names, and providing test cases, the hope is that projects can adopt
 
 A sha256 pins the bytes of a tarball, not the tree it extracts to. Tar leaves implementations room
 to disagree on that tree: where a member's data ends, which field gives its name, whether `a/` is a
