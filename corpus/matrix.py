@@ -359,7 +359,9 @@ def outcome(case, r):
 ORDER = ["✅", "⚠️", "⛔", "❌", "💥"]
 LEGEND = [
     "- ✅ as the verdict says: rejects an `n_` case; extracts the manifest of a `y_` or `i_` case",
-    "- ⚠️ accepts an `n_` case: the letter tells the trees apart",
+    "- ⚠️ accepts an `n_` case. The letter is the tree it extracts: in one row, the same letter is"
+    " the same tree, and different letters are trees that differ; [MATRIX.md](MATRIX.md#trees)"
+    " lists them",
     "- ⛔ rejects an `i_` case, which a strict parser may",
     "- ❌ rejects a `y_` case, or extracts another tree than the manifest of a `y_` or `i_` case",
     "- 💥 writes outside the destination",
@@ -394,7 +396,8 @@ def totals(results, cases, names):
 # SVG: the classes of outcomes, their colours in light and dark mode, and their meaning
 CLASSES = {
     "✅": ("ok", "#1a7f37", "#238636", "✓", "as the verdict says"),
-    "⚠️": ("warn", "#bf8700", "#9e6a03", "", "accepts an n_ case: the letter tells the trees apart"),
+    "⚠️": ("warn", "#bf8700", "#9e6a03", "",
+           "accepts an n_ case: one letter per tree it extracts; in a row, other letters are other trees"),
     "⛔": ("stop", "#6e7781", "#6e7681", "–", "rejects an i_ case, which a strict parser may"),
     "❌": ("bad", "#cf222e", "#da3633", "✗", "rejects a y_ case, or extracts another tree"),
     "💥": ("boom", "#8250df", "#8957e5", "!", "writes outside the destination"),
