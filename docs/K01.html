@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>kind</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/K01-kind-trailing-slash-file.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/K01-kind-trailing-slash-file.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K01-kind-trailing-slash-file.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/K01-kind-trailing-slash-file.tar">Archive</a>
+(<code>.tar</code>, 1,536 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K01-kind-trailing-slash-file.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K01-kind-trailing-slash-file.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/K01-kind-trailing-slash-file.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p>The header says typeflag <code>0</code>, a regular file, of size 0, but the name is <code>a/</code>. v7 tar had no typeflag for directories, and wrote them like this, so implementations that keep that convention extract a directory <code>a</code>; implementations that follow the typeflag extract an empty file <code>a</code>, or fail to create a file with a trailing slash.</p>

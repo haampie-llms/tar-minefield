@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to accept: every implementation must extract its tree</dd>
 <dt>Level</dt><dd>global pax headers</dd>
 <dt>Default policy</dt><dd>accepts it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/G01-pax-global-comment.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/G01-pax-global-comment.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/G01-pax-global-comment.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/G01-pax-global-comment.tar">Archive</a>
+(<code>.tar</code>, 3,584 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/G01-pax-global-comment.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/G01-pax-global-comment.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/G01-pax-global-comment.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p><code>git archive</code> starts every tarball with a global header whose only record is the commit, as a <code>comment</code>, which no implementation applies to the tree. GitHub&#x27;s release tarballs are made this way, so a strict parser that rejects global headers rejects most of them.</p>

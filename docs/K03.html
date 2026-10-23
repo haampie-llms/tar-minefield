@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>kind</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/K03-symlink-trailing-slash.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/K03-symlink-trailing-slash.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K03-symlink-trailing-slash.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/K03-symlink-trailing-slash.tar">Archive</a>
+(<code>.tar</code>, 2,048 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K03-symlink-trailing-slash.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K03-symlink-trailing-slash.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/K03-symlink-trailing-slash.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p><code>link/</code> is a symlink to <code>target</code>. With the slash, the name refers to what the link points to, so an implementation may create the link <code>link</code>, write through it, or fail.</p>

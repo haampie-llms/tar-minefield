@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F14-pax-size-disagrees.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F14-pax-size-disagrees.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F14-pax-size-disagrees.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F14-pax-size-disagrees.tar">Archive</a>
+(<code>.tar</code>, 3,072 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F14-pax-size-disagrees.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F14-pax-size-disagrees.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F14-pax-size-disagrees.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p>The header of <code>a</code> says size 512, and its pax extended header says <code>size=0</code>. An implementation that takes the pax size reads the next block as the header of another file, <code>smuggled</code>; an implementation that takes the header&#x27;s size, or does not know pax, reads that block as the data of <code>a</code>.</p>

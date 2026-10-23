@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F12-number-size-gap.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F12-number-size-gap.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F12-number-size-gap.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F12-number-size-gap.tar">Archive</a>
+(<code>.tar</code>, 2,048 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F12-number-size-gap.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F12-number-size-gap.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F12-number-size-gap.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p>The size field is <code>000000 1000</code>. An implementation that stops at the first space reads 0; one that skips spaces reads 1000 octal, 512. The 512 bytes that follow are the header of <code>smuggled</code> to the first implementation, and the data of <code>a</code> to the second.</p>

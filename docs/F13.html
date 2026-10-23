@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F13-pax-newline-in-path.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F13-pax-newline-in-path.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F13-pax-newline-in-path.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F13-pax-newline-in-path.tar">Archive</a>
+(<code>.tar</code>, 3,072 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F13-pax-newline-in-path.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F13-pax-newline-in-path.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F13-pax-newline-in-path.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p>pax records are delimited by their length, so a value may hold a newline. An implementation that splits the extended header on newlines instead sees the record end at it, and the rest as a record of its own: here <code>path=evil</code>. The path is <code>good\n1 path=evil</code> to one implementation, <code>good</code> or <code>evil</code> to others.</p>

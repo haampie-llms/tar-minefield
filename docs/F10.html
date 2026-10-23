@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F10-extended-pax-size-before-gnu-long.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F10-extended-pax-size-before-gnu-long.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F10-extended-pax-size-before-gnu-long.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F10-extended-pax-size-before-gnu-long.tar">Archive</a>
+(<code>.tar</code>, 4,096 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F10-extended-pax-size-before-gnu-long.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F10-extended-pax-size-before-gnu-long.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F10-extended-pax-size-before-gnu-long.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p>The pax header says <code>size=512</code> and is followed by a GNU long name header, then by the member. Implementations that apply the pax size to the next header, whatever it is, misread the long name; those that apply it to the member read one more block as its data, which here is the header of <code>smuggled</code>.</p>

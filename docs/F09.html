@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F09-end-zero-block-then-member.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F09-end-zero-block-then-member.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F09-end-zero-block-then-member.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F09-end-zero-block-then-member.tar">Archive</a>
+(<code>.tar</code>, 3,584 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F09-end-zero-block-then-member.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F09-end-zero-block-then-member.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F09-end-zero-block-then-member.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p>POSIX ends an archive with two zero blocks, and GNU tar stops at the first zero block it reads by default, while <code>--ignore-zeros</code> reads on. After one zero block comes a file, <code>hidden</code>, which some implementations extract and others never see.</p>

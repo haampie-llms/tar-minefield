@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S03-hardlink-missing-target.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S03-hardlink-missing-target.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S03-hardlink-missing-target.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S03-hardlink-missing-target.tar">Archive</a>
+(<code>.tar</code>, 1,536 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S03-hardlink-missing-target.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S03-hardlink-missing-target.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S03-hardlink-missing-target.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p><code>h</code> is a hardlink to <code>missing</code>. An implementation may fail, skip the link, or link to a file of that name that already exists where it extracts.</p>

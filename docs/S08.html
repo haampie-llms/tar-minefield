@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S08-tree-duplicate-file-dir.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S08-tree-duplicate-file-dir.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S08-tree-duplicate-file-dir.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S08-tree-duplicate-file-dir.tar">Archive</a>
+(<code>.tar</code>, 2,560 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S08-tree-duplicate-file-dir.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S08-tree-duplicate-file-dir.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S08-tree-duplicate-file-dir.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p><code>a</code> is a file, then <code>a/</code> a directory. An implementation may replace the file with the directory, keep the file and fail on the directory, or keep the first.</p>

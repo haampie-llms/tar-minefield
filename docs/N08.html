@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N08-extended-pax-path-and-gnu-long-name.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N08-extended-pax-path-and-gnu-long-name.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N08-extended-pax-path-and-gnu-long-name.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N08-extended-pax-path-and-gnu-long-name.tar">Archive</a>
+(<code>.tar</code>, 4,096 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N08-extended-pax-path-and-gnu-long-name.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N08-extended-pax-path-and-gnu-long-name.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N08-extended-pax-path-and-gnu-long-name.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p>The member has the name <code>from-header</code>, a GNU long name <code>from-gnu</code>, and a pax path <code>from-pax</code>. Implementations that prefer pax, those that prefer the GNU long name, and those that apply the one that comes last extract different names.</p>

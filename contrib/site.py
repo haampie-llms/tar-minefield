@@ -242,9 +242,11 @@ def case_page(case, info, previous, following, results, data):
 <dt>Verdict</dt><dd>{VERDICTS[info["verdict"]]}</dd>
 <dt>Level</dt><dd>{html.escape(level)}</dd>
 <dt>Default policy</dt><dd>{policy(info, features)}</dd>
-<dt>Files</dt><dd><a href="{files}/cases/{case}.py">the script</a>,
-<a href="{REPO}/raw/main/suite/archives/{case}.tar">the archive</a>,
-<a href="{files}/archives/{case}.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="{REPO}/raw/main/suite/archives/{case}.tar">Archive</a>
+(<code>.tar</code>, {len(archive):,} bytes) ·
+<a href="{files}/archives/{case}.json">Expected result</a> (<code>.json</code>) ·
+<a href="{files}/archives/{case}.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="{files}/cases/{case}.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 {paragraphs(doc.strip().split(chr(10), 1)[1])}

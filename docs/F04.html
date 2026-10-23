@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>tolerated: the default policy accepts it, and a strict parser may reject it</dd>
 <dt>Level</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>accepts <code>end.missing</code>: the archive ends after a member, and its sha256 is pinned</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F04-end-missing.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F04-end-missing.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F04-end-missing.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F04-end-missing.tar">Archive</a>
+(<code>.tar</code>, 1,024 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F04-end-missing.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F04-end-missing.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F04-end-missing.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p>The default policy accepts it: the archive is pinned by its sha256, so one that ends early is caught before it is parsed.</p>

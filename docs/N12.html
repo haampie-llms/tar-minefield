@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N12-name-absolute.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N12-name-absolute.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N12-name-absolute.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N12-name-absolute.tar">Archive</a>
+(<code>.tar</code>, 2,048 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N12-name-absolute.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N12-name-absolute.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N12-name-absolute.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p>The name <code>/tar-minefield-absolute</code> is a path from the root. An extractor may refuse it, strip the leading slash, or write to the root. The file is harmless, and writing to the root fails unless the extractor runs as root.</p>

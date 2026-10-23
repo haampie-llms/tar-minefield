@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S11-tree-through-symlink.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S11-tree-through-symlink.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S11-tree-through-symlink.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S11-tree-through-symlink.tar">Archive</a>
+(<code>.tar</code>, 2,560 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S11-tree-through-symlink.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S11-tree-through-symlink.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S11-tree-through-symlink.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p><code>d</code> is a symlink to <code>..</code>, then <code>d/tar-minefield-through-symlink</code> is a file. An implementation that follows the link writes the file in the parent of the destination. The file is harmless.</p>

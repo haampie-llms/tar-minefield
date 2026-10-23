@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>tolerated: the default policy accepts it, and a strict parser may reject it</dd>
 <dt>Level</dt><dd>name</dd>
 <dt>Default policy</dt><dd>normalizes <code>name.leading-dot-slash</code>: <code>./a</code> is <code>a</code></dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N06-name-leading-dot-slash.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N06-name-leading-dot-slash.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N06-name-leading-dot-slash.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N06-name-leading-dot-slash.tar">Archive</a>
+(<code>.tar</code>, 2,048 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N06-name-leading-dot-slash.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N06-name-leading-dot-slash.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N06-name-leading-dot-slash.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p><code>tar cf x.tar .</code> writes names that start with <code>./</code>. On a filesystem, <code>./a</code> and <code>a</code> are one path, but implementations that compare names as strings see two: an index of <code>a</code> does not find <code>./a</code>. The default policy normalizes the name to <code>a</code>, and finds duplicates among normalized names, so that <code>./a</code> and <code>a</code> in one archive are a duplicate.</p>

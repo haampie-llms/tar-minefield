@@ -14,9 +14,11 @@
 <dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>global pax headers</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/G03-pax-global-between-extended-and-member.py">the script</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/G03-pax-global-between-extended-and-member.tar">the archive</a>,
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/G03-pax-global-between-extended-and-member.txt">every block as text</a></dd>
+<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/G03-pax-global-between-extended-and-member.tar">Archive</a>
+(<code>.tar</code>, 4,096 bytes) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/G03-pax-global-between-extended-and-member.json">Expected result</a> (<code>.json</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/G03-pax-global-between-extended-and-member.txt">Annotated blocks</a> (<code>.txt</code>) ·
+<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/G03-pax-global-between-extended-and-member.py">Generator script</a> (<code>.py</code>)</dd>
 </dl>
 <h2>The case</h2>
 <p>An <code>x</code> header, then a <code>g</code> header, then the member. An implementation may apply the extended header to the global header, which is the next header, or skip the global header and apply it to the member.</p>
