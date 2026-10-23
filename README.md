@@ -8,11 +8,7 @@ This is a security concern: for example, a security scanner could see different 
 
 By assigning [identifiers](https://haampie-llms.github.io/tar-minefield/) to these ambiguities, and providing test cases and usage data, the hope is that tar implementations can converge on a strict parser and identical behavior.
 
-This project proposes a **[default policy](https://haampie-llms.github.io/tar-minefield/#policy)** that rejects the vast majority of ambiguities in tar files that could make implementations extract different files, while ensuring that nearly every source tarball already published can still be extracted.
-
-<!-- begin strict.py -->
-**It accepts 99.76% of 62,622 source tarballs** of Spack, nixpkgs, Guix and live-bootstrap, and rejects 151: see the [numbers per ecosystem](https://haampie-llms.github.io/tar-minefield/#tarballs).
-<!-- end strict.py -->
+This project proposes a **[default policy](https://haampie-llms.github.io/tar-minefield/#policy)** that rejects the vast majority of ambiguities in tar files that could make implementations extract different files, while ensuring that nearly every source tarball already published can still be extracted. <!-- begin strict.py -->Of the 62,622 source tarballs of Spack, nixpkgs, Guix and live-bootstrap, it accepts 99.76% ([per ecosystem](https://haampie-llms.github.io/tar-minefield/#tarballs)).<!-- end strict.py -->
 
 ## Examples
 

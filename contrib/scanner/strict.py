@@ -16,8 +16,8 @@ the criteria and accepts others, and rejects the rest. What each rejects is give
 Each results file is the scan of an ecosystem, and rates are given per ecosystem: each is a
 sample of its own population. Tarballs in a compression that tarscan.py does not read are not assessed.
 
-With --readme, the summary between the markers `<!-- begin strict.py -->` and
-`<!-- end strict.py -->` in that file is generated again, and nothing else is printed: so that
+With --readme, the sentence between the markers `<!-- begin strict.py -->` and
+`<!-- end strict.py -->` in that file, which may be inside a paragraph, is generated again, and nothing else is printed: so that
 no number in it is written by hand.
 """
 
@@ -387,16 +387,15 @@ def reject_table(names, short, rated, union):
 def readme(path, datasets, names, short, rated, rows, union):
     default = sum(not passes_default(r) for r in union)
     block = (
-        f"**It accepts {percent(len(union) - default, len(union))} of {len(union):,} source "
-        f"tarballs** of Spack, nixpkgs, Guix and live-bootstrap, and rejects {default}: see the "
-        f"[numbers per ecosystem]({SITE}#tarballs)."
+        f"Of the {len(union):,} source tarballs of Spack, nixpkgs, Guix and live-bootstrap, it "
+        f"accepts {percent(len(union) - default, len(union))} ([per ecosystem]({SITE}#tarballs))."
     )
     text = open(path).read()
     begin, end = "<!-- begin strict.py -->", "<!-- end strict.py -->"
     head, rest = text.split(begin, 1)
     _, tail = rest.split(end, 1)
     with open(path, "w") as f:
-        f.write(f"{head}{begin}\n{block}\n{end}{tail}")
+        f.write(f"{head}{begin}{block}{end}{tail}")
 
 
 def main():
