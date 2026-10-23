@@ -8,7 +8,7 @@ This is a security concern: for example, a security scanner could see different 
 
 By assigning [identifiers](https://haampie-llms.github.io/tar-minefield/) to these ambiguities, and providing test cases and usage data, the hope is that tar implementations can converge on a strict parser and identical behavior.
 
-This project proposes a **[default policy](#the-default-policy)** that rejects the vast majority
+This project proposes a **[default policy](https://haampie-llms.github.io/tar-minefield/#policy)** that rejects the vast majority
 of ambiguities in tar files that could make implementations extract different files, while
 ensuring that nearly every tarball already published can still be extracted.
 
@@ -43,8 +43,8 @@ What 20 implementations make of the 55 cases: a row per case, by level, and a co
 ## The default policy
 
 Reject what implementations extract differently, normalize names that are one path (`./a` is
-`a`), and accept what cannot change the extracted files. [METHOD.md](METHOD.md#the-default-policy)
-has every rule, and each rule has a case.
+`a`), and accept what cannot change the extracted files. [The website](https://haampie-llms.github.io/tar-minefield/#policy) lists
+every case under the verdict that the policy gives it.
 
 ## Contents
 

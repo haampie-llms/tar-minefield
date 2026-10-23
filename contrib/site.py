@@ -107,8 +107,8 @@ def readme_intro():
         return "".join(out)
 
     def href(url):
-        if url.rstrip("/") == matrix.SITE.rstrip("/"):
-            return "#cases"
+        if url.startswith(matrix.SITE.rstrip("/")):
+            return url[len(matrix.SITE):] or "#policy"
         if url.startswith("#"):
             return f"{REPO}{url}"
         return url if re.match(r"https?:", url) else f"{REPO}/blob/main/{url}"
@@ -370,8 +370,9 @@ block, what every implementation makes of it, and how common it is in source tar
 <p>Click a case for its page; hover over a cell for the tree.</p>
 <div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["id"] + ".html")}</div>
 {tarballs_section(names, short, rated, union)}
-<h2 id="cases">The cases</h2>
-<p>Prevalence: the share of the {len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and
+<h2 id="policy">Policy</h2>
+<p>Every case, under its verdict: the default policy accepts the cases to accept and the tolerated
+ones, and rejects the others. Prevalence: the share of the {len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and
 live-bootstrap that have the feature of the case, and blank where the scanner has no feature for
 it. The page of a case has the numbers per ecosystem.</p>
 {chr(10).join(sections)}
