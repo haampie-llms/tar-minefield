@@ -1,18 +1,18 @@
 # Scan of 2000 Spack tarballs
 
-- sampled: 2000, scanned: 1991 (995 latest versions, 996 older)
-- not downloaded: 9, scanner crashed: 0
-- downloaded from the first of their URLs (a mirror): 1985
-- origins: pypi 649, github-archive 519, other 319, cran/bioconductor 294, cpan 93, github-release 73, gitlab 25, gnu 19
-- producers: GNU format 652, git archive 565, Python tarfile (pax) 435, ustar 183, v7 125, GNU tar (pax) 23, libarchive (pax) 5, posix-version-0000 3
-- compression: gzip 1901, bzip2 45, xz 42, none 3
+- tarballs: 2000, scanned: 1990 (994 latest versions, 996 older)
+- not downloaded: 10, scanner crashed: 0
+- downloaded from the first of their URLs (a mirror): 1984
+- origins: pypi 647, github-archive 518, other 322, cran/bioconductor 293, cpan 93, github-release 73, gitlab 25, gnu 19
+- producers: GNU format 651, git archive 564, Python tarfile (pax) 435, ustar 183, v7 126, GNU tar (pax) 23, libarchive (pax) 5, posix-version-0000 3
+- compression: gzip 1900, bzip2 45, xz 42, none 3
 - scanner stopped early: 0
 
-Failed only because of the case-insensitive filesystem of the scanning machine, not counted as rejections: 11, 2 latest (sysstat@12.7.6; cmaq@5.3.1; pango@1.49.4; linux-external-modules@6.0.7; mpich@4.2.0; libibumad@44.1).
+Failed only because of the case-insensitive filesystem of the scanning machine, not counted as rejections: 12, 3 latest (sysstat@12.7.6; pagit@1.01; cmaq@5.3.1; pango@1.49.4; linux-external-modules@6.0.7; mpich@4.2.0).
 
 ## untar
 
-Rejects 0 of 1991 (0.0%); 0 of 995 latest versions (0.0%).
+Rejects 0 of 1990 (0.0%); 0 of 994 latest versions (0.0%).
 
 | reason | tarballs | latest | origins | producers | examples |
 |---|---|---|---|---|---|
@@ -23,18 +23,18 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 
 | feature | tarballs | latest | origins | producers | years | untar rejects | examples |
 |---|---|---|---|---|---|---|---|
-| `name.fills-field` | 187 | 87 | github-archive 94, pypi 44, other 23 | git archive 105, Python tarfile (pax) 36, GNU format 30 | 1980–2026 | 3 | pmix@6.1.0 `pmix-6.1.0/docs/_build/html/_sources/installing-pmix/configu`; typescript@5.8.3 `TypeScript-5.8.3/tests/baselines/reference/ClassDeclarationW` |
+| `name.fills-field` | 188 | 87 | github-archive 94, pypi 44, other 24 | git archive 105, Python tarfile (pax) 36, GNU format 31 | 1980–2026 | 3 | pmix@6.1.0 `pmix-6.1.0/docs/_build/html/_sources/installing-pmix/configu`; typescript@5.8.3 `TypeScript-5.8.3/tests/baselines/reference/ClassDeclarationW` |
 | `ustar.prefix` | 161 | 81 | github-archive 123, cpan 12, other 10 | git archive 135, ustar 25, libarchive (pax) 1 | 2006–2026 | 2 | typescript@5.8.3 `AmbientModuleAndAmbientFunctionWithTheSameNameAndCommonRoot.`; perl-net-http@6.23 `LICENSE` |
-| `type.nul` | 134 | 67 | other 91, github-release 24, gnu 9 | v7 125, GNU format 9 | 2003–2026 | 2 | libdmx@1.1.5 `libdmx-1.1.5/config.guess`; dri3proto@1.0 `dri3proto-1.0/configure` |
-| `v7.bytes-after-linkname` | 107 | 53 | other 82, github-release 18, gnu 6 | v7 107 | 2005–2025 | 2 | libdmx@1.1.5 `libdmx-1.1.5/`; dri3proto@1.0 `dri3proto-1.0/` |
+| `type.nul` | 135 | 68 | other 92, github-release 24, gnu 9 | v7 126, GNU format 9 | 2003–2026 | 2 | libdmx@1.1.5 `libdmx-1.1.5/config.guess`; dri3proto@1.0 `dri3proto-1.0/configure` |
+| `v7.bytes-after-linkname` | 108 | 54 | other 83, github-release 18, gnu 6 | v7 108 | 2005–2025 | 2 | libdmx@1.1.5 `libdmx-1.1.5/`; dri3proto@1.0 `dri3proto-1.0/` |
 | `number.size.leading-space` | 19 | 15 | cpan 15, other 3, gnu 1 | ustar 15, posix-version-0000 3, GNU format 1 | 1995–2023 | 0 | perl-net-http@6.23 `Net-HTTP-6.23`; perl-tie-ixhash@1.23 `Tie-IxHash-1.23` |
 | `name.non-ascii` | 17 | 8 | github-archive 13, pypi 3, other 1 | git archive 13, Python tarfile (pax) 3, GNU format 1 | 2017–2026 | 1 | doxygen@1.17.0 `doxygen-Release_1_17_0/testing/061_Únicod€_file.cpp`; py-sphinx@9.1.0 `sphinx-9.1.0/tests/roots/test-images/testimäge.png` |
 | `number.gid.no-digits` | 15 | 7 | pypi 13, other 2 | GNU format 11, ustar 3, posix-version-0000 1 | 1985–2025 | 0 | sourmash@4.8.2 `sourmash-4.8.2/src/core/Cargo.toml`; py-orjson@3.11.5 `orjson-3.11.5/README.md` |
 | `number.uid.no-digits` | 15 | 7 | pypi 13, other 2 | GNU format 11, ustar 3, posix-version-0000 1 | 1985–2025 | 0 | sourmash@4.8.2 `sourmash-4.8.2/src/core/Cargo.toml`; py-orjson@3.11.5 `orjson-3.11.5/README.md` |
 | `name.dir-without-trailing-slash` | 14 | 12 | cpan 13, other 1 | ustar 13, GNU format 1 | 2010–2026 | 0 | perl-net-http@6.23 `Net-HTTP-6.23`; perl-tie-ixhash@1.23 `Tie-IxHash-1.23` |
-| `platform.case-collision` | 12 | 3 | other 6, github-archive 5, github-release 1 | git archive 8, v7 2, Python tarfile (pax) 1 | 2016–2024 | 11 | sysstat@12.7.6 `sysstat-12.7.6/tests/expected.sadf-d-t-tz`; open-isns@0.100 `open-isns-0.100/tests/data/test01/` |
-| `number.gid.base256` | 8 | 6 | pypi 5, other 3 | GNU format 7, libarchive (pax) 1 | 2017–2025 | 0 | superchic@4.01 `superchic4.01/`; py-lightly-utils@0.0.2 `lightly_utils-0.0.2/` |
+| `platform.case-collision` | 13 | 4 | other 7, github-archive 5, github-release 1 | git archive 8, GNU format 2, v7 2 | 2011–2024 | 12 | sysstat@12.7.6 `sysstat-12.7.6/tests/expected.sadf-d-t-tz`; open-isns@0.100 `open-isns-0.100/tests/data/test01/` |
 | `name.leading-dot-slash` | 7 | 4 | other 6, gitlab 1 | GNU format 7 | 2003–2026 | 0 | cvector@1.0.3.1 `./CVector-1.0.3.1/`; pdt@3.25.2 `./pdtoolkit-3.25.2/` |
+| `number.gid.base256` | 7 | 5 | pypi 4, other 3 | GNU format 6, libarchive (pax) 1 | 2017–2025 | 0 | superchic@4.01 `superchic4.01/`; py-lightly-utils@0.0.2 `lightly_utils-0.0.2/` |
 | `number.uid.base256` | 7 | 5 | pypi 4, other 2, cpan 1 | GNU format 5, libarchive (pax) 2 | 2017–2025 | 0 | perl-test-xml-simple@1.05 `Test-XML-Simple-1.05/`; py-lightly-utils@0.0.2 `lightly_utils-0.0.2/` |
 | `platform.windows-reserved-name` | 7 | 2 | other 6, gitlab 1 | GNU format 4, git archive 2, v7 1 | 2012–2024 | 2 | molden@7.3 `molden7.3/haux/plush/PRN`; chaplin@1.2 `chaplin-1.2/src/aux.f` |
 | `platform.windows-invalid-character` | 6 | 4 | github-archive 2, other 2, gitlab 1 | git archive 4, Python tarfile (pax) 1, GNU format 1 | 2007–2025 | 1 | systemd@256.7 `systemd-256.7/test/test-journals/corrupted/id:000000,sig:06,`; sysstat@12.7.6 `sysstat-12.7.6/tests/root1/dev/disk/by-id/usb-Generic-_Compa` |
@@ -58,15 +58,15 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 
 ## Fingerprints
 
-- magic (tarballs using each): posix 1211, gnu 655, v7 125, posix-version-0000 3
-- size (tarballs using each): dn 1901, ds 70, sdn 15, sds 4, dsn 1
-- mode (tarballs using each): dn 1916, dsn 70, ds 5, sdsn 4
-- checksum (tarballs using each): dns 1358, dn 614, sdns 19, dsn 1, ds 1
+- magic (tarballs using each): posix 1210, gnu 654, v7 126, posix-version-0000 3
+- size (tarballs using each): dn 1900, ds 70, sdn 15, sds 4, dsn 1
+- mode (tarballs using each): dn 1915, dsn 70, ds 5, sdsn 4
+- checksum (tarballs using each): dns 1358, dn 613, sdns 19, dsn 1, ds 1
 - pax_header_name (tarballs using each): ././@PaxHeader 435, */PaxHeaders.N/* 17, ./PaxHeaders.N/* 16, H.paxheader 12, */PaxHeaders/* 5, ./PaxHeaders/* 5, */PaxHeader/* 4, PaxHeader/* 3, * 1, */Pax 1, */PaxHe 1, ./PaxHeaders.X/* 1
-- extended_sequence (tarballs using each): - 1585, x 475, L 42
-- gnu_long_name (tarballs using each): ././@LongLink 42
-- end (tarballs using each): padded-to-10240 1888, unpadded 103
-- zero_blocks_after_end (tarballs using each): 0 221, 15 115, 14 104, 13 103, 9 100, 17 99, 19 97, 16 96, 10 93, 3 92, 6 92, 18 91
+- extended_sequence (tarballs using each): - 1584, x 475, L 44
+- gnu_long_name (tarballs using each): ././@LongLink 44
+- end (tarballs using each): padded-to-10240 1887, unpadded 103
+- zero_blocks_after_end (tarballs using each): 0 222, 15 115, 14 104, 13 103, 9 100, 17 99, 19 97, 16 95, 10 94, 3 93, 6 93, 18 91
 - pax_keys (tarballs using each): mtime 443, path 85, atime 25, ctime 25, uid 7, gid 5, SCHILY.dev 2, SCHILY.ino 2, SCHILY.nlink 2, LIBARCHIVE.creationtime 2, LIBARCHIVE.symlinktype 1, linkpath 1
-- pax_global_keys (tarballs using each): comment 565
+- pax_global_keys (tarballs using each): comment 564
 - compression layer: trailing zeros 1
