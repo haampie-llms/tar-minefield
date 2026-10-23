@@ -4,7 +4,8 @@ Two `x` headers come before one member, with the paths `first` and `second`. A r
 the first, the last, or merge them.
 
 Decision point: which of two extended headers of one kind applies.
-Seen in: libmygpo-qt 1.2.0, with the same xattr keys in two headers.
+Seen in: no tarball of the scans. libmygpo-qt 1.2.0 repeats xattr keys within one header, which is
+N20, pax-repeated-key.
 """
 
 VERDICT = "n"

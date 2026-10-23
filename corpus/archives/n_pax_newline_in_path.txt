@@ -9,8 +9,8 @@ its own: here `path=evil`. The path is `good
 others.
 
 Decision point: whether a pax record is delimited by its length or by a newline.
-Seen in: newlines in pax values only in xattrs, such as Minion 10.31, which the default policy
-accepts as xattrs are not extracted.
+Seen in: no tarball of the scans. Newlines in pax values are only in xattrs, such as Minion
+10.31, which the default policy accepts as xattrs are not extracted.
 
 0x000000  header: pax extended header, for the next member, a path with a newline
           name     [  0,100)  "PaxHeader" + 91 NUL

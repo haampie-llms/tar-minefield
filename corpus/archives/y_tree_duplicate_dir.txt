@@ -2,7 +2,7 @@ S02 y_tree_duplicate_dir: accepted
 
 The same directory twice, as `tar cf x.tar d d/sub` writes.
 
-Seen in: dozens of tarballs: see `tree.duplicate.dir-dir` in data/STRICT.md.
+Seen in: over a hundred tarballs: see `tree.duplicate.dir-dir` in data/STRICT.md.
 
 0x000000  header: directory
           name     [  0,100)  "d/" + 98 NUL

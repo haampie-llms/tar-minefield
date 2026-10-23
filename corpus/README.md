@@ -70,4 +70,6 @@ $ python -I corpus/site.py docs data/*/*/results.jsonl
 writes `docs/`, which GitHub Pages serves: an index with the matrix, and a page per case with its
 explanation, its block map and dump, how many tarballs of the scans have its feature and how many
 of those the default policy rejects, and what every implementation makes of it, from
-`matrix.json`. Plain HTML and CSS, without scripts, all of it generated.
+`matrix.json`. Plain HTML and CSS, without scripts, all of it generated. The `Seen in:` of a
+case is written by hand: site.py fails if it says no tarball where the scans have its feature, or
+names tarballs where they have none.

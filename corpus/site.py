@@ -258,6 +258,24 @@ def case_page(case, info, previous, following, results, data):
     return page(f"{code} {name} · tar-minefield", body)
 
 
+def seen_in_problems(cases, union):
+    """Cases whose `Seen in:`, which is written by hand, contradicts the scans: no tarball where
+    the scans have some, or tarballs where they have none."""
+    problems = []
+    for case, info in cases.items():
+        with open(os.path.join(matrix.HERE, "cases", case + ".py")) as f:
+            seen = re.search(r"^Seen in: *(.*)", f.read().split('"""')[1], re.M)
+        features = features_of(case, info)
+        if not seen or not features:
+            continue
+        k = sum(1 for r in union if any(f in r["features"] for f in features))
+        none = seen.group(1).startswith("no tarball")
+        if none and k or not none and not k:
+            problems.append(f"{case}: Seen in: {seen.group(1)!r}, but {k} tarballs have "
+                            f"{', '.join(features)}")
+    return problems
+
+
 def index_page(cases, results, data):
     names, short, rated, union = data
     groups = {}
@@ -281,7 +299,9 @@ def index_page(cases, results, data):
 and what {len(results["implementations"])} implementations make of each. Every case has a code:
 its letter is the level of the catalogue of <a href="{REPO}/blob/main/METHOD.md">METHOD.md</a>, F
 framing, N names, K kinds, S order and state, G global pax headers. A code stays with its case;
-new cases get new codes. See the <a href="{REPO}">repository</a> for the method and the scans.</p>
+new cases get new codes. See the <a href="{REPO}">repository</a> for the method and the scans.
+The explanations of the cases are written by hand; the numbers, outcomes, block maps and dumps
+are generated from the archives, the scans and the runs of the implementations.</p>
 <h2>What implementations make of every case</h2>
 <p>Click a case for its page; hover over a cell for the tree.</p>
 <div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["code"] + ".html")}</div>
@@ -305,6 +325,9 @@ def main():
     with open(os.path.join(HERE, "matrix.json")) as f:
         results = json.load(f)
     cases = matrix.load_cases()
+    problems = seen_in_problems(cases, union)
+    if problems:
+        sys.exit("\n".join(problems))
     os.makedirs(out, exist_ok=True)
     for name in os.listdir(out):
         if name.endswith(".html"):
