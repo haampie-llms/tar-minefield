@@ -86,8 +86,6 @@ Name:
 - `hdrcharset=BINARY`, names that are not UTF-8.
 - Normalization: `./a` and `a`, `a//b`, `a/./b`, a trailing slash, `.`, an empty name, `\` as a
   separator on Windows, drive letters.
-- Collisions that depend on the filesystem: names that differ only in case or Unicode
-  normalization extract to one entry on macOS and Windows and to two on Linux.
 - The same questions for link targets: `linkpath`, GNU long links (`K`) and the linkname field.
 
 Kind:
@@ -141,6 +139,30 @@ Each case also records what is known about it:
 - **latent**: no known implementations disagree, with an argument why one could.
 
 Whether an ambiguous case is `n_` or `i_` is decided by measurement, as described next.
+
+## Platform-specific failures
+
+Whether an archive describes one tree, and whether a filesystem can hold that tree, are separate
+questions. The first is about the archive, and its answer is the same on every platform. The
+second is not:
+
+- names that differ only in case (`INSTALL` and `install/`) are one entry on case-insensitive
+  filesystems, the default on macOS and Windows,
+- names that differ only in Unicode normalization are one entry on macOS,
+- names that are reserved or invalid on Windows: `con`, `aux.c`, `nul.h`, `com1`, names with `:`
+  or `"`, names ending in a dot or a space,
+- symlinks, where a platform or user cannot create them.
+
+Such an archive is not ambiguous: every reader agrees on its tree, and an extractor that never
+replaces an entry (`O_EXCL`) fails exactly on the filesystems that cannot hold it. So these cases
+are `y_`, with the platforms where extraction fails listed in their metadata, and a test of them
+passes on those platforms when extraction fails without writing anything. A failure on one
+platform does not carry over to another: a release tarball of an autotools project with a file
+named `aux.c` is fine on Linux and macOS, and one that has `Foo` and `foo` is fine on Linux.
+
+The scanner reports these names as `platform.*` features, apart from ambiguities, and
+extraction failures that only the filesystem of the scanning machine causes are counted apart
+from rejections.
 
 ## Not too strict: measuring real archives
 
