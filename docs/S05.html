@@ -264,7 +264,7 @@ Seen in: no source tarball.
 <tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>✅ as the verdict says</td><td>error: hardlink to &#x27;f&#x27;, which is not there</td></tr>
 <tr><td>Rust tar</td><td>tar 0.4.46, unpack</td><td>✅ as the verdict says</td><td>error: failed to unpack `DEST/h`</td></tr>
 <tr><td>Rust astral-tokio-tar</td><td>astral-tokio-tar 0.7.0, unpack</td><td>✅ as the verdict says</td><td>error: failed to unpack `DEST/h`</td></tr>
-<tr><td>Rust tar-codec</td><td>tar-codec 0.0.15, extract_in</td><td>✅ as the verdict says</td><td>error: at byte 0: extraction policy rejected input: hard-link members are not allowed</td></tr>
+<tr><td>Rust tar-codec, as in uv</td><td>tar-codec 0.0.15, with the policies of uv 0.13</td><td>✅ as the verdict says</td><td>error: at byte 0: invalid link h -&gt; &quot;f&quot;: hard-link target is not a previously extracted file</td></tr>
 <tr><td>RubyGems</td><td>RubyGems 3.6.7 of Ruby 3.3.8, extract_tar_gz</td><td>⚠️ accepts</td><td>tree B: <code>f</code> (2 B, 092fcfbb)</td></tr>
 <tr><td>Perl Archive::Tar</td><td>Archive::Tar 3.02_001 of Perl v5.40.1</td><td>✅ as the verdict says</td><td>error: Making hard link from &#x27;f&#x27; to &#x27;DEST/h&#x27; failed at contrib/matrix/runners/perl/extract.pl line 14. Could not extract &#x27;h&#x27; at contrib/matrix/runners/perl/extract.pl line 14. Could not extract &#x27;h&#x27;</td></tr>
 <tr><td>Haskell tar</td><td>tar 0.7.2.0, extract, of GHC 9.10</td><td>⚠️ accepts</td><td>tree A: <code>f</code> (2 B, 092fcfbb), <code>h</code> (2 B, 092fcfbb)</td></tr>

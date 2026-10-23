@@ -29,7 +29,7 @@ what `tarscan.py` reports.
 | Go archive/tar, tarinsecurepath=0 | archive/tar of go1.26.8 | lists, applied in order |
 | Rust tar | tar 0.4.46, unpack | extracts |
 | Rust astral-tokio-tar | astral-tokio-tar 0.7.0, unpack | extracts |
-| Rust tar-codec | tar-codec 0.0.15, extract_in | extracts |
+| Rust tar-codec, as in uv | tar-codec 0.0.15, with the policies of uv 0.13 | extracts |
 | RubyGems | RubyGems 3.6.7 of Ruby 3.3.8, extract_tar_gz | extracts |
 | Perl Archive::Tar | Archive::Tar 3.02_001 of Perl v5.40.1 | extracts |
 | Haskell tar | tar 0.7.2.0, extract, of GHC 9.10 | extracts |
@@ -37,7 +37,7 @@ what `tarscan.py` reports.
 | live-bootstrap untar | mescc-tools-extra a151c245e512, built with cc | extracts |
 | live-bootstrap untar, --non-strict | mescc-tools-extra a151c245e512, built with cc | extracts |
 
-| case | strict.py | GNU tar | bsdtar | BusyBox tar | 7-Zip | Python tarfile, filter=data | Python tarfile, filter=tar | Python tarfile, filter=fully_trusted | node-tar | node-tar, strict | Java Commons Compress | Go archive/tar | Go archive/tar, tarinsecurepath=0 | Rust tar | Rust astral-tokio-tar | Rust tar-codec | RubyGems | Perl Archive::Tar | Haskell tar | Julia Tar.jl | live-bootstrap untar | live-bootstrap untar, --non-strict |
+| case | strict.py | GNU tar | bsdtar | BusyBox tar | 7-Zip | Python tarfile, filter=data | Python tarfile, filter=tar | Python tarfile, filter=fully_trusted | node-tar | node-tar, strict | Java Commons Compress | Go archive/tar | Go archive/tar, tarinsecurepath=0 | Rust tar | Rust astral-tokio-tar | Rust tar-codec, as in uv | RubyGems | Perl Archive::Tar | Haskell tar | Julia Tar.jl | live-bootstrap untar | live-bootstrap untar, --non-strict |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **to accept** | | | | | | | | | | | | | | | | | | | | | | |
 | [F01](https://haampie-llms.github.io/tar-minefield/F01.html) number-leading-space | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |

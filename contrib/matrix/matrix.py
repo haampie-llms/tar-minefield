@@ -169,7 +169,7 @@ def implementations(work, only=None):
                           lambda a, b=binary: ["env", "GODEBUG=tarinsecurepath=0", b, a]))
         else:
             print("go runner:", err, file=sys.stderr)
-    if want("Rust tar", "Rust astral-tokio-tar", "Rust tar-codec") and shutil.which("cargo"):
+    if want("Rust tar", "Rust astral-tokio-tar", "Rust tar-codec, as in uv") and shutil.which("cargo"):
         target = os.path.join(build, "rust")
         code, _, err = run(["cargo", "build", "--release", "--quiet", "--target-dir", target],
                            cwd=os.path.join(RUNNERS, "rust"))
@@ -179,8 +179,8 @@ def implementations(work, only=None):
                           lambda a, d, b=binary: [b, "tar", a, d]))
             found.append(("Rust astral-tokio-tar", "astral-tokio-tar 0.7.0, unpack", "extract",
                           lambda a, d, b=binary: [b, "astral-tokio-tar", a, d]))
-            found.append(("Rust tar-codec", "tar-codec 0.0.15, extract_in", "extract",
-                          lambda a, d, b=binary: [b, "tar-codec", a, d]))
+            found.append(("Rust tar-codec, as in uv", "tar-codec 0.0.15, with the policies of uv 0.13",
+                          "extract", lambda a, d, b=binary: [b, "tar-codec-uv", a, d]))
         else:
             print("rust runner:", err, file=sys.stderr)
     cabal = tool("cabal")
@@ -494,7 +494,7 @@ POPULARITY = [
     "node-tar", "node-tar, strict",
     "Java Commons Compress",
     "Go archive/tar", "Go archive/tar, tarinsecurepath=0",
-    "Rust tar", "Rust astral-tokio-tar", "Rust tar-codec",
+    "Rust tar", "Rust astral-tokio-tar", "Rust tar-codec, as in uv",
     "RubyGems", "Perl Archive::Tar", "Haskell tar", "Julia Tar.jl",
     "live-bootstrap untar", "live-bootstrap untar, --non-strict",
 ]

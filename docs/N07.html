@@ -178,7 +178,7 @@ Seen in: tachyon 0.99.5, notmuch 0.40 and others: see contrib/data/STRICT.md.
 <tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>Rust tar</td><td>tar 0.4.46, unpack</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>Rust astral-tokio-tar</td><td>astral-tokio-tar 0.7.0, unpack</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
-<tr><td>Rust tar-codec</td><td>tar-codec 0.0.15, extract_in</td><td>⛔ rejects</td><td>error: at byte 0: unsafe symbolic-link target &quot;/tar-minefield-nonexistent&quot;: is absolute</td></tr>
+<tr><td>Rust tar-codec, as in uv</td><td>tar-codec 0.0.15, with the policies of uv 0.13</td><td>⛔ rejects</td><td>error: at byte 0: unsafe symbolic-link target &quot;/tar-minefield-nonexistent&quot;: is absolute</td></tr>
 <tr><td>RubyGems</td><td>RubyGems 3.6.7 of Ruby 3.3.8, extract_tar_gz</td><td>⛔ rejects</td><td>error: Gem::Package::SymlinkError: installing symlink &#x27;link&#x27; pointing to parent path /tar-minefield-nonexistent of DEST is not allowed</td></tr>
 <tr><td>Perl Archive::Tar</td><td>Archive::Tar 3.02_001 of Perl v5.40.1</td><td>⛔ rejects</td><td>error: Symlink &#x27;link&#x27; has absolute target. Not extracting under SECURE EXTRACT MODE at contrib/matrix/runners/perl/extract.pl line 14. Could not extract &#x27;link&#x27; at contrib/matrix/runners/perl/extract.pl line…</td></tr>
 <tr><td>Haskell tar</td><td>tar 0.7.2.0, extract, of GHC 9.10</td><td>⛔ rejects</td><td>error: Absolute file name in tar archive: &quot;/tar-minefield-nonexistent&quot;</td></tr>

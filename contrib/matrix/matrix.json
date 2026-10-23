@@ -181,7 +181,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: invalid tar size field: found [32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 55, 32]",
     "outside": {},
     "tree": {}
@@ -433,7 +433,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -692,7 +692,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 1536: missing two-block end-of-archive marker",
     "outside": {},
     "tree": {
@@ -951,7 +951,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 1024: missing two-block end-of-archive marker",
     "outside": {},
     "tree": {
@@ -1196,7 +1196,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: invalid tar identity: found [117, 115, 116, 97, 114, 0, 0, 0]",
     "outside": {},
     "tree": {}
@@ -1413,7 +1413,7 @@
     "outside": {},
     "tree": {}
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: invalid tar checksum: stored Some(3785), computed 4041",
     "outside": {},
     "tree": {}
@@ -1657,7 +1657,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -1895,7 +1895,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 1024: unexpected end of stream: Member payload needs 512 more bytes",
     "outside": {},
     "tree": {}
@@ -2159,7 +2159,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 1536: invalid end-of-archive marker: expected a second zero block",
     "outside": {},
     "tree": {
@@ -2454,7 +2454,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 1024: archive format changed from Pax to Gnu",
     "outside": {},
     "tree": {}
@@ -2692,7 +2692,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: invalid tar identity: found [117, 115, 116, 97, 114, 0, 48, 49]",
     "outside": {},
     "tree": {}
@@ -2917,7 +2917,7 @@
     "outside": {},
     "tree": {}
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: invalid tar size field: found [48, 48, 48, 48, 48, 48, 32, 49, 48, 48, 48, 0]",
     "outside": {},
     "tree": {}
@@ -3186,7 +3186,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 1024: extraction policy rejected input: archive member path rejected by name policy: \"good\\n1 path=evil\"",
     "outside": {},
     "tree": {}
@@ -3516,7 +3516,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -3816,7 +3816,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 1024: member type Directory cannot carry payload size 512",
     "outside": {},
     "tree": {}
@@ -4054,7 +4054,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: unsupported tar typeflag 90",
     "outside": {},
     "tree": {}
@@ -4337,7 +4337,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -4716,7 +4716,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -5023,7 +5023,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 1024: unexpected tar block: expected ordinary ustar member header after a local pax header, found another pax extended header",
     "outside": {},
     "tree": {}
@@ -5353,7 +5353,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: decode policy rejected input: global pax extended header contains restricted member metadata path",
     "outside": {},
     "tree": {}
@@ -5625,7 +5625,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: unsafe member path \"a/\": only a directory may have a directory-required path suffix",
     "outside": {},
     "tree": {}
@@ -5855,7 +5855,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -6101,7 +6101,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 512: unsafe member path \"link/\": only a directory may have a directory-required path suffix",
     "outside": {},
     "tree": {
@@ -6399,7 +6399,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -6656,7 +6656,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -6960,7 +6960,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -7294,7 +7294,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -7558,7 +7558,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -7817,7 +7817,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -8028,7 +8028,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: unsafe symbolic-link target \"/tar-minefield-nonexistent\": is absolute",
     "outside": {},
     "tree": {}
@@ -8251,7 +8251,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 1024: archive format changed from Gnu to Pax",
     "outside": {},
     "tree": {}
@@ -8468,7 +8468,7 @@
     "outside": {},
     "tree": {}
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 1024: unexpected tar block: expected ordinary ustar member header after a local pax header, found another pax extended header",
     "outside": {},
     "tree": {}
@@ -8760,7 +8760,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -9048,7 +9048,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -9258,7 +9258,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: unsafe member path \"/tar-minefield-absolute\": is absolute",
     "outside": {},
     "tree": {}
@@ -9489,7 +9489,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: unsafe member path \"a\\\\b\": contains a backslash separator",
     "outside": {},
     "tree": {}
@@ -9734,7 +9734,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -9993,7 +9993,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: extraction policy rejected input: archive member path rejected by name policy: \"a\\nb\"",
     "outside": {},
     "tree": {}
@@ -10184,7 +10184,7 @@
     "outside": {},
     "tree": {}
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: unsafe member path \"tar-minefield/../../tar-minefield-escaped\": contains a parent-directory component",
     "outside": {},
     "tree": {}
@@ -10325,7 +10325,7 @@
     "outside": {},
     "tree": {}
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: ordinary member has an empty effective path",
     "outside": {},
     "tree": {}
@@ -10542,7 +10542,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: path is not valid UTF-8",
     "outside": {},
     "tree": {}
@@ -10710,7 +10710,7 @@
     "outside": {},
     "tree": {}
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 1024: effective member path contains a NUL byte",
     "outside": {},
     "tree": {}
@@ -10974,7 +10974,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: decode policy rejected input: pax extended header contains duplicate record path",
     "outside": {},
     "tree": {}
@@ -11273,7 +11273,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -11547,7 +11547,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -11708,8 +11708,8 @@
     "outside": {},
     "tree": {}
    },
-   "Rust tar-codec": {
-    "error": "at byte 0: extraction policy rejected input: hard-link members are not allowed",
+   "Rust tar-codec, as in uv": {
+    "error": "at byte 0: invalid link h -> \"missing\": hard-link target is not a previously extracted file",
     "outside": {},
     "tree": {}
    },
@@ -11904,8 +11904,8 @@
      }
     }
    },
-   "Rust tar-codec": {
-    "error": "at byte 1024: extraction policy rejected input: hard-link members are not allowed",
+   "Rust tar-codec, as in uv": {
+    "error": "at byte 1024: invalid link a -> \"a\": hard-link target is the member path",
     "outside": {},
     "tree": {
      "a": {
@@ -12124,8 +12124,8 @@
     "outside": {},
     "tree": {}
    },
-   "Rust tar-codec": {
-    "error": "at byte 0: extraction policy rejected input: hard-link members are not allowed",
+   "Rust tar-codec, as in uv": {
+    "error": "at byte 0: invalid link h -> \"f\": hard-link target is not a previously extracted file",
     "outside": {},
     "tree": {}
    },
@@ -12467,8 +12467,8 @@
      }
     }
    },
-   "Rust tar-codec": {
-    "error": "at byte 1536: extraction policy rejected input: hard-link members are not allowed",
+   "Rust tar-codec, as in uv": {
+    "error": "at byte 1536: invalid link h -> \"s\": hard-link target is not a previously extracted file",
     "outside": {},
     "tree": {
      "f": {
@@ -12750,7 +12750,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -12994,7 +12994,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -13241,7 +13241,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -13512,7 +13512,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": null,
     "outside": {},
     "tree": {
@@ -13752,7 +13752,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "at byte 0: unsafe symbolic-link target \"..\": escapes the destination root",
     "outside": {},
     "tree": {}
@@ -14023,7 +14023,7 @@
      }
     }
    },
-   "Rust tar-codec": {
+   "Rust tar-codec, as in uv": {
     "error": "archive entry collides with existing path a",
     "outside": {},
     "tree": {
@@ -14205,8 +14205,8 @@
   },
   {
    "kind": "extract",
-   "name": "Rust tar-codec",
-   "version": "tar-codec 0.0.15, extract_in"
+   "name": "Rust tar-codec, as in uv",
+   "version": "tar-codec 0.0.15, with the policies of uv 0.13"
   }
  ]
 }
