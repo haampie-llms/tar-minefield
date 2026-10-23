@@ -96,19 +96,19 @@ Tarballs that each criterion rejects, per dataset. Default: what the default pol
 | name | `name.dot-component`: `a/./b` | normalize | 4 (0.04%) | 0 | 5 (0.03%) | 1 (0.00%) | 8 | tuffy@20120614, privoxy@3.0.34-stable-src, ghc@7.8.4-x86_64-unknown-linux-deb7 |
 | name | `name.control-character`: a control character in a name | reject | 0 | 0 | 1 (0.01%) | 8 (0.02%) | 8 | cdrtools@3.02a09, wgrib2@3.6.0, apktool@2.6.0 |
 | name | `name.backslash`: `\`, a separator on Windows | reject | 2 (0.02%) | 0 | 1 (0.01%) | 3 (0.01%) | 5 | texi2html@5.0, gstreamer-docs@1.28.1, texi2html@5.0 |
-| name | `name.not-utf8`: a name that is not UTF-8 | reject | 0 | 0 | 2 (0.01%) | 0 | 2 | aspell-is@0.51.1-0, aspell-nb@0.50.1-0 |
+| name | `format.star`: star's prefix field | reject | 0 | 0 | 0 | 2 (0.01%) | 2 | berkeley-db@18.1.40, ncurses@5.9 |
 | name | `name.absolute`: an absolute name | reject | 0 | 0 | 1 (0.01%) | 1 (0.00%) | 2 | dtv-scan-tables@2024-03-24-7098bdd27548, masurca@3.3.1 |
 | name | `name.double-slash`: `a//b` | normalize | 0 | 0 | 1 (0.01%) | 1 (0.00%) | 1 | ghc@9.0.2-x86_64-deb10-linux, shapemapper@2.1.5 |
-| name | `format.star`: star's prefix field | reject | 0 | 0 | 0 | 2 (0.01%) | 2 | berkeley-db@18.1.40, ncurses@5.9 |
+| name | `name.not-utf8`: a name that is not UTF-8 | reject | 0 | 0 | 2 (0.01%) | 0 | 2 | aspell-is@0.51.1-0, aspell-nb@0.50.1-0 |
 | name | `pax.key-in-two-headers.LIBARCHIVE.xattr.*`: a pax key in two extended headers of one member | reject | 1 (0.01%) | 0 | 0 | 0 | 0 | libmygpo-qt.1.2.0 |
-| name | `pax.repeated-key`: a pax key twice in one extended header | reject | 1 (0.01%) | 0 | 0 | 0 | 0 | libmygpo-qt.1.2.0 |
 | name | `pax.key-in-two-headers.SCHILY.xattr.*`: a pax key in two extended headers of one member | reject | 1 (0.01%) | 0 | 0 | 0 | 0 | libmygpo-qt.1.2.0 |
+| name | `pax.repeated-key`: a pax key twice in one extended header | reject | 1 (0.01%) | 0 | 0 | 0 | 0 | libmygpo-qt.1.2.0 |
 | kind | `name.trailing-slash-on-file`: a regular file named like a directory, `a/` | reject | 1 (0.01%) | 0 | 4 (0.02%) | 2 (0.01%) | 0 | tcp_wrappers_7.6, sendmail.8.18.2, unclutter@8 |
-| kind | `linkname.on-file`: a link target on a member that is not a link | reject | 0 | 0 | 0 | 1 (0.00%) | 0 | bgen@1.1.7 |
 | kind | `linkname.on-dir`: a link target on a member that is not a link | reject | 0 | 0 | 0 | 1 (0.00%) | 0 | bgen@1.1.7 |
+| kind | `linkname.on-file`: a link target on a member that is not a link | reject | 0 | 0 | 0 | 1 (0.00%) | 0 | bgen@1.1.7 |
 | order and state | `tree.duplicate.file-file`: the same file twice | reject | 17 (0.17%) | 0 | 59 (0.31%) | 17 (0.05%) | 78 | string-conversions@0.4.0.1, notmuch@0.40, multipart@0.2.1 |
-| order and state | `tree.duplicate.file-hardlink`: one path as two members | reject | 2 (0.02%) | 0 | 1 (0.01%) | 24 (0.06%) | 0 | xscreensaver@6.12, ghc@7.8.4-x86_64-unknown-linux-deb7, atari++_1.85 |
 | order and state | `hardlink.to-itself`: a hardlink to itself | reject | 2 (0.02%) | 0 | 1 (0.01%) | 24 (0.06%) | 0 | xscreensaver@6.12, ghc@7.8.4-x86_64-unknown-linux-deb7, atari++_1.85 |
+| order and state | `tree.duplicate.file-hardlink`: one path as two members | reject | 2 (0.02%) | 0 | 1 (0.01%) | 24 (0.06%) | 0 | xscreensaver@6.12, ghc@7.8.4-x86_64-unknown-linux-deb7, atari++_1.85 |
 | order and state | `tree.under-file`: a member under a file or a symlink | reject | 1 (0.01%) | 0 | 3 (0.02%) | 2 (0.01%) | 0 | tcp_wrappers_7.6, sendmail.8.18.2, unclutter@8 |
 | order and state | `hardlink.to-symlink`: a hardlink to a symlink | reject | 0 | 0 | 0 | 1 (0.00%) | 1 | octa@8.4 |
 | global pax headers | `pax-global.after-members`: a global header after the first member | accept | 6 (0.06%) | 0 | 7 (0.04%) | 71 (0.19%) | 81 | rpm@4.20.1, x42-plugins@20230701, openmp@14.0.6.src |

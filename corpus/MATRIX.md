@@ -31,53 +31,7 @@ in order. The two policies of `scanner/strict.py` are from what `tarscan.py` rep
 
 | case | strict.py: every criterion | strict.py: default policy | GNU tar | BusyBox tar | 7-Zip | tarfile, filter=fully_trusted | tarfile, filter=tar | tarfile, filter=data | untar | Go archive/tar | Go archive/tar, tarinsecurepath=0 | Rust tar | Rust astral-tokio-tar | Julia Tar.jl | node-tar | node-tar, strict |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `i_end_data_after` | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `i_end_lone_zero_block` | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `i_end_missing` | ⛔ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `i_magic_version_nuls` | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ |
-| `i_name_dot` | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `i_name_leading_dot_slash` | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `i_pax_global_comment_after_members` | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `i_symlink_absolute` | ⛔ | ✅ | ✅ | ✅ | ❌A | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌B | ⛔ |
-| `n_checksum_signed` | ✅ | ✅ | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `n_end_archive_after` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
-| `n_end_truncated_in_member` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `n_end_zero_block_then_member` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B |
-| `n_extended_pax_path_and_gnu_long_name` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️A | ⚠️A | ⚠️A |
-| `n_extended_pax_size_before_gnu_long` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
-| `n_extended_two_pax_headers` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A |
-| `n_format_star` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
-| `n_gnu_prefix_field` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ⚠️A |
-| `n_hardlink_missing_target` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ✅ |
-| `n_hardlink_to_itself` | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ⚠️A | ⚠️B | ✅ |
-| `n_hardlink_to_later_member` | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️B | ✅ |
-| `n_hardlink_to_symlink` | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️C | ✅ |
-| `n_kind_trailing_slash_file` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️A | ⚠️A |
-| `n_linkname_on_file` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ |
-| `n_magic_odd_version` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A |
-| `n_name_absolute` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ✅ | ⚠️B | ✅ | ⚠️A | ⚠️A | ✅ | ⚠️A | ✅ |
-| `n_name_backslash` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
-| `n_name_bytes_after_nul` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
-| `n_name_control_character` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
-| `n_name_dotdot` | ✅ | ✅ | ✅ | ⚠️A | ⚠️B | 💥 | ✅ | ✅ | ✅ | ⚠️C | ✅ | ⚠️D | ⚠️D | ✅ | ⚠️D | ✅ |
-| `n_name_empty` | ✅ | ✅ | ✅ | ✅ | ⚠️A | ✅ | ✅ | ✅ | ✅ | ⚠️B | ✅ | ⚠️B | ⚠️B | ✅ | ✅ | ✅ |
-| `n_name_not_utf8` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B |
-| `n_number_size_gap` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A |
-| `n_pax_global_between_extended_and_member` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A |
-| `n_pax_global_path` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️B | ⚠️B |
-| `n_pax_newline_in_path` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️B | ⚠️B |
-| `n_pax_nul_in_path` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️B | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ⚠️A |
-| `n_pax_repeated_key` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
-| `n_pax_size_disagrees` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
-| `n_pax_size_on_dir` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ✅ | ⚠️B | ⚠️B |
-| `n_symlink_trailing_slash` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A |
-| `n_tree_duplicate_file_differs` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
-| `n_tree_duplicate_file_dir` | ✅ | ✅ | ⚠️A | ⚠️B | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A |
-| `n_tree_duplicate_file_identical` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
-| `n_tree_symlink_then_file` | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
-| `n_tree_through_symlink` | ✅ | ✅ | ✅ | ✅ | ✅ | 💥 | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ⚠️B | ✅ |
-| `n_tree_under_file` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ⚠️B | ⚠️C | ✅ |
-| `n_type_unknown` | ✅ | ✅ | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ✅ | ⚠️C | ⚠️C |
+| **accepted by every parser** | | | | | | | | | | | | | | | | |
 | `y_gnu_long_name` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `y_name_fills_field` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `y_number_leading_space` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -86,6 +40,59 @@ in order. The two policies of `scanner/strict.py` are from what `tarscan.py` rep
 | `y_tree_dir_after_contents` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `y_tree_duplicate_dir` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `y_ustar_prefix` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **accepted by the default policy** | | | | | | | | | | | | | | | | |
+| `i_end_data_after` | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `i_end_lone_zero_block` | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `i_end_missing` | ⛔ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `i_magic_version_nuls` | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ |
+| `i_name_dot` | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `i_name_leading_dot_slash` | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `i_pax_global_comment_after_members` | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `i_symlink_absolute` | ⛔ | ✅ | ✅ | ✅ | ❌A | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌B | ⛔ |
+| **rejected: framing** | | | | | | | | | | | | | | | | |
+| `n_checksum_signed` | ✅ | ✅ | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `n_end_archive_after` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
+| `n_end_truncated_in_member` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `n_end_zero_block_then_member` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B |
+| `n_extended_pax_size_before_gnu_long` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
+| `n_magic_odd_version` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A |
+| `n_number_size_gap` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A |
+| `n_pax_newline_in_path` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️B | ⚠️B |
+| `n_pax_size_disagrees` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
+| `n_pax_size_on_dir` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ✅ | ⚠️B | ⚠️B |
+| `n_type_unknown` | ✅ | ✅ | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ✅ | ⚠️C | ⚠️C |
+| **rejected: names** | | | | | | | | | | | | | | | | |
+| `n_extended_pax_path_and_gnu_long_name` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️A | ⚠️A | ⚠️A |
+| `n_extended_two_pax_headers` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A |
+| `n_format_star` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
+| `n_gnu_prefix_field` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ⚠️A |
+| `n_name_absolute` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ✅ | ⚠️B | ✅ | ⚠️A | ⚠️A | ✅ | ⚠️A | ✅ |
+| `n_name_backslash` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
+| `n_name_bytes_after_nul` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
+| `n_name_control_character` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
+| `n_name_dotdot` | ✅ | ✅ | ✅ | ⚠️A | ⚠️B | 💥 | ✅ | ✅ | ✅ | ⚠️C | ✅ | ⚠️D | ⚠️D | ✅ | ⚠️D | ✅ |
+| `n_name_empty` | ✅ | ✅ | ✅ | ✅ | ⚠️A | ✅ | ✅ | ✅ | ✅ | ⚠️B | ✅ | ⚠️B | ⚠️B | ✅ | ✅ | ✅ |
+| `n_name_not_utf8` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B |
+| `n_pax_nul_in_path` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️B | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ⚠️A |
+| `n_pax_repeated_key` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
+| **rejected: kinds** | | | | | | | | | | | | | | | | |
+| `n_kind_trailing_slash_file` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️A | ⚠️A |
+| `n_linkname_on_file` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ |
+| `n_symlink_trailing_slash` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A |
+| **rejected: order and state** | | | | | | | | | | | | | | | | |
+| `n_hardlink_missing_target` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ✅ |
+| `n_hardlink_to_itself` | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ⚠️A | ⚠️B | ✅ |
+| `n_hardlink_to_later_member` | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️B | ✅ |
+| `n_hardlink_to_symlink` | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️C | ✅ |
+| `n_tree_duplicate_file_differs` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
+| `n_tree_duplicate_file_dir` | ✅ | ✅ | ⚠️A | ⚠️B | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A |
+| `n_tree_duplicate_file_identical` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
+| `n_tree_symlink_then_file` | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
+| `n_tree_through_symlink` | ✅ | ✅ | ✅ | ✅ | ✅ | 💥 | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ⚠️B | ✅ |
+| `n_tree_under_file` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ⚠️B | ⚠️C | ✅ |
+| **rejected: global pax headers** | | | | | | | | | | | | | | | | |
+| `n_pax_global_between_extended_and_member` | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A |
+| `n_pax_global_path` | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️B | ⚠️B |
 | **total** | ✅47 ⛔8 | ✅55 | ✅23 ⚠️32 | ✅23 ⚠️32 | ✅22 ⚠️31 ⛔1 ❌1 | ✅25 ⚠️28 💥2 | ✅26 ⚠️29 | ✅26 ⚠️28 ⛔1 | ✅39 ⚠️13 ⛔3 | ✅22 ⚠️33 | ✅25 ⚠️30 | ✅27 ⚠️28 | ✅27 ⚠️27 ⛔1 | ✅32 ⚠️23 | ✅19 ⚠️35 ❌1 | ✅27 ⚠️27 ⛔1 |
 
 ## Trees
@@ -96,18 +103,17 @@ What the implementations that accept a case extract, where it is not its manifes
 - `n_checksum_signed`: A: `a` (2 B, 87428fc5)
 - `n_end_archive_after`: A: `a` (2 B, 87428fc5)
 - `n_end_zero_block_then_member`: A: `a` (2 B, 87428fc5); B: `a` (2 B, 87428fc5), `hidden` (44 B, d688c765)
-- `n_extended_pax_path_and_gnu_long_name`: A: `from-pax` (12 B, a578eb49); B: `from-gnu` (12 B, a578eb49)
 - `n_extended_pax_size_before_gnu_long`: A: `long-name` (512 B, 917dba8e); B: `long-name` (0 B, e3b0c442), `smuggled` (0 B, e3b0c442)
+- `n_magic_odd_version`: A: `a` (2 B, 87428fc5)
+- `n_number_size_gap`: A: `a` (0 B, e3b0c442), `smuggled` (0 B, e3b0c442)
+- `n_pax_newline_in_path`: A: `good\x0a1 path=evil` (12 B, a578eb49); B: `plain` (12 B, a578eb49)
+- `n_pax_size_disagrees`: A: `a` (0 B, e3b0c442), `smuggled` (0 B, e3b0c442); B: `a` (512 B, 917dba8e)
+- `n_pax_size_on_dir`: A: `dir/`; B: `dir/`, `dir/smuggled` (0 B, e3b0c442)
+- `n_type_unknown`: A: `unknown` (512 B, 917dba8e); B: `unknown` (other); C: nothing
+- `n_extended_pax_path_and_gnu_long_name`: A: `from-pax` (12 B, a578eb49); B: `from-gnu` (12 B, a578eb49)
 - `n_extended_two_pax_headers`: A: `second` (12 B, a578eb49); B: `first` (12 B, a578eb49)
 - `n_format_star`: A: `dir/`, `dir/a` (2 B, 87428fc5)
 - `n_gnu_prefix_field`: A: `a` (2 B, 87428fc5); B: `15000000000/`, `15000000000/a` (2 B, 87428fc5)
-- `n_hardlink_missing_target`: A: nothing
-- `n_hardlink_to_itself`: A: `a` (2 B, 87428fc5); B: nothing
-- `n_hardlink_to_later_member`: A: `f` (2 B, 092fcfbb), `h` (2 B, 092fcfbb); B: `f` (2 B, 092fcfbb)
-- `n_hardlink_to_symlink`: A: `f` (2 B, 092fcfbb), `h` → `f`, `s` → `f`; B: `f` (2 B, 092fcfbb), `h` (2 B, 092fcfbb), `s` → `f`; C: `f` (2 B, 092fcfbb), `s` → `f`
-- `n_kind_trailing_slash_file`: A: `a/`; B: `a` (0 B, e3b0c442)
-- `n_linkname_on_file`: A: `a` (19 B, bc345849)
-- `n_magic_odd_version`: A: `a` (2 B, 87428fc5)
 - `n_name_absolute`: A: `tar-minefield-absolute` (89 B, 3b7f22a5); B: `/tar-minefield-absolute` (89 B, 3b7f22a5)
 - `n_name_backslash`: A: `a\b` (21 B, 15acfc39)
 - `n_name_bytes_after_nul`: A: `a` (10 B, ef476e8d)
@@ -115,19 +121,20 @@ What the implementations that accept a case extract, where it is not its manifes
 - `n_name_dotdot`: A: `tar-minefield-escaped` (85 B, fc503701); B: `tar-minefield/`, `tar-minefield/tar-minefield-escaped` (85 B, fc503701); C: `tar-minefield/`, `tar-minefield/../`, `tar-minefield/../../`, `tar-minefield/../../tar-minefield-escaped` (85 B, fc503701); D: nothing
 - `n_name_empty`: A: `n_name_empty` (8 B, aee7b480); B: nothing
 - `n_name_not_utf8`: A: `caf\xe9` (8 B, ff3f1fa3); B: `caf�` (8 B, ff3f1fa3)
-- `n_number_size_gap`: A: `a` (0 B, e3b0c442), `smuggled` (0 B, e3b0c442)
-- `n_pax_global_between_extended_and_member`: A: `from-pax` (12 B, a578eb49); B: `header-name` (12 B, a578eb49)
-- `n_pax_global_path`: A: `global-name` (2 B, 02638299); B: `a` (2 B, 87428fc5), `b` (2 B, 02638299)
-- `n_pax_newline_in_path`: A: `good\x0a1 path=evil` (12 B, a578eb49); B: `plain` (12 B, a578eb49)
 - `n_pax_nul_in_path`: A: `a` (12 B, 627be4bf); B: `header-name` (12 B, 627be4bf)
 - `n_pax_repeated_key`: A: `second` (12 B, a578eb49); B: `first` (12 B, a578eb49)
-- `n_pax_size_disagrees`: A: `a` (0 B, e3b0c442), `smuggled` (0 B, e3b0c442); B: `a` (512 B, 917dba8e)
-- `n_pax_size_on_dir`: A: `dir/`; B: `dir/`, `dir/smuggled` (0 B, e3b0c442)
+- `n_kind_trailing_slash_file`: A: `a/`; B: `a` (0 B, e3b0c442)
+- `n_linkname_on_file`: A: `a` (19 B, bc345849)
 - `n_symlink_trailing_slash`: A: `link` → `target`, `target/`
+- `n_hardlink_missing_target`: A: nothing
+- `n_hardlink_to_itself`: A: `a` (2 B, 87428fc5); B: nothing
+- `n_hardlink_to_later_member`: A: `f` (2 B, 092fcfbb), `h` (2 B, 092fcfbb); B: `f` (2 B, 092fcfbb)
+- `n_hardlink_to_symlink`: A: `f` (2 B, 092fcfbb), `h` → `f`, `s` → `f`; B: `f` (2 B, 092fcfbb), `h` (2 B, 092fcfbb), `s` → `f`; C: `f` (2 B, 092fcfbb), `s` → `f`
 - `n_tree_duplicate_file_differs`: A: `a` (5 B, 761d1fb1)
 - `n_tree_duplicate_file_dir`: A: `a/`; B: `a` (13 B, 294e546a)
 - `n_tree_duplicate_file_identical`: A: `a` (5 B, a6328afc)
 - `n_tree_symlink_then_file`: A: `a` (28 B, d5a04bbb); B: `a` → `target`, `target` (28 B, d5a04bbb)
 - `n_tree_through_symlink`: A: `d` → `..`, `d/tar-minefield-through-symlink` (89 B, 3b7f22a5); B: `d/`, `d/tar-minefield-through-symlink` (89 B, 3b7f22a5)
 - `n_tree_under_file`: A: `a` (7 B, da69f286), `a/b` (13 B, 8e53e378); B: `a/`, `a/b` (13 B, 8e53e378); C: `a` (7 B, da69f286)
-- `n_type_unknown`: A: `unknown` (512 B, 917dba8e); B: `unknown` (other); C: nothing
+- `n_pax_global_between_extended_and_member`: A: `from-pax` (12 B, a578eb49); B: `header-name` (12 B, a578eb49)
+- `n_pax_global_path`: A: `global-name` (2 B, 02638299); B: `a` (2 B, 87428fc5), `b` (2 B, 02638299)

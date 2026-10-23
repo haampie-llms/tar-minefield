@@ -63,6 +63,7 @@ STRICT = [
     ("name.dot-component", "name", "`a/./b`"),
     ("name.double-slash", "name", "`a//b`"),
     ("name.trailing-slash-on-file", "kind", "a regular file named like a directory, `a/`"),
+    ("name.trailing-slash-on-*", "kind", "a link whose name ends in a slash"),
     ("name.absolute", "name", "an absolute name"),
     ("name.dotdot", "name", "`..` in a name"),
     ("name.empty", "name", "an empty name"),
@@ -485,6 +486,7 @@ def main():
         key=lambda f: (
             LEVELS.index(classify(f)[1]) if f != "scan.error" else 0,
             -sum(len(v) for v in failing[f].values()),
+            f,
         ),
     )
     for f in order:

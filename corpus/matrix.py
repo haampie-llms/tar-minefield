@@ -265,13 +265,39 @@ def policies():
     return out
 
 
+GROUPS = {
+    "y": "accepted by every parser",
+    "i": "accepted by the default policy",
+    "framing": "rejected: framing",
+    "name": "rejected: names",
+    "kind": "rejected: kinds",
+    "order and state": "rejected: order and state",
+    "global pax headers": "rejected: global pax headers",
+}
+
+
+def category(info):
+    """The group of a case: its verdict, and for n_ cases the level of the catalogue that
+    scanner/strict.py gives its features; a case without any is one the scanner cannot read
+    past, which is framing."""
+    if info["verdict"] != "n":
+        return info["verdict"]
+    sys.path.insert(0, os.path.join(HERE, "..", "scanner"))
+    import strict
+
+    levels = [strict.classify(f)[1] for f in info["features"] if strict.classify(f)[0] == "strict"]
+    return levels[0] if levels else "framing"
+
+
 def load_cases():
+    """The cases, in the order of GROUPS, and by name in each group."""
     cases = {}
     for name in sorted(os.listdir(ARCHIVES)):
         if name.endswith(".json"):
             with open(os.path.join(ARCHIVES, name)) as f:
                 cases[name[:-5]] = json.load(f)
-    return cases
+    order = list(GROUPS)
+    return dict(sorted(cases.items(), key=lambda kv: (order.index(category(kv[1])), kv[0])))
 
 
 def main():
@@ -395,7 +421,7 @@ def svg_style():
     light = "".join(f".{c[0]}{{fill:{c[1]}}}" for c in CLASSES.values())
     dark = "".join(f".{c[0]}{{fill:{c[2]}}}" for c in CLASSES.values())
     return (
-        f"<style>text{{font-family:{FONT};font-size:12px;fill:#1f2328}}"
+        f"<style>text{{font-family:{FONT};font-size:12px;fill:#1f2328}}.head{{font-weight:600}}"
         ".cell{fill:#fff;font-size:11px;font-weight:600;text-anchor:middle}"
         f".rule{{stroke:#d0d7de}}{light}"
         "@media (prefers-color-scheme: dark){text{fill:#e6edf3}.cell{fill:#fff}.rule{stroke:#30363d}"
@@ -461,12 +487,14 @@ def svg(results, cases):
                 out.append(f'<text class="cell" x="{xs[n] + cw / 2}" y="{bottom - h / 2 + 4:.1f}">{k}</text>')
             out.append("</g>")
             bottom -= h
-    y += bar + 16
+    y += bar
     previous = None
     for case, info in cases.items():
-        if previous is not None and case[0] != previous[0]:
-            y += 8
-        previous = case
+        if category(info) != previous:
+            previous = category(info)
+            out.append(f'<line class="rule" x1="10" x2="{x - gap}" y1="{y + 10}" y2="{y + 10}"/>'
+                       f'<text class="head" x="10" y="{y + 26}">{esc(GROUPS[previous])}</text>')
+            y += 34
         out.append(f'<text x="{left - 10}" y="{y + ch / 2 + 4}" text-anchor="end">{esc(case)}</text>')
         cells, letters = case_cells(info, results["cases"][case], names)
         trees = {v: k for k, v in letters.items()}
@@ -538,7 +566,11 @@ def table(results, cases):
     header = "| case | " + " | ".join(names) + " |"
     lines += [header, "|---|" + "---|" * len(names)]
     notes = []
+    previous = None
     for case, info in cases.items():
+        if category(info) != previous:
+            previous = category(info)
+            lines.append(f"| **{GROUPS[previous]}** |" + " |" * len(names))
         cells, letters = case_cells(info, results["cases"][case], names)
         lines.append(f"| `{case}` | " + " | ".join(cells[n] for n in names) + " |")
         if letters:
