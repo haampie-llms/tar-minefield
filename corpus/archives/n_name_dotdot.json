@@ -1,8 +1,0 @@
-{
- "code": "N16",
- "verdict": "n",
- "description": "`..` in a name, which climbs out of the directory the archive is extracted to.",
- "features": [
-  "name.dotdot"
- ]
-}

@@ -1,8 +1,0 @@
-{
- "code": "S04",
- "verdict": "n",
- "description": "A hardlink to itself.",
- "features": [
-  "hardlink.to-itself"
- ]
-}

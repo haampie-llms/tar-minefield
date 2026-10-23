@@ -5,10 +5,10 @@ extracted by every implementation, or for libraries without an extractor listed 
 applied in order. The two policies of `scanner/strict.py` are from what `tarscan.py`
 reports.
 
-- ✅ as the verdict says: rejects an `n_` case; extracts the manifest of a `y_` or `i_` case
-- ⚠️ accepts an `n_` case. The letter is the tree it extracts: in one row, the same letter is the same tree, and different letters are trees that differ; [MATRIX.md](MATRIX.md#trees) lists them
-- ⛔ rejects an `i_` case, which a strict parser may
-- ❌ rejects a `y_` case, or extracts another tree than the manifest of a `y_` or `i_` case
+- ✅ as the verdict says: rejects a case to reject; extracts the manifest of the others
+- ⚠️ accepts a case to reject. The letter is the tree it extracts: in one row, the same letter is the same tree, and different letters are trees that differ; [MATRIX.md](MATRIX.md#trees) lists them
+- ⛔ rejects a tolerated case, which a strict parser may
+- ❌ rejects a case to accept, or extracts another tree than its manifest
 - 💥 writes outside the destination
 
 ![Every case of the corpus, in rows, and what every implementation makes of it, in columns: the table below as a picture](matrix.svg)
@@ -38,7 +38,7 @@ reports.
 
 | case | strict.py: every criterion | strict.py: default policy | GNU tar | bsdtar | live-bootstrap untar | live-bootstrap untar, --non-strict | BusyBox tar | 7-Zip | Python tarfile, filter=fully_trusted | Python tarfile, filter=tar | Python tarfile, filter=data | Go archive/tar | Go archive/tar, tarinsecurepath=0 | Rust tar | Rust astral-tokio-tar | Haskell tar | Java Commons Compress | RubyGems | Perl Archive::Tar | Julia Tar.jl | node-tar | node-tar, strict |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **accepted by every implementation** | | | | | | | | | | | | | | | | | | | | | | |
+| **to accept** | | | | | | | | | | | | | | | | | | | | | | |
 | [F01](https://haampie-llms.github.io/tar-minefield/F01.html) number-leading-space | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [G01](https://haampie-llms.github.io/tar-minefield/G01.html) pax-global-comment | ✅ | ✅ | ✅ | ✅ | ❌A | ❌A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [N01](https://haampie-llms.github.io/tar-minefield/N01.html) gnu-long-name | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌A | ✅ | ✅ | ✅ | ✅ |
@@ -47,7 +47,7 @@ reports.
 | [N04](https://haampie-llms.github.io/tar-minefield/N04.html) ustar-prefix | ✅ | ✅ | ✅ | ✅ | ❌A | ❌A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [S01](https://haampie-llms.github.io/tar-minefield/S01.html) tree-dir-after-contents | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌A | ✅ | ✅ | ✅ | ✅ |
 | [S02](https://haampie-llms.github.io/tar-minefield/S02.html) tree-duplicate-dir | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌A | ✅ | ✅ | ✅ | ✅ |
-| **accepted by the default policy** | | | | | | | | | | | | | | | | | | | | | | |
+| **tolerated** | | | | | | | | | | | | | | | | | | | | | | |
 | [F02](https://haampie-llms.github.io/tar-minefield/F02.html) end-data-after | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [F03](https://haampie-llms.github.io/tar-minefield/F03.html) end-lone-zero-block | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [F04](https://haampie-llms.github.io/tar-minefield/F04.html) end-missing | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -56,7 +56,7 @@ reports.
 | [N05](https://haampie-llms.github.io/tar-minefield/N05.html) name-dot | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ |
 | [N06](https://haampie-llms.github.io/tar-minefield/N06.html) name-leading-dot-slash | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [N07](https://haampie-llms.github.io/tar-minefield/N07.html) symlink-absolute | ⛔ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌A | ✅ | ✅ | ⛔ | ✅ | ✅ | ✅ | ✅ | ⛔ | ❌B | ⛔ | ⛔ | ✅ | ❌C | ⛔ |
-| **rejected: framing** | | | | | | | | | | | | | | | | | | | | | | |
+| **to reject: framing** | | | | | | | | | | | | | | | | | | | | | | |
 | [F06](https://haampie-llms.github.io/tar-minefield/F06.html) checksum-signed | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ |
 | [F07](https://haampie-llms.github.io/tar-minefield/F07.html) end-archive-after | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A |
 | [F08](https://haampie-llms.github.io/tar-minefield/F08.html) end-truncated-in-member | ✅ | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -68,7 +68,7 @@ reports.
 | [F14](https://haampie-llms.github.io/tar-minefield/F14.html) pax-size-disagrees | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️C | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️C | ⚠️A | ⚠️C | ⚠️C | ⚠️A | ⚠️A | ⚠️A |
 | [F15](https://haampie-llms.github.io/tar-minefield/F15.html) pax-size-on-dir | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️C | ⚠️C | ⚠️B | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ⚠️B | ⚠️B | ✅ | ⚠️B | ⚠️B |
 | [F16](https://haampie-llms.github.io/tar-minefield/F16.html) type-unknown | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️C | ⚠️A | ⚠️C | ⚠️A | ✅ | ⚠️C | ⚠️C |
-| **rejected: names** | | | | | | | | | | | | | | | | | | | | | | |
+| **to reject: names** | | | | | | | | | | | | | | | | | | | | | | |
 | [N08](https://haampie-llms.github.io/tar-minefield/N08.html) extended-pax-path-and-gnu-long-name | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ✅ | ✅ | ⚠️B | ⚠️C | ⚠️C | ⚠️A | ⚠️A | ⚠️A |
 | [N09](https://haampie-llms.github.io/tar-minefield/N09.html) extended-two-pax-headers | ✅ | ✅ | ⚠️A | ✅ | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️C | ⚠️C | ⚠️C | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ⚠️C | ⚠️D | ⚠️D | ⚠️A | ⚠️A | ⚠️A |
 | [N10](https://haampie-llms.github.io/tar-minefield/N10.html) format-star | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A |
@@ -82,11 +82,11 @@ reports.
 | [N18](https://haampie-llms.github.io/tar-minefield/N18.html) name-not-utf8 | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️C | ⚠️C | ⚠️A | ⚠️A | ⚠️A | ⚠️D | ⚠️A | ⚠️A | ⚠️A | ⚠️C | ⚠️C |
 | [N19](https://haampie-llms.github.io/tar-minefield/N19.html) pax-nul-in-path | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️A | ⚠️C | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️C | ⚠️C | ✅ | ⚠️A | ⚠️A |
 | [N20](https://haampie-llms.github.io/tar-minefield/N20.html) pax-repeated-key | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️C | ⚠️A | ⚠️C | ⚠️A | ⚠️D | ⚠️D | ⚠️A | ⚠️A | ⚠️A |
-| **rejected: kinds** | | | | | | | | | | | | | | | | | | | | | | |
+| **to reject: kinds** | | | | | | | | | | | | | | | | | | | | | | |
 | [K01](https://haampie-llms.github.io/tar-minefield/K01.html) kind-trailing-slash-file | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ✅ | ⚠️A | ⚠️B | ⚠️A | ✅ | ⚠️A | ⚠️A |
 | [K02](https://haampie-llms.github.io/tar-minefield/K02.html) linkname-on-file | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ |
 | [K03](https://haampie-llms.github.io/tar-minefield/K03.html) symlink-trailing-slash | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️C | ⚠️A | ✅ | ✅ | ⚠️A | ⚠️A |
-| **rejected: order and state** | | | | | | | | | | | | | | | | | | | | | | |
+| **to reject: order and state** | | | | | | | | | | | | | | | | | | | | | | |
 | [S03](https://haampie-llms.github.io/tar-minefield/S03.html) hardlink-missing-target | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️B | ⚠️A | ✅ | ✅ | ⚠️A | ✅ |
 | [S04](https://haampie-llms.github.io/tar-minefield/S04.html) hardlink-to-itself | ✅ | ✅ | ⚠️A | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️C | ✅ | ⚠️A | ⚠️C | ✅ |
 | [S05](https://haampie-llms.github.io/tar-minefield/S05.html) hardlink-to-later-member | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️B | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️B | ⚠️C | ⚠️A | ✅ | ✅ | ⚠️A | ✅ |
@@ -97,7 +97,7 @@ reports.
 | [S10](https://haampie-llms.github.io/tar-minefield/S10.html) tree-symlink-then-file | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️A | ✅ | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A |
 | [S11](https://haampie-llms.github.io/tar-minefield/S11.html) tree-through-symlink | ✅ | ✅ | ✅ | ✅ | 💥 | 💥 | ✅ | ✅ | 💥 | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️B | ✅ |
 | [S12](https://haampie-llms.github.io/tar-minefield/S12.html) tree-under-file | ✅ | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️B | ⚠️B | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️C | ⚠️A | ✅ |
-| **rejected: global pax headers** | | | | | | | | | | | | | | | | | | | | | | |
+| **to reject: global pax headers** | | | | | | | | | | | | | | | | | | | | | | |
 | [G03](https://haampie-llms.github.io/tar-minefield/G03.html) pax-global-between-extended-and-member | ✅ | ✅ | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️C | ⚠️C | ⚠️C | ⚠️C | ⚠️C | ⚠️A | ⚠️C | ⚠️C | ⚠️A | ⚠️A | ⚠️A |
 | [G04](https://haampie-llms.github.io/tar-minefield/G04.html) pax-global-path | ✅ | ✅ | ⚠️A | ⚠️B | ⚠️C | ⚠️C | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️B | ⚠️B | ⚠️A | ⚠️B | ⚠️B |
 | **total** | ✅47 ⛔8 | ✅55 | ✅23 ⚠️32 | ✅26 ⚠️29 | ✅17 ⚠️30 ❌6 💥2 | ✅12 ⚠️35 ❌6 💥2 | ✅23 ⚠️32 | ✅22 ⚠️31 ⛔1 ❌1 | ✅25 ⚠️28 💥2 | ✅26 ⚠️29 | ✅26 ⚠️28 ⛔1 | ✅22 ⚠️33 | ✅25 ⚠️30 | ✅27 ⚠️28 | ✅27 ⚠️27 ⛔1 | ✅30 ⚠️20 ⛔5 | ✅24 ⚠️30 ❌1 | ✅19 ⚠️30 ⛔2 ❌4 | ✅26 ⚠️27 ⛔1 ❌1 | ✅32 ⚠️23 | ✅19 ⚠️35 ❌1 | ✅27 ⚠️27 ⛔1 |
@@ -135,7 +135,7 @@ What the implementations that accept a case extract, where it is not its manifes
 - N14 name-bytes-after-nul: A: `a` (10 B, ef476e8d)
 - N15 name-control-character: A: `a\x0ab` (21 B, 93d2f841)
 - N16 name-dotdot: A: `tar-minefield-escaped` (85 B, fc503701); B: `tar-minefield/`, `tar-minefield/tar-minefield-escaped` (85 B, fc503701); C: `tar-minefield/`, `tar-minefield/../`, `tar-minefield/../../`, `tar-minefield/../../tar-minefield-escaped` (85 B, fc503701); D: nothing
-- N17 name-empty: A: nothing; B: `n_name_empty` (8 B, aee7b480)
+- N17 name-empty: A: nothing; B: `N17-name-empty` (8 B, aee7b480)
 - N18 name-not-utf8: A: `caf\xe9` (8 B, ff3f1fa3); B: nothing; C: `caf�` (8 B, ff3f1fa3); D: `caf?` (8 B, ff3f1fa3)
 - N19 pax-nul-in-path: A: `a` (12 B, 627be4bf); B: `PaxHeader` (12 B, 6f855603), `header-name` (12 B, 627be4bf); C: `header-name` (12 B, 627be4bf)
 - N20 pax-repeated-key: A: `second` (12 B, a578eb49); B: `PaxHeader` (29 B, 14422e4d), `header-name` (12 B, a578eb49); C: `first` (12 B, a578eb49); D: `header-name` (12 B, a578eb49)

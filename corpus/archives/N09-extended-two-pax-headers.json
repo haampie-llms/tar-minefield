@@ -1,0 +1,8 @@
+{
+ "code": "N09",
+ "verdict": "reject",
+ "description": "Two pax extended headers for one member, with different paths.",
+ "features": [
+  "extended.two-pax-headers"
+ ]
+}

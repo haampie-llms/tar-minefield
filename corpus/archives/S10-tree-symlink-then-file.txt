@@ -1,0 +1,51 @@
+S10-tree-symlink-then-file: to reject
+
+A symlink, then a file of the same name: replace the link, or write through it?
+
+`a` is a symlink to `target`, then a file `a`. An implementation that replaces the link writes the
+file `a`; one that opens `a` for writing follows the link and writes `target` instead.
+
+Decision point: whether writing a member follows a symlink in its place.
+Seen in: no tarball of the scans.
+
+0x000000  header: symlink
+          name     [  0,100)  "a" + 99 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000000" + NUL  0
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "010547\0 "  4455: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "2"  symlink
+          linkname [157,257)  "target" + 94 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000200  header: regular file
+          name     [  0,100)  "a" + 99 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000034" + NUL  28
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "007345\0 "  3813: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "0"  regular file
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000400  data
+          28 bytes, then 484 NUL to the end of the block
+          "written to a, or to target?\n"
+0x000600  2 zero blocks: the end-of-archive marker
+0x000a00  end of file

@@ -1,0 +1,76 @@
+N08-extended-pax-path-and-gnu-long-name: to reject
+
+A pax `path` and a GNU long name for one member, and a third name in its header.
+
+The member has the name `from-header`, a GNU long name `from-gnu`, and a pax path `from-pax`.
+Implementations that prefer pax, those that prefer the GNU long name, and those that apply the one
+that comes last extract different names.
+
+Decision point: which of several sources gives a member its name.
+Seen in: no tarball of the scans.
+
+0x000000  header: GNU long name, for the next member
+          name     [  0,100)  "././@LongLink" + 87 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000011" + NUL  9
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "011223\0 "  4755: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "L"  GNU long name, for the next member
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar "
+          version  [263,265)  " " + NUL
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000200  data: GNU long name
+          9 bytes: the name and a NUL, then 503 NUL
+          "from-gnu" + NUL
+0x000400  header: pax extended header, for the next member
+          name     [  0,100)  "PaxHeader" + 91 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000021" + NUL  17
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "011072\0 "  4666: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "x"  pax extended header, for the next member
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000600  data: pax records
+          17 bytes of pax records, then 495 NUL
+          "17 path=from-pax\n"
+0x000800  header: regular file
+          name     [  0,100)  "from-header" + 89 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000014" + NUL  12
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "011314\0 "  4812: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "0"  regular file
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000a00  data
+          12 bytes, then 500 NUL to the end of the block
+          "which name?\n"
+0x000c00  2 zero blocks: the end-of-archive marker
+0x001000  end of file

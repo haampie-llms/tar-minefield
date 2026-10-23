@@ -1,0 +1,8 @@
+{
+ "code": "N15",
+ "verdict": "reject",
+ "description": "A control character in a name, here a newline.",
+ "features": [
+  "name.control-character"
+ ]
+}

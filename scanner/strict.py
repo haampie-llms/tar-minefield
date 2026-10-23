@@ -4,10 +4,11 @@
     python -I scanner/strict.py --readme README.md RESULTS...
 
 A strict parser rejects every archive with a feature that METHOD.md lists as an ambiguity: the
-criteria below, each a pattern of feature names of tarscan.py. Features that METHOD.md lists as
-`y_`, or that are confined to fields outside the tree it describes, are allowed. Names that some
-filesystems cannot hold (`platform.*`) are neither: they are reported apart. A feature that none
-of these patterns match is reported as unclassified, so that nothing is left out unseen.
+criteria below, each a pattern of feature names of tarscan.py. Features of the cases that
+METHOD.md lists to accept, or that are confined to fields outside the tree it describes, are
+allowed. Names that some filesystems cannot hold (`platform.*`) are neither: they are reported
+apart. A feature that none of these patterns match is reported as unclassified, so that nothing is
+left out unseen.
 
 The default policy, `DEFAULT`, is what METHOD.md decides from these scans: it normalizes some of
 the criteria and accepts others, and rejects the rest. What each rejects is given of both.
@@ -107,13 +108,13 @@ STRICT = [
 ]
 
 ALLOWED = [
-    ("name.fills-field", "a name of exactly 100 bytes, without NUL (`y_`)"),
+    ("name.fills-field", "a name of exactly 100 bytes, without NUL (to accept)"),
     ("linkname.no-nul", "a link name of exactly 100 bytes, without NUL"),
     ("name.non-ascii", "UTF-8 names"),
     ("name.not-nfc", "names not in NFC: one tree, which macOS may not hold"),
     ("name.dir-without-trailing-slash", "a directory without a trailing slash: the typeflag says"),
-    ("ustar.prefix", "the ustar prefix field (`y_`)"),
-    ("number.size.base256", "base-256 sizes of files over 8 GiB (`y_`)"),
+    ("ustar.prefix", "the ustar prefix field (to accept)"),
+    ("number.size.base256", "base-256 sizes of files over 8 GiB (to accept)"),
     ("number.*.leading-space",
      "octal padded with spaces, not zeros, which implementations read alike"),
     ("number.uid.*", "outside the tree"),
@@ -123,8 +124,8 @@ ALLOWED = [
     ("number.devminor.*", "outside the tree"),
     ("type.nul", "the typeflag NUL of regular files, from before POSIX"),
     ("v7.bytes-after-linkname", "bytes in fields that v7 headers do not use"),
-    ("tree.dir-after-contents", "directories after their contents (`y_`)"),
-    ("tree.duplicate.dir-dir", "the same directory twice (`y_`)"),
+    ("tree.dir-after-contents", "directories after their contents (to accept)"),
+    ("tree.duplicate.dir-dir", "the same directory twice (to accept)"),
     ("pax.SCHILY.*", "vendor pax keys outside the tree"),
     ("pax.LIBARCHIVE.*", "vendor pax keys outside the tree"),
     ("pax.nul-in-value.SCHILY.xattr.*", "NUL in xattrs, which are outside the tree"),

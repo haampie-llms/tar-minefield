@@ -123,17 +123,17 @@ Not ambiguous, or confined to fields outside the tree. Tarballs of all ecosystem
 
 | feature | why it is allowed | tarballs |
 |---|---|---|
-| `name.fills-field` | a name of exactly 100 bytes, without NUL (`y_`) | 7452 |
-| `ustar.prefix` | the ustar prefix field (`y_`) | 6233 |
+| `name.fills-field` | a name of exactly 100 bytes, without NUL (to accept) | 7452 |
+| `ustar.prefix` | the ustar prefix field (to accept) | 6233 |
 | `type.nul` | the typeflag NUL of regular files, from before POSIX | 3541 |
 | `v7.bytes-after-linkname` | bytes in fields that v7 headers do not use | 2843 |
 | `name.dir-without-trailing-slash` | a directory without a trailing slash: the typeflag says | 1121 |
-| `tree.dir-after-contents` | directories after their contents (`y_`) | 858 |
+| `tree.dir-after-contents` | directories after their contents (to accept) | 858 |
 | `number.size.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 819 |
 | `name.non-ascii` | UTF-8 names | 752 |
 | `number.uid.no-digits` | outside the tree | 275 |
 | `number.gid.no-digits` | outside the tree | 275 |
-| `tree.duplicate.dir-dir` | the same directory twice (`y_`) | 157 |
+| `tree.duplicate.dir-dir` | the same directory twice (to accept) | 157 |
 | `number.uid.base256` | outside the tree | 155 |
 | `number.uid.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 152 |
 | `number.gid.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 152 |

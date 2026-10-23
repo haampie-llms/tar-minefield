@@ -1,8 +1,0 @@
-{
- "code": "F07",
- "verdict": "n",
- "description": "Another archive after the end-of-archive marker.",
- "features": [
-  "end.archive-after"
- ]
-}

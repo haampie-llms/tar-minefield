@@ -1,0 +1,33 @@
+N13-name-backslash: to reject
+
+A backslash in a name: a character on Unix, a separator on Windows.
+
+`a\b` is one file named with a backslash on Unix, and the file `b` in the directory `a` on
+Windows. With `..\` the same rule lets a name climb out of the destination there.
+
+Decision point: whether a backslash separates components.
+Seen in: texi2html 5.0 and gstreamer-docs 1.28.1.
+
+0x000000  header: regular file
+          name     [  0,100)  "a\\b" + 97 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000025" + NUL  21
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "007643\0 "  4003: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "0"  regular file
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000200  data
+          21 bytes, then 491 NUL to the end of the block
+          "one file, or b in a?\n"
+0x000400  2 zero blocks: the end-of-archive marker
+0x000800  end of file

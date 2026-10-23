@@ -1,0 +1,52 @@
+N01-gnu-long-name: to accept
+
+A name over 100 bytes, in a GNU long name.
+
+GNU tar's own format: a header of typeflag `L` whose data is the name of the next member.
+
+Seen in: most tarballs that GNU tar wrote in its default format.
+
+0x000000  header: GNU long name, for the next member
+          name     [  0,100)  "././@LongLink" + 87 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000172" + NUL  122
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "011233\0 "  4763: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "L"  GNU long name, for the next member
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar "
+          version  [263,265)  " " + NUL
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000200  data: GNU long name
+          122 bytes: the name and a NUL, then 390 NUL
+          "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff" + NUL
+0x000400  header: regular file
+          name     [  0,100)  "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/fffffffffffffffffffffffffffffffffffffff"
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000005" + NUL  5
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "032613\0 "  13707: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "0"  regular file
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar "
+          version  [263,265)  " " + NUL
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000600  data
+          5 bytes, then 507 NUL to the end of the block
+          "long\n"
+0x000800  2 zero blocks: the end-of-archive marker
+0x000c00  end of file

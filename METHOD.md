@@ -4,6 +4,25 @@ This document describes how tar-minefield decides which archives a strict tar pa
 reject, how it keeps that set small enough that strict parsers stay practical, and how its test
 cases are produced so that anyone can audit them. It is a working draft.
 
+## Terms
+
+| term | meaning |
+|---|---|
+| **implementation** | A program or library that turns a tar archive into a tree, by extracting it or by listing its members: GNU tar, Python `tarfile`, Go `archive/tar`, … |
+| **member** | One entry of an archive: a header, its extended headers, and its data. |
+| **tree** | What an implementation extracts: paths, each with a kind (file, directory, symlink, hardlink), the contents of a file or the target of a link, and whether a file is executable. Nothing else, such as mtimes and owners. |
+| **ambiguity** | Something in an archive from which two implementations, each following a defensible reading of POSIX, GNU tar or practice, extract different trees. |
+| **level** | The class of an ambiguity, from most to least damage it allows: **F** framing (where a member's data ends), **N** names, **K** kinds, **S** order and state (duplicates and links); and **G** global pax headers. |
+| **strict parser** | An implementation that rejects an archive with an ambiguity, rather than extracting one of its trees. |
+| **feature** | What the scanner reports of an archive, such as `name.leading-dot-slash`. |
+| **criterion** | A feature that is an ambiguity, for which a strict parser may reject an archive. The [catalogue](#initial-catalogue) lists them. |
+| **policy** | The criteria a strict parser rejects: either *every criterion*, or the [default policy](#the-default-policy). |
+| **case** | An archive of the corpus, named by its code (its level and a number) and a few words, such as `F15-pax-size-on-dir`, with a verdict, and a manifest unless it is to reject. |
+| **verdict** | What a case requires: **reject**, a strict parser must reject it; **accept**, every implementation must accept it; **tolerate**, a strict parser may reject it, and the default policy accepts it. See [Verdicts](#verdicts). |
+| **manifest** | The tree an implementation must extract from a case to accept or a tolerated case, if it accepts it. |
+| **outcome** | What an implementation makes of a case: ✅ as its verdict says, ⚠️ accepts a case to reject, ⛔ rejects a tolerated case, ❌ rejects a case to accept or extracts another tree than the manifest, 💥 writes outside its destination. |
+| **tarball** | An archive released by a project and pinned by a package manager, as opposed to a case. |
+
 ## Goal
 
 A corpus of tar archives, each with a verdict, that any tar implementation can run against: a
@@ -113,16 +132,18 @@ Global pax headers:
 
 ## Verdicts
 
-As in Nicolas Seriot's JSONTestSuite, every case is named by its verdict:
+Every case has one of three verdicts, which are the `n_`, `y_` and `i_` of Nicolas Seriot's
+JSONTestSuite:
 
-- `n_`: a strict parser rejects it.
-- `y_`: every implementation accepts it, and extracts the tree in its manifest.
-- `i_`: ambiguous in principle, but common enough in real archives that rejecting it has a real
-  cost. A strict parser may reject it; if it accepts it, it extracts the tree in its manifest.
+- **reject**: a strict parser rejects it.
+- **accept**: every implementation accepts it, and extracts the tree in its manifest.
+- **tolerate**: ambiguous in principle, but common enough in real archives that rejecting it has
+  a real cost. A strict parser may reject it; if it accepts it, it extracts the tree in its
+  manifest.
 
-The `y_` cases are as important as the `n_` cases: without them, an implementation that rejects
-everything passes. They cover what real archives contain and what a careless strict parser would
-trip over:
+The cases to accept are as important as the cases to reject: without them, an implementation
+that rejects everything passes. They cover what real archives contain and what a careless strict
+parser would trip over:
 
 - the global pax header with only a `comment` that `git archive` writes, and so every GitHub
   release tarball,
@@ -143,31 +164,34 @@ Each case also records what is known about it:
 - **historical**: implementations disagreed, and one was changed (for example gh-155629),
 - **latent**: no known implementations disagree, with an argument why one could.
 
-Whether an ambiguous case is `n_` or `i_` is decided by measurement, as described next.
+Whether an ambiguous case is rejected or tolerated is decided by measurement, as described
+next. So a case is named by its code, such as `F15-pax-size-on-dir`, and not by its verdict,
+which may change.
 
 ### The default policy
 
-The scans of [data/](data) decided it: the default policy rejects every `n_` case, and accepts
-the `i_` cases, which extract the tree in their manifest. Its table is `DEFAULT` in
-`scanner/strict.py`, and [data/STRICT.md](data/STRICT.md) gives what it costs. The `i_` cases are:
+The scans of [data/](data) decided it: the default policy rejects every case to reject, and
+accepts the tolerated cases, which extract the tree in their manifest. Its table is `DEFAULT` in
+`scanner/strict.py`, and [data/STRICT.md](data/STRICT.md) gives what it costs. The tolerated cases
+are:
 
 - names that refer to the same path, normalized to it: `./a` is `a`, `.` is the root, and
   `a/./b` and `a//b` are `a/b`. Duplicates are found among the normalized paths, so normalizing
   hides none.
 - absolute symlinks, created as they are: the danger is in following them, and writing through
-  any symlink is `n_`.
+  any symlink is rejected.
 - no end-of-archive marker, or a marker of one zero block, after a complete member. Archives
   that are distributed are pinned by their sha256, so one that ends early is caught before it is
-  parsed; one that ends inside a member is `n_`.
+  parsed; one that ends inside a member is rejected.
 - data after the end-of-archive marker that is not a header, which is ignored. A header there,
-  another archive or members after a zero block, is `n_`: some implementations extract them.
+  another archive or members after a zero block, is rejected: some implementations extract them.
 - a global pax header with only a `comment` after the first member.
 - the POSIX magic with NULs for its version, `ustar\0\0\0`, which some Java archivers write,
-  as in the tarballs of Apache's commons-lang, Solr and Hadoop. Any other version is `n_`.
+  as in the tarballs of Apache's commons-lang, Solr and Hadoop. Any other version is rejected.
 - newlines in the values of xattr pax keys, which are not extracted.
 
-Everything else in the catalogue is `n_`. Duplicate files are `n_` even where their copies are
-identical, as they are in most tarballs that have them: in some, a file was changed and appended
+Everything else in the catalogue is rejected. Duplicate files are rejected even where their copies
+are identical, as they are in most tarballs that have them: in some, a file was changed and appended
 again, so that implementations that keep the first copy and those that keep the last extract
 different trees. In fish 4.7.1, `Cargo.toml` and `Cargo.lock` are appended again without their last
 newline; in logstash 8.15.2, `build.rb` is a license header first and the build's date and commit
@@ -188,8 +212,8 @@ second is not:
 
 Such an archive is not ambiguous: every implementation agrees on its tree, and an extractor that
 never replaces an entry (`O_EXCL`) fails exactly on the filesystems that cannot hold it. So these
-cases are `y_`, with the platforms where extraction fails listed in their metadata, and a test of
-them passes on those platforms when extraction fails without writing anything. A failure on one
+cases are to accept, with the platforms where extraction fails listed in their metadata, and a test
+of them passes on those platforms when extraction fails without writing anything. A failure on one
 platform does not carry over to another: a release tarball of an autotools project with a file
 named `aux.c` is fine on Linux and macOS, and one that has `Foo` and `foo` is fine on Linux.
 
@@ -308,8 +332,9 @@ it a single implementation that has to be taken on trust.
   independent implementations that agree catch what one implementation tested against itself
   cannot. It also suits the implementations we hope will run the corpus, many of which are in
   Go and Rust.
-- **The corpus tests the scanner.** Every `n_` and `i_` case must make the scanner report its
-  feature, and every `y_` case must make it report exactly the members in its manifest. That is
+- **The corpus tests the scanner.** Every case to reject and every tolerated case must make the
+  scanner report its feature, and every case to accept must make it report exactly the members in
+  its manifest. That is
   not circular, because the cases are defined by reviewed bytes, not by the scanner's output.
   Differential fuzzing covers the rest: archives from a writer must be reported with exactly the
   members that were written.
@@ -332,7 +357,7 @@ implementation is the evidence that they are correct.
 Test suites that became references for implementations, and how:
 
 - [JSONTestSuite](https://github.com/nst/JSONTestSuite), from Nicolas Seriot's
-  [Parsing JSON is a Minefield](https://seriot.ch/projects/parsing_json.html): the `y_`/`n_`/`i_`
+  [Parsing JSON is a Minefield](https://seriot.ch/parsing_json.php): the `y_`/`n_`/`i_`
   verdicts and a published matrix of how each parser handles each case. Implementations such as
   [JSON-GLib](https://gitlab.gnome.org/GNOME/json-glib/-/merge_requests/63) and
   [Wuffs](https://skia.googlesource.com/external/github.com/google/wuffs/+/HEAD/script/run-json-test-suite.sh)
@@ -376,6 +401,6 @@ Work on archives specifically:
   distribution versus backups, where owners and modes matter)?
 - Which normalizations of names are interpretation (`./a` is `a`) and which are a reason to
   reject? The default policy normalizes `./a`, `.`, `a/./b` and `a//b`, and rejects the rest.
-- How should a rule that only old tarballs break be handled: `i_`, or `n_` with an allowlist?
-  The default policy makes such rules `n_`, as the tarballs they reject are few: a package that
+- How should a rule that only old tarballs break be handled: tolerated, or rejected with an
+  allowlist? The default policy rejects them, as the tarballs they reject are few: a package that
   needs one can allow it by the tarball's sha256.

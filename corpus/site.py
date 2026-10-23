@@ -27,9 +27,9 @@ from report import load  # noqa: E402
 
 REPO = "https://github.com/haampie-llms/tar-minefield"
 VERDICTS = {
-    "y": "accepted: every implementation must extract its tree",
-    "i": "accepted by the default policy, which a strict parser may reject",
-    "n": "rejected: implementations disagree on its tree",
+    "accept": "to accept: every implementation must extract its tree",
+    "tolerate": "tolerated: the default policy accepts it, and a strict parser may reject it",
+    "reject": "to reject: implementations disagree on its tree",
 }
 OUTCOMES = {
     "✅": "as the verdict says",
@@ -126,7 +126,7 @@ def error_line(error):
 
 
 def features_of(case, info):
-    """The features a case is about: those of its script, or for the y_ cases, which have none
+    """The features a case is about: those of its script, or for cases to accept, which have none
     to reject, the allowed features that tarscan.py reports of it."""
     if info["features"]:
         return info["features"]
@@ -137,9 +137,9 @@ def features_of(case, info):
 
 def policy(info, features):
     """What the default policy does with a case, as HTML."""
-    if info["verdict"] == "n":
+    if info["verdict"] == "reject":
         return "rejects it"
-    if info["verdict"] == "y":
+    if info["verdict"] == "accept":
         reasons = [f"<code>{f}</code>: {inline(strict.classify(f)[2])}" for f in features]
         return "accepts it" + (", as it allows " + "; ".join(reasons) if reasons else "")
     rules = [strict.default_rule(f) for f in features]
@@ -201,7 +201,7 @@ def implementations_section(case, info, results):
         elif letter:
             what = f"tree {letter}: " + inline(trees[letter])
         else:
-            what = "the tree of the case" if info["verdict"] != "n" else ""
+            what = "the tree of the case" if info["verdict"] != "reject" else ""
         rows.append(f"<tr><td>{html.escape(n)}</td><td>{html.escape(versions.get(n, ''))}</td>"
                     f"<td>{symbol} {OUTCOMES[symbol]}</td><td>{what}</td></tr>")
     return table("implementations", rows)
@@ -249,7 +249,7 @@ def case_page(case, info, previous, following, results, data):
 <pre>{html.escape(hexdump(archive))}</pre>
 </details>
 """
-    if info["verdict"] != "n":
+    if info["verdict"] != "reject":
         body += ("<p>The tree that an implementation must extract: "
                  + inline(matrix.describe(matrix.expected_tree(info))) + ".</p>\n")
     body += "<h2>In real tarballs</h2>\n" + data_section(features, *data) + "\n"

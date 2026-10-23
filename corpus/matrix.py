@@ -16,12 +16,11 @@ Each implementation either extracts a case, or, for libraries that have no extra
 members, which are then applied in order to an empty tree, as a program that uses it would. The
 outcome is compared with the case's verdict:
 
-- ✅ as the verdict says: rejects an `n_` case; extracts the tree in the manifest of a `y_` or
-  `i_` case
-- ⚠️ accepts an `n_` case: the letter says which tree, so that implementations that make
+- ✅ as the verdict says: rejects a case to reject; extracts the manifest of the others
+- ⚠️ accepts a case to reject: the letter says which tree, so that implementations that make
   different trees of one case have different letters
-- ⛔ rejects an `i_` case, which a strict parser may
-- ❌ rejects a `y_` case, or extracts another tree than the manifest of a `y_` or `i_` case
+- ⛔ rejects a tolerated case, which a strict parser may
+- ❌ rejects a case to accept, or extracts another tree than the manifest
 - 💥 writes outside the destination
 """
 
@@ -364,21 +363,21 @@ def policies():
 
 
 GROUPS = {
-    "y": "accepted by every implementation",
-    "i": "accepted by the default policy",
-    "framing": "rejected: framing",
-    "name": "rejected: names",
-    "kind": "rejected: kinds",
-    "order and state": "rejected: order and state",
-    "global pax headers": "rejected: global pax headers",
+    "accept": "to accept",
+    "tolerate": "tolerated",
+    "framing": "to reject: framing",
+    "name": "to reject: names",
+    "kind": "to reject: kinds",
+    "order and state": "to reject: order and state",
+    "global pax headers": "to reject: global pax headers",
 }
 
 
 def category(info):
-    """The group of a case: its verdict, and for n_ cases the level of the catalogue that
+    """The group of a case: its verdict, and for cases to reject the level of the catalogue that
     scanner/strict.py gives its features; a case without any is one the scanner cannot read
     past, which is framing."""
-    if info["verdict"] != "n":
+    if info["verdict"] != "reject":
         return info["verdict"]
     sys.path.insert(0, os.path.join(HERE, "..", "scanner"))
     import strict
@@ -388,8 +387,8 @@ def category(info):
 
 
 def label(case, info):
-    """The code of a case and its name without the verdict: `F15 pax-size-on-dir`."""
-    return f"{info['code']} {case.split('_', 1)[1].replace('_', '-')}"
+    """The code of a case and its name: `F15 pax-size-on-dir`, of `F15-pax-size-on-dir`."""
+    return case.replace("-", " ", 1)
 
 
 def load_cases():
@@ -451,10 +450,10 @@ def outcome(case, r):
     """(symbol, tree or None) of one run."""
     if r["outside"]:
         return "💥", None
-    if case["verdict"] == "n":
+    if case["verdict"] == "reject":
         return ("✅", None) if r["error"] else ("⚠️", r["tree"])
     if r["error"]:
-        return ("⛔", None) if case["verdict"] == "i" else ("❌", None)
+        return ("⛔", None) if case["verdict"] == "tolerate" else ("❌", None)
     if r["tree"] is None or same(r["tree"], expected_tree(case)):
         return "✅", None
     return "❌", r["tree"]
@@ -462,12 +461,12 @@ def outcome(case, r):
 
 ORDER = ["✅", "⚠️", "⛔", "❌", "💥"]
 LEGEND = [
-    "- ✅ as the verdict says: rejects an `n_` case; extracts the manifest of a `y_` or `i_` case",
-    "- ⚠️ accepts an `n_` case. The letter is the tree it extracts: in one row, the same letter is"
+    "- ✅ as the verdict says: rejects a case to reject; extracts the manifest of the others",
+    "- ⚠️ accepts a case to reject. The letter is the tree it extracts: in one row, the same letter is"
     " the same tree, and different letters are trees that differ; [MATRIX.md](MATRIX.md#trees)"
     " lists them",
-    "- ⛔ rejects an `i_` case, which a strict parser may",
-    "- ❌ rejects a `y_` case, or extracts another tree than the manifest of a `y_` or `i_` case",
+    "- ⛔ rejects a tolerated case, which a strict parser may",
+    "- ❌ rejects a case to accept, or extracts another tree than its manifest",
     "- 💥 writes outside the destination",
 ]
 def columns(results):
@@ -502,13 +501,13 @@ def totals(results, cases, names):
 # The SVG has a white background of its own, so that it looks the same in light and dark mode.
 CLASSES = {
     "✅": ("ok", ("#b4f1c3", "#116329"),
-          "as the verdict says: rejects an n_ case, extracts the tree of the others", "✓"),
+          "as the verdict says: rejects a case to reject, extracts the tree of the others", "✓"),
     "⚠️": ("warn", ("#ffe08a", "#7d4e00"),
-           "accepts an n_ case, which a strict parser rejects", "!"),
+           "accepts a case to reject, which a strict parser rejects", "!"),
     "⛔": ("stop", ("#d0d7de", "#424a53"),
-           "rejects an i_ case, which a strict parser may", "–"),
+           "rejects a tolerated case, which a strict parser may", "–"),
     "❌": ("bad", ("#ffc1ba", "#a40e26"),
-           "rejects a y_ case, or extracts another tree than its manifest", "✗"),
+           "rejects a case to accept, or extracts another tree than its manifest", "✗"),
     "💥": ("boom", ("#dcc8ff", "#6639ba"),
            "writes outside the destination", "↑"),
 }
@@ -635,7 +634,7 @@ def readme(path, results, cases):
     names = columns(results)
     total = totals(results, cases, names)
     impls = [n for n in names if not n.startswith("strict.py")]
-    rejects = [c for c, info in cases.items() if info["verdict"] == "n"]
+    rejects = [c for c, info in cases.items() if info["verdict"] == "reject"]
     accepted = [sum(outcome(cases[c], results["cases"][c][n])[0] == "⚠️" for c in rejects)
                 for n in impls]
     differ = sum(len(case_cells(cases[c], results["cases"][c], impls)[1]) > 1 for c in rejects)
@@ -643,8 +642,8 @@ def readme(path, results, cases):
                  for c, info in cases.items())
     lines = [
         f"**Each of {len(impls)} implementations accepts between {min(accepted)} and "
-        f"{max(accepted)} of the {len(rejects)} `n_` cases, and they extract different trees from "
-        f"{differ} of them.** {escape} cases make an implementation write outside its "
+        f"{max(accepted)} of the {len(rejects)} cases to reject, and they extract different trees "
+        f"from {differ} of them.** {escape} cases make an implementation write outside its "
         f"destination. Rows are the {len(cases)} cases, by level; columns are the implementations "
         "and the two policies of `scanner/strict.py`, with their outcomes of all cases at the top. "
         f"[The site]({SITE}) has a page per case: its blocks, a hex dump, how many scanned "

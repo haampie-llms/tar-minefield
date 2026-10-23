@@ -1,0 +1,8 @@
+{
+ "code": "N11",
+ "verdict": "reject",
+ "description": "The prefix field of a header with GNU magic, which GNU tar uses for times.",
+ "features": [
+  "gnu.atime-ctime"
+ ]
+}

@@ -1,8 +1,0 @@
-{
- "code": "N13",
- "verdict": "n",
- "description": "A backslash in a name: a character on Unix, a separator on Windows.",
- "features": [
-  "name.backslash"
- ]
-}

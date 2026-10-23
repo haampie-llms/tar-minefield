@@ -1,0 +1,8 @@
+{
+ "code": "F13",
+ "verdict": "reject",
+ "description": "A newline in a pax `path`, where implementations that split records on lines see another record.",
+ "features": [
+  "pax.newline-in-value.path"
+ ]
+}

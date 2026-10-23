@@ -4,14 +4,15 @@
     python -I corpus/generate.py --check    # fail if archives/ is not what the scripts write
     python -I corpus/generate.py --scan     # also check what scanner/tarscan.py makes of them
 
-For each case `<case>.py`, archives/ has `<case>.tar`, the dump of its blocks `<case>.txt`, a
-map of them `<case>.svg`, and `<case>.json`: its verdict, the features of tarscan.py that it is
-about, and for the cases that an implementation accepts, `y_` and `i_`, the tree it must extract.
+For each case `<case>.py`, named by its code, such as `F15-pax-size-on-dir.py`, archives/ has
+`<case>.tar`, the dump of its blocks `<case>.txt`, a map of them `<case>.svg`, and `<case>.json`:
+its code, its verdict, the features of tarscan.py that it is about, and for the cases to accept
+and the tolerated ones the tree an implementation must extract.
 
 --scan checks that tarscan.py reports the features of every case, and that the default policy
-of scanner/strict.py rejects the `n_` cases, accepts the `i_` cases only by its rules, and
-accepts the `y_` cases without them. That tests the scanner and the policy against cases defined
-by their bytes, which a reviewer checks by reading the scripts and dumps.
+of scanner/strict.py rejects the cases to reject, accepts the tolerated cases only by its rules,
+and accepts the cases to accept without them. That tests the scanner and the policy against cases
+defined by their bytes, which a reviewer checks by reading the scripts and dumps.
 """
 
 import hashlib
@@ -28,7 +29,8 @@ from blocks import Archive, block_map  # noqa: E402
 
 CASES = os.path.join(HERE, "cases")
 ARCHIVES = os.path.join(HERE, "archives")
-VERDICTS = {"n": "rejected", "y": "accepted", "i": "accepted by the default policy"}
+VERDICTS = {"reject": "to reject", "accept": "to accept",
+            "tolerate": "tolerated: a strict parser may reject it, the default policy accepts it"}
 # The letter of a code is the level of the catalogue: of METHOD.md, and LEVELS of strict.py
 LETTERS = {"F": "framing", "N": "name", "K": "kind", "S": "order and state",
            "G": "global pax headers"}
@@ -62,8 +64,9 @@ def generate():
             continue
         case = name[:-3]
         module = load(os.path.join(CASES, name))
-        assert case.startswith(module.VERDICT + "_"), f"{case}: the name starts with its verdict"
         assert re.fullmatch(r"[FNKSG]\d\d", module.CODE), f"{case}: a code such as F01"
+        assert case.startswith(module.CODE + "-"), f"{case}: the name starts with its code"
+        assert module.VERDICT in VERDICTS, f"{case}: a verdict of {sorted(VERDICTS)}"
         assert module.CODE not in codes, f"{case}: the code of {codes.get(module.CODE)}"
         codes[module.CODE] = case
         archive = Archive()
@@ -74,13 +77,13 @@ def generate():
             "description": module.__doc__.strip().split("\n")[0],
             "features": getattr(module, "FEATURES", []),
         }
-        if module.VERDICT in ("y", "i"):
+        if module.VERDICT != "reject":
             expected["tree"] = tree(module.TREE)
-        header = f"{module.CODE} {case}: {VERDICTS[module.VERDICT]}\n\n{module.__doc__.strip()}\n\n"
+        header = f"{case}: {VERDICTS[module.VERDICT]}\n\n{module.__doc__.strip()}\n\n"
         files[f"{case}.tar"] = archive.bytes()
         files[f"{case}.txt"] = (header + archive.dump()).encode()
         files[f"{case}.svg"] = block_map(
-            archive, f"{module.CODE} {case}: every block of the archive").encode()
+            archive, f"{case}: every block of the archive").encode()
         files[f"{case}.json"] = (json.dumps(expected, indent=1) + "\n").encode()
     return files
 
@@ -104,15 +107,15 @@ def scan(files):
             problems.append(f"{case}: tarscan.py does not report {sorted(missing)}")
         strict_found, rejected = strict.strict_features(r), strict.default_rejects(r)
         verdict = expected["verdict"]
-        if verdict == "n" and not rejected:
+        if verdict == "reject" and not rejected:
             problems.append(f"{case}: the default policy accepts it ({sorted(found)})")
-        if verdict == "i" and (rejected or not strict_found):
+        if verdict == "tolerate" and (rejected or not strict_found):
             problems.append(f"{case}: not accepted by a rule of the default policy: rejects "
                             f"{sorted(rejected)}, strict {sorted(strict_found)}")
-        if verdict == "y" and strict_found:
+        if verdict == "accept" and strict_found:
             problems.append(f"{case}: a strict criterion rejects it: {sorted(strict_found)}")
         levels = {strict.classify(f)[1] for f in expected["features"]} - {None} or {"framing"}
-        if verdict != "y" and LETTERS[expected["code"][0]] not in levels:
+        if verdict != "accept" and LETTERS[expected["code"][0]] not in levels:
             problems.append(f"{case}: the code {expected['code']} is not of the level {levels}")
         print(f"{case}: {sorted(found)}")
     return problems

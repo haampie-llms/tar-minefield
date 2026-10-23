@@ -1,8 +1,0 @@
-{
- "code": "F12",
- "verdict": "n",
- "description": "A size with a space among its digits: implementations read two sizes.",
- "features": [
-  "number.size.gap-in-digits"
- ]
-}

@@ -1,12 +1,14 @@
 # The corpus
 
-Tar archives, each with a verdict, as [METHOD.md](../METHOD.md) describes: `n_` cases a strict
-implementation rejects, `y_` cases every implementation accepts, and `i_` cases that the default
-policy accepts. [MATRIX.md](MATRIX.md) shows what implementations make of each case.
+Tar archives, each with a verdict, as [METHOD.md](../METHOD.md#verdicts) describes: cases to
+reject, which a strict parser rejects; cases to accept, which every implementation accepts; and
+tolerated cases, which a strict parser may reject and the default policy accepts.
+[MATRIX.md](MATRIX.md) shows what implementations make of each case.
 
-Every case has a code, such as `F15`, whose letter is its level in METHOD.md: F framing, N names,
-K kinds, S order and state, G global pax headers. A code stays with its case, and a new case gets
-the next free number of its letter. The [site](https://haampie-llms.github.io/tar-minefield/) has
+Every case is named by its code and a few words, such as `F15-pax-size-on-dir`. The letter of the
+code is its level in METHOD.md: F framing, N names, K kinds, S order and state, G global pax
+headers. A code stays with its case, also when its verdict changes, and a new case gets the next
+free number of its letter. The [site](https://haampie-llms.github.io/tar-minefield/) has
 a page per code.
 
 **Some archives escape the directory they are extracted to in lenient extractors.** Their files
@@ -16,9 +18,9 @@ throwaway directory.
 ## Layout
 
 - `archives/<case>.tar`: the archive, uncompressed.
-- `archives/<case>.json`: its code, its verdict, the features of `scanner/tarscan.py` it is about, and for
-  `y_` and `i_` cases the tree an implementation must extract: path, kind, and for files their size,
-  sha256 and whether they are executable.
+- `archives/<case>.json`: its code, its verdict, the features of `scanner/tarscan.py` it is about,
+  and unless it is to reject, the tree an implementation must extract: path, kind, and for files
+  their size, sha256 and whether they are executable.
 - `archives/<case>.txt`: what the case is about, and every block of the archive with its offset
   and, for headers, every field with its raw bytes.
 - `archives/<case>.svg`: a map of its blocks, every one 512 bytes to scale, with the fields of
@@ -38,10 +40,11 @@ $ python -I corpus/generate.py --scan     # check the scanner and the default po
 
 Generation is deterministic, with the Python standard library only. `--scan` checks that
 `tarscan.py` reports the features of each case, and that the default policy of
-`scanner/strict.py` rejects the `n_` cases and accepts the others.
+`scanner/strict.py` rejects the cases to reject and accepts the others.
 
-A new case is a script in `cases/`, named for its verdict and level, with `VERDICT`, `CODE`, `FEATURES`,
-`TREE` for `y_` and `i_` cases, and a `build(archive)` function.
+A new case is a script in `cases/`, named by its code, with `CODE`, `VERDICT` (`"reject"`,
+`"accept"` or `"tolerate"`), `FEATURES`, `TREE` unless it is to reject, and a `build(archive)`
+function.
 
 ## What implementations make of it
 

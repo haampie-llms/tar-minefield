@@ -1,0 +1,8 @@
+{
+ "code": "N20",
+ "verdict": "reject",
+ "description": "One pax key twice in one extended header.",
+ "features": [
+  "pax.repeated-key"
+ ]
+}
