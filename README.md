@@ -8,64 +8,64 @@ a draft, and the corpus itself is not written yet.
 ## How strict can a parser be?
 
 A strict parser is useless if it rejects the tarballs people download. To measure that, the
-scanner reads the headers of real release tarballs from Spack, nixpkgs and live-bootstrap, and
-records every feature that METHOD.md lists as an ambiguity:
+scanner reads the headers of every release tarball of Spack, nixpkgs, Guix and live-bootstrap,
+and records every feature that METHOD.md lists as an ambiguity:
 
 <!-- begin strict.py -->
 ### What was scanned
 
 | dataset | tarballs | scanned | not assessed | latest | GB | members | origins |
 |---|---|---|---|---|---|---|---|
+| guix | 10200 | 10199 | 31 | 9674 | 76.7 | 22,063,418 | other 3845, cran/bioconductor 2833, pypi 1697 |
 | live-bootstrap | 171 | 171 | 0 | 74 | 1.1 | 919,348 | gnu 98, other 24, cpan 20 |
 | nix | 19086 | 19012 | 22 | 17955 | 78.3 | 11,659,428 | other 11987, pypi 3846, cpan 1899 |
-| guix | 10200 | 10199 | 31 | 9674 | 76.7 | 22,063,418 | other 3845, cran/bioconductor 2833, pypi 1697 |
-| spack | 35644 | 35438 | 0 | 6789 | 524.0 | 106,862,359 | github-archive 11383, pypi 8655, other 6181 |
-| all, distinct | 60834 | 60557 | 48 | 30720 | 659.1 | 132,275,546 | |
+| spack | 37757 | 37554 | 0 | 7723 | 1080.9 | 127,668,354 | github-archive 11999, pypi 9237, other 6683 |
+| all, distinct | 62947 | 62670 | 48 | 31653 | 1215.8 | 152,809,810 | |
 
 Tarballs that are not scanned could not be downloaded from any URL. Not assessed: in a compression that the scanner does not read (`.tar.lz`, `.tar.zst`). Latest: the latest version of a package in its repository.
 
 Tarballs by the median mtime of their members, which dates most of them:
 
 ```
-years      live-bootstrap   nix  guix spack   all
-1981–1989               0     2     2     4     5  #
-1990–1991               0     0     1     1     2  #
-1992–1993               1     1     1     0     3  #
-1994–1995               3     9     2     6    17  #
-1996–1997               3     4     1     2    10  #
-1998–1999               3    17    11     8    34  #
-2000–2001               4    48    18    19    76  #
-2002–2003              14    75    46    42   146  #
-2004–2005               2   165    74    86   276  #
-2006–2007              11   144    80    97   286  #
-2008–2009               8   321   144   224   605  ##
-2010–2011               5   429   172   346   852  ###
-2012–2013               8   652   310   752  1533  #####
-2014–2015               1  1034   424  1545  2734  ##########
-2016–2017               8  1304   564  3085  4644  ################
-2018–2019              18  1510   770  4869  6736  #######################
-2020–2021              28  1537   925  6663  8674  ##############################
-2022–2023              24  1929  1544  7706 10553  #####################################
-2024–2025              29  2563  2357  7329 11495  ########################################
-2026–2027               1  2871  1775  1710  6124  #####################
-fixed                   0  4210   918   799  5387  ###################
-unknown                 0   149    60   145   327  #
+years       guix live-bootstrap   nix spack   all
+1981–1989      2              0     2     4     5  #
+1990–1991      1              0     0     1     2  #
+1992–1993      1              1     1     0     3  #
+1994–1995      2              3     9     7    18  #
+1996–1997      1              3     4     2    10  #
+1998–1999     11              3    17     8    34  #
+2000–2001     18              4    48    20    77  #
+2002–2003     46             14    75    43   147  #
+2004–2005     74              2   165    93   282  #
+2006–2007     80             11   144   101   290  #
+2008–2009    144              8   321   239   620  ##
+2010–2011    172              5   429   378   884  ###
+2012–2013    310              8   652   793  1574  #####
+2014–2015    424              1  1034  1643  2832  #########
+2016–2017    564              8  1304  3266  4825  ################
+2018–2019    770             18  1510  5136  7003  #######################
+2020–2021    925             28  1537  6998  9009  ##############################
+2022–2023   1544             24  1929  8153 11000  #####################################
+2024–2025   2357             29  2563  7804 11968  ########################################
+2026–2027   1775              1  2871  1858  6272  #####################
+fixed        918              0  4210   854  5442  ##################
+unknown       60              0   149   153   335  #
 ```
 
 Fixed: every member has an mtime that a producer writes in place of the real one, such as `cabal sdist` (2001-09-09) on Hackage and hatchling (2020-02-02) on PyPI, so these tarballs are not dated: 1970-01-01 00:00, 1985-10-26 08:15, 2000-01-01 00:00, 2000-07-19 22:00, 2001-09-09 01:46, 2006-07-24 01:21, 2020-02-02 00:00, 2022-11-09 12:37. Unknown: no mtime after 1980.
 
 ### What a strict parser accepts
 
-Of 60509 distinct tarballs, 59924 pass every criterion. The criterion that rejects the most tarballs on its own is `name.leading-dot-slash`.
+Of 62622 distinct tarballs, 62000 pass every criterion. The criterion that rejects the most tarballs on its own is `name.leading-dot-slash`.
 
 | dataset | assessed | pass all criteria | of latest versions | pass if `name.leading-dot-slash` were allowed | untar extracts |
 |---|---|---|---|---|---|
+| guix | 10168 | 10067 (99.01%) | 9592 (99.15%) | 10084 (99.17%) | 10130 (99.63%) |
 | live-bootstrap | 171 | 171 (100.00%) | 74 (100.00%) | 171 (100.00%) | 171 (100.00%) |
 | nix | 18990 | 18833 (99.17%) | 17809 (99.19%) | 18849 (99.26%) | 18912 (99.59%) |
-| guix | 10168 | 10067 (99.01%) | 9592 (99.15%) | 10084 (99.17%) | 10130 (99.63%) |
-| spack | 35438 | 35083 (99.00%) | 6722 (99.01%) | 35206 (99.35%) | 35396 (99.88%) |
+| spack | 37554 | 37162 (98.96%) | 7640 (98.93%) | 37296 (99.31%) | 37405 of 37452 (99.87%) |
 
-Generated by `scanner/strict.py` from 4 scans: the details are in [data/STRICT.md](data/STRICT.md).
+untar extracts: of the tarballs it ran to the end on, where it did not run out of space on the scanning machine. Generated by `scanner/strict.py` from 4 scans: the details are in [data/STRICT.md](data/STRICT.md).
 <!-- end strict.py -->
 
 ## Contents

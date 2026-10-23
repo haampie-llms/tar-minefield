@@ -1,37 +1,44 @@
-# Scan of 2000 Spack tarballs, 2026-10-23
+# Scan of all 37757 Spack tarballs, 2026-10-23
+
+Every tarball of Spack's builtin repository on Linux x86_64, not a sample, in the order of
+`run.py fraction`, so that any prefix of `sample.jsonl` is a uniform sample:
 
 ```console
-$ spack python scanner/spack_list.py > spack.jsonl
-$ python -I scanner/run.py sample spack.jsonl 2000 0 > sample.jsonl
-$ python -I scanner/run.py scan sample.jsonl results.jsonl --untar ~/untar --jobs 8
-$ python -I scanner/report.py results.jsonl "Scan of 2000 Spack tarballs" > REPORT.md
+$ python -I scanner/run.py fraction ../lists/73b099d5c1-linux-x86_64.jsonl 1 0 > sample.jsonl
+$ TMPDIR=/tmp python -I scanner/run.py scan sample.jsonl results.jsonl --untar ~/untar --jobs 16 \
+      --reuse ../../nix/2026-10-23/results.jsonl --reuse ../../guix/2026-10-23/results.jsonl \
+      --reuse ../../live-bootstrap/2026-10-23/results.jsonl
+$ python -I scanner/report.py --title "Scan of all 37757 Spack tarballs" results.jsonl > REPORT.md
 ```
 
-- Scanner: `tarscan.py` version `25bfa32e6e71`, as committed with this data.
+- Scanner: `tarscan.py` version `25bfa32e6e71`.
 - Packages: spack-packages `73b099d5c1118951de3ac69b91e6f73afc41690e` (2026-10-19), listed with
-  Spack `37c7f2646a`: 38,284 tarballs of 7,835 packages, without packages that need a manual
-  download.
+  Spack `37c7f2646acbdf12bd3fae177e1daff3f2d7ce0b` on Linux x86_64: see
+  [../lists/README.md](../lists/README.md). The list has an entry per version, so a tarball that
+  several versions share is listed more than once: `sample.jsonl` has each once.
 - untar: `2305390138cf436059b89b7b15146dc5213a3ba5`, `untar.py` version `51a9c3aa565c`.
-- Platform: macOS 15 (Darwin 24.6) on arm64, Python 3.9.6, on APFS that is case-insensitive.
-  untar's failures on names that only collide there are counted apart in REPORT.md.
+- Platform: Ubuntu 26.04 (Linux 7.0) on x86_64, Python 3.14.4. untar extracted to tmpfs, and to
+  ext4 for some tarballs that did not fit: both are case-sensitive, so no failures are caused by
+  the filesystem.
 
-The first version of this dataset left out the 50 tarballs whose URL is on ftp://, by mistake.
-The sample of the corrected list differs in 7 tarballs: they were scanned, the 1,993 others
-copied from the first version, and the 9 that could not be downloaded tried again.
+This replaces two samples of about 2000 tarballs each, scanned on macOS, whose filesystem is
+case-insensitive. They are in the history of this repository, at `data/spack/2026-10-23` and
+`data/spack/2026-10-23-b` before this scan took their place.
 
-The scan ran with a `run.py` from just before its first commit, and its rows were converted to
-the current format afterwards:
+The scan ran with 8 jobs, then 16, and was interrupted and run again: `run.py scan` continues
+where it stopped. It first reused the results of the two macOS samples. Three passes then
+completed it, each after removing from `results.jsonl` the rows it redoes:
 
-- the list fields `mirror` (a path on mirror.spack.io) became `urls`, and `source` (`mirror` or
-  `upstream`) the URL it names,
-- `scanner` and `untar` were added: `tarscan.py` and `untar.py` did not change during the run,
-- 11 tarballs where untar failed with `FileExistsError` were recorded as `untar_skipped`,
-  because the child process did not yet catch `OSError`. They are `untar_error` now, as the
-  current `run.py` records them: all 11 have names that collide on a case-insensitive filesystem.
+- the rows copied from the macOS samples, scanned again on Linux, and the tarballs that untar
+  skipped because tmpfs (16 GB) was full, extracted again with 6 jobs, to tmpfs;
+- the tarballs that could not be downloaded, tried again.
 
-A first run on a different sample of 1976 tarballs, with an earlier scanner, found 5 that untar
-rejects with its own errors: ruby 3.3.5 (no end-of-archive marker, like every Ruby release from
-2.6 on), cdd 0.61a (a v7 archive with directories named like files, `cdd-061/`, and data after the
-end-of-archive marker), hama 0.7.1 (data after the end-of-archive marker), glibmm 2.16.0 (the
-whole archive twice, the second copy after the first's end-of-archive marker) and
-commons-logging 1.1.1 (corrupt: a zero block in place of a header). Its results are not included.
+nvhpc, whose 39 tarballs are 10 GB each, was left out of the second pass: 34 of them keep their
+rows with `untar_skipped`, and 5 were extracted on disk, one at a time. Of the other tarballs,
+those that still did not fit in the second pass keep `untar_skipped`, mostly CUDA, ROCm and
+compiler binaries. Their headers are scanned in full, so every strict criterion is assessed for
+them: only whether untar extracts them is not. REPORT.md lists them.
+
+Downloads: mirror.spack.io first, then the upstream URL. REPORT.md counts the downloads by host.
+Every tarball that could not be downloaded failed with 404 on the mirror, and upstream mostly
+with 404 too, or with a file of a different sha256.

@@ -21,10 +21,13 @@ the current directory.
 $ python -I scanner/run.py sample list.jsonl 2000 0 > sample.jsonl
 $ python -I scanner/run.py scan sample.jsonl results.jsonl --untar ~/untar --jobs 8 \
       --reuse data/spack/2026-10-23/results.jsonl
-$ python -I scanner/report.py results.jsonl "Scan of 2000 Spack tarballs" > REPORT.md
+$ python -I scanner/report.py --title "Scan of 2000 tarballs" results.jsonl > REPORT.md
 ```
 
-An interrupted `scan` continues where it stopped when run again with the same output.
+An interrupted `scan` continues where it stopped when run again with the same output. So does a
+second pass: remove the rows to redo from the output, such as those with `untar_skipped`
+because untar ran out of space (where `TMPDIR` is a small tmpfs, say), and run it again with
+more space. `--reuse` does not copy rows with `untar_skipped`.
 
 `--untar PATH` also extracts every tarball with [untar](https://github.com/haampie/untar) from
 the checkout at PATH, in a child process that reads from a pipe. Leave it out to scan only.

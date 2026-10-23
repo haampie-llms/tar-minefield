@@ -2,7 +2,9 @@
 
 - tarballs: 19086, scanned: 19012 (17977 latest versions, 1035 older)
 - not downloaded: 74, scanner crashed: 0
-- downloaded from the first of their URLs (a mirror): 9190
+- downloaded from the first of their URLs (a mirror): 9379
+- copied from other scans with `--reuse`: 9, read from `--cache`: 0; sources by host: tarballs.nixos.org 9379, hackage.haskell.org 6139, files.pythonhosted.org 1452, download.kde.org 466, code.call-cc.org 336, download.gnome.org 256
+- size: 78.3 GB compressed
 - origins: other 11987, pypi 3846, cpan 1899, github-release 813, gnu 308, cran/bioconductor 81, github-archive 50, gitlab 28
 - producers: ustar 10207, GNU format 4268, Python tarfile (pax) 3087, v7 771, git archive 394, GNU tar (pax) 224, libarchive (pax) 30, none 22, posix-version-0000 9
 - compression: gzip 16300, xz 1555, bzip2 830, none 327
@@ -49,28 +51,28 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 
 | feature | tarballs | latest | origins | producers | years | untar rejects | examples |
 |---|---|---|---|---|---|---|---|
-| `name.dir-without-trailing-slash` | 817 | 765 | cpan 431, github-release 293, other 78 | ustar 784, GNU format 26, GNU tar (pax) 7 | 1970–2026 | 0 | XML-SemanticDiff@1.0007 `XML-SemanticDiff-1.0007`; Net-HTTP@6.23 `Net-HTTP-6.23` |
-| `name.fills-field` | 806 | 723 | other 368, pypi 351, github-release 64 | GNU format 311, Python tarfile (pax) 298, ustar 124 | 1970–2026 | 7 | apache-mxnet-src@1.9.1-incubating `apache-mxnet-src-1.9.1-incubating/tools/caffe_translator/src`; rst2pdf@0.105 `rst2pdf-0.105/tests/input/test_issue_65_font_alias_to_embedd` |
-| `type.nul` | 774 | 744 | other 598, gnu 115, github-release 42 | v7 761, GNU format 13 | 1970–2026 | 4 | bison@3.8.2 `bison-3.8.2/PACKAGING`; adept@2.1.1 `adept-2.1.1/doc/Makefile` |
-| `tree.dir-after-contents` | 747 | 709 | other 712, cpan 20, pypi 15 | ustar 724, GNU format 17, posix-version-0000 4 | 1970–2026 | 7 | File-ShareDir-Install@0.14 `File-ShareDir-Install-0.14/t`; streaming-utils@0.2.6.0 `streaming-utils-0.2.6.0/Streaming/` |
-| `ustar.prefix` | 621 | 574 | cpan 334, other 215, github-release 49 | ustar 549, git archive 65, libarchive (pax) 4 | 1981–2026 | 7 | XML-SemanticDiff@1.0007 `README`; Net-HTTP@6.23 `LICENSE` |
-| `v7.bytes-after-linkname` | 546 | 520 | other 436, gnu 83, github-release 22 | v7 546 | 1970–2026 | 0 | bison@3.8.2 `bison-3.8.2/`; adept@2.1.1 `adept-2.1.1/` |
-| `number.size.leading-space` | 545 | 542 | cpan 490, other 50, github-release 3 | ustar 486, GNU format 33, v7 17 | 1992–2026 | 11 | XML-SemanticDiff@1.0007 `XML-SemanticDiff-1.0007`; Net-HTTP@6.23 `Net-HTTP-6.23` |
-| `name.non-ascii` | 74 | 56 | other 56, pypi 6, github-release 5 | GNU format 48, Python tarfile (pax) 10, GNU tar (pax) 6 | 2004–2026 | 0 | flac@1.5.0 `flac-1.5.0/test/flac-to-flac-metadata-test-files/🤔.flac`; aisleriot@3.22.35 `aisleriot-3.22.35/cards/README.Атласные` |
+| `name.dir-without-trailing-slash` | 817 | 765 | cpan 431, github-release 293, other 78 | ustar 784, GNU format 26, GNU tar (pax) 7 | 1970–2026 | 0 | Catalyst-DispatchType-Regex@5.90035 `Catalyst-DispatchType-Regex-5.90035`; Boost-Geometry-Utils@0.15 `Boost-Geometry-Utils-0.15` |
+| `name.fills-field` | 806 | 723 | other 368, pypi 351, github-release 64 | GNU format 311, Python tarfile (pax) 298, ustar 124 | 1970–2026 | 7 | google_cloud_workflows@1.24.0 `google_cloud_workflows-1.24.0/google/cloud/workflows/executi`; aliyun-python-sdk-drds@20210523.0.2 `aliyun-python-sdk-drds-20210523.0.2/aliyunsdkdrds/request/v2` |
+| `type.nul` | 774 | 744 | other 598, gnu 115, github-release 42 | v7 761, GNU format 13 | 1970–2026 | 4 | grep@3.12 `grep-3.12/.mailmap`; autoconf@2.69 `autoconf-2.69/THANKS` |
+| `tree.dir-after-contents` | 747 | 709 | other 712, cpan 20, pypi 15 | ustar 724, GNU format 17, posix-version-0000 4 | 1970–2026 | 7 | streaming-utils@0.2.6.0 `streaming-utils-0.2.6.0/Streaming/`; distributed-closure@0.5.0.0 `distributed-closure-0.5.0.0/src/Data/Profunctor/` |
+| `ustar.prefix` | 621 | 574 | cpan 334, other 215, github-release 49 | ustar 549, git archive 65, libarchive (pax) 4 | 1981–2026 | 7 | Boost-Geometry-Utils@0.15 `Build.PL`; LWP-Protocol-https@6.11 `Changes` |
+| `v7.bytes-after-linkname` | 546 | 520 | other 436, gnu 83, github-release 22 | v7 546 | 1970–2026 | 0 | autoconf@2.69 `autoconf-2.69/`; pkg-config@0.29.2 `pkg-config-0.29.2/` |
+| `number.size.leading-space` | 545 | 542 | cpan 490, other 50, github-release 3 | ustar 486, GNU format 33, v7 17 | 1992–2026 | 11 | Catalyst-DispatchType-Regex@5.90035 `Catalyst-DispatchType-Regex-5.90035`; Boost-Geometry-Utils@0.15 `Boost-Geometry-Utils-0.15` |
+| `name.non-ascii` | 74 | 56 | other 56, pypi 6, github-release 5 | GNU format 48, Python tarfile (pax) 10, GNU tar (pax) 6 | 2004–2026 | 0 | aisleriot@3.22.35 `aisleriot-3.22.35/cards/README.Атласные`; node@v26.12.1 `node-v26.12.1/test/fixtures/copy/utf/新建文件夹/` |
 | `platform.case-collision` | 66 | 52 | other 53, gnu 6, github-archive 3 | git archive 20, GNU format 17, ustar 12 | 1980–2026 | 1 | onboard@1.4.1 `onboard-1.4.1/onboard`; public-inbox@2.1.0 `public-inbox-2.1.0/install/` |
-| `number.gid.no-digits` | 65 | 58 | pypi 36, other 25, github-release 4 | GNU format 38, ustar 22, posix-version-0000 5 | 1970–2026 | 0 | rpds_py@2026.6.3 `rpds_py-2026.6.3/PKG-INFO`; hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt` |
-| `number.uid.no-digits` | 65 | 58 | pypi 36, other 25, github-release 4 | GNU format 38, ustar 22, posix-version-0000 5 | 1970–2026 | 0 | rpds_py@2026.6.3 `rpds_py-2026.6.3/PKG-INFO`; hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt` |
+| `number.gid.no-digits` | 65 | 58 | pypi 36, other 25, github-release 4 | GNU format 38, ustar 22, posix-version-0000 5 | 1970–2026 | 0 | hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt`; ipv8_rust_tunnels@0.1.53 `ipv8_rust_tunnels-0.1.53/PKG-INFO` |
+| `number.uid.no-digits` | 65 | 58 | pypi 36, other 25, github-release 4 | GNU format 38, ustar 22, posix-version-0000 5 | 1970–2026 | 0 | hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt`; ipv8_rust_tunnels@0.1.53 `ipv8_rust_tunnels-0.1.53/PKG-INFO` |
 | `number.gid.leading-space` | 62 | 59 | other 50, cpan 9, gnu 2 | GNU format 33, v7 17, posix-version-0000 8 | 1992–2026 | 11 | hadoop@3.4.2-src `hadoop-3.4.2-src/`; nld-eng@ `nld-eng.dict.dz` |
 | `number.uid.leading-space` | 62 | 59 | other 50, cpan 9, gnu 2 | GNU format 33, v7 17, posix-version-0000 8 | 1992–2026 | 11 | hadoop@3.4.2-src `hadoop-3.4.2-src/`; nld-eng@ `nld-eng.dict.dz` |
 | `tree.duplicate.file-file` | 59 | 54 | other 57, pypi 1, github-release 1 | ustar 50, git archive 4, Python tarfile (pax) 4 | 1970–2026 | 59 | snap-loader-static@1.0.0.1 `snap-loader-static-1.0.0.1/LICENSE`; htn@0.1.0.0 `htn-0.1.0.0/src/Algorithms/Htn.hs` |
 | `number.mode.leading-space` | 55 | 52 | other 43, cpan 9, gnu 2 | GNU format 28, v7 16, posix-version-0000 8 | 1992–2026 | 8 | hadoop@3.4.2-src `hadoop-3.4.2-src/`; uuid@1.6.2 `uuid-1.6.2/AUTHORS` |
 | `number.mtime.leading-space` | 39 | 39 | other 30, cpan 8, gnu 1 | GNU format 28, v7 8, ustar 3 | 1992–2004 | 8 | nld-eng@ `nld-eng.dict.dz`; bsd-finger_0.17.orig@ `bsd-finger-0.17/` |
 | `name.leading-dot-slash` | 35 | 33 | other 20, github-release 13, gnu 1 | GNU format 29, ustar 3, GNU tar (pax) 1 | 1998–2026 | 1 | curie@v1.0 `./LICENSE`; hdf5@1.10.11 `./hdf5-1.10.11/` |
-| `number.uid.base256` | 34 | 33 | pypi 14, cpan 12, other 7 | GNU format 30, libarchive (pax) 4 | 2008–2026 | 0 | apache-mxnet-src@1.9.1-incubating `apache-mxnet-src-1.9.1-incubating/`; rfc3986_validator@0.1.1 `rfc3986_validator-0.1.1/` |
-| `number.gid.base256` | 29 | 28 | pypi 13, cpan 11, other 4 | GNU format 26, libarchive (pax) 3 | 2008–2026 | 0 | rfc3986_validator@0.1.1 `rfc3986_validator-0.1.1/`; papi@7.2.0 `papi-7.2.0/` |
-| `platform.windows-invalid-character` | 28 | 27 | other 22, pypi 2, gnu 2 | GNU format 12, git archive 6, Python tarfile (pax) 5 | 2003–2026 | 1 | pulseaudio@17.0 `pulseaudio-17.0/src/modules/alsa/mixer/samples/USB Device 0x`; xitomatl_0.0.0-akku.208.62a8243_repack@ `fmt/let-optionals*.larceny.sls` |
+| `number.uid.base256` | 34 | 33 | pypi 14, cpan 12, other 7 | GNU format 30, libarchive (pax) 4 | 2008–2026 | 0 | leo@2_v1.7.0 `leo2/`; Bytes-Random-Secure-Tiny@1.011 `Bytes-Random-Secure-Tiny-1.011/` |
+| `number.gid.base256` | 29 | 28 | pypi 13, cpan 11, other 4 | GNU format 26, libarchive (pax) 3 | 2008–2026 | 0 | Bytes-Random-Secure-Tiny@1.011 `Bytes-Random-Secure-Tiny-1.011/`; pyannotate@1.2.0 `pyannotate-1.2.0/` |
+| `platform.windows-invalid-character` | 28 | 27 | other 22, pypi 2, gnu 2 | GNU format 12, git archive 6, Python tarfile (pax) 5 | 2003–2026 | 1 | xitomatl_0.0.0-akku.208.62a8243_repack@ `fmt/let-optionals*.larceny.sls`; courier-unicode@2.6.0 `courier-unicode-2.6.0/man/unicode::ucs_4.3` |
 | `name.dot` | 18 | 16 | github-release 12, other 5, cpan 1 | GNU format 17, v7 1 | 1998–2026 | 1 | partclone-utils@0.4.3 `./`; cmucl@21d-x86-linux `./` |
-| `pax.nul-in-value.SCHILY.xattr.*` | 16 | 16 | cpan 10, other 5, github-release 1 | libarchive (pax) 16 | 2019–2026 | 0 | Module-Find@0.16 `PaxHeader/Module-Find-0.16`; Crypt-X509@0.55 `Crypt-X509-0.55/PaxHeader/README` |
+| `pax.nul-in-value.SCHILY.xattr.*` | 16 | 16 | cpan 10, other 5, github-release 1 | libarchive (pax) 16 | 2019–2026 | 0 | Crypt-X509@0.55 `Crypt-X509-0.55/PaxHeader/README`; djview@4.12.3 `PaxHeader/djview-4.12.3` |
 | `platform.windows-reserved-name` | 16 | 10 | other 13, gnu 1, github-release 1 | git archive 8, GNU format 5, v7 2 | 2010–2026 | 0 | linux@6.12.91 `linux-6.12.91/drivers/gpu/drm/nouveau/nvkm/subdev/i2c/aux.c`; mvapich@4.1 `mvapich-4.1/modules/ucx/config/aux/` |
 | `linkname.no-nul` | 15 | 5 | other 14, github-release 1 | GNU format 13, Python tarfile (pax) 2 | 2023–2026 | 0 | ghc@9.12.4-src `ghc-9.12.4/libraries/Cabal/cabal-testsuite/PackageTests/Requ`; nextcloud@34.0.5 `nextcloud/apps/app_api/js/app_api-vendors-node_modules_nextc` |
 | `symlink.absolute` | 15 | 15 | other 14, github-release 1 | GNU format 9, ustar 2, git archive 2 | 2008–2026 | 1 | live.2026.01.12@ `live/testProgs/whiteroom.mp3`; imapsync@2.314 `imapsync-2.314/X/fullchain.pem` |
@@ -81,7 +83,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 | `platform.windows-trailing-dot-or-space` | 9 | 8 | other 8, gnu 1 | Python tarfile (pax) 2, git archive 2, v7 2 | 2000–2026 | 0 | knot-resolver@5.7.9 `knot-resolver-5.7.9/tests/integration/deckard/sets/resolver/`; knot-resolver@6.5.1 `knot-resolver-6.5.1/tests/integration/deckard/sets/resolver/` |
 | `end.data-after` | 8 | 8 | other 6, cpan 1, github-release 1 | v7 4, posix-version-0000 2, ustar 2 | 1995–2012 | 8 | bsf-bin@2.4.0 `bsf-2.4.0/samples/xsl/table-data.xml`; psutils-p17@ `psutils/showchar.sh` |
 | `pax-global.after-members` | 7 | 7 | other 5, github-release 2 | git archive 7 | 2022–2026 | 1 | inform@6.44-r3 `pax_global_header`; rpm@4.20.1 `pax_global_header` |
-| `pax.newline-in-value.SCHILY.xattr.*` | 7 | 7 | cpan 5, other 2 | libarchive (pax) 7 | 2020–2025 | 0 | Module-Find@0.16 `PaxHeader/Module-Find-0.16`; Minion@10.31 `Minion-10.31/lib/Mojolicious/Plugin/Minion/resources/public/` |
+| `pax.newline-in-value.SCHILY.xattr.*` | 7 | 7 | cpan 5, other 2 | libarchive (pax) 7 | 2020–2025 | 0 | Minion@10.31 `Minion-10.31/lib/Mojolicious/Plugin/Minion/resources/public/`; Term-ReadLine-Gnu@1.47 `Term-ReadLine-Gnu-1.47/t/comptest/PaxHeader/README` |
 | `end.lone-zero-block` | 5 | 5 | other 5 | GNU format 4, v7 1 | 1998–2014 | 5 | eng-rus@ `eng-rus.index`; srecord@1.64 `srecord-1.64/debian/srecord.install` |
 | `name.dot-component` | 5 | 4 | other 5 | ustar 3, GNU format 1, GNU tar (pax) 1 | 2018–2026 | 0 | besu@24.1.2 `besu-24.1.2/./`; lightweight-testing@0.1 `lightweight-testing-0.1/./` |
 | `end.missing` | 4 | 3 | other 4 | ustar 4 | 2023–2026 | 4 | SDL2_ttf@2.24.0 `SDL2_ttf-2.24.0/external/harfbuzz/README`; SDL2_image@2.8.12 `SDL2_image-2.8.12/Xcode/macOS/SDL2.framework/Resources` |
@@ -108,7 +110,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 - extended_sequence (tarballs using each): - 15866, x 3352, L 475, KL 9, K 8
 - gnu_long_name (tarballs using each): ././@LongLink 475
 - end (tarballs using each): padded-to-10240 10509, unpadded 8472
-- zero_blocks_after_end (tarballs using each): 0 9427, 11 558, 9 535, 6 523, 16 517, 1 516, 8 508, 17 508, 10 507, 4 505, 2 502, 19 498
+- zero_blocks_after_end (tarballs using each): 0 9427, 11 558, 9 535, 6 523, 16 517, 1 516, 17 508, 8 508, 10 507, 4 505, 2 502, 19 498
 - pax_keys (tarballs using each): mtime 3275, path 609, atime 135, ctime 129, uid 30, gid 28, LIBARCHIVE.xattr.* 20, SCHILY.xattr.* 19, SCHILY.dev 5, SCHILY.ino 5, SCHILY.nlink 5, LIBARCHIVE.creationtime 2
 - pax_global_keys (tarballs using each): comment 394
 - compression layer: trailing zeros 1, several streams 1

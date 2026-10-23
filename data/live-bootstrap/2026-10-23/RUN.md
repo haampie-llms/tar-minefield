@@ -5,7 +5,7 @@ $ git clone https://github.com/fosslinux/live-bootstrap
 $ python -I scanner/live_bootstrap_list.py live-bootstrap > live-bootstrap.jsonl
 $ grep -v '\.tar\.lzma"' live-bootstrap.jsonl > sample.jsonl
 $ python -I scanner/run.py scan sample.jsonl results.jsonl --untar ~/untar --jobs 8
-$ python -I scanner/report.py --title "Scan of 171 live-bootstrap tarballs" results.jsonl > REPORT.md
+$ python -I scanner/report.py --title "Scan of all 171 live-bootstrap tarballs" results.jsonl > REPORT.md
 ```
 
 - Scanner: `tarscan.py` version `25bfa32e6e71`, the same as for the Spack scan of 2026-10-23.
@@ -16,8 +16,8 @@ $ python -I scanner/report.py --title "Scan of 171 live-bootstrap tarballs" resu
 - untar: `2305390138cf436059b89b7b15146dc5213a3ba5`, `untar.py` version `51a9c3aa565c`, the same
   as for the Spack scans. The first version of this dataset was scanned with untar 0.2.0
   (`464647b69df6`, `untar.py` version `b2cd8ae76874`), by mistake; the results were the same.
-  Only 3 tarballs are also in the Spack scans (bzip2 1.0.8 and patch 2.8 in 2026-10-23,
-  musl 1.1.24 in 2026-10-23-b), and their features are the same there.
+  The Nix, Guix and Spack scans copy the rows of the tarballs they share with this one, with
+  `--reuse`.
 - Platform: Ubuntu 26.04 (Linux 7.0) on x86_64, Python 3.14.4. untar extracted to tmpfs, which is
   case-sensitive, so no failures are caused by the filesystem.
 

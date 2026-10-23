@@ -1,8 +1,10 @@
-# Scan of 171 live-bootstrap tarballs
+# Scan of all 171 live-bootstrap tarballs
 
 - tarballs: 171, scanned: 171 (74 latest versions, 97 older)
 - not downloaded: 0, scanner crashed: 0
 - downloaded from the first of their URLs (a mirror): 171
+- copied from other scans with `--reuse`: 0, read from `--cache`: 0; sources by host: live-bootstrap.stikonas.eu 171
+- size: 1.1 GB compressed
 - origins: gnu 98, other 24, cpan 20, github-archive 17, github-release 11, gitlab 1
 - producers: v7 61, git archive 49, GNU format 42, ustar 17, GNU tar (pax) 2
 - compression: gzip 82, xz 54, bzip2 33, lzma 2
