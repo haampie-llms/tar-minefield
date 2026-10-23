@@ -135,8 +135,7 @@ Seen in: no source tarball, where a damaged download fails its sha256.
 </details>
 <h2>What implementations make of it</h2>
 <table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
-<tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
-<tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
+<tr><td>strict.py</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>error: tar: Unexpected EOF in archive tar: Unexpected EOF in archive tar: Error is not recoverable: exiting now</td></tr>
 <tr><td>bsdtar</td><td>bsdtar 3.8.5 - libarchive 3.8.5</td><td>✅ as the verdict says</td><td>error: a: Truncated tar archive detected while reading data: Unknown error -1 bsdtar: Error exit delayed from previous errors.</td></tr>
 <tr><td>BusyBox tar</td><td>BusyBox v1.37.0 (Ubuntu 1:1.37.0-7ubuntu1)</td><td>✅ as the verdict says</td><td>error: tar: short read</td></tr>

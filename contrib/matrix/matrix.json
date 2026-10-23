@@ -241,12 +241,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": null,
     "outside": {},
     "tree": null
@@ -493,13 +488,8 @@
      }
     }
    },
-   "strict.py: default policy": {
+   "strict.py": {
     "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
-    "error": "rejected",
     "outside": {},
     "tree": null
    }
@@ -745,13 +735,8 @@
      }
     }
    },
-   "strict.py: default policy": {
+   "strict.py": {
     "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
-    "error": "rejected",
     "outside": {},
     "tree": null
    }
@@ -997,13 +982,8 @@
      }
     }
    },
-   "strict.py: default policy": {
+   "strict.py": {
     "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
-    "error": "rejected",
     "outside": {},
     "tree": null
    }
@@ -1235,13 +1215,8 @@
      }
     }
    },
-   "strict.py: default policy": {
+   "strict.py": {
     "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
-    "error": "rejected",
     "outside": {},
     "tree": null
    }
@@ -1438,12 +1413,7 @@
     "outside": {},
     "tree": {}
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -1696,12 +1666,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -1927,12 +1892,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -2203,12 +2163,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -2479,12 +2434,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -2717,12 +2667,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -2959,12 +2904,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -3223,12 +3163,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -3571,12 +3506,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -3855,12 +3785,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -4052,12 +3977,7 @@
     "outside": {},
     "tree": {}
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -4376,12 +4296,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": null,
     "outside": {},
     "tree": null
@@ -4760,13 +4675,8 @@
      }
     }
    },
-   "strict.py: default policy": {
+   "strict.py": {
     "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
-    "error": "rejected",
     "outside": {},
     "tree": null
    }
@@ -5036,12 +4946,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -5384,12 +5289,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -5599,12 +5499,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -5830,12 +5725,7 @@
     "outside": {},
     "tree": {}
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -6080,12 +5970,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -6372,12 +6257,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": null,
     "outside": {},
     "tree": null
@@ -6624,12 +6504,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": null,
     "outside": {},
     "tree": null
@@ -6948,12 +6823,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": null,
     "outside": {},
     "tree": null
@@ -7254,12 +7124,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": null,
     "outside": {},
     "tree": null
@@ -7499,13 +7364,8 @@
      }
     }
    },
-   "strict.py: default policy": {
+   "strict.py": {
     "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
-    "error": "rejected",
     "outside": {},
     "tree": null
    }
@@ -7751,13 +7611,8 @@
      }
     }
    },
-   "strict.py: default policy": {
+   "strict.py": {
     "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
-    "error": "rejected",
     "outside": {},
     "tree": null
    }
@@ -7940,13 +7795,8 @@
     "outside": {},
     "tree": {}
    },
-   "strict.py: default policy": {
+   "strict.py": {
     "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
-    "error": "rejected",
     "outside": {},
     "tree": null
    }
@@ -8164,12 +8014,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -8400,12 +8245,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -8696,12 +8536,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -8965,12 +8800,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -9147,12 +8977,7 @@
     "outside": {},
     "tree": {}
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -9399,12 +9224,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -9644,12 +9464,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -9896,12 +9711,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -10074,12 +9884,7 @@
     "outside": {},
     "tree": {}
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -10193,12 +9998,7 @@
     "outside": {},
     "tree": {}
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -10431,12 +10231,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -10625,12 +10420,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -10889,12 +10679,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -11191,12 +10976,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": null,
     "outside": {},
     "tree": null
@@ -11440,12 +11220,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": null,
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": null,
     "outside": {},
     "tree": null
@@ -11559,12 +11334,7 @@
     "outside": {},
     "tree": {}
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -11776,12 +11546,7 @@
     "outside": {},
     "tree": {}
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -11989,12 +11754,7 @@
     "outside": {},
     "tree": {}
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -12370,12 +12130,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -12622,12 +12377,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -12850,12 +12600,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -13102,12 +12847,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -13374,12 +13114,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -13603,12 +13338,7 @@
     "outside": {},
     "tree": {}
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
@@ -13870,12 +13600,7 @@
      }
     }
    },
-   "strict.py: default policy": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   },
-   "strict.py: every criterion": {
+   "strict.py": {
     "error": "rejected",
     "outside": {},
     "tree": null
