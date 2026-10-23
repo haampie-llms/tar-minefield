@@ -1,15 +1,81 @@
 # tar-minefield
 
-A corpus of tar archives, each with a verdict, for tar parsers that want to be strict: which
-archives they must reject because readers disagree on what they contain, which they must accept,
-and what tree they must extract. [METHOD.md](METHOD.md) describes how the corpus is built; it is
-a draft, and [corpus/](corpus) has its first cases.
+Tar leaves room for readers to disagree on what an archive contains: where the data of a member
+ends and the next header begins, which of several fields gives a member its name, whether `a/` is
+a file or a directory, which of two copies of a file wins. Package managers pin tarballs by their
+sha256, but a checksum pins bytes, not what they mean: when a reviewer, a scanner or an SBOM tool
+sees another tree than the extractor that installs it, a file can be hidden from one and shipped
+by the other, the bug class of CVE-2025-62518 (tokio-tar), GHSA-3pv8-6f4r-ffg2 (tar-rs) and
+CVE-2026-53655 (node-tar). A parser that rejects every archive that readers can disagree on
+closes that gap, as long as it accepts the tarballs that people actually download. tar-minefield
+is a corpus of archives with verdicts for such parsers, a policy for which ambiguities to reject,
+and a measurement of every release tarball of four package ecosystems of what that policy costs.
 
-## How strict can a parser be?
+## The policies
 
-A strict parser is useless if it rejects the tarballs people download. To measure that, the
-scanner reads the headers of every release tarball of Spack, nixpkgs, Guix and live-bootstrap,
-and records every feature that METHOD.md lists as an ambiguity:
+[METHOD.md](METHOD.md) lists the ambiguities of tar, ordered by how much damage they allow:
+framing, names, kinds, and the order and state of members. A strict parser could reject every
+one of them, and that is the first policy measured below. But some of them cannot change the
+tree, and others are spellings of the same path, so rejecting them costs real tarballs and buys
+nothing. The default policy ([METHOD.md](METHOD.md#the-default-policy), and `DEFAULT` in
+[scanner/strict.py](scanner/strict.py)) keeps the strictness where readers can make different
+trees, and drops it where they cannot:
+
+- **Reject** what readers extract differently: a pax size where the member has no data or where
+  the header disagrees, members after a zero block or after the end of the archive, a name from
+  several sources, a file named `a/`, a link target on a file, a file twice (even with identical
+  copies, as nothing says they are: in fish 4.7.1 and logstash 8.15.2 they differ), a hardlink to
+  itself or to a symlink, a member under a file or written through a symlink; and names that
+  are unsafe or that filesystems disagree on: absolute names, `..`, `\`, control characters, and
+  names that are not UTF-8.
+- **Normalize** names that are one path: `./a` is `a`, `.` is the root, `a/./b` and `a//b` are
+  `a/b`. Duplicates are found among the normalized names, so this hides none.
+- **Accept** what cannot change the tree, or what the pinned sha256 already settles: a global
+  pax header with only a `comment`, the POSIX magic with NULs for its version, newlines in xattrs,
+  absolute symlinks (created, never written through), and an archive that ends after a complete
+  member without the end-of-archive marker, or with junk after it that is not a header.
+
+A rule that only a few old tarballs break stays strict: a package that needs one of them can
+allow it by its sha256. The corpus has a case for every rule, and the scans below give the cost
+of both policies.
+
+## How implementations fare
+
+<!-- begin matrix.py -->
+Every case of the corpus, 55 of them, extracted by every implementation: here a few that show how they differ, and the totals. [corpus/MATRIX.md](corpus/MATRIX.md) has every case, the versions, and which tree each letter is.
+
+| implementation | pax size on a dir | pax size disagrees | member after a zero block | archive after the end | file named `a/` | a file twice | `..` in a name | through a symlink | absolute symlink | all cases |
+|---|---|---|---|---|---|---|---|---|---|---|
+| strict.py: every criterion | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⛔ | ✅47 ⛔8 |
+| strict.py: default policy | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅55 |
+| GNU tar | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ✅23 ⚠️32 |
+| BusyBox tar | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ✅ | ✅ | ✅23 ⚠️32 |
+| 7-Zip | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ✅ | ❌A | ✅22 ⚠️31 ⛔1 ❌1 |
+| tarfile, filter=fully_trusted | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | 💥 | 💥 | ✅ | ✅25 ⚠️28 💥2 |
+| tarfile, filter=tar | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ✅ | ✅ | ✅ | ✅26 ⚠️29 |
+| tarfile, filter=data | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ✅ | ✅ | ⛔ | ✅26 ⚠️28 ⛔1 |
+| untar | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅39 ⚠️13 ⛔3 |
+| Go archive/tar | ⚠️B | ⚠️A | ✅ | ⚠️A | ⚠️B | ⚠️A | ⚠️C | ⚠️A | ✅ | ✅22 ⚠️33 |
+| Go archive/tar, tarinsecurepath=0 | ⚠️B | ⚠️A | ✅ | ⚠️A | ⚠️B | ⚠️A | ✅ | ⚠️A | ✅ | ✅25 ⚠️30 |
+| Rust tar | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ⚠️D | ✅ | ✅ | ✅27 ⚠️28 |
+| Rust astral-tokio-tar | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ⚠️D | ✅ | ✅ | ✅27 ⚠️27 ⛔1 |
+| Julia Tar.jl | ✅ | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ✅ | ✅ | ✅ | ✅32 ⚠️23 |
+| node-tar | ⚠️B | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️D | ⚠️B | ❌B | ✅19 ⚠️35 ❌1 |
+| node-tar, strict | ⚠️B | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ⛔ | ✅27 ⚠️27 ⛔1 |
+
+- ✅ as the verdict says: rejects an `n_` case; extracts the manifest of a `y_` or `i_` case
+- ⚠️ accepts an `n_` case: the letter tells the trees apart
+- ⛔ rejects an `i_` case, which a strict parser may
+- ❌ rejects a `y_` case, or extracts another tree than the manifest of a `y_` or `i_` case
+- 💥 writes outside the destination
+
+Generated by `corpus/matrix.py` from `corpus/matrix.json`.
+<!-- end matrix.py -->
+
+## The data behind the policies
+
+The scanner reads the headers of every release tarball of Spack, nixpkgs, Guix and
+live-bootstrap, and records every feature that METHOD.md lists as an ambiguity:
 
 <!-- begin strict.py -->
 ### What was scanned
@@ -70,9 +136,9 @@ Latest versions: of the default policy. untar extracts: of the tarballs it ran t
 
 ## Contents
 
-- [METHOD.md](METHOD.md): the method, and the catalogue of ambiguities.
+- [METHOD.md](METHOD.md): the method, the catalogue of ambiguities, and the default policy.
 - [corpus/](corpus): the cases, the scripts that write them, and how to check them.
-  [corpus/MATRIX.md](corpus/MATRIX.md) shows what a dozen implementations make of each case.
+  [corpus/MATRIX.md](corpus/MATRIX.md) has what every implementation makes of every case.
 - [scanner/](scanner): the scanner, and how to scan more tarballs.
 - [data/](data): the scans, each with a `RUN.md` on how it was made.
   [data/STRICT.md](data/STRICT.md) has the pass rate of every criterion, and

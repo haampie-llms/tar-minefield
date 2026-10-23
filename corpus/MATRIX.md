@@ -5,7 +5,7 @@ extracted by every implementation, or for libraries without an extractor listed 
 in order. The two policies of `scanner/strict.py` are from what `tarscan.py` reports.
 
 - ✅ as the verdict says: rejects an `n_` case; extracts the manifest of a `y_` or `i_` case
-- ⚠️ accepts an `n_` case: the letter tells the trees apart, which are listed below the table
+- ⚠️ accepts an `n_` case: the letter tells the trees apart
 - ⛔ rejects an `i_` case, which a strict parser may
 - ❌ rejects a `y_` case, or extracts another tree than the manifest of a `y_` or `i_` case
 - 💥 writes outside the destination
