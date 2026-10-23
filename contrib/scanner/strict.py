@@ -17,8 +17,8 @@ Each results file is the scan of an ecosystem, and rates are given per ecosystem
 sample of its own population. Tarballs in a compression that tarscan.py does not read are not assessed.
 
 With --readme, the sentence between the markers `<!-- begin strict.py -->` and
-`<!-- end strict.py -->` in that file, which may be inside a paragraph, is generated again, and nothing else is printed: so that
-no number in it is written by hand.
+`<!-- end strict.py -->` in that file, which may be inside a paragraph, is generated again, and
+nothing else is printed: so that no number in it is written by hand.
 """
 
 import collections

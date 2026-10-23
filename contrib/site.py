@@ -9,6 +9,7 @@ stylesheet, and no scripts: the SVGs are part of the pages, so that their hover 
 links of the matrix work.
 """
 
+import collections
 import hashlib
 import html
 import io
@@ -46,6 +47,8 @@ COLUMNS = {
     "data-policy": [("ecosystem", 20), ("tarballs", 20, "n"), ("with it", 20, "n"),
                     ("share", 20, "n"), ("rejected by the default policy", 20, "n")],
     "tarballs": [("ecosystem", 25), ("tarballs", 25, "n"), ("rejected", 25, "n"), ("share", 25, "n")],
+    "reasons": [("why", 80), ("tarballs", 20, "n")],
+    "rejected": [("tarball", 30), ("packaged by", 15), ("why, with an example from the tarball", 55)],
     "implementations": [("implementation", 21), ("version", 21), ("outcome", 18),
                         ("what it makes of it", 40)],
 }
@@ -338,8 +341,71 @@ def tarballs_section(names, short, rated, union):
     accepted = strict.percent(len(union) - rejected, len(union))
     return (f'<h2 id="tarballs">Source tarballs</h2>\n<p>The default policy accepts {accepted} of the '
             f"{len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and live-bootstrap, "
-            f"and rejects {rejected:,}. The page of a case says how many of them have it.</p>\n"
+            f'and rejects {rejected:,}: <a href="rejected.html">which, and why</a>. The page of a case '
+            "says how many of them have it.</p>\n"
             + table("tarballs", rows))
+
+
+def printable(name):
+    """A path as it can be shown: bytes that are not UTF-8 and control characters escaped."""
+    name = name.encode("utf-8", "surrogateescape").decode("utf-8", "backslashreplace")
+    return "".join(c if c.isprintable() else f"\\x{ord(c):02x}" for c in name)
+
+
+def rejected_page(cases, data):
+    """The source tarballs that the default policy rejects, and for what: the case of each
+    criterion where there is one, and an example from the tarball where the scan recorded one."""
+    names, short, rated, union = data
+    by_criterion = {}
+    for case, info in cases.items():
+        for f in info["features"]:
+            by_criterion.setdefault(strict.criterion(f), []).append(info["id"])
+
+    def what(criterion):
+        """The reason of a criterion, which criteria with the same description share."""
+        if criterion == "scan.error":
+            return "an archive that could not be read past a header"
+        return strict.classify(criterion)[2] or criterion
+
+    rejected = sorted((r for r in union if not strict.passes_default(r)),
+                      key=lambda r: (r["package"].lower(), r["version"] or ""))
+    reasons = {r["sha256"]: {} for r in rejected}  # {reason: example or None}, per tarball
+    ids = collections.defaultdict(set)
+    for r in rejected:
+        for c in strict.default_rejects(r):
+            example = next((e[0] for f, e in (r.get("examples") or {}).items()
+                            if strict.criterion(f) == c and e), None)
+            reasons[r["sha256"]].setdefault(what(c), example)
+            ids[what(c)].update(by_criterion.get(c, []))
+    counts = collections.Counter(w for rs in reasons.values() for w in rs)
+
+    def why(w):
+        links = ", ".join(f'<a href="{i}.html">{i}</a>' for i in sorted(ids[w]))
+        return inline(w) + (f" ({links})" if links else "")
+
+    summary = [f"<tr><td>{why(w)}</td><td class=n>{k}</td></tr>" for w, k in counts.most_common()]
+    rows = []
+    for r in rejected:
+        name = f"{r['package']} {r['version']}" if r["version"] else r["package"]
+        lines, shown = [], set()
+        for w, example in sorted(reasons[r["sha256"]].items(), key=lambda kv: -counts[kv[0]]):
+            new = example and example not in shown
+            shown.add(example)
+            lines.append(why(w) + (f" <code>{html.escape(printable(example))}</code>" if new else ""))
+        ecosystems = ", ".join(short[n] for n in r["datasets"] if n in short)
+        rows.append(f'<tr><td><a href="{html.escape(r["url"])}">{html.escape(name)}</a></td>'
+                    f"<td>{html.escape(ecosystems)}</td><td>{'<br>'.join(lines)}</td></tr>")
+    body = f"""<nav><a href="index.html">all cases</a></nav>
+<h1>Rejected source tarballs</h1>
+<p>The {len(rejected)} of the {len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and
+live-bootstrap that the default policy rejects, and why. A tarball can have more than one
+reason.</p>
+{table("reasons", summary)}
+{table("rejected", rows)}
+"""
+    return page(f"Rejected source tarballs · {TITLE}",
+                f"The {len(rejected)} source tarballs that the default policy rejects, and why.",
+                body)
 
 
 def index_page(cases, results, data):
@@ -399,7 +465,8 @@ def main():
     for name in os.listdir(out):
         if name.endswith(".html"):
             os.remove(os.path.join(out, name))
-    files = {".nojekyll": "", "style.css": STYLE, "index.html": index_page(cases, results, data)}
+    files = {".nojekyll": "", "style.css": STYLE, "index.html": index_page(cases, results, data),
+             "rejected.html": rejected_page(cases, data)}
     ordered = list(cases.items())
     for i, (case, info) in enumerate(ordered):
         previous = ordered[i - 1] if i else None
