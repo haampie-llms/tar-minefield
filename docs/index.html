@@ -13,7 +13,7 @@
 <p>There are dozens of implementations of tar file extraction out there, from command line tools to libraries for programming languages. Because the tar file format leaves room for interpretation, different implementations can extract certain crafted tar files in different ways.</p>
 <p>This is a security concern: for example, a security scanner could see different files than what is ultimately extracted.</p>
 <p>By assigning <a href="#cases">identifiers</a> to these ambiguities, and providing test cases and usage data, the hope is that tar implementations can converge on a strict parser and identical behavior.</p>
-<p>This project proposes a <strong><a href="https://github.com/haampie-llms/tar-minefield#the-default-policy">default policy</a></strong> that is as strict as data from real tarballs allows: it rejects every ambiguity except the few that are common in practice and cannot change the extracted files.</p>
+<p>This project proposes a <strong><a href="https://github.com/haampie-llms/tar-minefield#the-default-policy">default policy</a></strong> that rejects the vast majority of ambiguities in tar files that could make implementations extract different files, while ensuring that nearly every tarball already published can still be extracted.</p>
 <p>Each case has a permanent identifier, such as F15, whose letter is its level:
 <strong>F</strong> framing, <strong>N</strong> names, <strong>K</strong> kinds, <strong>S</strong>
 order and state, <strong>G</strong> global pax headers. A case's page shows its archive block by
