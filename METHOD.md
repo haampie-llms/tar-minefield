@@ -144,6 +144,34 @@ Each case also records what is known about it:
 
 Whether an ambiguous case is `n_` or `i_` is decided by measurement, as described next.
 
+### The default policy
+
+The scans of [data/](data) decided it: the default policy rejects every `n_` case, and accepts
+the `i_` cases, which extract the tree in their manifest. Its table is `DEFAULT` in
+`scanner/strict.py`, and [data/STRICT.md](data/STRICT.md) gives what it costs. The `i_` cases are:
+
+- names that refer to the same path, normalized to it: `./a` is `a`, `.` is the root, and
+  `a/./b` and `a//b` are `a/b`. Duplicates are found among the normalized paths, so normalizing
+  hides none.
+- absolute symlinks, created as they are: the danger is in following them, and writing through
+  any symlink is `n_`.
+- no end-of-archive marker, or a marker of one zero block, after a complete member. Archives
+  that are distributed are pinned by their sha256, so one that ends early is caught before it is
+  parsed; one that ends inside a member is `n_`.
+- data after the end-of-archive marker that is not a header, which is ignored. A header there,
+  another archive or members after a zero block, is `n_`: some readers extract them.
+- a global pax header with only a `comment` after the first member.
+- the POSIX magic with NULs for its version, `ustar\0\0\0`, which some Java archivers write,
+  as in the tarballs of Apache's commons-lang, Solr and Hadoop. Any other version is `n_`.
+- newlines in the values of xattr pax keys, which are not extracted.
+
+Everything else in the catalogue is `n_`. Duplicate files are `n_` even where their copies are
+identical, as they are in most tarballs that have them: in some, a file was changed and appended
+again, so that readers that keep the first copy and those that keep the last extract different
+trees. In fish 4.7.1, `Cargo.toml` and `Cargo.lock` are appended again without their last
+newline; in logstash 8.15.2, `build.rb` is a license header first and the build's date and commit
+last.
+
 ## Platform-specific failures
 
 Whether an archive describes one tree, and whether a filesystem can hold that tree, are separate

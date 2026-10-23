@@ -9,6 +9,9 @@ criteria below, each a pattern of feature names of tarscan.py. Features that MET
 filesystems cannot hold (`platform.*`) are neither: they are reported apart. A feature that none
 of these patterns match is reported as unclassified, so that nothing is left out unseen.
 
+The default policy, `DEFAULT`, is what METHOD.md decides from these scans: it normalizes some of
+the criteria and accepts others, and rejects the rest. Pass rates are given of both.
+
 Each results file is a dataset, and rates are given per dataset: each is a sample of its own
 population. Tarballs in a compression that tarscan.py does not read are not assessed.
 
@@ -123,6 +126,26 @@ ALLOWED = [
     ("pax.nul-in-value.LIBARCHIVE.xattr.*", "NUL in xattrs, which are outside the tree"),
 ]
 
+# The default policy: the strict criteria that it lets through, and how; it rejects the others.
+# A parser normalizes these names to the path they refer to, which is what tarscan.py compares to
+# find duplicates, so normalizing hides none. The rest it accepts as they are, some only if
+# condition() holds. Tarballs are pinned by their sha256, so one that ends early is caught before
+# it is parsed.
+DEFAULT = [
+    ("name.leading-dot-slash", "normalize", "`./a` is `a`"),
+    ("name.dot", "normalize", "`.` is the root of the tree"),
+    ("name.dot-component", "normalize", "`a/./b` is `a/b`"),
+    ("name.double-slash", "normalize", "`a//b` is `a/b`"),
+    ("symlink.absolute", "accept", "created as it is: writing through a symlink is rejected"),
+    ("end.missing", "accept", "the archive ends after a member, and its sha256 is pinned"),
+    ("end.lone-zero-block", "accept", "the archive ends after a member, and its sha256 is pinned"),
+    ("end.data-after", "accept", "ignored: a header there is `end.archive-after`, rejected"),
+    ("pax-global.after-members", "accept", "if every global header has only a `comment`"),
+    ("magic.posix-with-odd-version", "accept", "if the version is NULs: `ustar\\0\\0\\0`"),
+    ("pax.newline-in-value.SCHILY.xattr.*", "accept", "xattrs are not extracted"),
+    ("pax.newline-in-value.LIBARCHIVE.xattr.*", "accept", "xattrs are not extracted"),
+]
+
 # Compressions that tarscan.py does not read: it scans these as uncompressed tar
 UNREAD = (".tar.lz", ".tar.zst", ".tzst", ".tar.lzma", ".tlz", ".tar.Z")
 
@@ -158,6 +181,31 @@ def strict_features(r):
     if r.get("error") or r.get("compression_error") or r.get("compression", {}).get("truncated"):
         found.add("scan.error")
     return found
+
+
+def default_rule(feature):
+    """The rule of DEFAULT for a strict feature: (pattern, how, why), or None if rejected."""
+    for rule in DEFAULT:
+        if fnmatch.fnmatchcase(feature, rule[0]):
+            return rule
+    return None
+
+
+def condition(feature, r):
+    """Whether the conditions of DEFAULT hold for a feature that it accepts, from what the
+    fingerprint of the tarball records about all of its headers."""
+    fingerprint = r.get("fingerprint", {})
+    if feature == "pax-global.after-members":
+        return set(fingerprint.get("pax_global_keys", {})) <= {"comment"}
+    if feature == "magic.posix-with-odd-version":
+        versions = {m for m in fingerprint.get("magic", {}) if m.startswith("posix-version-")}
+        return versions <= {"posix-version-0000"}
+    return True
+
+
+def default_rejects(r):
+    """The strict features of a tarball that the default policy rejects."""
+    return {f for f in strict_features(r) if not (default_rule(f) and condition(f, r))}
 
 
 def percent(n, total):
@@ -275,22 +323,27 @@ def scanned_section(datasets, names, short, rated, rows, union):
     )
 
 
-def passes(r, allowed=()):
-    return not (strict_features(r) - set(allowed))
+def passes(r):
+    return not strict_features(r)
 
 
-def pass_table(names, short, rated, allowed=()):
-    """Pass rates per dataset, and with the criteria allowed also allowed."""
-    extra = f" | pass if `{'`, `'.join(allowed)}` were allowed" if allowed else ""
+def passes_default(r):
+    return not default_rejects(r)
+
+
+def pass_table(names, short, rated):
+    """Pass rates per dataset: of every criterion, of the default policy, and of untar."""
     lines = [
-        f"| dataset | assessed | pass all criteria | of latest versions{extra} | untar extracts |",
-        "|---|---|---|---|" + ("---|" if allowed else "") + "---|",
+        "| dataset | assessed | pass every criterion | pass the default policy "
+        "| of latest versions | untar extracts |",
+        "|---|---|---|---|---|---|",
     ]
     for n in names:
         rs = rated[n]
         latest = [r for r in rs if r.get("latest")]
         passing = sum(passes(r) for r in rs)
-        lp = sum(passes(r) for r in latest)
+        default = sum(passes_default(r) for r in rs)
+        lp = sum(passes_default(r) for r in latest)
         # untar_skipped: untar ran out of space on the scanning machine, which says nothing
         tested = [r for r in rs if "untar_error" in r and not r.get("untar_skipped")]
         extracted = sum(not r.get("untar_error") for r in tested)
@@ -298,39 +351,47 @@ def pass_table(names, short, rated, allowed=()):
             short[n],
             str(len(rs)),
             f"{passing} ({percent(passing, len(rs))})",
+            f"{default} ({percent(default, len(rs))})",
             f"{lp} ({percent(lp, len(latest))})",
         ]
-        if allowed:
-            p = sum(passes(r, allowed) for r in rs)
-            cells.append(f"{p} ({percent(p, len(rs))})")
         of = f" of {len(tested)}" if len(tested) != len(rs) else ""
         cells.append(f"{extracted}{of} ({percent(extracted, len(tested))})")
         lines.append("| " + " | ".join(cells) + " |")
     return "\n".join(lines)
 
 
-def costliest(union):
+def costliest(union, rejects=strict_features):
     """The criterion that rejects the most tarballs on its own."""
     sole = collections.Counter()
     for r in union:
-        found = strict_features(r)
+        found = rejects(r)
         if len(found) == 1:
             sole[next(iter(found))] += 1
     return sole.most_common(1)[0][0] if sole else None
 
 
+def summary(union):
+    """The pass rates of all datasets together, as a sentence."""
+    return (
+        f"Of {len(union)} distinct tarballs, {sum(passes(r) for r in union)} pass every "
+        f"criterion, and {sum(passes_default(r) for r in union)} the default policy, which "
+        "normalizes `./a` and the like, and accepts features on whose tree readers agree. The "
+        "criterion "
+        "that rejects the most tarballs on its own is "
+        f"`{costliest(union)}`, and of the default policy `{costliest(union, default_rejects)}`."
+    )
+
+
 def readme(path, datasets, names, short, rated, rows, union):
-    top = costliest(union)
-    allowed = (top,) if top else ()
     block = (
         "### What was scanned\n\n"
         + scanned_section(datasets, names, short, rated, rows, union)
         + "\n\n### What a strict parser accepts\n\n"
-        f"Of {len(union)} distinct tarballs, {sum(passes(r) for r in union)} pass every criterion. "
-        f"The criterion that rejects the most tarballs on its own is `{top}`.\n\n"
-        + pass_table(names, short, rated, allowed)
-        + "\n\nuntar extracts: of the tarballs it ran to the end on, where it did not run out of "
-        "space on the scanning machine. "
+        + summary(union)
+        + "\n\n"
+        + pass_table(names, short, rated)
+        + "\n\nLatest versions: of the default policy. untar extracts: of the tarballs it ran to "
+        "the end on, where it did not run out of space on the scanning machine. "
         f"Generated by `scanner/strict.py` from {len(names)} scans: the details are in "
         "[data/STRICT.md](data/STRICT.md)."
     )
@@ -359,7 +420,7 @@ def main():
     print("# Strict parsing of real tarballs\n")
     print(
         "How many release tarballs a strict tar parser would accept, if it rejected every "
-        "ambiguity that [METHOD.md](../METHOD.md) lists. Generated by `scanner/strict.py` from the "
+        "ambiguity that [METHOD.md](../METHOD.md) lists, and with its default policy. Generated by `scanner/strict.py` from the "
         "scans in this directory: see their `RUN.md` for how each was made.\n"
     )
 
@@ -371,10 +432,25 @@ def main():
         "A tarball passes if it has none of the strict criteria below. untar is the strict "
         "extractor of [untar](https://github.com/haampie/untar), as a policy that exists, of the "
         "tarballs it ran to the end on, where it did not run out of space on the scanning "
-        "machine.\n"
+        "machine. Latest versions: of the default policy.\n"
     )
-    top = costliest(union)
-    print(pass_table(names, short, rated, (top,) if top else ()))
+    print(summary(union) + "\n")
+    print(pass_table(names, short, rated))
+    print()
+
+    print("## The default policy\n")
+    print(
+        "The strict criteria that the default policy lets through, and how; it rejects all other "
+        "criteria. Tarballs: of all datasets, with the feature where the policy lets it through.\n"
+    )
+    print("| criterion | how | why | tarballs |")
+    print("|---|---|---|---|")
+    for pattern, how, why in DEFAULT:
+        count = sum(
+            1 for r in union
+            if any(fnmatch.fnmatchcase(f, pattern) and condition(f, r) for f in strict_features(r))
+        )
+        print(f"| `{pattern}` | {how} | {why} | {count} |")
     print()
 
     failing = collections.defaultdict(lambda: collections.defaultdict(list))
@@ -395,11 +471,15 @@ def main():
 
     print("## Criteria\n")
     print(
-        "Tarballs that each criterion rejects, per dataset. Alone: tarballs of all datasets "
-        "that only this criterion rejects, which allowing it would let through.\n"
+        "Tarballs that each criterion rejects, per dataset. Default: what the default policy "
+        "does with it. Alone: tarballs of all datasets that only this criterion rejects, which "
+        "allowing it would let through.\n"
     )
-    print("| level | criterion | " + " | ".join(short[n] for n in names) + " | alone | examples |")
-    print("|---|---|" + "---|" * len(names) + "---|---|")
+    print(
+        "| level | criterion | default | " + " | ".join(short[n] for n in names)
+        + " | alone | examples |"
+    )
+    print("|---|---|---|" + "---|" * len(names) + "---|---|")
     order = sorted(
         failing,
         key=lambda f: (
@@ -415,9 +495,10 @@ def main():
             else "0"
             for n in names
         )
+        rule = default_rule(f)
         print(
-            f"| {level} | `{f}`: {description} | {cells} | {sole[f]} | "
-            f"{', '.join(examples[f])} |"
+            f"| {level} | `{f}`: {description} | {rule[1] if rule else 'reject'} | {cells} | "
+            f"{sole[f]} | {', '.join(examples[f])} |"
         )
     print()
     print(
