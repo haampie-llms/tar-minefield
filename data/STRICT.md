@@ -9,8 +9,8 @@ How many release tarballs a strict tar parser would accept, if it rejected every
 | live-bootstrap | 171 | 171 | 0 | 74 | 1.1 | 919,348 | gnu 98, other 24, cpan 20 |
 | nix | 19086 | 19012 | 22 | 17955 | 78.3 | 11,659,428 | other 11987, pypi 3846, cpan 1899 |
 | guix | 10200 | 10199 | 31 | 9674 | 76.7 | 22,063,418 | other 3845, cran/bioconductor 2833, pypi 1697 |
-| spack | 35630 | 35424 | 0 | 6784 | 521.7 | 106,662,163 | github-archive 11382, pypi 8646, other 6177 |
-| all, distinct | 60820 | 60543 | 48 | 30715 | 656.8 | 132,075,350 | |
+| spack | 35644 | 35438 | 0 | 6789 | 524.0 | 106,862,359 | github-archive 11383, pypi 8655, other 6181 |
+| all, distinct | 60834 | 60557 | 48 | 30720 | 659.1 | 132,275,546 | |
 
 Tarballs that are not scanned could not be downloaded from any URL. Not assessed: in a compression that the scanner does not read (`.tar.lz`, `.tar.zst`). Latest: the latest version of a package in its repository.
 
@@ -18,7 +18,7 @@ Tarballs by the median mtime of their members, which dates most of them:
 
 ```
 years      live-bootstrap   nix  guix spack   all
-1981–1989               0     2     2     3     4  #
+1981–1989               0     2     2     4     5  #
 1990–1991               0     0     1     1     2  #
 1992–1993               1     1     1     0     3  #
 1994–1995               3     9     2     6    17  #
@@ -33,10 +33,10 @@ years      live-bootstrap   nix  guix spack   all
 2012–2013               8   652   310   752  1533  #####
 2014–2015               1  1034   424  1545  2734  ##########
 2016–2017               8  1304   564  3085  4644  ################
-2018–2019              18  1510   770  4867  6734  #######################
-2020–2021              28  1537   925  6661  8672  ##############################
-2022–2023              24  1929  1544  7700 10547  #####################################
-2024–2025              29  2563  2357  7326 11492  ########################################
+2018–2019              18  1510   770  4869  6736  #######################
+2020–2021              28  1537   925  6663  8674  ##############################
+2022–2023              24  1929  1544  7706 10553  #####################################
+2024–2025              29  2563  2357  7329 11495  ########################################
 2026–2027               1  2871  1775  1710  6124  #####################
 fixed                   0  4210   918   799  5387  ###################
 unknown                 0   149    60   145   327  #
@@ -52,7 +52,7 @@ A tarball passes if it has none of the strict criteria below. untar is the stric
 | live-bootstrap | 171 | 171 (100.00%) | 74 (100.00%) | 171 (100.00%) | 171 (100.00%) |
 | nix | 18990 | 18833 (99.17%) | 17809 (99.19%) | 18849 (99.26%) | 18912 (99.59%) |
 | guix | 10168 | 10067 (99.01%) | 9592 (99.15%) | 10084 (99.17%) | 10130 (99.63%) |
-| spack | 35424 | 35070 (99.00%) | 6717 (99.01%) | 35192 (99.35%) | 35382 (99.88%) |
+| spack | 35438 | 35083 (99.00%) | 6722 (99.01%) | 35206 (99.35%) | 35396 (99.88%) |
 
 ## Criteria
 
@@ -69,7 +69,7 @@ Tarballs that each criterion rejects, per dataset. Alone: tarballs of all datase
 | framing | `end.lone-zero-block`: an end-of-archive marker of one zero block, not two | 0 | 5 (0.03%) | 0 | 0 | 5 | eng-rus, srecord@1.64, cdi2iso@0.1-src |
 | framing | `end.archive-after`: another archive after the end-of-archive marker | 0 | 0 | 1 (0.01%) | 3 (0.01%) | 2 | commons-jexl@2.1.1-src, jmol@14.8.0, glibmm@2.4.8 |
 | framing | `pax.size-on-dir`: a pax size on a member without data | 0 | 1 (0.01%) | 0 | 0 | 1 | llama_index_workflows@2.26.0 |
-| name | `name.leading-dot-slash`: `./a`, which some readers make `a` | 0 | 35 (0.18%) | 31 (0.30%) | 131 (0.37%) | 149 | curie@v1.0, hdf5@1.10.11, NNPDF@31_nnlo_as_0118 |
+| name | `name.leading-dot-slash`: `./a`, which some readers make `a` | 0 | 35 (0.18%) | 31 (0.30%) | 132 (0.37%) | 150 | curie@v1.0, hdf5@1.10.11, NNPDF@31_nnlo_as_0118 |
 | name | `symlink.absolute`: a symlink to an absolute path | 0 | 15 (0.08%) | 13 (0.13%) | 59 (0.17%) | 78 | live.2026.01.12, imapsync@2.314, notmuch@0.40 |
 | name | `name.dot`: a member named `.` or `./` | 0 | 18 (0.09%) | 13 (0.13%) | 9 (0.03%) | 0 | partclone-utils@0.4.3, cmucl@21d-x86-linux, phinger-cursors-variants |
 | name | `name.dot-component`: `a/./b` | 0 | 5 (0.03%) | 4 (0.04%) | 1 (0.00%) | 8 | besu@24.1.2, lightweight-testing@0.1, ghc@9.0.2-x86_64-deb10-linux |
@@ -78,13 +78,13 @@ Tarballs that each criterion rejects, per dataset. Alone: tarballs of all datase
 | name | `name.not-utf8`: a name that is not UTF-8 | 0 | 2 (0.01%) | 0 | 0 | 2 | aspell-is@0.51.1-0, aspell-nb@0.50.1-0 |
 | name | `name.absolute`: an absolute name | 0 | 1 (0.01%) | 0 | 1 (0.00%) | 2 | dtv-scan-tables@2024-03-24-7098bdd27548, masurca@3.3.1 |
 | name | `name.double-slash`: `a//b` | 0 | 1 (0.01%) | 0 | 1 (0.00%) | 1 | ghc@9.0.2-x86_64-deb10-linux, shapemapper@2.1.5 |
-| name | `pax.key-in-two-headers.SCHILY.xattr.*`: a pax key in two extended headers of one member | 0 | 0 | 1 (0.01%) | 0 | 0 | libmygpo-qt.1.2.0 |
-| name | `pax.key-in-two-headers.LIBARCHIVE.xattr.*`: a pax key in two extended headers of one member | 0 | 0 | 1 (0.01%) | 0 | 0 | libmygpo-qt.1.2.0 |
 | name | `pax.repeated-key`: a pax key twice in one extended header | 0 | 0 | 1 (0.01%) | 0 | 0 | libmygpo-qt.1.2.0 |
+| name | `pax.key-in-two-headers.LIBARCHIVE.xattr.*`: a pax key in two extended headers of one member | 0 | 0 | 1 (0.01%) | 0 | 0 | libmygpo-qt.1.2.0 |
+| name | `pax.key-in-two-headers.SCHILY.xattr.*`: a pax key in two extended headers of one member | 0 | 0 | 1 (0.01%) | 0 | 0 | libmygpo-qt.1.2.0 |
 | name | `format.star`: star's prefix field | 0 | 0 | 0 | 1 (0.00%) | 1 | berkeley-db@18.1.40 |
 | kind | `name.trailing-slash-on-file`: a regular file named like a directory, `a/` | 0 | 4 (0.02%) | 1 (0.01%) | 2 (0.01%) | 0 | sendmail.8.18.2, tcp_wrappers_7.6, unclutter@8 |
-| kind | `linkname.on-file`: a link target on a member that is not a link | 0 | 0 | 0 | 1 (0.00%) | 0 | bgen@1.1.7 |
 | kind | `linkname.on-dir`: a link target on a member that is not a link | 0 | 0 | 0 | 1 (0.00%) | 0 | bgen@1.1.7 |
+| kind | `linkname.on-file`: a link target on a member that is not a link | 0 | 0 | 0 | 1 (0.00%) | 0 | bgen@1.1.7 |
 | order and state | `tree.duplicate.file-file`: the same file twice | 0 | 59 (0.31%) | 17 (0.17%) | 14 (0.04%) | 76 | snap-loader-static@1.0.0.1, htn@0.1.0.0, shelly-extra@0.3.0.2 |
 | order and state | `tree.duplicate.file-hardlink`: one path as two members | 0 | 1 (0.01%) | 2 (0.02%) | 16 (0.05%) | 0 | atari++_1.85, xscreensaver@6.12, ghc@7.8.4-x86_64-unknown-linux-deb7 |
 | order and state | `hardlink.to-itself`: a hardlink to itself | 0 | 1 (0.01%) | 2 (0.02%) | 16 (0.05%) | 0 | atari++_1.85, xscreensaver@6.12, ghc@7.8.4-x86_64-unknown-linux-deb7 |
@@ -100,8 +100,8 @@ Not ambiguous, or confined to fields outside the tree. Tarballs of all datasets:
 
 | feature | why it is allowed | tarballs |
 |---|---|---|
-| `name.fills-field` | a name of exactly 100 bytes, without NUL (`y_`) | 7018 |
-| `ustar.prefix` | the ustar prefix field (`y_`) | 5917 |
+| `name.fills-field` | a name of exactly 100 bytes, without NUL (`y_`) | 7024 |
+| `ustar.prefix` | the ustar prefix field (`y_`) | 5921 |
 | `type.nul` | the typeflag NUL of regular files, from before POSIX | 3430 |
 | `v7.bytes-after-linkname` | bytes in fields that v7 headers do not use | 2758 |
 | `name.dir-without-trailing-slash` | a directory without a trailing slash: the typeflag says | 1106 |
@@ -126,5 +126,5 @@ Not ambiguous, or confined to fields outside the tree. Tarballs of all datasets:
 | `number.mtime.no-digits` | outside the tree | 2 |
 | `pax.LIBARCHIVE.symlinktype` | vendor pax keys outside the tree | 1 |
 
-Names that some filesystems cannot hold, so that extraction fails there only: `platform.case-collision` 694, `platform.windows-reserved-name` 447, `platform.windows-invalid-character` 185, `platform.windows-trailing-dot-or-space` 32, `platform.normalization-collision` 20.
+Names that some filesystems cannot hold, so that extraction fails there only: `platform.case-collision` 696, `platform.windows-reserved-name` 449, `platform.windows-invalid-character` 185, `platform.windows-trailing-dot-or-space` 32, `platform.normalization-collision` 20.
 

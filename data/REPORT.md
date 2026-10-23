@@ -7,16 +7,16 @@ Rates are per dataset. Counts below are of the distinct tarballs of all datasets
 | live-bootstrap/2026-10-23 | 171 | 171 | 74 | 0 (0.00%) | 0 (0.00%) | 0 |
 | nix/2026-10-23 | 19086 | 19012 | 17977 | 100 (0.53%) | 94 (0.52%) | 0 |
 | guix/2026-10-23 | 10200 | 10199 | 9705 | 69 (0.68%) | 64 (0.66%) | 0 |
-| spack/2026-10-23-c | 35630 | 35424 | 6784 | 42 (0.12%) | 10 (0.15%) | 0 |
+| spack/2026-10-23-c | 35644 | 35438 | 6789 | 42 (0.12%) | 10 (0.15%) | 0 |
 
-- tarballs: 60820, scanned: 60543 (30763 latest versions, 29780 older)
+- tarballs: 60834, scanned: 60557 (30768 latest versions, 29789 older)
 - not downloaded: 277, scanner crashed: 0
-- downloaded from the first of their URLs (a mirror): 50257
-- copied from other scans with `--reuse`: 5, read from `--cache`: 33; sources by host: mirror.spack.io 33622, tarballs.nixos.org 9418, bordeaux.guix.gnu.org 7090, hackage.haskell.org 6143, files.pythonhosted.org 1509, download.kde.org 488
-- size: 657.4 GB compressed
-- origins: other 20242, pypi 13416, github-archive 11486, cran/bioconductor 6986, github-release 3817, cpan 2652, gnu 1254, gitlab 690
-- producers: GNU format 17532, ustar 14809, git archive 13907, Python tarfile (pax) 9878, v7 3349, GNU tar (pax) 880, libarchive (pax) 82, posix-version-0000 56, none 49, star 1
-- compression: gzip 53305, xz 4109, bzip2 2383, none 744
+- downloaded from the first of their URLs (a mirror): 50270
+- copied from other scans with `--reuse`: 5, read from `--cache`: 33; sources by host: mirror.spack.io 33635, tarballs.nixos.org 9418, bordeaux.guix.gnu.org 7090, hackage.haskell.org 6143, files.pythonhosted.org 1509, download.kde.org 488
+- size: 659.7 GB compressed
+- origins: other 20246, pypi 13425, github-archive 11487, cran/bioconductor 6986, github-release 3817, cpan 2652, gnu 1254, gitlab 690
+- producers: GNU format 17536, ustar 14810, git archive 13910, Python tarfile (pax) 9884, v7 3349, GNU tar (pax) 880, libarchive (pax) 82, posix-version-0000 56, none 49, star 1
+- compression: gzip 53316, xz 4111, bzip2 2383, none 745
 - scanner stopped early: 56
   - ocrad@0.29: invalid checksum at offset 0
   - git-warp-time@1.0.0: invalid checksum at offset 0
@@ -116,7 +116,7 @@ Rates are per dataset. Counts below are of the distinct tarballs of all datasets
 
 ## untar
 
-Rejects 193 of 60543 (0.3%); 152 of 30763 latest versions (0.5%).
+Rejects 193 of 60557 (0.3%); 152 of 30768 latest versions (0.5%).
 
 | reason | tarballs | latest | origins | producers | examples |
 |---|---|---|---|---|---|
@@ -135,19 +135,19 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 
 | feature | tarballs | latest | origins | producers | years | untar rejects | examples |
 |---|---|---|---|---|---|---|---|
-| `name.fills-field` | 7018 | 1576 | github-archive 2585, other 1790, pypi 1487 | git archive 3443, GNU format 1486, Python tarfile (pax) 1268 | 1970–2026 | 19 | texinfo@7.2 `texinfo-7.2/tp/t/results/init_files_tests/documentation_exam`; linux@4.14.336 `linux-4.14.336/Documentation/devicetree/bindings/interrupt-c` |
-| `ustar.prefix` | 5917 | 1261 | github-archive 3491, other 1027, github-release 612 | git archive 4520, ustar 1303, GNU tar (pax) 63 | 1980–2026 | 20 | texinfo@7.2 `split_test_before_first_node.info`; linux@4.14.336 `samsung,exynos4210-combiner.txt` |
+| `name.fills-field` | 7024 | 1576 | github-archive 2586, other 1793, pypi 1489 | git archive 3446, GNU format 1487, Python tarfile (pax) 1269 | 1970–2026 | 19 | texinfo@7.2 `texinfo-7.2/tp/t/results/init_files_tests/documentation_exam`; linux@4.14.336 `linux-4.14.336/Documentation/devicetree/bindings/interrupt-c` |
+| `ustar.prefix` | 5921 | 1261 | github-archive 3492, other 1030, github-release 612 | git archive 4523, ustar 1304, GNU tar (pax) 63 | 1980–2026 | 20 | texinfo@7.2 `split_test_before_first_node.info`; linux@4.14.336 `samsung,exynos4210-combiner.txt` |
 | `type.nul` | 3430 | 1630 | other 2246, github-release 550, gnu 497 | v7 3326, GNU format 104 | 1970–2026 | 9 | make@3.82 `make-3.82/vmsfunctions.c`; gzip@1.2.4 `gzip-1.2.4/README` |
 | `v7.bytes-after-linkname` | 2758 | 1203 | other 1865, github-release 447, gnu 417 | v7 2758 | 1970–2026 | 3 | make@3.82 `make-3.82/`; m4@1.4.7 `m4-1.4.7/` |
 | `name.dir-without-trailing-slash` | 1106 | 938 | cpan 584, github-release 303, other 197 | ustar 995, GNU format 96, GNU tar (pax) 15 | 1970–2026 | 1 | oyacc@6.6 `oyacc-6.6`; perl@5.15.7 `perl-5.15.7` |
 | `tree.dir-after-contents` | 853 | 775 | other 784, cpan 31, pypi 22 | ustar 796, GNU format 27, git archive 13 | 1970–2026 | 9 | streaming-utils@0.2.6.0 `streaming-utils-0.2.6.0/Streaming/`; distributed-closure@0.5.0.0 `distributed-closure-0.5.0.0/src/Data/Profunctor/` |
 | `number.size.leading-space` | 806 | 718 | cpan 668, other 111, gnu 13 | ustar 663, posix-version-0000 56, GNU format 50 | 1990–2026 | 36 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
 | `name.non-ascii` | 712 | 140 | github-archive 254, other 239, pypi 152 | git archive 312, GNU format 163, Python tarfile (pax) 122 | 2004–2026 | 0 | kbd@1.15 `kbd-1.15/doc/utf/♪♬`; gcc@15.2.0 `gcc-15.2.0/gcc/testsuite/go.test/test/fixedbugs/issue27836.d` |
-| `platform.case-collision` | 694 | 118 | other 468, github-release 105, github-archive 65 | git archive 418, GNU format 101, v7 86 | 1980–2026 | 1 | perl@5.003 `perl5-perl-5.003/configure`; perl@5.004_05 `perl5.004_05/Configure` |
-| `platform.windows-reserved-name` | 447 | 39 | other 323, github-release 79, github-archive 42 | git archive 282, GNU tar (pax) 73, GNU format 58 | 1994–2026 | 0 | perl@5.000 `perl5-perl-5.000/hints/aux.sh`; perl@5.003 `perl5-perl-5.003/hints/aux.sh` |
+| `platform.case-collision` | 696 | 118 | other 470, github-release 105, github-archive 65 | git archive 420, GNU format 101, v7 86 | 1980–2026 | 1 | perl@5.003 `perl5-perl-5.003/configure`; perl@5.004_05 `perl5.004_05/Configure` |
+| `platform.windows-reserved-name` | 449 | 39 | other 325, github-release 79, github-archive 42 | git archive 284, GNU tar (pax) 73, GNU format 58 | 1994–2026 | 0 | perl@5.000 `perl5-perl-5.000/hints/aux.sh`; perl@5.003 `perl5-perl-5.003/hints/aux.sh` |
 | `number.gid.no-digits` | 265 | 111 | pypi 202, other 46, github-release 16 | GNU format 191, ustar 53, posix-version-0000 19 | 1970–2026 | 0 | hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt`; ipv8_rust_tunnels@0.1.53 `ipv8_rust_tunnels-0.1.53/PKG-INFO` |
 | `number.uid.no-digits` | 265 | 111 | pypi 202, other 46, github-release 16 | GNU format 191, ustar 53, posix-version-0000 19 | 1970–2026 | 0 | hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt`; ipv8_rust_tunnels@0.1.53 `ipv8_rust_tunnels-0.1.53/PKG-INFO` |
-| `name.leading-dot-slash` | 191 | 76 | other 148, github-release 25, gnu 9 | GNU format 153, ustar 34, GNU tar (pax) 2 | 1970–2026 | 1 | curie@v1.0 `./LICENSE`; hdf5@1.10.11 `./hdf5-1.10.11/` |
+| `name.leading-dot-slash` | 192 | 76 | other 149, github-release 25, gnu 9 | GNU format 154, ustar 34, GNU tar (pax) 2 | 1970–2026 | 1 | curie@v1.0 `./LICENSE`; hdf5@1.10.11 `./hdf5-1.10.11/` |
 | `platform.windows-invalid-character` | 185 | 64 | other 98, github-archive 67, github-release 9 | git archive 108, GNU format 42, ustar 20 | 2003–2026 | 1 | xitomatl_0.0.0-akku.208.62a8243_repack@ `fmt/let-optionals*.larceny.sls`; courier-unicode@2.6.0 `courier-unicode-2.6.0/man/unicode::ucs_4.3` |
 | `tree.duplicate.dir-dir` | 153 | 27 | github-release 83, other 67, gnu 3 | git archive 101, ustar 46, GNU format 4 | 2017–2026 | 3 | besu@24.1.2 `besu-24.1.2/./`; lightweight-testing@0.1 `lightweight-testing-0.1/./` |
 | `number.uid.base256` | 148 | 74 | pypi 69, other 37, github-release 28 | GNU format 135, libarchive (pax) 13 | 2008–2026 | 0 | leo@2_v1.7.0 `leo2/`; Bytes-Random-Secure-Tiny@1.011 `Bytes-Random-Secure-Tiny-1.011/` |
@@ -198,15 +198,15 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 
 ## Fingerprints
 
-- magic (tarballs using each): posix 39558, gnu 17624, v7 3349, posix-version-0000 56, star 1
-- size (tarballs using each): dn 57437, ds 2229, sdn 667, sds 139, dsn 30
-- mode (tarballs using each): dn 58095, dsn 2202, ds 180, sdsn 127, sdn 8
-- checksum (tarballs using each): dns 44126, dn 15370, sdns 777, d 360, dsn 38, x 36, sdsn 20, ds 14, sdn 6, xdx 6, xd 3, sds 3
-- pax_header_name (tarballs using each): ././@PaxHeader 9876, */PaxHeaders/* 430, */PaxHeaders.N/* 416, H.paxheader 351, ./PaxHeaders/* 349, ./PaxHeaders.N/* 335, */PaxHeader/* 79, */PaxHeaders.N 54, * 46, PaxHeader/* 46, */PaxHeaders.N/ 45, */PaxHeaders 37
-- extended_sequence (tarballs using each): - 50760, x 11200, L 2017, KL 10, K 9
-- gnu_long_name (tarballs using each): ././@LongLink 2017
-- end (tarballs using each): padded-to-10240 49428, unpadded 11033
-- zero_blocks_after_end (tarballs using each): 0 14032, 9 2520, 17 2502, 11 2493, 7 2478, 6 2473, 3 2467, 16 2454, 18 2452, 12 2447, 4 2433, 15 2420
-- pax_keys (tarballs using each): mtime 10436, path 2831, atime 708, ctime 694, uid 106, gid 75, LIBARCHIVE.xattr.* 39, SCHILY.xattr.* 38, LIBARCHIVE.creationtime 19, SCHILY.dev 16, SCHILY.ino 16, SCHILY.nlink 16
-- pax_global_keys (tarballs using each): comment 13907
+- magic (tarballs using each): posix 39568, gnu 17628, v7 3349, posix-version-0000 56, star 1
+- size (tarballs using each): dn 57451, ds 2229, sdn 667, sds 139, dsn 30
+- mode (tarballs using each): dn 58109, dsn 2202, ds 180, sdsn 127, sdn 8
+- checksum (tarballs using each): dns 44136, dn 15374, sdns 777, d 360, dsn 38, x 36, sdsn 20, ds 14, sdn 6, xdx 6, xd 3, sds 3
+- pax_header_name (tarballs using each): ././@PaxHeader 9882, */PaxHeaders/* 430, */PaxHeaders.N/* 416, H.paxheader 351, ./PaxHeaders/* 349, ./PaxHeaders.N/* 335, */PaxHeader/* 79, */PaxHeaders.N 54, * 46, PaxHeader/* 46, */PaxHeaders.N/ 45, */PaxHeaders 37
+- extended_sequence (tarballs using each): - 50768, x 11206, L 2018, KL 10, K 9
+- gnu_long_name (tarballs using each): ././@LongLink 2018
+- end (tarballs using each): padded-to-10240 49442, unpadded 11033
+- zero_blocks_after_end (tarballs using each): 0 14032, 9 2520, 17 2504, 11 2494, 7 2478, 6 2473, 3 2468, 16 2454, 18 2453, 12 2448, 4 2434, 15 2421
+- pax_keys (tarballs using each): mtime 10442, path 2833, atime 708, ctime 694, uid 106, gid 75, LIBARCHIVE.xattr.* 39, SCHILY.xattr.* 38, LIBARCHIVE.creationtime 19, SCHILY.dev 16, SCHILY.ino 16, SCHILY.nlink 16
+- pax_global_keys (tarballs using each): comment 13910
 - compression layer: several streams 5, trailing zeros 2
