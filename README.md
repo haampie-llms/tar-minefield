@@ -44,7 +44,7 @@ What 20 implementations make of the 55 cases: a row per case, by level, and a co
 
 Reject what implementations extract differently, normalize names that are one path (`./a` is
 `a`), and accept what cannot change the extracted files. [The website](https://haampie-llms.github.io/tar-minefield/#policy) lists
-every case under the verdict that the policy gives it.
+the cases.
 
 ## Contents
 
