@@ -1,7 +1,7 @@
 """A NUL inside a pax `path`.
 
-The pax path is `a\0b`. C parsers end the name at the NUL and extract `a`; others keep the NUL,
-which no filesystem allows, and fail or replace it.
+The pax path is `a\0b`. C implementations end the name at the NUL and extract `a`; others keep the
+NUL, which no filesystem allows, and fail or replace it.
 
 Decision point: where a pax path ends.
 Seen in: no tarball of the scans.

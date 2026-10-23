@@ -11,7 +11,7 @@
 <h1><code>K01</code> kind-trailing-slash-file</h1>
 <p>A regular file whose name ends in a slash: a file, or a directory?</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>kind</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_kind_trailing_slash_file.py">the script</a>,
@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/n_kind_trailing_slash_file.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p>The header says typeflag <code>0</code>, a regular file, of size 0, but the name is <code>a/</code>. v7 tar had no typeflag for directories, and wrote them like this, so parsers that keep that convention extract a directory <code>a</code>; parsers that follow the typeflag extract an empty file <code>a</code>, or fail to create a file with a trailing slash.</p>
+<p>The header says typeflag <code>0</code>, a regular file, of size 0, but the name is <code>a/</code>. v7 tar had no typeflag for directories, and wrote them like this, so implementations that keep that convention extract a directory <code>a</code>; implementations that follow the typeflag extract an empty file <code>a</code>, or fail to create a file with a trailing slash.</p>
 <p><strong>Decision point:</strong> whether the typeflag or the trailing slash decides the kind.</p>
 <p><strong>Seen in:</strong> v7 archives only, such as sendmail 8.18.2, tcp_wrappers 7.6 and unclutter 8.</p>
 <h2>The archive</h2>
@@ -32,9 +32,9 @@
 A regular file whose name ends in a slash: a file, or a directory?
 
 The header says typeflag `0`, a regular file, of size 0, but the name is `a/`. v7 tar had no
-typeflag for directories, and wrote them like this, so parsers that keep that convention extract
-a directory `a`; parsers that follow the typeflag extract an empty file `a`, or fail to create a
-file with a trailing slash.
+typeflag for directories, and wrote them like this, so implementations that keep that convention
+extract a directory `a`; implementations that follow the typeflag extract an empty file `a`, or fail
+to create a file with a trailing slash.
 
 Decision point: whether the typeflag or the trailing slash decides the kind.
 Seen in: v7 archives only, such as sendmail 8.18.2, tcp_wrappers 7.6 and unclutter 8.
@@ -170,8 +170,8 @@ Seen in: v7 archives only, such as sendmail 8.18.2, tcp_wrappers 7.6 and unclutt
 <tr><td>spack</td><td class=n>37554</td><td class=n>2 (0.01%)</td><td class=n>2</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>6 (0.01%)</td><td class=n>6</td></tr></table>
 <p>For example: tcp_wrappers_7.6, sendmail.8.18.2, unclutter@8, ztools@731, screen@3.7.1, cdd@0.61a.</p>
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>⚠️ accepts</td><td>tree A: <code>a/</code></td></tr>

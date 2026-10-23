@@ -11,7 +11,7 @@
 <h1><code>S12</code> tree-under-file</h1>
 <p>A member under a file.</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_tree_under_file.py">the script</a>,
@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/n_tree_under_file.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p><code>a</code> is a file, then <code>a/b</code> is a file in it. A parser may fail, replace the file <code>a</code> with a directory, or skip <code>a/b</code>.</p>
+<p><code>a</code> is a file, then <code>a/b</code> is a file in it. An implementation may fail, replace the file <code>a</code> with a directory, or skip <code>a/b</code>.</p>
 <p><strong>Decision point:</strong> whether a member under a file replaces it.</p>
 <p><strong>Seen in:</strong> sendmail 8.18.2 and unclutter 8, where the file is a v7 directory named <code>a/</code>.</p>
 <h2>The archive</h2>
@@ -31,7 +31,7 @@
 
 A member under a file.
 
-`a` is a file, then `a/b` is a file in it. A parser may fail, replace the file `a` with a
+`a` is a file, then `a/b` is a file in it. An implementation may fail, replace the file `a` with a
 directory, or skip `a/b`.
 
 Decision point: whether a member under a file replaces it.
@@ -288,8 +288,8 @@ Seen in: sendmail 8.18.2 and unclutter 8, where the file is a v7 directory named
 <tr><td>spack</td><td class=n>37554</td><td class=n>2 (0.01%)</td><td class=n>2</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>5 (0.01%)</td><td class=n>5</td></tr></table>
 <p>For example: tcp_wrappers_7.6, sendmail.8.18.2, unclutter@8, screen@3.7.1, cdd@0.61a.</p>
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>error: tar: a/b: Cannot open: Not a directory tar: Exiting with failure status due to previous errors</td></tr>

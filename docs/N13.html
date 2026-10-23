@@ -11,7 +11,7 @@
 <h1><code>N13</code> name-backslash</h1>
 <p>A backslash in a name: a character on Unix, a separator on Windows.</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_name_backslash.py">the script</a>,
@@ -203,8 +203,8 @@ Seen in: texi2html 5.0 and gstreamer-docs 1.28.1.
 <tr><td>spack</td><td class=n>37554</td><td class=n>3 (0.01%)</td><td class=n>3</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>5 (0.01%)</td><td class=n>5</td></tr></table>
 <p>For example: texi2html@5.0, gstreamer-docs@1.28.1, systemd@255, systemd@256.7.</p>
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>⚠️ accepts</td><td>tree A: <code>a\b</code> (21 B, 15acfc39)</td></tr>

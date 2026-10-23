@@ -2,8 +2,8 @@
 
 **A test suite for tar parsers that refuse to guess, and the data that shows refusing is affordable.**
 
-A sha256 pins the bytes of a tarball, not the tree it extracts to. Tar leaves parsers room to
-disagree on that tree: where a member's data ends, which field gives its name, whether `a/` is a
+A sha256 pins the bytes of a tarball, not the tree it extracts to. Tar leaves implementations room
+to disagree on that tree: where a member's data ends, which field gives its name, whether `a/` is a
 file, which of two copies wins. So a reviewer, scanner or SBOM tool can see one tree while the
 installer extracts another: a *parser differential*, as in CVE-2025-62518 (tokio-tar),
 GHSA-3pv8-6f4r-ffg2 (tar-rs) and CVE-2026-53655 (node-tar). A **strict parser** closes that gap
@@ -25,27 +25,27 @@ its name and its verdicts.
 
 | term | meaning |
 |---|---|
-| **parser** | A program or library that turns a tar archive into a tree, by extracting it or by listing its members: GNU tar, Python `tarfile`, Go `archive/tar`, … |
+| **implementation** | A program or library that turns a tar archive into a tree, by extracting it or by listing its members: GNU tar, Python `tarfile`, Go `archive/tar`, … |
 | **member** | One entry of an archive: a header, its extended headers, and its data. |
-| **tree** | What a parser extracts: paths, each with a kind (file, directory, symlink, hardlink), the contents of a file or the target of a link, and whether a file is executable. Nothing else, such as mtimes and owners. |
-| **ambiguity** | Something in an archive from which two parsers, each following a defensible reading of POSIX, GNU tar or practice, extract different trees. |
+| **tree** | What an implementation extracts: paths, each with a kind (file, directory, symlink, hardlink), the contents of a file or the target of a link, and whether a file is executable. Nothing else, such as mtimes and owners. |
+| **ambiguity** | Something in an archive from which two implementations, each following a defensible reading of POSIX, GNU tar or practice, extract different trees. |
 | **level** | The class of an ambiguity, from most to least damage it allows: **F** framing (where a member's data ends), **N** names, **K** kinds, **S** order and state (duplicates and links); and **G** global pax headers. |
-| **strict parser** | A parser that rejects an archive with an ambiguity, rather than extracting one of its trees. |
+| **strict parser** | An implementation that rejects an archive with an ambiguity, rather than extracting one of its trees. |
 | **feature** | What the scanner reports of an archive, such as `name.leading-dot-slash`. |
 | **criterion** | A feature that is an ambiguity, for which a strict parser may reject an archive. [METHOD.md](METHOD.md#initial-catalogue) lists them. |
 | **policy** | The criteria a strict parser rejects: either *every criterion*, or the [default policy](#the-default-policy). |
 | **case** | An archive of the corpus, with a code (its level and a number, such as `F15`), a verdict, and for `y_` and `i_` a manifest. |
-| **verdict** | `n_`: a strict parser must reject it. `y_`: every parser must accept it. `i_`: a strict parser may reject it, and the default policy accepts it. |
-| **manifest** | The tree a parser must extract from a `y_` or `i_` case, if it accepts it. |
-| **outcome** | What a parser makes of a case: ✅ as its verdict says, ⚠️ accepts an `n_` case, ⛔ rejects an `i_` case, ❌ rejects a `y_` case or extracts another tree than the manifest, 💥 writes outside its destination. |
+| **verdict** | `n_`: a strict parser must reject it. `y_`: every implementation must accept it. `i_`: a strict parser may reject it, and the default policy accepts it. |
+| **manifest** | The tree an implementation must extract from a `y_` or `i_` case, if it accepts it. |
+| **outcome** | What an implementation makes of a case: ✅ as its verdict says, ⚠️ accepts an `n_` case, ⛔ rejects an `i_` case, ❌ rejects a `y_` case or extracts another tree than the manifest, 💥 writes outside its destination. |
 | **tarball** | An archive released by a project and pinned by a package manager, as opposed to a case. |
 
-## Parsers disagree
+## Implementations disagree
 
 <!-- begin matrix.py -->
-**Each of 20 parsers accepts between 20 and 35 of the 39 `n_` cases, and they extract different trees from 29 of them.** 2 cases make a parser write outside its destination. Rows are the 55 cases, by level; columns are the parsers and the two policies of `scanner/strict.py`, with their outcomes of all cases at the top. [The site](https://haampie-llms.github.io/tar-minefield/) has a page per case: its blocks, a hex dump, how many scanned tarballs have it, and what every parser makes of it. [corpus/MATRIX.md](corpus/MATRIX.md) has the matrix as a table.
+**Each of 20 implementations accepts between 20 and 35 of the 39 `n_` cases, and they extract different trees from 29 of them.** 2 cases make an implementation write outside its destination. Rows are the 55 cases, by level; columns are the implementations and the two policies of `scanner/strict.py`, with their outcomes of all cases at the top. [The site](https://haampie-llms.github.io/tar-minefield/) has a page per case: its blocks, a hex dump, how many scanned tarballs have it, and what every implementation makes of it. [corpus/MATRIX.md](corpus/MATRIX.md) has the matrix as a table.
 
-![What every parser makes of every case of the corpus. Outcomes of all cases: strict.py: every criterion: ✅47 ⛔8; strict.py: default policy: ✅55; GNU tar: ✅23 ⚠️32; bsdtar: ✅26 ⚠️29; live-bootstrap untar: ✅17 ⚠️30 ❌6 💥2; live-bootstrap untar, --non-strict: ✅12 ⚠️35 ❌6 💥2; BusyBox tar: ✅23 ⚠️32; 7-Zip: ✅22 ⚠️31 ⛔1 ❌1; Python tarfile, filter=fully_trusted: ✅25 ⚠️28 💥2; Python tarfile, filter=tar: ✅26 ⚠️29; Python tarfile, filter=data: ✅26 ⚠️28 ⛔1; Go archive/tar: ✅22 ⚠️33; Go archive/tar, tarinsecurepath=0: ✅25 ⚠️30; Rust tar: ✅27 ⚠️28; Rust astral-tokio-tar: ✅27 ⚠️27 ⛔1; Haskell tar: ✅30 ⚠️20 ⛔5; Java Commons Compress: ✅24 ⚠️30 ❌1; RubyGems: ✅19 ⚠️30 ⛔2 ❌4; Perl Archive::Tar: ✅26 ⚠️27 ⛔1 ❌1; Julia Tar.jl: ✅32 ⚠️23; node-tar: ✅19 ⚠️35 ❌1; node-tar, strict: ✅27 ⚠️27 ⛔1](corpus/matrix.svg)
+![What every implementation makes of every case of the corpus. Outcomes of all cases: strict.py: every criterion: ✅47 ⛔8; strict.py: default policy: ✅55; GNU tar: ✅23 ⚠️32; bsdtar: ✅26 ⚠️29; live-bootstrap untar: ✅17 ⚠️30 ❌6 💥2; live-bootstrap untar, --non-strict: ✅12 ⚠️35 ❌6 💥2; BusyBox tar: ✅23 ⚠️32; 7-Zip: ✅22 ⚠️31 ⛔1 ❌1; Python tarfile, filter=fully_trusted: ✅25 ⚠️28 💥2; Python tarfile, filter=tar: ✅26 ⚠️29; Python tarfile, filter=data: ✅26 ⚠️28 ⛔1; Go archive/tar: ✅22 ⚠️33; Go archive/tar, tarinsecurepath=0: ✅25 ⚠️30; Rust tar: ✅27 ⚠️28; Rust astral-tokio-tar: ✅27 ⚠️27 ⛔1; Haskell tar: ✅30 ⚠️20 ⛔5; Java Commons Compress: ✅24 ⚠️30 ❌1; RubyGems: ✅19 ⚠️30 ⛔2 ❌4; Perl Archive::Tar: ✅26 ⚠️27 ⛔1 ❌1; Julia Tar.jl: ✅32 ⚠️23; node-tar: ✅19 ⚠️35 ❌1; node-tar, strict: ✅27 ⚠️27 ⛔1](corpus/matrix.svg)
 
 Generated by `corpus/matrix.py` from `corpus/matrix.json`.
 <!-- end matrix.py -->
@@ -68,10 +68,10 @@ Tarballs: those downloaded and in a compression the scanner reads. Latest: the l
 
 ## The default policy
 
-Strict where parsers can extract different trees, lenient where they cannot:
+Strict where implementations can extract different trees, lenient where they cannot:
 
-- **Reject** what parsers extract differently. F: a pax size on a member without data, or one that
-  disagrees with the header; members after a zero block or after the end of the archive.
+- **Reject** what implementations extract differently. F: a pax size on a member without data, or
+  one that disagrees with the header; members after a zero block or after the end of the archive.
   N: a name from several sources; absolute names, `..`, `\`, control characters, names that are
   not UTF-8. K: a file named `a/`, a link target on a file. S: a file twice, even as identical
   copies (in fish 4.7.1 and logstash 8.15.2 they differ); a hardlink to itself or to a symlink; a
@@ -88,13 +88,13 @@ rejected: a package that needs such a tarball can allow it by its sha256. The po
 in [scanner/strict.py](scanner/strict.py), argued in [METHOD.md](METHOD.md#the-default-policy),
 and every rule of it has a case.
 
-## Test a parser
+## Test an implementation
 
 Extract every `corpus/archives/*.tar` in a throwaway directory, as some cases escape lenient
-parsers. A strict parser rejects every `n_` case, and extracts from every `y_` and `i_` case the
-manifest in the `.json` next to it, or rejects the `i_` case. To add a parser to the matrix, add
-it to `implementations()` in [corpus/matrix.py](corpus/matrix.py); [corpus/](corpus) has the
-details.
+implementations. A strict parser rejects every `n_` case, and extracts from every `y_` and `i_` case
+the manifest in the `.json` next to it, or rejects the `i_` case. To add an implementation to the
+matrix, add it to `implementations()` in [corpus/matrix.py](corpus/matrix.py); [corpus/](corpus) has
+the details.
 
 ## Contents
 

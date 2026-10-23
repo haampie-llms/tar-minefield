@@ -37,11 +37,13 @@ STRICT = [
     ("scan.error", "framing", "the scanner could not read past a header"),
     ("checksum.*", "framing", "a checksum that matches only one way of summing"),
     # Number fields that shape the tree are one criterion per problem: see criterion()
-    ("number.[*].*", "framing", "a size, mode or checksum written in a way that parsers differ on"),
-    ("number.size.*", "framing", "a size written in a way that parsers differ on"),
-    ("number.chksum.*", "framing", "a checksum field written in a way that parsers differ on"),
+    ("number.[*].*", "framing",
+     "a size, mode or checksum written in a way that implementations differ on"),
+    ("number.size.*", "framing", "a size written in a way that implementations differ on"),
+    ("number.chksum.*", "framing",
+     "a checksum field written in a way that implementations differ on"),
     ("magic.posix-with-odd-version", "framing", "POSIX magic with a version other than `00`"),
-    ("magic.*", "framing", "a header that parsers may not recognize as one"),
+    ("magic.*", "framing", "a header that implementations may not recognize as one"),
     ("type.unknown-*", "framing", "an unknown typeflag: data or no data"),
     ("type.gnu-sparse", "framing", "GNU's old sparse files"),
     ("type.contiguous", "framing", "contiguous files (7)"),
@@ -50,7 +52,8 @@ STRICT = [
     ("pax.size-*", "framing", "a pax size that disagrees with the header"),
     ("extended.pax-size-before-gnu-long", "framing", "a pax size that a GNU long name may take"),
     ("extended.without-member", "framing", "an extended header without a member"),
-    ("pax.newline-in-value.*", "framing", "a newline in a pax value, where parsers split lines"),
+    ("pax.newline-in-value.*", "framing",
+     "a newline in a pax value, where implementations split lines"),
     ("end.missing", "framing", "no end-of-archive marker"),
     ("end.lone-zero-block", "framing", "an end-of-archive marker of one zero block, not two"),
     ("end.data-after", "framing", "data other than zeros after the end-of-archive marker"),
@@ -58,7 +61,7 @@ STRICT = [
     ("end.zero-block-before-member", "framing", "a zero block, then more members"),
     ("end.*", "framing", "the end of the archive"),
     ("archive.empty", "framing", "no members at all"),
-    ("name.leading-dot-slash", "name", "`./a`, which some parsers make `a`"),
+    ("name.leading-dot-slash", "name", "`./a`, which some implementations make `a`"),
     ("name.dot", "name", "a member named `.` or `./`"),
     ("name.dot-component", "name", "`a/./b`"),
     ("name.double-slash", "name", "`a//b`"),
@@ -72,7 +75,7 @@ STRICT = [
     ("name.control-character", "name", "a control character in a name"),
     ("name.not-utf8", "name", "a name that is not UTF-8"),
     ("name.bytes-after-nul", "name", "bytes after the NUL that ends a name"),
-    ("name.*", "name", "a name that parsers may normalize differently"),
+    ("name.*", "name", "a name that implementations may normalize differently"),
     ("extended.*", "name", "several sources for one name or link target"),
     ("pax.hdrcharset", "name", "names that are not UTF-8 by declaration"),
     ("pax.path-not-utf8", "name", "a pax path that is not UTF-8"),
@@ -87,10 +90,10 @@ STRICT = [
     ("type.solaris-extended", "name", "Solaris X headers"),
     ("symlink.absolute", "name", "a symlink to an absolute path"),
     ("symlink.escapes", "name", "a symlink that points out of the archive"),
-    ("symlink.*", "name", "a symlink target that parsers may handle differently"),
+    ("symlink.*", "name", "a symlink target that implementations may handle differently"),
     ("pax.SCHILY.filetype", "kind", "a pax key that changes the kind"),
     ("linkname.on-*", "kind", "a link target on a member that is not a link"),
-    ("number.mode.*", "kind", "a mode written in a way that parsers differ on"),
+    ("number.mode.*", "kind", "a mode written in a way that implementations differ on"),
     ("tree.duplicate.file-file", "order and state", "the same file twice"),
     ("tree.duplicate.*", "order and state", "one path as two members"),
     ("tree.under-*", "order and state", "a member under a file or a symlink"),
@@ -111,7 +114,8 @@ ALLOWED = [
     ("name.dir-without-trailing-slash", "a directory without a trailing slash: the typeflag says"),
     ("ustar.prefix", "the ustar prefix field (`y_`)"),
     ("number.size.base256", "base-256 sizes of files over 8 GiB (`y_`)"),
-    ("number.*.leading-space", "octal padded with spaces, not zeros, which parsers read alike"),
+    ("number.*.leading-space",
+     "octal padded with spaces, not zeros, which implementations read alike"),
     ("number.uid.*", "outside the tree"),
     ("number.gid.*", "outside the tree"),
     ("number.mtime.*", "outside the tree"),
@@ -128,10 +132,10 @@ ALLOWED = [
 ]
 
 # The default policy: the strict criteria that it lets through, and how; it rejects the others.
-# A parser normalizes these names to the path they refer to, which is what tarscan.py compares to
-# find duplicates, so normalizing hides none. The rest it accepts as they are, some only if
-# condition() holds. Tarballs are pinned by their sha256, so one that ends early is caught before
-# it is parsed.
+# A strict parser normalizes these names to the path they refer to, which is what tarscan.py
+# compares to find duplicates, so normalizing hides none. The rest it accepts as they are, some
+# only if condition() holds. Tarballs are pinned by their sha256, so one that ends early is
+# caught before it is parsed.
 DEFAULT = [
     ("name.leading-dot-slash", "normalize", "`./a` is `a`"),
     ("name.dot", "normalize", "`.` is the root of the tree"),
@@ -173,7 +177,7 @@ def assessed(r):
 
 def criterion(feature):
     """The criterion of a strict feature: a problem of number fields that shape the tree is one
-    criterion for all of them, as a parser has one rule for it."""
+    criterion for all of them, as a strict parser has one rule for it."""
     return re.sub(r"^number\.(size|mode|chksum)\.", "number.*.", feature)
 
 

@@ -11,7 +11,7 @@
 <h1><code>S04</code> hardlink-to-itself</h1>
 <p>A hardlink to itself.</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_hardlink_to_itself.py">the script</a>,
@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/n_hardlink_to_itself.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p><code>a</code> is a file, then a hardlink <code>a</code> to <code>a</code>. A parser that removes <code>a</code> before linking has nothing left to link to; one that sees the link is to the same path keeps the file.</p>
+<p><code>a</code> is a file, then a hardlink <code>a</code> to <code>a</code>. An implementation that removes <code>a</code> before linking has nothing left to link to; one that sees the link is to the same path keeps the file.</p>
 <p><strong>Decision point:</strong> what a link to itself does to the file.</p>
 <p><strong>Seen in:</strong> xscreensaver 6.12 and atari++ 1.85.</p>
 <h2>The archive</h2>
@@ -31,8 +31,8 @@
 
 A hardlink to itself.
 
-`a` is a file, then a hardlink `a` to `a`. A parser that removes `a` before linking has nothing
-left to link to; one that sees the link is to the same path keeps the file.
+`a` is a file, then a hardlink `a` to `a`. An implementation that removes `a` before linking has
+nothing left to link to; one that sees the link is to the same path keeps the file.
 
 Decision point: what a link to itself does to the file.
 Seen in: xscreensaver 6.12 and atari++ 1.85.
@@ -253,8 +253,8 @@ Seen in: xscreensaver 6.12 and atari++ 1.85.
 <tr><td>spack</td><td class=n>37554</td><td class=n>24 (0.06%)</td><td class=n>24</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>27 (0.04%)</td><td class=n>27</td></tr></table>
 <p>For example: xscreensaver@6.12, ghc@7.8.4-x86_64-unknown-linux-deb7, atari++_1.85, cudnn@8.0.3.33-10.2, cudnn@8.0.0.180-11.0, cudnn@8.0.3.33-10.1, antimony@2.2, antimony@2.6.</p>
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>⚠️ accepts</td><td>tree A: <code>a</code> (2 B, 87428fc5)</td></tr>

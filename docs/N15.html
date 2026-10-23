@@ -11,7 +11,7 @@
 <h1><code>N15</code> name-control-character</h1>
 <p>A control character in a name, here a newline.</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_name_control_character.py">the script</a>,
@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/n_name_control_character.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p><code>a\nb</code> is a valid name on Unix, but listings, manifests and scripts that read names line by line see two names. Parsers that escape or reject control characters disagree with those that write them as they are.</p>
+<p><code>a\nb</code> is a valid name on Unix, but listings, manifests and scripts that read names line by line see two names. Implementations that escape or reject control characters disagree with those that write them as they are.</p>
 <p><strong>Decision point:</strong> whether a name may contain control characters.</p>
 <p><strong>Seen in:</strong> cdrtools 3.02a09, wgrib2 3.6.0 and apktool 2.6.0.</p>
 <h2>The archive</h2>
@@ -33,8 +33,8 @@ A control character in a name, here a newline.
 
 `a
 b` is a valid name on Unix, but listings, manifests and scripts that read names line by line
-see two names. Parsers that escape or reject control characters disagree with those that write
-them as they are.
+see two names. Implementations that escape or reject control characters disagree with those that
+write them as they are.
 
 Decision point: whether a name may contain control characters.
 Seen in: cdrtools 3.02a09, wgrib2 3.6.0 and apktool 2.6.0.
@@ -205,8 +205,8 @@ Seen in: cdrtools 3.02a09, wgrib2 3.6.0 and apktool 2.6.0.
 <tr><td>spack</td><td class=n>37554</td><td class=n>8 (0.02%)</td><td class=n>8</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>9 (0.01%)</td><td class=n>9</td></tr></table>
 <p>For example: cdrtools@3.02a09, wgrib2@3.6.0, apktool@2.6.0, wgrib2@3.7.0, apktool@2.7.0, wgrib2@3.5.0, wgrib2@3.8.0, apktool@2.6.1.</p>
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>⚠️ accepts</td><td>tree A: <code>a\x0ab</code> (21 B, 93d2f841)</td></tr>

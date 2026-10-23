@@ -1,6 +1,6 @@
 """A member under a file.
 
-`a` is a file, then `a/b` is a file in it. A parser may fail, replace the file `a` with a
+`a` is a file, then `a/b` is a file in it. An implementation may fail, replace the file `a` with a
 directory, or skip `a/b`.
 
 Decision point: whether a member under a file replaces it.

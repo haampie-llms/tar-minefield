@@ -5,8 +5,8 @@
     python -I corpus/generate.py --scan     # also check what scanner/tarscan.py makes of them
 
 For each case `<case>.py`, archives/ has `<case>.tar`, the dump of its blocks `<case>.txt`, a
-map of them `<case>.svg`, and `<case>.json`: its verdict, the features of tarscan.py that it is about, and for the cases that a
-parser accepts, `y_` and `i_`, the tree it must extract.
+map of them `<case>.svg`, and `<case>.json`: its verdict, the features of tarscan.py that it is
+about, and for the cases that an implementation accepts, `y_` and `i_`, the tree it must extract.
 
 --scan checks that tarscan.py reports the features of every case, and that the default policy
 of scanner/strict.py rejects the `n_` cases, accepts the `i_` cases only by its rules, and

@@ -1,7 +1,7 @@
 {
  "code": "F15",
  "verdict": "n",
- "description": "A pax `size` on a directory, which hides a header from the parsers that honor it.",
+ "description": "A pax `size` on a directory, which hides a header from the implementations that honor it.",
  "features": [
   "pax.size-on-dir"
  ]

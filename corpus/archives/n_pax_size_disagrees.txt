@@ -1,10 +1,10 @@
 F14 n_pax_size_disagrees: rejected
 
-A pax `size` that disagrees with the header's size, which hides a header from one parser.
+A pax `size` that disagrees with the header's size, which hides a header from one implementation.
 
-The header of `a` says size 512, and its pax extended header says `size=0`. A parser that takes
-the pax size reads the next block as the header of another file, `smuggled`; a parser that takes
-the header's size, or does not know pax, reads that block as the data of `a`.
+The header of `a` says size 512, and its pax extended header says `size=0`. An implementation that
+takes the pax size reads the next block as the header of another file, `smuggled`; an implementation
+that takes the header's size, or does not know pax, reads that block as the data of `a`.
 
 Decision point: which of two sizes frames the member.
 Seen in: no tarball of the scans.
@@ -48,7 +48,7 @@ Seen in: no tarball of the scans.
           devminor [337,345)  "0000000" + NUL  0
           prefix   [345,500)  155 NUL
           pad      [500,512)  12 NUL
-0x000600  header: regular file, the data of a, to a parser that takes the header's size
+0x000600  header: regular file, the data of a, to an implementation that takes the header's size
           name     [  0,100)  "smuggled" + 92 NUL
           mode     [100,108)  "0000644" + NUL  644 (octal)
           uid      [108,116)  "0000000" + NUL  0

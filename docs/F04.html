@@ -127,7 +127,7 @@ Seen in: SDL2_image 2.8.8, ruby 4.0.5 and fastcap 2.0-18Sep92.
 000003f0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
 </pre>
 </details>
-<p>The tree that a parser must extract: <code>a</code> (2 B, 87428fc5).</p>
+<p>The tree that an implementation must extract: <code>a</code> (2 B, 87428fc5).</p>
 <h2>In real tarballs</h2>
 <p>Tarballs of the scans with <code>end.missing</code>. Where there are none, the share is the 95% upper bound of the rate, by the rule of three.</p>
 <table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>ecosystem</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
@@ -137,8 +137,8 @@ Seen in: SDL2_image 2.8.8, ruby 4.0.5 and fastcap 2.0-18Sep92.
 <tr><td>spack</td><td class=n>37554</td><td class=n>12 (0.03%)</td><td class=n>0</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>22 (0.04%)</td><td class=n>0</td></tr></table>
 <p>For example: SDL2_image@2.8.8, ruby@4.0.5, fastcap@2.0-18Sep92, ruby@3.3.12, SDL3_image@3.2.4, ruby@3.4.7, SDL2_ttf@2.24.0, SDL2_image@2.8.12.</p>
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>⛔ rejects</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>

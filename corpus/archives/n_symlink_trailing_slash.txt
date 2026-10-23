@@ -3,7 +3,7 @@ K03 n_symlink_trailing_slash: rejected
 A symlink whose name ends in a slash.
 
 `link/` is a symlink to `target`. With the slash, the name refers to what the link points to, so
-a parser may create the link `link`, write through it, or fail.
+an implementation may create the link `link`, write through it, or fail.
 
 Decision point: what a trailing slash on a link means.
 Seen in: no tarball of the scans.

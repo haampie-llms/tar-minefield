@@ -11,7 +11,7 @@
 <h1><code>S05</code> hardlink-to-later-member</h1>
 <p>A hardlink to a member that comes later.</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_hardlink_to_later_member.py">the script</a>,
@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/n_hardlink_to_later_member.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p><code>h</code> is a hardlink to <code>f</code>, which comes after it. A parser that extracts in order has nothing to link to; one that reads the whole archive first links <code>h</code> to <code>f</code>.</p>
+<p><code>h</code> is a hardlink to <code>f</code>, which comes after it. An implementation that extracts in order has nothing to link to; one that reads the whole archive first links <code>h</code> to <code>f</code>.</p>
 <p><strong>Decision point:</strong> whether a hardlink may name a later member.</p>
 <p><strong>Seen in:</strong> no tarball of the scans.</p>
 <h2>The archive</h2>
@@ -31,8 +31,8 @@
 
 A hardlink to a member that comes later.
 
-`h` is a hardlink to `f`, which comes after it. A parser that extracts in order has nothing to
-link to; one that reads the whole archive first links `h` to `f`.
+`h` is a hardlink to `f`, which comes after it. An implementation that extracts in order has nothing
+to link to; one that reads the whole archive first links `h` to `f`.
 
 Decision point: whether a hardlink may name a later member.
 Seen in: no tarball of the scans.
@@ -253,8 +253,8 @@ Seen in: no tarball of the scans.
 <tr><td>spack</td><td class=n>37554</td><td class=n>0 (&lt;0.008%)</td><td class=n>0</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>0 (&lt;0.0048%)</td><td class=n>0</td></tr></table>
 
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>error: tar: h: Cannot hard link to ‘f’: No such file or directory tar: Exiting with failure status due to previous errors</td></tr>

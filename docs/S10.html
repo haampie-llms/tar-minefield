@@ -11,7 +11,7 @@
 <h1><code>S10</code> tree-symlink-then-file</h1>
 <p>A symlink, then a file of the same name: replace the link, or write through it?</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_tree_symlink_then_file.py">the script</a>,
@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/n_tree_symlink_then_file.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p><code>a</code> is a symlink to <code>target</code>, then a file <code>a</code>. A parser that replaces the link writes the file <code>a</code>; one that opens <code>a</code> for writing follows the link and writes <code>target</code> instead.</p>
+<p><code>a</code> is a symlink to <code>target</code>, then a file <code>a</code>. An implementation that replaces the link writes the file <code>a</code>; one that opens <code>a</code> for writing follows the link and writes <code>target</code> instead.</p>
 <p><strong>Decision point:</strong> whether writing a member follows a symlink in its place.</p>
 <p><strong>Seen in:</strong> no tarball of the scans.</p>
 <h2>The archive</h2>
@@ -31,8 +31,8 @@
 
 A symlink, then a file of the same name: replace the link, or write through it?
 
-`a` is a symlink to `target`, then a file `a`. A parser that replaces the link writes the file
-`a`; one that opens `a` for writing follows the link and writes `target` instead.
+`a` is a symlink to `target`, then a file `a`. An implementation that replaces the link writes the
+file `a`; one that opens `a` for writing follows the link and writes `target` instead.
 
 Decision point: whether writing a member follows a symlink in its place.
 Seen in: no tarball of the scans.
@@ -253,8 +253,8 @@ Seen in: no tarball of the scans.
 <tr><td>spack</td><td class=n>37554</td><td class=n>0 (&lt;0.008%)</td><td class=n>0</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>0 (&lt;0.0048%)</td><td class=n>0</td></tr></table>
 
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>⚠️ accepts</td><td>tree A: <code>a</code> (28 B, d5a04bbb)</td></tr>

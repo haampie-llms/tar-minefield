@@ -11,7 +11,7 @@
 <h1><code>S01</code> tree-dir-after-contents</h1>
 <p>A directory after its contents.</p>
 <dl>
-<dt>Verdict</dt><dd>accepted: every parser must extract its tree</dd>
+<dt>Verdict</dt><dd>accepted: every implementation must extract its tree</dd>
 <dt>Level</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>accepts it, as it allows <code>tree.dir-after-contents</code>: directories after their contents (<code>y_</code>)</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/y_tree_dir_after_contents.py">the script</a>,
@@ -238,7 +238,7 @@ Seen in: hundreds of tarballs: see `tree.dir-after-contents` in data/STRICT.md.
 000009f0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
 </pre>
 </details>
-<p>The tree that a parser must extract: <code>d/</code>, <code>d/a</code> (2 B, 87428fc5).</p>
+<p>The tree that an implementation must extract: <code>d/</code>, <code>d/a</code> (2 B, 87428fc5).</p>
 <h2>In real tarballs</h2>
 <p>Tarballs of the scans with <code>tree.dir-after-contents</code>. Where there are none, the share is the 95% upper bound of the rate, by the rule of three.</p>
 <table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>ecosystem</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
@@ -248,8 +248,8 @@ Seen in: hundreds of tarballs: see `tree.dir-after-contents` in data/STRICT.md.
 <tr><td>spack</td><td class=n>37554</td><td class=n>55 (0.15%)</td><td class=n>0</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>858 (1.37%)</td><td class=n>0</td></tr></table>
 <p>For example: network-control@0.1.7, shelly@1.12.1.1, atomic-write@0.2.1.1, these@1.2.1, hslua-objectorientation@2.3.1, http-media@0.8.1.1, pqueue@1.5.0.0, uri-bytestring@0.4.0.1.</p>
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>

@@ -1,7 +1,7 @@
 """A name that is not UTF-8.
 
-`caf\xe9` is Latin-1. A parser may write the bytes as they are, decode them as Latin-1 and write
-`café` in UTF-8, replace the byte, or fail: different names on disk.
+`caf\xe9` is Latin-1. An implementation may write the bytes as they are, decode them as Latin-1 and
+write `café` in UTF-8, replace the byte, or fail: different names on disk.
 
 Decision point: how a name that is not UTF-8 is decoded.
 Seen in: aspell-is 0.51.1-0 and aspell-nb 0.50.1-0.

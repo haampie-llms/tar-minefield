@@ -3,8 +3,8 @@ F06 n_checksum_signed: rejected
 A checksum that only matches as the signed sum of the header.
 
 POSIX sums the bytes of a header as unsigned numbers; some old tars summed them as signed, and
-parsers still accept either. With a byte over 127 in the header, here in `uname`, the two sums
-differ, so a parser that accepts only the unsigned one rejects the header.
+implementations still accept either. With a byte over 127 in the header, here in `uname`, the two
+sums differ, so an implementation that accepts only the unsigned one rejects the header.
 
 Decision point: whether a signed checksum makes a header valid.
 Seen in: no tarball of the scans.

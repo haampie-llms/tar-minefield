@@ -9,9 +9,9 @@
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F12.html">F12 number-size-gap</a> · next: <a href="F14.html">F14 pax-size-disagrees</a></nav>
 <h1><code>F13</code> pax-newline-in-path</h1>
-<p>A newline in a pax <code>path</code>, where parsers that split records on lines see another record.</p>
+<p>A newline in a pax <code>path</code>, where implementations that split records on lines see another record.</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_pax_newline_in_path.py">the script</a>,
@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/n_pax_newline_in_path.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p>pax records are delimited by their length, so a value may hold a newline. A parser that splits the extended header on newlines instead sees the record end at it, and the rest as a record of its own: here <code>path=evil</code>. The path is <code>good\n1 path=evil</code> to one parser, <code>good</code> or <code>evil</code> to others.</p>
+<p>pax records are delimited by their length, so a value may hold a newline. An implementation that splits the extended header on newlines instead sees the record end at it, and the rest as a record of its own: here <code>path=evil</code>. The path is <code>good\n1 path=evil</code> to one implementation, <code>good</code> or <code>evil</code> to others.</p>
 <p><strong>Decision point:</strong> whether a pax record is delimited by its length or by a newline.</p>
 <p><strong>Seen in:</strong> no tarball of the scans. Newlines in pax values are only in xattrs, such as Minion 10.31, which the default policy accepts as xattrs are not extracted.</p>
 <h2>The archive</h2>
@@ -29,13 +29,13 @@
 <details><summary>Every block, as text</summary>
 <pre>F13 n_pax_newline_in_path: rejected
 
-A newline in a pax `path`, where parsers that split records on lines see another record.
+A newline in a pax `path`, where implementations that split records on lines see another record.
 
-pax records are delimited by their length, so a value may hold a newline. A parser that splits
-the extended header on newlines instead sees the record end at it, and the rest as a record of
-its own: here `path=evil`. The path is `good
-1 path=evil` to one parser, `good` or `evil` to
-others.
+pax records are delimited by their length, so a value may hold a newline. An implementation that
+splits the extended header on newlines instead sees the record end at it, and the rest as a record
+of its own: here `path=evil`. The path is `good
+1 path=evil` to one implementation, `good` or
+`evil` to others.
 
 Decision point: whether a pax record is delimited by its length or by a newline.
 Seen in: no tarball of the scans. Newlines in pax values are only in xattrs, such as Minion
@@ -292,8 +292,8 @@ Seen in: no tarball of the scans. Newlines in pax values are only in xattrs, suc
 <tr><td>spack</td><td class=n>37554</td><td class=n>0 (&lt;0.008%)</td><td class=n>0</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>0 (&lt;0.0048%)</td><td class=n>0</td></tr></table>
 
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>⚠️ accepts</td><td>tree A: <code>good\x0a1 path=evil</code> (12 B, a578eb49)</td></tr>

@@ -1,8 +1,8 @@
 """An unknown typeflag with a size: data, or no data?
 
-POSIX says a parser treats an unknown typeflag as a regular file, so its size is data. A parser
-that skips members it does not know may skip only the header, and then read the data as the next
-header, here that of `smuggled`.
+POSIX says an implementation treats an unknown typeflag as a regular file, so its size is data. An
+implementation that skips members it does not know may skip only the header, and then read the data
+as the next header, here that of `smuggled`.
 
 Decision point: whether an unknown typeflag has data.
 Seen in: no tarball of the scans.

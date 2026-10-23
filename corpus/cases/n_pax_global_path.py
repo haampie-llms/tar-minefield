@@ -1,7 +1,7 @@
 """A global pax header with a `path`.
 
 A global header applies to every member after it. With a `path`, every member would have the same
-name; parsers apply it, ignore it, or apply it to the next member only.
+name; implementations apply it, ignore it, or apply it to the next member only.
 
 Decision point: whether a global `path` applies.
 Seen in: no tarball of the scans.

@@ -2,8 +2,8 @@ N18 n_name_not_utf8: rejected
 
 A name that is not UTF-8.
 
-`café` is Latin-1. A parser may write the bytes as they are, decode them as Latin-1 and write
-`café` in UTF-8, replace the byte, or fail: different names on disk.
+`café` is Latin-1. An implementation may write the bytes as they are, decode them as Latin-1 and
+write `café` in UTF-8, replace the byte, or fail: different names on disk.
 
 Decision point: how a name that is not UTF-8 is decoded.
 Seen in: aspell-is 0.51.1-0 and aspell-nb 0.50.1-0.

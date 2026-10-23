@@ -1,8 +1,8 @@
 # The corpus
 
 Tar archives, each with a verdict, as [METHOD.md](../METHOD.md) describes: `n_` cases a strict
-parser rejects, `y_` cases every parser accepts, and `i_` cases that the default policy accepts.
-[MATRIX.md](MATRIX.md) shows what parsers make of each case.
+implementation rejects, `y_` cases every implementation accepts, and `i_` cases that the default
+policy accepts. [MATRIX.md](MATRIX.md) shows what implementations make of each case.
 
 Every case has a code, such as `F15`, whose letter is its level in METHOD.md: F framing, N names,
 K kinds, S order and state, G global pax headers. A code stays with its case, and a new case gets
@@ -17,14 +17,14 @@ throwaway directory.
 
 - `archives/<case>.tar`: the archive, uncompressed.
 - `archives/<case>.json`: its code, its verdict, the features of `scanner/tarscan.py` it is about, and for
-  `y_` and `i_` cases the tree a parser must extract: path, kind, and for files their size,
+  `y_` and `i_` cases the tree an implementation must extract: path, kind, and for files their size,
   sha256 and whether they are executable.
 - `archives/<case>.txt`: what the case is about, and every block of the archive with its offset
   and, for headers, every field with its raw bytes.
 - `archives/<case>.svg`: a map of its blocks, every one 512 bytes to scale, with the fields of
   headers where they are, and the bytes that the case writes itself marked.
 - `cases/<case>.py`: the script that writes it, whose docstring explains the case: the decision
-  point where parsers differ, where the scans saw it, and what parsers do with it.
+  point where implementations differ, where the scans saw it, and what implementations do with it.
 - `blocks.py`: writes archives from raw 512-byte blocks, and describes each block as it writes
   it. It uses no tar implementation, so that the corpus does not test one against itself.
 
@@ -43,13 +43,13 @@ Generation is deterministic, with the Python standard library only. `--scan` che
 A new case is a script in `cases/`, named for its verdict and level, with `VERDICT`, `CODE`, `FEATURES`,
 `TREE` for `y_` and `i_` cases, and a `build(archive)` function.
 
-## What parsers make of it
+## What implementations make of it
 
 ```console
 $ python -I corpus/matrix.py WORK
 ```
 
-extracts every case with every parser it finds, and writes `matrix.json` and the table
+extracts every case with every implementation it finds, and writes `matrix.json` and the table
 in `MATRIX.md` from it. Libraries without an extractor, such as Go's `archive/tar`, list the
 members, which are then applied in order. WORK holds the builds of the programs in `runners/`,
 whose dependencies are pinned, and the extractions: each in a directory of its own, two levels
@@ -69,7 +69,7 @@ $ python -I corpus/site.py docs data/*/*/results.jsonl
 
 writes `docs/`, which GitHub Pages serves: an index with the matrix, and a page per case with its
 explanation, its block map and dump, how many tarballs of the scans have its feature and how many
-of those the default policy rejects, and what every parser makes of it, from
+of those the default policy rejects, and what every implementation makes of it, from
 `matrix.json`. Plain HTML and CSS, without scripts, all of it generated. The `Seen in:` of a
 case is written by hand: site.py fails if it says no tarball where the scans have its feature, or
 names tarballs where they have none.

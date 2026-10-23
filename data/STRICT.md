@@ -86,13 +86,13 @@ Tarballs that each criterion rejects, per ecosystem. Default: what the default p
 | framing | `magic.posix-with-odd-version`: POSIX magic with a version other than `00` | accept | 18 (0.18%) | 0 | 9 (0.05%) | 33 (0.09%) | 34 | commons-lang@2.6-src, apache-solr@3.6.2-src, commons-logging@1.2-src |
 | framing | `end.data-after`: data other than zeros after the end-of-archive marker | accept | 10 (0.10%) | 0 | 8 (0.04%) | 8 (0.02%) | 5 | tcp_wrappers_7.6, commons-lang@2.6-src, xml-commons-resolver@1.2 |
 | framing | `end.missing`: no end-of-archive marker | accept | 6 (0.06%) | 0 | 4 (0.02%) | 12 (0.03%) | 22 | SDL2_image@2.8.8, ruby@4.0.5, fastcap@2.0-18Sep92 |
-| framing | `pax.newline-in-value.SCHILY.xattr.*`: a newline in a pax value, where parsers split lines | accept | 2 (0.02%) | 0 | 7 (0.04%) | 5 (0.01%) | 12 | qd@2.3.24, libjwt@1.17.2, Minion@10.31 |
+| framing | `pax.newline-in-value.SCHILY.xattr.*`: a newline in a pax value, where implementations split lines | accept | 2 (0.02%) | 0 | 7 (0.04%) | 5 (0.01%) | 12 | qd@2.3.24, libjwt@1.17.2, Minion@10.31 |
 | framing | `scan.error`: the scanner could not read past a header | reject | 4 (0.04%) | 0 | 0 | 4 (0.01%) | 1 | jakarta-oro@2.0.8, PullParser@2.1.10, commons-cli@1.2-src |
 | framing | `end.zero-block-before-member`: a zero block, then more members | reject | 4 (0.04%) | 0 | 0 | 3 (0.01%) | 0 | jakarta-oro@2.0.8, PullParser@2.1.10, commons-cli@1.2-src |
 | framing | `end.archive-after`: another archive after the end-of-archive marker | reject | 1 (0.01%) | 0 | 0 | 4 (0.01%) | 3 | commons-jexl@2.1.1-src, jmol@14.8.0, glibmm@2.4.8 |
 | framing | `end.lone-zero-block`: an end-of-archive marker of one zero block, not two | accept | 0 | 0 | 5 (0.03%) | 0 | 5 | eng-rus, srecord@1.64, cdi2iso@0.1-src |
 | framing | `pax.size-on-dir`: a pax size on a member without data | reject | 0 | 0 | 1 (0.01%) | 0 | 1 | llama_index_workflows@2.26.0 |
-| name | `name.leading-dot-slash`: `./a`, which some parsers make `a` | normalize | 31 (0.30%) | 0 | 35 (0.18%) | 145 (0.39%) | 161 | sqliteodbc@0.99991, numdiff@5.9.0, scanbd@1.5.1 |
+| name | `name.leading-dot-slash`: `./a`, which some implementations make `a` | normalize | 31 (0.30%) | 0 | 35 (0.18%) | 145 (0.39%) | 161 | sqliteodbc@0.99991, numdiff@5.9.0, scanbd@1.5.1 |
 | name | `symlink.absolute`: a symlink to an absolute path | accept | 13 (0.13%) | 0 | 15 (0.08%) | 63 (0.17%) | 82 | tachyon@0.99.5, notmuch@0.40, gnome-autoar@0.4.5 |
 | name | `name.dot`: a member named `.` or `./` | normalize | 13 (0.13%) | 0 | 18 (0.09%) | 11 (0.03%) | 0 | guile@2.0.9, hadrian-bootstrap-sources@9.8.1, linux-libre-headers-stripped@4.14.67-i686-linux |
 | name | `name.dot-component`: `a/./b` | normalize | 4 (0.04%) | 0 | 5 (0.03%) | 1 (0.00%) | 8 | tuffy@20120614, privoxy@3.0.34-stable-src, ghc@7.8.4-x86_64-unknown-linux-deb7 |
@@ -129,17 +129,17 @@ Not ambiguous, or confined to fields outside the tree. Tarballs of all ecosystem
 | `v7.bytes-after-linkname` | bytes in fields that v7 headers do not use | 2843 |
 | `name.dir-without-trailing-slash` | a directory without a trailing slash: the typeflag says | 1121 |
 | `tree.dir-after-contents` | directories after their contents (`y_`) | 858 |
-| `number.size.leading-space` | octal padded with spaces, not zeros, which parsers read alike | 819 |
+| `number.size.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 819 |
 | `name.non-ascii` | UTF-8 names | 752 |
 | `number.uid.no-digits` | outside the tree | 275 |
 | `number.gid.no-digits` | outside the tree | 275 |
 | `tree.duplicate.dir-dir` | the same directory twice (`y_`) | 157 |
 | `number.uid.base256` | outside the tree | 155 |
-| `number.uid.leading-space` | octal padded with spaces, not zeros, which parsers read alike | 152 |
-| `number.gid.leading-space` | octal padded with spaces, not zeros, which parsers read alike | 152 |
+| `number.uid.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 152 |
+| `number.gid.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 152 |
 | `number.gid.base256` | outside the tree | 149 |
-| `number.mode.leading-space` | octal padded with spaces, not zeros, which parsers read alike | 142 |
-| `number.mtime.leading-space` | octal padded with spaces, not zeros, which parsers read alike | 66 |
+| `number.mode.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 142 |
+| `number.mtime.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 66 |
 | `pax.nul-in-value.SCHILY.xattr.*` | NUL in xattrs, which are outside the tree | 32 |
 | `linkname.no-nul` | a link name of exactly 100 bytes, without NUL | 31 |
 | `name.not-nfc` | names not in NFC: one tree, which macOS may not hold | 29 |

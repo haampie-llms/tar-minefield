@@ -3,8 +3,8 @@ F10 n_extended_pax_size_before_gnu_long: rejected
 A pax `size` followed by a GNU long name: which of them does the size apply to?
 
 The pax header says `size=512` and is followed by a GNU long name header, then by the member.
-Parsers that apply the pax size to the next header, whatever it is, misread the long name; those
-that apply it to the member read one more block as its data, which here is the header of
+Implementations that apply the pax size to the next header, whatever it is, misread the long name;
+those that apply it to the member read one more block as its data, which here is the header of
 `smuggled`.
 
 Decision point: which header a pax size applies to, when another extended header follows.
@@ -70,7 +70,7 @@ Seen in: no tarball of the scans.
           devminor [337,345)  "0000000" + NUL  0
           prefix   [345,500)  155 NUL
           pad      [500,512)  12 NUL
-0x000a00  header: regular file, covered by the pax size, to some parsers
+0x000a00  header: regular file, covered by the pax size, to some implementations
           name     [  0,100)  "smuggled" + 92 NUL
           mode     [100,108)  "0000644" + NUL  644 (octal)
           uid      [108,116)  "0000000" + NUL  0

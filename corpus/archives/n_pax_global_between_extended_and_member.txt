@@ -2,8 +2,9 @@ G03 n_pax_global_between_extended_and_member: rejected
 
 A global pax header between an extended header and its member.
 
-An `x` header, then a `g` header, then the member. A parser may apply the extended header to the
-global header, which is the next header, or skip the global header and apply it to the member.
+An `x` header, then a `g` header, then the member. An implementation may apply the extended header
+to the global header, which is the next header, or skip the global header and apply it to the
+member.
 
 Decision point: which header an extended header applies to.
 Seen in: no tarball of the scans.

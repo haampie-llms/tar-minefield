@@ -1,7 +1,7 @@
 {
  "code": "F13",
  "verdict": "n",
- "description": "A newline in a pax `path`, where parsers that split records on lines see another record.",
+ "description": "A newline in a pax `path`, where implementations that split records on lines see another record.",
  "features": [
   "pax.newline-in-value.path"
  ]

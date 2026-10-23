@@ -11,7 +11,7 @@
 <h1><code>N08</code> extended-pax-path-and-gnu-long-name</h1>
 <p>A pax <code>path</code> and a GNU long name for one member, and a third name in its header.</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_extended_pax_path_and_gnu_long_name.py">the script</a>,
@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/n_extended_pax_path_and_gnu_long_name.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p>The member has the name <code>from-header</code>, a GNU long name <code>from-gnu</code>, and a pax path <code>from-pax</code>. Parsers that prefer pax, those that prefer the GNU long name, and those that apply the one that comes last extract different names.</p>
+<p>The member has the name <code>from-header</code>, a GNU long name <code>from-gnu</code>, and a pax path <code>from-pax</code>. Implementations that prefer pax, those that prefer the GNU long name, and those that apply the one that comes last extract different names.</p>
 <p><strong>Decision point:</strong> which of several sources gives a member its name.</p>
 <p><strong>Seen in:</strong> no tarball of the scans.</p>
 <h2>The archive</h2>
@@ -32,8 +32,8 @@
 A pax `path` and a GNU long name for one member, and a third name in its header.
 
 The member has the name `from-header`, a GNU long name `from-gnu`, and a pax path `from-pax`.
-Parsers that prefer pax, those that prefer the GNU long name, and those that apply the one that
-comes last extract different names.
+Implementations that prefer pax, those that prefer the GNU long name, and those that apply the one
+that comes last extract different names.
 
 Decision point: which of several sources gives a member its name.
 Seen in: no tarball of the scans.
@@ -374,8 +374,8 @@ Seen in: no tarball of the scans.
 <tr><td>spack</td><td class=n>37554</td><td class=n>0 (&lt;0.008%)</td><td class=n>0</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>0 (&lt;0.0048%)</td><td class=n>0</td></tr></table>
 
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>⚠️ accepts</td><td>tree A: <code>from-pax</code> (12 B, a578eb49)</td></tr>

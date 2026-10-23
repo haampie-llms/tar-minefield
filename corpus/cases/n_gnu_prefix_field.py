@@ -1,8 +1,8 @@
 """The prefix field of a header with GNU magic, which GNU tar uses for times.
 
 GNU's format has no prefix field: GNU tar writes the access and change times where ustar has its
-prefix. A parser that reads the field as a prefix, as CPython's tarfile did (gh-155629), puts the
-member under a directory named after the time.
+prefix. An implementation that reads the field as a prefix, as CPython's tarfile did (gh-155629),
+puts the member under a directory named after the time.
 
 Decision point: whether a header with GNU magic has a prefix.
 Seen in: no tarball of the scans with times there.

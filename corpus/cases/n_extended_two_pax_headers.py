@@ -1,7 +1,7 @@
 """Two pax extended headers for one member, with different paths.
 
-Two `x` headers come before one member, with the paths `first` and `second`. A parser may apply
-the first, the last, or merge them.
+Two `x` headers come before one member, with the paths `first` and `second`. An implementation may
+apply the first, the last, or merge them.
 
 Decision point: which of two extended headers of one kind applies.
 Seen in: no tarball of the scans. libmygpo-qt 1.2.0 repeats xattr keys within one header, which is

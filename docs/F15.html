@@ -9,9 +9,9 @@
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F14.html">F14 pax-size-disagrees</a> · next: <a href="F16.html">F16 type-unknown</a></nav>
 <h1><code>F15</code> pax-size-on-dir</h1>
-<p>A pax <code>size</code> on a directory, which hides a header from the parsers that honor it.</p>
+<p>A pax <code>size</code> on a directory, which hides a header from the implementations that honor it.</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: implementations disagree on its tree</dd>
 <dt>Level</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_pax_size_on_dir.py">the script</a>,
@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/n_pax_size_on_dir.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p>A directory has no data, but its pax extended header says <code>size=512</code>. A parser that applies the pax size to every member skips the next block as the directory&#x27;s data; a parser that knows directories have no data reads that block as the header of a file, <code>smuggled</code>. One parser then extracts a directory, the other a directory and a file. This is the bug class of CVE-2025-62518 (tokio-tar), GHSA-3pv8-6f4r-ffg2 (tar-rs) and CVE-2026-53655 (node-tar), where the hidden block is a header that only one parser sees.</p>
+<p>A directory has no data, but its pax extended header says <code>size=512</code>. An implementation that applies the pax size to every member skips the next block as the directory&#x27;s data; an implementation that knows directories have no data reads that block as the header of a file, <code>smuggled</code>. One implementation then extracts a directory, the other a directory and a file. This is the bug class of CVE-2025-62518 (tokio-tar), GHSA-3pv8-6f4r-ffg2 (tar-rs) and CVE-2026-53655 (node-tar), where the hidden block is a header that only one implementation sees.</p>
 <p><strong>Decision point:</strong> whether a pax <code>size</code> applies to a member that has no data.</p>
 <p><strong>Seen in:</strong> llama_index_workflows 2.26.0, with a pax size on a directory.</p>
 <h2>The archive</h2>
@@ -29,14 +29,14 @@
 <details><summary>Every block, as text</summary>
 <pre>F15 n_pax_size_on_dir: rejected
 
-A pax `size` on a directory, which hides a header from the parsers that honor it.
+A pax `size` on a directory, which hides a header from the implementations that honor it.
 
-A directory has no data, but its pax extended header says `size=512`. A parser that applies the
-pax size to every member skips the next block as the directory&#x27;s data; a parser that knows
-directories have no data reads that block as the header of a file, `smuggled`. One parser then
-extracts a directory, the other a directory and a file. This is the bug class of CVE-2025-62518
-(tokio-tar), GHSA-3pv8-6f4r-ffg2 (tar-rs) and CVE-2026-53655 (node-tar), where the hidden block is
-a header that only one parser sees.
+A directory has no data, but its pax extended header says `size=512`. An implementation that applies
+the pax size to every member skips the next block as the directory&#x27;s data; an implementation that
+knows directories have no data reads that block as the header of a file, `smuggled`. One
+implementation then extracts a directory, the other a directory and a file. This is the bug class of
+CVE-2025-62518 (tokio-tar), GHSA-3pv8-6f4r-ffg2 (tar-rs) and CVE-2026-53655 (node-tar), where the
+hidden block is a header that only one implementation sees.
 
 Decision point: whether a pax `size` applies to a member that has no data.
 Seen in: llama_index_workflows 2.26.0, with a pax size on a directory.
@@ -307,8 +307,8 @@ Seen in: llama_index_workflows 2.26.0, with a pax size on a directory.
 <tr><td>spack</td><td class=n>37554</td><td class=n>0 (&lt;0.008%)</td><td class=n>0</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>1 (0.00%)</td><td class=n>1</td></tr></table>
 <p>For example: llama_index_workflows@2.26.0.</p>
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>⚠️ accepts</td><td>tree A: <code>dir/</code></td></tr>

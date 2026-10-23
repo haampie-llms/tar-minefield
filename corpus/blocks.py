@@ -1,6 +1,6 @@
 """Build tar archives from raw 512-byte blocks, and describe every block as it is written.
 
-The cases of the corpus use this instead of tarfile or any other parser under test: it
+The cases of the corpus use this instead of tarfile or any other implementation under test: it
 writes exactly the bytes it is given, and normalizes nothing. Every field of a header is either
 a value, which it encodes the usual way, or raw bytes, which it writes as they are. The dump of an
 archive comes from what was written, so it does not parse the archive.

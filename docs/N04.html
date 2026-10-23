@@ -11,7 +11,7 @@
 <h1><code>N04</code> ustar-prefix</h1>
 <p>A long name split between the ustar prefix and name fields.</p>
 <dl>
-<dt>Verdict</dt><dd>accepted: every parser must extract its tree</dd>
+<dt>Verdict</dt><dd>accepted: every implementation must extract its tree</dd>
 <dt>Level</dt><dd>name</dd>
 <dt>Default policy</dt><dd>accepts it, as it allows <code>ustar.prefix</code>: the ustar prefix field (<code>y_</code>)</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/y_ustar_prefix.py">the script</a>,
@@ -188,7 +188,7 @@ Seen in: thousands of tarballs: see `ustar.prefix` in data/STRICT.md.
 000007f0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
 </pre>
 </details>
-<p>The tree that a parser must extract: <code>pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/</code>, <code>pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file</code> (9 B, 7dd9c6f9).</p>
+<p>The tree that an implementation must extract: <code>pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/</code>, <code>pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file</code> (9 B, 7dd9c6f9).</p>
 <h2>In real tarballs</h2>
 <p>Tarballs of the scans with <code>ustar.prefix</code>. Where there are none, the share is the 95% upper bound of the rate, by the rule of three.</p>
 <table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>ecosystem</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
@@ -198,8 +198,8 @@ Seen in: thousands of tarballs: see `ustar.prefix` in data/STRICT.md.
 <tr><td>spack</td><td class=n>37554</td><td class=n>5459 (14.54%)</td><td class=n>0</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>6233 (9.95%)</td><td class=n>0</td></tr></table>
 <p>For example: Data-Stream-Bulk@0.11, CatalystX-Component-Traits@0.19, Devel-CheckBin@0.04, Test-PostgreSQL@1.29, Mojo-DOM58@3.001, SQL-SplitStatement@1.00023, libtasn1@4.21.0, Test-YAML@1.07.</p>
-<h2>What parsers make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What implementations make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>

@@ -1,7 +1,7 @@
 """One pax key twice in one extended header.
 
-The extended header has the records `path=first` and `path=second`. Parsers that keep the first
-value and those that keep the last extract different names.
+The extended header has the records `path=first` and `path=second`. Implementations that keep the
+first value and those that keep the last extract different names.
 
 Decision point: which of two values of one key applies.
 Seen in: libmygpo-qt 1.2.0, with xattr keys.
