@@ -45,16 +45,16 @@ unknown       60              0   149   153   335  #
 Fixed: every member has an mtime that a producer writes in place of the real one, such as `cabal sdist` (2001-09-09) on Hackage and hatchling (2020-02-02) on PyPI, so these tarballs are not dated: 1970-01-01 00:00, 1985-10-26 08:15, 2000-01-01 00:00, 2000-07-19 22:00, 2001-09-09 01:46, 2006-07-24 01:21, 2020-02-02 00:00, 2022-11-09 12:37. Unknown: no mtime after 1980.
 ## Pass rates
 
-A tarball passes if it has none of the strict criteria below. untar is the strict extractor of [untar](https://github.com/haampie/untar), as a policy that exists, of the tarballs it ran to the end on, where it did not run out of space on the scanning machine. Latest versions: of the default policy.
+A tarball passes if it has none of the strict criteria below. Latest versions: of the default policy.
 
 Of 62622 distinct tarballs, 62000 pass every criterion, and 62471 the default policy, which normalizes `./a` and the like, and accepts features on whose tree readers agree. The criterion that rejects the most tarballs on its own is `name.leading-dot-slash`, and of the default policy `tree.duplicate.file-file`.
 
-| dataset | assessed | pass every criterion | pass the default policy | of latest versions | untar extracts |
-|---|---|---|---|---|---|
-| guix | 10168 | 10067 (99.01%) | 10140 (99.72%) | 9649 (99.74%) | 10130 (99.63%) |
-| live-bootstrap | 171 | 171 (100.00%) | 171 (100.00%) | 74 (100.00%) | 171 (100.00%) |
-| nix | 18990 | 18833 (99.17%) | 18920 (99.63%) | 17890 (99.64%) | 18912 (99.59%) |
-| spack | 37554 | 37162 (98.96%) | 37487 (99.82%) | 7706 (99.78%) | 37405 of 37452 (99.87%) |
+| dataset | assessed | pass every criterion | pass the default policy | of latest versions |
+|---|---|---|---|---|
+| guix | 10168 | 10067 (99.01%) | 10140 (99.72%) | 9649 (99.74%) |
+| live-bootstrap | 171 | 171 (100.00%) | 171 (100.00%) | 74 (100.00%) |
+| nix | 18990 | 18833 (99.17%) | 18920 (99.63%) | 17890 (99.64%) |
+| spack | 37554 | 37162 (98.96%) | 37487 (99.82%) | 7706 (99.78%) |
 
 ## The default policy
 
