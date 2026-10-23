@@ -9,8 +9,8 @@ strict parser can be checked against them before anyone adopts them (see
 - `run.py sample` picks a sample from a list of tarballs, and `run.py scan` downloads and scans
   it. Tarballs are streamed: they are not written to disk, unless they are cached.
 - `report.py` summarizes results as Markdown.
-- `spack_list.py`, `nix_list.py` and `live_bootstrap_list.py` list the tarballs of Spack's
-  builtin repository, nixpkgs and live-bootstrap. Lists for other ecosystems go next to them, as `<ecosystem>_list.py`.
+- `spack_list.py`, `nix_list.py`, `guix_list.py` and `live_bootstrap_list.py` list the tarballs
+  of Spack's builtin repository, nixpkgs, Guix and live-bootstrap. Lists for other ecosystems go next to them, as `<ecosystem>_list.py`.
 
 Run the scripts with `python -I`: they handle untrusted data, and should not import modules from
 the current directory.
@@ -64,8 +64,9 @@ Content-addressed mirrors that serve tarballs by sha256:
 - Spack: `https://mirror.spack.io/_source-cache/archive/<sha256[:2]>/<sha256>.<ext>`
 - Nix: `https://tarballs.nixos.org/sha256/<sha256>` (hex works, and redirects), which has about
   half of them. `nix_list.py` says how to list them: see `data/nix/2026-10-23/RUN.md`.
-- Guix: `https://guix.gnu.org/sources.json` lists sources with their `integrity`, which is an
-  SRI hash (`sha256-<base64>`): convert it to hex.
+- Guix: `https://bordeaux.guix.gnu.org/file/<name>/sha256/<nix-base32>`, which
+  `https://guix.gnu.org/sources.json` lists among the URLs of each source; it only has the
+  current revision of Guix. `guix_list.py` makes a list of it.
 
 Other sources worth scanning:
 

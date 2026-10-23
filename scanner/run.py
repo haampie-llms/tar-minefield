@@ -13,6 +13,9 @@ SEED and the names of packages and checksums of tarballs.
 all ranks: a sample of about P of the list. Whether a tarball is in it does not depend on the
 rest of the list, so a list can be sampled while it is made, and the sample with a larger P
 contains the one with a smaller P: a sample can be extended without scanning anything again.
+It is in the order of rank, in which `scan` starts downloads, so the tarballs scanned first of a
+sample with a large P are the sample with a smaller P: an interrupted scan is a sample too, but
+for the few downloads that were under way.
 
 `scan` downloads each tarball from the first of its `urls` that works, scans it while it
 downloads, checks its sha256, and appends a JSON line to OUT. Tarballs are not written to disk
@@ -99,12 +102,14 @@ def sample(path, n, seed):
 
 
 def fraction(path, p, seed):
-    seen = set()
+    taken = {}
     for line in open(path):
         t = json.loads(line)
-        if t["sha256"] not in seen and int(rank(seed, t["sha256"]), 16) < p * 16**64:
-            seen.add(t["sha256"])
-            print(line, end="")
+        key = rank(seed, t["sha256"])
+        if key not in taken and int(key, 16) < p * 16**64:
+            taken[key] = line
+    for key in sorted(taken):
+        print(taken[key], end="")
 
 
 # Extracts a tar archive from stdin with untar from argv[1], into argv[2]
