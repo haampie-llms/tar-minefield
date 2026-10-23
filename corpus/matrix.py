@@ -397,15 +397,15 @@ def totals(results, cases, names):
 # as a grid of saturated ones flickers at its crossings; what they mean; and a mark that tells
 # them apart without colour
 CLASSES = {
-    "✅": ("ok", ("#dafbe1", "#1a7f37"), ("#12301e", "#3fb950"),
+    "✅": ("ok", ("#b4f1c3", "#116329"), ("#1a4a2b", "#56d364"),
           "as the verdict says: rejects an n_ case, extracts the tree of the others", "✓"),
-    "⚠️": ("warn", ("#fff1c2", "#9a6700"), ("#3a2c08", "#d29922"),
+    "⚠️": ("warn", ("#ffe08a", "#7d4e00"), ("#5a4310", "#e3b341"),
            "accepts an n_ case, which a strict parser rejects", "!"),
-    "⛔": ("stop", ("#eaeef2", "#57606a"), ("#262c33", "#8b949e"),
+    "⛔": ("stop", ("#d0d7de", "#424a53"), ("#3a424c", "#b1bac4"),
            "rejects an i_ case, which a strict parser may", "–"),
-    "❌": ("bad", ("#ffd8d3", "#cf222e"), ("#40151b", "#f85149"),
+    "❌": ("bad", ("#ffc1ba", "#a40e26"), ("#5e1d26", "#ff7b72"),
            "rejects a y_ case, or extracts another tree than its manifest", "✗"),
-    "💥": ("boom", ("#efe2ff", "#8250df"), ("#2e1f4d", "#a371f7"),
+    "💥": ("boom", ("#dcc8ff", "#6639ba"), ("#45307a", "#bc8cff"),
            "writes outside the destination", "↑"),
 }
 FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
