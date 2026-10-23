@@ -109,6 +109,8 @@ def readme_intro():
     def href(url):
         if url.rstrip("/") == matrix.SITE.rstrip("/"):
             return "#cases"
+        if url.startswith("#"):
+            return f"{REPO}{url}"
         return url if re.match(r"https?:", url) else f"{REPO}/blob/main/{url}"
 
     return "\n".join(f"<p>{markdown(' '.join(p.split()))}</p>"

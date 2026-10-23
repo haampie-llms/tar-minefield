@@ -8,6 +8,10 @@ This is a security concern: for example, a security scanner could see different 
 
 By assigning [identifiers](https://haampie-llms.github.io/tar-minefield/) to these ambiguities, and providing test cases and usage data, the hope is that tar implementations can converge on a strict parser and identical behavior.
 
+This project proposes a **[default policy](#the-default-policy)** that is strict enough that
+implementations agree on every archive it accepts, and lenient enough to accept nearly every
+tarball in use.
+
 ## Examples
 
 | case | the archive | what implementations make of it |
