@@ -5,7 +5,7 @@ takes the pax size reads the next block as the header of another file, `smuggled
 that takes the header's size, or does not know pax, reads that block as the data of `a`.
 
 Decision point: which of two sizes frames the member.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

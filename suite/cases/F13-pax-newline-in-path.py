@@ -6,7 +6,7 @@ of its own: here `path=evil`. The path is `good\n1 path=evil` to one implementat
 `evil` to others.
 
 Decision point: whether a pax record is delimited by its length or by a newline.
-Seen in: no tarball of the scans. Newlines in pax values are only in xattrs, such as Minion
+Seen in: no source tarball. Newlines in pax values are only in xattrs, such as Minion
 10.31, which the default policy accepts as xattrs are not extracted.
 """
 

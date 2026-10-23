@@ -4,7 +4,7 @@ The pax path is `a\0b`. C implementations end the name at the NUL and extract `a
 NUL, which no filesystem allows, and fail or replace it.
 
 Decision point: where a pax path ends.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

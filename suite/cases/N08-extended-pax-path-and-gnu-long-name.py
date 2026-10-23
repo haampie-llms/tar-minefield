@@ -5,7 +5,7 @@ Implementations that prefer pax, those that prefer the GNU long name, and those 
 that comes last extract different names.
 
 Decision point: which of several sources gives a member its name.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

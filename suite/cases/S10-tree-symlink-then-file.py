@@ -4,7 +4,7 @@
 file `a`; one that opens `a` for writing follows the link and writes `target` instead.
 
 Decision point: whether writing a member follows a symlink in its place.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

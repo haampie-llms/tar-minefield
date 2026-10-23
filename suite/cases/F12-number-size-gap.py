@@ -5,7 +5,7 @@ skips spaces reads 1000 octal, 512. The 512 bytes that follow are the header of 
 first implementation, and the data of `a` to the second.
 
 Decision point: how a number field with a space among its digits is read.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

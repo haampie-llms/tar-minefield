@@ -5,7 +5,7 @@ to the global header, which is the next header, or skip the global header and ap
 member.
 
 Decision point: which header an extended header applies to.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

@@ -5,7 +5,7 @@ implementations still accept either. With a byte over 127 in the header, here in
 sums differ, so an implementation that accepts only the unsigned one rejects the header.
 
 Decision point: whether a signed checksum makes a header valid.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

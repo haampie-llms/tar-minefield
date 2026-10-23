@@ -6,7 +6,7 @@ A file, then a directory of the same name.
 keep the file and fail on the directory, or keep the first.
 
 Decision point: whether a later member replaces an earlier one of another kind.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 
 0x000000  header: regular file
           name     [  0,100)  "a" + 99 NUL

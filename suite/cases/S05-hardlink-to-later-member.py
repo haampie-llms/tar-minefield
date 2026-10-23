@@ -4,7 +4,7 @@
 to link to; one that reads the whole archive first links `h` to `f`.
 
 Decision point: whether a hardlink may name a later member.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

@@ -3,7 +3,7 @@
     python -I contrib/site.py docs contrib/data/*/*/results.jsonl
 
 Every page is generated, from what the rest of the repository has: the case's script and archive,
-what implementations make of it (matrix/matrix.json), and how many tarballs of the scans have
+what implementations make of it (matrix/matrix.json), and how many source tarballs have
 its feature, of which the default policy of scanner/strict.py rejects how many. Static HTML with a
 stylesheet, and no scripts: the SVGs are part of the pages, so that their hover titles and the
 links of the matrix work.
@@ -42,8 +42,9 @@ OUTCOMES = {
 # Tables of one kind have the same columns, in the same widths
 COLUMNS = {
     "cases": [("code", 9), ("name", 27), ("what it is", 50), ("prevalence", 14, "n")],
-    "data": [("ecosystem", 25), ("assessed", 25, "n"), ("with it", 25, "n"),
-             ("rejected for it by the default policy", 25, "n")],
+    "data": [("ecosystem", 34), ("tarballs", 33, "n"), ("with it", 33, "n")],
+    "data-policy": [("ecosystem", 25), ("tarballs", 25, "n"), ("with it", 25, "n"),
+                    ("rejected by the default policy", 25, "n")],
     "implementations": [("implementation", 21), ("version", 21), ("outcome", 18),
                         ("what it makes of it", 40)],
 }
@@ -149,8 +150,9 @@ def policy(info, features):
 
 
 def data_section(features, names, short, rated, union):
-    """How many tarballs of each ecosystem have the features, and how many of those the default
-    policy rejects for them."""
+    """How many tarballs of each ecosystem have the features, and what the default policy does
+    with them: a sentence where it rejects all or none of them for the features, and a column
+    where it rejects some."""
     if not features:
         return ("<p>No feature of the scanner is about this case alone: an archive like it is "
                 "one that the scanner cannot read, <code>scan.error</code>.</p>")
@@ -161,23 +163,30 @@ def data_section(features, names, short, rated, union):
     def rejected(r):
         return any(strict.criterion(f) in strict.default_rejects(r) for f in features)
 
-    rows = []
+    counts = []
     for n, rs in [(short[n], rated[n]) for n in names] + [("all, distinct", union)]:
         with_it = [r for r in rs if has(r)]
-        k, j = len(with_it), sum(rejected(r) for r in with_it)
-        share = strict.percent(k, len(rs)) if k else strict.bound(len(rs))
-        rows.append(f"<tr><td>{html.escape(n)}</td><td class=n>{len(rs)}</td>"
-                    f"<td class=n>{k} ({html.escape(share)})</td><td class=n>{j}</td></tr>")
+        counts.append((n, len(rs), len(with_it), sum(rejected(r) for r in with_it)))
+    _, _, k, j = counts[-1]
+    mixed = 0 < j < k
+    rows = []
+    for n, total, k, j in counts:
+        cells = [html.escape(n), str(total), f"{k} ({prevalence(k, total)})" if k else "0"]
+        cells += [str(j)] if mixed else []
+        rows.append("<tr><td>" + "</td><td class=n>".join(cells) + "</td></tr>")
     examples = []
     for r in union:
         if has(r) and len(examples) < 8:
             name = f"{r['package']}@{r['version']}" if r["version"] else r["package"]
             if name not in examples:
                 examples.append(name)
+    policy = ("" if not k else " The default policy rejects some of them, as the last column "
+              "says, and accepts the others." if mixed else " The default policy rejects all of "
+              "them." if j else " The default policy accepts them.")
     return (
-        "<p>Tarballs of the scans with " + ", ".join(f"<code>{f}</code>" for f in features)
-        + ". Where there are none, the share is the 95% upper bound of the rate, by the rule of "
-        "three.</p>\n" + table("data", rows) + "\n"
+        "<p>Release tarballs of Spack, nixpkgs, Guix and live-bootstrap with "
+        + ", ".join(f"<code>{f}</code>" for f in features) + "." + policy + "</p>\n"
+        + table("data-policy" if mixed else "data", rows) + "\n"
         + ("<p>For example: " + ", ".join(html.escape(e) for e in examples) + ".</p>"
            if examples else "")
     )
@@ -253,9 +262,9 @@ def case_page(case, info, previous, following, results, data):
     if info["verdict"] != "reject":
         body += ("<p>The tree that an implementation must extract: "
                  + inline(matrix.describe(matrix.expected_tree(info))) + ".</p>\n")
-    body += "<h2>In real tarballs</h2>\n" + data_section(features, *data) + "\n"
     body += ("<h2>What implementations make of it</h2>\n"
              + implementations_section(case, info, results) + "\n")
+    body += "<h2>Prevalence in source tarballs</h2>\n" + data_section(features, *data) + "\n"
     return page(f"{code} {name} · tar-minefield", body)
 
 
@@ -270,7 +279,7 @@ def seen_in_problems(cases, union):
         if not seen or not features:
             continue
         k = sum(1 for r in union if any(f in r["features"] for f in features))
-        none = seen.group(1).startswith("no tarball")
+        none = seen.group(1).startswith("no source tarball")
         if none and k or not none and not k:
             problems.append(f"{case}: Seen in: {seen.group(1)!r}, but {k} tarballs have "
                             f"{', '.join(features)}")
@@ -301,16 +310,16 @@ can disagree on, and what {len(results["implementations"])} implementations make
 case has a code: its letter is the level of the catalogue of
 <a href="{REPO}/blob/main/METHOD.md">METHOD.md</a>, F framing, N names, K kinds, S order and state,
 G global pax headers. A code stays with its case;
-new cases get new codes. See the <a href="{REPO}">repository</a> for the method and the scans.
+new cases get new codes. See the <a href="{REPO}">repository</a> for the method and the data.
 The explanations of the cases are written by hand; the numbers, outcomes, block maps and dumps
-are generated from the archives, the scans and the runs of the implementations.</p>
+are generated from the archives, the source tarballs and the runs of the implementations.</p>
 <h2>What implementations make of every case</h2>
 <p>Click a case for its page; hover over a cell for the tree.</p>
 <div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["code"] + ".html")}</div>
 <h2>The cases</h2>
-<p>Prevalence: the share of the {len(union)} distinct tarballs of the scans that have the
-feature of the case; none, if no tarball has it. A dash: the scanner has no feature for the case.
-The page of a case has the numbers per ecosystem.</p>
+<p>Prevalence: the share of the {len(union)} distinct release tarballs of Spack, nixpkgs, Guix and
+live-bootstrap that have the feature of the case; none, if no tarball has it. A dash: the scanner
+has no feature for the case. The page of a case has the numbers per ecosystem.</p>
 {chr(10).join(sections)}
 """
     return page("tar-minefield", body)

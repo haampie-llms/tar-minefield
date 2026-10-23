@@ -5,7 +5,7 @@ An extractor may refuse the member, rewrite its name, or write it where it point
 harmless: its name and contents say what happened.
 
 Decision point: whether a name with `..` is rejected, rewritten, or followed.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

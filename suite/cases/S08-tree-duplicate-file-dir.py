@@ -4,7 +4,7 @@
 keep the file and fail on the directory, or keep the first.
 
 Decision point: whether a later member replaces an earlier one of another kind.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

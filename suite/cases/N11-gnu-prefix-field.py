@@ -5,7 +5,7 @@ prefix. An implementation that reads the field as a prefix, as CPython's tarfile
 puts the member under a directory named after the time.
 
 Decision point: whether a header with GNU magic has a prefix.
-Seen in: no tarball of the scans with times there.
+Seen in: no source tarball with times there.
 """
 
 VERDICT = "reject"

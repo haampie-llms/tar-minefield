@@ -4,7 +4,7 @@
 an implementation may create the link `link`, write through it, or fail.
 
 Decision point: what a trailing slash on a link means.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

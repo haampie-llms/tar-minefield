@@ -4,7 +4,7 @@
 follows the link writes the file in the parent of the destination. The file is harmless.
 
 Decision point: whether a member may be written through a symlink.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

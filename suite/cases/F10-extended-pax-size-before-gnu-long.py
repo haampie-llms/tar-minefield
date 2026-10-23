@@ -6,7 +6,7 @@ those that apply it to the member read one more block as its data, which here is
 `smuggled`.
 
 Decision point: which header a pax size applies to, when another extended header follows.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

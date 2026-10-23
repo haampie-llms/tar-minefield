@@ -5,7 +5,7 @@ implementation that strips NULs from the end of the field reads `a\0b`, or `ab` 
 NUL.
 
 Decision point: where a name ends.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

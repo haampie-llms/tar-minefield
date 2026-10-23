@@ -5,7 +5,7 @@ implementation that skips members it does not know may skip only the header, and
 as the next header, here that of `smuggled`.
 
 Decision point: whether an unknown typeflag has data.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

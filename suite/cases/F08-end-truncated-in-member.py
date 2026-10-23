@@ -5,7 +5,7 @@ extract the part it has, extract nothing, or fail. Archives that are distributed
 sha256, so this archive is damaged, not ambiguous: it is rejected all the same.
 
 Decision point: whether a member that is cut short is extracted.
-Seen in: no tarball of the scans, where a damaged download fails its sha256.
+Seen in: no source tarball, where a damaged download fails its sha256.
 """
 
 VERDICT = "reject"

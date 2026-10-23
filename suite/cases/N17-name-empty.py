@@ -4,7 +4,7 @@ The name field is all NULs. An implementation may skip the member, take it for t
 archive, extract it as the destination directory itself, or fail.
 
 Decision point: what an empty name refers to.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

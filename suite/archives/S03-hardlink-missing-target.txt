@@ -6,7 +6,7 @@ A hardlink to a member that is not in the archive.
 name that already exists where it extracts.
 
 Decision point: what a hardlink to nothing does.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 
 0x000000  header: hardlink
           name     [  0,100)  "h" + 99 NUL

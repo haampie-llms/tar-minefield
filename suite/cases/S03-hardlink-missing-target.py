@@ -4,7 +4,7 @@
 name that already exists where it extracts.
 
 Decision point: what a hardlink to nothing does.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

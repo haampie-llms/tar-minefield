@@ -4,7 +4,7 @@ A global header applies to every member after it. With a `path`, every member wo
 name; implementations apply it, ignore it, or apply it to the next member only.
 
 Decision point: whether a global `path` applies.
-Seen in: no tarball of the scans.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"
