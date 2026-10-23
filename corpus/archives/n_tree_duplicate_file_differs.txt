@@ -1,0 +1,58 @@
+n_tree_duplicate_file_differs: rejected
+
+The same file twice, with different contents: the first copy, or the last?
+
+`a` is written twice. Extractors that write members in order keep the last copy; readers that
+look a name up in an index, or that refuse to overwrite, keep the first. The two trees differ in
+the contents of `a`.
+
+Decision point: which of two members of one path is the file.
+Seen in: fish 4.7.1, where `Cargo.toml` and `Cargo.lock` are appended again without their last
+newline, and logstash 8.15.2, where `build.rb` is first a license header and last the build's
+date and commit. Most tarballs with duplicates, mostly from `cabal sdist`, have identical copies:
+the default policy rejects those too, as a reader would have to compare the copies to tell.
+
+0x000000  header: regular file, the first copy
+          name     [  0,100)  "a" + 99 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000006" + NUL  6
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "007344\0 "  3812: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "0"  regular file
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000200  data
+          6 bytes, then 506 NUL to the end of the block
+          "first\n"
+0x000400  header: regular file, the last copy
+          name     [  0,100)  "a" + 99 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000005" + NUL  5
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "007343\0 "  3811: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "0"  regular file
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000600  data
+          5 bytes, then 507 NUL to the end of the block
+          "last\n"
+0x000800  2 zero blocks: the end-of-archive marker
+0x000c00  end of file

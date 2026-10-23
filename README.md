@@ -3,7 +3,7 @@
 A corpus of tar archives, each with a verdict, for tar parsers that want to be strict: which
 archives they must reject because readers disagree on what they contain, which they must accept,
 and what tree they must extract. [METHOD.md](METHOD.md) describes how the corpus is built; it is
-a draft, and the corpus itself is not written yet.
+a draft, and [corpus/](corpus) has its first cases.
 
 ## How strict can a parser be?
 
@@ -71,6 +71,7 @@ Latest versions: of the default policy. untar extracts: of the tarballs it ran t
 ## Contents
 
 - [METHOD.md](METHOD.md): the method, and the catalogue of ambiguities.
+- [corpus/](corpus): the cases, the scripts that write them, and how to check them.
 - [scanner/](scanner): the scanner, and how to scan more tarballs.
 - [data/](data): the scans, each with a `RUN.md` on how it was made.
   [data/STRICT.md](data/STRICT.md) has the pass rate of every criterion, and
