@@ -92,6 +92,7 @@ def readme_intro():
     the site itself to the list of cases."""
     with open(os.path.join(matrix.ROOT, "README.md")) as f:
         text = f.read().split("\n## ", 1)[0].split("\n", 1)[1]
+    text = re.sub(r"<!-- (begin|end) \S+ -->\n", "", text)
 
     def markdown(p):
         out = []

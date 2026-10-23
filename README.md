@@ -10,6 +10,10 @@ By assigning [identifiers](https://haampie-llms.github.io/tar-minefield/) to the
 
 This project proposes a **[default policy](https://haampie-llms.github.io/tar-minefield/#policy)** that rejects the vast majority of ambiguities in tar files that could make implementations extract different files, while ensuring that nearly every source tarball already published can still be extracted.
 
+<!-- begin strict.py -->
+**It accepts 99.76% of 62,622 source tarballs** of Spack, nixpkgs, Guix and live-bootstrap, and rejects 151: see the [numbers per ecosystem](https://haampie-llms.github.io/tar-minefield/#tarballs).
+<!-- end strict.py -->
+
 ## Examples
 
 | case | the archive | what implementations make of it |
@@ -30,14 +34,6 @@ What 20 implementations make of the 55 cases: a row per case, by level, and a co
 
 [![What every implementation makes of every case of the test suite. Outcomes of all cases: strict.py: ✅55; GNU tar: ✅23 ⚠️32; bsdtar: ✅26 ⚠️29; BusyBox tar: ✅23 ⚠️32; 7-Zip: ✅22 ⚠️31 ⛔1 ❌1; Python tarfile, filter=data: ✅26 ⚠️28 ⛔1; Python tarfile, filter=tar: ✅26 ⚠️29; Python tarfile, filter=fully_trusted: ✅25 ⚠️28 💥2; node-tar: ✅19 ⚠️35 ❌1; node-tar, strict: ✅27 ⚠️27 ⛔1; Java Commons Compress: ✅24 ⚠️30 ❌1; Go archive/tar: ✅22 ⚠️33; Go archive/tar, tarinsecurepath=0: ✅25 ⚠️30; Rust tar: ✅27 ⚠️28; Rust astral-tokio-tar: ✅27 ⚠️27 ⛔1; RubyGems: ✅19 ⚠️30 ⛔2 ❌4; Perl Archive::Tar: ✅26 ⚠️27 ⛔1 ❌1; Haskell tar: ✅30 ⚠️20 ⛔5; Julia Tar.jl: ✅32 ⚠️23; live-bootstrap untar: ✅17 ⚠️30 ❌6 💥2; live-bootstrap untar, --non-strict: ✅12 ⚠️35 ❌6 💥2](contrib/matrix/matrix.svg)](https://haampie-llms.github.io/tar-minefield/)
 <!-- end matrix.py -->
-
-## The default policy
-
-Reject what implementations extract differently, normalize names that are one path (`./a` is `a`), and accept what cannot change the extracted files. [The website](https://haampie-llms.github.io/tar-minefield/#policy) lists the cases.
-
-<!-- begin strict.py -->
-**It accepts 99.76% of 62,622 source tarballs** of Spack, nixpkgs, Guix and live-bootstrap, and rejects 151: see the [numbers per ecosystem](https://haampie-llms.github.io/tar-minefield/#tarballs).
-<!-- end strict.py -->
 
 ## Contents
 
