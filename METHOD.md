@@ -78,7 +78,8 @@ Framing:
 Name:
 
 - Several sources for one name: a pax `path`, a GNU long name (`L`), the ustar prefix and name,
-  the star prefix, Solaris `X` headers, two extended headers of one kind, or one of each.
+  the star prefix, Solaris `X` headers, two extended headers of one kind, one key twice in an
+  extended header, or one of each.
 - The prefix field in a header with GNU magic, which GNU tar uses for times in incremental
   archives (`tarfile` reads it as a prefix: gh-155629).
 - pax keys that change the name or kind from inside: `GNU.sparse.name`, `SCHILY.filetype`.
@@ -93,6 +94,7 @@ Kind:
 - A regular file whose name ends in a slash: the historical convention for directories. GNU tar
   1.35, `tarfile` and Ubuntu's patched GNU tar 1.35 make three different trees of one archive.
 - A trailing slash on the name of a link.
+- A link target in the linkname field of a member that is not a link.
 
 Order and state:
 
