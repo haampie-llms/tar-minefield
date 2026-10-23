@@ -181,6 +181,11 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 0: invalid tar size field: found [32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 55, 32]",
+    "outside": {},
+    "tree": {}
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -417,6 +422,18 @@
     }
    },
    "Rust tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Rust tar-codec": {
     "error": null,
     "outside": {},
     "tree": {
@@ -675,6 +692,18 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 1536: missing two-block end-of-archive marker",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -922,6 +951,18 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 1024: missing two-block end-of-archive marker",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -1155,6 +1196,11 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 0: invalid tar identity: found [117, 115, 116, 97, 114, 0, 0, 0]",
+    "outside": {},
+    "tree": {}
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -1364,6 +1410,11 @@
    },
    "Rust tar": {
     "error": "failed to iterate over archive",
+    "outside": {},
+    "tree": {}
+   },
+   "Rust tar-codec": {
+    "error": "at byte 0: invalid tar checksum: stored Some(3785), computed 4041",
     "outside": {},
     "tree": {}
    },
@@ -1606,6 +1657,18 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -1831,6 +1894,11 @@
       "size": 512
      }
     }
+   },
+   "Rust tar-codec": {
+    "error": "at byte 1024: unexpected end of stream: Member payload needs 512 more bytes",
+    "outside": {},
+    "tree": {}
    },
    "bsdtar": {
     "error": "a: Truncated tar archive detected while reading data: Unknown error -1\nbsdtar: Error exit delayed from previous errors.",
@@ -2081,6 +2149,18 @@
    },
    "Rust tar": {
     "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Rust tar-codec": {
+    "error": "at byte 1536: invalid end-of-archive marker: expected a second zero block",
     "outside": {},
     "tree": {
      "a": {
@@ -2374,6 +2454,11 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 1024: archive format changed from Pax to Gnu",
+    "outside": {},
+    "tree": {}
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -2607,6 +2692,11 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 0: invalid tar identity: found [117, 115, 116, 97, 114, 0, 48, 49]",
+    "outside": {},
+    "tree": {}
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -2824,6 +2914,11 @@
    },
    "Rust tar": {
     "error": "failed to iterate over archive",
+    "outside": {},
+    "tree": {}
+   },
+   "Rust tar-codec": {
+    "error": "at byte 0: invalid tar size field: found [48, 48, 48, 48, 48, 48, 32, 49, 48, 48, 48, 0]",
     "outside": {},
     "tree": {}
    },
@@ -3090,6 +3185,11 @@
       "size": 12
      }
     }
+   },
+   "Rust tar-codec": {
+    "error": "at byte 1024: extraction policy rejected input: archive member path rejected by name policy: \"good\\n1 path=evil\"",
+    "outside": {},
+    "tree": {}
    },
    "bsdtar": {
     "error": null,
@@ -3416,6 +3516,24 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -3698,6 +3816,11 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 1024: member type Directory cannot carry payload size 512",
+    "outside": {},
+    "tree": {}
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -3930,6 +4053,11 @@
       "size": 512
      }
     }
+   },
+   "Rust tar-codec": {
+    "error": "at byte 0: unsupported tar typeflag 90",
+    "outside": {},
+    "tree": {}
    },
    "bsdtar": {
     "error": null,
@@ -4195,6 +4323,21 @@
     }
    },
    "Rust tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "project": {
+      "kind": "directory"
+     },
+     "project/README": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
+      "size": 6
+     }
+    }
+   },
+   "Rust tar-codec": {
     "error": null,
     "outside": {},
     "tree": {
@@ -4573,6 +4716,24 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -4861,6 +5022,11 @@
       "size": 12
      }
     }
+   },
+   "Rust tar-codec": {
+    "error": "at byte 1024: unexpected tar block: expected ordinary ustar member header after a local pax header, found another pax extended header",
+    "outside": {},
+    "tree": {}
    },
    "bsdtar": {
     "error": null,
@@ -5187,6 +5353,11 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 0: decode policy rejected input: global pax extended header contains restricted member metadata path",
+    "outside": {},
+    "tree": {}
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -5454,6 +5625,11 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 0: unsafe member path \"a/\": only a directory may have a directory-required path suffix",
+    "outside": {},
+    "tree": {}
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -5668,6 +5844,18 @@
     }
    },
    "Rust tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
+      "size": 19
+     }
+    }
+   },
+   "Rust tar-codec": {
     "error": null,
     "outside": {},
     "tree": {
@@ -5908,6 +6096,15 @@
       "kind": "symlink",
       "target": "target"
      },
+     "target": {
+      "kind": "directory"
+     }
+    }
+   },
+   "Rust tar-codec": {
+    "error": "at byte 512: unsafe member path \"link/\": only a directory may have a directory-required path suffix",
+    "outside": {},
+    "tree": {
      "target": {
       "kind": "directory"
      }
@@ -6202,6 +6399,21 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -6433,6 +6645,18 @@
     }
    },
    "Rust tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
+      "size": 5
+     }
+    }
+   },
+   "Rust tar-codec": {
     "error": null,
     "outside": {},
     "tree": {
@@ -6722,6 +6946,21 @@
     }
    },
    "Rust tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
+   "Rust tar-codec": {
     "error": null,
     "outside": {},
     "tree": {
@@ -7055,6 +7294,21 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
+      "kind": "directory"
+     },
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
+      "size": 9
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -7293,6 +7547,18 @@
     }
    },
    "Rust tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Rust tar-codec": {
     "error": null,
     "outside": {},
     "tree": {
@@ -7551,6 +7817,18 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -7749,6 +8027,11 @@
       "target": "/tar-minefield-nonexistent"
      }
     }
+   },
+   "Rust tar-codec": {
+    "error": "at byte 0: unsafe symbolic-link target \"/tar-minefield-nonexistent\": is absolute",
+    "outside": {},
+    "tree": {}
    },
    "bsdtar": {
     "error": null,
@@ -7968,6 +8251,11 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 1024: archive format changed from Gnu to Pax",
+    "outside": {},
+    "tree": {}
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -8177,6 +8465,11 @@
    },
    "Rust tar": {
     "error": "failed to iterate over archive",
+    "outside": {},
+    "tree": {}
+   },
+   "Rust tar-codec": {
+    "error": "at byte 1024: unexpected tar block: expected ordinary ustar member header after a local pax header, found another pax extended header",
     "outside": {},
     "tree": {}
    },
@@ -8467,6 +8760,21 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -8740,6 +9048,18 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -8937,6 +9257,11 @@
       "size": 89
      }
     }
+   },
+   "Rust tar-codec": {
+    "error": "at byte 0: unsafe member path \"/tar-minefield-absolute\": is absolute",
+    "outside": {},
+    "tree": {}
    },
    "bsdtar": {
     "error": null,
@@ -9163,6 +9488,11 @@
       "size": 21
      }
     }
+   },
+   "Rust tar-codec": {
+    "error": "at byte 0: unsafe member path \"a\\\\b\": contains a backslash separator",
+    "outside": {},
+    "tree": {}
    },
    "bsdtar": {
     "error": null,
@@ -9393,6 +9723,18 @@
     }
    },
    "Rust tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
+      "size": 10
+     }
+    }
+   },
+   "Rust tar-codec": {
     "error": null,
     "outside": {},
     "tree": {
@@ -9651,6 +9993,11 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 0: extraction policy rejected input: archive member path rejected by name policy: \"a\\nb\"",
+    "outside": {},
+    "tree": {}
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -9837,6 +10184,11 @@
     "outside": {},
     "tree": {}
    },
+   "Rust tar-codec": {
+    "error": "at byte 0: unsafe member path \"tar-minefield/../../tar-minefield-escaped\": contains a parent-directory component",
+    "outside": {},
+    "tree": {}
+   },
    "bsdtar": {
     "error": "tar-minefield/../../tar-minefield-escaped: Path contains '..': Unknown error -1\nbsdtar: Error exit delayed from previous errors.",
     "outside": {},
@@ -9970,6 +10322,11 @@
    },
    "Rust tar": {
     "error": null,
+    "outside": {},
+    "tree": {}
+   },
+   "Rust tar-codec": {
+    "error": "at byte 0: ordinary member has an empty effective path",
     "outside": {},
     "tree": {}
    },
@@ -10185,6 +10542,11 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 0: path is not valid UTF-8",
+    "outside": {},
+    "tree": {}
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -10345,6 +10707,11 @@
    },
    "Rust tar": {
     "error": "failed to unpack `DEST/a\u0000b`",
+    "outside": {},
+    "tree": {}
+   },
+   "Rust tar-codec": {
+    "error": "at byte 1024: effective member path contains a NUL byte",
     "outside": {},
     "tree": {}
    },
@@ -10606,6 +10973,11 @@
       "size": 12
      }
     }
+   },
+   "Rust tar-codec": {
+    "error": "at byte 0: decode policy rejected input: pax extended header contains duplicate record path",
+    "outside": {},
+    "tree": {}
    },
    "bsdtar": {
     "error": null,
@@ -10901,6 +11273,21 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -11160,6 +11547,18 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/sub": {
+      "kind": "directory"
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -11306,6 +11705,11 @@
    },
    "Rust tar": {
     "error": "failed to unpack `DEST/h`",
+    "outside": {},
+    "tree": {}
+   },
+   "Rust tar-codec": {
+    "error": "at byte 0: extraction policy rejected input: hard-link members are not allowed",
     "outside": {},
     "tree": {}
    },
@@ -11490,6 +11894,18 @@
    },
    "Rust tar": {
     "error": "failed to unpack `DEST/a`",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Rust tar-codec": {
+    "error": "at byte 1024: extraction policy rejected input: hard-link members are not allowed",
     "outside": {},
     "tree": {
      "a": {
@@ -11705,6 +12121,11 @@
    },
    "Rust tar": {
     "error": "failed to unpack `DEST/h`",
+    "outside": {},
+    "tree": {}
+   },
+   "Rust tar-codec": {
+    "error": "at byte 0: extraction policy rejected input: hard-link members are not allowed",
     "outside": {},
     "tree": {}
    },
@@ -12046,6 +12467,18 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "at byte 1536: extraction policy rejected input: hard-link members are not allowed",
+    "outside": {},
+    "tree": {
+     "f": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -12317,6 +12750,18 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "761d1fb145ca8c7130231412276df60f34dd34554c4d174b973a45e3222475a9",
+      "size": 5
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -12549,6 +12994,15 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "kind": "directory"
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -12776,6 +13230,18 @@
     }
    },
    "Rust tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
+      "size": 5
+     }
+    }
+   },
+   "Rust tar-codec": {
     "error": null,
     "outside": {},
     "tree": {
@@ -13046,6 +13512,18 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
+      "size": 28
+     }
+    }
+   },
    "bsdtar": {
     "error": null,
     "outside": {},
@@ -13273,6 +13751,11 @@
       "target": ".."
      }
     }
+   },
+   "Rust tar-codec": {
+    "error": "at byte 0: unsafe symbolic-link target \"..\": escapes the destination root",
+    "outside": {},
+    "tree": {}
    },
    "bsdtar": {
     "error": "d/tar-minefield-through-symlink: Cannot extract through symlink d/tar-minefield-through-symlink: Success\nbsdtar: Error exit delayed from previous errors.",
@@ -13540,6 +14023,18 @@
      }
     }
    },
+   "Rust tar-codec": {
+    "error": "archive entry collides with existing path a",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
+      "size": 7
+     }
+    }
+   },
    "bsdtar": {
     "error": "a/b: Could not stat a/b: Not a directory\nbsdtar: Error exit delayed from previous errors.",
     "outside": {},
@@ -13707,6 +14202,11 @@
    "kind": "extract",
    "name": "node-tar, strict",
    "version": "tar 7.5.22"
+  },
+  {
+   "kind": "extract",
+   "name": "Rust tar-codec",
+   "version": "tar-codec 0.0.15, extract_in"
   }
  ]
 }

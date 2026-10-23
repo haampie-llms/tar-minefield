@@ -1,6 +1,6 @@
 """Run every case of the test suite with every implementation, and tabulate what they make of it.
 
-    python -I contrib/matrix/matrix.py WORK
+    python -I contrib/matrix/matrix.py WORK [--only NAME...]
     python -I contrib/matrix/matrix.py --readme README.md
 
 Programs are found on PATH, or in an environment variable of their name in capitals, such as
@@ -8,7 +8,8 @@ $JULIA or $BSDTAR. WORK is a directory for builds and extractions: runners are b
 extracted there in a directory of its own, two levels below a directory that catches what is
 written outside it. Some cases do write outside the destination in lenient extractors, so WORK
 should be a throwaway directory. Writes matrix.json, the results, and MATRIX.md, the table made
-from them, next to this script. With --readme, the summary between `<!-- begin matrix.py -->` and
+from them, next to this script. With --only, only the implementations of those names are run, and
+their results replace or join those in matrix.json, whose other columns are kept. With --readme, the summary between `<!-- begin matrix.py -->` and
 `<!-- end matrix.py -->` in that file, and MATRIX.md, are generated again from matrix.json, and
 nothing is run.
 
@@ -117,9 +118,14 @@ def build_mescc_untar(build):
     return binary
 
 
-def implementations(work):
-    """(name, version, kind, command) for every implementation found: kind is "extract", with a
-    command of the archive and the destination, or "list", with a command of the archive."""
+def implementations(work, only=None):
+    """(name, version, kind, command) for every implementation found, or of those named in only:
+    kind is "extract", with a command of the archive and the destination, or "list", with a
+    command of the archive. Runners of implementations that are not wanted are not built."""
+
+    def want(*names):
+        return only is None or any(n in only for n in names)
+
     found = []
     if shutil.which("tar"):
         found.append(("GNU tar", first_line(["tar", "--version"]), "extract",
@@ -128,7 +134,8 @@ def implementations(work):
     if bsdtar:
         found.append(("bsdtar", first_line([bsdtar, "--version"]).split(" zlib")[0], "extract",
                       lambda a, d, b=bsdtar: [b, "-xf", a, "-C", d]))
-    if shutil.which("git") and tool("cc"):
+    if want("live-bootstrap untar", "live-bootstrap untar, --non-strict") and shutil.which("git") \
+            and tool("cc"):
         binary = build_mescc_untar(os.path.join(work, "build", "mescc-tools-extra"))
         if binary:
             commit = open(os.path.join(RUNNERS, "mescc-tools-extra", "source.txt")).read().split(
@@ -152,7 +159,7 @@ def implementations(work):
                       lambda a, d, f=f: [python, "-I", "-c", TARFILE, a, d, f]))
     build = os.path.join(work, "build")
     os.makedirs(build, exist_ok=True)
-    if shutil.which("go"):
+    if want("Go archive/tar", "Go archive/tar, tarinsecurepath=0") and shutil.which("go"):
         binary = os.path.join(build, "go-runner")
         code, _, err = run(["go", "build", "-o", binary, "."], cwd=os.path.join(RUNNERS, "go"))
         if code == 0:
@@ -162,7 +169,7 @@ def implementations(work):
                           lambda a, b=binary: ["env", "GODEBUG=tarinsecurepath=0", b, a]))
         else:
             print("go runner:", err, file=sys.stderr)
-    if shutil.which("cargo"):
+    if want("Rust tar", "Rust astral-tokio-tar", "Rust tar-codec") and shutil.which("cargo"):
         target = os.path.join(build, "rust")
         code, _, err = run(["cargo", "build", "--release", "--quiet", "--target-dir", target],
                            cwd=os.path.join(RUNNERS, "rust"))
@@ -172,10 +179,12 @@ def implementations(work):
                           lambda a, d, b=binary: [b, "tar", a, d]))
             found.append(("Rust astral-tokio-tar", "astral-tokio-tar 0.7.0, unpack", "extract",
                           lambda a, d, b=binary: [b, "astral-tokio-tar", a, d]))
+            found.append(("Rust tar-codec", "tar-codec 0.0.15, extract_in", "extract",
+                          lambda a, d, b=binary: [b, "tar-codec", a, d]))
         else:
             print("rust runner:", err, file=sys.stderr)
     cabal = tool("cabal")
-    if cabal:
+    if want("Haskell tar") and cabal:
         target = os.path.join(build, "haskell")
         code, out, err = run([cabal, "install", "--installdir", target, "--overwrite-policy=always",
                               "--install-method=copy", f"--builddir={target}/dist"],
@@ -187,7 +196,7 @@ def implementations(work):
         else:
             print("haskell runner:", (err or out)[-2000:], file=sys.stderr)
     java = tool("java")
-    if java:
+    if want("Java Commons Compress") and java:
         jars = os.path.join(build, "java")
         fetch_jars(os.path.join(RUNNERS, "java", "jars.txt"), jars)
         java_version = first_line([java, "-version"]).split('"')[1]
@@ -214,7 +223,7 @@ def implementations(work):
         version = "Tar {1} of Julia {0}".format(*out.split()) if code == 0 else "?"
         found.append(("Julia Tar.jl", version, "extract",
                       lambda a, d, j=julia, s=script: [j, "--startup-file=no", s, a, d]))
-    if shutil.which("npm"):
+    if want("node-tar", "node-tar, strict") and shutil.which("npm"):
         node = os.path.join(build, "node")
         shutil.copytree(os.path.join(RUNNERS, "node"), node, dirs_exist_ok=True)
         code, _, err = run(["npm", "ci", "--silent", "--no-audit", "--no-fund"], cwd=node)
@@ -226,7 +235,7 @@ def implementations(work):
                           lambda a, d, s=script: ["node", s, a, d, "strict"]))
         else:
             print("node runner:", err, file=sys.stderr)
-    return found
+    return [i for i in found if want(i[0])]
 
 
 def walk(top, dest=None):
@@ -412,17 +421,25 @@ def main():
         write_outputs(results, cases)
         return
     work = os.path.abspath(sys.argv[1])
+    only = set(sys.argv[3:]) if sys.argv[2:3] == ["--only"] else None
     cases = load_cases()
-    impls = implementations(work)
+    impls = implementations(work, only)
     results = {"implementations": [{"name": n, "version": v, "kind": k} for n, v, k, _ in impls],
                "cases": {}}
+    if only:
+        # the other columns are kept as they are in matrix.json
+        with open(os.path.join(HERE, "matrix.json")) as f:
+            previous = json.load(f)
+        results["implementations"] = [i for i in previous["implementations"]
+                                      if i["name"] not in only] + results["implementations"]
     rejected_by = policies()
     runs = os.path.join(work, "runs")
     shutil.rmtree(runs, ignore_errors=True)
     for case, info in cases.items():
         archive = os.path.join(ARCHIVES, case + ".tar")
-        row = {"strict.py": {"error": "rejected" if rejected_by[case] else None, "tree": None,
-                             "outside": {}}}
+        row = dict(previous["cases"].get(case, {})) if only else {}
+        row["strict.py"] = {"error": "rejected" if rejected_by[case] else None, "tree": None,
+                            "outside": {}}
         for i, (name, version, kind, command) in enumerate(impls):
             if kind == "extract":
                 error, tree, outside = extract(command, archive, os.path.join(runs, str(i), case))
@@ -477,7 +494,7 @@ POPULARITY = [
     "node-tar", "node-tar, strict",
     "Java Commons Compress",
     "Go archive/tar", "Go archive/tar, tarinsecurepath=0",
-    "Rust tar", "Rust astral-tokio-tar",
+    "Rust tar", "Rust astral-tokio-tar", "Rust tar-codec",
     "RubyGems", "Perl Archive::Tar", "Haskell tar", "Julia Tar.jl",
     "live-bootstrap untar", "live-bootstrap untar, --non-strict",
 ]

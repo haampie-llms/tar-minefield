@@ -181,6 +181,7 @@ Seen in: v7 archives only, such as sendmail 8.18.2, tcp_wrappers 7.6 and unclutt
 <tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (0 B, e3b0c442)</td></tr>
 <tr><td>Rust tar</td><td>tar 0.4.46, unpack</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (0 B, e3b0c442)</td></tr>
 <tr><td>Rust astral-tokio-tar</td><td>astral-tokio-tar 0.7.0, unpack</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (0 B, e3b0c442)</td></tr>
+<tr><td>Rust tar-codec</td><td>tar-codec 0.0.15, extract_in</td><td>✅ as the verdict says</td><td>error: at byte 0: unsafe member path &quot;a/&quot;: only a directory may have a directory-required path suffix</td></tr>
 <tr><td>RubyGems</td><td>RubyGems 3.6.7 of Ruby 3.3.8, extract_tar_gz</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (0 B, e3b0c442)</td></tr>
 <tr><td>Perl Archive::Tar</td><td>Archive::Tar 3.02_001 of Perl v5.40.1</td><td>⚠️ accepts</td><td>tree A: <code>a/</code></td></tr>
 <tr><td>Haskell tar</td><td>tar 0.7.2.0, extract, of GHC 9.10</td><td>✅ as the verdict says</td><td>error: DEST/a/: withFile: inappropriate type (Is a directory)</td></tr>

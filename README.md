@@ -26,9 +26,9 @@ Use **[the test suite](suite/)** in your tests, or browse **[the website](https:
 ## Comparison
 
 <!-- begin matrix.py -->
-What 20 implementations make of the 55 cases: a row per case, by level, and a column per implementation, with the outcomes of all cases at the top. [The website](https://haampie-llms.github.io/tar-minefield/) has a page per case.
+What 21 implementations make of the 55 cases: a row per case, by level, and a column per implementation, with the outcomes of all cases at the top. [The website](https://haampie-llms.github.io/tar-minefield/) has a page per case.
 
-[![What every implementation makes of every case of the test suite. Outcomes of all cases: strict.py: ✅55; GNU tar: ✅23 ⚠️32; bsdtar: ✅26 ⚠️29; BusyBox tar: ✅23 ⚠️32; 7-Zip: ✅22 ⚠️31 ⛔1 ❌1; Python tarfile, filter=data: ✅26 ⚠️28 ⛔1; Python tarfile, filter=tar: ✅26 ⚠️29; Python tarfile, filter=fully_trusted: ✅25 ⚠️28 💥2; node-tar: ✅19 ⚠️35 ❌1; node-tar, strict: ✅27 ⚠️27 ⛔1; Java Commons Compress: ✅24 ⚠️30 ❌1; Go archive/tar: ✅22 ⚠️33; Go archive/tar, tarinsecurepath=0: ✅25 ⚠️30; Rust tar: ✅27 ⚠️28; Rust astral-tokio-tar: ✅27 ⚠️27 ⛔1; RubyGems: ✅19 ⚠️30 ⛔2 ❌4; Perl Archive::Tar: ✅26 ⚠️27 ⛔1 ❌1; Haskell tar: ✅30 ⚠️20 ⛔5; Julia Tar.jl: ✅32 ⚠️23; live-bootstrap untar: ✅17 ⚠️30 ❌6 💥2; live-bootstrap untar, --non-strict: ✅12 ⚠️35 ❌6 💥2](contrib/matrix/matrix.svg)](https://haampie-llms.github.io/tar-minefield/)
+[![What every implementation makes of every case of the test suite. Outcomes of all cases: strict.py: ✅55; GNU tar: ✅23 ⚠️32; bsdtar: ✅26 ⚠️29; BusyBox tar: ✅23 ⚠️32; 7-Zip: ✅22 ⚠️31 ⛔1 ❌1; Python tarfile, filter=data: ✅26 ⚠️28 ⛔1; Python tarfile, filter=tar: ✅26 ⚠️29; Python tarfile, filter=fully_trusted: ✅25 ⚠️28 💥2; node-tar: ✅19 ⚠️35 ❌1; node-tar, strict: ✅27 ⚠️27 ⛔1; Java Commons Compress: ✅24 ⚠️30 ❌1; Go archive/tar: ✅22 ⚠️33; Go archive/tar, tarinsecurepath=0: ✅25 ⚠️30; Rust tar: ✅27 ⚠️28; Rust astral-tokio-tar: ✅27 ⚠️27 ⛔1; Rust tar-codec: ✅40 ⚠️10 ⛔4 ❌1; RubyGems: ✅19 ⚠️30 ⛔2 ❌4; Perl Archive::Tar: ✅26 ⚠️27 ⛔1 ❌1; Haskell tar: ✅30 ⚠️20 ⛔5; Julia Tar.jl: ✅32 ⚠️23; live-bootstrap untar: ✅17 ⚠️30 ❌6 💥2; live-bootstrap untar, --non-strict: ✅12 ⚠️35 ❌6 💥2](contrib/matrix/matrix.svg)](https://haampie-llms.github.io/tar-minefield/)
 <!-- end matrix.py -->
 
 ## Contents

@@ -1,6 +1,6 @@
 // Extract a tar archive with the unpack of a Rust tar library, for contrib/matrix/matrix.py.
 //
-//     runner tar|astral-tokio-tar ARCHIVE DEST
+//     runner tar|astral-tokio-tar|tar-codec ARCHIVE DEST
 //
 // exits with status 1 and the error on stderr if unpack fails.
 fn main() {
@@ -10,6 +10,17 @@ fn main() {
         "tar" => {
             let file = std::fs::File::open(archive).expect("open");
             tar::Archive::new(file).unpack(dest).map_err(|e| e.to_string())
+        }
+        "tar-codec" => {
+            use tar_codec::{extract::ExtractPolicy, Archive as _, TarArchive};
+            let runtime = tokio::runtime::Builder::new_current_thread().build().unwrap();
+            runtime.block_on(async {
+                let file = tokio::fs::File::open(archive).await.expect("open");
+                TarArchive::new(file)
+                    .extract_in(dest, ExtractPolicy::default())
+                    .await
+                    .map_err(|e| e.to_string())
+            })
         }
         _ => {
             let runtime = tokio::runtime::Builder::new_current_thread().build().unwrap();

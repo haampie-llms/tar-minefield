@@ -314,6 +314,7 @@ Seen in: octa 8.4.
 <tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>⚠️ accepts</td><td>tree A: <code>f</code> (2 B, 092fcfbb), <code>h</code> → <code>f</code>, <code>s</code> → <code>f</code></td></tr>
 <tr><td>Rust tar</td><td>tar 0.4.46, unpack</td><td>⚠️ accepts</td><td>tree A: <code>f</code> (2 B, 092fcfbb), <code>h</code> → <code>f</code>, <code>s</code> → <code>f</code></td></tr>
 <tr><td>Rust astral-tokio-tar</td><td>astral-tokio-tar 0.7.0, unpack</td><td>⚠️ accepts</td><td>tree A: <code>f</code> (2 B, 092fcfbb), <code>h</code> → <code>f</code>, <code>s</code> → <code>f</code></td></tr>
+<tr><td>Rust tar-codec</td><td>tar-codec 0.0.15, extract_in</td><td>✅ as the verdict says</td><td>error: at byte 1536: extraction policy rejected input: hard-link members are not allowed</td></tr>
 <tr><td>RubyGems</td><td>RubyGems 3.6.7 of Ruby 3.3.8, extract_tar_gz</td><td>⚠️ accepts</td><td>tree C: <code>f</code> (2 B, 092fcfbb), <code>s</code> → <code>f</code></td></tr>
 <tr><td>Perl Archive::Tar</td><td>Archive::Tar 3.02_001 of Perl v5.40.1</td><td>⚠️ accepts</td><td>tree A: <code>f</code> (2 B, 092fcfbb), <code>h</code> → <code>f</code>, <code>s</code> → <code>f</code></td></tr>
 <tr><td>Haskell tar</td><td>tar 0.7.2.0, extract, of GHC 9.10</td><td>✅ as the verdict says</td><td>error: DEST/s: copyFile:atomicCopyFileContents:withReplacementFile:copyFileToHandle:openFdAt: does not exist (No such file or directory)</td></tr>
