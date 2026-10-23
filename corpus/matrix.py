@@ -3,7 +3,8 @@
     python -I corpus/matrix.py WORK
     python -I corpus/matrix.py --readme README.md
 
-Julia is found on PATH, or as $JULIA. WORK is a directory for builds and extractions: runners are built there, and every case is
+Programs are found on PATH, or in an environment variable of their name in capitals, such as
+$JULIA or $BSDTAR. WORK is a directory for builds and extractions: runners are built there, and every case is
 extracted there in a directory of its own, two levels below a directory that catches what is
 written outside it. Some cases do write outside the destination in lenient extractors, so WORK
 should be a throwaway directory. Writes corpus/matrix.json, the results, and corpus/MATRIX.md,
@@ -59,6 +60,58 @@ TARFILE = (
 )
 
 
+def tool(name):
+    """A program from the environment variable of its name in capitals, or from PATH."""
+    return os.environ.get(name.upper()) or shutil.which(name)
+
+
+def fetch_jars(listing, into):
+    """The jars that listing names, from Maven Central into a directory, checked by their sha1."""
+    import urllib.request
+
+    os.makedirs(into, exist_ok=True)
+    for line in open(listing):
+        if line.strip() and not line.startswith("#"):
+            path, sha1 = line.split()
+            target = os.path.join(into, os.path.basename(path))
+            if not os.path.exists(target):
+                with urllib.request.urlopen(f"https://repo1.maven.org/maven2/{path}") as r:
+                    data = r.read()
+                if hashlib.sha1(data).hexdigest() != sha1:
+                    raise ValueError(f"{path}: sha1 mismatch")
+                with open(target, "wb") as f:
+                    f.write(data)
+
+
+def build_mescc_untar(build):
+    """The untar of mescc-tools-extra, compiled from the commits of its source.txt, or None."""
+    binary = os.path.join(build, "untar")
+    if os.path.exists(binary):
+        return binary
+    sources = {}
+    for line in open(os.path.join(RUNNERS, "mescc-tools-extra", "source.txt")):
+        if line.strip() and not line.startswith("#"):
+            name, url, commit = line.split()
+            sources[name] = (url, commit)
+    src = os.path.join(build, "src")
+    for name, (url, commit) in sources.items():
+        path = src if name == "mescc-tools-extra" else os.path.join(src, name)
+        shutil.rmtree(path, ignore_errors=True)
+        for cmd in (["git", "clone", "-q", "--filter=blob:none", "--no-checkout", url, path],
+                    ["git", "-C", path, "checkout", "-q", commit]):
+            code, _, err = run(cmd)
+            if code != 0:
+                print("mescc-tools-extra:", err, file=sys.stderr)
+                return None
+    # C99: M2libc names a variable bool, which C23 makes a keyword
+    code, _, err = run([tool("cc"), "-std=gnu99", "-Wno-implicit-function-declaration", "untar.c",
+                        "M2libc/bootstrappable.c", "-o", binary], cwd=src)
+    if code != 0:
+        print("mescc-tools-extra:", err, file=sys.stderr)
+        return None
+    return binary
+
+
 def implementations(work):
     """(name, version, kind, command) for every implementation found: kind is "extract", with a
     command of the archive and the destination, or "list", with a command of the archive."""
@@ -66,11 +119,24 @@ def implementations(work):
     if shutil.which("tar"):
         found.append(("GNU tar", first_line(["tar", "--version"]), "extract",
                       lambda a, d: ["tar", "-xf", a, "-C", d]))
+    bsdtar = tool("bsdtar")
+    if bsdtar:
+        found.append(("bsdtar", first_line([bsdtar, "--version"]).split(" zlib")[0], "extract",
+                      lambda a, d, b=bsdtar: [b, "-xf", a, "-C", d]))
+    if shutil.which("git") and tool("cc"):
+        binary = build_mescc_untar(os.path.join(work, "build", "mescc-tools-extra"))
+        if binary:
+            commit = open(os.path.join(RUNNERS, "mescc-tools-extra", "source.txt")).read().split(
+                "mescc-tools-extra https://github.com/oriansj/mescc-tools-extra ")[1][:12]
+            version = f"mescc-tools-extra {commit}, built with cc"
+            found.append(("live-bootstrap untar", version, "extract",
+                          lambda a, d, b=binary: [b, "--file", a]))
+            found.append(("live-bootstrap untar, --non-strict", version, "extract",
+                          lambda a, d, b=binary: [b, "--non-strict", "--file", a]))
     if shutil.which("busybox"):
         found.append(("BusyBox tar", first_line(["busybox"]).split(" multi-call")[0], "extract",
                       lambda a, d: ["busybox", "tar", "-xf", a, "-C", d]))
     if shutil.which("7z"):
-        version = first_line(["7z"]) if first_line(["7z"]) != "?" else "?"
         code, out, _ = run(["7z"])
         version = next((l for l in out.splitlines() if l.startswith("7-Zip")), "7-Zip").split(" :")[0]
         found.append(("7-Zip", version, "extract", lambda a, d: ["7z", "x", "-y", "-bd", f"-o{d}", a]))
@@ -103,7 +169,39 @@ def implementations(work):
                           lambda a, d, b=binary: [b, "astral-tokio-tar", a, d]))
         else:
             print("rust runner:", err, file=sys.stderr)
-    julia = os.environ.get("JULIA") or shutil.which("julia")
+    cabal = tool("cabal")
+    if cabal:
+        target = os.path.join(build, "haskell")
+        code, out, err = run([cabal, "install", "--installdir", target, "--overwrite-policy=always",
+                              "--install-method=copy", f"--builddir={target}/dist"],
+                             cwd=os.path.join(RUNNERS, "haskell"))
+        if code == 0:
+            version = first_line([os.path.join(target, "runner"), "--version"])
+            found.append(("Haskell tar", version, "extract",
+                          lambda a, d, b=os.path.join(target, "runner"): [b, a, d]))
+        else:
+            print("haskell runner:", (err or out)[-2000:], file=sys.stderr)
+    java = tool("java")
+    if java:
+        jars = os.path.join(build, "java")
+        fetch_jars(os.path.join(RUNNERS, "java", "jars.txt"), jars)
+        java_version = first_line([java, "-version"]).split('"')[1]
+        found.append(("Java Commons Compress", f"Commons Compress 1.28.0, Expander, on Java {java_version}",
+                      "extract", lambda a, d, j=java, c=os.path.join(jars, "*"):
+                      [j, "-cp", c, os.path.join(RUNNERS, "java", "Extract.java"), a, d]))
+    ruby = tool("ruby")
+    if ruby:
+        code, out, _ = run([ruby, "-e", 'require "rubygems"; print Gem::VERSION, " ", RUBY_VERSION'])
+        version = "RubyGems {} of Ruby {}, extract_tar_gz".format(*out.split()) if code == 0 else "?"
+        found.append(("RubyGems", version, "extract", lambda a, d, r=ruby:
+                      [r, os.path.join(RUNNERS, "ruby", "extract.rb"), a, d]))
+    perl = tool("perl")
+    if perl:
+        code, out, _ = run([perl, "-MArchive::Tar", "-e", 'print "$Archive::Tar::VERSION $^V"'])
+        version = "Archive::Tar {} of Perl {}".format(*out.split()) if code == 0 else "?"
+        found.append(("Perl Archive::Tar", version, "extract", lambda a, d, p=perl:
+                      [p, os.path.join(RUNNERS, "perl", "extract.pl"), a, d]))
+    julia = tool("julia")
     if julia:
         script = os.path.join(RUNNERS, "julia", "extract.jl")
         code, out, _ = run([julia, "--startup-file=no", "-e",
@@ -406,14 +504,13 @@ FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-se
 
 
 def group(name):
-    """Groups of implementations, which the SVGs separate by a gap."""
+    """The group of an implementation, which the SVG separates from the next by a gap: the
+    policies, the command-line tools, and then the libraries of each language."""
     if name.startswith("strict.py"):
-        return 0
-    if name in ("GNU tar", "BusyBox tar", "7-Zip"):
-        return 1
-    if name.startswith("Python tarfile"):
-        return 2
-    return 3
+        return "policy"
+    if name in ("GNU tar", "bsdtar", "BusyBox tar", "7-Zip") or name.startswith("live-bootstrap"):
+        return "tool"
+    return name.split()[0].replace("RubyGems", "Ruby").replace("node-tar,", "node-tar")
 
 
 def esc(text):

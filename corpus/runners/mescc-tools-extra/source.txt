@@ -1,0 +1,6 @@
+# The untar of mescc-tools-extra that live-bootstrap uses for its first tarballs: the commits
+# that stage0-posix 45d90f5955b6 pins, which live-bootstrap b1ceced7ea8a pins as seed/stage0-posix.
+# matrix.py clones them, and compiles untar.c with the C compiler of the machine, as the makefile
+# of mescc-tools-extra does; live-bootstrap compiles it with M2-Planet.
+mescc-tools-extra https://github.com/oriansj/mescc-tools-extra a151c245e512076971a3c85bb1502cf92cfa83b6
+M2libc https://github.com/oriansj/M2libc 68a23cfd05d5a355ba7a30c770d684cbe86fcc4e

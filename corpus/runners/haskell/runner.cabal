@@ -1,0 +1,9 @@
+cabal-version: 2.4
+name:          runner
+version:       0.1.0
+synopsis:      Extract a tar archive with the tar package, for corpus/matrix.py
+
+executable runner
+  main-is:          Main.hs
+  build-depends:    base, tar
+  default-language: Haskell2010

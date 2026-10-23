@@ -1,0 +1,5 @@
+# The jars of Commons Compress and its dependencies, from Maven Central: path and sha1.
+org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar e482f2c7a88dac3c497e96aa420b6a769f59c8d7
+commons-codec/commons-codec/1.19.0/commons-codec-1.19.0.jar 8c0dbe3ae883fceda9b50a6c76e745e548073388
+commons-io/commons-io/2.20.0/commons-io-2.20.0.jar 36f3474daec2849c149e877614e7f979b2082cd2
+org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.jar fb14946f0e39748a6571de0635acbe44e7885491

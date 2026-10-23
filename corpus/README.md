@@ -48,5 +48,8 @@ members, which are then applied in order. WORK holds the builds of the programs 
 whose dependencies are pinned, and the extractions: each in a directory of its own, two levels
 below a directory that catches what is written outside it. Run it in a throwaway directory, or a
 container, as some cases escape in lenient extractors. It uses what is installed: GNU tar,
-BusyBox, 7-Zip, CPython's `tarfile` with each of its filters, Go, Rust,
-Node.js, and Julia (on PATH, or as `$JULIA`).
+the untar of live-bootstrap (with git and a C compiler), bsdtar, BusyBox, 7-Zip, CPython's
+`tarfile` with each of its filters, Go, Rust, Haskell
+(cabal), Java (with the jars of `runners/java/jars.txt`, which it downloads and checks), Ruby,
+Perl, Julia and Node.js: each on PATH, or in an environment variable of its name in capitals,
+such as `$JULIA`.
