@@ -62,7 +62,6 @@ th, td { border: 1px solid #d0d7de; padding: 0.25rem 0.5rem; text-align: left;
          vertical-align: baseline; overflow-wrap: anywhere; }
 th { background: #f6f8fa; }
 td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
-.frac { display: inline-block; min-width: 6.5ch; text-align: left; }
 svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
 dt { font-weight: 600; }
@@ -74,17 +73,9 @@ STYLE_VERSION = hashlib.sha256(STYLE.encode()).hexdigest()[:8]
 
 
 def prevalence(k, n):
-    """A share of tarballs to two significant digits, so that rare ones do not round to 0."""
-    return f"{100 * k / n:.2g}%" if k else "none"
-
-
-def on_point(share):
-    """A share as HTML that lines up on its decimal point in a right-aligned column: what comes
-    after the point is left-aligned in a box of its own, of the same width in every row."""
-    whole, point, rest = share.partition(".")
-    if not point and share.endswith("%"):
-        whole, rest = share[:-1], "%"
-    return f'{html.escape(whole)}<span class=frac>{point}{html.escape(rest)}</span>'
+    """A share of tarballs with two decimals, so that a right-aligned column lines up on the
+    point; one that would round to 0 says so."""
+    return "&lt;0.01%" if 0 < 10000 * k < n else f"{100 * k / n:.2f}%"
 
 
 def table(kind, rows):
@@ -217,7 +208,7 @@ def data_section(features, names, short, rated, union):
     mixed = 0 < j < k
     rows = []
     for n, total, k, j in counts:
-        cells = [html.escape(n), f"{total:,}", f"{k:,}", on_point(prevalence(k, total)) if k else ""]
+        cells = [html.escape(n), f"{total:,}", f"{k:,}", prevalence(k, total)]
         cells += [str(j)] if mixed else []
         rows.append("<tr><td>" + "</td><td class=n>".join(cells) + "</td></tr>")
     examples = []
@@ -340,7 +331,7 @@ def tarballs_section(names, short, rated, union):
     for n, rs in [(short[n], rated[n]) for n in names] + [("all, distinct", union)]:
         j = sum(not strict.passes_default(r) for r in rs)
         rows.append(f"<tr><td>{html.escape(n)}</td><td class=n>{len(rs):,}</td>"
-                    f"<td class=n>{j:,}</td><td class=n>{on_point(prevalence(j, len(rs))) if j else ''}</td></tr>")
+                    f"<td class=n>{j:,}</td><td class=n>{prevalence(j, len(rs))}</td></tr>")
     rejected = sum(not strict.passes_default(r) for r in union)
     accepted = strict.percent(len(union) - rejected, len(union))
     return (f'<h2 id="tarballs">Source tarballs</h2>\n<p>The default policy accepts {accepted} of the '
@@ -361,10 +352,10 @@ def index_page(cases, results, data):
             ident, name = matrix.label(case, info).split(" ", 1)
             features = features_of(case, info)
             k = sum(1 for r in union if any(f in r["features"] for f in features))
-            share = prevalence(k, len(union)) if features else "–"
+            share = prevalence(k, len(union)) if features else ""
             rows.append(f'<tr><td><a href="{ident}.html"><code>{ident}</code></a></td>'
                         f"<td>{html.escape(name)}</td><td>{inline(info['description'])}</td>"
-                        f"<td class=n>{on_point(share)}</td></tr>")
+                        f"<td class=n>{share}</td></tr>")
         sections.append(f"<h3>{html.escape(matrix.GROUPS[group].capitalize())}</h3>\n"
                         + table("cases", rows))
     body = f"""<h1>{TITLE}</h1>
@@ -378,9 +369,9 @@ block, what every implementation makes of it, and how common it is in source tar
 <div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["id"] + ".html")}</div>
 {tarballs_section(names, short, rated, union)}
 <h2 id="cases">The cases</h2>
-<p>Prevalence: the share of the {len(union)} distinct release tarballs of Spack, nixpkgs, Guix and
-live-bootstrap that have the feature of the case; none, if no tarball has it. A dash: the scanner
-has no feature for the case. The page of a case has the numbers per ecosystem.</p>
+<p>Prevalence: the share of the {len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and
+live-bootstrap that have the feature of the case, and blank where the scanner has no feature for
+it. The page of a case has the numbers per ecosystem.</p>
 {chr(10).join(sections)}
 """
     intro = re.sub(r"<[^>]+>", "", readme_intro().split("</p>", 1)[0])

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F09 end-zero-block-then-member · Tar file extraction test suite</title>
 <meta name="description" content="A zero block, then another member: the end of the archive, or not?">
-<link rel="stylesheet" href="style.css?22a00e46">
+<link rel="stylesheet" href="style.css?24cd578e">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F08.html">F08 end-truncated-in-member</a> · next: <a href="F10.html">F10 extended-pax-size-before-gnu-long</a></nav>
@@ -342,11 +342,11 @@ Seen in: jakarta-oro 2.0.8, PullParser 2.1.10 and commons-cli 1.2-src.
 <h2>Prevalence in source tarballs</h2>
 <p>Release tarballs of Spack, nixpkgs, Guix and live-bootstrap with <code>end.zero-block-before-member</code>. The default policy rejects all of them.</p>
 <table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>ecosystem</th><th class=n>tarballs</th><th class=n>with it</th><th class=n>share</th></tr>
-<tr><td>guix</td><td class=n>10,168</td><td class=n>4</td><td class=n>0<span class=frac>.039%</span></td></tr>
-<tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0</td><td class=n></td></tr>
-<tr><td>nix</td><td class=n>18,990</td><td class=n>0</td><td class=n></td></tr>
-<tr><td>spack</td><td class=n>37,554</td><td class=n>3</td><td class=n>0<span class=frac>.008%</span></td></tr>
-<tr><td>all, distinct</td><td class=n>62,622</td><td class=n>7</td><td class=n>0<span class=frac>.011%</span></td></tr></table>
+<tr><td>guix</td><td class=n>10,168</td><td class=n>4</td><td class=n>0.04%</td></tr>
+<tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0</td><td class=n>0.00%</td></tr>
+<tr><td>nix</td><td class=n>18,990</td><td class=n>0</td><td class=n>0.00%</td></tr>
+<tr><td>spack</td><td class=n>37,554</td><td class=n>3</td><td class=n>&lt;0.01%</td></tr>
+<tr><td>all, distinct</td><td class=n>62,622</td><td class=n>7</td><td class=n>0.01%</td></tr></table>
 <p>For example: jakarta-oro@2.0.8, PullParser@2.1.10, commons-cli@1.2-src, commons-jxpath@1.3-src, aida@3.2.1, commons-lang@2.4, commons-logging@1.1.1.</p>
 
 <hr>
