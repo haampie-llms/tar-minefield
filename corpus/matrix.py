@@ -1,4 +1,4 @@
-"""Run every case of the corpus with every implementation, and tabulate what they make of it.
+"""Run every case of the corpus with every parser, and tabulate what they make of it.
 
     python -I corpus/matrix.py WORK
     python -I corpus/matrix.py --readme README.md
@@ -12,13 +12,13 @@ the table made from them. With --readme, the summary between `<!-- begin matrix.
 `<!-- end matrix.py -->` in that file, and MATRIX.md, are generated again from matrix.json, and
 nothing is run.
 
-Each implementation either extracts a case, or, for libraries that have no extractor, lists its
+Each parser either extracts a case, or, for libraries that have no extractor, lists its
 members, which are then applied in order to an empty tree, as a program that uses it would. The
 outcome is compared with the case's verdict:
 
 - ✅ as the verdict says: rejects an `n_` case; extracts the tree in the manifest of a `y_` or
   `i_` case
-- ⚠️ accepts an `n_` case: the letter says which tree, so that implementations that make
+- ⚠️ accepts an `n_` case: the letter says which tree, so that parsers that make
   different trees of one case have different letters
 - ⛔ rejects an `i_` case, which a strict parser may
 - ❌ rejects a `y_` case, or extracts another tree than the manifest of a `y_` or `i_` case
@@ -118,7 +118,7 @@ def build_mescc_untar(build):
 
 
 def implementations(work):
-    """(name, version, kind, command) for every implementation found: kind is "extract", with a
+    """(name, version, kind, command) for every parser found: kind is "extract", with a
     command of the archive and the destination, or "list", with a command of the archive."""
     found = []
     if shutil.which("tar"):
@@ -476,7 +476,7 @@ def columns(results):
 
 
 def case_cells(info, row, names):
-    """The cell of every implementation for one case, and the trees its letters stand for."""
+    """The cell of every parser for one case, and the trees its letters stand for."""
     letters, cells = {}, {}
     for n in names:
         symbol, tree = outcome(info, row[n])
@@ -516,7 +516,7 @@ FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-se
 
 
 def group(name):
-    """The group of an implementation, which the SVG separates from the next by a gap: the
+    """The group of an parser, which the SVG separates from the next by a gap: the
     policies, the command-line tools, and then the libraries of each language."""
     if name.startswith("strict.py"):
         return "policy"
@@ -559,8 +559,8 @@ def legend_svg(x, y):
 
 
 def svg(results, cases, link=None):
-    """Every implementation in columns; in rows, the outcomes of all cases first, as a bar per
-    implementation, then every case, labelled by its code and name, and with link(case) a link
+    """Every parser in columns; in rows, the outcomes of all cases first, as a bar per
+    parser, then every case, labelled by its code and name, and with link(case) a link
     to its page. Links work where the SVG is part of the page, not where it is an image."""
     names = columns(results)
     counts = {n: {} for n in names}
@@ -619,7 +619,7 @@ def svg(results, cases, link=None):
     # the rotated name of the last column reaches past it, by the cosine of 60°
     width, height = int(x + 20 + 7 * len(names[-1]) / 2), y + 4
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
-            f'viewBox="0 0 {width} {height}" role="img"><title>What implementations make of every '
+            f'viewBox="0 0 {width} {height}" role="img"><title>What parsers make of every '
             f'case of the corpus</title>{svg_style()}{"".join(out)}</svg>\n')
 
 
@@ -631,18 +631,27 @@ def write_outputs(results, cases):
 
 
 def readme(path, results, cases):
-    """The summary in the README: matrix.svg, with the outcomes of every implementation as text."""
+    """The summary in the README: matrix.svg, with the outcomes of every parser as text."""
     names = columns(results)
     total = totals(results, cases, names)
+    parsers = [n for n in names if not n.startswith("strict.py")]
+    rejects = [c for c, info in cases.items() if info["verdict"] == "n"]
+    accepted = [sum(outcome(cases[c], results["cases"][c][n])[0] == "⚠️" for c in rejects)
+                for n in parsers]
+    differ = sum(len(case_cells(cases[c], results["cases"][c], parsers)[1]) > 1 for c in rejects)
+    escape = sum(any(outcome(info, results["cases"][c][n])[0] == "💥" for n in parsers)
+                 for c, info in cases.items())
     lines = [
-        f"Every case of the corpus, {len(cases)} of them, extracted by every implementation, and "
-        "the outcomes of all cases at the top. Each case has a code, whose letter is its level: F "
-        "framing, N names, K kinds, S order and state, G global pax headers. [The site]"
-        f"({SITE}) has a page for each, with its archive block by block, how many scanned "
-        "tarballs have it, and what every implementation makes of it; "
-        "[corpus/MATRIX.md](corpus/MATRIX.md) has the matrix as a table.",
+        f"**Each of {len(parsers)} parsers accepts between {min(accepted)} and {max(accepted)} "
+        f"of the {len(rejects)} `n_` cases, and they extract different trees from {differ} of "
+        f"them.** {escape} cases make a parser write outside its destination. Rows are the "
+        f"{len(cases)} cases, by level; columns are the parsers and the two policies of "
+        f"`scanner/strict.py`, with their outcomes of all cases at the top. [The site]({SITE}) "
+        "has a page per case: its blocks, a hex dump, how many scanned tarballs have it, and what "
+        "every parser makes of it. [corpus/MATRIX.md](corpus/MATRIX.md) has the matrix as a "
+        "table.",
         "",
-        "![What every implementation makes of every case of the corpus. Outcomes of all cases: "
+        "![What every parser makes of every case of the corpus. Outcomes of all cases: "
         + "; ".join(f"{n}: {total[n]}" for n in names) + "](corpus/matrix.svg)",
         "",
         "Generated by `corpus/matrix.py` from `corpus/matrix.json`.",
@@ -659,18 +668,18 @@ def readme(path, results, cases):
 def table(results, cases):
     names = columns(results)
     lines = [
-        "# What implementations make of the corpus",
+        "# What parsers make of the corpus",
         "",
         "Generated by `corpus/matrix.py` from `matrix.json`: every case of [archives/](archives),",
-        "extracted by every implementation, or for libraries without an extractor listed and applied",
+        "extracted by every parser, or for libraries without an extractor listed and applied",
         "in order. The two policies of `scanner/strict.py` are from what `tarscan.py` reports.",
         "",
     ] + LEGEND + [
         "",
-        "![Every case of the corpus, in rows, and what every implementation makes of it, in columns:"
+        "![Every case of the corpus, in rows, and what every parser makes of it, in columns:"
         " the table below as a picture](matrix.svg)",
         "",
-        "| implementation | version | how |",
+        "| parser | version | how |",
         "|---|---|---|",
     ]
     for i in results["implementations"]:
@@ -693,7 +702,7 @@ def table(results, cases):
             notes.append(f"- {code} {name}: " + "; ".join(f"{l}: {k}" for k, l in letters.items()))
     total = totals(results, cases, names)
     lines.append("| **total** | " + " | ".join(total[n] for n in names) + " |")
-    lines += ["", "## Trees", "", "What the implementations that accept a case extract, where it is"
+    lines += ["", "## Trees", "", "What the parsers that accept a case extract, where it is"
               " not its manifest: files by their size and the start of their sha256.", ""]
     lines += notes
     return "\n".join(lines) + "\n"

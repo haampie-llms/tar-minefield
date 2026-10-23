@@ -1,6 +1,6 @@
 """The POSIX magic with a version that is neither `00` nor NULs.
 
-`ustar\0` is followed by the version `01`. A reader may take the header as ustar, or as some
+`ustar\0` is followed by the version `01`. A parser may take the header as ustar, or as some
 other format, and read its prefix field and other fields accordingly. The default policy accepts
 only the version `00`, and NULs as some Java archivers write.
 

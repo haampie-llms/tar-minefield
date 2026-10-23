@@ -119,7 +119,7 @@ def load(paths):
 
 
 def dataset_table(datasets):
-    print("| dataset | tarballs | scanned | latest | untar rejects | latest | filesystem only |")
+    print("| ecosystem | tarballs | scanned | latest | untar rejects | latest | filesystem only |")
     print("|---|---|---|---|---|---|---|")
     for name, rows in datasets.items():
         scanned = [r for r in rows if "features" in r]
@@ -156,7 +156,7 @@ def main():
     print(f"# {title}\n")
     if len(datasets) > 1:
         print(
-            "Rates are per dataset. Counts below are of the distinct tarballs of all datasets.\n"
+            "Rates are per ecosystem. Counts below are of the distinct tarballs of all ecosystems.\n"
         )
         dataset_table(datasets)
         print()

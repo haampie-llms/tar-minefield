@@ -1,6 +1,6 @@
 """One pax key twice in one extended header.
 
-The extended header has the records `path=first` and `path=second`. Readers that keep the first
+The extended header has the records `path=first` and `path=second`. Parsers that keep the first
 value and those that keep the last extract different names.
 
 Decision point: which of two values of one key applies.

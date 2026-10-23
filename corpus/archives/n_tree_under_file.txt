@@ -2,7 +2,7 @@ S12 n_tree_under_file: rejected
 
 A member under a file.
 
-`a` is a file, then `a/b` is a file in it. A reader may fail, replace the file `a` with a
+`a` is a file, then `a/b` is a file in it. A parser may fail, replace the file `a` with a
 directory, or skip `a/b`.
 
 Decision point: whether a member under a file replaces it.

@@ -3,7 +3,7 @@
     python -I corpus/site.py docs data/*/*/results.jsonl
 
 Every page is generated, from what the rest of the repository has: the case's script and archive,
-what implementations make of it (matrix.json), and how many tarballs of the scans have its
+what parsers make of it (matrix.json), and how many tarballs of the scans have its
 feature, of which the default policy of scanner/strict.py rejects how many. Static HTML with a
 stylesheet, and no scripts: the SVGs are part of the pages, so that their hover titles and the
 links of the matrix work.
@@ -29,7 +29,7 @@ REPO = "https://github.com/haampie-llms/tar-minefield"
 VERDICTS = {
     "y": "accepted: every parser must extract its tree",
     "i": "accepted by the default policy, which a strict parser may reject",
-    "n": "rejected: readers disagree on its tree",
+    "n": "rejected: parsers disagree on its tree",
 }
 OUTCOMES = {
     "✅": "as the verdict says",
@@ -41,9 +41,9 @@ OUTCOMES = {
 # Tables of one kind have the same columns, in the same widths
 COLUMNS = {
     "cases": [("code", 9), ("name", 27), ("what it is", 50), ("prevalence", 14, "n")],
-    "data": [("dataset", 25), ("assessed", 25, "n"), ("with it", 25, "n"),
+    "data": [("ecosystem", 25), ("assessed", 25, "n"), ("with it", 25, "n"),
              ("rejected for it by the default policy", 25, "n")],
-    "implementations": [("implementation", 21), ("version", 21), ("outcome", 18),
+    "implementations": [("parser", 21), ("version", 21), ("outcome", 18),
                         ("what it makes of it", 40)],
 }
 STYLE = """\
@@ -148,7 +148,7 @@ def policy(info, features):
 
 
 def data_section(features, names, short, rated, union):
-    """How many tarballs of each dataset have the features, and how many of those the default
+    """How many tarballs of each ecosystem have the features, and how many of those the default
     policy rejects for them."""
     if not features:
         return ("<p>No feature of the scanner is about this case alone: an archive like it is "
@@ -253,7 +253,7 @@ def case_page(case, info, previous, following, results, data):
         body += ("<p>The tree that a parser must extract: "
                  + inline(matrix.describe(matrix.expected_tree(info))) + ".</p>\n")
     body += "<h2>In real tarballs</h2>\n" + data_section(features, *data) + "\n"
-    body += ("<h2>What implementations make of it</h2>\n"
+    body += ("<h2>What parsers make of it</h2>\n"
              + implementations_section(case, info, results) + "\n")
     return page(f"{code} {name} · tar-minefield", body)
 
@@ -295,20 +295,20 @@ def index_page(cases, results, data):
         sections.append(f"<h3>{html.escape(matrix.GROUPS[group].capitalize())}</h3>\n"
                         + table("cases", rows))
     body = f"""<h1>tar-minefield</h1>
-<p>A corpus of tar archives with verdicts, for parsers that reject what readers can disagree on,
-and what {len(results["implementations"])} implementations make of each. Every case has a code:
-its letter is the level of the catalogue of <a href="{REPO}/blob/main/METHOD.md">METHOD.md</a>, F
+<p>A corpus of tar archives with verdicts, for strict parsers, which reject what parsers can
+disagree on, and what {len(results["implementations"])} parsers make of each. Every case has a
+code: its letter is the level of the catalogue of <a href="{REPO}/blob/main/METHOD.md">METHOD.md</a>, F
 framing, N names, K kinds, S order and state, G global pax headers. A code stays with its case;
 new cases get new codes. See the <a href="{REPO}">repository</a> for the method and the scans.
 The explanations of the cases are written by hand; the numbers, outcomes, block maps and dumps
-are generated from the archives, the scans and the runs of the implementations.</p>
-<h2>What implementations make of every case</h2>
+are generated from the archives, the scans and the runs of the parsers.</p>
+<h2>What parsers make of every case</h2>
 <p>Click a case for its page; hover over a cell for the tree.</p>
 <div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["code"] + ".html")}</div>
 <h2>The cases</h2>
 <p>Prevalence: the share of the {len(union)} distinct tarballs of the scans that have the
 feature of the case; none, if no tarball has it. A dash: the scanner has no feature for the case.
-The page of a case has the numbers per dataset.</p>
+The page of a case has the numbers per ecosystem.</p>
 {chr(10).join(sections)}
 """
     return page("tar-minefield", body)

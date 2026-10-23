@@ -1,122 +1,108 @@
 # tar-minefield
 
-Tar leaves room for readers to disagree on what an archive contains: where the data of a member
-ends and the next header begins, which of several fields gives a member its name, whether `a/` is
-a file or a directory, which of two copies of a file wins. Package managers pin tarballs by their
-sha256, but a checksum pins bytes, not what they mean: when a reviewer, a scanner or an SBOM tool
-sees another tree than the extractor that installs it, a file can be hidden from one and shipped
-by the other, the bug class of CVE-2025-62518 (tokio-tar), GHSA-3pv8-6f4r-ffg2 (tar-rs) and
-CVE-2026-53655 (node-tar). A parser that rejects every archive that readers can disagree on
-closes that gap, as long as it accepts the tarballs that people actually download. tar-minefield
-is a corpus of archives with verdicts for such parsers, a policy for which ambiguities to reject,
-and a measurement of every release tarball of four package ecosystems of what that policy costs.
+**A test suite for tar parsers that refuse to guess, and the data that shows refusing is affordable.**
 
-## The policies
+A sha256 pins the bytes of a tarball, not the tree it extracts to. Tar leaves parsers room to
+disagree on that tree: where a member's data ends, which field gives its name, whether `a/` is a
+file, which of two copies wins. So a reviewer, scanner or SBOM tool can see one tree while the
+installer extracts another: a *parser differential*, as in CVE-2025-62518 (tokio-tar),
+GHSA-3pv8-6f4r-ffg2 (tar-rs) and CVE-2026-53655 (node-tar). A **strict parser** closes that gap
+by rejecting every ambiguous archive instead of picking a tree. tar-minefield gives you what you
+need to write one, or to check one:
 
-[METHOD.md](METHOD.md) lists the ambiguities of tar, ordered by how much damage they allow:
-framing, names, kinds, and the order and state of members. A strict parser could reject every
-one of them, and that is the first policy measured below. But some of them cannot change the
-tree, and others are spellings of the same path, so rejecting them costs real tarballs and buys
-nothing. The default policy ([METHOD.md](METHOD.md#the-default-policy), and `DEFAULT` in
-[scanner/strict.py](scanner/strict.py)) keeps the strictness where readers can make different
-trees, and drops it where they cannot:
+- **[The corpus](corpus/)**: cases, each an archive with a verdict and the tree it must extract.
+  [The site](https://haampie-llms.github.io/tar-minefield/) has a page per case.
+- **[The default policy](#the-default-policy)**: which ambiguities to reject, which names to
+  normalize, and what to accept.
+- **[The scans](data/STRICT.md)**: what that policy costs on every release tarball of Spack,
+  nixpkgs, Guix and live-bootstrap.
 
-- **Reject** what readers extract differently: a pax size where the member has no data or where
-  the header disagrees, members after a zero block or after the end of the archive, a name from
-  several sources, a file named `a/`, a link target on a file, a file twice (even with identical
-  copies, as nothing says they are: in fish 4.7.1 and logstash 8.15.2 they differ), a hardlink to
-  itself or to a symlink, a member under a file or written through a symlink; and names that
-  are unsafe or that filesystems disagree on: absolute names, `..`, `\`, control characters, and
-  names that are not UTF-8.
-- **Normalize** names that are one path: `./a` is `a`, `.` is the root, `a/./b` and `a//b` are
-  `a/b`. Duplicates are found among the normalized names, so this hides none.
-- **Accept** what cannot change the tree, or what the pinned sha256 already settles: a global
-  pax header with only a `comment`, the POSIX magic with NULs for its version, newlines in xattrs,
-  absolute symlinks (created, never written through), and an archive that ends after a complete
-  member without the end-of-archive marker, or with junk after it that is not a header.
+It follows Nicolas Seriot's [JSONTestSuite](https://github.com/nst/JSONTestSuite) and
+[Parsing JSON is a Minefield](https://seriot.ch/projects/parsing_json.html), from which it takes
+its name and its verdicts.
 
-A rule that only a few old tarballs break stays strict: a package that needs one of them can
-allow it by its sha256. The corpus has a case for every rule, and the scans below give the cost
-of both policies.
+## Terms
 
-## How implementations fare
+| term | meaning |
+|---|---|
+| **parser** | A program or library that turns a tar archive into a tree, by extracting it or by listing its members: GNU tar, Python `tarfile`, Go `archive/tar`, … |
+| **member** | One entry of an archive: a header, its extended headers, and its data. |
+| **tree** | What a parser extracts: paths, each with a kind (file, directory, symlink, hardlink), the contents of a file or the target of a link, and whether a file is executable. Nothing else, such as mtimes and owners. |
+| **ambiguity** | Something in an archive from which two parsers, each following a defensible reading of POSIX, GNU tar or practice, extract different trees. |
+| **level** | The class of an ambiguity, from most to least damage it allows: **F** framing (where a member's data ends), **N** names, **K** kinds, **S** order and state (duplicates and links); and **G** global pax headers. |
+| **strict parser** | A parser that rejects an archive with an ambiguity, rather than extracting one of its trees. |
+| **feature** | What the scanner reports of an archive, such as `name.leading-dot-slash`. |
+| **criterion** | A feature that is an ambiguity, for which a strict parser may reject an archive. [METHOD.md](METHOD.md#initial-catalogue) lists them. |
+| **policy** | The criteria a strict parser rejects: either *every criterion*, or the [default policy](#the-default-policy). |
+| **case** | An archive of the corpus, with a code (its level and a number, such as `F15`), a verdict, and for `y_` and `i_` a manifest. |
+| **verdict** | `n_`: a strict parser must reject it. `y_`: every parser must accept it. `i_`: a strict parser may reject it, and the default policy accepts it. |
+| **manifest** | The tree a parser must extract from a `y_` or `i_` case, if it accepts it. |
+| **outcome** | What a parser makes of a case: ✅ as its verdict says, ⚠️ accepts an `n_` case, ⛔ rejects an `i_` case, ❌ rejects a `y_` case or extracts another tree than the manifest, 💥 writes outside its destination. |
+| **tarball** | An archive released by a project and pinned by a package manager, as opposed to a case. |
+
+## Parsers disagree
 
 <!-- begin matrix.py -->
-Every case of the corpus, 55 of them, extracted by every implementation, and the outcomes of all cases at the top. Each case has a code, whose letter is its level: F framing, N names, K kinds, S order and state, G global pax headers. [The site](https://haampie-llms.github.io/tar-minefield/) has a page for each, with its archive block by block, how many scanned tarballs have it, and what every implementation makes of it; [corpus/MATRIX.md](corpus/MATRIX.md) has the matrix as a table.
+**Each of 20 parsers accepts between 20 and 35 of the 39 `n_` cases, and they extract different trees from 29 of them.** 2 cases make a parser write outside its destination. Rows are the 55 cases, by level; columns are the parsers and the two policies of `scanner/strict.py`, with their outcomes of all cases at the top. [The site](https://haampie-llms.github.io/tar-minefield/) has a page per case: its blocks, a hex dump, how many scanned tarballs have it, and what every parser makes of it. [corpus/MATRIX.md](corpus/MATRIX.md) has the matrix as a table.
 
-![What every implementation makes of every case of the corpus. Outcomes of all cases: strict.py: every criterion: ✅47 ⛔8; strict.py: default policy: ✅55; GNU tar: ✅23 ⚠️32; bsdtar: ✅26 ⚠️29; live-bootstrap untar: ✅17 ⚠️30 ❌6 💥2; live-bootstrap untar, --non-strict: ✅12 ⚠️35 ❌6 💥2; BusyBox tar: ✅23 ⚠️32; 7-Zip: ✅22 ⚠️31 ⛔1 ❌1; Python tarfile, filter=fully_trusted: ✅25 ⚠️28 💥2; Python tarfile, filter=tar: ✅26 ⚠️29; Python tarfile, filter=data: ✅26 ⚠️28 ⛔1; Go archive/tar: ✅22 ⚠️33; Go archive/tar, tarinsecurepath=0: ✅25 ⚠️30; Rust tar: ✅27 ⚠️28; Rust astral-tokio-tar: ✅27 ⚠️27 ⛔1; Haskell tar: ✅30 ⚠️20 ⛔5; Java Commons Compress: ✅24 ⚠️30 ❌1; RubyGems: ✅19 ⚠️30 ⛔2 ❌4; Perl Archive::Tar: ✅26 ⚠️27 ⛔1 ❌1; Julia Tar.jl: ✅32 ⚠️23; node-tar: ✅19 ⚠️35 ❌1; node-tar, strict: ✅27 ⚠️27 ⛔1](corpus/matrix.svg)
+![What every parser makes of every case of the corpus. Outcomes of all cases: strict.py: every criterion: ✅47 ⛔8; strict.py: default policy: ✅55; GNU tar: ✅23 ⚠️32; bsdtar: ✅26 ⚠️29; live-bootstrap untar: ✅17 ⚠️30 ❌6 💥2; live-bootstrap untar, --non-strict: ✅12 ⚠️35 ❌6 💥2; BusyBox tar: ✅23 ⚠️32; 7-Zip: ✅22 ⚠️31 ⛔1 ❌1; Python tarfile, filter=fully_trusted: ✅25 ⚠️28 💥2; Python tarfile, filter=tar: ✅26 ⚠️29; Python tarfile, filter=data: ✅26 ⚠️28 ⛔1; Go archive/tar: ✅22 ⚠️33; Go archive/tar, tarinsecurepath=0: ✅25 ⚠️30; Rust tar: ✅27 ⚠️28; Rust astral-tokio-tar: ✅27 ⚠️27 ⛔1; Haskell tar: ✅30 ⚠️20 ⛔5; Java Commons Compress: ✅24 ⚠️30 ❌1; RubyGems: ✅19 ⚠️30 ⛔2 ❌4; Perl Archive::Tar: ✅26 ⚠️27 ⛔1 ❌1; Julia Tar.jl: ✅32 ⚠️23; node-tar: ✅19 ⚠️35 ❌1; node-tar, strict: ✅27 ⚠️27 ⛔1](corpus/matrix.svg)
 
 Generated by `corpus/matrix.py` from `corpus/matrix.json`.
 <!-- end matrix.py -->
 
-## The data behind the policies
-
-The scanner reads the headers of every release tarball of Spack, nixpkgs, Guix and
-live-bootstrap, and records every feature that METHOD.md lists as an ambiguity:
+## Strictness is affordable
 
 <!-- begin strict.py -->
-### What was scanned
+**The default policy rejects 151 of 62,622 release tarballs (0.24%); rejecting every criterion would reject 622 (0.99%).** The criterion that rejects the most tarballs on its own is `tree.duplicate.file-file` of the default policy, and `name.leading-dot-slash` of every criterion.
 
-| dataset | tarballs | scanned | not assessed | latest | GB | members | origins |
-|---|---|---|---|---|---|---|---|
-| guix | 10200 | 10199 | 31 | 9674 | 76.7 | 22,063,418 | other 3845, cran/bioconductor 2833, pypi 1697 |
-| live-bootstrap | 171 | 171 | 0 | 74 | 1.1 | 919,348 | gnu 98, other 24, cpan 20 |
-| nix | 19086 | 19012 | 22 | 17955 | 78.3 | 11,659,428 | other 11987, pypi 3846, cpan 1899 |
-| spack | 37757 | 37554 | 0 | 7723 | 1080.9 | 127,668,354 | github-archive 11999, pypi 9237, other 6683 |
-| all, distinct | 62947 | 62670 | 48 | 31653 | 1215.8 | 152,809,810 | |
+| ecosystem | tarballs | GB | rejected: every criterion | rejected: default policy | of latest versions |
+|---|---|---|---|---|---|
+| guix | 10,168 | 76.5 | 101 (0.99%) | 28 (0.28%) | 25 (0.26%) |
+| live-bootstrap | 171 | 1.1 | 0 (0.00%) | 0 (0.00%) | 0 (0.00%) |
+| nix | 18,990 | 77.7 | 157 (0.83%) | 70 (0.37%) | 65 (0.36%) |
+| spack | 37,554 | 1080.9 | 392 (1.04%) | 67 (0.18%) | 17 (0.22%) |
+| **all, distinct** | 62,622 | 1215.8 | 622 (0.99%) | 151 (0.24%) | 95 (0.30%) |
 
-Tarballs that are not scanned could not be downloaded from any URL. Not assessed: in a compression that the scanner does not read (`.tar.lz`, `.tar.zst`). Latest: the latest version of a package in its repository.
-
-Tarballs by the median mtime of their members, which dates most of them:
-
-```
-years       guix live-bootstrap   nix spack   all
-1981–1989      2              0     2     4     5  #
-1990–1991      1              0     0     1     2  #
-1992–1993      1              1     1     0     3  #
-1994–1995      2              3     9     7    18  #
-1996–1997      1              3     4     2    10  #
-1998–1999     11              3    17     8    34  #
-2000–2001     18              4    48    20    77  #
-2002–2003     46             14    75    43   147  #
-2004–2005     74              2   165    93   282  #
-2006–2007     80             11   144   101   290  #
-2008–2009    144              8   321   239   620  ##
-2010–2011    172              5   429   378   884  ###
-2012–2013    310              8   652   793  1574  #####
-2014–2015    424              1  1034  1643  2832  #########
-2016–2017    564              8  1304  3266  4825  ################
-2018–2019    770             18  1510  5136  7003  #######################
-2020–2021    925             28  1537  6998  9009  ##############################
-2022–2023   1544             24  1929  8153 11000  #####################################
-2024–2025   2357             29  2563  7804 11968  ########################################
-2026–2027   1775              1  2871  1858  6272  #####################
-fixed        918              0  4210   854  5442  ##################
-unknown       60              0   149   153   335  #
-```
-
-Fixed: every member has an mtime that a producer writes in place of the real one, such as `cabal sdist` (2001-09-09) on Hackage and hatchling (2020-02-02) on PyPI, so these tarballs are not dated: 1970-01-01 00:00, 1985-10-26 08:15, 2000-01-01 00:00, 2000-07-19 22:00, 2001-09-09 01:46, 2006-07-24 01:21, 2020-02-02 00:00, 2022-11-09 12:37. Unknown: no mtime after 1980.
-
-### What a strict parser accepts
-
-Of 62622 distinct tarballs, 62000 pass every criterion, and 62471 the default policy, which normalizes `./a` and the like, and accepts features on whose tree readers agree. The criterion that rejects the most tarballs on its own is `name.leading-dot-slash`, and of the default policy `tree.duplicate.file-file`.
-
-| dataset | assessed | pass every criterion | pass the default policy | of latest versions |
-|---|---|---|---|---|
-| guix | 10168 | 10067 (99.01%) | 10140 (99.72%) | 9649 (99.74%) |
-| live-bootstrap | 171 | 171 (100.00%) | 171 (100.00%) | 74 (100.00%) |
-| nix | 18990 | 18833 (99.17%) | 18920 (99.63%) | 17890 (99.64%) |
-| spack | 37554 | 37162 (98.96%) | 37487 (99.82%) | 7706 (99.78%) |
-
-Latest versions: of the default policy. Generated by `scanner/strict.py` from 4 scans: the details are in [data/STRICT.md](data/STRICT.md).
+Tarballs: those downloaded and in a compression the scanner reads. Latest: the latest version of each package, under the default policy. Generated by `scanner/strict.py`; [data/STRICT.md](data/STRICT.md) has what was scanned, when the tarballs were made, and the cost of every criterion.
 <!-- end strict.py -->
+
+## The default policy
+
+Strict where parsers can extract different trees, lenient where they cannot:
+
+- **Reject** what parsers extract differently. F: a pax size on a member without data, or one that
+  disagrees with the header; members after a zero block or after the end of the archive.
+  N: a name from several sources; absolute names, `..`, `\`, control characters, names that are
+  not UTF-8. K: a file named `a/`, a link target on a file. S: a file twice, even as identical
+  copies (in fish 4.7.1 and logstash 8.15.2 they differ); a hardlink to itself or to a symlink; a
+  member under a file or written through a symlink.
+- **Normalize** names that are one path: `./a` is `a`, `.` is the root, `a/./b` and `a//b` are
+  `a/b`. Duplicates are found after normalizing, so this hides none.
+- **Accept** what cannot change the tree, or what the sha256 already settles: a global pax header
+  with only a `comment`, as `git archive` writes; the magic `ustar\0\0\0`; newlines in xattrs;
+  absolute symlinks, which are created but never written through; an archive that ends after a
+  complete member without an end-of-archive marker, or with data after it that is not a header.
+
+Everything else in the catalogue is rejected. A criterion that only a few old tarballs have stays
+rejected: a package that needs such a tarball can allow it by its sha256. The policy is `DEFAULT`
+in [scanner/strict.py](scanner/strict.py), argued in [METHOD.md](METHOD.md#the-default-policy),
+and every rule of it has a case.
+
+## Test a parser
+
+Extract every `corpus/archives/*.tar` in a throwaway directory, as some cases escape lenient
+parsers. A strict parser rejects every `n_` case, and extracts from every `y_` and `i_` case the
+manifest in the `.json` next to it, or rejects the `i_` case. To add a parser to the matrix, add
+it to `implementations()` in [corpus/matrix.py](corpus/matrix.py); [corpus/](corpus) has the
+details.
 
 ## Contents
 
-- [METHOD.md](METHOD.md): the method, the catalogue of ambiguities, and the default policy.
-- [corpus/](corpus): the cases, the scripts that write them, and how to check them.
-  [corpus/MATRIX.md](corpus/MATRIX.md) has what every implementation makes of every case.
-- [scanner/](scanner): the scanner, and how to scan more tarballs.
-- [data/](data): the scans, each with a `RUN.md` on how it was made.
-  [data/STRICT.md](data/STRICT.md) has the pass rate of every criterion, and
+- [METHOD.md](METHOD.md): the method, the catalogue of ambiguities, the verdicts and the default
+  policy, prior art, and open questions.
+- [corpus/](corpus): the cases, the scripts that write them byte by byte, and the matrix.
+- [scanner/](scanner): the scanner, and how to scan the tarballs of another ecosystem.
+- [data/](data): the scans, each with a `RUN.md` on how it was made;
+  [data/STRICT.md](data/STRICT.md) has the cost of every criterion, and
   [data/REPORT.md](data/REPORT.md) every feature found.
+- [docs/](docs): the site, written by `corpus/site.py`.

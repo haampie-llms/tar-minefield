@@ -1,6 +1,6 @@
 """A regular file with a link target.
 
-The header has typeflag `0` and the linkname `target`. A reader that decides the kind by the
+The header has typeflag `0` and the linkname `target`. A parser that decides the kind by the
 typeflag extracts a file; one that takes a linkname to mean a link makes a link to `target`.
 
 Decision point: whether a linkname makes a member a link.

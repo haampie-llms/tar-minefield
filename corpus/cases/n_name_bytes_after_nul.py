@@ -1,6 +1,6 @@
 """Bytes after the NUL that ends a name.
 
-The name field holds `a`, a NUL, and `b`. C readers stop at the NUL and read `a`; a reader that
+The name field holds `a`, a NUL, and `b`. C parsers stop at the NUL and read `a`; a parser that
 strips NULs from the end of the field reads `a\0b`, or `ab` once it drops the NUL.
 
 Decision point: where a name ends.

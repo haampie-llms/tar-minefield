@@ -1,11 +1,11 @@
-"""A pax `size` on a directory, which hides a header from the readers that honor it.
+"""A pax `size` on a directory, which hides a header from the parsers that honor it.
 
-A directory has no data, but its pax extended header says `size=512`. A reader that applies the
-pax size to every member skips the next block as the directory's data; a reader that knows
-directories have no data reads that block as the header of a file, `smuggled`. One reader then
+A directory has no data, but its pax extended header says `size=512`. A parser that applies the
+pax size to every member skips the next block as the directory's data; a parser that knows
+directories have no data reads that block as the header of a file, `smuggled`. One parser then
 extracts a directory, the other a directory and a file. This is the bug class of CVE-2025-62518
 (tokio-tar), GHSA-3pv8-6f4r-ffg2 (tar-rs) and CVE-2026-53655 (node-tar), where the hidden block is
-a header that only one reader sees.
+a header that only one parser sees.
 
 Decision point: whether a pax `size` applies to a member that has no data.
 Seen in: llama_index_workflows 2.26.0, with a pax size on a directory.

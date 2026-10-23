@@ -5,7 +5,7 @@
 prints one JSON object per archive. The scanner reads every header and skips all data. Unlike
 an extractor, it does not stop at the first questionable feature: it counts every feature it
 finds, with a few example names each, so that a strictness policy can be evaluated later as a
-query over its output. Where readers would frame the archive differently, it continues as GNU
+query over its output. Where parsers would frame the archive differently, it continues as GNU
 tar would, and reports the disagreement.
 
 Compressed archives (gzip, bzip2, xz) are decompressed on the fly. The compression layer is
@@ -184,7 +184,7 @@ def pattern(field):
 
 
 def octal_cut(field):
-    """The value as a reader that cuts the field at its first NUL reads it (Python's tarfile)."""
+    """The value as a parser that cuts the field at its first NUL reads it (Python's tarfile)."""
     s = field.split(b"\0", 1)[0].strip(b" ")
     if not s:
         return 0
@@ -192,7 +192,7 @@ def octal_cut(field):
 
 
 def octal_skip(field):
-    """The value as a reader that skips leading spaces and NULs reads it (GNU tar's leniency)."""
+    """The value as a parser that skips leading spaces and NULs reads it (GNU tar's leniency)."""
     s = field.lstrip(b" \0")
     m = re.match(rb"[0-7]*", s)
     return int(m.group(), 8) if m.group() else None

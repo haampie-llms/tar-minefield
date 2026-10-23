@@ -11,7 +11,7 @@
 <h1><code>N18</code> name-not-utf8</h1>
 <p>A name that is not UTF-8.</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: readers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
 <dt>Level</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_name_not_utf8.py">the script</a>,
@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/n_name_not_utf8.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p><code>caf\xe9</code> is Latin-1. A reader may write the bytes as they are, decode them as Latin-1 and write <code>café</code> in UTF-8, replace the byte, or fail: different names on disk.</p>
+<p><code>caf\xe9</code> is Latin-1. A parser may write the bytes as they are, decode them as Latin-1 and write <code>café</code> in UTF-8, replace the byte, or fail: different names on disk.</p>
 <p><strong>Decision point:</strong> how a name that is not UTF-8 is decoded.</p>
 <p><strong>Seen in:</strong> aspell-is 0.51.1-0 and aspell-nb 0.50.1-0.</p>
 <h2>The archive</h2>
@@ -31,7 +31,7 @@
 
 A name that is not UTF-8.
 
-`café` is Latin-1. A reader may write the bytes as they are, decode them as Latin-1 and write
+`café` is Latin-1. A parser may write the bytes as they are, decode them as Latin-1 and write
 `café` in UTF-8, replace the byte, or fail: different names on disk.
 
 Decision point: how a name that is not UTF-8 is decoded.
@@ -196,15 +196,15 @@ Seen in: aspell-is 0.51.1-0 and aspell-nb 0.50.1-0.
 </details>
 <h2>In real tarballs</h2>
 <p>Tarballs of the scans with <code>name.not-utf8</code>. Where there are none, the share is the 95% upper bound of the rate, by the rule of three.</p>
-<table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>dataset</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
+<table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>ecosystem</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
 <tr><td>guix</td><td class=n>10168</td><td class=n>0 (&lt;0.03%)</td><td class=n>0</td></tr>
 <tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0 (&lt;1.8%)</td><td class=n>0</td></tr>
 <tr><td>nix</td><td class=n>18990</td><td class=n>2 (0.01%)</td><td class=n>2</td></tr>
 <tr><td>spack</td><td class=n>37554</td><td class=n>0 (&lt;0.008%)</td><td class=n>0</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>2 (0.00%)</td><td class=n>2</td></tr></table>
 <p>For example: aspell-is@0.51.1-0, aspell-nb@0.50.1-0.</p>
-<h2>What implementations make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What parsers make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>⚠️ accepts</td><td>tree A: <code>caf\xe9</code> (8 B, ff3f1fa3)</td></tr>

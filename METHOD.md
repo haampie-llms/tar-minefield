@@ -6,14 +6,14 @@ cases are produced so that anyone can audit them. It is a working draft.
 
 ## Goal
 
-A corpus of tar archives, each with a verdict, that any tar implementation can run against: a
+A corpus of tar archives, each with a verdict, that any tar parser can run against: a
 reference for what a strict parser rejects, what it must accept, and what it must make of the
 archives it accepts.
 
-The corpus is not limited to archives on which today's implementations disagree. Disagreement
+The corpus is not limited to archives on which today's parsers disagree. Disagreement
 between, say, GNU tar and Python's `tarfile` is evidence of an ambiguity, but an archive that every
-known reader interprets the same way can still be ambiguous: it only takes the next
-implementation to make the other reasonable choice. The corpus records both.
+known parser interprets the same way can still be ambiguous: it only takes the next
+parser to make the other reasonable choice. The corpus records both.
 
 ## Scope
 
@@ -36,14 +36,14 @@ about every field that shapes the tree and lenient about everything else.
 
 ## When an archive is ambiguous
 
-An archive is ambiguous if two readers, each following a defensible reading of POSIX, the GNU tar
+An archive is ambiguous if two parsers, each following a defensible reading of POSIX, the GNU tar
 documentation or long-standing practice, produce different trees from it. For each case we name
-the *decision point*: the place in a reader where two reasonable choices exist.
+the *decision point*: the place in a parser where two reasonable choices exist.
 
 Ambiguities differ in how much damage they allow, roughly in this order:
 
-1. **Framing**: where a member's data ends and the next header begins. A reader that frames an
-   archive differently sees different members, so whole files can be hidden from one reader and
+1. **Framing**: where a member's data ends and the next header begins. A parser that frames an
+   archive differently sees different members, so whole files can be hidden from one parser and
    visible to another.
 2. **Name**: which of several fields gives a member its path, and how a path is normalized.
 3. **Kind**: whether a member is a file, a directory or a link.
@@ -57,9 +57,9 @@ Framing:
   between digits, no terminator, digits 8 and 9, an empty field, base-256 (positive and
   negative).
 - Checksums: signed versus unsigned sums, and the formats of the checksum field.
-- Sizes of members that carry no data in some readers: directories, hardlinks, symlinks,
+- Sizes of members that carry no data in some parsers: directories, hardlinks, symlinks,
   devices, fifos.
-- Unknown typeflags: POSIX treats them as regular files with data, a reader may also skip them
+- Unknown typeflags: POSIX treats them as regular files with data, a parser may also skip them
   without data.
 - GNU's old sparse (`S`), multivolume (`M`), volume label (`V`) and dumpdir (`D`) headers, and
   contiguous files (`7`).
@@ -68,7 +68,7 @@ Framing:
   of CVE-2025-62518 (tokio-tar), GHSA-3pv8-6f4r-ffg2 (tar-rs) and CVE-2026-53655 (node-tar).
 - pax record framing: the length counts itself, leading zeros in the length, data after the last
   record, records not ending in a newline, values that contain a newline (records are delimited by
-  length, so a reader that splits on lines sees different records), keys with whitespace (GNU tar
+  length, so a parser that splits on lines sees different records), keys with whitespace (GNU tar
   strips it, `tarfile` does not).
 - The end of the archive: a lone zero block, zero blocks followed by more members (GNU tar's
   `--ignore-zeros`), data other than zeros after the end-of-archive marker, no marker at all.
@@ -129,7 +129,7 @@ passes. They cover what real archives contain and what a careless strict parser 
 - names of exactly 100 bytes, with no NUL,
 - number fields padded with leading zeros or leading spaces, and terminated by a space, a NUL,
   or both: many CPAN tarballs, and those of old GNU tar, pad with spaces, and the scans of
-  [data/](data) find no tarball where readers read such a field differently,
+  [data/](data) find no tarball where parsers read such a field differently,
 - base-256 sizes of files over 8 GiB,
 - vendor pax keys that do not affect the tree, such as `LIBARCHIVE.xattr.*` and `SCHILY.*` from
   macOS and star, and the AppleDouble `._` files next to them,
@@ -138,9 +138,9 @@ passes. They cover what real archives contain and what a careless strict parser 
 
 Each case also records what is known about it:
 
-- **observed**: implementations disagree today, with their names and versions,
-- **historical**: implementations disagreed, and one was changed (for example gh-155629),
-- **latent**: no known implementations disagree, with an argument why one could.
+- **observed**: parsers disagree today, with their names and versions,
+- **historical**: parsers disagreed, and one was changed (for example gh-155629),
+- **latent**: no known parsers disagree, with an argument why one could.
 
 Whether an ambiguous case is `n_` or `i_` is decided by measurement, as described next.
 
@@ -159,7 +159,7 @@ the `i_` cases, which extract the tree in their manifest. Its table is `DEFAULT`
   that are distributed are pinned by their sha256, so one that ends early is caught before it is
   parsed; one that ends inside a member is `n_`.
 - data after the end-of-archive marker that is not a header, which is ignored. A header there,
-  another archive or members after a zero block, is `n_`: some readers extract them.
+  another archive or members after a zero block, is `n_`: some parsers extract them.
 - a global pax header with only a `comment` after the first member.
 - the POSIX magic with NULs for its version, `ustar\0\0\0`, which some Java archivers write,
   as in the tarballs of Apache's commons-lang, Solr and Hadoop. Any other version is `n_`.
@@ -167,7 +167,7 @@ the `i_` cases, which extract the tree in their manifest. Its table is `DEFAULT`
 
 Everything else in the catalogue is `n_`. Duplicate files are `n_` even where their copies are
 identical, as they are in most tarballs that have them: in some, a file was changed and appended
-again, so that readers that keep the first copy and those that keep the last extract different
+again, so that parsers that keep the first copy and those that keep the last extract different
 trees. In fish 4.7.1, `Cargo.toml` and `Cargo.lock` are appended again without their last
 newline; in logstash 8.15.2, `build.rb` is a license header first and the build's date and commit
 last.
@@ -185,7 +185,7 @@ second is not:
   or `"`, names ending in a dot or a space,
 - symlinks, where a platform or user cannot create them.
 
-Such an archive is not ambiguous: every reader agrees on its tree, and an extractor that never
+Such an archive is not ambiguous: every parser agrees on its tree, and an extractor that never
 replaces an entry (`O_EXCL`) fails exactly on the filesystems that cannot hold it. So these cases
 are `y_`, with the platforms where extraction fails listed in their metadata, and a test of them
 passes on those platforms when extraction fails without writing anything. A failure on one
@@ -261,7 +261,7 @@ People should be able to trust the corpus without trusting its binary files.
 
 - Every archive is produced by a small script that uses the Python standard library only, and
   builds the archive from raw 512-byte blocks with a short shared helper. Scripts never use
-  `tarfile` or any other implementation under test: they normalize what they write, and the
+  `tarfile` or any other parser under test: they normalize what they write, and the
   corpus would then test them against themselves. Each script explains its case in a docstring.
 - Generation is deterministic: no clocks, no randomness, no dependency on the machine.
 - The archives are checked into git, and CI regenerates them and fails on any difference. So
@@ -270,7 +270,7 @@ People should be able to trust the corpus without trusting its binary files.
   fields, their raw bytes and their meaning. A change to a case is then a readable diff.
 - Expected trees are plain manifests (path, kind, sha256 of the contents, link target,
   executable), rather than a single hash.
-- The interpretation of every case by every implementation we track (GNU tar, bsdtar, busybox,
+- The interpretation of every case by every parser we track (GNU tar, bsdtar, busybox,
   star, CPython's `tarfile`, Go's `archive/tar`, Rust's `tar`, node-tar, 7-Zip, Apache Commons
   Compress, .NET's `System.Formats.Tar`, ...) is produced in CI at pinned versions, and published
   as data. Claims like "GNU tar does X" can then be checked by running them again.
@@ -293,9 +293,9 @@ it a single implementation that has to be taken on trust.
   a reviewer can check both by hand against the case's description and the specification it
   cites. CI checks that the generators still produce exactly those bytes.
 - **The verdicts** come from the specifications, the reasoning recorded with each case, and the
-  interpretation matrix of real implementations, never from our scanner.
+  interpretation matrix of real parsers, never from our scanner.
 - **The scanner** is a measuring instrument: if it frames an archive differently from the
-  implementations it stands in for, the statistics are wrong. So it is checked against them.
+  parsers it stands in for, the statistics are wrong. So it is checked against them.
   For every tarball, it will record where each header starts and the name it gives the member,
   as one framing digest. GNU tar (`tar -tvR` prints the block of each header), bsdtar and
   `tarfile` (`TarInfo.offset`) can produce the same list. On the tarballs where they agree with
@@ -305,7 +305,7 @@ it a single implementation that has to be taken on trust.
 - **A second scanner** in another language, written from this document by someone who has not
   read `tarscan.py`, must produce the same output on the corpus and on real tarballs. Two
   independent implementations that agree catch what one implementation tested against itself
-  cannot. It also suits the implementations we hope will run the corpus, many of which are in
+  cannot. It also suits the parsers we hope will run the corpus, many of which are in
   Go and Rust.
 - **The corpus tests the scanner.** Every `n_` and `i_` case must make the scanner report its
   feature, and every `y_` case must make it report exactly the members in its manifest. That is
@@ -367,7 +367,7 @@ Work on archives specifically:
   differently depending on the decoder, unless the parser refuses data after the end-of-archive
   marker.
 - Polyglots: files that are valid tar and valid ZIP, or tar and something else.
-- Writers: which implementations produce archives that strict parsers reject.
+- Writers: which tools produce archives that strict parsers reject.
 
 ## Open questions
 

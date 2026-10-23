@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/y_pax_global_comment.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p><code>git archive</code> starts every tarball with a global header whose only record is the commit, as a <code>comment</code>, which no reader applies to the tree. GitHub&#x27;s release tarballs are made this way, so a strict parser that rejects global headers rejects most of them.</p>
+<p><code>git archive</code> starts every tarball with a global header whose only record is the commit, as a <code>comment</code>, which no parser applies to the tree. GitHub&#x27;s release tarballs are made this way, so a strict parser that rejects global headers rejects most of them.</p>
 <p><strong>Seen in:</strong> every tarball that <code>git archive</code> made, such as GitHub&#x27;s release tarballs.</p>
 <h2>The archive</h2>
 <p>Every block of 512 bytes, to scale, with its offset. Hover over a field for its bytes.</p>
@@ -31,7 +31,7 @@
 The global pax header with only a `comment`, as `git archive` writes it.
 
 `git archive` starts every tarball with a global header whose only record is the commit, as a
-`comment`, which no reader applies to the tree. GitHub&#x27;s release tarballs are made this way, so a
+`comment`, which no parser applies to the tree. GitHub&#x27;s release tarballs are made this way, so a
 strict parser that rejects global headers rejects most of them.
 
 Seen in: every tarball that `git archive` made, such as GitHub&#x27;s release tarballs.
@@ -331,8 +331,8 @@ Seen in: every tarball that `git archive` made, such as GitHub&#x27;s release ta
 <p>The tree that a parser must extract: <code>project/</code>, <code>project/README</code> (6 B, 5891b5b5).</p>
 <h2>In real tarballs</h2>
 <p>No feature of the scanner is about this case alone: an archive like it is one that the scanner cannot read, <code>scan.error</code>.</p>
-<h2>What implementations make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What parsers make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>

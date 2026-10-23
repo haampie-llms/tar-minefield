@@ -241,15 +241,15 @@ Seen in: guile 2.0.9 and others: see data/STRICT.md.
 <p>The tree that a parser must extract: <code>a</code> (2 B, 87428fc5).</p>
 <h2>In real tarballs</h2>
 <p>Tarballs of the scans with <code>name.dot</code>. Where there are none, the share is the 95% upper bound of the rate, by the rule of three.</p>
-<table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>dataset</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
+<table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>ecosystem</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
 <tr><td>guix</td><td class=n>10168</td><td class=n>13 (0.13%)</td><td class=n>0</td></tr>
 <tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0 (&lt;1.8%)</td><td class=n>0</td></tr>
 <tr><td>nix</td><td class=n>18990</td><td class=n>18 (0.09%)</td><td class=n>0</td></tr>
 <tr><td>spack</td><td class=n>37554</td><td class=n>11 (0.03%)</td><td class=n>0</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>42 (0.07%)</td><td class=n>0</td></tr></table>
 <p>For example: guile@2.0.9, hadrian-bootstrap-sources@9.8.1, linux-libre-headers-stripped@4.14.67-i686-linux, hadrian-bootstrap-sources@9.4.3, binutils@2.23.2, firefox@140.17.0esr.source, gcc@4.8.2, firefox@158.0.1.source.</p>
-<h2>What implementations make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What parsers make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>⛔ rejects</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>

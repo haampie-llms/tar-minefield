@@ -1,7 +1,7 @@
 """`./a`, which is the path `a`.
 
 `tar cf x.tar .` writes names that start with `./`. On a filesystem, `./a` and `a` are one path,
-but readers that compare names as strings see two: an index of `a` does not find `./a`. The
+but parsers that compare names as strings see two: an index of `a` does not find `./a`. The
 default policy normalizes the name to `a`, and finds duplicates among normalized names, so that
 `./a` and `a` in one archive are a duplicate.
 

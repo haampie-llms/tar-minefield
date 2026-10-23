@@ -1,6 +1,6 @@
 """A member written through a symlink, which points out of the destination.
 
-`d` is a symlink to `..`, then `d/tar-minefield-through-symlink` is a file. A reader that follows
+`d` is a symlink to `..`, then `d/tar-minefield-through-symlink` is a file. A parser that follows
 the link writes the file in the parent of the destination. The file is harmless.
 
 Decision point: whether a member may be written through a symlink.

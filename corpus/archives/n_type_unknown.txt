@@ -2,7 +2,7 @@ F16 n_type_unknown: rejected
 
 An unknown typeflag with a size: data, or no data?
 
-POSIX says a reader treats an unknown typeflag as a regular file, so its size is data. A reader
+POSIX says a parser treats an unknown typeflag as a regular file, so its size is data. A parser
 that skips members it does not know may skip only the header, and then read the data as the next
 header, here that of `smuggled`.
 

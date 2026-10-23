@@ -1,8 +1,8 @@
-"""A size with a space among its digits: readers read two sizes.
+"""A size with a space among its digits: parsers read two sizes.
 
-The size field is `000000 1000`. A reader that stops at the first space reads 0; one that skips
+The size field is `000000 1000`. A parser that stops at the first space reads 0; one that skips
 spaces reads 1000 octal, 512. The 512 bytes that follow are the header of `smuggled` to the first
-reader, and the data of `a` to the second.
+parser, and the data of `a` to the second.
 
 Decision point: how a number field with a space among its digits is read.
 Seen in: no tarball of the scans.
@@ -15,5 +15,5 @@ FEATURES = ['number.size.gap-in-digits']
 
 def build(a):
     a.header(b"a", b"0", b"000000 1000\0", note="size 0 or 512")
-    a.file(b"smuggled", b"", note="the data of a, to a reader that skips spaces")
+    a.file(b"smuggled", b"", note="the data of a, to a parser that skips spaces")
     a.end()

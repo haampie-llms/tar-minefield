@@ -1,6 +1,6 @@
 """The same file twice, with different contents: the first copy, or the last?
 
-`a` is written twice. Extractors that write members in order keep the last copy; readers that
+`a` is written twice. Extractors that write members in order keep the last copy; parsers that
 look a name up in an index, or that refuse to overwrite, keep the first. The two trees differ in
 the contents of `a`.
 
@@ -8,7 +8,7 @@ Decision point: which of two members of one path is the file.
 Seen in: fish 4.7.1, where `Cargo.toml` and `Cargo.lock` are appended again without their last
 newline, and logstash 8.15.2, where `build.rb` is first a license header and last the build's
 date and commit. Most tarballs with duplicates, mostly from `cabal sdist`, have identical copies:
-the default policy rejects those too, as a reader would have to compare the copies to tell.
+the default policy rejects those too, as a parser would have to compare the copies to tell.
 """
 
 VERDICT = "n"

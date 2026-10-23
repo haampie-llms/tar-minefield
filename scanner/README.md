@@ -126,7 +126,7 @@ Each scan goes in `data/<ecosystem>/<date>/`, with:
 - `RUN.md`: the commands, the commits of this repository, of the ecosystem's package
   repository and of untar, and the platform and filesystem the scan ran on.
 
-`data/REPORT.md` combines all scans, `data/STRICT.md` gives the pass rates of a strict parser,
+`data/REPORT.md` combines all scans, `data/STRICT.md` gives what a strict parser rejects,
 and the summary of those in the top-level README is generated too:
 
 ```console

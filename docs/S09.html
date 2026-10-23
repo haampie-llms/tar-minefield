@@ -11,7 +11,7 @@
 <h1><code>S09</code> tree-duplicate-file-identical</h1>
 <p>The same file twice, with the same contents.</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: readers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
 <dt>Level</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_tree_duplicate_file_identical.py">the script</a>,
@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/n_tree_duplicate_file_identical.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p>Whichever copy a reader keeps, the tree is the same. But a reader would have to compare the copies to know that, so the default policy rejects every duplicate file.</p>
+<p>Whichever copy a parser keeps, the tree is the same. But a parser would have to compare the copies to know that, so the default policy rejects every duplicate file.</p>
 <p><strong>Decision point:</strong> which of two members of one path is the file.</p>
 <p><strong>Seen in:</strong> tarballs of <code>cabal sdist</code>, such as string-conversions 0.4.0.1 and multipart 0.2.1.</p>
 <h2>The archive</h2>
@@ -31,7 +31,7 @@
 
 The same file twice, with the same contents.
 
-Whichever copy a reader keeps, the tree is the same. But a reader would have to compare the
+Whichever copy a parser keeps, the tree is the same. But a parser would have to compare the
 copies to know that, so the default policy rejects every duplicate file.
 
 Decision point: which of two members of one path is the file.
@@ -281,15 +281,15 @@ Seen in: tarballs of `cabal sdist`, such as string-conversions 0.4.0.1 and multi
 </details>
 <h2>In real tarballs</h2>
 <p>Tarballs of the scans with <code>tree.duplicate.file-file</code>. Where there are none, the share is the 95% upper bound of the rate, by the rule of three.</p>
-<table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>dataset</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
+<table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>ecosystem</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
 <tr><td>guix</td><td class=n>10168</td><td class=n>17 (0.17%)</td><td class=n>17</td></tr>
 <tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0 (&lt;1.8%)</td><td class=n>0</td></tr>
 <tr><td>nix</td><td class=n>18990</td><td class=n>59 (0.31%)</td><td class=n>59</td></tr>
 <tr><td>spack</td><td class=n>37554</td><td class=n>17 (0.05%)</td><td class=n>17</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>81 (0.13%)</td><td class=n>81</td></tr></table>
 <p>For example: string-conversions@0.4.0.1, notmuch@0.40, multipart@0.2.1, hs-bibutils@6.10.0.0, zstd@0.1.3.0, happstack-server@7.9.3, ldb@2.9.2, language-javascript@0.7.1.0.</p>
-<h2>What implementations make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What parsers make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>⚠️ accepts</td><td>tree A: <code>a</code> (5 B, a6328afc)</td></tr>

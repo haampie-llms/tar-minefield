@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/i_name_leading_dot_slash.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p><code>tar cf x.tar .</code> writes names that start with <code>./</code>. On a filesystem, <code>./a</code> and <code>a</code> are one path, but readers that compare names as strings see two: an index of <code>a</code> does not find <code>./a</code>. The default policy normalizes the name to <code>a</code>, and finds duplicates among normalized names, so that <code>./a</code> and <code>a</code> in one archive are a duplicate.</p>
+<p><code>tar cf x.tar .</code> writes names that start with <code>./</code>. On a filesystem, <code>./a</code> and <code>a</code> are one path, but parsers that compare names as strings see two: an index of <code>a</code> does not find <code>./a</code>. The default policy normalizes the name to <code>a</code>, and finds duplicates among normalized names, so that <code>./a</code> and <code>a</code> in one archive are a duplicate.</p>
 <p><strong>Decision point:</strong> whether <code>./a</code> is <code>a</code>.</p>
 <p><strong>Seen in:</strong> hdf5 1.10.11, numdiff 5.9.0 and others: see data/STRICT.md.</p>
 <h2>The archive</h2>
@@ -32,7 +32,7 @@
 `./a`, which is the path `a`.
 
 `tar cf x.tar .` writes names that start with `./`. On a filesystem, `./a` and `a` are one path,
-but readers that compare names as strings see two: an index of `a` does not find `./a`. The
+but parsers that compare names as strings see two: an index of `a` does not find `./a`. The
 default policy normalizes the name to `a`, and finds duplicates among normalized names, so that
 `./a` and `a` in one archive are a duplicate.
 
@@ -199,15 +199,15 @@ Seen in: hdf5 1.10.11, numdiff 5.9.0 and others: see data/STRICT.md.
 <p>The tree that a parser must extract: <code>a</code> (2 B, 87428fc5).</p>
 <h2>In real tarballs</h2>
 <p>Tarballs of the scans with <code>name.leading-dot-slash</code>. Where there are none, the share is the 95% upper bound of the rate, by the rule of three.</p>
-<table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>dataset</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
+<table><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>ecosystem</th><th class=n>assessed</th><th class=n>with it</th><th class=n>rejected for it by the default policy</th></tr>
 <tr><td>guix</td><td class=n>10168</td><td class=n>31 (0.30%)</td><td class=n>0</td></tr>
 <tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0 (&lt;1.8%)</td><td class=n>0</td></tr>
 <tr><td>nix</td><td class=n>18990</td><td class=n>35 (0.18%)</td><td class=n>0</td></tr>
 <tr><td>spack</td><td class=n>37554</td><td class=n>145 (0.39%)</td><td class=n>0</td></tr>
 <tr><td>all, distinct</td><td class=n>62622</td><td class=n>205 (0.33%)</td><td class=n>0</td></tr></table>
 <p>For example: sqliteodbc@0.99991, numdiff@5.9.0, scanbd@1.5.1, hdf5@1.10.9, guile@2.0.9, hadrian-bootstrap-sources@9.8.1, testdata_combblas1.6.1, linux-libre-headers-stripped@4.14.67-i686-linux.</p>
-<h2>What implementations make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What parsers make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>⛔ rejects</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>

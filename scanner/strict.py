@@ -1,4 +1,4 @@
-"""How many real tarballs a strict parser would accept, as Markdown.
+"""How many real tarballs a strict parser would reject, as Markdown.
 
     python -I scanner/strict.py RESULTS... > STRICT.md
     python -I scanner/strict.py --readme README.md RESULTS...
@@ -10,10 +10,10 @@ filesystems cannot hold (`platform.*`) are neither: they are reported apart. A f
 of these patterns match is reported as unclassified, so that nothing is left out unseen.
 
 The default policy, `DEFAULT`, is what METHOD.md decides from these scans: it normalizes some of
-the criteria and accepts others, and rejects the rest. Pass rates are given of both.
+the criteria and accepts others, and rejects the rest. What each rejects is given of both.
 
-Each results file is a dataset, and rates are given per dataset: each is a sample of its own
-population. Tarballs in a compression that tarscan.py does not read are not assessed.
+Each results file is the scan of an ecosystem, and rates are given per ecosystem: each is a
+sample of its own population. Tarballs in a compression that tarscan.py does not read are not assessed.
 
 With --readme, the summary between the markers `<!-- begin strict.py -->` and
 `<!-- end strict.py -->` in that file is generated again, and nothing else is printed: so that
@@ -37,11 +37,11 @@ STRICT = [
     ("scan.error", "framing", "the scanner could not read past a header"),
     ("checksum.*", "framing", "a checksum that matches only one way of summing"),
     # Number fields that shape the tree are one criterion per problem: see criterion()
-    ("number.[*].*", "framing", "a size, mode or checksum written in a way that readers differ on"),
-    ("number.size.*", "framing", "a size written in a way that readers differ on"),
-    ("number.chksum.*", "framing", "a checksum field written in a way that readers differ on"),
+    ("number.[*].*", "framing", "a size, mode or checksum written in a way that parsers differ on"),
+    ("number.size.*", "framing", "a size written in a way that parsers differ on"),
+    ("number.chksum.*", "framing", "a checksum field written in a way that parsers differ on"),
     ("magic.posix-with-odd-version", "framing", "POSIX magic with a version other than `00`"),
-    ("magic.*", "framing", "a header that readers may not recognize as one"),
+    ("magic.*", "framing", "a header that parsers may not recognize as one"),
     ("type.unknown-*", "framing", "an unknown typeflag: data or no data"),
     ("type.gnu-sparse", "framing", "GNU's old sparse files"),
     ("type.contiguous", "framing", "contiguous files (7)"),
@@ -50,7 +50,7 @@ STRICT = [
     ("pax.size-*", "framing", "a pax size that disagrees with the header"),
     ("extended.pax-size-before-gnu-long", "framing", "a pax size that a GNU long name may take"),
     ("extended.without-member", "framing", "an extended header without a member"),
-    ("pax.newline-in-value.*", "framing", "a newline in a pax value, where readers split lines"),
+    ("pax.newline-in-value.*", "framing", "a newline in a pax value, where parsers split lines"),
     ("end.missing", "framing", "no end-of-archive marker"),
     ("end.lone-zero-block", "framing", "an end-of-archive marker of one zero block, not two"),
     ("end.data-after", "framing", "data other than zeros after the end-of-archive marker"),
@@ -58,7 +58,7 @@ STRICT = [
     ("end.zero-block-before-member", "framing", "a zero block, then more members"),
     ("end.*", "framing", "the end of the archive"),
     ("archive.empty", "framing", "no members at all"),
-    ("name.leading-dot-slash", "name", "`./a`, which some readers make `a`"),
+    ("name.leading-dot-slash", "name", "`./a`, which some parsers make `a`"),
     ("name.dot", "name", "a member named `.` or `./`"),
     ("name.dot-component", "name", "`a/./b`"),
     ("name.double-slash", "name", "`a//b`"),
@@ -72,7 +72,7 @@ STRICT = [
     ("name.control-character", "name", "a control character in a name"),
     ("name.not-utf8", "name", "a name that is not UTF-8"),
     ("name.bytes-after-nul", "name", "bytes after the NUL that ends a name"),
-    ("name.*", "name", "a name that readers may normalize differently"),
+    ("name.*", "name", "a name that parsers may normalize differently"),
     ("extended.*", "name", "several sources for one name or link target"),
     ("pax.hdrcharset", "name", "names that are not UTF-8 by declaration"),
     ("pax.path-not-utf8", "name", "a pax path that is not UTF-8"),
@@ -87,10 +87,10 @@ STRICT = [
     ("type.solaris-extended", "name", "Solaris X headers"),
     ("symlink.absolute", "name", "a symlink to an absolute path"),
     ("symlink.escapes", "name", "a symlink that points out of the archive"),
-    ("symlink.*", "name", "a symlink target that readers may handle differently"),
+    ("symlink.*", "name", "a symlink target that parsers may handle differently"),
     ("pax.SCHILY.filetype", "kind", "a pax key that changes the kind"),
     ("linkname.on-*", "kind", "a link target on a member that is not a link"),
-    ("number.mode.*", "kind", "a mode written in a way that readers differ on"),
+    ("number.mode.*", "kind", "a mode written in a way that parsers differ on"),
     ("tree.duplicate.file-file", "order and state", "the same file twice"),
     ("tree.duplicate.*", "order and state", "one path as two members"),
     ("tree.under-*", "order and state", "a member under a file or a symlink"),
@@ -111,7 +111,7 @@ ALLOWED = [
     ("name.dir-without-trailing-slash", "a directory without a trailing slash: the typeflag says"),
     ("ustar.prefix", "the ustar prefix field (`y_`)"),
     ("number.size.base256", "base-256 sizes of files over 8 GiB (`y_`)"),
-    ("number.*.leading-space", "octal padded with spaces, not zeros, which readers read alike"),
+    ("number.*.leading-space", "octal padded with spaces, not zeros, which parsers read alike"),
     ("number.uid.*", "outside the tree"),
     ("number.gid.*", "outside the tree"),
     ("number.mtime.*", "outside the tree"),
@@ -287,9 +287,9 @@ def histogram(datasets, union):
 
 
 def scanned_section(datasets, names, short, rated, rows, union):
-    """The datasets, and a histogram of when their tarballs were made."""
+    """The ecosystems, and a histogram of when their tarballs were made."""
     lines = [
-        "| dataset | tarballs | scanned | not assessed | latest | GB | members | origins |",
+        "| ecosystem | tarballs | scanned | not assessed | latest | GB | members | origins |",
         "|---|---|---|---|---|---|---|---|",
     ]
     for n in names:
@@ -332,30 +332,6 @@ def passes_default(r):
     return not default_rejects(r)
 
 
-def pass_table(names, short, rated):
-    """Pass rates per dataset: of every criterion, and of the default policy."""
-    lines = [
-        "| dataset | assessed | pass every criterion | pass the default policy "
-        "| of latest versions |",
-        "|---|---|---|---|---|",
-    ]
-    for n in names:
-        rs = rated[n]
-        latest = [r for r in rs if r.get("latest")]
-        passing = sum(passes(r) for r in rs)
-        default = sum(passes_default(r) for r in rs)
-        lp = sum(passes_default(r) for r in latest)
-        cells = [
-            short[n],
-            str(len(rs)),
-            f"{passing} ({percent(passing, len(rs))})",
-            f"{default} ({percent(default, len(rs))})",
-            f"{lp} ({percent(lp, len(latest))})",
-        ]
-        lines.append("| " + " | ".join(cells) + " |")
-    return "\n".join(lines)
-
-
 def costliest(union, rejects=strict_features):
     """The criterion that rejects the most tarballs on its own."""
     sole = collections.Counter()
@@ -366,29 +342,52 @@ def costliest(union, rejects=strict_features):
     return sole.most_common(1)[0][0] if sole else None
 
 
-def summary(union):
-    """The pass rates of all datasets together, as a sentence."""
+def headline(union):
+    """What both policies reject of all tarballs together, as a sentence."""
+    strict = sum(not passes(r) for r in union)
+    default = sum(not passes_default(r) for r in union)
     return (
-        f"Of {len(union)} distinct tarballs, {sum(passes(r) for r in union)} pass every "
-        f"criterion, and {sum(passes_default(r) for r in union)} the default policy, which "
-        "normalizes `./a` and the like, and accepts features on whose tree readers agree. The "
-        "criterion "
-        "that rejects the most tarballs on its own is "
-        f"`{costliest(union)}`, and of the default policy `{costliest(union, default_rejects)}`."
+        f"**The default policy rejects {default} of {len(union):,} release tarballs "
+        f"({percent(default, len(union))}); rejecting every criterion would reject {strict} "
+        f"({percent(strict, len(union))}).** The criterion that rejects the most tarballs on its "
+        f"own is `{costliest(union, default_rejects)}` of the default policy, and "
+        f"`{costliest(union)}` of every criterion."
     )
+
+
+def reject_table(names, short, rated, union):
+    """Tarballs that each policy rejects, per ecosystem and of all of them."""
+    lines = [
+        "| ecosystem | tarballs | GB | rejected: every criterion | rejected: default policy "
+        "| of latest versions |",
+        "|---|---|---|---|---|---|",
+    ]
+    for n, rs in [(n, rated[n]) for n in names] + [(None, union)]:
+        latest = [r for r in rs if r.get("latest")]
+        strict = sum(not passes(r) for r in rs)
+        default = sum(not passes_default(r) for r in rs)
+        lp = sum(not passes_default(r) for r in latest)
+        cells = [
+            short[n] if n else "**all, distinct**",
+            f"{len(rs):,}",
+            f"{sum(r.get('bytes') or 0 for r in rs) / 1e9:.1f}",
+            f"{strict} ({percent(strict, len(rs))})",
+            f"{default} ({percent(default, len(rs))})",
+            f"{lp} ({percent(lp, len(latest))})",
+        ]
+        lines.append("| " + " | ".join(cells) + " |")
+    return "\n".join(lines)
 
 
 def readme(path, datasets, names, short, rated, rows, union):
     block = (
-        "### What was scanned\n\n"
-        + scanned_section(datasets, names, short, rated, rows, union)
-        + "\n\n### What a strict parser accepts\n\n"
-        + summary(union)
+        headline(union)
         + "\n\n"
-        + pass_table(names, short, rated)
-        + "\n\nLatest versions: of the default policy. "
-        f"Generated by `scanner/strict.py` from {len(names)} scans: the details are in "
-        "[data/STRICT.md](data/STRICT.md)."
+        + reject_table(names, short, rated, union)
+        + "\n\nTarballs: those downloaded and in a compression the scanner reads. Latest: the "
+        "latest version of each package, under the default policy. Generated by "
+        "`scanner/strict.py`; [data/STRICT.md](data/STRICT.md) has what was scanned, when the "
+        "tarballs were made, and the cost of every criterion."
     )
     text = open(path).read()
     begin, end = "<!-- begin strict.py -->", "<!-- end strict.py -->"
@@ -414,27 +413,24 @@ def main():
 
     print("# Strict parsing of real tarballs\n")
     print(
-        "How many release tarballs a strict tar parser would accept, if it rejected every "
-        "ambiguity that [METHOD.md](../METHOD.md) lists, and with its default policy. Generated by `scanner/strict.py` from the "
+        "How many release tarballs a strict tar parser rejects: with every criterion, each an "
+        "ambiguity that [METHOD.md](../METHOD.md) lists, and with the default policy. Generated by `scanner/strict.py` from the "
         "scans in this directory: see their `RUN.md` for how each was made.\n"
     )
 
     print("## What was scanned\n")
     print(scanned_section(datasets, names, short, rated, rows, union))
 
-    print("## Pass rates\n")
-    print(
-        "A tarball passes if it has none of the strict criteria below. Latest versions: of the "
-        "default policy.\n"
-    )
-    print(summary(union) + "\n")
-    print(pass_table(names, short, rated))
+    print("\n## What each policy rejects\n")
+    print(headline(union) + "\n")
+    print(reject_table(names, short, rated, union))
+    print("\nLatest: the latest version of each package, under the default policy.")
     print()
 
     print("## The default policy\n")
     print(
         "The strict criteria that the default policy lets through, and how; it rejects all other "
-        "criteria. Tarballs: of all datasets, with the feature where the policy lets it through.\n"
+        "criteria. Tarballs: of all ecosystems, with the feature where the policy lets it through.\n"
     )
     print("| criterion | how | why | tarballs |")
     print("|---|---|---|---|")
@@ -464,8 +460,8 @@ def main():
 
     print("## Criteria\n")
     print(
-        "Tarballs that each criterion rejects, per dataset. Default: what the default policy "
-        "does with it. Alone: tarballs of all datasets that only this criterion rejects, which "
+        "Tarballs that each criterion rejects, per ecosystem. Default: what the default policy "
+        "does with it. Alone: tarballs of all ecosystems that only this criterion rejects, which "
         "allowing it would let through.\n"
     )
     print(
@@ -503,7 +499,7 @@ def main():
     )
 
     print("## Allowed features\n")
-    print("Not ambiguous, or confined to fields outside the tree. Tarballs of all datasets:\n")
+    print("Not ambiguous, or confined to fields outside the tree. Tarballs of all ecosystems:\n")
     print("| feature | why it is allowed | tarballs |")
     print("|---|---|---|")
     allowed = collections.Counter(

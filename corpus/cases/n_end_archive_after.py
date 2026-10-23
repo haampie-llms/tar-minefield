@@ -1,10 +1,10 @@
 """Another archive after the end-of-archive marker.
 
 The archive ends with two zero blocks, as it should, and is followed by a second archive with a
-file `hidden`. Readers that stop at the marker extract `a`; those that read on, such as GNU tar
+file `hidden`. Parsers that stop at the marker extract `a`; those that read on, such as GNU tar
 with `--ignore-zeros`, also extract `hidden`.
 
-Decision point: whether a reader stops at the end-of-archive marker.
+Decision point: whether a parser stops at the end-of-archive marker.
 Seen in: glibmm 2.16.0, which is the whole archive twice, jmol 14.8.0 and commons-jexl 2.1.1.
 """
 

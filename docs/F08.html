@@ -11,7 +11,7 @@
 <h1><code>F08</code> end-truncated-in-member</h1>
 <p>An archive that ends inside the data of a member.</p>
 <dl>
-<dt>Verdict</dt><dd>rejected: readers disagree on its tree</dd>
+<dt>Verdict</dt><dd>rejected: parsers disagree on its tree</dd>
 <dt>Level</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
 <dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/cases/n_end_truncated_in_member.py">the script</a>,
@@ -19,7 +19,7 @@
 <a href="https://github.com/haampie-llms/tar-minefield/blob/main/corpus/archives/n_end_truncated_in_member.txt">every block as text</a></dd>
 </dl>
 <h2>The case</h2>
-<p>The header of <code>a</code> says 1024 bytes, but the file ends after 512 of them. A reader may extract the part it has, extract nothing, or fail. Archives that are distributed are pinned by their sha256, so this archive is damaged, not ambiguous: it is rejected all the same.</p>
+<p>The header of <code>a</code> says 1024 bytes, but the file ends after 512 of them. A parser may extract the part it has, extract nothing, or fail. Archives that are distributed are pinned by their sha256, so this archive is damaged, not ambiguous: it is rejected all the same.</p>
 <p><strong>Decision point:</strong> whether a member that is cut short is extracted.</p>
 <p><strong>Seen in:</strong> no tarball of the scans, where a damaged download fails its sha256.</p>
 <h2>The archive</h2>
@@ -31,7 +31,7 @@
 
 An archive that ends inside the data of a member.
 
-The header of `a` says 1024 bytes, but the file ends after 512 of them. A reader may extract the
+The header of `a` says 1024 bytes, but the file ends after 512 of them. A parser may extract the
 part it has, extract nothing, or fail. Archives that are distributed are pinned by their sha256,
 so this archive is damaged, not ambiguous: it is rejected all the same.
 
@@ -132,8 +132,8 @@ Seen in: no tarball of the scans, where a damaged download fails its sha256.
 </details>
 <h2>In real tarballs</h2>
 <p>No feature of the scanner is about this case alone: an archive like it is one that the scanner cannot read, <code>scan.error</code>.</p>
-<h2>What implementations make of it</h2>
-<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
+<h2>What parsers make of it</h2>
+<table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>parser</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py: every criterion</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>strict.py: default policy</td><td></td><td>✅ as the verdict says</td><td>rejects it</td></tr>
 <tr><td>GNU tar</td><td>tar (GNU tar) 1.35</td><td>✅ as the verdict says</td><td>error: tar: Unexpected EOF in archive tar: Unexpected EOF in archive tar: Error is not recoverable: exiting now</td></tr>

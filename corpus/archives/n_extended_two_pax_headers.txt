@@ -2,7 +2,7 @@ N09 n_extended_two_pax_headers: rejected
 
 Two pax extended headers for one member, with different paths.
 
-Two `x` headers come before one member, with the paths `first` and `second`. A reader may apply
+Two `x` headers come before one member, with the paths `first` and `second`. A parser may apply
 the first, the last, or merge them.
 
 Decision point: which of two extended headers of one kind applies.

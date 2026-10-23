@@ -1,8 +1,8 @@
 # All scans
 
-Rates are per dataset. Counts below are of the distinct tarballs of all datasets.
+Rates are per ecosystem. Counts below are of the distinct tarballs of all ecosystems.
 
-| dataset | tarballs | scanned | latest | untar rejects | latest | filesystem only |
+| ecosystem | tarballs | scanned | latest | untar rejects | latest | filesystem only |
 |---|---|---|---|---|---|---|
 | guix/2026-10-23 | 10200 | 10199 | 9705 | 69 (0.68%) | 64 (0.66%) | 0 |
 | live-bootstrap/2026-10-23 | 171 | 171 | 74 | 0 (0.00%) | 0 (0.00%) | 0 |
