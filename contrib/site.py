@@ -559,10 +559,11 @@ common it is in source tarballs.</p>
 <div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["id"] + ".html")}</div>
 {tarballs_section(names, short, rated, union)}
 <h2 id="policy">Policy</h2>
-<p>The default policy accepts, tolerates or rejects each case below, based on data from the
-{len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and live-bootstrap.</p>
-<p>Prevalence: an estimate of the likelihood of encountering a case in practice, based on a scan of
-release tarballs across package ecosystems.</p>
+<p>This section defines the <em>default policy</em>, which accepts, tolerates or rejects each case
+below, based on data from the {len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and
+live-bootstrap.</p>
+<p>The <em>prevalence</em> column is an estimate of the likelihood of encountering a case in
+practice, from a scan of these tarballs.</p>
 {chr(10).join(sections)}
 """
     intro = re.sub(r"<[^>]+>", "", readme_intro().split("</p>", 1)[0])
