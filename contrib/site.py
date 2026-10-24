@@ -561,8 +561,8 @@ common it is in source tarballs.</p>
 <h2 id="policy">Policy</h2>
 <p>The default policy accepts, tolerates or rejects each case below, based on data from the
 {len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and live-bootstrap.</p>
-<p>Prevalence: the share of those tarballs that have the feature of the case. The page of a case
-has the numbers per ecosystem.</p>
+<p>Prevalence: an estimate of the likelihood of encountering a case in practice, based on a scan of
+release tarballs across package ecosystems.</p>
 {chr(10).join(sections)}
 """
     intro = re.sub(r"<[^>]+>", "", readme_intro().split("</p>", 1)[0])
