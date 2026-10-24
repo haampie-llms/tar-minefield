@@ -25,7 +25,7 @@
 </table></dd>
 </dl>
 <h2>The case</h2>
-<p><code>a\nb</code> is a valid name on Unix, but listings, manifests and scripts that read names line by line see two names. Implementations that escape or reject control characters disagree with those that write them as they are.</p>
+<p>The name <code>a\nb</code> is valid on Unix, but listings, manifests and scripts that read names line by line see two names. Implementations that escape or reject control characters disagree with those that write them as they are.</p>
 <p><strong>Decision point:</strong> whether a name may contain control characters.</p>
 <p><strong>Seen in:</strong> cdrtools 3.02a09, wgrib2 3.6.0 and apktool 2.6.0.</p>
 <h2>The archive</h2>
@@ -37,8 +37,8 @@
 
 A control character in a name, here a newline.
 
-`a
-b` is a valid name on Unix, but listings, manifests and scripts that read names line by line
+The name `a
+b` is valid on Unix, but listings, manifests and scripts that read names line by line
 see two names. Implementations that escape or reject control characters disagree with those that
 write them as they are.
 

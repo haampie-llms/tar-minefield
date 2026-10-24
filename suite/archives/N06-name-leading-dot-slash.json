@@ -1,7 +1,7 @@
 {
  "id": "N06",
  "verdict": "tolerate",
- "description": "`./a`, which is the path `a`.",
+ "description": "The name `./a`, which is the path `a`.",
  "features": [
   "name.leading-dot-slash"
  ],

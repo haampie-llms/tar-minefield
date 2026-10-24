@@ -25,7 +25,7 @@
 </table></dd>
 </dl>
 <h2>The case</h2>
-<p><code>caf\xe9</code> is Latin-1. Depending on the implementation, the bytes are written as they are, or decoded as Latin-1 and written as <code>café</code> in UTF-8, or the byte is replaced, or extraction fails: different names on disk.</p>
+<p>The name <code>caf\xe9</code> is Latin-1. Depending on the implementation, the bytes are written as they are, or decoded as Latin-1 and written as <code>café</code> in UTF-8, or the byte is replaced, or extraction fails: different names on disk.</p>
 <p><strong>Decision point:</strong> how a name that is not UTF-8 is decoded.</p>
 <p><strong>Seen in:</strong> aspell-is 0.51.1-0 and aspell-nb 0.50.1-0.</p>
 <h2>The archive</h2>
@@ -37,9 +37,9 @@
 
 A name that is not UTF-8.
 
-`café` is Latin-1. Depending on the implementation, the bytes are written as they are, or decoded
-as Latin-1 and written as `café` in UTF-8, or the byte is replaced, or extraction fails: different
-names on disk.
+The name `café` is Latin-1. Depending on the implementation, the bytes are written as they are,
+or decoded as Latin-1 and written as `café` in UTF-8, or the byte is replaced, or extraction fails:
+different names on disk.
 
 Decision point: how a name that is not UTF-8 is decoded.
 Seen in: aspell-is 0.51.1-0 and aspell-nb 0.50.1-0.

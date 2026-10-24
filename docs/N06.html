@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N06 name-leading-dot-slash · Tar file extraction test suite</title>
-<meta name="description" content="./a, which is the path a.">
+<meta name="description" content="The name ./a, which is the path a.">
 <link rel="stylesheet" href="style.css?b49083d6">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N05.html">N05 name-dot</a> · next: <a href="N07.html">N07 symlink-absolute</a></nav>
 <h1><code>N06</code> name-leading-dot-slash</h1>
-<p><code>./a</code>, which is the path <code>a</code>.</p>
+<p>The name <code>./a</code>, which is the path <code>a</code>.</p>
 <div class="verdict tolerate"><p><span class="badge">Tolerated</span> A strict parser may reject this archive. If it accepts it, it must extract this tree: <code>a</code> (2 B, 87428fc5).</p></div>
 <dl>
 <dt>Category</dt><dd>name</dd>
@@ -25,7 +25,7 @@
 </table></dd>
 </dl>
 <h2>The case</h2>
-<p><code>tar cf x.tar .</code> writes names that start with <code>./</code>. On a filesystem, <code>./a</code> and <code>a</code> are one path, but implementations that compare names as strings see two: an index of <code>a</code> does not find <code>./a</code>. The default policy normalizes the name to <code>a</code>, and finds duplicates among normalized names, so that <code>./a</code> and <code>a</code> in one archive are a duplicate.</p>
+<p>The command <code>tar cf x.tar .</code> writes names that start with <code>./</code>. On a filesystem, <code>./a</code> and <code>a</code> are one path, but implementations that compare names as strings see two: an index of <code>a</code> does not find <code>./a</code>. The default policy normalizes the name to <code>a</code>, and finds duplicates among normalized names, so that <code>./a</code> and <code>a</code> in one archive are a duplicate.</p>
 <p><strong>Decision point:</strong> whether <code>./a</code> is <code>a</code>.</p>
 <p><strong>Seen in:</strong> hdf5 1.10.11, numdiff 5.9.0 and others: see contrib/data/STRICT.md.</p>
 <h2>The archive</h2>
@@ -35,12 +35,12 @@
 <details><summary>Every block, as text</summary>
 <pre>N06-name-leading-dot-slash: tolerated: a strict parser may reject it; if it accepts it, it must extract its tree, and the default policy accepts it
 
-`./a`, which is the path `a`.
+The name `./a`, which is the path `a`.
 
-`tar cf x.tar .` writes names that start with `./`. On a filesystem, `./a` and `a` are one path,
-but implementations that compare names as strings see two: an index of `a` does not find `./a`. The
-default policy normalizes the name to `a`, and finds duplicates among normalized names, so that
-`./a` and `a` in one archive are a duplicate.
+The command `tar cf x.tar .` writes names that start with `./`. On a filesystem, `./a` and `a` are
+one path, but implementations that compare names as strings see two: an index of `a` does not find
+`./a`. The default policy normalizes the name to `a`, and finds duplicates among normalized names,
+so that `./a` and `a` in one archive are a duplicate.
 
 Decision point: whether `./a` is `a`.
 Seen in: hdf5 1.10.11, numdiff 5.9.0 and others: see contrib/data/STRICT.md.

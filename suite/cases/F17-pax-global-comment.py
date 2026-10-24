@@ -1,8 +1,8 @@
 """The global pax header with only a `comment`, as `git archive` writes it.
 
-`git archive` starts every tarball with a global header whose only record is the commit, as a
-`comment`, which no implementation applies to the tree. GitHub's release tarballs are made this way,
-so a strict parser that rejects global headers rejects most of them.
+Every tarball that `git archive` writes starts with a global header whose only record is the commit,
+as a `comment`, which no implementation applies to the tree. GitHub's release tarballs are made this
+way, so a strict parser that rejects global headers rejects most of them.
 
 Seen in: every tarball that `git archive` made, such as GitHub's release tarballs.
 """

@@ -25,7 +25,7 @@
 </table></dd>
 </dl>
 <h2>The case</h2>
-<p><code>h</code> is a hardlink to <code>missing</code>. Depending on the implementation, extraction fails, the link is skipped, or it links to a file of that name that already exists where it extracts.</p>
+<p>The member <code>h</code> is a hardlink to <code>missing</code>. Depending on the implementation, extraction fails, the link is skipped, or it links to a file of that name that already exists where it extracts.</p>
 <p><strong>Decision point:</strong> what a hardlink to nothing does.</p>
 <p><strong>Seen in:</strong> no source tarball.</p>
 <h2>The archive</h2>
@@ -37,8 +37,8 @@
 
 A hardlink to a member that is not in the archive.
 
-`h` is a hardlink to `missing`. Depending on the implementation, extraction fails, the link is
-skipped, or it links to a file of that name that already exists where it extracts.
+The member `h` is a hardlink to `missing`. Depending on the implementation, extraction fails, the
+link is skipped, or it links to a file of that name that already exists where it extracts.
 
 Decision point: what a hardlink to nothing does.
 Seen in: no source tarball.

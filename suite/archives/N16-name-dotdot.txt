@@ -1,6 +1,6 @@
 N16-name-dotdot: must reject: implementations disagree on its tree
 
-`..` in a name, which climbs out of the directory the archive is extracted to.
+A name with `..`, which climbs out of the directory the archive is extracted to.
 
 The name `tar-minefield/../../tar-minefield-escaped` resolves to a path outside the destination.
 Depending on the extractor, the member is refused, its name is rewritten, or it is written where it

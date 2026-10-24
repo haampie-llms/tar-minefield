@@ -25,7 +25,7 @@
 </table></dd>
 </dl>
 <h2>The case</h2>
-<p><code>ustar\0</code> is followed by the version <code>01</code>. Depending on the implementation, the header is read as ustar or as some other format, and its prefix field and other fields accordingly. The default policy accepts only the version <code>00</code>, and NULs as some Java archivers write.</p>
+<p>The magic <code>ustar\0</code> is followed by the version <code>01</code>. Depending on the implementation, the header is read as ustar or as some other format, and its prefix field and other fields accordingly. The default policy accepts only the version <code>00</code>, and NULs as some Java archivers write.</p>
 <p><strong>Decision point:</strong> which format the header is in.</p>
 <p><strong>Seen in:</strong> only the version of NULs, as in commons-lang 2.6 and apache-solr 3.6.2.</p>
 <h2>The archive</h2>
@@ -37,9 +37,9 @@
 
 The POSIX magic with a version that is neither `00` nor NULs.
 
-`ustar ` is followed by the version `01`. Depending on the implementation, the header is read as
-ustar or as some other format, and its prefix field and other fields accordingly. The default policy
-accepts only the version `00`, and NULs as some Java archivers write.
+The magic `ustar ` is followed by the version `01`. Depending on the implementation, the header is
+read as ustar or as some other format, and its prefix field and other fields accordingly. The
+default policy accepts only the version `00`, and NULs as some Java archivers write.
 
 Decision point: which format the header is in.
 Seen in: only the version of NULs, as in commons-lang 2.6 and apache-solr 3.6.2.

@@ -2,8 +2,8 @@ N15-name-control-character: must reject: implementations disagree on its tree
 
 A control character in a name, here a newline.
 
-`a
-b` is a valid name on Unix, but listings, manifests and scripts that read names line by line
+The name `a
+b` is valid on Unix, but listings, manifests and scripts that read names line by line
 see two names. Implementations that escape or reject control characters disagree with those that
 write them as they are.
 

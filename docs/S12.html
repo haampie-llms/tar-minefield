@@ -25,7 +25,7 @@
 </table></dd>
 </dl>
 <h2>The case</h2>
-<p><code>a</code> is a file, then <code>a/b</code> is a file in it. Depending on the implementation, extraction fails, the file <code>a</code> is replaced with a directory, or <code>a/b</code> is skipped.</p>
+<p>The first member is a file <code>a</code>, the second a file <code>a/b</code> in it. Depending on the implementation, extraction fails, the file <code>a</code> is replaced with a directory, or <code>a/b</code> is skipped.</p>
 <p><strong>Decision point:</strong> whether a member under a file replaces it.</p>
 <p><strong>Seen in:</strong> sendmail 8.18.2 and unclutter 8, where the file is a v7 directory named <code>a/</code>.</p>
 <h2>The archive</h2>
@@ -37,8 +37,8 @@
 
 A member under a file.
 
-`a` is a file, then `a/b` is a file in it. Depending on the implementation, extraction fails, the
-file `a` is replaced with a directory, or `a/b` is skipped.
+The first member is a file `a`, the second a file `a/b` in it. Depending on the implementation,
+extraction fails, the file `a` is replaced with a directory, or `a/b` is skipped.
 
 Decision point: whether a member under a file replaces it.
 Seen in: sendmail 8.18.2 and unclutter 8, where the file is a v7 directory named `a/`.

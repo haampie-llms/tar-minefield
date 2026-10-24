@@ -25,7 +25,7 @@
 </table></dd>
 </dl>
 <h2>The case</h2>
-<p><code>git archive</code> starts every tarball with a global header whose only record is the commit, as a <code>comment</code>, which no implementation applies to the tree. GitHub&#x27;s release tarballs are made this way, so a strict parser that rejects global headers rejects most of them.</p>
+<p>Every tarball that <code>git archive</code> writes starts with a global header whose only record is the commit, as a <code>comment</code>, which no implementation applies to the tree. GitHub&#x27;s release tarballs are made this way, so a strict parser that rejects global headers rejects most of them.</p>
 <p><strong>Seen in:</strong> every tarball that <code>git archive</code> made, such as GitHub&#x27;s release tarballs.</p>
 <h2>The archive</h2>
 <p>Every block of 512 bytes, to scale, with its offset. Hover over a field for its bytes.</p>
@@ -36,9 +36,9 @@
 
 The global pax header with only a `comment`, as `git archive` writes it.
 
-`git archive` starts every tarball with a global header whose only record is the commit, as a
-`comment`, which no implementation applies to the tree. GitHub&#x27;s release tarballs are made this way,
-so a strict parser that rejects global headers rejects most of them.
+Every tarball that `git archive` writes starts with a global header whose only record is the commit,
+as a `comment`, which no implementation applies to the tree. GitHub&#x27;s release tarballs are made this
+way, so a strict parser that rejects global headers rejects most of them.
 
 Seen in: every tarball that `git archive` made, such as GitHub&#x27;s release tarballs.
 

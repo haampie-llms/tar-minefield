@@ -1,6 +1,6 @@
 """A backslash in a name: a character on Unix, a separator on Windows.
 
-`a\\b` is one file named with a backslash on Unix, and the file `b` in the directory `a` on
+The name `a\\b` is one file named with a backslash on Unix, and the file `b` in the directory `a` on
 Windows. With `..\\` the same rule lets a name climb out of the destination there.
 
 Decision point: whether a backslash separates components.

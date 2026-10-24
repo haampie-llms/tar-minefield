@@ -25,7 +25,7 @@
 </table></dd>
 </dl>
 <h2>The case</h2>
-<p><code>s</code> is a symlink to <code>f</code>, and <code>h</code> a hardlink to <code>s</code>. Depending on the implementation, <code>h</code> links to the symlink, making another symlink, or to the file it points to.</p>
+<p>The member <code>s</code> is a symlink to <code>f</code>, and <code>h</code> a hardlink to <code>s</code>. Depending on the implementation, <code>h</code> links to the symlink, making another symlink, or to the file it points to.</p>
 <p><strong>Decision point:</strong> whether a hardlink follows a symlink.</p>
 <p><strong>Seen in:</strong> octa 8.4.</p>
 <h2>The archive</h2>
@@ -37,8 +37,8 @@
 
 A hardlink to a symlink: a link to the symlink, or to its target?
 
-`s` is a symlink to `f`, and `h` a hardlink to `s`. Depending on the implementation, `h` links to
-the symlink, making another symlink, or to the file it points to.
+The member `s` is a symlink to `f`, and `h` a hardlink to `s`. Depending on the implementation, `h`
+links to the symlink, making another symlink, or to the file it points to.
 
 Decision point: whether a hardlink follows a symlink.
 Seen in: octa 8.4.

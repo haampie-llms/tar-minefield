@@ -25,7 +25,7 @@
 </table></dd>
 </dl>
 <h2>The case</h2>
-<p><code>a</code> is a file, then a hardlink <code>a</code> to <code>a</code>. An implementation that removes <code>a</code> before linking has nothing left to link to; one that sees the link is to the same path keeps the file.</p>
+<p>The first member is a file <code>a</code>, the second a hardlink <code>a</code> to <code>a</code>. An implementation that removes <code>a</code> before linking has nothing left to link to; one that sees the link is to the same path keeps the file.</p>
 <p><strong>Decision point:</strong> what a link to itself does to the file.</p>
 <p><strong>Seen in:</strong> xscreensaver 6.12 and atari++ 1.85.</p>
 <h2>The archive</h2>
@@ -37,8 +37,9 @@
 
 A hardlink to itself.
 
-`a` is a file, then a hardlink `a` to `a`. An implementation that removes `a` before linking has
-nothing left to link to; one that sees the link is to the same path keeps the file.
+The first member is a file `a`, the second a hardlink `a` to `a`. An implementation that removes `a`
+before linking has nothing left to link to; one that sees the link is to the same path keeps the
+file.
 
 Decision point: what a link to itself does to the file.
 Seen in: xscreensaver 6.12 and atari++ 1.85.

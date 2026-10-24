@@ -2,8 +2,9 @@ S08-tree-duplicate-file-dir: must reject: implementations disagree on its tree
 
 A file, then a directory of the same name.
 
-`a` is a file, then `a/` a directory. Depending on the implementation, the directory replaces the
-file, the file is kept and extraction fails on the directory, or the file is kept silently.
+The first member is a file `a`, the second a directory `a/`. Depending on the implementation, the
+directory replaces the file, the file is kept and extraction fails on the directory, or the file is
+kept silently.
 
 Decision point: whether a later member replaces an earlier one of another kind.
 Seen in: no source tarball.

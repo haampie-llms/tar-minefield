@@ -1,7 +1,8 @@
 """A member written through a symlink, which points out of the destination.
 
-`d` is a symlink to `..`, then `d/tar-minefield-through-symlink` is a file. An implementation that
-follows the link writes the file in the parent of the destination. The file is harmless.
+The first member is a symlink `d` to `..`, the second a file `d/tar-minefield-through-symlink`. An
+implementation that follows the link writes the file in the parent of the destination. The file is
+harmless.
 
 Decision point: whether a member may be written through a symlink.
 Seen in: no source tarball.

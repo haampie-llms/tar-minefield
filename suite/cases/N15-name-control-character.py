@@ -1,6 +1,6 @@
 """A control character in a name, here a newline.
 
-`a\nb` is a valid name on Unix, but listings, manifests and scripts that read names line by line
+The name `a\nb` is valid on Unix, but listings, manifests and scripts that read names line by line
 see two names. Implementations that escape or reject control characters disagree with those that
 write them as they are.
 
