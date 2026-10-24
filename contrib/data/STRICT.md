@@ -91,15 +91,15 @@ Tarballs that each criterion rejects, per ecosystem. Default: what the default p
 | framing | `end.archive-after`: another archive after the end-of-archive marker | reject | 1 (0.01%) | 0 | 0 | 4 (0.01%) | 3 | commons-jexl@2.1.1-src, jmol@14.8.0, glibmm@2.4.8 |
 | framing | `end.lone-zero-block`: an end-of-archive marker of one zero block, not two | accept | 0 | 0 | 5 (0.03%) | 0 | 5 | eng-rus, srecord@1.64, cdi2iso@0.1-src |
 | framing | `pax.size-on-dir`: a pax size on a member without data | reject | 0 | 0 | 1 (0.01%) | 0 | 1 | llama_index_workflows@2.26.0 |
-| name | `name.leading-dot-slash`: `./a`, which some implementations make `a` | normalize | 31 (0.30%) | 0 | 35 (0.18%) | 145 (0.39%) | 161 | sqliteodbc@0.99991, numdiff@5.9.0, scanbd@1.5.1 |
+| name | `name.leading-dot-slash`: a name like `./a`, which some implementations make `a` | normalize | 31 (0.30%) | 0 | 35 (0.18%) | 145 (0.39%) | 161 | sqliteodbc@0.99991, numdiff@5.9.0, scanbd@1.5.1 |
 | name | `symlink.absolute`: a symlink to an absolute path | accept | 13 (0.13%) | 0 | 15 (0.08%) | 63 (0.17%) | 82 | tachyon@0.99.5, notmuch@0.40, gnome-autoar@0.4.5 |
 | name | `name.dot`: a member named `.` or `./` | normalize | 13 (0.13%) | 0 | 18 (0.09%) | 11 (0.03%) | 0 | guile@2.0.9, hadrian-bootstrap-sources@9.8.1, linux-libre-headers-stripped@4.14.67-i686-linux |
-| name | `name.dot-component`: `a/./b` | normalize | 4 (0.04%) | 0 | 5 (0.03%) | 1 (0.00%) | 8 | tuffy@20120614, privoxy@3.0.34-stable-src, ghc@7.8.4-x86_64-unknown-linux-deb7 |
+| name | `name.dot-component`: a name like `a/./b` | normalize | 4 (0.04%) | 0 | 5 (0.03%) | 1 (0.00%) | 8 | tuffy@20120614, privoxy@3.0.34-stable-src, ghc@7.8.4-x86_64-unknown-linux-deb7 |
 | name | `name.control-character`: a control character in a name | reject | 0 | 0 | 1 (0.01%) | 8 (0.02%) | 8 | cdrtools@3.02a09, wgrib2@3.6.0, apktool@2.6.0 |
-| name | `name.backslash`: `\`, a separator on Windows | reject | 2 (0.02%) | 0 | 1 (0.01%) | 3 (0.01%) | 5 | texi2html@5.0, gstreamer-docs@1.28.1, texi2html@5.0 |
+| name | `name.backslash`: a backslash, `\`, which is a separator on Windows | reject | 2 (0.02%) | 0 | 1 (0.01%) | 3 (0.01%) | 5 | texi2html@5.0, gstreamer-docs@1.28.1, texi2html@5.0 |
 | name | `format.star`: star's prefix field | reject | 0 | 0 | 0 | 2 (0.01%) | 2 | berkeley-db@18.1.40, ncurses@5.9 |
 | name | `name.absolute`: an absolute name | reject | 0 | 0 | 1 (0.01%) | 1 (0.00%) | 2 | dtv-scan-tables@2024-03-24-7098bdd27548, masurca@3.3.1 |
-| name | `name.double-slash`: `a//b` | normalize | 0 | 0 | 1 (0.01%) | 1 (0.00%) | 1 | ghc@9.0.2-x86_64-deb10-linux, shapemapper@2.1.5 |
+| name | `name.double-slash`: a name like `a//b` | normalize | 0 | 0 | 1 (0.01%) | 1 (0.00%) | 1 | ghc@9.0.2-x86_64-deb10-linux, shapemapper@2.1.5 |
 | name | `name.not-utf8`: a name that is not UTF-8 | reject | 0 | 0 | 2 (0.01%) | 0 | 2 | aspell-is@0.51.1-0, aspell-nb@0.50.1-0 |
 | name | `pax.key-in-two-headers.LIBARCHIVE.xattr.*`: a pax key in two extended headers of one member | reject | 1 (0.01%) | 0 | 0 | 0 | 0 | libmygpo-qt.1.2.0 |
 | name | `pax.key-in-two-headers.SCHILY.xattr.*`: a pax key in two extended headers of one member | reject | 1 (0.01%) | 0 | 0 | 0 | 0 | libmygpo-qt.1.2.0 |
