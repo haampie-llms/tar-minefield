@@ -76,7 +76,10 @@ svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
 dt { font-weight: 600; }
 .note { color: #59636e; font-size: 0.875em; }
-nav .none { color: #8c959f; }
+/* Previous, the index and next in columns that do not move: names that do not fit end in … */
+nav { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 1rem; }
+nav a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+nav .next { text-align: right; }
 /* The link to a section, next to its heading when it is hovered */
 .anchor { margin-left: 0.375rem; color: #8c959f; text-decoration: none; visibility: hidden; }
 h2:hover .anchor, h3:hover .anchor, .anchor:focus { visibility: visible; }
@@ -629,21 +632,23 @@ def main():
                                    '<p>Now <a href="seen-in.html#rejected">seen-in.html</a>.</p>')}
     for case, info in cases.items():
         files[info["id"] + ".html"] = case_page(case, info, results, data)
-    # the pages in order, each with links to the one before and after it and to the index, whose
-    # texts do not change, so that clicking through them the links stay where they are
+    # the pages in order, each with links to the one before and after it, by name, and to the index:
+    # in columns that do not change, so that clicking through them the links stay where they are
     sequence = ([("index.html", "all cases")]
                 + [(info["id"] + ".html", matrix.label(case, info)) for case, info in cases.items()]
                 + [("seen-in.html", "Seen in source tarballs")])
     for i, (name, _) in enumerate(sequence):
-        links = []
-        for rel, text, j in (("prev", "‹ previous", i - 1), ("next", "next ›", i + 1)):
+        cells = []
+        for rel, j in (("prev", i - 1), ("next", i + 1)):
             if 0 <= j < len(sequence):
-                links.append(f'<a href="{sequence[j][0]}" rel="{rel}" '
-                             f'title="{html.escape(sequence[j][1])}">{text}</a>')
+                label = html.escape(sequence[j][1])
+                text = f"‹ {label}" if rel == "prev" else f"{label} ›"
+                cells.append(f'<a class="{rel}" href="{sequence[j][0]}" rel="{rel}" title="{label}">'
+                             f"{text}</a>")
             else:
-                links.append(f'<span class="none">{text}</span>')
-        links.append('<a href="index.html">all cases</a>')
-        files[name] = files[name].replace("<body>\n", f'<body>\n<nav>{" · ".join(links)}</nav>\n', 1)
+                cells.append(f'<span class="{rel}"></span>')
+        nav = f'<nav>{cells[0]}<a href="index.html">all cases</a>{cells[1]}</nav>'
+        files[name] = files[name].replace("<body>\n", f"<body>\n{nav}\n", 1)
     for old, new in MOVED.items():
         files[old + ".html"] = page(f"{old} is {new} · tar-minefield", f"{old} is now {new}.",
                                     f'<meta http-equiv="refresh" content="0; url={new}.html">\n'
