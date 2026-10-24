@@ -132,8 +132,8 @@ def table(kind, rows):
 
 def readme_intro():
     """The introduction of the README, between its title and its first section, as HTML: so that
-    the site says what the README says. Links into the repository go to GitHub, and the link to
-    the site itself to the list of cases."""
+    the site says what the README says. Links into the repository go to GitHub, and links to the
+    site to its pages."""
     with open(os.path.join(matrix.ROOT, "README.md")) as f:
         text = f.read().split("\n## ", 1)[0].split("\n", 1)[1]
     text = re.sub(r"<!-- (begin|end) \S+ -->\n?", "", text)
@@ -153,7 +153,7 @@ def readme_intro():
 
     def href(url):
         if url.startswith(matrix.SITE.rstrip("/")):
-            return url[len(matrix.SITE):] or "#policy"
+            return url[len(matrix.SITE):] or "index.html"
         if url.startswith("#"):
             return f"{REPO}{url}"
         return url if re.match(r"https?:", url) else f"{REPO}/blob/main/{url}"
