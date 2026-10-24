@@ -10,16 +10,14 @@ By assigning [identifiers](https://haampie-llms.github.io/tar-minefield/#policy)
 
 This project proposes a **[default policy](https://haampie-llms.github.io/tar-minefield/#policy)** that rejects the vast majority of ambiguities in tar files that could make implementations extract different files, while ensuring that nearly every source tarball already published can still be extracted. <!-- begin strict.py -->Of the 62,622 source tarballs of Spack, nixpkgs, Guix and live-bootstrap, it accepts 99.76% ([per ecosystem](https://haampie-llms.github.io/tar-minefield/#tarballs)).<!-- end strict.py -->
 
-## Examples
+## Motivating examples
 
 | case | the archive | what implementations make of it |
 |---|---|---|
-| [F12](https://haampie-llms.github.io/tar-minefield/F12.html) | a size field of `000000 1000`, with a space | GNU tar, BusyBox and node-tar read 0, and find a file `smuggled` in the data; bsdtar, Python, Go and Rust reject it |
-| [F14](https://haampie-llms.github.io/tar-minefield/F14.html) | a pax header says the file is empty, its own header says 512 bytes | GNU tar, bsdtar, Python, Go, Rust and node-tar extract an empty `a` and a file `smuggled`; BusyBox, Perl and RubyGems extract `a` with 512 bytes |
-| [F15](https://haampie-llms.github.io/tar-minefield/F15.html) | a pax size on a directory | GNU tar, 7-Zip and Rust extract `dir/`; bsdtar, Python, Go and node-tar extract `dir/smuggled` as well |
-| [N20](https://haampie-llms.github.io/tar-minefield/N20.html) | one pax header with both `path=first` and `path=second` | most extract `second`; Rust's tar crate and Haskell's tar extract `first`; Perl and RubyGems ignore both |
-| [K01](https://haampie-llms.github.io/tar-minefield/K01.html) | a regular file named `a/` | GNU tar, bsdtar and node-tar create a directory `a`; Python, Go, Rust and BusyBox an empty file `a` |
-| [S10](https://haampie-llms.github.io/tar-minefield/S10.html) | a symlink `a` to `target`, then a file `a` | GNU tar, bsdtar, Go and Rust replace the link with the file; Python's tarfile writes through it, to `target` |
+| [N09](https://haampie-llms.github.io/tar-minefield/N09.html) | two pax headers for one file, with `path=first` and `path=second` | GNU tar, node-tar and Go extract `second`; Python and Java extract `first`; bsdtar, Rust and .NET reject it |
+| [S10](https://haampie-llms.github.io/tar-minefield/S10.html) | a symlink `a` to `target`, then a file `a` | most replace the link with the file; Python's tarfile writes through the link, to `target` |
+| [K01](https://haampie-llms.github.io/tar-minefield/K01.html) | a regular file named `a/` | GNU tar, bsdtar, node-tar and Java create a directory `a`; Python, Go, Rust and PHP an empty file `a`; tar-fs and .NET reject it |
+| [F12](https://haampie-llms.github.io/tar-minefield/F12.html) | a size field of `000000 1000`, with a space | GNU tar, node-tar and tar-fs read 0, and find a second file `smuggled` in the data; bsdtar, Python, Go, Rust, Java and .NET reject it |
 
 Use **[the test suite](suite/)** in your tests, or browse **[the website](https://haampie-llms.github.io/tar-minefield/)** for what each case means, what implementations make of it, and how often it occurs in source tarballs.
 

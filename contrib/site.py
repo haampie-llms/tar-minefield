@@ -55,6 +55,7 @@ COLUMNS = {
                     ("share", 20, "n"), ("rejected by the default policy", 20, "n")],
     "tarballs": [("ecosystem", 25), ("tarballs", 25, "n"), ("rejected", 25, "n"), ("share", 25, "n")],
     "reasons": [("why", 80), ("tarballs", 20, "n")],
+    "examples": [("case", 8), ("the archive", 36), ("what implementations make of it", 56)],
     "seen": [("tarball", 55), ("packaged by", 12), ("example from the tarball", 33)],
     "implementations": [("implementation", 21), ("version", 21), ("outcome", 18),
                         ("what it makes of it", 40)],
@@ -93,13 +94,17 @@ table.files td:first-child { white-space: nowrap; }
   dd { margin-left: 1rem; }
   table.files, table.files tr, table.files td { display: block; }
   table.files td + td { padding: 0 0 0.375rem 1rem; }
-  /* the tarballs of seen-in.html and the implementations of a case, one block per row */
+  /* the tarballs of seen-in.html, the implementations of a case and the motivating examples,
+     one block per row */
   table.seen, table.seen tr, table.seen td,
-  table.implementations, table.implementations tr, table.implementations td { display: block; }
-  table.seen colgroup, table.seen th,
-  table.implementations colgroup, table.implementations th { display: none; }
-  table.seen tr, table.implementations tr { margin-bottom: 0.5rem; border: 1px solid #d0d7de; }
-  table.seen td, table.implementations td { border: 0; }
+  table.implementations, table.implementations tr, table.implementations td,
+  table.examples, table.examples tr, table.examples td { display: block; }
+  table.seen colgroup, table.seen th, table.implementations colgroup, table.implementations th,
+  table.examples colgroup, table.examples th { display: none; }
+  table.seen tr, table.implementations tr, table.examples tr { margin-bottom: 0.5rem;
+                                                                border: 1px solid #d0d7de; }
+  table.seen td, table.implementations td, table.examples td { border: 0; }
+  table.examples td:first-child { font-weight: 600; }
   table.seen td:nth-child(2):not(:empty)::before { content: "packaged by "; color: #59636e; }
   table.implementations td:first-child { font-weight: 600; }
   table.implementations td:nth-child(2) { color: #59636e; font-size: 0.875em; }
@@ -140,26 +145,9 @@ def table(kind, rows):
             + "</table>")
 
 
-def readme_intro():
-    """The introduction of the README, between its title and its first section, as HTML: so that
-    the site says what the README says. Links into the repository go to GitHub, and links to the
-    site to its pages."""
-    with open(os.path.join(matrix.ROOT, "README.md")) as f:
-        text = f.read().split("\n## ", 1)[0].split("\n", 1)[1]
-    text = re.sub(r"<!-- (begin|end) \S+ -->\n?", "", text)
-
-    def markdown(p):
-        out = []
-        for i, part in enumerate(p.split("`")):
-            if i % 2:
-                out.append(f"<code>{html.escape(part)}</code>")
-                continue
-            part = html.escape(part, quote=False)
-            part = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", part)
-            part = re.sub(r"\*(.+?)\*", r"<em>\1</em>", part)
-            out.append(re.sub(r"\[(.+?)\]\((.+?)\)", lambda m: f'<a href="{href(m.group(2))}">'
-                              f"{m.group(1)}</a>", part))
-        return "".join(out)
+def markdown(p):
+    """A line of the README as HTML: code, bold, italics and links. Links into the repository go
+    to GitHub, and links to the site to its pages."""
 
     def href(url):
         if url.startswith(matrix.SITE.rstrip("/")):
@@ -168,8 +156,39 @@ def readme_intro():
             return f"{REPO}{url}"
         return url if re.match(r"https?:", url) else f"{REPO}/blob/main/{url}"
 
+    out = []
+    for i, part in enumerate(p.split("`")):
+        if i % 2:
+            out.append(f"<code>{html.escape(part)}</code>")
+            continue
+        part = html.escape(part, quote=False)
+        part = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", part)
+        part = re.sub(r"\*(.+?)\*", r"<em>\1</em>", part)
+        out.append(re.sub(r"\[(.+?)\]\((.+?)\)", lambda m: f'<a href="{href(m.group(2))}">'
+                          f"{m.group(1)}</a>", part))
+    return "".join(out)
+
+
+def readme():
+    with open(os.path.join(matrix.ROOT, "README.md")) as f:
+        return re.sub(r"<!-- (begin|end) \S+ -->\n?", "", f.read())
+
+
+def readme_intro():
+    """The introduction of the README, between its title and its first section, as HTML: so that
+    the site says what the README says."""
+    text = readme().split("\n## ", 1)[0].split("\n", 1)[1]
     return "\n".join(f"<p>{markdown(' '.join(p.split()))}</p>"
                      for p in text.strip().split("\n\n"))
+
+
+def readme_examples():
+    """The table of the README's motivating examples, as HTML."""
+    section = readme().split("\n## Motivating examples\n", 1)[1].split("\n## ", 1)[0]
+    lines = [line.strip().strip("|") for line in section.splitlines() if line.startswith("|")]
+    rows = ["<tr>" + "".join(f"<td>{markdown(c.strip())}</td>" for c in line.split(" | ")) + "</tr>"
+            for line in lines[2:]]
+    return table("examples", rows)
 
 
 def inline(text):
@@ -599,6 +618,8 @@ such as an extractor for a single ecosystem, where it can be checked against eve
 published there.</p>
 {chr(10).join(sections)}
 {tarballs_section(names, short, rated, union)}
+<h2 id="examples">Motivating examples</h2>
+{readme_examples()}
 """
     intro = re.sub(r"<[^>]+>", "", readme_intro().split("</p>", 1)[0])
     return page(f"{TITLE} · tar-minefield", html.unescape(intro), body)
