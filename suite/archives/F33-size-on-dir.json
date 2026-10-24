@@ -1,0 +1,8 @@
+{
+ "id": "F33",
+ "verdict": "reject",
+ "description": "A size in the header of a directory, which hides a header from the implementations that honor it.",
+ "features": [
+  "size.on-dir"
+ ]
+}

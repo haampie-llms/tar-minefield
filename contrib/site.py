@@ -506,6 +506,46 @@ def seen_in_problems(cases, union):
     return problems
 
 
+def mtimes_svg(union):
+    """A bar chart of the tarballs by the median mtime of their members, in the bins of
+    strict.MTIME_BINS that date them, and the numbers of those it leaves out: fixed and unknown."""
+    fixed = strict.fixed_mtimes(union)
+    counts = collections.Counter(strict.mtime_bin(r, fixed) for r in union)
+    bins = [b for b in strict.MTIME_BINS if b not in ("fixed", "unknown")]
+    width, height, left, top, bottom, gap = 640, 240, 48, 12, 28, 2
+    step = (width - left) / len(bins)
+    most = max(counts[b] for b in bins)
+    # gridlines at a round step, of 1, 2 or 5 times a power of ten, at most six of them
+    tick = next(m * 10**e for e in range(9) for m in (1, 2, 5) if most / (m * 10**e) <= 6)
+    peak = -(-most // tick) * tick
+    scale = (height - top - bottom) / peak
+    base = height - bottom
+    out = []
+    for t in range(0, peak + 1, tick):
+        y = base - t * scale
+        out.append(f'<line x1="{left}" x2="{width}" y1="{y:.1f}" y2="{y:.1f}" class="grid"/>'
+                   f'<text x="{left - 6}" y="{y + 4:.1f}" text-anchor="end">{t:,}</text>')
+    for i, b in enumerate(bins):
+        x, w, h = left + i * step + gap / 2, step - gap, counts[b] * scale
+        r = min(4, w / 2, h)
+        # rounded at the top, square on the baseline
+        out.append(f'<path d="M{x:.1f},{base}v{-(h - r):.1f}q0,{-r:.1f} {r:.1f},{-r:.1f}'
+                   f'h{w - 2 * r:.1f}q{r:.1f},0 {r:.1f},{r:.1f}v{h - r:.1f}z">'
+                   f"<title>{b}: {counts[b]:,} tarballs</title></path>")
+        start = b.split("–")[0]
+        if start.endswith("0"):
+            # a decade at the left edge of its first bin
+            edge = left + i * step
+            out.append(f'<line x1="{edge:.1f}" x2="{edge:.1f}" y1="{base}" y2="{base + 5}" class="grid"/>'
+                       f'<text x="{edge:.1f}" y="{base + 18}" text-anchor="middle">{start}</text>')
+    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" '
+           f'height="{height}" role="img"><title>Tarballs by the median mtime of their members, in '
+           "bins of two years</title><style>text { font: 12px system-ui, sans-serif; fill: #59636e; } "
+           "path { fill: #0969da; } path:hover { fill: #0550ae; } "
+           ".grid { stroke: #d0d7de; stroke-width: 1; }</style>" + "".join(out) + "</svg>")
+    return svg, counts["fixed"], counts["unknown"]
+
+
 def tarballs_section(names, short, rated, union):
     """What the default policy rejects of the source tarballs, per ecosystem."""
     rows = []
@@ -515,11 +555,16 @@ def tarballs_section(names, short, rated, union):
                     f"<td class=n>{j:,}</td><td class=n>{prevalence(j, len(rs))}</td></tr>")
     rejected = sum(not strict.passes_default(r) for r in union)
     accepted = strict.percent(len(union) - rejected, len(union))
+    svg, fixed, unknown = mtimes_svg(union)
     return (f'<h2 id="tarballs">Data to support the default policy</h2>\n<p>The default policy accepts '
             f"{accepted} of the {len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and "
             f'live-bootstrap. See <a href="seen-in.html#rejected">the list of the {rejected:,} it rejects</a>, '
             "and why.</p>\n"
-            + table("tarballs", rows))
+            + table("tarballs", rows)
+            + f"<p>The tarballs by the median mtime of their members, a rough check that the data "
+            f"spans enough years, leaving out the {fixed:,} whose mtimes are fixed for "
+            f"reproducibility and the {unknown:,} without one:</p>\n"
+            f'<div class="wide">{svg}</div>\n')
 
 
 def printable(name):

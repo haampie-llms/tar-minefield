@@ -50,6 +50,7 @@ what `tarscan.py` reports.
 | [F01](https://stoppels.ch/tar/F01.html) number-leading-space | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [F17](https://stoppels.ch/tar/F17.html) pax-global-comment | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌A | ❌A |
 | [F31](https://stoppels.ch/tar/F31.html) pax-xattr-not-utf8 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌A | ❌A |
+| [F32](https://stoppels.ch/tar/F32.html) checksum-leading-space | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [N01](https://stoppels.ch/tar/N01.html) gnu-long-name | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌A | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
 | [N02](https://stoppels.ch/tar/N02.html) name-fills-field | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌A | ❌A |
 | [N03](https://stoppels.ch/tar/N03.html) pax-long-name | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌A | ❌A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌A | ✅ | ❌A | ✅ | ✅ | ❌B | ❌B |
@@ -89,6 +90,7 @@ what `tarscan.py` reports.
 | [F28](https://stoppels.ch/tar/F28.html) pax-newline-in-comment | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️C | ⚠️C |
 | [F29](https://stoppels.ch/tar/F29.html) number-size-base256-negative | ✅ | ✅ | ✅ | ⚠️A | ✅ | ✅ | ✅ | ✅ | ⚠️B | ⚠️B | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️B | ⚠️A | ✅ | ⚠️C | ⚠️C |
 | [F30](https://stoppels.ch/tar/F30.html) number-size-base256-too-large | ✅ | ✅ | ✅ | ⚠️A | ✅ | ✅ | ✅ | ✅ | ⚠️B | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ✅ | ⚠️A | ✅ | ⚠️C | ⚠️C |
+| [F33](https://stoppels.ch/tar/F33.html) size-on-dir | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ✅ | ⚠️B | ⚠️A | ⚠️A | ⚠️B | ✅ | ⚠️A | ⚠️A |
 | **to reject: names** | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [N08](https://stoppels.ch/tar/N08.html) extended-pax-path-and-gnu-long-name | ✅ | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ⚠️C | ⚠️B | ⚠️C | ⚠️B | ⚠️B | ⚠️B | ⚠️B | ✅ | ✅ | ⚠️C | ⚠️A | ⚠️C | ✅ | ⚠️A | ✅ | ✅ |
 | [N09](https://stoppels.ch/tar/N09.html) extended-two-pax-headers | ✅ | ⚠️A | ✅ | ⚠️A | ⚠️A | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️B | ✅ | ⚠️C | ⚠️C | ⚠️A | ⚠️A | ⚠️A | ✅ | ✅ | ✅ | ⚠️C | ⚠️A | ⚠️C | ✅ | ⚠️A | ⚠️D | ⚠️D |
@@ -122,7 +124,7 @@ what `tarscan.py` reports.
 | [S10](https://stoppels.ch/tar/S10.html) tree-symlink-then-file | ✅ | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️B | ⚠️B | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️B | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ⚠️A | ✅ | ⚠️A | ⚠️B | ⚠️B |
 | [S11](https://stoppels.ch/tar/S11.html) tree-through-symlink | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 💥 | ⚠️A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️B | ⚠️B | ⚠️C | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 💥 | 💥 |
 | [S12](https://stoppels.ch/tar/S12.html) tree-under-file | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️A | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️B | ⚠️B | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️C | ⚠️A | ⚠️A |
-| **total** | ✅70 | ✅33 ⚠️37 | ✅32 ⚠️38 | ✅25 ⚠️44 ❌1 | ✅26 ⚠️42 ⛔1 ❌1 | ✅32 ⚠️37 ⛔1 | ✅32 ⚠️38 | ✅31 ⚠️37 💥2 | ✅22 ⚠️47 ❌1 | ✅32 ⚠️37 ⛔1 | ✅34 ⚠️34 ⛔2 | ✅31 ⚠️38 ❌1 | ✅47 ⚠️21 ⛔2 | ✅23 ⚠️42 ⛔1 ❌4 | ✅25 ⚠️41 ⛔2 ❌2 | ✅30 ⚠️40 | ✅33 ⚠️37 | ✅33 ⚠️37 | ✅30 ⚠️40 | ✅37 ⚠️32 ⛔1 | ✅54 ⚠️11 ⛔4 ❌1 | ✅22 ⚠️41 ⛔2 ❌5 | ✅36 ⚠️34 | ✅28 ⚠️39 ⛔1 ❌2 | ✅32 ⚠️32 ⛔5 ❌1 | ✅42 ⚠️28 | ✅18 ⚠️42 ❌8 💥2 | ✅13 ⚠️47 ❌8 💥2 |
+| **total** | ✅72 | ✅34 ⚠️38 | ✅33 ⚠️39 | ✅26 ⚠️45 ❌1 | ✅27 ⚠️43 ⛔1 ❌1 | ✅33 ⚠️38 ⛔1 | ✅33 ⚠️39 | ✅32 ⚠️38 💥2 | ✅23 ⚠️48 ❌1 | ✅33 ⚠️38 ⛔1 | ✅35 ⚠️35 ⛔2 | ✅32 ⚠️39 ❌1 | ✅49 ⚠️21 ⛔2 | ✅24 ⚠️43 ⛔1 ❌4 | ✅26 ⚠️42 ⛔2 ❌2 | ✅31 ⚠️41 | ✅34 ⚠️38 | ✅34 ⚠️38 | ✅31 ⚠️41 | ✅38 ⚠️33 ⛔1 | ✅55 ⚠️11 ⛔4 ❌2 | ✅23 ⚠️42 ⛔2 ❌5 | ✅37 ⚠️35 | ✅29 ⚠️40 ⛔1 ❌2 | ✅33 ⚠️33 ⛔5 ❌1 | ✅44 ⚠️28 | ✅19 ⚠️43 ❌8 💥2 | ✅14 ⚠️48 ❌8 💥2 |
 
 ## Trees
 
@@ -161,6 +163,7 @@ What the implementations that accept a case extract, where it is not its manifes
 - F28 pax-newline-in-comment: A: `a` (0 B, e3b0c442), `smuggled` (0 B, e3b0c442); B: `a` (512 B, 917dba8e); C: `PaxHeader` (25 B, 99e4ec94), `a` (0 B, e3b0c442), `smuggled` (0 B, e3b0c442)
 - F29 number-size-base256-negative: A: `a` (512 B, 917dba8e); B: `a` (0 B, e3b0c442), `smuggled` (0 B, e3b0c442); C: nothing
 - F30 number-size-base256-too-large: A: `a` (512 B, 917dba8e); B: `smuggled` (0 B, e3b0c442); C: nothing
+- F33 size-on-dir: A: `dir/`, `dir/smuggled` (0 B, e3b0c442); B: `dir/`
 - N08 extended-pax-path-and-gnu-long-name: A: `from-pax` (12 B, a578eb49); B: `from-gnu` (12 B, a578eb49); C: `from-header` (12 B, a578eb49)
 - N09 extended-two-pax-headers: A: `second` (12 B, a578eb49); B: `first` (12 B, a578eb49); C: `header-name` (12 B, a578eb49); D: `PaxHeader` (15 B, 7c8761f1), `header-name` (12 B, a578eb49)
 - N10 format-star: A: `dir/`, `dir/a` (2 B, 87428fc5); B: `a` (2 B, 87428fc5)

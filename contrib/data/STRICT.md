@@ -135,6 +135,7 @@ Not ambiguous, or confined to fields outside the tree. Tarballs of all ecosystem
 | `name.dir-without-trailing-slash` | a directory without a trailing slash: the typeflag says | 1,121 |
 | `tree.dir-after-contents` | directories after their contents (to accept) | 858 |
 | `number.size.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 819 |
+| `number.chksum.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 819 |
 | `name.non-ascii` | UTF-8 names | 752 |
 | `number.uid.no-digits` | outside the tree | 275 |
 | `number.gid.no-digits` | outside the tree | 275 |

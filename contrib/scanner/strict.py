@@ -24,6 +24,7 @@ nothing else is printed: so that no number in it is written by hand.
 import collections
 import contextlib
 import fnmatch
+import functools
 import io
 import os
 import re
@@ -344,22 +345,30 @@ def fixed_mtimes(rows):
     return {t for t, n in same.items() if n >= 20}
 
 
+# The bins of mtime_bin: two years each, after the 1980s, then the tarballs it does not date
+MTIME_BINS = ["1981–1989"] + [f"{y}–{y + 1}" for y in range(1990, 2027, 2)] + ["fixed", "unknown"]
+
+
+def mtime_bin(r, fixed):
+    """The bin of MTIME_BINS of a tarball by the median mtime of its members, "fixed" where all
+    have one of fixed, and "unknown" where none is after 1980."""
+    m = r.get("mtime")
+    if m and m[0] == m[2] and m[0] in fixed and set(r["fingerprint"].get("uname", {})) <= {""}:
+        return "fixed"
+    y = median_year(r)
+    if y is None or y <= 1980:
+        return "unknown"
+    if y < 1990:
+        return "1981–1989"
+    start = y - y % 2
+    return f"{start}–{start + 1}"
+
+
 def histogram(datasets, union):
     """Tarballs by the median mtime of their members, in bins of two years, for each dataset."""
     names = list(datasets)
     fixed = fixed_mtimes(union)
-
-    def bin_of(r):
-        m = r.get("mtime")
-        if m and m[0] == m[2] and m[0] in fixed and set(r["fingerprint"].get("uname", {})) <= {""}:
-            return "fixed"
-        y = median_year(r)
-        if y is None or y <= 1980:
-            return "unknown"
-        if y < 1990:
-            return "1981–1989"
-        start = y - y % 2
-        return f"{start}–{start + 1}"
+    bin_of = functools.partial(mtime_bin, fixed=fixed)
 
     counts = {name: collections.Counter() for name in names}
     total = collections.Counter()
@@ -370,8 +379,7 @@ def histogram(datasets, union):
     for r in union:
         if "features" in r:
             total[bin_of(r)] += 1
-    bins = ["1981–1989"] + [f"{y}–{y + 1}" for y in range(1990, 2027, 2)] + ["fixed", "unknown"]
-    bins = [b for b in bins if total[b]]
+    bins = [b for b in MTIME_BINS if total[b]]
     widest = max(total.values())
     columns = [labels(names)[n] for n in names] + ["all"]
     widths = [max(len(c), 5) for c in columns]

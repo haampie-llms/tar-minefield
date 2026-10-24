@@ -3,7 +3,7 @@
 - tarballs: 10200, scanned: 10199 (9705 latest versions, 494 older)
 - not downloaded: 1, scanner crashed: 0
 - downloaded from the first of their URLs (a mirror): 7090
-- copied from other scans with `--reuse`: 2491, read from `--cache`: 32; sources by host: bordeaux.guix.gnu.org 7090, tarballs.nixos.org 1559, hackage.haskell.org 622, ci.guix.gnu.org 334, cran.r-project.org 124, download.gnome.org 90
+- copied from other scans with `--reuse`: 2492, read from `--cache`: 32; sources by host: bordeaux.guix.gnu.org 7090, tarballs.nixos.org 1559, hackage.haskell.org 622, ci.guix.gnu.org 333, cran.r-project.org 124, download.gnome.org 90
 - size: 76.7 GB compressed
 - origins: other 3845, cran/bioconductor 2833, pypi 1697, cpan 967, gnu 416, github-release 385, github-archive 43, gitlab 13
 - producers: GNU format 4127, ustar 3024, Python tarfile (pax) 1702, v7 873, git archive 295, GNU tar (pax) 112, none 31, posix-version-0000 18, libarchive (pax) 17
@@ -68,6 +68,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 | `name.fills-field` | 543 | 399 | other 343, pypi 82, github-release 52 | GNU format 199, Python tarfile (pax) 166, git archive 73 | 1970–2026 | 5 | dbus@1.16.2 `dbus-1.16.2/test/data/systemd-activation/com.example.SendDen`; qtserialbus-everywhere-src@6.12.0 `qtserialbus-everywhere-src-6.12.0/tests/auto/qcanuniqueiddes` |
 | `ustar.prefix` | 339 | 295 | cpan 150, other 110, github-release 34 | ustar 236, git archive 95, libarchive (pax) 8 | 1981–2026 | 6 | Data-Stream-Bulk@0.11 `README`; CatalystX-Component-Traits@0.19 `README` |
 | `name.dir-without-trailing-slash` | 318 | 273 | cpan 209, other 97, github-release 11 | ustar 258, GNU format 52, GNU tar (pax) 8 | 1970–2026 | 0 | Catalyst-DispatchType-Regex@5.90035 `Catalyst-DispatchType-Regex-5.90035`; Test-Future-IO-Impl@0.14 `Test-Future-IO-Impl-0.14` |
+| `number.chksum.leading-space` | 272 | 268 | cpan 236, other 33, gnu 2 | ustar 236, posix-version-0000 18, GNU format 11 | 1995–2026 | 14 | Catalyst-DispatchType-Regex@5.90035; Test-Future-IO-Impl@0.14 |
 | `number.size.leading-space` | 272 | 268 | cpan 236, other 33, gnu 2 | ustar 236, posix-version-0000 18, GNU format 11 | 1995–2026 | 14 | Catalyst-DispatchType-Regex@5.90035 `Catalyst-DispatchType-Regex-5.90035`; Test-Future-IO-Impl@0.14 `Test-Future-IO-Impl-0.14` |
 | `tree.dir-after-contents` | 154 | 145 | other 140, cpan 11, github-release 2 | ustar 148, GNU format 4, posix-version-0000 1 | 1970–2026 | 2 | network-control@0.1.7 `network-control-0.1.7/test/`; shelly@1.12.1.1 `shelly-1.12.1.1/test/` |
 | `name.non-ascii` | 59 | 37 | other 36, pypi 12, gnu 7 | GNU format 34, Python tarfile (pax) 13, GNU tar (pax) 7 | 2015–2026 | 0 | libreoffice@26.8.0.3 `libreoffice-26.8.0.3/sc/qa/unit/data/gnumeric/täßt.gnumeric`; gcc@15.2.0 `gcc-15.2.0/gcc/testsuite/go.test/test/fixedbugs/issue27836.d` |
@@ -92,6 +93,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 | `tree.duplicate.dir-dir` | 7 | 7 | other 4, gnu 3 | git archive 4, GNU format 3 | 2021–2026 | 1 | rpm@4.20.1 `rpm-4.20.1/po/`; subed@1.5.4 `subed-1.5.4/` |
 | `end.missing` | 6 | 4 | other 6 | ustar 5, v7 1 | 1992–2026 | 6 | SDL2_image@2.8.8 `SDL2_image-2.8.8/Xcode/macOS/SDL2.framework/SDL2`; ruby@4.0.5 `ruby-4.0.5/zjit.rbinc` |
 | `pax-global.after-members` | 6 | 5 | other 3, github-release 3 | git archive 6 | 2021–2025 | 0 | rpm@4.20.1 `pax_global_header`; x42-plugins@20230701 `pax_global_header` |
+| `pax.value-not-utf8.SCHILY.xattr.*` | 6 | 5 | other 5, github-release 1 | libarchive (pax) 6 | 2022–2025 | 0 | Healpix_3.82_2024Nov13@ `Healpix_3.82/src/common_libraries/libsharp/m4/PaxHeader/ltop`; asio@1.36.0 `asio-1.36.0/doc/PaxHeader/proactor.png` |
 | `platform.windows-trailing-dot-or-space` | 5 | 5 | other 3, gnu 1, pypi 1 | Python tarfile (pax) 2, ustar 1, GNU format 1 | 2010–2026 | 0 | texi2html@5.0 `texi2html-5.0/test/manuals/res_info/ccvs_mediawiki_nosplit/c`; giac_2.0.0@21 `giac-2.0.0/check/oim.tst.` |
 | `end.zero-block-before-member` | 4 | 3 | other 4 | posix-version-0000 4 | 2003–2009 | 4 | jakarta-oro@2.0.8 `jakarta-oro-2.0.8/jakarta-oro-2.0.8.jar`; PullParser@2.1.10 `PullParser2.1.10/src/java/x2/README.txt` |
 | `name.dot-component` | 4 | 2 | other 4 | GNU format 3, ustar 1 | 2012–2023 | 0 | tuffy@20120614 `tuffy-20120614/./._Tuffy.otf`; privoxy@3.0.34-stable-src `privoxy-3.0.34-stable/./acconfig.h` |

@@ -100,7 +100,7 @@ def dataset_name(path):
     return path
 
 
-def upgrade(r):
+def upgrade_magic(r):
     """A result of tarscan.py from before it told NULs as the version of the POSIX magic apart from
     other versions, which it reported as one feature, with the features it reports now: the
     fingerprint has the headers of each version."""
@@ -119,6 +119,23 @@ def upgrade(r):
     if odd:
         features[old] = odd
     return dict(r, features=features, examples=examples)
+
+
+def upgrade_chksum(r):
+    """A result of tarscan.py from before it reported checksums padded with leading spaces, with
+    that feature: the fingerprint has the headers of each shape of the checksum field."""
+    feature = "number.chksum.leading-space"
+    if feature in r.get("features", {}) or r.get("fingerprint", {}).get("checksum") is None:
+        return r
+    n = sum(k for shape, k in r["fingerprint"]["checksum"].items()
+            if shape.startswith("s") and "d" in shape)
+    return dict(r, features=dict(r["features"], **{feature: n})) if n else r
+
+
+def upgrade(r):
+    """A result of an earlier version of tarscan.py with the features it reports now, as far as
+    its fingerprint tells them."""
+    return upgrade_chksum(upgrade_magic(r))
 
 
 def load(paths):
@@ -290,8 +307,10 @@ def main():
     for f, rs in sorted(by_feature.items(), key=lambda kv: (-len(kv[1]), kv[0])):
         years = sorted(y for y in map(year, rs) if y)
         span = f"{years[0]}–{years[-1]}" if years else ""
+        # a feature that upgrade translated from the fingerprint has no example member
         examples = "; ".join(
-            f"{r['package']}@{r['version']} `{(r['examples'].get(f) or [''])[0][:60]}`"
+            f"{r['package']}@{r['version']}"
+            + (f" `{r['examples'][f][0][:60]}`" if r["examples"].get(f) else "")
             for r in rs[:2]
         ).replace("|", "/")
         print(

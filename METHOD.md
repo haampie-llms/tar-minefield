@@ -163,7 +163,7 @@ parser would trip over:
 - pax headers for long names and links, GNU long names and links, and the ustar prefix,
 - names of exactly 100 bytes, with no NUL,
 - number fields padded with leading zeros or leading spaces, and terminated by a space, a NUL,
-  or both: many CPAN tarballs, and those of old GNU tar, pad with spaces, and
+  or both, the checksum too: many CPAN tarballs, and those of old GNU tar, pad with spaces, and
   [the scans](contrib/data) find no tarball where implementations read such a field differently,
 - base-256 sizes of files over 8 GiB,
 - vendor pax keys that do not affect the tree, such as `LIBARCHIVE.xattr.*` and `SCHILY.*` from

@@ -1,0 +1,37 @@
+F32-checksum-leading-space: must accept, and extract its tree
+
+A checksum padded with spaces rather than zeros, as Perl's Archive::Tar writes it.
+
+F01 pads number fields with spaces but writes the checksum as usual. Real tarballs that pad with
+spaces pad the checksum too: Archive::Tar writes it as `%6o\0 `, which is a space, five octal
+digits, a NUL and a space for the sums of real headers (`" 13312\0 "`), and the size as spaces,
+the digits and a NUL. The sum is the same as that of any other header, so every implementation must
+extract `a`, also those that check the checksum before the other fields.
+
+Decision point: whether the checksum field may start with a space.
+Seen in: 819 source tarballs, 674 of them from CPAN, such as Starman 0.4015, and PyPDF2 1.26.0
+from PyPI: every tarball whose number fields are padded with spaces.
+
+0x000000  header: regular file, the size and the checksum padded with spaces
+          name     [  0,100)  "a" + 99 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "         15" + NUL
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  " 10672\0 "  4538: the unsigned sum, padded with spaces, as Perl's Archive::Tar writes it
+          typeflag [156,157)  "0"  regular file
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  "perl" + 28 NUL
+          gname    [297,329)  "perl" + 28 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000200  data
+          13 bytes, then 499 NUL to the end of the block
+          "Archive::Tar\n"
+0x000400  2 zero blocks: the end-of-archive marker
+0x000800  end of file

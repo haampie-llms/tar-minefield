@@ -478,6 +478,8 @@ class Scanner:
         features.name = block[:100].split(b"\0", 1)[0]
         checksum_field = block[148:156]
         self.fingerprint["checksum"][pattern(checksum_field)] += 1
+        if pattern(checksum_field).startswith("s") and "d" in pattern(checksum_field):
+            features.add("number.chksum.leading-space")
         stored = octal_skip(checksum_field)
         unsigned = sum(block) - sum(checksum_field) + 8 * 32
         signed = unsigned - 256 * (BLOCK - len(block.translate(None, HIGH_BYTES)))

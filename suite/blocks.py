@@ -139,6 +139,11 @@ class Archive:
             total = sum(b - 256 if b > 127 else b for b in block)
             chksum = b"%06o\0 " % total
             meaning = f"{total}: the signed sum of the header, as some old tars computed it"
+        elif raw.get("chksum") == "leading-space":
+            block[148:156] = b" " * 8
+            total = sum(block)
+            chksum = b"%6o\0 " % total
+            meaning = f"{total}: the unsigned sum, padded with spaces, as Perl's Archive::Tar writes it"
         elif "chksum" in raw:
             chksum, meaning = raw["chksum"], "given"
         else:

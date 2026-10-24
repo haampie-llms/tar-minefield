@@ -25,6 +25,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 |---|---:|---:|---|---|---|---:|---|
 | `type.nul` | 61 | 29 | gnu 50, other 6, github-release 5 | v7 61 | 1993–2026 | 0 | make@3.82 `make-3.82/vmsfunctions.c`; gzip@1.2.4 `gzip-1.2.4/README` |
 | `v7.bytes-after-linkname` | 37 | 20 | gnu 30, other 5, github-release 2 | v7 37 | 2003–2026 | 0 | make@3.82 `make-3.82/`; m4@1.4.7 `m4-1.4.7/` |
+| `number.chksum.leading-space` | 8 | 0 | gnu 6, cpan 2 | GNU format 5, v7 3 | 1993–2001 | 0 | gzip@1.2.4; tar@1.12 |
 | `number.gid.leading-space` | 8 | 0 | gnu 6, cpan 2 | GNU format 5, v7 3 | 1993–2001 | 0 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
 | `number.mode.leading-space` | 8 | 0 | gnu 6, cpan 2 | GNU format 5, v7 3 | 1993–2001 | 0 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |
 | `number.mtime.leading-space` | 8 | 0 | gnu 6, cpan 2 | GNU format 5, v7 3 | 1993–2001 | 0 | gzip@1.2.4 `gzip-1.2.4/README`; tar@1.12 `tar-1.12/` |

@@ -2,8 +2,8 @@
 
 - tarballs: 19086, scanned: 19012 (17977 latest versions, 1035 older)
 - not downloaded: 74, scanner crashed: 0
-- downloaded from the first of their URLs (a mirror): 9379
-- copied from other scans with `--reuse`: 9, read from `--cache`: 0; sources by host: tarballs.nixos.org 9379, hackage.haskell.org 6139, files.pythonhosted.org 1452, download.kde.org 466, code.call-cc.org 336, download.gnome.org 256
+- downloaded from the first of their URLs (a mirror): 9377
+- copied from other scans with `--reuse`: 11, read from `--cache`: 0; sources by host: tarballs.nixos.org 9377, hackage.haskell.org 6139, files.pythonhosted.org 1452, download.kde.org 466, code.call-cc.org 336, download.gnome.org 256
 - size: 78.3 GB compressed
 - origins: other 11987, pypi 3846, cpan 1899, github-release 813, gnu 308, cran/bioconductor 81, github-archive 50, gitlab 28
 - producers: ustar 10207, GNU format 4268, Python tarfile (pax) 3087, v7 771, git archive 394, GNU tar (pax) 224, libarchive (pax) 30, none 22, posix-version-0000 9
@@ -56,6 +56,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 | `type.nul` | 774 | 744 | other 598, gnu 115, github-release 42 | v7 761, GNU format 13 | 1970–2026 | 4 | grep@3.12 `grep-3.12/.mailmap`; autoconf@2.69 `autoconf-2.69/THANKS` |
 | `tree.dir-after-contents` | 747 | 709 | other 712, cpan 20, pypi 15 | ustar 724, GNU format 17, posix-version-0000 4 | 1970–2026 | 7 | streaming-utils@0.2.6.0 `streaming-utils-0.2.6.0/Streaming/`; distributed-closure@0.5.0.0 `distributed-closure-0.5.0.0/src/Data/Profunctor/` |
 | `ustar.prefix` | 621 | 574 | cpan 334, other 215, github-release 49 | ustar 549, git archive 65, libarchive (pax) 4 | 1981–2026 | 7 | Boost-Geometry-Utils@0.15 `Build.PL`; LWP-Protocol-https@6.11 `Changes` |
+| `number.chksum.leading-space` | 546 | 543 | cpan 490, other 50, github-release 4 | ustar 486, GNU format 33, v7 17 | 1992–2026 | 12 | Catalyst-DispatchType-Regex@5.90035; Boost-Geometry-Utils@0.15 |
 | `v7.bytes-after-linkname` | 546 | 520 | other 436, gnu 83, github-release 22 | v7 546 | 1970–2026 | 0 | autoconf@2.69 `autoconf-2.69/`; pkg-config@0.29.2 `pkg-config-0.29.2/` |
 | `number.size.leading-space` | 545 | 542 | cpan 490, other 50, github-release 3 | ustar 486, GNU format 33, v7 17 | 1992–2026 | 11 | Catalyst-DispatchType-Regex@5.90035 `Catalyst-DispatchType-Regex-5.90035`; Boost-Geometry-Utils@0.15 `Boost-Geometry-Utils-0.15` |
 | `name.non-ascii` | 74 | 56 | other 56, pypi 6, github-release 5 | GNU format 48, Python tarfile (pax) 10, GNU tar (pax) 6 | 2004–2026 | 0 | aisleriot@3.22.35 `aisleriot-3.22.35/cards/README.Атласные`; node@v26.12.1 `node-v26.12.1/test/fixtures/copy/utf/新建文件夹/` |
@@ -73,6 +74,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 | `platform.windows-invalid-character` | 28 | 27 | other 22, pypi 2, gnu 2 | GNU format 12, git archive 6, Python tarfile (pax) 5 | 2003–2026 | 1 | xitomatl_0.0.0-akku.208.62a8243_repack@ `fmt/let-optionals*.larceny.sls`; courier-unicode@2.6.0 `courier-unicode-2.6.0/man/unicode::ucs_4.3` |
 | `name.dot` | 18 | 16 | github-release 12, other 5, cpan 1 | GNU format 17, v7 1 | 1998–2026 | 1 | partclone-utils@0.4.3 `./`; cmucl@21d-x86-linux `./` |
 | `pax.nul-in-value.SCHILY.xattr.*` | 16 | 16 | cpan 10, other 5, github-release 1 | libarchive (pax) 16 | 2019–2026 | 0 | Crypt-X509@0.55 `Crypt-X509-0.55/PaxHeader/README`; djview@4.12.3 `PaxHeader/djview-4.12.3` |
+| `pax.value-not-utf8.SCHILY.xattr.*` | 16 | 16 | cpan 10, other 5, github-release 1 | libarchive (pax) 16 | 2019–2026 | 0 | Crypt-X509@0.55 `Crypt-X509-0.55/PaxHeader/README`; djview@4.12.3 `PaxHeader/djview-4.12.3` |
 | `platform.windows-reserved-name` | 16 | 10 | other 13, gnu 1, github-release 1 | git archive 8, GNU format 5, v7 2 | 2010–2026 | 0 | linux@6.12.91 `linux-6.12.91/drivers/gpu/drm/nouveau/nvkm/subdev/i2c/aux.c`; mvapich@4.1 `mvapich-4.1/modules/ucx/config/aux/` |
 | `linkname.no-nul` | 15 | 5 | other 14, github-release 1 | GNU format 13, Python tarfile (pax) 2 | 2023–2026 | 0 | ghc@9.12.4-src `ghc-9.12.4/libraries/Cabal/cabal-testsuite/PackageTests/Requ`; nextcloud@34.0.5 `nextcloud/apps/app_api/js/app_api-vendors-node_modules_nextc` |
 | `symlink.absolute` | 15 | 15 | other 14, github-release 1 | GNU format 9, ustar 2, git archive 2 | 2008–2026 | 1 | live.2026.01.12@ `live/testProgs/whiteroom.mp3`; imapsync@2.314 `imapsync-2.314/X/fullchain.pem` |

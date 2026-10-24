@@ -2,8 +2,8 @@
 
 - tarballs: 37757, scanned: 37554 (7723 latest versions, 29831 older)
 - not downloaded: 203, scanner crashed: 0
-- downloaded from the first of their URLs (a mirror): 36336
-- copied from other scans with `--reuse`: 1132, read from `--cache`: 3; sources by host: mirror.spack.io 36336, tarballs.nixos.org 845, bordeaux.guix.gnu.org 159, developer.download.nvidia.com 59, files.pythonhosted.org 32, cran.r-project.org 27
+- downloaded from the first of their URLs (a mirror): 36338
+- copied from other scans with `--reuse`: 1130, read from `--cache`: 3; sources by host: mirror.spack.io 36338, tarballs.nixos.org 843, bordeaux.guix.gnu.org 159, developer.download.nvidia.com 59, files.pythonhosted.org 32, cran.r-project.org 27
 - size: 1080.9 GB compressed
 - origins: github-archive 11999, pypi 9237, other 6683, cran/bioconductor 4764, github-release 2795, cpan 699, gnu 693, gitlab 684
 - producers: git archive 13987, GNU format 11217, Python tarfile (pax) 6168, ustar 3252, v7 2217, GNU tar (pax) 632, libarchive (pax) 45, posix-version-0000 33, star 2, none 1
@@ -144,6 +144,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 | `name.non-ascii` | 651 | 67 | github-archive 262, other 189, pypi 139 | git archive 330, GNU format 110, Python tarfile (pax) 104 | 2006–2026 | 0 | gcc@15.3.0 `gcc-15.3.0/gcc/testsuite/go.test/test/fixedbugs/issue27836.d`; boost@1.82.0 `boost_1_82_0/libs/wave/test/testwave/testfiles/utf8-test-ßµ™` |
 | `platform.windows-reserved-name` | 473 | 21 | other 353, github-release 78, github-archive 39 | git archive 320, GNU tar (pax) 73, GNU format 52 | 2003–2026 | 0 | collier@1.2.5 `COLLIER-1.2.5/src/Aux/`; collier@1.2.1 `COLLIER-1.2.1/src/Aux/` |
 | `name.dir-without-trailing-slash` | 200 | 101 | cpan 121, other 71, pypi 6 | ustar 148, GNU format 48, GNU tar (pax) 4 | 1970–2026 | 1 | perl-ppix-quotelike@0.023 `PPIx-QuoteLike-0.023`; perl-test-trap@v0.3.5 `Test-Trap-v0.3.5` |
+| `number.chksum.leading-space` | 196 | 115 | cpan 141, other 39, github-release 8 | ustar 139, posix-version-0000 33, v7 15 | 1990–2024 | 13 | perl-ppix-quotelike@0.023; astyle@3.1 |
 | `number.size.leading-space` | 196 | 115 | cpan 141, other 39, github-release 8 | ustar 139, posix-version-0000 33, v7 15 | 1990–2024 | 13 | perl-ppix-quotelike@0.023 `PPIx-QuoteLike-0.023`; astyle@3.1 `astyle/` |
 | `number.gid.no-digits` | 192 | 40 | pypi 164, other 20, github-release 8 | GNU format 151, ustar 25, posix-version-0000 14 | 1970–2026 | 0 | py-clarabel@0.11.1 `clarabel-0.11.1/Cargo.toml`; py-uv@0.6.8 `uv-0.6.8/crates/uv-fs/Cargo.toml` |
 | `number.uid.no-digits` | 192 | 40 | pypi 164, other 20, github-release 8 | GNU format 151, ustar 25, posix-version-0000 14 | 1970–2026 | 0 | py-clarabel@0.11.1 `clarabel-0.11.1/Cargo.toml`; py-uv@0.6.8 `uv-0.6.8/crates/uv-fs/Cargo.toml` |
@@ -170,6 +171,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 | `end.missing` | 12 | 1 | other 12 | ustar 12 | 2018–2024 | 12 | ruby@3.1.0 `ruby-3.1.0/yjit_utils.c`; ruby@3.2.5 `ruby-3.2.5/yjit.rbinc` |
 | `name.dot` | 11 | 4 | other 11 | GNU format 11 | 2011–2026 | 0 | boost@1.51.0 `./`; ferret@7.2 `./` |
 | `pax.nul-in-value.SCHILY.xattr.*` | 11 | 5 | github-release 7, other 2, cran/bioconductor 1 | libarchive (pax) 10, git archive 1 | 2018–2025 | 0 | qd@2.3.24 `qd-2.3.24/PaxHeader/BSD-LBNL-License.doc`; sundials@6.6.0 `sundials-6.6.0/PaxHeader/CHANGELOG.md` |
+| `pax.value-not-utf8.SCHILY.xattr.*` | 11 | 5 | github-release 7, other 2, cran/bioconductor 1 | libarchive (pax) 10, git archive 1 | 2018–2025 | 0 | qd@2.3.24 `qd-2.3.24/PaxHeader/BSD-LBNL-License.doc`; sundials@6.6.0 `sundials-6.6.0/PaxHeader/CHANGELOG.md` |
 | `number.mtime.leading-space` | 10 | 4 | gnu 4, other 4, cpan 1 | GNU format 5, v7 4, posix-version-0000 1 | 1990–2013 | 3 | perl-getopt-tabular@0.3 `Getopt-Tabular-0.3/`; findutils@4.1 `findutils-4.1/Makefile.am` |
 | `end.data-after` | 8 | 5 | other 7, gnu 1 | posix-version-0000 6, v7 2 | 1995–2019 | 8 | fseq@1.84 `fseq/lib/fseq.jar`; maven@3.0.4 `apache-maven-3.0.4/lib/ext/README.txt` |
 | `name.control-character` | 8 | 2 | github-archive 7, github-release 1 | git archive 8 | 2021–2025 | 0 | wgrib2@3.6.0 `wgrib2-3.6.0/docs/web_docs/jj`; apktool@2.6.0 `Apktool-2.6.0/brut.apktool/apktool-lib/src/test/resources/aa` |
