@@ -73,7 +73,7 @@ SCAN_FIELDS = (
     "scanner",
     "untar",
 )
-USER_AGENT = "tar-minefield-scanner (+https://github.com/haampie-llms/tar-minefield)"
+USER_AGENT = "tar-minefield-scanner (+https://github.com/haampie/tar-minefield)"
 
 
 def rank(seed, key):

@@ -27,7 +27,7 @@ import strict  # noqa: E402
 import tarscan  # noqa: E402
 from report import load  # noqa: E402
 
-REPO = "https://github.com/haampie-llms/tar-minefield"
+REPO = "https://github.com/haampie/tar-minefield"
 CASES = os.path.join(matrix.ROOT, "suite", "cases")
 # The verdict at the top of a case's page: its badge, and what it requires, which for cases with a
 # tree ends with it
