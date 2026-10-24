@@ -52,7 +52,7 @@ OUTCOMES = {
 }
 # Tables of one kind have the same columns, in the same widths
 COLUMNS = {
-    "cases": [("identifier", 12), ("name", 24), ("what it is", 50), ("prevalence", 14, "n")],
+    "cases": [("identifier", 14), ("name", 24), ("what it is", 48), ("prevalence", 14, "n")],
     "data": [("ecosystem", 25), ("tarballs", 25, "n"), ("with it", 25, "n"), ("share", 25, "n")],
     "data-policy": [("ecosystem", 20), ("tarballs", 20, "n"), ("with it", 20, "n"),
                     ("share", 20, "n"), ("rejected by the default policy", 20, "n")],
@@ -78,6 +78,8 @@ th { background: #f6f8fa; }
 td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
 svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
+/* A table is not narrower than this: on a narrow screen it scrolls, rather than squeezing words */
+.wide > table { min-width: 40rem; }
 dt { font-weight: 600; }
 .note { color: #59636e; font-size: 0.875em; }
 /* The footer, muted, of three items with a dot between them */
@@ -104,6 +106,8 @@ table.files td { border: 0; padding: 0 1rem 0.125rem 0; }
 table.files code { background: none; padding: 0; }
 table.files td:first-child { white-space: nowrap; }
 @media (max-width: 40rem) {
+  /* the matrix and the block maps at their size, scrolled, rather than too small to read */
+  .wide svg { max-width: none; }
   dd { margin-left: 1rem; }
   table.files, table.files tr, table.files td { display: block; }
   table.files td + td { padding: 0 0 0.375rem 1rem; }
@@ -117,6 +121,7 @@ table.files td:first-child { white-space: nowrap; }
   table.seen tr, table.implementations tr, table.examples tr { margin-bottom: 0.5rem;
                                                                 border: 1px solid #d0d7de; }
   table.seen td, table.implementations td, table.examples td { border: 0; }
+  .wide > table.seen, .wide > table.implementations, .wide > table.examples { min-width: 0; }
   table.examples td:first-child { font-weight: 600; }
   table.seen td:nth-child(2):not(:empty)::before { content: "packaged by "; color: #59636e; }
   table.implementations td:first-child { font-weight: 600; }
@@ -154,8 +159,8 @@ def table(kind, rows):
     columns = COLUMNS[kind]
     cols = "".join(f'<col style="width: {c[1]}%">' for c in columns)
     head = "".join(f"<th class=n>{c[0]}</th>" if c[2:] else f"<th>{c[0]}</th>" for c in columns)
-    return (f'<table class="{kind}"><colgroup>{cols}</colgroup><tr>{head}</tr>\n' + "\n".join(rows)
-            + "</table>")
+    return (f'<div class="wide"><table class="{kind}"><colgroup>{cols}</colgroup><tr>{head}</tr>\n'
+            + "\n".join(rows) + "</table></div>")
 
 
 def markdown(p):
