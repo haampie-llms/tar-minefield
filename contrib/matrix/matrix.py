@@ -221,6 +221,19 @@ def implementations(work, only=None):
         found.append(("Java Commons Compress", f"Commons Compress 1.28.0, Expander, on Java {java_version}",
                       "extract", lambda a, d, j=java, c=os.path.join(jars, "*"):
                       [j, "-cp", c, os.path.join(RUNNERS, "java", "Extract.java"), a, d]))
+    dotnet = tool("dotnet")
+    if want(".NET System.Formats.Tar") and dotnet:
+        # built in a copy, as dotnet writes obj/ next to the project
+        src = os.path.join(build, "dotnet")
+        shutil.copytree(os.path.join(RUNNERS, "dotnet"), src, dirs_exist_ok=True)
+        code, out, err = run([dotnet, "build", "-c", "Release", "-o", os.path.join(src, "out"),
+                              "--nologo", "-v", "q"], cwd=src)
+        if code == 0:
+            binary = os.path.join(src, "out", "runner")
+            found.append((".NET System.Formats.Tar", first_line([binary, "--version"]), "extract",
+                          lambda a, d, b=binary: [b, a, d]))
+        else:
+            print("dotnet runner:", (out or err)[-2000:], file=sys.stderr)
     ruby = tool("ruby")
     if ruby:
         code, out, _ = run([ruby, "-e", 'require "rubygems"; print Gem::VERSION, " ", RUBY_VERSION'])
@@ -260,7 +273,7 @@ def implementations(work, only=None):
         version = "Tar {1} of Julia {0}".format(*out.split()) if code == 0 else "?"
         found.append(("Julia Tar.jl", version, "extract",
                       lambda a, d, j=julia, s=script: [j, "--startup-file=no", s, a, d]))
-    if want("node-tar", "node-tar, strict") and shutil.which("npm"):
+    if want("node-tar", "node-tar, strict", "tar-fs") and shutil.which("npm"):
         node = os.path.join(build, "node")
         shutil.copytree(os.path.join(RUNNERS, "node"), node, dirs_exist_ok=True)
         code, _, err = run(["npm", "ci", "--silent", "--no-audit", "--no-fund"], cwd=node)
@@ -270,6 +283,8 @@ def implementations(work, only=None):
                           lambda a, d, s=script: ["node", s, a, d]))
             found.append(("node-tar, strict", "tar 7.5.22", "extract",
                           lambda a, d, s=script: ["node", s, a, d, "strict"]))
+            found.append(("tar-fs", "tar-fs 3.1.3, on tar-stream 3.2.2", "extract",
+                          lambda a, d, s=os.path.join(node, "tar-fs.js"): ["node", s, a, d]))
         else:
             print("node runner:", err, file=sys.stderr)
     return [i for i in found if want(i[0])]
@@ -528,8 +543,8 @@ POPULARITY = [
     "GNU tar", "bsdtar", "BusyBox tar", "7-Zip",
     "Python tarfile, filter=data", "Python tarfile, filter=tar",
     "Python tarfile, filter=fully_trusted",
-    "node-tar", "node-tar, strict",
-    "Java Commons Compress",
+    "node-tar", "node-tar, strict", "tar-fs",
+    "Java Commons Compress", ".NET System.Formats.Tar",
     "PHP PharData, as in Composer", "PHP Archive_Tar",
     "Go archive/tar", "Go archive/tar, tarinsecurepath=0",
     "Rust tar", "Rust astral-tokio-tar", "Rust tar-codec, as in uv",
@@ -596,6 +611,8 @@ def group(name):
         return "policy"
     if name in ("GNU tar", "bsdtar", "BusyBox tar", "7-Zip"):
         return "tool"
+    if name == "tar-fs":
+        return "node-tar"
     return name.split()[0].replace("RubyGems", "Ruby").replace("node-tar,", "node-tar")
 
 

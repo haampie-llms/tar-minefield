@@ -1,6 +1,18 @@
 {
  "cases": {
   "F01-number-leading-space": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
+      "size": 7
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -286,9 +298,33 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
+      "size": 7
+     }
+    }
    }
   },
   "F02-end-data-after": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -581,9 +617,33 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: Invalid tar header. Maybe the tar is corrupted or it needs to be gunzipped?",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
    }
   },
   "F03-end-lone-zero-block": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -876,9 +936,33 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
    }
   },
   "F04-end-missing": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": "ERRORS:\nUnexpected end of archive",
     "outside": {},
@@ -1171,9 +1255,26 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
    }
   },
   "F05-magic-version-nuls": {
+   ".NET System.Formats.Tar": {
+    "error": "InvalidDataException: A POSIX format was expected (Ustar or PAX), but could not be reliably determined for entry 'a'.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -1445,9 +1546,33 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
    }
   },
   "F06-checksum-signed": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -1670,9 +1795,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: Invalid tar header. Maybe the tar is corrupted or it needs to be gunzipped?",
+    "outside": {},
+    "tree": {}
    }
   },
   "F07-end-archive-after": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -1977,9 +2119,39 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "hidden": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "150e5c88fd5dcfef2162ad5bb75c0642af06171f3da45dd05411db9d89fc3189",
+      "size": 57
+     }
+    }
    }
   },
   "F08-end-truncated-in-member": {
+   ".NET System.Formats.Tar": {
+    "error": "EndOfStreamException: Unable to read beyond the end of the stream.",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "64164443bb63e338ef1cfdb12a57117cd1212270cc935a798f6e8a665cdf4659",
+      "size": 512
+     }
+    }
+   },
    "7-Zip": {
     "error": "ERRORS:\nUnexpected end of archive\n\nERROR: Data Error : a",
     "outside": {},
@@ -2237,9 +2409,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: Unexpected end of data",
+    "outside": {},
+    "tree": {}
    }
   },
   "F09-end-zero-block-then-member": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -2562,9 +2751,32 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "hidden": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d688c765ff62a08783917188575f816f66ff404062ba9a40c93afe32709f1a30",
+      "size": 44
+     }
+    }
    }
   },
   "F10-extended-pax-size-before-gnu-long": {
+   ".NET System.Formats.Tar": {
+    "error": "InvalidDataException: A metadata entry of type 'LongPath' was unexpectedly found after a metadata entry of type 'ExtendedAttributes'.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -2886,9 +3098,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "long-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
    }
   },
   "F11-magic-odd-version": {
+   ".NET System.Formats.Tar": {
+    "error": "InvalidDataException: A POSIX format was expected (Ustar or PAX), but could not be reliably determined for entry 'a'.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -3160,9 +3389,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
    }
   },
   "F12-number-size-gap": {
+   ".NET System.Formats.Tar": {
+    "error": "InvalidDataException: Unable to parse number.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -3431,9 +3677,32 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
    }
   },
   "F13-pax-newline-in-path": {
+   ".NET System.Formats.Tar": {
+    "error": "InvalidDataException: The extended header contains invalid records.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -3724,9 +3993,39 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "good\n1 path=evil": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
    }
   },
   "F14-pax-size-disagrees": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -4127,9 +4426,32 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
    }
   },
   "F15-pax-size-on-dir": {
+   ".NET System.Formats.Tar": {
+    "error": "InvalidDataException: The value of the size field for the current entry of type 'Directory' is greater than the expected length.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -4456,9 +4778,29 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
    }
   },
   "F16-type-unknown": {
+   ".NET System.Formats.Tar": {
+    "error": "InvalidOperationException: Entry type '90' not supported for extraction.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -4682,9 +5024,29 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: unsupported type for DEST/unknown (null)",
+    "outside": {},
+    "tree": {}
    }
   },
   "F17-pax-global-comment": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "project": {
+      "kind": "directory"
+     },
+     "project/README": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
+      "size": 6
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -5061,9 +5423,42 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "project": {
+      "kind": "directory"
+     },
+     "project/README": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
+      "size": 6
+     }
+    }
    }
   },
   "F18-pax-global-comment-after-members": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -5512,9 +5907,32 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
    }
   },
   "F19-pax-global-between-extended-and-member": {
+   ".NET System.Formats.Tar": {
+    "error": "InvalidDataException: A metadata entry of type 'GlobalExtendedAttributes' was unexpectedly found after a metadata entry of type 'ExtendedAttributes'.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -5824,9 +6242,30 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-pax": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
    }
   },
   "K01-kind-trailing-slash-file": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: Cannot create 'DEST/a/' because a file or directory with the same name already exists.",
+    "outside": {},
+    "tree": {
+     "a": {
+      "kind": "directory"
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -6068,9 +6507,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: EISDIR: illegal operation on a directory, open 'DEST/a/'",
+    "outside": {},
+    "tree": {}
    }
   },
   "K02-linkname-on-file": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
+      "size": 19
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -6342,9 +6798,33 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
+      "size": 19
+     }
+    }
    }
   },
   "K03-symlink-trailing-slash": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: Cannot create 'DEST/link/' because a file or directory with the same name already exists.",
+    "outside": {},
+    "tree": {
+     "link": {
+      "kind": "directory"
+     },
+     "target": {
+      "kind": "directory"
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -6630,9 +7110,33 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: ENOENT: no such file or directory, symlink 'target' -> 'DEST/link/'",
+    "outside": {},
+    "tree": {
+     "target": {
+      "kind": "directory"
+     }
+    }
    }
   },
   "N01-gnu-long-name": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -6977,9 +7481,36 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
    }
   },
   "N02-name-fills-field": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
+      "size": 5
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -7272,9 +7803,36 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
+      "size": 5
+     }
+    }
    }
   },
   "N03-pax-long-name": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -7651,9 +8209,39 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
    }
   },
   "N04-ustar-prefix": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
+      "kind": "directory"
+     },
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
+      "size": 9
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -8012,9 +8600,36 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
+      "kind": "directory"
+     },
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
+      "size": 9
+     }
+    }
    }
   },
   "N05-name-dot": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -8293,9 +8908,33 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
    }
   },
   "N06-name-leading-dot-slash": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -8588,9 +9227,26 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
    }
   },
   "N07-symlink-absolute": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: Extracting the Tar entry '/tar-minefield-nonexistent' would have resulted in a link target outside the specified destination directory: 'DEST/'",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -8804,9 +9460,26 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: DEST/link is not a valid symlink",
+    "outside": {},
+    "tree": {}
    }
   },
   "N08-extended-pax-path-and-gnu-long-name": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-header": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -9064,9 +9737,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-pax": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
    }
   },
   "N09-extended-two-pax-headers": {
+   ".NET System.Formats.Tar": {
+    "error": "InvalidDataException: A metadata entry of type 'ExtendedAttributes' was unexpectedly found after a metadata entry of type 'ExtendedAttributes'.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -9336,9 +10026,36 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "second": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
    }
   },
   "N10-format-star": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -9687,9 +10404,36 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
    }
   },
   "N11-gnu-prefix-field": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -9998,9 +10742,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
    }
   },
   "N12-name-absolute": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: Extracting the Tar entry '/tar-minefield-absolute' would have resulted in a file outside the specified destination directory: 'DEST/'",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -10216,9 +10977,33 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "tar-minefield-absolute": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "3b7f22a5047de6b9d309eaf4177f04f29cf5fb3ddd008137ce35ac23f466b13b",
+      "size": 89
+     }
+    }
    }
   },
   "N13-name-backslash": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\\b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
+      "size": 21
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -10504,9 +11289,33 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\\b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
+      "size": 21
+     }
+    }
    }
   },
   "N14-name-bytes-after-nul": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
+      "size": 10
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -10785,9 +11594,33 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
+      "size": 10
+     }
+    }
    }
   },
   "N15-name-control-character": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\nb": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
+      "size": 21
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -11073,9 +11906,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\nb": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
+      "size": 21
+     }
+    }
    }
   },
   "N16-name-dotdot": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: Extracting the Tar entry 'tar-minefield/../../tar-minefield-escaped' would have resulted in a file outside the specified destination directory: 'DEST/'",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -11273,9 +12123,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "tar-minefield-escaped": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "fc503701b7c2d35ae68aaa9df3f75232b90d497dc21bbba36c43d5d91194ec27",
+      "size": 85
+     }
+    }
    }
   },
   "N17-name-empty": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: Cannot create 'DEST/' because a file or directory with the same name already exists.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -11407,9 +12274,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: EISDIR: illegal operation on a directory, open 'DEST/'",
+    "outside": {},
+    "tree": {}
    }
   },
   "N18-name-not-utf8": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "caf\ufffd": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
+      "size": 8
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -11681,9 +12565,33 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "caf\ufffd": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
+      "size": 8
+     }
+    }
    }
   },
   "N19-pax-nul-in-path": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a_b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "627be4bf9be5c6a4472f8e15498fcc5b4fd213e4f2a04ef9ff443a01e87321c8",
+      "size": 12
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -11904,9 +12812,19 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "TypeError [ERR_INVALID_ARG_VALUE]: The argument 'path' must be a string, Uint8Array, or URL without null bytes. Received 'DEST/a\\x00b'",
+    "outside": {},
+    "tree": {}
    }
   },
   "N20-pax-repeated-key": {
+   ".NET System.Formats.Tar": {
+    "error": "InvalidDataException: The entry 'PaxHeader' has a duplicate extended attribute.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -12197,9 +13115,39 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "second": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
    }
   },
   "N21-pax-global-path": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -12599,9 +13547,42 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
    }
   },
   "S01-tree-dir-after-contents": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -12956,9 +13937,36 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
    }
   },
   "S02-tree-duplicate-dir": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/sub": {
+      "kind": "directory"
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -13245,9 +14253,26 @@
     "error": null,
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/sub": {
+      "kind": "directory"
+     }
+    }
    }
   },
   "S03-hardlink-missing-target": {
+   ".NET System.Formats.Tar": {
+    "error": "FileNotFoundException: Could not find file 'DEST/h'.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": "ERROR: Cannot create hard link : errno=2 : No such file or directory : DEST/h : DEST/missing",
     "outside": {},
@@ -13386,9 +14411,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: DEST/h is not a valid hardlink",
+    "outside": {},
+    "tree": {}
    }
   },
   "S04-hardlink-to-itself": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: Cannot create 'DEST/a' because a file or directory with the same name already exists.",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "7-Zip": {
     "error": "ERROR: Cannot create hard link : errno=2 : No such file or directory : DEST/a : DEST/a",
     "outside": {},
@@ -13639,9 +14681,19 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: DEST/a is not a valid hardlink",
+    "outside": {},
+    "tree": {}
    }
   },
   "S05-hardlink-to-later-member": {
+   ".NET System.Formats.Tar": {
+    "error": "FileNotFoundException: Could not find file 'DEST/h'.",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -13887,9 +14939,34 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: DEST/h is not a valid hardlink",
+    "outside": {},
+    "tree": {}
    }
   },
   "S06-hardlink-to-symlink": {
+   ".NET System.Formats.Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "f": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "h": {
+      "kind": "symlink",
+      "target": "f"
+     },
+     "s": {
+      "kind": "symlink",
+      "target": "f"
+     }
+    }
+   },
    "7-Zip": {
     "error": "ERROR: Dangerous link via another link was ignored : h : s",
     "outside": {},
@@ -14341,9 +15418,43 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "f": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "h": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "s": {
+      "kind": "symlink",
+      "target": "f"
+     }
+    }
    }
   },
   "S07-tree-duplicate-file-differs": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: Cannot create 'DEST/a' because a file or directory with the same name already exists.",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "b640e840b19d378660b32fb51ae18d67dccb4a8596a29e7bd72c1b2ae5928f41",
+      "size": 6
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -14636,9 +15747,33 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "761d1fb145ca8c7130231412276df60f34dd34554c4d174b973a45e3222475a9",
+      "size": 5
+     }
+    }
    }
   },
   "S08-tree-duplicate-file-dir": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: The file 'DEST/a/' already exists.",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "294e546a0ce055e7407284ba86ac4b30e651ef32238105f76bdbc94d9f4e110a",
+      "size": 13
+     }
+    }
+   },
    "7-Zip": {
     "error": "ERROR: Cannot create folder : errno=17 : File exists : DEST/a",
     "outside": {},
@@ -14894,9 +16029,33 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: ENOTDIR: not a directory, stat 'DEST/a/'",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "294e546a0ce055e7407284ba86ac4b30e651ef32238105f76bdbc94d9f4e110a",
+      "size": 13
+     }
+    }
    }
   },
   "S09-tree-duplicate-file-identical": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: Cannot create 'DEST/a' because a file or directory with the same name already exists.",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
+      "size": 5
+     }
+    }
+   },
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -15189,9 +16348,31 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
+      "size": 5
+     }
+    }
    }
   },
   "S10-tree-symlink-then-file": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: Cannot create 'DEST/a' because a file or directory with the same name already exists.",
+    "outside": {},
+    "tree": {
+     "a": {
+      "kind": "symlink",
+      "target": "target"
+     }
+    }
+   },
    "7-Zip": {
     "error": "ERROR: Temporary link file is not empty : DEST/a\nERROR: Cannot create symbolic link : errno=17 : File exists : DEST/a",
     "outside": {},
@@ -15508,9 +16689,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
+      "size": 28
+     }
+    }
    }
   },
   "S11-tree-through-symlink": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: Extracting the Tar entry '..' would have resulted in a link target outside the specified destination directory: 'DEST/'",
+    "outside": {},
+    "tree": {}
+   },
    "7-Zip": {
     "error": "ERROR: Cannot open output file : errno=20 : Not a directory : DEST/d/tar-minefield-through-symlink\nERROR: Dangerous link path was ignored : d : ..",
     "outside": {},
@@ -15764,9 +16962,26 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: DEST/d is not a valid symlink",
+    "outside": {},
+    "tree": {}
    }
   },
   "S12-tree-under-file": {
+   ".NET System.Formats.Tar": {
+    "error": "IOException: The file 'DEST/a' already exists.",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
+      "size": 7
+     }
+    }
+   },
    "7-Zip": {
     "error": "ERROR: Cannot open output file : errno=20 : Not a directory : DEST/a/b",
     "outside": {},
@@ -16074,6 +17289,18 @@
     "error": "rejected",
     "outside": {},
     "tree": null
+   },
+   "tar-fs": {
+    "error": "Error: DEST/a is not a valid path",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
+      "size": 7
+     }
+    }
    }
   }
  },
@@ -16197,6 +17424,16 @@
    "kind": "extract",
    "name": "R untar, internal",
    "version": "utils::untar of R 4.6.1, tar = \"internal\""
+  },
+  {
+   "kind": "extract",
+   "name": ".NET System.Formats.Tar",
+   "version": "System.Formats.Tar of .NET 10.0.13, ExtractToDirectory"
+  },
+  {
+   "kind": "extract",
+   "name": "tar-fs",
+   "version": "tar-fs 3.1.3, on tar-stream 3.2.2"
   }
  ]
 }

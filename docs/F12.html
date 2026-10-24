@@ -225,7 +225,9 @@ Seen in: no source tarball.
 <tr><td>Python tarfile, filter=fully_trusted</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: ReadError: file could not be opened successfully: - method gz: ReadError(&#x27;not a gzip file&#x27;) - method bz2: ReadError(&#x27;not a bzip2 file&#x27;) - method xz: ReadError(&#x27;not an lzma file&#x27;) - method zst: ReadEr…</td></tr>
 <tr><td>node-tar</td><td>tar 7.5.22</td><td>⚠️ accepts</td><td>tree A: <code>a</code> (0 B, e3b0c442), <code>smuggled</code> (0 B, e3b0c442)</td></tr>
 <tr><td>node-tar, strict</td><td>tar 7.5.22</td><td>⚠️ accepts</td><td>tree A: <code>a</code> (0 B, e3b0c442), <code>smuggled</code> (0 B, e3b0c442)</td></tr>
+<tr><td>tar-fs</td><td>tar-fs 3.1.3, on tar-stream 3.2.2</td><td>⚠️ accepts</td><td>tree A: <code>a</code> (0 B, e3b0c442), <code>smuggled</code> (0 B, e3b0c442)</td></tr>
 <tr><td>Java Commons Compress</td><td>Commons Compress 1.28.0, Expander, on Java 25.0.4.1</td><td>✅ as the verdict says</td><td>error: java.io.IOException: Corrupted TAR archive.</td></tr>
+<tr><td>.NET System.Formats.Tar</td><td>System.Formats.Tar of .NET 10.0.13, ExtractToDirectory</td><td>✅ as the verdict says</td><td>error: InvalidDataException: Unable to parse number.</td></tr>
 <tr><td>PHP PharData, as in Composer</td><td>PharData of PHP 8.5.12, as Composer&#x27;s TarDownloader calls it</td><td>✅ as the verdict says</td><td>error: UnexpectedValueException: phar error: &quot;suite/archives/F12-number-size-gap.tar&quot; is a corrupted tar file (invalid entry size)</td></tr>
 <tr><td>PHP Archive_Tar</td><td>PEAR Archive_Tar 1.6.1, extract, on PHP 8.5.12</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (512 B, 917dba8e)</td></tr>
 <tr><td>Go archive/tar</td><td>archive/tar of go1.26.8</td><td>✅ as the verdict says</td><td>error: archive/tar: invalid tar header</td></tr>
