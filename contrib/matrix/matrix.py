@@ -39,8 +39,8 @@ ROOT = os.path.dirname(os.path.dirname(HERE))
 ARCHIVES = os.path.join(ROOT, "suite", "archives")
 RUNNERS = os.path.join(HERE, "runners")
 TIMEOUT = 60
-# GitHub Pages, from docs/, which contrib/site.py writes: a page per case, named by its identifier
-SITE = "https://haampie-llms.github.io/tar-minefield/"
+# The site, docs/ as contrib/site.py writes it, served as files: a page per case, named by its identifier
+SITE = "https://stoppels.ch/tar/"
 
 
 def run(cmd, **kw):

@@ -2,7 +2,7 @@
 
 Tar archives, each with a verdict, and unless it is to reject, the tree that an implementation
 must extract from it. [METHOD.md](../METHOD.md#verdicts) explains the verdicts, and
-[the site](https://haampie-llms.github.io/tar-minefield/) has a page per case, with its blocks and
+[the site](https://stoppels.ch/tar/) has a page per case, with its blocks and
 what implementations make of it.
 
 **Some archives escape the directory they are extracted to in lenient implementations.** Their

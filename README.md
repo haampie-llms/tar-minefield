@@ -1,32 +1,32 @@
 # Tar file extraction test suite
 
-This repo provides an extensive **[test suite](suite/)** and **[documentation](https://haampie-llms.github.io/tar-minefield/)** for tar file extraction, with the goal to ensure implementations extract tar archives the same way.
+This repo provides an extensive **[test suite](suite/)** and **[documentation](https://stoppels.ch/tar/)** for tar file extraction, with the goal to ensure implementations extract tar archives the same way.
 
 There are dozens of implementations of tar file extraction out there, from command line tools to libraries for programming languages. Because the tar file format leaves room for interpretation, different implementations can extract certain crafted tar files in different ways.
 
 This is a security concern: for example, when a security scanner and the extractor use different tar implementations, the scanner could inspect other files than the ones that end up on disk.
 
-By assigning [identifiers](https://haampie-llms.github.io/tar-minefield/#policy) to these ambiguities, and providing test cases and usage data, the hope is that tar implementations can converge on a strict parser and identical behavior.
+By assigning [identifiers](https://stoppels.ch/tar/#policy) to these ambiguities, and providing test cases and usage data, the hope is that tar implementations can converge on a strict parser and identical behavior.
 
-This project proposes a **[default policy](https://haampie-llms.github.io/tar-minefield/#policy)** that rejects the vast majority of ambiguities in tar files that could make implementations extract different files, while ensuring that nearly every source tarball already published can still be extracted. <!-- begin strict.py -->Of the 62,622 source tarballs of Spack, nixpkgs, Guix and live-bootstrap, it accepts 99.76% ([per ecosystem](https://haampie-llms.github.io/tar-minefield/#tarballs)).<!-- end strict.py -->
+This project proposes a **[default policy](https://stoppels.ch/tar/#policy)** that rejects the vast majority of ambiguities in tar files that could make implementations extract different files, while ensuring that nearly every source tarball already published can still be extracted. <!-- begin strict.py -->Of the 62,622 source tarballs of Spack, nixpkgs, Guix and live-bootstrap, it accepts 99.76% ([per ecosystem](https://stoppels.ch/tar/#tarballs)).<!-- end strict.py -->
 
 ## Motivating examples
 
 | case | the archive | what implementations make of it |
 |---|---|---|
-| [N09](https://haampie-llms.github.io/tar-minefield/N09.html) | two pax headers for one file, with `path=first` and `path=second` | GNU tar, node-tar and Go extract `second`; Python and Java extract `first`; bsdtar, Rust and .NET reject it |
-| [S10](https://haampie-llms.github.io/tar-minefield/S10.html) | a symlink `a` to `target`, then a file `a` | most replace the link with the file; Python's tarfile writes through the link, to `target` |
-| [K01](https://haampie-llms.github.io/tar-minefield/K01.html) | a regular file named `a/` | GNU tar, bsdtar, node-tar and Java create a directory `a`; Python, Go, Rust and PHP an empty file `a`; tar-fs and .NET reject it |
-| [F12](https://haampie-llms.github.io/tar-minefield/F12.html) | a size field of `000000 1000`, with a space | GNU tar, node-tar and tar-fs read 0, and find a second file `smuggled` in the data; bsdtar, Python, Go, Rust, Java and .NET reject it |
+| [N09](https://stoppels.ch/tar/N09.html) | two pax headers for one file, with `path=first` and `path=second` | GNU tar, node-tar and Go extract `second`; Python and Java extract `first`; bsdtar, Rust and .NET reject it |
+| [S10](https://stoppels.ch/tar/S10.html) | a symlink `a` to `target`, then a file `a` | most replace the link with the file; Python's tarfile writes through the link, to `target` |
+| [K01](https://stoppels.ch/tar/K01.html) | a regular file named `a/` | GNU tar, bsdtar, node-tar and Java create a directory `a`; Python, Go, Rust and PHP an empty file `a`; tar-fs and .NET reject it |
+| [F12](https://stoppels.ch/tar/F12.html) | a size field of `000000 1000`, with a space | GNU tar, node-tar and tar-fs read 0, and find a second file `smuggled` in the data; bsdtar, Python, Go, Rust, Java and .NET reject it |
 
-Use **[the test suite](suite/)** in your tests, or browse **[the website](https://haampie-llms.github.io/tar-minefield/)** for what each case means, what implementations make of it, and how often it occurs in source tarballs.
+Use **[the test suite](suite/)** in your tests, or browse **[the website](https://stoppels.ch/tar/)** for what each case means, what implementations make of it, and how often it occurs in source tarballs.
 
 ## Comparison
 
 <!-- begin matrix.py -->
-What 27 implementations make of the 55 cases: a row per case, by category, and a column per implementation, with the outcomes of all cases at the top. [The website](https://haampie-llms.github.io/tar-minefield/) has a page per case.
+What 27 implementations make of the 55 cases: a row per case, by category, and a column per implementation, with the outcomes of all cases at the top. [The website](https://stoppels.ch/tar/) has a page per case.
 
-[![What every implementation makes of every case of the test suite. Outcomes of all cases: strict.py: ✅55; GNU tar: ✅23 ⚠️32; bsdtar: ✅26 ⚠️29; BusyBox tar: ✅23 ⚠️32; 7-Zip: ✅22 ⚠️31 ⛔1 ❌1; Python tarfile, filter=data, as in pip: ✅26 ⚠️28 ⛔1; Python tarfile, filter=tar: ✅26 ⚠️29; Python tarfile, filter=fully_trusted: ✅25 ⚠️28 💥2; node-tar: ✅19 ⚠️35 ❌1; node-tar, strict: ✅27 ⚠️27 ⛔1; tar-fs: ✅27 ⚠️26 ⛔2; Java Commons Compress: ✅24 ⚠️30 ❌1; .NET System.Formats.Tar: ✅38 ⚠️15 ⛔2; PHP PharData, as in Composer: ✅20 ⚠️31 ⛔1 ❌3; PHP Archive_Tar: ✅22 ⚠️30 ⛔2 ❌1; Go archive/tar: ✅22 ⚠️33; Go archive/tar, tarinsecurepath=0: ✅25 ⚠️30; Go containerd archive.Apply: ✅25 ⚠️30; Rust tar: ✅27 ⚠️28; Rust astral-tokio-tar: ✅27 ⚠️27 ⛔1; Rust tar-codec, as in uv: ✅40 ⚠️10 ⛔4 ❌1; RubyGems: ✅19 ⚠️30 ⛔2 ❌4; R untar, internal: ✅27 ⚠️28; Perl Archive::Tar: ✅26 ⚠️27 ⛔1 ❌1; Haskell tar: ✅30 ⚠️20 ⛔5; Julia Tar.jl: ✅32 ⚠️23; live-bootstrap untar: ✅17 ⚠️30 ❌6 💥2; live-bootstrap untar, --non-strict: ✅12 ⚠️35 ❌6 💥2](contrib/matrix/matrix.svg)](https://haampie-llms.github.io/tar-minefield/)
+[![What every implementation makes of every case of the test suite. Outcomes of all cases: strict.py: ✅55; GNU tar: ✅23 ⚠️32; bsdtar: ✅26 ⚠️29; BusyBox tar: ✅23 ⚠️32; 7-Zip: ✅22 ⚠️31 ⛔1 ❌1; Python tarfile, filter=data, as in pip: ✅26 ⚠️28 ⛔1; Python tarfile, filter=tar: ✅26 ⚠️29; Python tarfile, filter=fully_trusted: ✅25 ⚠️28 💥2; node-tar: ✅19 ⚠️35 ❌1; node-tar, strict: ✅27 ⚠️27 ⛔1; tar-fs: ✅27 ⚠️26 ⛔2; Java Commons Compress: ✅24 ⚠️30 ❌1; .NET System.Formats.Tar: ✅38 ⚠️15 ⛔2; PHP PharData, as in Composer: ✅20 ⚠️31 ⛔1 ❌3; PHP Archive_Tar: ✅22 ⚠️30 ⛔2 ❌1; Go archive/tar: ✅22 ⚠️33; Go archive/tar, tarinsecurepath=0: ✅25 ⚠️30; Go containerd archive.Apply: ✅25 ⚠️30; Rust tar: ✅27 ⚠️28; Rust astral-tokio-tar: ✅27 ⚠️27 ⛔1; Rust tar-codec, as in uv: ✅40 ⚠️10 ⛔4 ❌1; RubyGems: ✅19 ⚠️30 ⛔2 ❌4; R untar, internal: ✅27 ⚠️28; Perl Archive::Tar: ✅26 ⚠️27 ⛔1 ❌1; Haskell tar: ✅30 ⚠️20 ⛔5; Julia Tar.jl: ✅32 ⚠️23; live-bootstrap untar: ✅17 ⚠️30 ❌6 💥2; live-bootstrap untar, --non-strict: ✅12 ⚠️35 ❌6 💥2](contrib/matrix/matrix.svg)](https://stoppels.ch/tar/)
 <!-- end matrix.py -->
 
 ## Contents

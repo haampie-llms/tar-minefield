@@ -33,7 +33,7 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from report import load, origin, tidy_tables  # noqa: E402
 
-SITE = "https://haampie-llms.github.io/tar-minefield/"
+SITE = "https://stoppels.ch/tar/"
 
 CATEGORIES = ("framing", "name", "kind", "order and state")
 

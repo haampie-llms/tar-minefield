@@ -42,7 +42,7 @@ implementations run, and the other columns of `matrix.json` are kept as they are
 $ python -I contrib/site.py docs contrib/data/*/*/results.jsonl
 ```
 
-writes `docs/`, which GitHub Pages serves from the root of the repository: an index with the matrix,
+writes `docs/`, which https://stoppels.ch/tar/ serves as files: an index with the matrix,
 and a page per case with its explanation, its block map and dump, how many tarballs of the scans
 have its feature and how many of those the default policy rejects, and what every implementation
 makes of it, from `matrix.json`. Plain HTML and CSS, without scripts, all of it generated. The `Seen

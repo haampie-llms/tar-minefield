@@ -1,4 +1,4 @@
-"""Write the site of the test suite, for GitHub Pages: a page per case, named by its identifier, and an index.
+"""Write the site of the test suite, as static files: a page per case, named by its identifier, and an index.
 
     python -I contrib/site.py docs contrib/data/*/*/results.jsonl
 
@@ -670,6 +670,12 @@ def main():
                 cells.append(f'<span class="{rel}"></span>')
         nav = f'<nav>{cells[0]}<a href="index.html">all cases</a>{cells[1]}</nav>'
         files[name] = files[name].replace("<body>\n", f"<body>\n{nav}\n", 1)
+    # every page names its address on the site, so that a copy elsewhere is known as one
+    for name in files:
+        if name.endswith(".html"):
+            address = matrix.SITE + ("" if name == "index.html" else name)
+            link = f'<link rel="canonical" href="{address}">\n'
+            files[name] = files[name].replace("</head>", link + "</head>", 1)
     for old, new in MOVED.items():
         files[old + ".html"] = page(f"{old} is {new} · tar-minefield", f"{old} is now {new}.",
                                     f'<meta http-equiv="refresh" content="0; url={new}.html">\n'
