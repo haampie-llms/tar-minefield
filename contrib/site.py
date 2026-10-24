@@ -54,7 +54,7 @@ COLUMNS = {
                     ("share", 20, "n"), ("rejected by the default policy", 20, "n")],
     "tarballs": [("ecosystem", 25), ("tarballs", 25, "n"), ("rejected", 25, "n"), ("share", 25, "n")],
     "reasons": [("why", 80), ("tarballs", 20, "n")],
-    "rejected": [("tarball", 30), ("packaged by", 15), ("why, with an example from the tarball", 55)],
+    "seen": [("tarball", 45), ("packaged by", 15), ("example from the tarball", 40)],
     "implementations": [("implementation", 21), ("version", 21), ("outcome", 18),
                         ("what it makes of it", 40)],
 }
@@ -84,8 +84,15 @@ table.files td:first-child { white-space: nowrap; }
   dd { margin-left: 1rem; }
   table.files, table.files tr, table.files td { display: block; }
   table.files td + td { padding: 0 0 0.375rem 1rem; }
+  /* the tarballs of seen-in.html, one block per tarball */
+  table.seen, table.seen tr, table.seen td { display: block; }
+  table.seen colgroup, table.seen th { display: none; }
+  table.seen tr { margin-bottom: 0.5rem; border: 1px solid #d0d7de; }
+  table.seen td { border: 0; }
+  table.seen td:nth-child(2):not(:empty)::before { content: "packaged by "; color: #59636e; }
 }
-.hash { display: block; color: #59636e; font-size: 0.8125em; word-break: break-all; }
+.hash { display: block; background: none; padding: 0; color: #59636e; font-size: 0.8125em;
+        word-break: break-all; }
 /* The verdict of a case, as a solid badge and in words: unlike the pale cells of the matrix, whose
    colours are outcomes */
 .verdict { margin: 1rem 0; padding: 0.5rem 1rem; background: #f6f8fa; border-left: 6px solid;
@@ -114,7 +121,8 @@ def table(kind, rows):
     columns = COLUMNS[kind]
     cols = "".join(f'<col style="width: {c[1]}%">' for c in columns)
     head = "".join(f"<th class=n>{c[0]}</th>" if c[2:] else f"<th>{c[0]}</th>" for c in columns)
-    return f"<table><colgroup>{cols}</colgroup><tr>{head}</tr>\n" + "\n".join(rows) + "</table>"
+    return (f'<table class="{kind}"><colgroup>{cols}</colgroup><tr>{head}</tr>\n' + "\n".join(rows)
+            + "</table>")
 
 
 def readme_intro():
@@ -167,6 +175,8 @@ def paragraphs(text):
 
 
 TITLE = "Tar file extraction test suite"
+# How many tarballs seen-in.html lists as examples of a case whose tarballs are accepted
+EXAMPLES = 8
 
 
 def page(title, description, body):
@@ -220,10 +230,10 @@ def policy(info, features):
                      for f, (_, how, why) in zip(features, rules))
 
 
-def data_section(features, names, short, rated, union):
+def data_section(ident, features, names, short, rated, union):
     """How many tarballs of each ecosystem have the features, and what the default policy does
     with them: a sentence where it rejects all or none of them for the features, and a column
-    where it rejects some."""
+    where it rejects some. seen-in.html lists them: all that it rejects, or else examples."""
     if not features:
         return "<p>This case is not measured in source tarballs on its own.</p>"
 
@@ -244,12 +254,6 @@ def data_section(features, names, short, rated, union):
         cells = [html.escape(n), f"{total:,}", f"{k:,}", prevalence(k, total)]
         cells += [str(j)] if mixed else []
         rows.append("<tr><td>" + "</td><td class=n>".join(cells) + "</td></tr>")
-    examples = []
-    for r in union:
-        if has(r) and len(examples) < 8:
-            name = f"{r['package']}@{r['version']}" if r["version"] else r["package"]
-            if name not in examples:
-                examples.append(name)
     policy = ("" if not k else " The default policy rejects some of them, as the last column "
               "says, and accepts the others." if mixed else " The default policy rejects all of "
               "them." if j else " The default policy accepts them.")
@@ -257,8 +261,9 @@ def data_section(features, names, short, rated, union):
         "<p>Release tarballs of Spack, nixpkgs, Guix and live-bootstrap with "
         + ", ".join(f"<code>{f}</code>" for f in features) + "." + policy + "</p>\n"
         + table("data-policy" if mixed else "data", rows) + "\n"
-        + ("<p>For example: " + ", ".join(html.escape(e) for e in examples) + ".</p>"
-           if examples else "")
+        + ("" if not k else f'<p><a href="seen-in.html#{ident}">Seen in source tarballs</a> lists '
+           + ("the rejected ones" if j else "all of them" if k <= EXAMPLES else f"{EXAMPLES} of them")
+           + ", with their sha256 and an example from each.</p>")
     )
 
 
@@ -347,7 +352,7 @@ def case_page(case, info, previous, following, results, data):
 """
     body += ("<h2>What implementations make of it</h2>\n"
              + implementations_section(case, info, results) + "\n")
-    body += "<h2>Prevalence in source tarballs</h2>\n" + data_section(features, *data) + "\n"
+    body += "<h2>Prevalence in source tarballs</h2>\n" + data_section(ident, features, *data) + "\n"
     return page(f"{ident} {name} · {TITLE}", info["description"].replace("`", ""), body)
 
 
@@ -380,7 +385,7 @@ def tarballs_section(names, short, rated, union):
     accepted = strict.percent(len(union) - rejected, len(union))
     return (f'<h2 id="tarballs">Source tarballs</h2>\n<p>The default policy accepts {accepted} of the '
             f"{len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and live-bootstrap, "
-            f'and rejects {rejected:,}: <a href="rejected.html">which, and why</a>. The page of a case '
+            f'and rejects {rejected:,}: <a href="seen-in.html#rejected">which, and why</a>. The page of a case '
             "says how many of them have it.</p>\n"
             + table("tarballs", rows))
 
@@ -391,9 +396,22 @@ def printable(name):
     return "".join(c if c.isprintable() else f"\\x{ord(c):02x}" for c in name)
 
 
-def rejected_page(cases, data):
-    """The source tarballs that the default policy rejects, and for what: the case of each
-    criterion where there is one, and an example from the tarball where the scan recorded one."""
+def seen_row(r, short, example, also=""):
+    """A source tarball: its name, as a link to where it was downloaded from, with its sha256; the
+    ecosystems that package it; and an example from it."""
+    name = f"{r['package']} {r['version']}" if r["version"] else r["package"]
+    ecosystems = ", ".join(short[n] for n in r["datasets"] if n in short)
+    example = f"<code>{html.escape(printable(example))}</code>" if example else ""
+    return (f'<tr><td><a href="{html.escape(r["url"])}" rel="nofollow">{html.escape(name)}</a>'
+            f'<code class="hash">sha256 {r["sha256"]}</code></td><td>{html.escape(ecosystems)}</td>'
+            f"<td>{example}{also}</td></tr>")
+
+
+def seen_page(cases, data):
+    """The source tarballs that cases are seen in: every one that the default policy rejects, by
+    why, under the cases of the criterion where there are some; and for the other cases, examples
+    of tarballs that have their feature. Each listed with an example from the tarball where the
+    scan recorded one."""
     names, short, rated, union = data
     by_criterion = {}
     for case, info in cases.items():
@@ -410,41 +428,76 @@ def rejected_page(cases, data):
                       key=lambda r: (r["package"].lower(), r["version"] or ""))
     reasons = {r["sha256"]: {} for r in rejected}  # {reason: example or None}, per tarball
     ids = collections.defaultdict(set)
+    criteria = {}  # the first criterion of a reason, which names its section
     for r in rejected:
         for c in sorted(strict.default_rejects(r)):
             example = next((e[0] for f, e in (r.get("examples") or {}).items()
                             if strict.criterion(f) == c and e), None)
             reasons[r["sha256"]].setdefault(what(c), example)
             ids[what(c)].update(by_criterion.get(c, []))
+            criteria.setdefault(what(c), c)
     counts = collections.Counter(w for rs in reasons.values() for w in rs)
 
-    def why(w):
-        links = ", ".join(f'<a href="{i}.html">{i}</a>' for i in sorted(ids[w]))
-        return inline(w) + (f" ({links})" if links else "")
+    def anchor(w):
+        return "why-" + re.sub(r"[^a-z0-9]+", "-", criteria[w].lower()).strip("-")
 
-    summary = [f"<tr><td>{why(w)}</td><td class=n>{k}</td></tr>" for w, k in counts.most_common()]
-    rows = []
-    for r in rejected:
-        name = f"{r['package']} {r['version']}" if r["version"] else r["package"]
-        lines, shown = [], set()
-        for w, example in sorted(reasons[r["sha256"]].items(), key=lambda kv: -counts[kv[0]]):
-            new = example and example not in shown
-            shown.add(example)
-            lines.append(why(w) + (f" <code>{html.escape(printable(example))}</code>" if new else ""))
-        ecosystems = ", ".join(short[n] for n in r["datasets"] if n in short)
-        rows.append(f'<tr><td><a href="{html.escape(r["url"])}">{html.escape(name)}</a></td>'
-                    f"<td>{html.escape(ecosystems)}</td><td>{'<br>'.join(lines)}</td></tr>")
+    def cases_of(w):
+        links = ", ".join(f'<a href="{i}.html">{i}</a>' for i in sorted(ids[w]))
+        return f" ({links})" if links else ""
+
+    summary = [f'<tr><td><a href="#{anchor(w)}">{inline(w)}</a>{cases_of(w)}</td><td class=n>{k}</td></tr>'
+               for w, k in counts.most_common()]
+    sections, anchored = [], set()
+    for w, k in counts.most_common():
+        # a case's anchor is on the first section of its criteria
+        spans = "".join(f'<span id="{i}"></span>' for i in sorted(ids[w] - anchored))
+        anchored |= ids[w]
+        rows = []
+        for r in rejected:
+            if w in reasons[r["sha256"]]:
+                others = [o for o in reasons[r["sha256"]] if o != w]
+                also = ("<br>also: " + "; ".join(f'<a href="#{anchor(o)}">{inline(o)}</a>' for o in others)
+                        if others else "")
+                rows.append(seen_row(r, short, reasons[r["sha256"]][w], also))
+        sections.append(f'<h3 id="{anchor(w)}">{spans}{inline(w[:1].upper() + w[1:])}'
+                        f"{cases_of(w)}: {k}</h3>\n" + table("seen", rows))
+    examples = []
+    for case, info in cases.items():
+        features = features_of(case, info)
+        has = [r for r in union if any(f in r["features"] for f in features)]
+        if not has or any(strict.criterion(f) in strict.default_rejects(r)
+                          for r in has for f in features):
+            continue
+        picks, seen = [], set()
+        for r in has:
+            name = (r["package"], r["version"])
+            if name not in seen and len(picks) < EXAMPLES:
+                seen.add(name)
+                picks.append(r)
+        rows = [seen_row(r, short, next((e[0] for f, e in (r.get("examples") or {}).items()
+                                         if f in features and e), None)) for r in picks]
+        ident, name = matrix.label(case, info).split(" ", 1)
+        examples.append(f'<h3 id="{ident}"><a href="{ident}.html"><code>{ident}</code></a> '
+                        f"{html.escape(name)}: {len(picks)} of {len(has):,}</h3>\n" + table("seen", rows))
     body = f"""<nav><a href="index.html">all cases</a></nav>
-<h1>Rejected source tarballs</h1>
-<p>The {len(rejected)} of the {len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and
-live-bootstrap that the default policy rejects, and why. A tarball can have more than one
-reason.</p>
+<h1>Seen in source tarballs</h1>
+<p>Unlike the test archives, which are crafted, these are real release tarballs: of the
+{len(union):,} distinct ones of Spack, nixpkgs, Guix and live-bootstrap, those that cases are seen
+in. Each links to where it was downloaded from, with the sha256 that its package pins, and an
+example from it where the scan recorded one.</p>
+<h2 id="rejected">Rejected by the default policy</h2>
+<p>All {len(rejected)} tarballs that the default policy rejects, by why. A tarball with more than
+one reason is listed under each.</p>
 {table("reasons", summary)}
-{table("rejected", rows)}
+{chr(10).join(sections)}
+<h2 id="accepted">Accepted, with the feature of a case</h2>
+<p>For the cases whose tarballs the default policy accepts: up to {EXAMPLES} of them, of how many
+there are.</p>
+{chr(10).join(examples)}
 """
-    return page(f"Rejected source tarballs · {TITLE}",
-                f"The {len(rejected)} source tarballs that the default policy rejects, and why.",
-                body)
+    return page(f"Seen in source tarballs · {TITLE}",
+                f"The {len(rejected)} source tarballs that the default policy rejects, and examples "
+                "of those that cases are seen in.", body)
 
 
 def index_page(cases, results, data):
@@ -510,7 +563,10 @@ def main():
         if name.endswith(".html"):
             os.remove(os.path.join(out, name))
     files = {".nojekyll": "", "style.css": STYLE, "index.html": index_page(cases, results, data),
-             "rejected.html": rejected_page(cases, data)}
+             "seen-in.html": seen_page(cases, data),
+             "rejected.html": page(f"Seen in source tarballs · {TITLE}", "Now seen-in.html.",
+                                   '<meta http-equiv="refresh" content="0; url=seen-in.html#rejected">\n'
+                                   '<p>Now <a href="seen-in.html#rejected">seen-in.html</a>.</p>')}
     ordered = list(cases.items())
     for i, (case, info) in enumerate(ordered):
         previous = ordered[i - 1] if i else None
@@ -520,6 +576,11 @@ def main():
         files[old + ".html"] = page(f"{old} is {new} · tar-minefield", f"{old} is now {new}.",
                                     f'<meta http-equiv="refresh" content="0; url={new}.html">\n'
                                     f'<p>{old} is now <a href="{new}.html">{new}</a>.</p>')
+    anchors = set(re.findall(r'id="([^"]+)"', files["seen-in.html"]))
+    for name, text in files.items():
+        for a in re.findall(r'href="seen-in\.html#([^"]+)"', text):
+            if a not in anchors:
+                sys.exit(f"{name}: seen-in.html#{a} is not an anchor")
     for name, text in files.items():
         with open(os.path.join(out, name), "w") as f:
             f.write(text)

@@ -23,8 +23,15 @@ table.files td:first-child { white-space: nowrap; }
   dd { margin-left: 1rem; }
   table.files, table.files tr, table.files td { display: block; }
   table.files td + td { padding: 0 0 0.375rem 1rem; }
+  /* the tarballs of seen-in.html, one block per tarball */
+  table.seen, table.seen tr, table.seen td { display: block; }
+  table.seen colgroup, table.seen th { display: none; }
+  table.seen tr { margin-bottom: 0.5rem; border: 1px solid #d0d7de; }
+  table.seen td { border: 0; }
+  table.seen td:nth-child(2):not(:empty)::before { content: "packaged by "; color: #59636e; }
 }
-.hash { display: block; color: #59636e; font-size: 0.8125em; word-break: break-all; }
+.hash { display: block; background: none; padding: 0; color: #59636e; font-size: 0.8125em;
+        word-break: break-all; }
 /* The verdict of a case, as a solid badge and in words: unlike the pale cells of the matrix, whose
    colours are outcomes */
 .verdict { margin: 1rem 0; padding: 0.5rem 1rem; background: #f6f8fa; border-left: 6px solid;
