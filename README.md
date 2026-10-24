@@ -4,7 +4,7 @@ This repo provides an extensive **[test suite for tar file extraction](suite/)**
 
 There are dozens of implementations of tar file extraction out there, from command line tools to libraries for programming languages. Because the tar file format leaves room for interpretation, different implementations can extract certain crafted tar files in different ways.
 
-This is a security concern: for example, a security scanner could see different files than what is ultimately extracted.
+This is a security concern: for example, when a security scanner and the extractor use different tar implementations, the scanner could inspect other files than the ones that end up on disk.
 
 By assigning [identifiers](https://haampie-llms.github.io/tar-minefield/) to these ambiguities, and providing test cases and usage data, the hope is that tar implementations can converge on a strict parser and identical behavior.
 
