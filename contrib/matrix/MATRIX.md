@@ -19,7 +19,7 @@ what `tarscan.py` reports.
 | bsdtar | bsdtar 3.8.5 - libarchive 3.8.5 | extracts |
 | BusyBox tar | BusyBox v1.37.0 (Ubuntu 1:1.37.0-7ubuntu1) | extracts |
 | 7-Zip | 7-Zip 26.00 (x64) | extracts |
-| Python tarfile, filter=data | CPython 3.14.4 | extracts |
+| Python tarfile, filter=data, as in pip | CPython 3.14.4 | extracts |
 | Python tarfile, filter=tar | CPython 3.14.4 | extracts |
 | Python tarfile, filter=fully_trusted | CPython 3.14.4 | extracts |
 | node-tar | tar 7.5.22 | extracts |
@@ -43,7 +43,7 @@ what `tarscan.py` reports.
 | live-bootstrap untar | mescc-tools-extra a151c245e512, built with cc | extracts |
 | live-bootstrap untar, --non-strict | mescc-tools-extra a151c245e512, built with cc | extracts |
 
-| case | strict.py | GNU tar | bsdtar | BusyBox tar | 7-Zip | Python tarfile, filter=data | Python tarfile, filter=tar | Python tarfile, filter=fully_trusted | node-tar | node-tar, strict | tar-fs | Java Commons Compress | .NET System.Formats.Tar | PHP PharData, as in Composer | PHP Archive_Tar | Go archive/tar | Go archive/tar, tarinsecurepath=0 | Go containerd archive.Apply | Rust tar | Rust astral-tokio-tar | Rust tar-codec, as in uv | RubyGems | R untar, internal | Perl Archive::Tar | Haskell tar | Julia Tar.jl | live-bootstrap untar | live-bootstrap untar, --non-strict |
+| case | strict.py | GNU tar | bsdtar | BusyBox tar | 7-Zip | Python tarfile, filter=data, as in pip | Python tarfile, filter=tar | Python tarfile, filter=fully_trusted | node-tar | node-tar, strict | tar-fs | Java Commons Compress | .NET System.Formats.Tar | PHP PharData, as in Composer | PHP Archive_Tar | Go archive/tar | Go archive/tar, tarinsecurepath=0 | Go containerd archive.Apply | Rust tar | Rust astral-tokio-tar | Rust tar-codec, as in uv | RubyGems | R untar, internal | Perl Archive::Tar | Haskell tar | Julia Tar.jl | live-bootstrap untar | live-bootstrap untar, --non-strict |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **to accept** | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [F01](https://haampie-llms.github.io/tar-minefield/F01.html) number-leading-space | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |

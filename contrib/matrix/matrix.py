@@ -172,8 +172,9 @@ def implementations(work, only=None):
         found.append(("7-Zip", version, "extract", lambda a, d: ["7z", "x", "-y", "-bd", f"-o{d}", a]))
     python = sys.executable
     pyversion = f"CPython {sys.version.split()[0]}"
-    for f in ("fully_trusted", "tar", "data"):
-        found.append((f"Python tarfile, filter={f}", pyversion, "extract",
+    # pip's untar_file is the data filter, after it strips a leading directory that all members share
+    for f, name in (("fully_trusted", "fully_trusted"), ("tar", "tar"), ("data", "data, as in pip")):
+        found.append((f"Python tarfile, filter={name}", pyversion, "extract",
                       lambda a, d, f=f: [python, "-I", "-c", TARFILE, a, d, f]))
     build = os.path.join(work, "build")
     os.makedirs(build, exist_ok=True)
@@ -549,7 +550,7 @@ LEGEND = [
 # then libraries by the popularity of their language, and niche tools last. Others go at the end.
 POPULARITY = [
     "GNU tar", "bsdtar", "BusyBox tar", "7-Zip",
-    "Python tarfile, filter=data", "Python tarfile, filter=tar",
+    "Python tarfile, filter=data, as in pip", "Python tarfile, filter=tar",
     "Python tarfile, filter=fully_trusted",
     "node-tar", "node-tar, strict", "tar-fs",
     "Java Commons Compress", ".NET System.Formats.Tar",

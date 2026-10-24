@@ -289,7 +289,7 @@ Seen in: sendmail 8.18.2 and unclutter 8, where the file is a v7 directory named
 <tr><td>bsdtar</td><td>bsdtar 3.8.5 - libarchive 3.8.5</td><td>✅ as the verdict says</td><td>error: a/b: Could not stat a/b: Not a directory bsdtar: Error exit delayed from previous errors.</td></tr>
 <tr><td>BusyBox tar</td><td>BusyBox v1.37.0 (Ubuntu 1:1.37.0-7ubuntu1)</td><td>✅ as the verdict says</td><td>error: tar: can&#x27;t create directory &#x27;a&#x27;: File exists tar: can&#x27;t remove old file a/b: Not a directory</td></tr>
 <tr><td>7-Zip</td><td>7-Zip 26.00 (x64)</td><td>✅ as the verdict says</td><td>error: ERROR: Cannot open output file : errno=20 : Not a directory : DEST/a/b</td></tr>
-<tr><td>Python tarfile, filter=data</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: NotADirectoryError: [Errno 20] Not a directory: &#x27;DEST/a&#x27;</td></tr>
+<tr><td>Python tarfile, filter=data, as in pip</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: NotADirectoryError: [Errno 20] Not a directory: &#x27;DEST/a&#x27;</td></tr>
 <tr><td>Python tarfile, filter=tar</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: NotADirectoryError: [Errno 20] Not a directory: &#x27;DEST/a&#x27;</td></tr>
 <tr><td>Python tarfile, filter=fully_trusted</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: NotADirectoryError: [Errno 20] Not a directory: &#x27;DEST/a/b&#x27;</td></tr>
 <tr><td>node-tar</td><td>tar 7.5.22</td><td>⚠️ accepts</td><td>tree A: <code>a</code> (7 B, da69f286)</td></tr>

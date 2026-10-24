@@ -169,7 +169,7 @@ Seen in: no source tarball.
 <tr><td>bsdtar</td><td>bsdtar 3.8.5 - libarchive 3.8.5</td><td>✅ as the verdict says</td><td>error: h: Hard-link target &#x27;missing&#x27; does not exist.: No such file or directory bsdtar: Error exit delayed from previous errors.</td></tr>
 <tr><td>BusyBox tar</td><td>BusyBox v1.37.0 (Ubuntu 1:1.37.0-7ubuntu1)</td><td>✅ as the verdict says</td><td>error: tar: can&#x27;t create hardlink &#x27;h&#x27; to &#x27;missing&#x27;</td></tr>
 <tr><td>7-Zip</td><td>7-Zip 26.00 (x64)</td><td>✅ as the verdict says</td><td>error: ERROR: Cannot create hard link : errno=2 : No such file or directory : DEST/h : DEST/missing</td></tr>
-<tr><td>Python tarfile, filter=data</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: KeyError: &quot;linkname &#x27;missing&#x27; not found&quot;</td></tr>
+<tr><td>Python tarfile, filter=data, as in pip</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: KeyError: &quot;linkname &#x27;missing&#x27; not found&quot;</td></tr>
 <tr><td>Python tarfile, filter=tar</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: KeyError: &quot;linkname &#x27;missing&#x27; not found&quot;</td></tr>
 <tr><td>Python tarfile, filter=fully_trusted</td><td>CPython 3.14.4</td><td>✅ as the verdict says</td><td>error: KeyError: &quot;linkname &#x27;missing&#x27; not found&quot;</td></tr>
 <tr><td>node-tar</td><td>tar 7.5.22</td><td>⚠️ accepts</td><td>tree A: nothing</td></tr>
