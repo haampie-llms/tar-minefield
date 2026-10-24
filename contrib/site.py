@@ -405,7 +405,7 @@ def tarballs_section(names, short, rated, union):
                     f"<td class=n>{j:,}</td><td class=n>{prevalence(j, len(rs))}</td></tr>")
     rejected = sum(not strict.passes_default(r) for r in union)
     accepted = strict.percent(len(union) - rejected, len(union))
-    return (f'<h2 id="tarballs">Source tarballs</h2>\n<p>The default policy accepts {accepted} of the '
+    return (f'<h2 id="tarballs">Data to support the default policy</h2>\n<p>The default policy accepts {accepted} of the '
             f"{len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and live-bootstrap, "
             f'and rejects {rejected:,}: <a href="seen-in.html#rejected">which, and why</a>. The page of a case '
             "says how many of them have it.</p>\n"
@@ -555,14 +555,13 @@ def index_page(cases, results, data):
 </ul>
 <p>A case's page shows its archive block by block, what every implementation makes of it, and how
 common it is in source tarballs.</p>
-<h2>What implementations make of every case</h2>
+<h2>Comparison of different tar implementations</h2>
 <p>Click a case for its page; hover over a cell for the tree.</p>
 <div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["id"] + ".html")}</div>
-{tarballs_section(names, short, rated, union)}
 <h2 id="policy">Policy</h2>
 <p>This section defines the <em>default policy</em><sup><a href="#stricter">1</a></sup>, which
-accepts, tolerates or rejects each case below, based on data from the {len(union):,} distinct
-release tarballs of Spack, nixpkgs, Guix and live-bootstrap.</p>
+accepts, tolerates or rejects each case below, based on <a href="#tarballs">data</a> from the
+{len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and live-bootstrap.</p>
 <p>The <em>prevalence</em> column is an estimate of the likelihood of encountering a case in
 practice, from a scan of these tarballs.</p>
 <p class="note" id="stricter"><sup>1</sup> A policy can be stricter and also reject the tolerated
@@ -570,6 +569,7 @@ cases, at the cost of rejecting tarballs that are fairly common. That suits spec
 such as an extractor for a single ecosystem, where it can be checked against every tarball ever
 published there.</p>
 {chr(10).join(sections)}
+{tarballs_section(names, short, rated, union)}
 """
     intro = re.sub(r"<[^>]+>", "", readme_intro().split("</p>", 1)[0])
     return page(f"{TITLE} · tar-minefield", html.unescape(intro), body)
