@@ -226,12 +226,15 @@ Seen in: no source tarball.
 <tr><td>node-tar</td><td>tar 7.5.22</td><td>⚠️ accepts</td><td>tree A: <code>a</code> (0 B, e3b0c442), <code>smuggled</code> (0 B, e3b0c442)</td></tr>
 <tr><td>node-tar, strict</td><td>tar 7.5.22</td><td>⚠️ accepts</td><td>tree A: <code>a</code> (0 B, e3b0c442), <code>smuggled</code> (0 B, e3b0c442)</td></tr>
 <tr><td>Java Commons Compress</td><td>Commons Compress 1.28.0, Expander, on Java 25.0.4.1</td><td>✅ as the verdict says</td><td>error: java.io.IOException: Corrupted TAR archive.</td></tr>
+<tr><td>PHP PharData, as in Composer</td><td>PharData of PHP 8.5.12, as Composer&#x27;s TarDownloader calls it</td><td>✅ as the verdict says</td><td>error: UnexpectedValueException: phar error: &quot;suite/archives/F12-number-size-gap.tar&quot; is a corrupted tar file (invalid entry size)</td></tr>
+<tr><td>PHP Archive_Tar</td><td>PEAR Archive_Tar 1.6.1, extract, on PHP 8.5.12</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (512 B, 917dba8e)</td></tr>
 <tr><td>Go archive/tar</td><td>archive/tar of go1.26.8</td><td>✅ as the verdict says</td><td>error: archive/tar: invalid tar header</td></tr>
 <tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>✅ as the verdict says</td><td>error: archive/tar: invalid tar header</td></tr>
 <tr><td>Rust tar</td><td>tar 0.4.46, unpack</td><td>✅ as the verdict says</td><td>error: failed to iterate over archive</td></tr>
 <tr><td>Rust astral-tokio-tar</td><td>astral-tokio-tar 0.7.0, unpack</td><td>✅ as the verdict says</td><td>error: failed to iterate over archive</td></tr>
 <tr><td>Rust tar-codec, as in uv</td><td>tar-codec 0.0.15, with the policies of uv 0.13</td><td>✅ as the verdict says</td><td>error: at byte 0: invalid tar size field: found [48, 48, 48, 48, 48, 48, 32, 49, 48, 48, 48, 0]</td></tr>
 <tr><td>RubyGems</td><td>RubyGems 3.6.7 of Ruby 3.3.8, extract_tar_gz</td><td>✅ as the verdict says</td><td>error: Gem::Package::TarInvalidError: &quot;000000 1000&quot; is not an octal string</td></tr>
+<tr><td>R untar, internal</td><td>utils::untar of R 4.6.1, tar = &quot;internal&quot;</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (512 B, 917dba8e)</td></tr>
 <tr><td>Perl Archive::Tar</td><td>Archive::Tar 3.02_001 of Perl v5.40.1</td><td>⚠️ accepts</td><td>tree A: <code>a</code> (0 B, e3b0c442), <code>smuggled</code> (0 B, e3b0c442)</td></tr>
 <tr><td>Haskell tar</td><td>tar 0.7.2.0, extract, of GHC 9.10</td><td>⚠️ accepts</td><td>tree A: <code>a</code> (0 B, e3b0c442), <code>smuggled</code> (0 B, e3b0c442)</td></tr>
 <tr><td>Julia Tar.jl</td><td>Tar 1.10.0 of Julia 1.13.2</td><td>⚠️ accepts</td><td>tree A: <code>a</code> (0 B, e3b0c442), <code>smuggled</code> (0 B, e3b0c442)</td></tr>

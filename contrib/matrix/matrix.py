@@ -89,6 +89,24 @@ def fetch_jars(listing, into):
                     f.write(data)
 
 
+def fetch_files(listing, into):
+    """The files that listing names, by their path under a directory, URL and sha256, checked."""
+    import urllib.request
+
+    for line in open(listing):
+        if line.strip() and not line.startswith("#"):
+            path, url, sha256 = line.split()
+            target = os.path.join(into, path)
+            if not os.path.exists(target):
+                with urllib.request.urlopen(url) as r:
+                    data = r.read()
+                if hashlib.sha256(data).hexdigest() != sha256:
+                    raise ValueError(f"{url}: sha256 mismatch")
+                os.makedirs(os.path.dirname(target), exist_ok=True)
+                with open(target, "wb") as f:
+                    f.write(data)
+
+
 def build_mescc_untar(build):
     """The untar of mescc-tools-extra, compiled from the commits of its source.txt, or None."""
     binary = os.path.join(build, "untar")
@@ -209,6 +227,25 @@ def implementations(work, only=None):
         version = "RubyGems {} of Ruby {}, extract_tar_gz".format(*out.split()) if code == 0 else "?"
         found.append(("RubyGems", version, "extract", lambda a, d, r=ruby:
                       [r, os.path.join(RUNNERS, "ruby", "extract.rb"), a, d]))
+    php = tool("php")
+    if want("PHP PharData, as in Composer", "PHP Archive_Tar") and php:
+        script = os.path.join(RUNNERS, "php", "extract.php")
+        include = os.path.join(build, "php")
+        fetch_files(os.path.join(RUNNERS, "php", "sources.txt"), include)
+        php_version = first_line([php, "-r", "echo PHP_VERSION;"])
+        found.append(("PHP PharData, as in Composer", f"PharData of PHP {php_version}, as Composer's"
+                      " TarDownloader calls it", "extract", lambda a, d, p=php, s=script:
+                      [p, "-d", "display_errors=stderr", s, a, d, "phar"]))
+        found.append(("PHP Archive_Tar", f"PEAR Archive_Tar 1.6.1, extract, on PHP {php_version}",
+                      "extract", lambda a, d, p=php, s=script, i=include:
+                      [p, "-d", "display_errors=stderr", "-d", f"include_path={i}", s, a, d,
+                       "archive_tar"]))
+    rscript = tool("Rscript")
+    if want("R untar, internal") and rscript:
+        script = os.path.join(RUNNERS, "r", "extract.R")
+        version = first_line([rscript, "-e", 'cat(format(getRversion()))'])
+        found.append(("R untar, internal", f'utils::untar of R {version}, tar = "internal"',
+                      "extract", lambda a, d, r=rscript, s=script: [r, "--vanilla", s, a, d]))
     perl = tool("perl")
     if perl:
         code, out, _ = run([perl, "-MArchive::Tar", "-e", 'print "$Archive::Tar::VERSION $^V"'])
@@ -493,9 +530,10 @@ POPULARITY = [
     "Python tarfile, filter=fully_trusted",
     "node-tar", "node-tar, strict",
     "Java Commons Compress",
+    "PHP PharData, as in Composer", "PHP Archive_Tar",
     "Go archive/tar", "Go archive/tar, tarinsecurepath=0",
     "Rust tar", "Rust astral-tokio-tar", "Rust tar-codec, as in uv",
-    "RubyGems", "Perl Archive::Tar", "Haskell tar", "Julia Tar.jl",
+    "RubyGems", "R untar, internal", "Perl Archive::Tar", "Haskell tar", "Julia Tar.jl",
     "live-bootstrap untar", "live-bootstrap untar, --non-strict",
 ]
 

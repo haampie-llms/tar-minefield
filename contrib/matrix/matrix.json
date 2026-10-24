@@ -97,6 +97,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
+      "size": 7
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
+      "size": 7
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -134,6 +158,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
+      "size": 7
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -349,6 +385,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": "Invalid checksum for file \"junk after the end of the archive\n\" : 3332 calculated, 0 expected",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -386,6 +446,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -608,6 +680,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -645,6 +741,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -867,6 +975,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -904,6 +1036,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -1119,6 +1263,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -1156,6 +1324,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -1343,6 +1523,16 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": "Invalid checksum for file \"a\" : 4041 calculated, 3785 expected",
+    "outside": {},
+    "tree": {}
+   },
+   "PHP PharData, as in Composer": {
+    "error": "UnexpectedValueException: phar error: \"suite/archives/F06-checksum-signed.tar\" is a corrupted tar file (checksum mismatch of file \"a\")",
+    "outside": {},
+    "tree": {}
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -1380,6 +1570,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -1567,6 +1769,36 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "hidden": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "150e5c88fd5dcfef2162ad5bb75c0642af06171f3da45dd05411db9d89fc3189",
+      "size": 57
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -1610,6 +1842,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -1818,6 +2062,23 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": "Extracted file DEST/a does not have the correct file size '512' (1024 expected). Archive may be corrupted.",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "64164443bb63e338ef1cfdb12a57117cd1212270cc935a798f6e8a665cdf4659",
+      "size": 512
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": "UnexpectedValueException: phar error: \"suite/archives/F08-end-truncated-in-member.tar\" is a corrupted tar file (truncated)",
+    "outside": {},
+    "tree": {}
+   },
    "Perl Archive::Tar": {
     "error": "Read error on tarfile (missing data) 'a' at offset unknown at contrib/matrix/runners/perl/extract.pl line 12.\nRead error on tarfile (missing data) 'a' at offset unknown",
     "outside": {},
@@ -1856,6 +2117,18 @@
       "kind": "file",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
+     }
+    }
+   },
+   "R untar, internal": {
+    "error": "incomplete block on file",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "64164443bb63e338ef1cfdb12a57117cd1212270cc935a798f6e8a665cdf4659",
+      "size": 512
      }
     }
    },
@@ -2069,6 +2342,36 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "hidden": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d688c765ff62a08783917188575f816f66ff404062ba9a40c93afe32709f1a30",
+      "size": 44
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -2112,6 +2415,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -2358,6 +2673,42 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "long-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "long-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -2401,6 +2752,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "long-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -2608,6 +2971,30 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -2645,6 +3032,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -2869,6 +3268,23 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": "UnexpectedValueException: phar error: \"suite/archives/F12-number-size-gap.tar\" is a corrupted tar file (invalid entry size)",
+    "outside": {},
+    "tree": {}
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -2901,6 +3317,18 @@
     "error": "ReadError: file could not be opened successfully:\n- method gz: ReadError('not a gzip file')\n- method bz2: ReadError('not a bzip2 file')\n- method xz: ReadError('not an lzma file')\n- method zst: ReadError('not a zstd file')\n- method tar: ReadError('invalid header')",
     "outside": {},
     "tree": {}
+   },
+   "R untar, internal": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
    },
    "RubyGems": {
     "error": "Gem::Package::TarInvalidError: \"000000 1000\" is not an octal string",
@@ -3102,6 +3530,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "plain": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "plain": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -3149,6 +3601,11 @@
       "size": 12
      }
     }
+   },
+   "R untar, internal": {
+    "error": "the condition has length > 1",
+    "outside": {},
+    "tree": {}
    },
    "RubyGems": {
     "error": null,
@@ -3402,6 +3859,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -3451,6 +3932,24 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -3723,6 +4222,36 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -3780,6 +4309,21 @@
       "kind": "file",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
+     }
+    }
+   },
+   "R untar, internal": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "076a27c79e5ace2a3d47f9dd2e83e4ff6ea8872b3c2218f66c92b89b55f36560",
+      "size": 512
      }
     }
    },
@@ -3984,6 +4528,30 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "unknown": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "unknown": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -4024,6 +4592,11 @@
       "size": 512
      }
     }
+   },
+   "R untar, internal": {
+    "error": "unsupported entry type \u2018Z\u2019",
+    "outside": {},
+    "tree": {}
    },
    "RubyGems": {
     "error": null,
@@ -4232,6 +4805,36 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "project": {
+      "kind": "directory"
+     },
+     "project/README": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
+      "size": 6
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "project": {
+      "kind": "directory"
+     },
+     "project/README": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
+      "size": 6
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -4278,6 +4881,21 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "project": {
+      "kind": "directory"
+     },
+     "project/README": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
+      "size": 6
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -4590,6 +5208,42 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -4645,6 +5299,24 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -4939,6 +5611,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "header-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "header-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -4976,6 +5672,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-pax": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -5196,6 +5904,23 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": "Error while opening {DEST/a/} in write binary mode",
+    "outside": {},
+    "tree": {}
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -5230,6 +5955,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -5423,6 +6160,30 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
+      "size": 19
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
+      "size": 19
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -5460,6 +6221,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
+      "size": 19
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -5663,6 +6436,27 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": "Unable to extract symbolic link {DEST/link/}",
+    "outside": {},
+    "tree": {
+     "target": {
+      "kind": "directory"
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "link": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": "Could not remove old file 'DEST/link/': Is a directory at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'link/' at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'link/'",
     "outside": {},
@@ -5702,6 +6496,19 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "link": {
+      "kind": "symlink",
+      "target": "target"
+     },
+     "target": {
+      "kind": "directory"
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -5946,6 +6753,36 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -5992,6 +6829,21 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -6224,6 +7076,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
+      "size": 5
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
+      "size": 5
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -6261,6 +7137,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
+      "size": 5
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -6507,6 +7395,36 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/fffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/fffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -6553,6 +7471,21 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -6841,6 +7774,36 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
+      "kind": "directory"
+     },
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
+      "size": 9
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
+      "kind": "directory"
+     },
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
+      "size": 9
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -6887,6 +7850,21 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
+      "kind": "directory"
+     },
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
+      "size": 9
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -7133,6 +8111,23 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": "PharException: Extraction from phar \"suite/archives/N05-name-dot.tar\" failed: Cannot extract \".\", internal error",
+    "outside": {},
+    "tree": {}
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -7170,6 +8165,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -7385,6 +8392,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -7422,6 +8453,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -7625,6 +8668,23 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": "Out-of-path file extraction {DEST/link --> /tar-minefield-nonexistent}",
+    "outside": {},
+    "tree": {}
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "link": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": "Symlink 'link' has absolute target. Not extracting under SECURE EXTRACT MODE at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'link' at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'link'",
     "outside": {},
@@ -7646,6 +8706,16 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "link": {
+      "kind": "symlink",
+      "target": "/tar-minefield-nonexistent"
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -7826,6 +8896,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-header": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-gnu": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -7867,6 +8961,18 @@
     "outside": {},
     "tree": {
      "from-gnu": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "R untar, internal": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-pax": {
       "executable": false,
       "kind": "file",
       "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
@@ -8050,6 +9156,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "header-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "header-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -8091,6 +9221,18 @@
     "outside": {},
     "tree": {
      "first": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "R untar, internal": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "second": {
       "executable": false,
       "kind": "file",
       "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
@@ -8317,6 +9459,36 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": "Invalid header block at offset unknown at contrib/matrix/runners/perl/extract.pl line 12.\na : checksum error at contrib/matrix/runners/perl/extract.pl line 12.\na : checksum error",
     "outside": {},
@@ -8353,6 +9525,21 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -8611,6 +9798,36 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "15000000000": {
+      "kind": "directory"
+     },
+     "15000000000/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "15000000000": {
+      "kind": "directory"
+     },
+     "15000000000/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -8670,6 +9887,11 @@
       "size": 2
      }
     }
+   },
+   "R untar, internal": {
+    "error": "embedded nul in string: '15000000000\\015000000000'",
+    "outside": {},
+    "tree": {}
    },
    "RubyGems": {
     "error": "Gem::Package::TarInvalidError: tar is corrupt, name contains null byte",
@@ -8847,6 +10069,30 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "tar-minefield-absolute": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "3b7f22a5047de6b9d309eaf4177f04f29cf5fb3ddd008137ce35ac23f466b13b",
+      "size": 89
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "tar-minefield-absolute": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "3b7f22a5047de6b9d309eaf4177f04f29cf5fb3ddd008137ce35ac23f466b13b",
+      "size": 89
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": "Entry '/tar-minefield-absolute' is an absolute path. Not extracting absolute paths under SECURE EXTRACT MODE at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract '/tar-minefield-absolute' at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract '/tar-minefield-absolute'",
     "outside": {},
@@ -8870,6 +10116,18 @@
     "tree": {}
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "tar-minefield-absolute": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "3b7f22a5047de6b9d309eaf4177f04f29cf5fb3ddd008137ce35ac23f466b13b",
+      "size": 89
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -9057,6 +10315,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\\b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
+      "size": 21
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\\b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
+      "size": 21
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -9094,6 +10376,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\\b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
+      "size": 21
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -9309,6 +10603,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
+      "size": 10
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
+      "size": 10
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -9356,6 +10674,11 @@
       "size": 10
      }
     }
+   },
+   "R untar, internal": {
+    "error": "embedded nul in string: 'a\\0b'",
+    "outside": {},
+    "tree": {}
    },
    "RubyGems": {
     "error": "ArgumentError: path name contains null byte",
@@ -9561,6 +10884,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\nb": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
+      "size": 21
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\nb": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
+      "size": 21
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -9598,6 +10945,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\nb": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
+      "size": 21
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -9790,6 +11149,23 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": "Malicious .tar detected, file \"tar-minefield/../../tar-minefield-escaped\" will not install in desired directory tree",
+    "outside": {},
+    "tree": {}
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "tar-minefield-escaped": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "fc503701b7c2d35ae68aaa9df3f75232b90d497dc21bbba36c43d5d91194ec27",
+      "size": 85
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": "ve the current working directory. Not extracting under SECURE EXTRACT MODE at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'tar-minefield/../../tar-minefield-escaped' at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'tar-minefield/../../tar-minefield-escaped'",
     "outside": {},
@@ -9818,6 +11194,11 @@
    },
    "Python tarfile, filter=tar": {
     "error": "OutsideDestinationError: 'tar-minefield/../../tar-minefield-escaped' would be extracted to 'ROOT/x/y/tar-minefield-escaped', which is outside the destination",
+    "outside": {},
+    "tree": {}
+   },
+   "R untar, internal": {
+    "error": "path contains '..'",
     "outside": {},
     "tree": {}
    },
@@ -9942,6 +11323,16 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": "Invalid checksum for file \"no name\n\" : 936 calculated, 0 expected",
+    "outside": {},
+    "tree": {}
+   },
+   "PHP PharData, as in Composer": {
+    "error": "PharException: Extraction from phar \"suite/archives/N17-name-empty.tar\" failed: Cannot extract \"\", internal error",
+    "outside": {},
+    "tree": {}
+   },
    "Perl Archive::Tar": {
     "error": "status 1",
     "outside": {},
@@ -9959,6 +11350,11 @@
    },
    "Python tarfile, filter=tar": {
     "error": "IsADirectoryError: [Errno 21] Is a directory: 'DEST'",
+    "outside": {},
+    "tree": {}
+   },
+   "R untar, internal": {
+    "error": "invalid name field in tarball",
     "outside": {},
     "tree": {}
    },
@@ -10110,6 +11506,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "caf\udce9": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
+      "size": 8
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "caf\udce9": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
+      "size": 8
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -10147,6 +11567,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "caf\udce9": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
+      "size": 8
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -10313,6 +11745,30 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "header-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "627be4bf9be5c6a4472f8e15498fcc5b4fd213e4f2a04ef9ff443a01e87321c8",
+      "size": 12
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "header-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "627be4bf9be5c6a4472f8e15498fcc5b4fd213e4f2a04ef9ff443a01e87321c8",
+      "size": 12
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -10337,6 +11793,11 @@
    },
    "Python tarfile, filter=tar": {
     "error": "ValueError: lstat: embedded null character in path",
+    "outside": {},
+    "tree": {}
+   },
+   "R untar, internal": {
+    "error": "embedded nul in string: '12 path=a\\0b\\n'",
     "outside": {},
     "tree": {}
    },
@@ -10542,6 +12003,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "header-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "header-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -10589,6 +12074,11 @@
       "size": 12
      }
     }
+   },
+   "R untar, internal": {
+    "error": "the condition has length > 1",
+    "outside": {},
+    "tree": {}
    },
    "RubyGems": {
     "error": null,
@@ -10836,6 +12326,42 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -10883,6 +12409,24 @@
     "outside": {},
     "tree": {
      "global-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
       "executable": false,
       "kind": "file",
       "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
@@ -11178,6 +12722,36 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -11224,6 +12798,21 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -11466,6 +13055,27 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/sub": {
+      "kind": "directory"
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -11503,6 +13113,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/sub": {
+      "kind": "directory"
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -11673,6 +13295,23 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "h": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": "UnexpectedValueException: phar error: \"suite/archives/S03-hardlink-missing-target.tar\" is a corrupted tar file - hard link to non-existent file \"missing\"",
+    "outside": {},
+    "tree": {}
+   },
    "Perl Archive::Tar": {
     "error": "Making hard link from 'missing' to 'DEST/h' failed at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'h' at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'h'",
     "outside": {},
@@ -11690,6 +13329,11 @@
    },
    "Python tarfile, filter=tar": {
     "error": "KeyError: \"linkname 'missing' not found\"",
+    "outside": {},
+    "tree": {}
+   },
+   "R untar, internal": {
+    "error": null,
     "outside": {},
     "tree": {}
    },
@@ -11834,6 +13478,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": "Making hard link from 'a' to 'DEST/a' failed at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'a' at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'a'",
     "outside": {},
@@ -11874,6 +13542,11 @@
       "size": 2
      }
     }
+   },
+   "R untar, internal": {
+    "error": null,
+    "outside": {},
+    "tree": {}
    },
    "RubyGems": {
     "error": null,
@@ -12082,6 +13755,29 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "f": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "h": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": "UnexpectedValueException: phar error: \"suite/archives/S05-hardlink-to-later-member.tar\" is a corrupted tar file - hard link to non-existent file \"f\"",
+    "outside": {},
+    "tree": {}
+   },
    "Perl Archive::Tar": {
     "error": "Making hard link from 'f' to 'DEST/h' failed at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'h' at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'h'",
     "outside": {},
@@ -12101,6 +13797,18 @@
     "error": "KeyError: \"linkname 'f' not found\"",
     "outside": {},
     "tree": {}
+   },
+   "R untar, internal": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "f": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     }
+    }
    },
    "RubyGems": {
     "error": null,
@@ -12325,6 +14033,52 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "f": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "h": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "s": {
+      "kind": "symlink",
+      "target": "f"
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "f": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "h": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "s": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -12404,6 +14158,26 @@
       "kind": "file",
       "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
       "size": 2
+     },
+     "s": {
+      "kind": "symlink",
+      "target": "f"
+     }
+    }
+   },
+   "R untar, internal": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "f": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "h": {
+      "kind": "symlink",
+      "target": "f"
      },
      "s": {
       "kind": "symlink",
@@ -12666,6 +14440,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "761d1fb145ca8c7130231412276df60f34dd34554c4d174b973a45e3222475a9",
+      "size": 5
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "761d1fb145ca8c7130231412276df60f34dd34554c4d174b973a45e3222475a9",
+      "size": 5
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -12703,6 +14501,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "761d1fb145ca8c7130231412276df60f34dd34554c4d174b973a45e3222475a9",
+      "size": 5
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -12913,6 +14723,23 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": "Unable to create path for DEST/a/",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "294e546a0ce055e7407284ba86ac4b30e651ef32238105f76bdbc94d9f4e110a",
+      "size": 13
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {}
+   },
    "Perl Archive::Tar": {
     "error": "Could not extract 'a/' at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'a/'",
     "outside": {},
@@ -12958,6 +14785,15 @@
       "kind": "file",
       "sha256": "294e546a0ce055e7407284ba86ac4b30e651ef32238105f76bdbc94d9f4e110a",
       "size": 13
+     }
+    }
+   },
+   "R untar, internal": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "kind": "directory"
      }
     }
    },
@@ -13157,6 +14993,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
+      "size": 5
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
+      "size": 5
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -13194,6 +15054,18 @@
     }
    },
    "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
+      "size": 5
+     }
+    }
+   },
+   "R untar, internal": {
     "error": null,
     "outside": {},
     "tree": {
@@ -13416,6 +15288,34 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "kind": "symlink",
+      "target": "target"
+     },
+     "target": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
+      "size": 28
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
+      "size": 28
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": null,
     "outside": {},
@@ -13469,6 +15369,18 @@
       "target": "target"
      },
      "target": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
+      "size": 28
+     }
+    }
+   },
+   "R untar, internal": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
       "executable": false,
       "kind": "file",
       "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
@@ -13690,6 +15602,23 @@
     "outside": {},
     "tree": {}
    },
+   "PHP Archive_Tar": {
+    "error": "Out-of-path file extraction {DEST/d --> ..}",
+    "outside": {},
+    "tree": {}
+   },
+   "PHP PharData, as in Composer": {
+    "error": "to open stream: No such file or directory in contrib/matrix/runners/php/extract.php on line 13\nPharException: Extraction from phar \"suite/archives/S11-tree-through-symlink.tar\" failed: Cannot extract \"d/tar-minefield-through-symlink\", could not open for writing \"DEST/d/tar-minefield-through-symlink\"",
+    "outside": {},
+    "tree": {
+     "d": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": "Symlink 'd' target attempts traversal. Not extracting under SECURE EXTRACT MODE at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'd' at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'd'",
     "outside": {},
@@ -13719,6 +15648,16 @@
    },
    "Python tarfile, filter=tar": {
     "error": "OutsideDestinationError: 'd/tar-minefield-through-symlink' would be extracted to 'ROOT/x/y/tar-minefield-through-symlink', which is outside the destination",
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "symlink",
+      "target": ".."
+     }
+    }
+   },
+   "R untar, internal": {
+    "error": "cannot extract through symlink",
     "outside": {},
     "tree": {
      "d": {
@@ -13939,6 +15878,30 @@
      }
     }
    },
+   "PHP Archive_Tar": {
+    "error": "Unable to create path for DEST/a/b",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
+      "size": 7
+     }
+    }
+   },
+   "PHP PharData, as in Composer": {
+    "error": "hp on line 13\nWarning: PharData::extractTo(DEST/a/b): Failed to open stream: No such file or directory in contrib/matrix/runners/php/extract.php on line 13\nPharException: Extraction from phar \"suite/archives/S12-tree-under-file.tar\" failed: Cannot extract \"a/b\", could not open for writing \"DEST/a/b\"",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
+      "size": 7
+     }
+    }
+   },
    "Perl Archive::Tar": {
     "error": "Could not extract 'a/b' at contrib/matrix/runners/perl/extract.pl line 14.\nCould not extract 'a/b'",
     "outside": {},
@@ -13977,6 +15940,18 @@
    },
    "Python tarfile, filter=tar": {
     "error": "NotADirectoryError: [Errno 20] Not a directory: 'DEST/a'",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
+      "size": 7
+     }
+    }
+   },
+   "R untar, internal": {
+    "error": "failed to create directory \u2018a\u2019\nWarning message:\nIn dir.create(path, showWarnings = TRUE, recursive = TRUE, ...) :\n  'a' already exists",
     "outside": {},
     "tree": {
      "a": {
@@ -14207,6 +16182,21 @@
    "kind": "extract",
    "name": "Rust tar-codec, as in uv",
    "version": "tar-codec 0.0.15, with the policies of uv 0.13"
+  },
+  {
+   "kind": "extract",
+   "name": "PHP PharData, as in Composer",
+   "version": "PharData of PHP 8.5.12, as Composer's TarDownloader calls it"
+  },
+  {
+   "kind": "extract",
+   "name": "PHP Archive_Tar",
+   "version": "PEAR Archive_Tar 1.6.1, extract, on PHP 8.5.12"
+  },
+  {
+   "kind": "extract",
+   "name": "R untar, internal",
+   "version": "utils::untar of R 4.6.1, tar = \"internal\""
   }
  ]
 }
