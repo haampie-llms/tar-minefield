@@ -47,7 +47,7 @@ def check():
         if verdict == "accept" and strict_found:
             problems.append(f"{case}: a strict criterion rejects it: {sorted(strict_found)}")
         levels = {strict.classify(f)[1] for f in expected["features"]} - {None} or {"framing"}
-        level = strict.LEVELS["FNKSG".index(expected["id"][0])]
+        level = strict.LEVELS["FNKS".index(expected["id"][0])]
         if verdict != "accept" and level not in levels:
             problems.append(f"{case}: the identifier {expected['id']} is not of the level {levels}")
         print(f"{case}: {sorted(found)}")

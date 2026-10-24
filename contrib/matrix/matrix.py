@@ -379,7 +379,6 @@ GROUPS = {
     "name": "to reject: names",
     "kind": "to reject: kinds",
     "order and state": "to reject: order and state",
-    "global pax headers": "to reject: global pax headers",
 }
 
 

@@ -1,4 +1,4 @@
-G01-pax-global-comment: to accept
+F17-pax-global-comment: to accept
 
 The global pax header with only a `comment`, as `git archive` writes it.
 

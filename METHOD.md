@@ -12,7 +12,7 @@ cases are produced so that anyone can audit them. It is a working draft.
 | **member** | One entry of an archive: a header, its extended headers, and its data. |
 | **tree** | What an implementation extracts: paths, each with a kind (file, directory, symlink, hardlink), the contents of a file or the target of a link, and whether a file is executable. Nothing else, such as mtimes and owners. |
 | **ambiguity** | Something in an archive from which two implementations, each following a defensible reading of POSIX, GNU tar or practice, extract different trees. |
-| **level** | The class of an ambiguity, from most to least damage it allows: **F** framing (where a member's data ends), **N** names, **K** kinds, **S** order and state (duplicates and links); and **G** global pax headers. |
+| **level** | The class of an ambiguity, from most to least damage it allows: **F** framing (where a member's data ends), **N** names, **K** kinds, **S** order and state (duplicates and links). |
 | **strict parser** | An implementation that rejects an archive with an ambiguity, rather than extracting one of its trees. |
 | **feature** | What the scanner reports of an archive, such as `name.leading-dot-slash`. |
 | **criterion** | A feature that is an ambiguity, for which a strict parser may reject an archive. The [catalogue](#initial-catalogue) lists them. |
@@ -95,6 +95,9 @@ Framing:
   `--ignore-zeros`), data other than zeros after the end-of-archive marker, no marker at all.
 - Recognizing a header: v7 headers without magic, the POSIX magic `ustar\0` with the GNU version
   field and vice versa, damaged magic.
+- Global pax headers: a `size` in one, one between an extended header and its member, which the
+  extended header may apply to, and one after the first member, whose values apply to the members
+  after it only.
 
 Name:
 
@@ -109,6 +112,8 @@ Name:
 - Normalization: `./a` and `a`, `a//b`, `a/./b`, a trailing slash, `.`, an empty name, `\` as a
   separator on Windows, drive letters.
 - The same questions for link targets: `linkpath`, GNU long links (`K`) and the linkname field.
+- A `path` or `linkpath` in a global pax header, and empty values in one, which in POSIX remove an
+  earlier global value.
 
 Kind:
 
@@ -125,12 +130,6 @@ Order and state:
 - Hardlinks to a later member, to a member that does not exist, to a directory, to a symlink (link
   the symlink or its target), to themselves, or to a target spelled differently from the member
   it names (`./a` and `a`).
-
-Global pax headers:
-
-- `path`, `linkpath` or `size` in a global header.
-- A global header between an extended header and its member.
-- Empty values, which in POSIX remove an earlier global value.
 
 ## Verdicts
 

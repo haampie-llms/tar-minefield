@@ -1,5 +1,5 @@
 {
- "id": "G04",
+ "id": "N21",
  "verdict": "reject",
  "description": "A global pax header with a `path`.",
  "features": [

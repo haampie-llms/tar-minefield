@@ -33,6 +33,8 @@ VERDICTS = {
     "tolerate": "tolerated: the default policy accepts it, and a strict parser may reject it",
     "reject": "to reject: implementations disagree on its tree",
 }
+# Identifiers that a case no longer has, and the one it has now: the pages of the old ones redirect
+MOVED = {"G01": "F17", "G02": "F18", "G03": "F19", "G04": "N21"}
 OUTCOMES = {
     "✅": "as the verdict says",
     "⚠️": "accepts",
@@ -275,7 +277,7 @@ def case_page(case, info, previous, following, results, data):
         if other:
             nav.append(f'{rel}: <a href="{other[1]["id"]}.html">'
                        f"{html.escape(matrix.label(*other))}</a>")
-    level = strict.LEVELS["FNKSG".index(ident[0])]
+    level = strict.LEVELS["FNKS".index(ident[0])]
     files = f"{REPO}/blob/main/suite"
     body = f"""<nav>{" · ".join(nav)}</nav>
 <h1><code>{ident}</code> {html.escape(name)}</h1>
@@ -437,8 +439,6 @@ end.</li>
 a file is executable.</li>
 <li><strong>S</strong> order and state: how members combine into one tree, through duplicate paths
 and links.</li>
-<li><strong>G</strong> global pax headers: what a header that applies to every member after it
-does.</li>
 </ul>
 <p>A case's page shows its archive block by block, what every implementation makes of it, and how
 common it is in source tarballs.</p>
@@ -482,6 +482,10 @@ def main():
         previous = ordered[i - 1] if i else None
         following = ordered[i + 1] if i + 1 < len(ordered) else None
         files[info["id"] + ".html"] = case_page(case, info, previous, following, results, data)
+    for old, new in MOVED.items():
+        files[old + ".html"] = page(f"{old} is {new} · tar-minefield", f"{old} is now {new}.",
+                                    f'<meta http-equiv="refresh" content="0; url={new}.html">\n'
+                                    f'<p>{old} is now <a href="{new}.html">{new}</a>.</p>')
     for name, text in files.items():
         with open(os.path.join(out, name), "w") as f:
             f.write(text)

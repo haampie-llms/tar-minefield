@@ -56,7 +56,7 @@ def generate():
             continue
         case = name[:-3]
         module = load(os.path.join(CASES, name))
-        assert re.fullmatch(r"[FNKSG]\d\d", module.ID), f"{case}: an identifier such as F01"
+        assert re.fullmatch(r"[FNKS]\d\d", module.ID), f"{case}: an identifier such as F01"
         assert case.startswith(module.ID + "-"), f"{case}: the name starts with its identifier"
         assert module.VERDICT in VERDICTS, f"{case}: a verdict of {sorted(VERDICTS)}"
         assert module.ID not in ids, f"{case}: the identifier of {ids.get(module.ID)}"

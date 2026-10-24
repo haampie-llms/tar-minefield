@@ -1,5 +1,5 @@
 {
- "id": "G02",
+ "id": "F18",
  "verdict": "tolerate",
  "description": "A global pax header with only a `comment`, after the first member.",
  "features": [

@@ -4111,7 +4111,7 @@
     "tree": null
    }
   },
-  "G01-pax-global-comment": {
+  "F17-pax-global-comment": {
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -4445,7 +4445,7 @@
     "tree": null
    }
   },
-  "G02-pax-global-comment-after-members": {
+  "F18-pax-global-comment-after-members": {
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -4842,7 +4842,7 @@
     "tree": null
    }
   },
-  "G03-pax-global-between-extended-and-member": {
+  "F19-pax-global-between-extended-and-member": {
    "7-Zip": {
     "error": null,
     "outside": {},
@@ -5109,354 +5109,6 @@
       "kind": "file",
       "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
       "size": 12
-     }
-    }
-   },
-   "strict.py": {
-    "error": "rejected",
-    "outside": {},
-    "tree": null
-   }
-  },
-  "G04-pax-global-path": {
-   "7-Zip": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "BusyBox tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "GNU tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "global-name": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "Go archive/tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "Go archive/tar, tarinsecurepath=0": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "Haskell tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "Java Commons Compress": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "global-name": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "Julia Tar.jl": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "global-name": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "Perl Archive::Tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "Python tarfile, filter=data": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "global-name": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "Python tarfile, filter=fully_trusted": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "global-name": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "Python tarfile, filter=tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "global-name": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "RubyGems": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "Rust astral-tokio-tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "Rust tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "Rust tar-codec, as in uv": {
-    "error": "at byte 0: decode policy rejected input: global pax extended header contains restricted member metadata path",
-    "outside": {},
-    "tree": {}
-   },
-   "bsdtar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "live-bootstrap untar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     },
-     "pax_global_header": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "d5acb5893a613418677e5427003aff970bedbf8324a97ba3b949d0458a18daab",
-      "size": 20
-     }
-    }
-   },
-   "live-bootstrap untar, --non-strict": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     },
-     "pax_global_header": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "d5acb5893a613418677e5427003aff970bedbf8324a97ba3b949d0458a18daab",
-      "size": 20
-     }
-    }
-   },
-   "node-tar": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
-     }
-    }
-   },
-   "node-tar, strict": {
-    "error": null,
-    "outside": {},
-    "tree": {
-     "a": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
-      "size": 2
-     },
-     "b": {
-      "executable": false,
-      "kind": "file",
-      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
-      "size": 2
      }
     }
    },
@@ -11048,6 +10700,354 @@
       "kind": "file",
       "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
       "size": 12
+     }
+    }
+   },
+   "strict.py": {
+    "error": "rejected",
+    "outside": {},
+    "tree": null
+   }
+  },
+  "N21-pax-global-path": {
+   "7-Zip": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "BusyBox tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "GNU tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "global-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Go archive/tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Haskell tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Java Commons Compress": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "global-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Julia Tar.jl": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "global-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Perl Archive::Tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=data": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "global-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=fully_trusted": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "global-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Python tarfile, filter=tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "global-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "RubyGems": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Rust astral-tokio-tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Rust tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Rust tar-codec, as in uv": {
+    "error": "at byte 0: decode policy rejected input: global pax extended header contains restricted member metadata path",
+    "outside": {},
+    "tree": {}
+   },
+   "bsdtar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "live-bootstrap untar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     },
+     "pax_global_header": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d5acb5893a613418677e5427003aff970bedbf8324a97ba3b949d0458a18daab",
+      "size": 20
+     }
+    }
+   },
+   "live-bootstrap untar, --non-strict": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     },
+     "pax_global_header": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d5acb5893a613418677e5427003aff970bedbf8324a97ba3b949d0458a18daab",
+      "size": 20
+     }
+    }
+   },
+   "node-tar": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "node-tar, strict": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
      }
     }
    },

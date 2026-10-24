@@ -35,7 +35,7 @@ from report import load, origin, tidy_tables  # noqa: E402
 
 SITE = "https://haampie-llms.github.io/tar-minefield/"
 
-LEVELS = ("framing", "name", "kind", "order and state", "global pax headers")
+LEVELS = ("framing", "name", "kind", "order and state")
 
 # (pattern, level, what it means), in order: the first pattern that matches a feature applies.
 STRICT = [
@@ -57,6 +57,10 @@ STRICT = [
     ("pax.size-*", "framing", "a pax size that disagrees with the header"),
     ("extended.pax-size-before-gnu-long", "framing", "a pax size that a GNU long name may take"),
     ("extended.without-member", "framing", "an extended header without a member"),
+    ("pax-global.between-extended-and-member", "framing",
+     "a global header between an extended header and its member"),
+    ("pax-global.after-members", "framing", "a global header after the first member"),
+    ("pax-global.size", "framing", "a size in a global header"),
     ("pax.newline-in-value.*", "framing",
      "a newline in a pax value, where implementations split lines"),
     ("end.missing", "framing", "no end-of-archive marker"),
@@ -90,6 +94,11 @@ STRICT = [
     ("pax.repeated-key", "name", "a pax key twice in one extended header"),
     ("pax.nul-in-value.path", "name", "NUL in a pax path"),
     ("pax.nul-in-value.linkpath", "name", "NUL in a pax link path"),
+    ("pax-global.path", "name", "a path in a global header"),
+    ("pax-global.linkpath", "name", "a link path in a global header"),
+    ("pax-global.empty-value", "name", "an empty value in a global header, which removes one"),
+    ("pax-global.repeated-key", "name", "a pax key twice in one global header"),
+    ("pax-global.nul-in-value.*", "name", "NUL in a value of a global header"),
     ("gnu.*", "name", "the prefix field of a GNU header, which GNU tar uses for times"),
     ("format.star", "name", "star's prefix field"),
     ("type.solaris-extended", "name", "Solaris X headers"),
@@ -107,8 +116,8 @@ STRICT = [
     ("hardlink.to-itself", "order and state", "a hardlink to itself"),
     ("hardlink.to-symlink", "order and state", "a hardlink to a symlink"),
     ("hardlink.*", "order and state", "a hardlink to a later member, no member, or a misspelling"),
-    ("pax-global.after-members", "global pax headers", "a global header after the first member"),
-    ("pax-global.*", "global pax headers", "a global header with more than a comment"),
+    ("pax-global.*", "framing",
+     "records of a global header that implementations may split differently"),
 ]
 
 ALLOWED = [

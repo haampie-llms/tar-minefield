@@ -81,6 +81,7 @@ Tarballs that each criterion rejects, per ecosystem. Default: what the default p
 
 | level | criterion | default | guix | live-bootstrap | nix | spack | alone | examples |
 |---|---|---|---:|---:|---:|---:|---:|---|
+| framing | `pax-global.after-members`: a global header after the first member | accept | 6 (0.06%) | 0 | 7 (0.04%) | 71 (0.19%) | 81 | rpm@4.20.1, x42-plugins@20230701, openmp@14.0.6.src |
 | framing | `magic.posix-with-odd-version`: POSIX magic with a version other than `00` | accept | 18 (0.18%) | 0 | 9 (0.05%) | 33 (0.09%) | 34 | commons-lang@2.6-src, apache-solr@3.6.2-src, commons-logging@1.2-src |
 | framing | `end.data-after`: data other than zeros after the end-of-archive marker | accept | 10 (0.10%) | 0 | 8 (0.04%) | 8 (0.02%) | 5 | tcp_wrappers_7.6, commons-lang@2.6-src, xml-commons-resolver@1.2 |
 | framing | `end.missing`: no end-of-archive marker | accept | 6 (0.06%) | 0 | 4 (0.02%) | 12 (0.03%) | 22 | SDL2_image@2.8.8, ruby@4.0.5, fastcap@2.0-18Sep92 |
@@ -111,7 +112,6 @@ Tarballs that each criterion rejects, per ecosystem. Default: what the default p
 | order and state | `tree.duplicate.file-hardlink`: one path as two members | reject | 2 (0.02%) | 0 | 1 (0.01%) | 24 (0.06%) | 0 | xscreensaver@6.12, ghc@7.8.4-x86_64-unknown-linux-deb7, atari++_1.85 |
 | order and state | `tree.under-file`: a member under a file or a symlink | reject | 1 (0.01%) | 0 | 3 (0.02%) | 2 (0.01%) | 0 | tcp_wrappers_7.6, sendmail.8.18.2, unclutter@8 |
 | order and state | `hardlink.to-symlink`: a hardlink to a symlink | reject | 0 | 0 | 0 | 1 (0.00%) | 1 | octa@8.4 |
-| global pax headers | `pax-global.after-members`: a global header after the first member | accept | 6 (0.06%) | 0 | 7 (0.04%) | 71 (0.19%) | 81 | rpm@4.20.1, x42-plugins@20230701, openmp@14.0.6.src |
 
 Other criteria reject no tarball here. That is no proof that they cost nothing: with 95% confidence, each rejects less than 0.03% of guix, 1.8% of live-bootstrap, 0.016% of nix, 0.008% of spack.
 

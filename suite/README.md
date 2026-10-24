@@ -32,7 +32,7 @@ Every case is an uncompressed archive, `archives/<case>.tar`, with its manifest
   `sha256` and whether it is `executable`. An extraction passes if it has exactly these paths,
   and every entry has the values the manifest gives. It is absent from the cases to reject.
 - `id`: the case's identifier, such as `N07`, which stays with it. Its letter is the level: F
-  framing, N names, K kinds, S order and state, G global pax headers.
+  framing, N names, K kinds, S order and state.
 - `features`: what [the scanner](../contrib/scanner) reports of the archive, for reference.
 
 The suite needs nothing but the archives and their manifests: copy `archives/`, or this
