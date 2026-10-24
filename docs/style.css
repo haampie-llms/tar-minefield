@@ -38,8 +38,10 @@ table.files td:first-child { white-space: nowrap; }
   table.implementations td:first-child { font-weight: 600; }
   table.implementations td:nth-child(2) { color: #59636e; font-size: 0.875em; }
 }
-.hash { display: block; background: none; padding: 0; color: #59636e; font-size: 0.8125em;
-        word-break: break-all; }
+/* A sha256: its label, then the hash, which a click selects whole, wherever it wraps */
+.hash { display: block; color: #59636e; font-size: 0.8125em; }
+.hash code { background: none; padding: 0; word-break: break-all; -webkit-user-select: all;
+             user-select: all; }
 /* The verdict of a case, as a solid badge and in words: unlike the pale cells of the matrix, whose
    colours are outcomes */
 .verdict { margin: 1rem 0; padding: 0.5rem 1rem; background: #f6f8fa; border-left: 6px solid;

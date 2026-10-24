@@ -55,7 +55,7 @@ COLUMNS = {
                     ("share", 20, "n"), ("rejected by the default policy", 20, "n")],
     "tarballs": [("ecosystem", 25), ("tarballs", 25, "n"), ("rejected", 25, "n"), ("share", 25, "n")],
     "reasons": [("why", 80), ("tarballs", 20, "n")],
-    "seen": [("tarball", 45), ("packaged by", 15), ("example from the tarball", 40)],
+    "seen": [("tarball", 55), ("packaged by", 12), ("example from the tarball", 33)],
     "implementations": [("implementation", 21), ("version", 21), ("outcome", 18),
                         ("what it makes of it", 40)],
 }
@@ -100,8 +100,10 @@ table.files td:first-child { white-space: nowrap; }
   table.implementations td:first-child { font-weight: 600; }
   table.implementations td:nth-child(2) { color: #59636e; font-size: 0.875em; }
 }
-.hash { display: block; background: none; padding: 0; color: #59636e; font-size: 0.8125em;
-        word-break: break-all; }
+/* A sha256: its label, then the hash, which a click selects whole, wherever it wraps */
+.hash { display: block; color: #59636e; font-size: 0.8125em; }
+.hash code { background: none; padding: 0; word-break: break-all; -webkit-user-select: all;
+             user-select: all; }
 /* The verdict of a case, as a solid badge and in words: unlike the pale cells of the matrix, whose
    colours are outcomes */
 .verdict { margin: 1rem 0; padding: 0.5rem 1rem; background: #f6f8fa; border-left: 6px solid;
@@ -382,7 +384,7 @@ def case_page(case, info, previous, following, results, data):
 <dt>Files</dt><dd><table class="files">
 <tr><td><a href="{REPO}/raw/main/suite/archives/{case}.tar"><code>{case}.tar</code></a></td>
 <td>test archive, {len(archive):,} bytes
-<code class="hash">sha256 {hashlib.sha256(archive).hexdigest()}</code></td></tr>
+<span class="hash">sha256 <code>{hashlib.sha256(archive).hexdigest()}</code></span></td></tr>
 <tr><td><a href="{files}/archives/{case}.json"><code>{case}.json</code></a></td><td>expected result</td></tr>
 <tr><td><a href="{files}/archives/{case}.txt"><code>{case}.txt</code></a></td><td>annotated blocks</td></tr>
 <tr><td><a href="{files}/cases/{case}.py"><code>{case}.py</code></a></td><td>generator script</td></tr>
@@ -454,7 +456,8 @@ def seen_row(r, short, example, also=""):
     ecosystems = ", ".join(short[n] for n in r["datasets"] if n in short)
     example = f"<code>{html.escape(printable(example))}</code>" if example else ""
     return (f'<tr><td><a href="{html.escape(r["url"])}" rel="nofollow">{html.escape(name)}</a>'
-            f'<code class="hash">sha256 {r["sha256"]}</code></td><td>{html.escape(ecosystems)}</td>'
+            f'<span class="hash">sha256 <code>{r["sha256"]}</code></span></td>'
+            f"<td>{html.escape(ecosystems)}</td>"
             f"<td>{example}{also}</td></tr>")
 
 
