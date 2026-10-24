@@ -434,10 +434,10 @@ def tarballs_section(names, short, rated, union):
                     f"<td class=n>{j:,}</td><td class=n>{prevalence(j, len(rs))}</td></tr>")
     rejected = sum(not strict.passes_default(r) for r in union)
     accepted = strict.percent(len(union) - rejected, len(union))
-    return (f'<h2 id="tarballs">Data to support the default policy</h2>\n<p>The default policy accepts {accepted} of the '
-            f"{len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and live-bootstrap, "
-            f'and rejects {rejected:,}: <a href="seen-in.html#rejected">which, and why</a>. The page of a case '
-            "says how many of them have it.</p>\n"
+    return (f'<h2 id="tarballs">Data to support the default policy</h2>\n<p>The default policy accepts '
+            f"{accepted} of the {len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and "
+            f'live-bootstrap. See <a href="seen-in.html#rejected">the list of the {rejected:,} it rejects</a>, '
+            "and why.</p>\n"
             + table("tarballs", rows))
 
 
