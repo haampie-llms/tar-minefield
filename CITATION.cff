@@ -5,7 +5,7 @@ abstract: "Test cases for ambiguities in the tar format, what implementations ma
 type: software
 authors:
   - family-names: Stoppels
-    given-names: Harmen
+    given-names: Harmen Taeke
     orcid: "https://orcid.org/0009-0001-5266-9502"
 license: MIT
 repository-code: "https://github.com/haampie/tar-minefield"
