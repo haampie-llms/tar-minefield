@@ -76,6 +76,9 @@ svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
 dt { font-weight: 600; }
 .note { color: #59636e; font-size: 0.875em; }
+/* The link to a section, next to its heading when it is hovered */
+.anchor { margin-left: 0.375rem; color: #8c959f; text-decoration: none; visibility: hidden; }
+h2:hover .anchor, h3:hover .anchor, .anchor:focus { visibility: visible; }
 /* The files of a case: its name as the link, what it is beside it, and the archive's sha256 under
    that, muted and without the background of code */
 table.files { width: auto; table-layout: auto; margin: 0; }
@@ -185,7 +188,33 @@ TITLE = "Tar file extraction test suite"
 EXAMPLES = 8
 
 
+def anchored(body):
+    """Every heading of a section with an id, its own or one made of its text, and a link to it
+    that shows when the heading is hovered, so that a section can be linked to."""
+    ids = set(re.findall(r'id="([^"]+)"', body))
+
+    def heading(m):
+        tag, attrs, text = m.groups()
+        own = re.search(r'id="([^"]+)"', attrs)
+        if own:
+            anchor = own.group(1)
+        else:
+            words = html.unescape(re.sub(r"<[^>]+>", "", text)).lower()
+            base = re.sub(r"[^a-z0-9]+", "-", words).strip("-")
+            anchor, n = base or "section", 1
+            while anchor in ids:
+                n += 1
+                anchor = f"{base}-{n}"
+            ids.add(anchor)
+            attrs += f' id="{anchor}"'
+        return (f'<{tag}{attrs}>{text}<a class="anchor" href="#{anchor}" '
+                f'aria-label="Link to this section">¶</a></{tag}>')
+
+    return re.sub(r"<(h[23])((?: [^>]*)?)>(.*?)</\1>", heading, body, flags=re.S)
+
+
 def page(title, description, body):
+    body = anchored(body)
     return (
         '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
