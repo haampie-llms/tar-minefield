@@ -7,6 +7,8 @@ authors:
   - family-names: Stoppels
     given-names: Harmen Taeke
     orcid: "https://orcid.org/0009-0001-5266-9502"
+  - family-names: Woodruff
+    given-names: William
 doi: 10.5281/zenodo.23617964
 license: MIT
 repository-code: "https://github.com/haampie/tar-minefield"
