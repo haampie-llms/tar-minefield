@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F11 magic-odd-version · Tar file extraction test suite</title>
 <meta name="description" content="The POSIX magic with a version that is neither 00 nor NULs.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F10.html">F10 extended-pax-size-before-gnu-long</a> · next: <a href="F12.html">F12 number-size-gap</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F11-magic-odd-version.tar">Test archive</a>: <code>F11-magic-odd-version.tar</code>,
-2,048 bytes<br>sha256 <code class="hash">6fd234af5e4d11f471ef666bc44e214a2e777e77c571f7066b751a348cdd3a4b</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F11-magic-odd-version.json">Expected result</a>: <code>F11-magic-odd-version.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F11-magic-odd-version.txt">Annotated blocks</a>: <code>F11-magic-odd-version.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F11-magic-odd-version.py">Generator script</a>: <code>F11-magic-odd-version.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F11-magic-odd-version.tar"><code>F11-magic-odd-version.tar</code></a></td>
+<td>test archive, 2,048 bytes
+<code class="hash">sha256 6fd234af5e4d11f471ef666bc44e214a2e777e77c571f7066b751a348cdd3a4b</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F11-magic-odd-version.json"><code>F11-magic-odd-version.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F11-magic-odd-version.txt"><code>F11-magic-odd-version.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F11-magic-odd-version.py"><code>F11-magic-odd-version.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p><code>ustar\0</code> is followed by the version <code>01</code>. Depending on the implementation, the header is read as ustar or as some other format, and its prefix field and other fields accordingly. The default policy accepts only the version <code>00</code>, and NULs as some Java archivers write.</p>

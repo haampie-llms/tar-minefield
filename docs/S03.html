@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>S03 hardlink-missing-target · Tar file extraction test suite</title>
 <meta name="description" content="A hardlink to a member that is not in the archive.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="K03.html">K03 symlink-trailing-slash</a> · next: <a href="S04.html">S04 hardlink-to-itself</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S03-hardlink-missing-target.tar">Test archive</a>: <code>S03-hardlink-missing-target.tar</code>,
-1,536 bytes<br>sha256 <code class="hash">3ae5def1b0b0062b91fbb67f5340492a6c840573b85f4c371e69e1ea23557ca3</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S03-hardlink-missing-target.json">Expected result</a>: <code>S03-hardlink-missing-target.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S03-hardlink-missing-target.txt">Annotated blocks</a>: <code>S03-hardlink-missing-target.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S03-hardlink-missing-target.py">Generator script</a>: <code>S03-hardlink-missing-target.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S03-hardlink-missing-target.tar"><code>S03-hardlink-missing-target.tar</code></a></td>
+<td>test archive, 1,536 bytes
+<code class="hash">sha256 3ae5def1b0b0062b91fbb67f5340492a6c840573b85f4c371e69e1ea23557ca3</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S03-hardlink-missing-target.json"><code>S03-hardlink-missing-target.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S03-hardlink-missing-target.txt"><code>S03-hardlink-missing-target.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S03-hardlink-missing-target.py"><code>S03-hardlink-missing-target.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p><code>h</code> is a hardlink to <code>missing</code>. Depending on the implementation, extraction fails, the link is skipped, or it links to a file of that name that already exists where it extracts.</p>

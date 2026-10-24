@@ -13,8 +13,19 @@ td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
 svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
 dt { font-weight: 600; }
-dd ul { margin: 0; padding: 0; list-style: none; }
-.hash { word-break: break-all; }
+/* The files of a case: its name as the link, what it is beside it, and the archive's sha256 under
+   that, muted, without the background of code, and selected whole by a click */
+table.files { width: auto; table-layout: auto; margin: 0; }
+table.files td { border: 0; padding: 0 1rem 0.125rem 0; }
+table.files code { background: none; padding: 0; }
+table.files td:first-child { white-space: nowrap; }
+@media (max-width: 40rem) {
+  dd { margin-left: 1rem; }
+  table.files, table.files tr, table.files td { display: block; }
+  table.files td + td { padding: 0 0 0.375rem 1rem; }
+}
+.hash { display: block; color: #59636e; font-size: 0.8125em; word-break: break-all;
+        user-select: all; }
 /* The verdict of a case, as a solid badge and in words: unlike the pale cells of the matrix, whose
    colours are outcomes */
 .verdict { margin: 1rem 0; padding: 0.5rem 1rem; background: #f6f8fa; border-left: 6px solid;

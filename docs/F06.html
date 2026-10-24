@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F06 checksum-signed · Tar file extraction test suite</title>
 <meta name="description" content="A checksum that only matches as the signed sum of the header.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N07.html">N07 symlink-absolute</a> · next: <a href="F07.html">F07 end-archive-after</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F06-checksum-signed.tar">Test archive</a>: <code>F06-checksum-signed.tar</code>,
-2,048 bytes<br>sha256 <code class="hash">36eb1b481e145490f88239beef5d70dc5c60a83f87eb24e8a880a46bf954a264</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F06-checksum-signed.json">Expected result</a>: <code>F06-checksum-signed.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F06-checksum-signed.txt">Annotated blocks</a>: <code>F06-checksum-signed.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F06-checksum-signed.py">Generator script</a>: <code>F06-checksum-signed.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F06-checksum-signed.tar"><code>F06-checksum-signed.tar</code></a></td>
+<td>test archive, 2,048 bytes
+<code class="hash">sha256 36eb1b481e145490f88239beef5d70dc5c60a83f87eb24e8a880a46bf954a264</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F06-checksum-signed.json"><code>F06-checksum-signed.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F06-checksum-signed.txt"><code>F06-checksum-signed.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F06-checksum-signed.py"><code>F06-checksum-signed.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p>POSIX sums the bytes of a header as unsigned numbers; some old tars summed them as signed, and implementations still accept either. With a byte over 127 in the header, here in <code>uname</code>, the two sums differ, so an implementation that accepts only the unsigned one rejects the header.</p>

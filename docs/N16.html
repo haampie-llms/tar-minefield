@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N16 name-dotdot · Tar file extraction test suite</title>
 <meta name="description" content=".. in a name, which climbs out of the directory the archive is extracted to.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N15.html">N15 name-control-character</a> · next: <a href="N17.html">N17 name-empty</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N16-name-dotdot.tar">Test archive</a>: <code>N16-name-dotdot.tar</code>,
-2,048 bytes<br>sha256 <code class="hash">b2e00a616ca5350ef2ffa84fd48c021f035ca8483b171b37658ac7ffb8ab3a63</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N16-name-dotdot.json">Expected result</a>: <code>N16-name-dotdot.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N16-name-dotdot.txt">Annotated blocks</a>: <code>N16-name-dotdot.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N16-name-dotdot.py">Generator script</a>: <code>N16-name-dotdot.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N16-name-dotdot.tar"><code>N16-name-dotdot.tar</code></a></td>
+<td>test archive, 2,048 bytes
+<code class="hash">sha256 b2e00a616ca5350ef2ffa84fd48c021f035ca8483b171b37658ac7ffb8ab3a63</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N16-name-dotdot.json"><code>N16-name-dotdot.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N16-name-dotdot.txt"><code>N16-name-dotdot.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N16-name-dotdot.py"><code>N16-name-dotdot.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p>The name <code>tar-minefield/../../tar-minefield-escaped</code> resolves to a path outside the destination. Depending on the extractor, the member is refused, its name is rewritten, or it is written where it points. The file is harmless: its name and contents say what happened.</p>

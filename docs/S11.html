@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>S11 tree-through-symlink · Tar file extraction test suite</title>
 <meta name="description" content="A member written through a symlink, which points out of the destination.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="S10.html">S10 tree-symlink-then-file</a> · next: <a href="S12.html">S12 tree-under-file</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S11-tree-through-symlink.tar">Test archive</a>: <code>S11-tree-through-symlink.tar</code>,
-2,560 bytes<br>sha256 <code class="hash">b03ee2bd4c432198f3a475a002ac54fc3013428a1d91afeb390924863ec4f9c4</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S11-tree-through-symlink.json">Expected result</a>: <code>S11-tree-through-symlink.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S11-tree-through-symlink.txt">Annotated blocks</a>: <code>S11-tree-through-symlink.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S11-tree-through-symlink.py">Generator script</a>: <code>S11-tree-through-symlink.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S11-tree-through-symlink.tar"><code>S11-tree-through-symlink.tar</code></a></td>
+<td>test archive, 2,560 bytes
+<code class="hash">sha256 b03ee2bd4c432198f3a475a002ac54fc3013428a1d91afeb390924863ec4f9c4</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S11-tree-through-symlink.json"><code>S11-tree-through-symlink.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S11-tree-through-symlink.txt"><code>S11-tree-through-symlink.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S11-tree-through-symlink.py"><code>S11-tree-through-symlink.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p><code>d</code> is a symlink to <code>..</code>, then <code>d/tar-minefield-through-symlink</code> is a file. An implementation that follows the link writes the file in the parent of the destination. The file is harmless.</p>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N19 pax-nul-in-path · Tar file extraction test suite</title>
 <meta name="description" content="A NUL inside a pax path.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N18.html">N18 name-not-utf8</a> · next: <a href="N20.html">N20 pax-repeated-key</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N19-pax-nul-in-path.tar">Test archive</a>: <code>N19-pax-nul-in-path.tar</code>,
-3,072 bytes<br>sha256 <code class="hash">e8666f6973eb447303691a31b5ca4eeeb37e652ef66f9c9b1f72957ad6d583b3</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N19-pax-nul-in-path.json">Expected result</a>: <code>N19-pax-nul-in-path.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N19-pax-nul-in-path.txt">Annotated blocks</a>: <code>N19-pax-nul-in-path.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N19-pax-nul-in-path.py">Generator script</a>: <code>N19-pax-nul-in-path.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N19-pax-nul-in-path.tar"><code>N19-pax-nul-in-path.tar</code></a></td>
+<td>test archive, 3,072 bytes
+<code class="hash">sha256 e8666f6973eb447303691a31b5ca4eeeb37e652ef66f9c9b1f72957ad6d583b3</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N19-pax-nul-in-path.json"><code>N19-pax-nul-in-path.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N19-pax-nul-in-path.txt"><code>N19-pax-nul-in-path.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N19-pax-nul-in-path.py"><code>N19-pax-nul-in-path.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p>The pax path is <code>a\0b</code>. C implementations end the name at the NUL and extract <code>a</code>; others keep the NUL, which no filesystem allows, and fail or replace it.</p>

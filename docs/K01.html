@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>K01 kind-trailing-slash-file · Tar file extraction test suite</title>
 <meta name="description" content="A regular file whose name ends in a slash: a file, or a directory?">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N21.html">N21 pax-global-path</a> · next: <a href="K02.html">K02 linkname-on-file</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>kind</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/K01-kind-trailing-slash-file.tar">Test archive</a>: <code>K01-kind-trailing-slash-file.tar</code>,
-1,536 bytes<br>sha256 <code class="hash">684d8fc9746382d2722e3a7be73c633de46d6cc3e8f1ecb6621cd76a2d48ceaf</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K01-kind-trailing-slash-file.json">Expected result</a>: <code>K01-kind-trailing-slash-file.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K01-kind-trailing-slash-file.txt">Annotated blocks</a>: <code>K01-kind-trailing-slash-file.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/K01-kind-trailing-slash-file.py">Generator script</a>: <code>K01-kind-trailing-slash-file.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/K01-kind-trailing-slash-file.tar"><code>K01-kind-trailing-slash-file.tar</code></a></td>
+<td>test archive, 1,536 bytes
+<code class="hash">sha256 684d8fc9746382d2722e3a7be73c633de46d6cc3e8f1ecb6621cd76a2d48ceaf</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K01-kind-trailing-slash-file.json"><code>K01-kind-trailing-slash-file.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K01-kind-trailing-slash-file.txt"><code>K01-kind-trailing-slash-file.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/K01-kind-trailing-slash-file.py"><code>K01-kind-trailing-slash-file.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p>The header says typeflag <code>0</code>, a regular file, of size 0, but the name is <code>a/</code>. v7 tar had no typeflag for directories, and wrote them like this, so implementations that keep that convention extract a directory <code>a</code>; implementations that follow the typeflag extract an empty file <code>a</code>, or fail to create a file with a trailing slash.</p>

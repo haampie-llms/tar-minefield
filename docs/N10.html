@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N10 format-star · Tar file extraction test suite</title>
 <meta name="description" content="star&#x27;s prefix field, which is shorter than ustar&#x27;s.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N09.html">N09 extended-two-pax-headers</a> · next: <a href="N11.html">N11 gnu-prefix-field</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N10-format-star.tar">Test archive</a>: <code>N10-format-star.tar</code>,
-2,048 bytes<br>sha256 <code class="hash">3164ddfd5ad0a84d54a2b27b1b2f88723105c184fa4705e672b6617cf2701e8e</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N10-format-star.json">Expected result</a>: <code>N10-format-star.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N10-format-star.txt">Annotated blocks</a>: <code>N10-format-star.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N10-format-star.py">Generator script</a>: <code>N10-format-star.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N10-format-star.tar"><code>N10-format-star.tar</code></a></td>
+<td>test archive, 2,048 bytes
+<code class="hash">sha256 3164ddfd5ad0a84d54a2b27b1b2f88723105c184fa4705e672b6617cf2701e8e</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N10-format-star.json"><code>N10-format-star.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N10-format-star.txt"><code>N10-format-star.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N10-format-star.py"><code>N10-format-star.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p>star writes <code>tar\0</code> at the end of the header, and uses only part of ustar&#x27;s prefix field for the prefix, with times after it. A ustar implementation reads the whole field as the prefix.</p>

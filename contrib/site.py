@@ -74,8 +74,19 @@ td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
 svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
 dt { font-weight: 600; }
-dd ul { margin: 0; padding: 0; list-style: none; }
-.hash { word-break: break-all; }
+/* The files of a case: its name as the link, what it is beside it, and the archive's sha256 under
+   that, muted, without the background of code, and selected whole by a click */
+table.files { width: auto; table-layout: auto; margin: 0; }
+table.files td { border: 0; padding: 0 1rem 0.125rem 0; }
+table.files code { background: none; padding: 0; }
+table.files td:first-child { white-space: nowrap; }
+@media (max-width: 40rem) {
+  dd { margin-left: 1rem; }
+  table.files, table.files tr, table.files td { display: block; }
+  table.files td + td { padding: 0 0 0.375rem 1rem; }
+}
+.hash { display: block; color: #59636e; font-size: 0.8125em; word-break: break-all;
+        user-select: all; }
 /* The verdict of a case, as a solid badge and in words: unlike the pale cells of the matrix, whose
    colours are outcomes */
 .verdict { margin: 1rem 0; padding: 0.5rem 1rem; background: #f6f8fa; border-left: 6px solid;
@@ -313,13 +324,14 @@ def case_page(case, info, previous, following, results, data):
 <dl>
 <dt>Category</dt><dd>{html.escape(category)}</dd>
 <dt>Default policy</dt><dd>{policy(info, features)}</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="{REPO}/raw/main/suite/archives/{case}.tar">Test archive</a>: <code>{case}.tar</code>,
-{len(archive):,} bytes<br>sha256 <code class="hash">{hashlib.sha256(archive).hexdigest()}</code></li>
-<li><a href="{files}/archives/{case}.json">Expected result</a>: <code>{case}.json</code></li>
-<li><a href="{files}/archives/{case}.txt">Annotated blocks</a>: <code>{case}.txt</code></li>
-<li><a href="{files}/cases/{case}.py">Generator script</a>: <code>{case}.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="{REPO}/raw/main/suite/archives/{case}.tar"><code>{case}.tar</code></a></td>
+<td>test archive, {len(archive):,} bytes
+<code class="hash">sha256 {hashlib.sha256(archive).hexdigest()}</code></td></tr>
+<tr><td><a href="{files}/archives/{case}.json"><code>{case}.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="{files}/archives/{case}.txt"><code>{case}.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="{files}/cases/{case}.py"><code>{case}.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 {paragraphs(doc.strip().split(chr(10), 1)[1])}

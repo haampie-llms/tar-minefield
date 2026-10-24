@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F03 end-lone-zero-block · Tar file extraction test suite</title>
 <meta name="description" content="An end-of-archive marker of one zero block, not two.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F02.html">F02 end-data-after</a> · next: <a href="F04.html">F04 end-missing</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>accepts <code>end.lone-zero-block</code>: the archive ends after a member, and its sha256 is pinned</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F03-end-lone-zero-block.tar">Test archive</a>: <code>F03-end-lone-zero-block.tar</code>,
-1,536 bytes<br>sha256 <code class="hash">52e2ac74f6686cc8b30703024fa4504c0d0fe6fa6b053a2b0b38f984a580fa80</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F03-end-lone-zero-block.json">Expected result</a>: <code>F03-end-lone-zero-block.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F03-end-lone-zero-block.txt">Annotated blocks</a>: <code>F03-end-lone-zero-block.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F03-end-lone-zero-block.py">Generator script</a>: <code>F03-end-lone-zero-block.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F03-end-lone-zero-block.tar"><code>F03-end-lone-zero-block.tar</code></a></td>
+<td>test archive, 1,536 bytes
+<code class="hash">sha256 52e2ac74f6686cc8b30703024fa4504c0d0fe6fa6b053a2b0b38f984a580fa80</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F03-end-lone-zero-block.json"><code>F03-end-lone-zero-block.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F03-end-lone-zero-block.txt"><code>F03-end-lone-zero-block.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F03-end-lone-zero-block.py"><code>F03-end-lone-zero-block.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p><strong>Seen in:</strong> eng-rus, srecord 1.64 and cdi2iso 0.1.</p>

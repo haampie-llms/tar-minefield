@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F14 pax-size-disagrees · Tar file extraction test suite</title>
 <meta name="description" content="A pax size that disagrees with the header&#x27;s size, which hides a header from one implementation.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F13.html">F13 pax-newline-in-path</a> · next: <a href="F15.html">F15 pax-size-on-dir</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F14-pax-size-disagrees.tar">Test archive</a>: <code>F14-pax-size-disagrees.tar</code>,
-3,072 bytes<br>sha256 <code class="hash">b175fc7f7d9961acf5b9b4d2d02e802fb4ec363ced3487cb7194798021854640</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F14-pax-size-disagrees.json">Expected result</a>: <code>F14-pax-size-disagrees.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F14-pax-size-disagrees.txt">Annotated blocks</a>: <code>F14-pax-size-disagrees.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F14-pax-size-disagrees.py">Generator script</a>: <code>F14-pax-size-disagrees.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F14-pax-size-disagrees.tar"><code>F14-pax-size-disagrees.tar</code></a></td>
+<td>test archive, 3,072 bytes
+<code class="hash">sha256 b175fc7f7d9961acf5b9b4d2d02e802fb4ec363ced3487cb7194798021854640</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F14-pax-size-disagrees.json"><code>F14-pax-size-disagrees.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F14-pax-size-disagrees.txt"><code>F14-pax-size-disagrees.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F14-pax-size-disagrees.py"><code>F14-pax-size-disagrees.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p>The header of <code>a</code> says size 512, and its pax extended header says <code>size=0</code>. An implementation that takes the pax size reads the next block as the header of another file, <code>smuggled</code>; an implementation that takes the header&#x27;s size, or does not know pax, reads that block as the data of <code>a</code>.</p>

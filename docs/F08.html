@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F08 end-truncated-in-member · Tar file extraction test suite</title>
 <meta name="description" content="An archive that ends inside the data of a member.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F07.html">F07 end-archive-after</a> · next: <a href="F09.html">F09 end-zero-block-then-member</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F08-end-truncated-in-member.tar">Test archive</a>: <code>F08-end-truncated-in-member.tar</code>,
-1,024 bytes<br>sha256 <code class="hash">35037d1ee6f615792e618cecf2ab53fa7864e5884d5d648340761968f3ad9378</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F08-end-truncated-in-member.json">Expected result</a>: <code>F08-end-truncated-in-member.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F08-end-truncated-in-member.txt">Annotated blocks</a>: <code>F08-end-truncated-in-member.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F08-end-truncated-in-member.py">Generator script</a>: <code>F08-end-truncated-in-member.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F08-end-truncated-in-member.tar"><code>F08-end-truncated-in-member.tar</code></a></td>
+<td>test archive, 1,024 bytes
+<code class="hash">sha256 35037d1ee6f615792e618cecf2ab53fa7864e5884d5d648340761968f3ad9378</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F08-end-truncated-in-member.json"><code>F08-end-truncated-in-member.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F08-end-truncated-in-member.txt"><code>F08-end-truncated-in-member.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F08-end-truncated-in-member.py"><code>F08-end-truncated-in-member.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p>The header of <code>a</code> says 1024 bytes, but the file ends after 512 of them. Depending on the implementation, the part it has is extracted, nothing is extracted, or extraction fails. Archives that are distributed are pinned by their sha256, so this archive is damaged, not ambiguous: it is rejected all the same.</p>

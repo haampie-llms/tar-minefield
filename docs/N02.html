@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N02 name-fills-field · Tar file extraction test suite</title>
 <meta name="description" content="A name of exactly 100 bytes, which fills the name field without a NUL.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N01.html">N01 gnu-long-name</a> · next: <a href="N03.html">N03 pax-long-name</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>accepts it, as it allows <code>name.fills-field</code>: a name of exactly 100 bytes, without NUL (to accept)</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N02-name-fills-field.tar">Test archive</a>: <code>N02-name-fills-field.tar</code>,
-2,048 bytes<br>sha256 <code class="hash">53376f248a90093bd1f4393072401a152aa6d124f46cb833e36e444a1869d7ca</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N02-name-fills-field.json">Expected result</a>: <code>N02-name-fills-field.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N02-name-fills-field.txt">Annotated blocks</a>: <code>N02-name-fills-field.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N02-name-fills-field.py">Generator script</a>: <code>N02-name-fills-field.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N02-name-fills-field.tar"><code>N02-name-fills-field.tar</code></a></td>
+<td>test archive, 2,048 bytes
+<code class="hash">sha256 53376f248a90093bd1f4393072401a152aa6d124f46cb833e36e444a1869d7ca</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N02-name-fills-field.json"><code>N02-name-fills-field.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N02-name-fills-field.txt"><code>N02-name-fills-field.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N02-name-fills-field.py"><code>N02-name-fills-field.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p><strong>Seen in:</strong> thousands of tarballs: see <code>name.fills-field</code> in contrib/data/STRICT.md.</p>

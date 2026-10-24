@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N09 extended-two-pax-headers · Tar file extraction test suite</title>
 <meta name="description" content="Two pax extended headers for one member, with different paths.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N08.html">N08 extended-pax-path-and-gnu-long-name</a> · next: <a href="N10.html">N10 format-star</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N09-extended-two-pax-headers.tar">Test archive</a>: <code>N09-extended-two-pax-headers.tar</code>,
-4,096 bytes<br>sha256 <code class="hash">15e50be7d39a87407c97e5793acd8ae5867909ef2368a21ae33e07ce40902ad7</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N09-extended-two-pax-headers.json">Expected result</a>: <code>N09-extended-two-pax-headers.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N09-extended-two-pax-headers.txt">Annotated blocks</a>: <code>N09-extended-two-pax-headers.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N09-extended-two-pax-headers.py">Generator script</a>: <code>N09-extended-two-pax-headers.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N09-extended-two-pax-headers.tar"><code>N09-extended-two-pax-headers.tar</code></a></td>
+<td>test archive, 4,096 bytes
+<code class="hash">sha256 15e50be7d39a87407c97e5793acd8ae5867909ef2368a21ae33e07ce40902ad7</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N09-extended-two-pax-headers.json"><code>N09-extended-two-pax-headers.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N09-extended-two-pax-headers.txt"><code>N09-extended-two-pax-headers.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N09-extended-two-pax-headers.py"><code>N09-extended-two-pax-headers.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p>Two <code>x</code> headers come before one member, with the paths <code>first</code> and <code>second</code>. Depending on the implementation, the first applies, the last, or the two are merged.</p>

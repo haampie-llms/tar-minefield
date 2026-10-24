@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F07 end-archive-after · Tar file extraction test suite</title>
 <meta name="description" content="Another archive after the end-of-archive marker.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F06.html">F06 checksum-signed</a> · next: <a href="F08.html">F08 end-truncated-in-member</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F07-end-archive-after.tar">Test archive</a>: <code>F07-end-archive-after.tar</code>,
-4,096 bytes<br>sha256 <code class="hash">89e620e0bee84d88c0125ab6e5eab3ee7dd67d16e7d5ab579ad12a9f6ae60260</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F07-end-archive-after.json">Expected result</a>: <code>F07-end-archive-after.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F07-end-archive-after.txt">Annotated blocks</a>: <code>F07-end-archive-after.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F07-end-archive-after.py">Generator script</a>: <code>F07-end-archive-after.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F07-end-archive-after.tar"><code>F07-end-archive-after.tar</code></a></td>
+<td>test archive, 4,096 bytes
+<code class="hash">sha256 89e620e0bee84d88c0125ab6e5eab3ee7dd67d16e7d5ab579ad12a9f6ae60260</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F07-end-archive-after.json"><code>F07-end-archive-after.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F07-end-archive-after.txt"><code>F07-end-archive-after.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F07-end-archive-after.py"><code>F07-end-archive-after.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p>The archive ends with two zero blocks, as it should, and is followed by a second archive with a file <code>hidden</code>. Implementations that stop at the marker extract <code>a</code>; those that read on, such as GNU tar with <code>--ignore-zeros</code>, also extract <code>hidden</code>.</p>

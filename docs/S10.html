@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>S10 tree-symlink-then-file · Tar file extraction test suite</title>
 <meta name="description" content="A symlink, then a file of the same name: replace the link, or write through it?">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="S09.html">S09 tree-duplicate-file-identical</a> · next: <a href="S11.html">S11 tree-through-symlink</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S10-tree-symlink-then-file.tar">Test archive</a>: <code>S10-tree-symlink-then-file.tar</code>,
-2,560 bytes<br>sha256 <code class="hash">2813ef1a93cab31248f8b0a5d3b0d626caaf3177296ec15741ffb48646983968</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S10-tree-symlink-then-file.json">Expected result</a>: <code>S10-tree-symlink-then-file.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S10-tree-symlink-then-file.txt">Annotated blocks</a>: <code>S10-tree-symlink-then-file.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S10-tree-symlink-then-file.py">Generator script</a>: <code>S10-tree-symlink-then-file.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S10-tree-symlink-then-file.tar"><code>S10-tree-symlink-then-file.tar</code></a></td>
+<td>test archive, 2,560 bytes
+<code class="hash">sha256 2813ef1a93cab31248f8b0a5d3b0d626caaf3177296ec15741ffb48646983968</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S10-tree-symlink-then-file.json"><code>S10-tree-symlink-then-file.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S10-tree-symlink-then-file.txt"><code>S10-tree-symlink-then-file.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S10-tree-symlink-then-file.py"><code>S10-tree-symlink-then-file.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p><code>a</code> is a symlink to <code>target</code>, then a file <code>a</code>. An implementation that replaces the link writes the file <code>a</code>; one that opens <code>a</code> for writing follows the link and writes <code>target</code> instead.</p>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N20 pax-repeated-key · Tar file extraction test suite</title>
 <meta name="description" content="One pax key twice in one extended header.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N19.html">N19 pax-nul-in-path</a> · next: <a href="N21.html">N21 pax-global-path</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N20-pax-repeated-key.tar">Test archive</a>: <code>N20-pax-repeated-key.tar</code>,
-3,072 bytes<br>sha256 <code class="hash">01bc9d13310228fe9e74c766904280803b4b14a9156eca5bc79bc7ffbea90b9b</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N20-pax-repeated-key.json">Expected result</a>: <code>N20-pax-repeated-key.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N20-pax-repeated-key.txt">Annotated blocks</a>: <code>N20-pax-repeated-key.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N20-pax-repeated-key.py">Generator script</a>: <code>N20-pax-repeated-key.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N20-pax-repeated-key.tar"><code>N20-pax-repeated-key.tar</code></a></td>
+<td>test archive, 3,072 bytes
+<code class="hash">sha256 01bc9d13310228fe9e74c766904280803b4b14a9156eca5bc79bc7ffbea90b9b</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N20-pax-repeated-key.json"><code>N20-pax-repeated-key.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N20-pax-repeated-key.txt"><code>N20-pax-repeated-key.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N20-pax-repeated-key.py"><code>N20-pax-repeated-key.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p>The extended header has the records <code>path=first</code> and <code>path=second</code>. Implementations that keep the first value and those that keep the last extract different names.</p>

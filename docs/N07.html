@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N07 symlink-absolute · Tar file extraction test suite</title>
 <meta name="description" content="A symlink to an absolute path, created as it is.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N06.html">N06 name-leading-dot-slash</a> · next: <a href="F06.html">F06 checksum-signed</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>accepts <code>symlink.absolute</code>: created as it is: writing through a symlink is rejected</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N07-symlink-absolute.tar">Test archive</a>: <code>N07-symlink-absolute.tar</code>,
-1,536 bytes<br>sha256 <code class="hash">418cdeb56437904ee9f3a860d431c905c2ea85a38ab44387fcd4a663a1f39c8e</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N07-symlink-absolute.json">Expected result</a>: <code>N07-symlink-absolute.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N07-symlink-absolute.txt">Annotated blocks</a>: <code>N07-symlink-absolute.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N07-symlink-absolute.py">Generator script</a>: <code>N07-symlink-absolute.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N07-symlink-absolute.tar"><code>N07-symlink-absolute.tar</code></a></td>
+<td>test archive, 1,536 bytes
+<code class="hash">sha256 418cdeb56437904ee9f3a860d431c905c2ea85a38ab44387fcd4a663a1f39c8e</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N07-symlink-absolute.json"><code>N07-symlink-absolute.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N07-symlink-absolute.txt"><code>N07-symlink-absolute.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N07-symlink-absolute.py"><code>N07-symlink-absolute.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p>The default policy creates the link, and rejects writing through any symlink. The target does not exist.</p>

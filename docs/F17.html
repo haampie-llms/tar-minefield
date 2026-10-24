@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F17 pax-global-comment · Tar file extraction test suite</title>
 <meta name="description" content="The global pax header with only a comment, as git archive writes it.">
-<link rel="stylesheet" href="style.css?2efe4a8b">
+<link rel="stylesheet" href="style.css?4e9ea08b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F01.html">F01 number-leading-space</a> · next: <a href="N01.html">N01 gnu-long-name</a></nav>
@@ -15,13 +15,14 @@
 <dl>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>accepts it</dd>
-<dt>Files</dt><dd><ul>
-<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F17-pax-global-comment.tar">Test archive</a>: <code>F17-pax-global-comment.tar</code>,
-3,584 bytes<br>sha256 <code class="hash">563afba5d146d45ae768240faac6f35b3b66d93bdda6b3c6094136af4d709839</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F17-pax-global-comment.json">Expected result</a>: <code>F17-pax-global-comment.json</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F17-pax-global-comment.txt">Annotated blocks</a>: <code>F17-pax-global-comment.txt</code></li>
-<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F17-pax-global-comment.py">Generator script</a>: <code>F17-pax-global-comment.py</code></li>
-</ul></dd>
+<dt>Files</dt><dd><table class="files">
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F17-pax-global-comment.tar"><code>F17-pax-global-comment.tar</code></a></td>
+<td>test archive, 3,584 bytes
+<code class="hash">sha256 563afba5d146d45ae768240faac6f35b3b66d93bdda6b3c6094136af4d709839</code></td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F17-pax-global-comment.json"><code>F17-pax-global-comment.json</code></a></td><td>expected result</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F17-pax-global-comment.txt"><code>F17-pax-global-comment.txt</code></a></td><td>annotated blocks</td></tr>
+<tr><td><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F17-pax-global-comment.py"><code>F17-pax-global-comment.py</code></a></td><td>generator script</td></tr>
+</table></dd>
 </dl>
 <h2>The case</h2>
 <p><code>git archive</code> starts every tarball with a global header whose only record is the commit, as a <code>comment</code>, which no implementation applies to the tree. GitHub&#x27;s release tarballs are made this way, so a strict parser that rejects global headers rejects most of them.</p>
