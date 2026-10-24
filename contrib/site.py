@@ -538,7 +538,7 @@ def index_page(cases, results, data):
             ident, name = matrix.label(case, info).split(" ", 1)
             features = features_of(case, info)
             k = sum(1 for r in union if any(f in r["features"] for f in features))
-            share = prevalence(k, len(union)) if features else "unknown"
+            share = prevalence(k, len(union)) if features else "not measured"
             rows.append(f'<tr><td><a href="{ident}.html"><code>{ident}</code></a></td>'
                         f"<td>{html.escape(name)}</td><td>{inline(info['description'])}</td>"
                         f"<td class=n>{share}</td></tr>")
