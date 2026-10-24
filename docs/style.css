@@ -13,6 +13,7 @@ td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
 svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
 dt { font-weight: 600; }
+.note { color: #59636e; font-size: 0.875em; }
 /* The files of a case: its name as the link, what it is beside it, and the archive's sha256 under
    that, muted and without the background of code */
 table.files { width: auto; table-layout: auto; margin: 0; }

@@ -75,6 +75,7 @@ td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
 svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
 dt { font-weight: 600; }
+.note { color: #59636e; font-size: 0.875em; }
 /* The files of a case: its name as the link, what it is beside it, and the archive's sha256 under
    that, muted and without the background of code */
 table.files { width: auto; table-layout: auto; margin: 0; }
@@ -559,11 +560,15 @@ common it is in source tarballs.</p>
 <div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["id"] + ".html")}</div>
 {tarballs_section(names, short, rated, union)}
 <h2 id="policy">Policy</h2>
-<p>This section defines the <em>default policy</em>, which accepts, tolerates or rejects each case
-below, based on data from the {len(union):,} distinct release tarballs of Spack, nixpkgs, Guix and
-live-bootstrap.</p>
+<p>This section defines the <em>default policy</em><sup><a href="#stricter">1</a></sup>, which
+accepts, tolerates or rejects each case below, based on data from the {len(union):,} distinct
+release tarballs of Spack, nixpkgs, Guix and live-bootstrap.</p>
 <p>The <em>prevalence</em> column is an estimate of the likelihood of encountering a case in
 practice, from a scan of these tarballs.</p>
+<p class="note" id="stricter"><sup>1</sup> A policy can be stricter and also reject the tolerated
+cases, at the cost of rejecting tarballs that are fairly common. That suits special-purpose tools,
+such as an extractor for a single ecosystem, where it can be checked against every tarball ever
+published there.</p>
 {chr(10).join(sections)}
 """
     intro = re.sub(r"<[^>]+>", "", readme_intro().split("</p>", 1)[0])
