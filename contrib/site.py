@@ -428,10 +428,20 @@ def index_page(cases, results, data):
                         + table("cases", rows))
     body = f"""<h1>{TITLE}</h1>
 {readme_intro()}
-<p>Each case has a permanent identifier, such as F15, whose letter is its level:
-<strong>F</strong> framing, <strong>N</strong> names, <strong>K</strong> kinds, <strong>S</strong>
-order and state, <strong>G</strong> global pax headers. A case's page shows its archive block by
-block, what every implementation makes of it, and how common it is in source tarballs.</p>
+<p>Each case has a permanent identifier, such as F15, whose letter is its level:</p>
+<ul>
+<li><strong>F</strong> framing: which members an archive has, from where each header and its data
+end.</li>
+<li><strong>N</strong> names: what path each member has, and what a link points to.</li>
+<li><strong>K</strong> kinds: what kind each member is, a file, a directory or a link, and whether
+a file is executable.</li>
+<li><strong>S</strong> order and state: how members combine into one tree, through duplicate paths
+and links.</li>
+<li><strong>G</strong> global pax headers: what a header that applies to every member after it
+does.</li>
+</ul>
+<p>A case's page shows its archive block by block, what every implementation makes of it, and how
+common it is in source tarballs.</p>
 <h2>What implementations make of every case</h2>
 <p>Click a case for its page; hover over a cell for the tree.</p>
 <div class="wide">{matrix.svg(results, cases, lambda case: cases[case]["id"] + ".html")}</div>
