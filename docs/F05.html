@@ -15,7 +15,7 @@
 <div class="verdict tolerate"><p><span class="badge">Tolerated</span> A strict parser may reject this archive. If it accepts it, it must extract this tree: <code>a</code> (2 B, 87428fc5).</p></div>
 <dl>
 <dt>Category</dt><dd>framing</dd>
-<dt>Default policy</dt><dd>accepts <code>magic.posix-with-odd-version</code>: if the version is NULs: <code>ustar\0\0\0</code></dd>
+<dt>Default policy</dt><dd>accepts <code>magic.posix-version-nuls</code>: as some Java archivers write it: <code>ustar\0\0\0</code></dd>
 <dt>Files</dt><dd><table class="files">
 <tr><td><a href="https://github.com/haampie/tar-minefield/raw/main/suite/archives/F05-magic-version-nuls.tar"><code>F05-magic-version-nuls.tar</code></a></td>
 <td>test archive, 2,048 bytes
@@ -226,7 +226,7 @@ Seen in: commons-lang 2.6, apache-solr 3.6.2 and commons-logging 1.2.
 <tr><td>live-bootstrap untar</td><td>mescc-tools-extra a151c245e512, built with cc</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>live-bootstrap untar, --non-strict</td><td>mescc-tools-extra a151c245e512, built with cc</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr></table>
 <h2 id="prevalence-in-source-tarballs">Prevalence in source tarballs<a class="anchor" href="#prevalence-in-source-tarballs" aria-label="Link to this section">¶</a></h2>
-<p>Release tarballs of Spack, nixpkgs, Guix and live-bootstrap with <code>magic.posix-with-odd-version</code>. The default policy accepts them.</p>
+<p>Release tarballs of Spack, nixpkgs, Guix and live-bootstrap with <code>magic.posix-version-nuls</code>. The default policy accepts them.</p>
 <table class="data"><colgroup><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"><col style="width: 25%"></colgroup><tr><th>ecosystem</th><th class=n>tarballs</th><th class=n>with it</th><th class=n>share</th></tr>
 <tr><td>guix</td><td class=n>10,168</td><td class=n>18</td><td class=n>0.18%</td></tr>
 <tr><td>live-bootstrap</td><td class=n>171</td><td class=n>0</td><td class=n>0.00%</td></tr>

@@ -490,7 +490,9 @@ class Scanner:
         else:
             fmt = "other"
             features.add("magic.other")
-        if fmt.startswith("posix-version"):
+        if fmt == "posix-version-0000":
+            features.add("magic.posix-version-nuls")
+        elif fmt.startswith("posix-version"):
             features.add("magic.posix-with-odd-version")
         if fmt == "posix" and block[508:512] == b"tar\0":
             fmt = "star"

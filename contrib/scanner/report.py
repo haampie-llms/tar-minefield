@@ -100,6 +100,27 @@ def dataset_name(path):
     return path
 
 
+def upgrade(r):
+    """A result of tarscan.py from before it told NULs as the version of the POSIX magic apart from
+    other versions, which it reported as one feature, with the features it reports now: the
+    fingerprint has the headers of each version."""
+    old = "magic.posix-with-odd-version"
+    if old not in r.get("features", {}) or r.get("fingerprint", {}).get("magic") is None:
+        return r
+    magic = r["fingerprint"]["magic"]
+    nuls = magic.get("posix-version-0000", 0)
+    odd = sum(n for m, n in magic.items() if m.startswith("posix-version-")) - nuls
+    features = {f: n for f, n in r["features"].items() if f != old}
+    examples = dict(r.get("examples") or {})
+    if nuls:
+        features["magic.posix-version-nuls"] = nuls
+        if not odd and old in examples:
+            examples["magic.posix-version-nuls"] = examples.pop(old)
+    if odd:
+        features[old] = odd
+    return dict(r, features=features, examples=examples)
+
+
 def load(paths):
     """The distinct tarballs of all results files, each with the datasets it is in; and the rows
     of each file."""
@@ -107,7 +128,7 @@ def load(paths):
     datasets = {}
     for path in paths:
         name = dataset_name(path)
-        datasets[name] = [json.loads(line) for line in open(path)]
+        datasets[name] = [upgrade(json.loads(line)) for line in open(path)]
         for r in datasets[name]:
             if r["sha256"] in union:
                 u = union[r["sha256"]]

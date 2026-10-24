@@ -47,7 +47,8 @@ STRICT = [
     ("number.size.*", "framing", "a size written in a way that implementations differ on"),
     ("number.chksum.*", "framing",
      "a checksum field written in a way that implementations differ on"),
-    ("magic.posix-with-odd-version", "framing", "POSIX magic with a version other than `00`"),
+    ("magic.posix-version-nuls", "framing", "POSIX magic with NULs as its version"),
+    ("magic.posix-with-odd-version", "framing", "POSIX magic with a version other than `00` or NULs"),
     ("magic.*", "framing", "a header that implementations may not recognize as one"),
     ("type.unknown-*", "framing", "an unknown typeflag: data or no data"),
     ("type.gnu-sparse", "framing", "GNU's old sparse files"),
@@ -160,7 +161,7 @@ DEFAULT = [
     ("end.lone-zero-block", "accept", "the archive ends after a member, and its sha256 is pinned"),
     ("end.data-after", "accept", "ignored: a header there is `end.archive-after`, rejected"),
     ("pax-global.after-members", "accept", "if every global header has only a `comment`"),
-    ("magic.posix-with-odd-version", "accept", "if the version is NULs: `ustar\\0\\0\\0`"),
+    ("magic.posix-version-nuls", "accept", "as some Java archivers write it: `ustar\\0\\0\\0`"),
     ("pax.newline-in-value.SCHILY.xattr.*", "accept", "xattrs are not extracted"),
     ("pax.newline-in-value.LIBARCHIVE.xattr.*", "accept", "xattrs are not extracted"),
 ]
@@ -216,9 +217,6 @@ def condition(feature, r):
     fingerprint = r.get("fingerprint", {})
     if feature == "pax-global.after-members":
         return set(fingerprint.get("pax_global_keys", {})) <= {"comment"}
-    if feature == "magic.posix-with-odd-version":
-        versions = {m for m in fingerprint.get("magic", {}) if m.startswith("posix-version-")}
-        return versions <= {"posix-version-0000"}
     return True
 
 

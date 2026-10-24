@@ -50,7 +50,7 @@
 Rejects 69 of 10199 (0.7%); 64 of 9705 latest versions (0.7%).
 
 | reason | tarballs | latest | origins | producers | examples |
-|---|---|---|---|---|---|
+|---|---:|---:|---|---|---|
 | Archive contains an invalid number b'…' | 31 | 31 | other 18, gnu 11, github-release 2 | none 31 | ocrad@0.29; wget@1.25.0; ddrescue@1.30 |
 | FileExistsError: [Errno N] File exists: '…' | 17 | 16 | other 15, pypi 1, github-release 1 | ustar 10, Python tarfile (pax) 4, git archive 3 | string-conversions@0.4.0.1; notmuch@0.40; multipart@0.2.1 |
 | Archive contains data after the end-of-archive marker | 11 | 10 | other 11 | posix-version-0000 9, v7 1, git archive 1 | tcp_wrappers_7.6@; commons-lang@2.6-src; xml-commons-resolver@1.2 |
@@ -62,7 +62,7 @@ Rejects 69 of 10199 (0.7%); 64 of 9705 latest versions (0.7%).
 Number of tarballs with each feature, of which latest versions; their origins, producers and median mtime years, and what untar did with them.
 
 | feature | tarballs | latest | origins | producers | years | untar rejects | examples |
-|---|---|---|---|---|---|---|---|
+|---|---:|---:|---|---|---|---:|---|
 | `type.nul` | 878 | 833 | other 608, gnu 146, github-release 110 | v7 867, GNU format 11 | 1970–2026 | 1 | libofa@0.9.3 `libofa-0.9.3/README`; libdvbpsi@1.3.3 `libdvbpsi-1.3.3/.auto/missing` |
 | `v7.bytes-after-linkname` | 693 | 656 | other 481, gnu 120, github-release 89 | v7 693 | 1970–2026 | 0 | libofa@0.9.3 `libofa-0.9.3/`; libdvbpsi@1.3.3 `libdvbpsi-1.3.3/` |
 | `name.fills-field` | 543 | 399 | other 343, pypi 82, github-release 52 | GNU format 199, Python tarfile (pax) 166, git archive 73 | 1970–2026 | 5 | dbus@1.16.2 `dbus-1.16.2/test/data/systemd-activation/com.example.SendDen`; qtserialbus-everywhere-src@6.12.0 `qtserialbus-everywhere-src-6.12.0/tests/auto/qcanuniqueiddes` |
@@ -79,7 +79,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 | `number.gid.no-digits` | 23 | 23 | pypi 16, github-release 4, other 2 | GNU format 15, ustar 7, posix-version-0000 1 | 1970–2026 | 0 | voila-dashboards-widgets-manager8@0.5.8 `package/lib/index.js`; HDO.db_1.0.0@ `HDO.db/DESCRIPTION` |
 | `number.uid.no-digits` | 23 | 23 | pypi 16, github-release 4, other 2 | GNU format 15, ustar 7, posix-version-0000 1 | 1970–2026 | 0 | voila-dashboards-widgets-manager8@0.5.8 `package/lib/index.js`; HDO.db_1.0.0@ `HDO.db/DESCRIPTION` |
 | `platform.windows-invalid-character` | 22 | 21 | other 16, gnu 3, pypi 2 | GNU format 8, git archive 4, Python tarfile (pax) 4 | 2008–2026 | 1 | gv@3.7.4 `gv-3.7.4/src/nls/noint:de.dat`; notmuch@0.40 `notmuch-0.40/test/corpora/default/01:2,` |
-| `magic.posix-with-odd-version` | 18 | 15 | other 18 | posix-version-0000 18 | 2003–2022 | 13 | commons-lang@2.6-src `commons-lang-2.6-src/build.xml`; apache-solr@3.6.2-src `apache-solr-3.6.2/dev-tools/` |
+| `magic.posix-version-nuls` | 18 | 15 | other 18 | posix-version-0000 18 | 2003–2022 | 13 | commons-lang@2.6-src `commons-lang-2.6-src/build.xml`; apache-solr@3.6.2-src `apache-solr-3.6.2/dev-tools/` |
 | `number.uid.base256` | 18 | 18 | pypi 9, other 4, cpan 2 | GNU format 16, libarchive (pax) 2 | 2011–2026 | 0 | clint@0.5.1 `clint-0.5.1/`; Number-Compare@0.03 `Number-Compare-0.03/` |
 | `platform.windows-reserved-name` | 18 | 13 | other 16, gnu 2 | GNU format 7, git archive 5, ustar 2 | 2002–2026 | 0 | pies@1.8 `pies-1.8/tests/aux/`; rakarrack@0.6.1 `rakarrack-0.6.1/doc/help/imagenes/con.jpg` |
 | `tree.duplicate.file-file` | 17 | 16 | other 15, pypi 1, github-release 1 | ustar 10, Python tarfile (pax) 4, git archive 3 | 2001–2026 | 17 | string-conversions@0.4.0.1 `string-conversions-0.4.0.1/src/Data/String/Conversions.hs`; notmuch@0.40 `notmuch-0.40/version.txt` |

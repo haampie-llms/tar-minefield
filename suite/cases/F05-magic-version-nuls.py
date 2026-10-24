@@ -7,7 +7,7 @@ F = lambda path, contents: {"path": path, "kind": "file", "contents": contents, 
 
 VERDICT = "tolerate"
 ID = "F05"
-FEATURES = ['magic.posix-with-odd-version']
+FEATURES = ['magic.posix-version-nuls']
 TREE = [F('a', b'a\n')]
 
 

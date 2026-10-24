@@ -121,7 +121,7 @@
 Rejects 47 of 37554 (0.1%); 13 of 7723 latest versions (0.2%).
 
 | reason | tarballs | latest | origins | producers | examples |
-|---|---|---|---|---|---|
+|---|---:|---:|---|---|---|
 | FileExistsError: [Errno N] File exists: '…' | 17 | 5 | other 11, github-release 3, pypi 3 | GNU format 8, ustar 7, posix-version-0000 1 | sundials@5.8.0; py-traitlets@5.3.0; antimony@2.0 |
 | Archive contains data after the end-of-archive marker | 12 | 6 | other 11, gnu 1 | posix-version-0000 7, v7 5 | fseq@1.84; jmol@14.8.0; maven@3.0.4 |
 | Archive is truncated | 12 | 1 | other 12 | ustar 12 | ruby@3.1.0; ruby@3.2.5; ruby@2.7.2 |
@@ -135,11 +135,11 @@ Rejects 47 of 37554 (0.1%); 13 of 7723 latest versions (0.2%).
 Number of tarballs with each feature, of which latest versions; their origins, producers and median mtime years, and what untar did with them.
 
 | feature | tarballs | latest | origins | producers | years | untar rejects | examples |
-|---|---|---|---|---|---|---|---|
-| `name.fills-field` | 6293 | 663 | github-archive 2721, other 1384, pypi 1132 | git archive 3582, GNU format 1155, Python tarfile (pax) 917 | 1970–2026 | 8 | aocl-da@5.3 `aocl-data-analytics-5.3/python_interface/tests/sklearnAPI/ra`; apptainer@1.1.7 `apptainer-1.1.7/vendor/github.com/containernetworking/plugin` |
-| `ustar.prefix` | 5459 | 639 | github-archive 3648, other 833, github-release 549 | git archive 4661, ustar 716, GNU tar (pax) 61 | 1980–2026 | 10 | acts-algebra-plugins@0.24.0 `partial_pivot_lud.hpp`; acts-algebra-plugins@0.26.0 `partial_pivot_lud.hpp` |
-| `type.nul` | 2297 | 479 | other 1410, github-release 454, gnu 316 | v7 2207, GNU format 90 | 1970–2026 | 6 | cppunit@1.15.1 `cppunit-1.15.1/compile`; jq@1.8.2 `jq-1.8.2/scripts/version` |
-| `v7.bytes-after-linkname` | 1938 | 357 | other 1252, github-release 381, gnu 281 | v7 1938 | 1970–2026 | 4 | cppunit@1.15.1 `cppunit-1.15.1/`; atompaw@4.2.0.1 `atompaw-4.2.0.1/` |
+|---|---:|---:|---|---|---|---:|---|
+| `name.fills-field` | 6,293 | 663 | github-archive 2721, other 1384, pypi 1132 | git archive 3582, GNU format 1155, Python tarfile (pax) 917 | 1970–2026 | 8 | aocl-da@5.3 `aocl-data-analytics-5.3/python_interface/tests/sklearnAPI/ra`; apptainer@1.1.7 `apptainer-1.1.7/vendor/github.com/containernetworking/plugin` |
+| `ustar.prefix` | 5,459 | 639 | github-archive 3648, other 833, github-release 549 | git archive 4661, ustar 716, GNU tar (pax) 61 | 1980–2026 | 10 | acts-algebra-plugins@0.24.0 `partial_pivot_lud.hpp`; acts-algebra-plugins@0.26.0 `partial_pivot_lud.hpp` |
+| `type.nul` | 2,297 | 479 | other 1410, github-release 454, gnu 316 | v7 2207, GNU format 90 | 1970–2026 | 6 | cppunit@1.15.1 `cppunit-1.15.1/compile`; jq@1.8.2 `jq-1.8.2/scripts/version` |
+| `v7.bytes-after-linkname` | 1,938 | 357 | other 1252, github-release 381, gnu 281 | v7 1938 | 1970–2026 | 4 | cppunit@1.15.1 `cppunit-1.15.1/`; atompaw@4.2.0.1 `atompaw-4.2.0.1/` |
 | `platform.case-collision` | 693 | 44 | other 488, github-release 106, github-archive 63 | git archive 441, GNU format 109, v7 73 | 1980–2026 | 0 | stow@2.4.1 `stow-2.4.1/doc/manual-split/Index.html`; mpich@5.0.2 `mpich-5.0.2/man/man3/MPI_Offset.3` |
 | `name.non-ascii` | 651 | 67 | github-archive 262, other 189, pypi 139 | git archive 330, GNU format 110, Python tarfile (pax) 104 | 2006–2026 | 0 | gcc@15.3.0 `gcc-15.3.0/gcc/testsuite/go.test/test/fixedbugs/issue27836.d`; boost@1.82.0 `boost_1_82_0/libs/wave/test/testwave/testfiles/utf8-test-ßµ™` |
 | `platform.windows-reserved-name` | 473 | 21 | other 353, github-release 78, github-archive 39 | git archive 320, GNU tar (pax) 73, GNU format 52 | 2003–2026 | 0 | collier@1.2.5 `COLLIER-1.2.5/src/Aux/`; collier@1.2.1 `COLLIER-1.2.1/src/Aux/` |
@@ -158,7 +158,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 | `number.uid.leading-space` | 56 | 16 | other 39, github-release 8, gnu 4 | posix-version-0000 33, v7 15, GNU format 8 | 1990–2020 | 13 | astyle@3.1 `astyle/`; perl-getopt-tabular@0.3 `Getopt-Tabular-0.3/` |
 | `tree.dir-after-contents` | 55 | 17 | other 24, github-release 13, cpan 11 | ustar 23, git archive 12, posix-version-0000 8 | 1970–2025 | 3 | perl-test-base@0.89 `Test-Base-0.89`; perl-bioperl@1.7.8 `BioPerl-1.7.8/lib/Bio/Search` |
 | `number.mode.leading-space` | 53 | 15 | other 36, github-release 8, gnu 4 | posix-version-0000 32, v7 13, GNU format 8 | 1990–2020 | 12 | astyle@3.1 `astyle/`; perl-getopt-tabular@0.3 `Getopt-Tabular-0.3/` |
-| `magic.posix-with-odd-version` | 33 | 10 | other 25, github-release 8 | posix-version-0000 33 | 2003–2020 | 11 | fseq@1.84 `fseq/README.txt`; jmol@14.8.0 `jmol-14.8.0/` |
+| `magic.posix-version-nuls` | 33 | 10 | other 25, github-release 8 | posix-version-0000 33 | 2003–2020 | 11 | fseq@1.84 `fseq/README.txt`; jmol@14.8.0 `jmol-14.8.0/` |
 | `name.not-nfc` | 25 | 0 | github-archive 19, pypi 6 | git archive 19, GNU format 6 | 2016–2019 | 0 | lmod@7.8.15 `Lmod-7.8.15/contrib/Presentations/Keynote_Lmod_SC14-Calcul_Q`; lmod@7.4.11 `Lmod-7.4.11/contrib/Presentations/Keynote_Lmod_SC14-Calcul_Q` |
 | `hardlink.to-itself` | 24 | 2 | other 24 | GNU format 24 | 2012–2021 | 0 | cudnn@8.0.3.33-10.2 `cuda/lib64/libcudnn_static.a`; cudnn@8.0.0.180-11.0 `cuda/lib64/libcudnn_static.a` |
 | `tree.duplicate.file-hardlink` | 24 | 2 | other 24 | GNU format 24 | 2012–2021 | 0 | cudnn@8.0.3.33-10.2 `cuda/lib64/libcudnn_static.a`; cudnn@8.0.0.180-11.0 `cuda/lib64/libcudnn_static.a` |

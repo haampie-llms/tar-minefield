@@ -5,7 +5,7 @@ read as ustar or as some other format, and its prefix field and other fields acc
 default policy accepts only the version `00`, and NULs as some Java archivers write.
 
 Decision point: which format the header is in.
-Seen in: only the version of NULs, as in commons-lang 2.6 and apache-solr 3.6.2.
+Seen in: no source tarball.
 """
 
 VERDICT = "reject"

@@ -37,7 +37,7 @@
 Rejects 100 of 19012 (0.5%); 94 of 17977 latest versions (0.5%).
 
 | reason | tarballs | latest | origins | producers | examples |
-|---|---|---|---|---|---|
+|---|---:|---:|---|---|---|
 | FileExistsError: [Errno N] File exists: '…' | 59 | 54 | other 57, pypi 1, github-release 1 | ustar 50, git archive 4, Python tarfile (pax) 4 | snap-loader-static@1.0.0.1; htn@0.1.0.0; shelly-extra@0.3.0.2 |
 | Archive contains an invalid number b'…' | 22 | 22 | gnu 10, github-release 7, other 5 | none 22 | ocrad@0.29; git-warp-time@1.0.0; wget@1.25.0 |
 | Archive is truncated | 9 | 8 | other 9 | ustar 4, GNU format 4, v7 1 | SDL2_ttf@2.24.0; SDL2_image@2.8.12; eng-rus@ |
@@ -50,7 +50,7 @@ Rejects 100 of 19012 (0.5%); 94 of 17977 latest versions (0.5%).
 Number of tarballs with each feature, of which latest versions; their origins, producers and median mtime years, and what untar did with them.
 
 | feature | tarballs | latest | origins | producers | years | untar rejects | examples |
-|---|---|---|---|---|---|---|---|
+|---|---:|---:|---|---|---|---:|---|
 | `name.dir-without-trailing-slash` | 817 | 765 | cpan 431, github-release 293, other 78 | ustar 784, GNU format 26, GNU tar (pax) 7 | 1970–2026 | 0 | Catalyst-DispatchType-Regex@5.90035 `Catalyst-DispatchType-Regex-5.90035`; Boost-Geometry-Utils@0.15 `Boost-Geometry-Utils-0.15` |
 | `name.fills-field` | 806 | 723 | other 368, pypi 351, github-release 64 | GNU format 311, Python tarfile (pax) 298, ustar 124 | 1970–2026 | 7 | google_cloud_workflows@1.24.0 `google_cloud_workflows-1.24.0/google/cloud/workflows/executi`; aliyun-python-sdk-drds@20210523.0.2 `aliyun-python-sdk-drds-20210523.0.2/aliyunsdkdrds/request/v2` |
 | `type.nul` | 774 | 744 | other 598, gnu 115, github-release 42 | v7 761, GNU format 13 | 1970–2026 | 4 | grep@3.12 `grep-3.12/.mailmap`; autoconf@2.69 `autoconf-2.69/THANKS` |
@@ -77,7 +77,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 | `linkname.no-nul` | 15 | 5 | other 14, github-release 1 | GNU format 13, Python tarfile (pax) 2 | 2023–2026 | 0 | ghc@9.12.4-src `ghc-9.12.4/libraries/Cabal/cabal-testsuite/PackageTests/Requ`; nextcloud@34.0.5 `nextcloud/apps/app_api/js/app_api-vendors-node_modules_nextc` |
 | `symlink.absolute` | 15 | 15 | other 14, github-release 1 | GNU format 9, ustar 2, git archive 2 | 2008–2026 | 1 | live.2026.01.12@ `live/testProgs/whiteroom.mp3`; imapsync@2.314 `imapsync-2.314/X/fullchain.pem` |
 | `tree.duplicate.dir-dir` | 11 | 11 | other 8, github-release 3 | git archive 8, ustar 3 | 2021–2026 | 2 | besu@24.1.2 `besu-24.1.2/./`; lightweight-testing@0.1 `lightweight-testing-0.1/./` |
-| `magic.posix-with-odd-version` | 9 | 7 | other 7, github-release 2 | posix-version-0000 9 | 2006–2026 | 2 | hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt`; bsf-bin@2.4.0 `bsf-2.4.0/` |
+| `magic.posix-version-nuls` | 9 | 7 | other 7, github-release 2 | posix-version-0000 9 | 2006–2026 | 2 | hadoop@3.4.2-src `hadoop-3.4.2-src/README.txt`; bsf-bin@2.4.0 `bsf-2.4.0/` |
 | `number.gid.no-terminator` | 9 | 9 | cpan 9 | ustar 9 | 2014–2022 | 0 | App-rainbarf@1.4 `App-rainbarf-1.4`; JSON-WebToken@0.10 `Build.PL` |
 | `number.uid.no-terminator` | 9 | 9 | cpan 9 | ustar 9 | 2014–2022 | 0 | App-rainbarf@1.4 `App-rainbarf-1.4`; JSON-WebToken@0.10 `Build.PL` |
 | `platform.windows-trailing-dot-or-space` | 9 | 8 | other 8, gnu 1 | Python tarfile (pax) 2, git archive 2, v7 2 | 2000–2026 | 0 | knot-resolver@5.7.9 `knot-resolver-5.7.9/tests/integration/deckard/sets/resolver/`; knot-resolver@6.5.1 `knot-resolver-6.5.1/tests/integration/deckard/sets/resolver/` |

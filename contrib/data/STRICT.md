@@ -71,7 +71,7 @@ The strict criteria that the default policy lets through, and how; it rejects al
 | `end.lone-zero-block` | accept | the archive ends after a member, and its sha256 is pinned | 5 |
 | `end.data-after` | accept | ignored: a header there is `end.archive-after`, rejected | 25 |
 | `pax-global.after-members` | accept | if every global header has only a `comment` | 82 |
-| `magic.posix-with-odd-version` | accept | if the version is NULs: `ustar\0\0\0` | 60 |
+| `magic.posix-version-nuls` | accept | as some Java archivers write it: `ustar\0\0\0` | 60 |
 | `pax.newline-in-value.SCHILY.xattr.*` | accept | xattrs are not extracted | 12 |
 | `pax.newline-in-value.LIBARCHIVE.xattr.*` | accept | xattrs are not extracted | 0 |
 
@@ -82,7 +82,7 @@ Tarballs that each criterion rejects, per ecosystem. Default: what the default p
 | category | criterion | default | guix | live-bootstrap | nix | spack | alone | examples |
 |---|---|---|---:|---:|---:|---:|---:|---|
 | framing | `pax-global.after-members`: a global header after the first member | accept | 6 (0.06%) | 0 | 7 (0.04%) | 71 (0.19%) | 81 | rpm@4.20.1, x42-plugins@20230701, openmp@14.0.6.src |
-| framing | `magic.posix-with-odd-version`: POSIX magic with a version other than `00` | accept | 18 (0.18%) | 0 | 9 (0.05%) | 33 (0.09%) | 34 | commons-lang@2.6-src, apache-solr@3.6.2-src, commons-logging@1.2-src |
+| framing | `magic.posix-version-nuls`: POSIX magic with NULs as its version | accept | 18 (0.18%) | 0 | 9 (0.05%) | 33 (0.09%) | 34 | commons-lang@2.6-src, apache-solr@3.6.2-src, commons-logging@1.2-src |
 | framing | `end.data-after`: data other than zeros after the end-of-archive marker | accept | 10 (0.10%) | 0 | 8 (0.04%) | 8 (0.02%) | 5 | tcp_wrappers_7.6, commons-lang@2.6-src, xml-commons-resolver@1.2 |
 | framing | `end.missing`: no end-of-archive marker | accept | 6 (0.06%) | 0 | 4 (0.02%) | 12 (0.03%) | 22 | SDL2_image@2.8.8, ruby@4.0.5, fastcap@2.0-18Sep92 |
 | framing | `pax.newline-in-value.SCHILY.xattr.*`: a newline in a pax value, where implementations split lines | accept | 2 (0.02%) | 0 | 7 (0.04%) | 5 (0.01%) | 12 | qd@2.3.24, libjwt@1.17.2, Minion@10.31 |
