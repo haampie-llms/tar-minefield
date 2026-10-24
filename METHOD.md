@@ -59,7 +59,8 @@ strict about every field that shapes the tree and lenient about everything else.
 
 An archive is ambiguous if two implementations, each following a defensible reading of POSIX, the
 GNU tar documentation or long-standing practice, produce different trees from it. For each case we
-name the *decision point*: the place in an implementation where two reasonable choices exist.
+name the *decision point*: the place in an implementation where implementations make different
+choices. The verdict of the case says which of them a strict parser makes.
 
 Ambiguities fall into four categories, by what they change in the tree:
 

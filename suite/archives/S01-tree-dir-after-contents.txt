@@ -1,4 +1,4 @@
-S01-tree-dir-after-contents: to accept
+S01-tree-dir-after-contents: must accept, and extract its tree
 
 A directory after its contents.
 

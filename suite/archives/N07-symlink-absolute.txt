@@ -1,4 +1,4 @@
-N07-symlink-absolute: tolerated: a strict parser may reject it, the default policy accepts it
+N07-symlink-absolute: tolerated: a strict parser may reject it; if it accepts it, it must extract its tree, and the default policy accepts it
 
 A symlink to an absolute path, created as it is.
 

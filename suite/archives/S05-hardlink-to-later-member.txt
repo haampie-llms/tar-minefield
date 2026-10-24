@@ -1,4 +1,4 @@
-S05-hardlink-to-later-member: to reject
+S05-hardlink-to-later-member: must reject: implementations disagree on its tree
 
 A hardlink to a member that comes later.
 

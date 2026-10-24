@@ -1,4 +1,4 @@
-N11-gnu-prefix-field: to reject
+N11-gnu-prefix-field: must reject: implementations disagree on its tree
 
 The prefix field of a header with GNU magic, which GNU tar uses for times.
 

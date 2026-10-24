@@ -1,4 +1,4 @@
-F09-end-zero-block-then-member: to reject
+F09-end-zero-block-then-member: must reject: implementations disagree on its tree
 
 A zero block, then another member: the end of the archive, or not?
 

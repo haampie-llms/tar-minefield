@@ -1,4 +1,4 @@
-N02-name-fills-field: to accept
+N02-name-fills-field: must accept, and extract its tree
 
 A name of exactly 100 bytes, which fills the name field without a NUL.
 

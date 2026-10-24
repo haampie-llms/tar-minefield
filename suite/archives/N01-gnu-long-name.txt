@@ -1,4 +1,4 @@
-N01-gnu-long-name: to accept
+N01-gnu-long-name: must accept, and extract its tree
 
 A name over 100 bytes, in a GNU long name.
 

@@ -1,4 +1,4 @@
-N03-pax-long-name: to accept
+N03-pax-long-name: must accept, and extract its tree
 
 A name over 100 bytes, in a pax `path`.
 

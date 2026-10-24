@@ -1,4 +1,4 @@
-N15-name-control-character: to reject
+N15-name-control-character: must reject: implementations disagree on its tree
 
 A control character in a name, here a newline.
 

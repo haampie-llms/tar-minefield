@@ -1,4 +1,4 @@
-N05-name-dot: tolerated: a strict parser may reject it, the default policy accepts it
+N05-name-dot: tolerated: a strict parser may reject it; if it accepts it, it must extract its tree, and the default policy accepts it
 
 A member named `./`, the root of the tree, as `tar cf x.tar .` writes first.
 

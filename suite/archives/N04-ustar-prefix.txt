@@ -1,4 +1,4 @@
-N04-ustar-prefix: to accept
+N04-ustar-prefix: must accept, and extract its tree
 
 A long name split between the ustar prefix and name fields.
 

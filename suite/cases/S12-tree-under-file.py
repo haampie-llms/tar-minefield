@@ -1,7 +1,7 @@
 """A member under a file.
 
-`a` is a file, then `a/b` is a file in it. An implementation may fail, replace the file `a` with a
-directory, or skip `a/b`.
+`a` is a file, then `a/b` is a file in it. Depending on the implementation, extraction fails, the
+file `a` is replaced with a directory, or `a/b` is skipped.
 
 Decision point: whether a member under a file replaces it.
 Seen in: sendmail 8.18.2 and unclutter 8, where the file is a v7 directory named `a/`.

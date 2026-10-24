@@ -1,4 +1,4 @@
-S04-hardlink-to-itself: to reject
+S04-hardlink-to-itself: must reject: implementations disagree on its tree
 
 A hardlink to itself.
 

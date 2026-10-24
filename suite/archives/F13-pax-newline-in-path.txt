@@ -1,4 +1,4 @@
-F13-pax-newline-in-path: to reject
+F13-pax-newline-in-path: must reject: implementations disagree on its tree
 
 A newline in a pax `path`, where implementations that split records on lines see another record.
 

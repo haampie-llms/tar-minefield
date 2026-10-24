@@ -1,8 +1,8 @@
 """A global pax header between an extended header and its member.
 
-An `x` header, then a `g` header, then the member. An implementation may apply the extended header
-to the global header, which is the next header, or skip the global header and apply it to the
-member.
+An `x` header, then a `g` header, then the member. Depending on the implementation, the extended
+header applies to the global header, which is the next header, or the global header is skipped and
+the extended header applies to the member.
 
 Decision point: which header an extended header applies to.
 Seen in: no source tarball.

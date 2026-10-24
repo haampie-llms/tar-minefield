@@ -1,4 +1,4 @@
-F04-end-missing: tolerated: a strict parser may reject it, the default policy accepts it
+F04-end-missing: tolerated: a strict parser may reject it; if it accepts it, it must extract its tree, and the default policy accepts it
 
 No end-of-archive marker: the archive ends after a complete member.
 

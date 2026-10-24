@@ -1,4 +1,4 @@
-S09-tree-duplicate-file-identical: to reject
+S09-tree-duplicate-file-identical: must reject: implementations disagree on its tree
 
 The same file twice, with the same contents.
 

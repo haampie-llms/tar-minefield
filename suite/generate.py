@@ -24,8 +24,10 @@ from blocks import Archive, block_map  # noqa: E402
 
 CASES = os.path.join(HERE, "cases")
 ARCHIVES = os.path.join(HERE, "archives")
-VERDICTS = {"reject": "to reject", "accept": "to accept",
-            "tolerate": "tolerated: a strict parser may reject it, the default policy accepts it"}
+VERDICTS = {"reject": "must reject: implementations disagree on its tree",
+            "accept": "must accept, and extract its tree",
+            "tolerate": "tolerated: a strict parser may reject it; if it accepts it, it must extract its "
+                        "tree, and the default policy accepts it"}
 
 
 def load(path):

@@ -1,4 +1,4 @@
-F18-pax-global-comment-after-members: tolerated: a strict parser may reject it, the default policy accepts it
+F18-pax-global-comment-after-members: tolerated: a strict parser may reject it; if it accepts it, it must extract its tree, and the default policy accepts it
 
 A global pax header with only a `comment`, after the first member.
 

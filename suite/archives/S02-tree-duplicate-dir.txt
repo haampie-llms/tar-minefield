@@ -1,4 +1,4 @@
-S02-tree-duplicate-dir: to accept
+S02-tree-duplicate-dir: must accept, and extract its tree
 
 The same directory twice, as `tar cf x.tar d d/sub` writes.
 

@@ -1,4 +1,4 @@
-F02-end-data-after: tolerated: a strict parser may reject it, the default policy accepts it
+F02-end-data-after: tolerated: a strict parser may reject it; if it accepts it, it must extract its tree, and the default policy accepts it
 
 Data after the end-of-archive marker that is not a header, which is ignored.
 

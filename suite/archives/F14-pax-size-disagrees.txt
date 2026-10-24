@@ -1,4 +1,4 @@
-F14-pax-size-disagrees: to reject
+F14-pax-size-disagrees: must reject: implementations disagree on its tree
 
 A pax `size` that disagrees with the header's size, which hides a header from one implementation.
 
