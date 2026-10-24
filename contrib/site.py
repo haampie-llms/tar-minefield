@@ -207,8 +207,8 @@ def hexdump(data):
 
 
 def error_line(error):
-    """An error on one line, shortened."""
-    line = " ".join(error.split())
+    """An error on one line, shortened, with control characters such as a NUL escaped."""
+    line = "".join(c if c.isprintable() else f"\\x{ord(c):02x}" for c in " ".join(error.split()))
     return line if len(line) <= 200 else line[:199] + "…"
 
 
@@ -268,7 +268,7 @@ def data_section(ident, features, names, short, rated, union):
         + ("" if not k else f'<p>See <a href="seen-in.html#{ident}">'
            + (f"the list of the {j:,} it rejects" if mixed
               else f"the list of these {k:,} tarballs" if j or k <= EXAMPLES
-              else f"a list of {EXAMPLES} of these {k:,} tarballs")
+              else f"a sample of these {k:,} tarballs")
            + "</a>, with the sha256 of each and an example from it.</p>")
     )
 
@@ -474,13 +474,15 @@ def seen_page(cases, data):
         if not has or any(strict.criterion(f) in strict.default_rejects(r)
                           for r in has for f in features):
             continue
-        # a sample that does not depend on the order of the scans: by sha256, as a random key
+        # a sample that does not depend on the order of the scans: by sha256, as a random key,
+        # listed by name
         picks, seen = [], set()
         for r in sorted(has, key=lambda r: r["sha256"]):
             name = (r["package"], r["version"])
             if name not in seen and len(picks) < EXAMPLES:
                 seen.add(name)
                 picks.append(r)
+        picks.sort(key=lambda r: (r["package"].lower(), r["version"] or ""))
         rows = [seen_row(r, short, next((e[0] for f, e in (r.get("examples") or {}).items()
                                          if f in features and e), None)) for r in picks]
         ident, name = matrix.label(case, info).split(" ", 1)
@@ -498,9 +500,9 @@ one reason is listed under each.</p>
 {table("reasons", summary)}
 {chr(10).join(sections)}
 <h2 id="accepted">Accepted, with the feature of a case</h2>
-<p>For the cases whose tarballs the default policy accepts: up to {EXAMPLES} of them, of how many
-there are, those with the lowest sha256, which is a sample as good as random, and the same on
-every run.</p>
+<p>For the cases whose tarballs the default policy accepts: a sample of up to {EXAMPLES} of them,
+of how many there are, listed by name. The sample is those with the lowest sha256, which is as good
+as random, and the same on every run.</p>
 {chr(10).join(examples)}
 """
     return page(f"Seen in source tarballs · {TITLE}",
