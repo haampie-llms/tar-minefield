@@ -1,4 +1,4 @@
-"""A NUL inside a pax `path`.
+r"""A NUL inside a pax `path`.
 
 The pax path is `a\0b`. C implementations end the name at the NUL and extract `a`; others keep the
 NUL, which no filesystem allows, and fail or replace it.

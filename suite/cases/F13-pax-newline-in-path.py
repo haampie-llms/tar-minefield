@@ -1,4 +1,4 @@
-"""A newline in a pax `path`, where implementations that split records on lines see another record.
+r"""A newline in a pax `path`, where implementations that split records on lines see another record.
 
 pax records are delimited by their length, so a value may hold a newline. An implementation that
 splits the extended header on newlines instead sees the record end at it, and the rest as a record

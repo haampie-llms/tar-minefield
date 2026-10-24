@@ -1,4 +1,4 @@
-"""A control character in a name, here a newline.
+r"""A control character in a name, here a newline.
 
 The name `a\nb` is valid on Unix, but listings, manifests and scripts that read names line by line
 see two names. Implementations that escape or reject control characters disagree with those that

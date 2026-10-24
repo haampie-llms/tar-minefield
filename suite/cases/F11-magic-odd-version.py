@@ -1,4 +1,4 @@
-"""The POSIX magic with a version that is neither `00` nor NULs.
+r"""The POSIX magic with a version that is neither `00` nor NULs.
 
 The magic `ustar\0` is followed by the version `01`. Depending on the implementation, the header is
 read as ustar or as some other format, and its prefix field and other fields accordingly. The

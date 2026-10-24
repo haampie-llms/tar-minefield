@@ -1,4 +1,4 @@
-"""A name that is not UTF-8.
+r"""A name that is not UTF-8.
 
 The name `caf\xe9` is Latin-1. Depending on the implementation, the bytes are written as they are,
 or decoded as Latin-1 and written as `café` in UTF-8, or the byte is replaced, or extraction fails:

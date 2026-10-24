@@ -1,4 +1,4 @@
-"""star's prefix field, which is shorter than ustar's.
+r"""star's prefix field, which is shorter than ustar's.
 
 star writes `tar\0` at the end of the header, and uses only part of ustar's prefix field for the
 prefix, with times after it. A ustar implementation reads the whole field as the prefix.

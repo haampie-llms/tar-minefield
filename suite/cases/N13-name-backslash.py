@@ -1,7 +1,7 @@
-"""A backslash in a name: a character on Unix, a separator on Windows.
+r"""A backslash in a name: a character on Unix, a separator on Windows.
 
-The name `a\\b` is one file named with a backslash on Unix, and the file `b` in the directory `a` on
-Windows. With `..\\` the same rule lets a name climb out of the destination there.
+The name `a\b` is one file named with a backslash on Unix, and the file `b` in the directory `a` on
+Windows. With `..\` the same rule lets a name climb out of the destination there.
 
 Decision point: whether a backslash separates components.
 Seen in: texi2html 5.0 and gstreamer-docs 1.28.1.

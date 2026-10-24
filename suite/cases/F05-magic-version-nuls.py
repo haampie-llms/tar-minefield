@@ -1,4 +1,4 @@
-"""The POSIX magic with NULs for its version, `ustar\0\0\0`, as some Java archivers write.
+r"""The POSIX magic with NULs for its version, `ustar\0\0\0`, as some Java archivers write.
 
 Seen in: commons-lang 2.6, apache-solr 3.6.2 and commons-logging 1.2.
 """

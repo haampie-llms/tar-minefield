@@ -55,7 +55,7 @@ has the numbers per ecosystem.</p>
 <tr><td><a href="F02.html"><code>F02</code></a></td><td>end-data-after</td><td>Data after the end-of-archive marker that is not a header, which is ignored.</td><td class=n>0.04%</td></tr>
 <tr><td><a href="F03.html"><code>F03</code></a></td><td>end-lone-zero-block</td><td>An end-of-archive marker of one zero block, not two.</td><td class=n>&lt;0.01%</td></tr>
 <tr><td><a href="F04.html"><code>F04</code></a></td><td>end-missing</td><td>No end-of-archive marker: the archive ends after a complete member.</td><td class=n>0.04%</td></tr>
-<tr><td><a href="F05.html"><code>F05</code></a></td><td>magic-version-nuls</td><td>The POSIX magic with NULs for its version, <code>ustar   </code>, as some Java archivers write.</td><td class=n>0.10%</td></tr>
+<tr><td><a href="F05.html"><code>F05</code></a></td><td>magic-version-nuls</td><td>The POSIX magic with NULs for its version, <code>ustar\0\0\0</code>, as some Java archivers write.</td><td class=n>0.10%</td></tr>
 <tr><td><a href="F18.html"><code>F18</code></a></td><td>pax-global-comment-after-members</td><td>A global pax header with only a <code>comment</code>, after the first member.</td><td class=n>0.13%</td></tr>
 <tr><td><a href="N05.html"><code>N05</code></a></td><td>name-dot</td><td>A member named <code>./</code>, the root of the tree, as <code>tar cf x.tar .</code> writes first.</td><td class=n>0.07%</td></tr>
 <tr><td><a href="N06.html"><code>N06</code></a></td><td>name-leading-dot-slash</td><td>The name <code>./a</code>, which is the path <code>a</code>.</td><td class=n>0.33%</td></tr>
