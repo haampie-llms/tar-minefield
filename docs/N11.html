@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N11 gnu-prefix-field · Tar file extraction test suite</title>
 <meta name="description" content="The prefix field of a header with GNU magic, which GNU tar uses for times.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N10.html">N10 format-star</a> · next: <a href="N12.html">N12 name-absolute</a></nav>
 <h1><code>N11</code> gnu-prefix-field</h1>
 <p>The prefix field of a header with GNU magic, which GNU tar uses for times.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N11-gnu-prefix-field.tar">Archive</a>
-(<code>.tar</code>, 2,048 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N11-gnu-prefix-field.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N11-gnu-prefix-field.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N11-gnu-prefix-field.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N11-gnu-prefix-field.tar">Test archive</a>: <code>N11-gnu-prefix-field.tar</code>,
+2,048 bytes<br>sha256 <code class="hash">ab69942782ab1ef26e364a130c4dfcbc84f9df77ab3890343a4fad81b5b43c99</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N11-gnu-prefix-field.json">Expected result</a>: <code>N11-gnu-prefix-field.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N11-gnu-prefix-field.txt">Annotated blocks</a>: <code>N11-gnu-prefix-field.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N11-gnu-prefix-field.py">Generator script</a>: <code>N11-gnu-prefix-field.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p>GNU&#x27;s format has no prefix field: GNU tar writes the access and change times where ustar has its prefix. An implementation that reads the field as a prefix, as CPython&#x27;s tarfile did (gh-155629), puts the member under a directory named after the time.</p>

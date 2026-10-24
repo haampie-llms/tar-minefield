@@ -136,10 +136,10 @@ Order and state:
 Every case has one of three verdicts, which are the `n_`, `y_` and `i_` of Nicolas Seriot's
 JSONTestSuite:
 
-- **reject**: a strict parser rejects it.
-- **accept**: every implementation accepts it, and extracts the tree in its manifest.
+- **reject**: a strict parser must reject it.
+- **accept**: every implementation must accept it, and extract the tree in its manifest.
 - **tolerate**: ambiguous in principle, but common enough in real archives that rejecting it has
-  a real cost. A strict parser may reject it; if it accepts it, it extracts the tree in its
+  a real cost. A strict parser may reject it; if it accepts it, it must extract the tree in its
   manifest.
 
 The cases to accept are as important as the cases to reject: without them, an implementation

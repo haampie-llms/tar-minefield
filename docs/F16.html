@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F16 type-unknown · Tar file extraction test suite</title>
 <meta name="description" content="An unknown typeflag with a size: data, or no data?">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F15.html">F15 pax-size-on-dir</a> · next: <a href="F19.html">F19 pax-global-between-extended-and-member</a></nav>
 <h1><code>F16</code> type-unknown</h1>
 <p>An unknown typeflag with a size: data, or no data?</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F16-type-unknown.tar">Archive</a>
-(<code>.tar</code>, 2,048 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F16-type-unknown.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F16-type-unknown.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F16-type-unknown.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F16-type-unknown.tar">Test archive</a>: <code>F16-type-unknown.tar</code>,
+2,048 bytes<br>sha256 <code class="hash">55102ceba42d5005546725dd1e11f86922928f14479491ae55fed777c2dd342d</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F16-type-unknown.json">Expected result</a>: <code>F16-type-unknown.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F16-type-unknown.txt">Annotated blocks</a>: <code>F16-type-unknown.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F16-type-unknown.py">Generator script</a>: <code>F16-type-unknown.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p>POSIX says an implementation treats an unknown typeflag as a regular file, so its size is data. An implementation that skips members it does not know may skip only the header, and then read the data as the next header, here that of <code>smuggled</code>.</p>

@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N14 name-bytes-after-nul · Tar file extraction test suite</title>
 <meta name="description" content="Bytes after the NUL that ends a name.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N13.html">N13 name-backslash</a> · next: <a href="N15.html">N15 name-control-character</a></nav>
 <h1><code>N14</code> name-bytes-after-nul</h1>
 <p>Bytes after the NUL that ends a name.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N14-name-bytes-after-nul.tar">Archive</a>
-(<code>.tar</code>, 2,048 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N14-name-bytes-after-nul.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N14-name-bytes-after-nul.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N14-name-bytes-after-nul.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N14-name-bytes-after-nul.tar">Test archive</a>: <code>N14-name-bytes-after-nul.tar</code>,
+2,048 bytes<br>sha256 <code class="hash">11e15024fd56bc558f45a662a70ac3b6b5aef8b0be7a62128477a1cf6c110327</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N14-name-bytes-after-nul.json">Expected result</a>: <code>N14-name-bytes-after-nul.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N14-name-bytes-after-nul.txt">Annotated blocks</a>: <code>N14-name-bytes-after-nul.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N14-name-bytes-after-nul.py">Generator script</a>: <code>N14-name-bytes-after-nul.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p>The name field holds <code>a</code>, a NUL, and <code>b</code>. C implementations stop at the NUL and read <code>a</code>; an implementation that strips NULs from the end of the field reads <code>a\0b</code>, or <code>ab</code> once it drops the NUL.</p>

@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>K03 symlink-trailing-slash · Tar file extraction test suite</title>
 <meta name="description" content="A symlink whose name ends in a slash.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="K02.html">K02 linkname-on-file</a> · next: <a href="S03.html">S03 hardlink-missing-target</a></nav>
 <h1><code>K03</code> symlink-trailing-slash</h1>
 <p>A symlink whose name ends in a slash.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>kind</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/K03-symlink-trailing-slash.tar">Archive</a>
-(<code>.tar</code>, 2,048 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K03-symlink-trailing-slash.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K03-symlink-trailing-slash.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/K03-symlink-trailing-slash.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/K03-symlink-trailing-slash.tar">Test archive</a>: <code>K03-symlink-trailing-slash.tar</code>,
+2,048 bytes<br>sha256 <code class="hash">232e772087dcdf9541bec9abdf0380eae5f9fda63b17f6e43400982fd11595a8</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K03-symlink-trailing-slash.json">Expected result</a>: <code>K03-symlink-trailing-slash.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K03-symlink-trailing-slash.txt">Annotated blocks</a>: <code>K03-symlink-trailing-slash.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/K03-symlink-trailing-slash.py">Generator script</a>: <code>K03-symlink-trailing-slash.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p><code>link/</code> is a symlink to <code>target</code>. With the slash, the name refers to what the link points to, so an implementation may create the link <code>link</code>, write through it, or fail.</p>

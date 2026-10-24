@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F03 end-lone-zero-block · Tar file extraction test suite</title>
 <meta name="description" content="An end-of-archive marker of one zero block, not two.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F02.html">F02 end-data-after</a> · next: <a href="F04.html">F04 end-missing</a></nav>
 <h1><code>F03</code> end-lone-zero-block</h1>
 <p>An end-of-archive marker of one zero block, not two.</p>
+<div class="verdict tolerate"><p><span class="badge">Tolerated</span> A strict parser may reject this archive. If it accepts it, it must extract this tree: <code>a</code> (2 B, 87428fc5).</p></div>
 <dl>
-<dt>Verdict</dt><dd>tolerated: the default policy accepts it, and a strict parser may reject it</dd>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>accepts <code>end.lone-zero-block</code>: the archive ends after a member, and its sha256 is pinned</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F03-end-lone-zero-block.tar">Archive</a>
-(<code>.tar</code>, 1,536 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F03-end-lone-zero-block.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F03-end-lone-zero-block.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F03-end-lone-zero-block.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F03-end-lone-zero-block.tar">Test archive</a>: <code>F03-end-lone-zero-block.tar</code>,
+1,536 bytes<br>sha256 <code class="hash">52e2ac74f6686cc8b30703024fa4504c0d0fe6fa6b053a2b0b38f984a580fa80</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F03-end-lone-zero-block.json">Expected result</a>: <code>F03-end-lone-zero-block.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F03-end-lone-zero-block.txt">Annotated blocks</a>: <code>F03-end-lone-zero-block.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F03-end-lone-zero-block.py">Generator script</a>: <code>F03-end-lone-zero-block.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p><strong>Seen in:</strong> eng-rus, srecord 1.64 and cdi2iso 0.1.</p>
@@ -159,7 +161,6 @@ Seen in: eng-rus, srecord 1.64 and cdi2iso 0.1.
 000005f0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
 </pre>
 </details>
-<p>The tree that an implementation must extract: <code>a</code> (2 B, 87428fc5).</p>
 <h2>What implementations make of it</h2>
 <table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>

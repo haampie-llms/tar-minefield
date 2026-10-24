@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F10 extended-pax-size-before-gnu-long · Tar file extraction test suite</title>
 <meta name="description" content="A pax size followed by a GNU long name: which of them does the size apply to?">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F09.html">F09 end-zero-block-then-member</a> · next: <a href="F11.html">F11 magic-odd-version</a></nav>
 <h1><code>F10</code> extended-pax-size-before-gnu-long</h1>
 <p>A pax <code>size</code> followed by a GNU long name: which of them does the size apply to?</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F10-extended-pax-size-before-gnu-long.tar">Archive</a>
-(<code>.tar</code>, 4,096 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F10-extended-pax-size-before-gnu-long.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F10-extended-pax-size-before-gnu-long.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F10-extended-pax-size-before-gnu-long.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F10-extended-pax-size-before-gnu-long.tar">Test archive</a>: <code>F10-extended-pax-size-before-gnu-long.tar</code>,
+4,096 bytes<br>sha256 <code class="hash">400c7499baabca8c250839ab2e80a32003a983cdcb1be6eee1cd089d2fca3d02</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F10-extended-pax-size-before-gnu-long.json">Expected result</a>: <code>F10-extended-pax-size-before-gnu-long.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F10-extended-pax-size-before-gnu-long.txt">Annotated blocks</a>: <code>F10-extended-pax-size-before-gnu-long.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F10-extended-pax-size-before-gnu-long.py">Generator script</a>: <code>F10-extended-pax-size-before-gnu-long.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p>The pax header says <code>size=512</code> and is followed by a GNU long name header, then by the member. Implementations that apply the pax size to the next header, whatever it is, misread the long name; those that apply it to the member read one more block as its data, which here is the header of <code>smuggled</code>.</p>

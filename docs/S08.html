@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>S08 tree-duplicate-file-dir · Tar file extraction test suite</title>
 <meta name="description" content="A file, then a directory of the same name.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="S07.html">S07 tree-duplicate-file-differs</a> · next: <a href="S09.html">S09 tree-duplicate-file-identical</a></nav>
 <h1><code>S08</code> tree-duplicate-file-dir</h1>
 <p>A file, then a directory of the same name.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S08-tree-duplicate-file-dir.tar">Archive</a>
-(<code>.tar</code>, 2,560 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S08-tree-duplicate-file-dir.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S08-tree-duplicate-file-dir.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S08-tree-duplicate-file-dir.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S08-tree-duplicate-file-dir.tar">Test archive</a>: <code>S08-tree-duplicate-file-dir.tar</code>,
+2,560 bytes<br>sha256 <code class="hash">a4323b696607f63bf4367170201bd20a450389c585102ff5b83edd3e1b03b830</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S08-tree-duplicate-file-dir.json">Expected result</a>: <code>S08-tree-duplicate-file-dir.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S08-tree-duplicate-file-dir.txt">Annotated blocks</a>: <code>S08-tree-duplicate-file-dir.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S08-tree-duplicate-file-dir.py">Generator script</a>: <code>S08-tree-duplicate-file-dir.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p><code>a</code> is a file, then <code>a/</code> a directory. An implementation may replace the file with the directory, keep the file and fail on the directory, or keep the first.</p>

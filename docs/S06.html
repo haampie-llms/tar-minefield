@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>S06 hardlink-to-symlink · Tar file extraction test suite</title>
 <meta name="description" content="A hardlink to a symlink: a link to the symlink, or to its target?">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="S05.html">S05 hardlink-to-later-member</a> · next: <a href="S07.html">S07 tree-duplicate-file-differs</a></nav>
 <h1><code>S06</code> hardlink-to-symlink</h1>
 <p>A hardlink to a symlink: a link to the symlink, or to its target?</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S06-hardlink-to-symlink.tar">Archive</a>
-(<code>.tar</code>, 3,072 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S06-hardlink-to-symlink.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S06-hardlink-to-symlink.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S06-hardlink-to-symlink.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S06-hardlink-to-symlink.tar">Test archive</a>: <code>S06-hardlink-to-symlink.tar</code>,
+3,072 bytes<br>sha256 <code class="hash">57a7c320da71888e47ff245c0af011e3aee79202d41e7544f4ada7908036a732</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S06-hardlink-to-symlink.json">Expected result</a>: <code>S06-hardlink-to-symlink.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S06-hardlink-to-symlink.txt">Annotated blocks</a>: <code>S06-hardlink-to-symlink.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S06-hardlink-to-symlink.py">Generator script</a>: <code>S06-hardlink-to-symlink.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p><code>s</code> is a symlink to <code>f</code>, and <code>h</code> a hardlink to <code>s</code>. An implementation may link <code>h</code> to the symlink, making another symlink, or to the file it points to.</p>

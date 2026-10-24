@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>S04 hardlink-to-itself · Tar file extraction test suite</title>
 <meta name="description" content="A hardlink to itself.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="S03.html">S03 hardlink-missing-target</a> · next: <a href="S05.html">S05 hardlink-to-later-member</a></nav>
 <h1><code>S04</code> hardlink-to-itself</h1>
 <p>A hardlink to itself.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S04-hardlink-to-itself.tar">Archive</a>
-(<code>.tar</code>, 2,560 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S04-hardlink-to-itself.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S04-hardlink-to-itself.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S04-hardlink-to-itself.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S04-hardlink-to-itself.tar">Test archive</a>: <code>S04-hardlink-to-itself.tar</code>,
+2,560 bytes<br>sha256 <code class="hash">b165ffbc78a5b4a5974a44848ee420163b194195dc2bf14a2ef1eec5a1ff53b7</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S04-hardlink-to-itself.json">Expected result</a>: <code>S04-hardlink-to-itself.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S04-hardlink-to-itself.txt">Annotated blocks</a>: <code>S04-hardlink-to-itself.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S04-hardlink-to-itself.py">Generator script</a>: <code>S04-hardlink-to-itself.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p><code>a</code> is a file, then a hardlink <code>a</code> to <code>a</code>. An implementation that removes <code>a</code> before linking has nothing left to link to; one that sees the link is to the same path keeps the file.</p>

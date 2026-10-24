@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N04 ustar-prefix · Tar file extraction test suite</title>
 <meta name="description" content="A long name split between the ustar prefix and name fields.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N03.html">N03 pax-long-name</a> · next: <a href="S01.html">S01 tree-dir-after-contents</a></nav>
 <h1><code>N04</code> ustar-prefix</h1>
 <p>A long name split between the ustar prefix and name fields.</p>
+<div class="verdict accept"><p><span class="badge">Must accept</span> Every implementation must accept this archive, and extract this tree: <code>pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/</code>, <code>pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file</code> (9 B, 7dd9c6f9).</p></div>
 <dl>
-<dt>Verdict</dt><dd>to accept: every implementation must extract its tree</dd>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>accepts it, as it allows <code>ustar.prefix</code>: the ustar prefix field (to accept)</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N04-ustar-prefix.tar">Archive</a>
-(<code>.tar</code>, 2,048 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N04-ustar-prefix.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N04-ustar-prefix.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N04-ustar-prefix.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N04-ustar-prefix.tar">Test archive</a>: <code>N04-ustar-prefix.tar</code>,
+2,048 bytes<br>sha256 <code class="hash">e418814aeb3130fbd4c6c73816bee00233468f77e0561c254ab224ca44618fef</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N04-ustar-prefix.json">Expected result</a>: <code>N04-ustar-prefix.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N04-ustar-prefix.txt">Annotated blocks</a>: <code>N04-ustar-prefix.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N04-ustar-prefix.py">Generator script</a>: <code>N04-ustar-prefix.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p><strong>Seen in:</strong> thousands of tarballs: see <code>ustar.prefix</code> in contrib/data/STRICT.md.</p>
@@ -191,7 +193,6 @@ Seen in: thousands of tarballs: see `ustar.prefix` in contrib/data/STRICT.md.
 000007f0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
 </pre>
 </details>
-<p>The tree that an implementation must extract: <code>pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/</code>, <code>pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file</code> (9 B, 7dd9c6f9).</p>
 <h2>What implementations make of it</h2>
 <table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>

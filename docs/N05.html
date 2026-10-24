@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N05 name-dot · Tar file extraction test suite</title>
 <meta name="description" content="A member named ./, the root of the tree, as tar cf x.tar . writes first.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F18.html">F18 pax-global-comment-after-members</a> · next: <a href="N06.html">N06 name-leading-dot-slash</a></nav>
 <h1><code>N05</code> name-dot</h1>
 <p>A member named <code>./</code>, the root of the tree, as <code>tar cf x.tar .</code> writes first.</p>
+<div class="verdict tolerate"><p><span class="badge">Tolerated</span> A strict parser may reject this archive. If it accepts it, it must extract this tree: <code>a</code> (2 B, 87428fc5).</p></div>
 <dl>
-<dt>Verdict</dt><dd>tolerated: the default policy accepts it, and a strict parser may reject it</dd>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>normalizes <code>name.dot</code>: <code>.</code> is the root of the tree</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N05-name-dot.tar">Archive</a>
-(<code>.tar</code>, 2,560 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N05-name-dot.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N05-name-dot.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N05-name-dot.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N05-name-dot.tar">Test archive</a>: <code>N05-name-dot.tar</code>,
+2,560 bytes<br>sha256 <code class="hash">82c76d95fed70f2fcc801935bae5ed70662b6edf846091d0435e5a1e702a54d2</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N05-name-dot.json">Expected result</a>: <code>N05-name-dot.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N05-name-dot.txt">Annotated blocks</a>: <code>N05-name-dot.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N05-name-dot.py">Generator script</a>: <code>N05-name-dot.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p><strong>Seen in:</strong> guile 2.0.9 and others: see contrib/data/STRICT.md.</p>
@@ -241,7 +243,6 @@ Seen in: guile 2.0.9 and others: see contrib/data/STRICT.md.
 000009f0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
 </pre>
 </details>
-<p>The tree that an implementation must extract: <code>a</code> (2 B, 87428fc5).</p>
 <h2>What implementations make of it</h2>
 <table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>

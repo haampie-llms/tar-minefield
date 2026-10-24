@@ -13,3 +13,15 @@ td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
 svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
 dt { font-weight: 600; }
+dd ul { margin: 0; padding: 0; list-style: none; }
+.hash { word-break: break-all; }
+/* The verdict of a case, as a solid badge and in words: unlike the pale cells of the matrix, whose
+   colours are outcomes */
+.verdict { margin: 1rem 0; padding: 0.5rem 1rem; background: #f6f8fa; border-left: 6px solid;
+           overflow-wrap: anywhere; }
+.verdict p { margin: 0.25rem 0; }
+.badge { display: inline-block; margin-right: 0.5rem; padding: 0 0.5rem; border-radius: 4px;
+         color: #ffffff; font-weight: 700; }
+.accept { border-color: #1a7f37; } .accept .badge { background: #1a7f37; }
+.reject { border-color: #cf222e; } .reject .badge { background: #cf222e; }
+.tolerate { border-color: #59636e; } .tolerate .badge { background: #59636e; }

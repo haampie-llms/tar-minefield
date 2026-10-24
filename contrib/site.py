@@ -28,10 +28,14 @@ from report import load  # noqa: E402
 
 REPO = "https://github.com/haampie-llms/tar-minefield"
 CASES = os.path.join(matrix.ROOT, "suite", "cases")
+# The verdict at the top of a case's page: its badge, and what it requires, which for cases with a
+# tree ends with it
 VERDICTS = {
-    "accept": "to accept: every implementation must extract its tree",
-    "tolerate": "tolerated: the default policy accepts it, and a strict parser may reject it",
-    "reject": "to reject: implementations disagree on its tree",
+    "accept": ("Must accept", "Every implementation must accept this archive, and extract this tree: "),
+    "tolerate": ("Tolerated", "A strict parser may reject this archive. If it accepts it, it must "
+                 "extract this tree: "),
+    "reject": ("Must reject", "A strict parser must reject this archive: implementations disagree on "
+               "its tree."),
 }
 # Identifiers that a case no longer has, and the one it has now: the pages of the old ones redirect
 MOVED = {"G01": "F17", "G02": "F18", "G03": "F19", "G04": "N21"}
@@ -70,6 +74,18 @@ td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
 svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
 dt { font-weight: 600; }
+dd ul { margin: 0; padding: 0; list-style: none; }
+.hash { word-break: break-all; }
+/* The verdict of a case, as a solid badge and in words: unlike the pale cells of the matrix, whose
+   colours are outcomes */
+.verdict { margin: 1rem 0; padding: 0.5rem 1rem; background: #f6f8fa; border-left: 6px solid;
+           overflow-wrap: anywhere; }
+.verdict p { margin: 0.25rem 0; }
+.badge { display: inline-block; margin-right: 0.5rem; padding: 0 0.5rem; border-radius: 4px;
+         color: #ffffff; font-weight: 700; }
+.accept { border-color: #1a7f37; } .accept .badge { background: #1a7f37; }
+.reject { border-color: #cf222e; } .reject .badge { background: #cf222e; }
+.tolerate { border-color: #59636e; } .tolerate .badge { background: #59636e; }
 """
 
 
@@ -261,6 +277,17 @@ def implementations_section(case, info, results):
     return table("implementations", rows)
 
 
+def verdict(info):
+    """The verdict of a case, as a banner: what it requires, with the tree unless it is to reject."""
+    v = info["verdict"]
+    badge, text = VERDICTS[v]
+    if v != "reject":
+        text = html.escape(text) + inline(matrix.describe(matrix.expected_tree(info))) + "."
+    else:
+        text = html.escape(text)
+    return f'<div class="verdict {v}"><p><span class="badge">{badge}</span> {text}</p></div>'
+
+
 def case_page(case, info, previous, following, results, data):
     ident, name = matrix.label(case, info).split(" ", 1)
     with open(os.path.join(CASES, case + ".py")) as f:
@@ -282,15 +309,17 @@ def case_page(case, info, previous, following, results, data):
     body = f"""<nav>{" · ".join(nav)}</nav>
 <h1><code>{ident}</code> {html.escape(name)}</h1>
 <p>{inline(info["description"])}</p>
+{verdict(info)}
 <dl>
-<dt>Verdict</dt><dd>{VERDICTS[info["verdict"]]}</dd>
 <dt>Category</dt><dd>{html.escape(category)}</dd>
 <dt>Default policy</dt><dd>{policy(info, features)}</dd>
-<dt>Files</dt><dd><a href="{REPO}/raw/main/suite/archives/{case}.tar">Archive</a>
-(<code>.tar</code>, {len(archive):,} bytes) ·
-<a href="{files}/archives/{case}.json">Expected result</a> (<code>.json</code>) ·
-<a href="{files}/archives/{case}.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="{files}/cases/{case}.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="{REPO}/raw/main/suite/archives/{case}.tar">Test archive</a>: <code>{case}.tar</code>,
+{len(archive):,} bytes<br>sha256 <code class="hash">{hashlib.sha256(archive).hexdigest()}</code></li>
+<li><a href="{files}/archives/{case}.json">Expected result</a>: <code>{case}.json</code></li>
+<li><a href="{files}/archives/{case}.txt">Annotated blocks</a>: <code>{case}.txt</code></li>
+<li><a href="{files}/cases/{case}.py">Generator script</a>: <code>{case}.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 {paragraphs(doc.strip().split(chr(10), 1)[1])}
@@ -305,9 +334,6 @@ def case_page(case, info, previous, following, results, data):
 <pre>{html.escape(hexdump(archive))}</pre>
 </details>
 """
-    if info["verdict"] != "reject":
-        body += ("<p>The tree that an implementation must extract: "
-                 + inline(matrix.describe(matrix.expected_tree(info))) + ".</p>\n")
     body += ("<h2>What implementations make of it</h2>\n"
              + implementations_section(case, info, results) + "\n")
     body += "<h2>Prevalence in source tarballs</h2>\n" + data_section(features, *data) + "\n"

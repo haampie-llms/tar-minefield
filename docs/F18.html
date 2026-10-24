@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F18 pax-global-comment-after-members · Tar file extraction test suite</title>
 <meta name="description" content="A global pax header with only a comment, after the first member.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F05.html">F05 magic-version-nuls</a> · next: <a href="N05.html">N05 name-dot</a></nav>
 <h1><code>F18</code> pax-global-comment-after-members</h1>
 <p>A global pax header with only a <code>comment</code>, after the first member.</p>
+<div class="verdict tolerate"><p><span class="badge">Tolerated</span> A strict parser may reject this archive. If it accepts it, it must extract this tree: <code>a</code> (2 B, 87428fc5), <code>b</code> (2 B, 02638299).</p></div>
 <dl>
-<dt>Verdict</dt><dd>tolerated: the default policy accepts it, and a strict parser may reject it</dd>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>accepts <code>pax-global.after-members</code>: if every global header has only a <code>comment</code></dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F18-pax-global-comment-after-members.tar">Archive</a>
-(<code>.tar</code>, 4,096 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F18-pax-global-comment-after-members.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F18-pax-global-comment-after-members.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F18-pax-global-comment-after-members.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F18-pax-global-comment-after-members.tar">Test archive</a>: <code>F18-pax-global-comment-after-members.tar</code>,
+4,096 bytes<br>sha256 <code class="hash">81690b6dbd1444dccae34717abb595db1876fb5c8c3e428a790fdbd7d2ec7960</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F18-pax-global-comment-after-members.json">Expected result</a>: <code>F18-pax-global-comment-after-members.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F18-pax-global-comment-after-members.txt">Annotated blocks</a>: <code>F18-pax-global-comment-after-members.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F18-pax-global-comment-after-members.py">Generator script</a>: <code>F18-pax-global-comment-after-members.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p><strong>Seen in:</strong> rpm 4.20.1 and x42-plugins 20230701.</p>
@@ -361,7 +363,6 @@ Seen in: rpm 4.20.1 and x42-plugins 20230701.
 00000ff0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
 </pre>
 </details>
-<p>The tree that an implementation must extract: <code>a</code> (2 B, 87428fc5), <code>b</code> (2 B, 02638299).</p>
 <h2>What implementations make of it</h2>
 <table><colgroup><col style="width: 21%"><col style="width: 21%"><col style="width: 18%"><col style="width: 40%"></colgroup><tr><th>implementation</th><th>version</th><th>outcome</th><th>what it makes of it</th></tr>
 <tr><td>strict.py</td><td></td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>

@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>S05 hardlink-to-later-member · Tar file extraction test suite</title>
 <meta name="description" content="A hardlink to a member that comes later.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="S04.html">S04 hardlink-to-itself</a> · next: <a href="S06.html">S06 hardlink-to-symlink</a></nav>
 <h1><code>S05</code> hardlink-to-later-member</h1>
 <p>A hardlink to a member that comes later.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S05-hardlink-to-later-member.tar">Archive</a>
-(<code>.tar</code>, 2,560 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S05-hardlink-to-later-member.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S05-hardlink-to-later-member.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S05-hardlink-to-later-member.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S05-hardlink-to-later-member.tar">Test archive</a>: <code>S05-hardlink-to-later-member.tar</code>,
+2,560 bytes<br>sha256 <code class="hash">8639bd97f23f124bce2f22eb102910a0cbb2fa09cca3a93573165fa440d9f7f5</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S05-hardlink-to-later-member.json">Expected result</a>: <code>S05-hardlink-to-later-member.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S05-hardlink-to-later-member.txt">Annotated blocks</a>: <code>S05-hardlink-to-later-member.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S05-hardlink-to-later-member.py">Generator script</a>: <code>S05-hardlink-to-later-member.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p><code>h</code> is a hardlink to <code>f</code>, which comes after it. An implementation that extracts in order has nothing to link to; one that reads the whole archive first links <code>h</code> to <code>f</code>.</p>

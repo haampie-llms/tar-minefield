@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F15 pax-size-on-dir · Tar file extraction test suite</title>
 <meta name="description" content="A pax size on a directory, which hides a header from the implementations that honor it.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F14.html">F14 pax-size-disagrees</a> · next: <a href="F16.html">F16 type-unknown</a></nav>
 <h1><code>F15</code> pax-size-on-dir</h1>
 <p>A pax <code>size</code> on a directory, which hides a header from the implementations that honor it.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F15-pax-size-on-dir.tar">Archive</a>
-(<code>.tar</code>, 3,072 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F15-pax-size-on-dir.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F15-pax-size-on-dir.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F15-pax-size-on-dir.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F15-pax-size-on-dir.tar">Test archive</a>: <code>F15-pax-size-on-dir.tar</code>,
+3,072 bytes<br>sha256 <code class="hash">b0046b27e497e1d60f2a8689c3cf1bc475598c474ff6dbfbd21d4b2c03a92dd5</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F15-pax-size-on-dir.json">Expected result</a>: <code>F15-pax-size-on-dir.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F15-pax-size-on-dir.txt">Annotated blocks</a>: <code>F15-pax-size-on-dir.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F15-pax-size-on-dir.py">Generator script</a>: <code>F15-pax-size-on-dir.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p>A directory has no data, but its pax extended header says <code>size=512</code>. An implementation that applies the pax size to every member skips the next block as the directory&#x27;s data; an implementation that knows directories have no data reads that block as the header of a file, <code>smuggled</code>. One implementation then extracts a directory, the other a directory and a file. This is the bug class of CVE-2025-62518 (tokio-tar), GHSA-3pv8-6f4r-ffg2 (tar-rs) and CVE-2026-53655 (node-tar), where the hidden block is a header that only one implementation sees.</p>

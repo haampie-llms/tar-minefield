@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>S09 tree-duplicate-file-identical · Tar file extraction test suite</title>
 <meta name="description" content="The same file twice, with the same contents.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="S08.html">S08 tree-duplicate-file-dir</a> · next: <a href="S10.html">S10 tree-symlink-then-file</a></nav>
 <h1><code>S09</code> tree-duplicate-file-identical</h1>
 <p>The same file twice, with the same contents.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>order and state</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S09-tree-duplicate-file-identical.tar">Archive</a>
-(<code>.tar</code>, 3,072 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S09-tree-duplicate-file-identical.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S09-tree-duplicate-file-identical.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S09-tree-duplicate-file-identical.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/S09-tree-duplicate-file-identical.tar">Test archive</a>: <code>S09-tree-duplicate-file-identical.tar</code>,
+3,072 bytes<br>sha256 <code class="hash">986888d981dcea0ba899ff58b0e37e322827f1eba0c3712d73fa4766e9bc8a7f</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S09-tree-duplicate-file-identical.json">Expected result</a>: <code>S09-tree-duplicate-file-identical.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/S09-tree-duplicate-file-identical.txt">Annotated blocks</a>: <code>S09-tree-duplicate-file-identical.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/S09-tree-duplicate-file-identical.py">Generator script</a>: <code>S09-tree-duplicate-file-identical.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p>Whichever copy an implementation keeps, the tree is the same. But an implementation would have to compare the copies to know that, so the default policy rejects every duplicate file.</p>

@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N18 name-not-utf8 · Tar file extraction test suite</title>
 <meta name="description" content="A name that is not UTF-8.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N17.html">N17 name-empty</a> · next: <a href="N19.html">N19 pax-nul-in-path</a></nav>
 <h1><code>N18</code> name-not-utf8</h1>
 <p>A name that is not UTF-8.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N18-name-not-utf8.tar">Archive</a>
-(<code>.tar</code>, 2,048 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N18-name-not-utf8.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N18-name-not-utf8.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N18-name-not-utf8.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N18-name-not-utf8.tar">Test archive</a>: <code>N18-name-not-utf8.tar</code>,
+2,048 bytes<br>sha256 <code class="hash">3f2c99cc1686f96bc25ef636815c9f06d875310a3251bb96e84f5864ef582f8a</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N18-name-not-utf8.json">Expected result</a>: <code>N18-name-not-utf8.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N18-name-not-utf8.txt">Annotated blocks</a>: <code>N18-name-not-utf8.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N18-name-not-utf8.py">Generator script</a>: <code>N18-name-not-utf8.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p><code>caf\xe9</code> is Latin-1. An implementation may write the bytes as they are, decode them as Latin-1 and write <code>café</code> in UTF-8, replace the byte, or fail: different names on disk.</p>

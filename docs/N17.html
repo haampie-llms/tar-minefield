@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N17 name-empty · Tar file extraction test suite</title>
 <meta name="description" content="A member with an empty name.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N16.html">N16 name-dotdot</a> · next: <a href="N18.html">N18 name-not-utf8</a></nav>
 <h1><code>N17</code> name-empty</h1>
 <p>A member with an empty name.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N17-name-empty.tar">Archive</a>
-(<code>.tar</code>, 2,048 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N17-name-empty.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N17-name-empty.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N17-name-empty.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N17-name-empty.tar">Test archive</a>: <code>N17-name-empty.tar</code>,
+2,048 bytes<br>sha256 <code class="hash">dba1a676b263e568428a9a2a9fcaf2312b281a4f6e1fcc678a7a7f51a8daf857</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N17-name-empty.json">Expected result</a>: <code>N17-name-empty.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N17-name-empty.txt">Annotated blocks</a>: <code>N17-name-empty.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N17-name-empty.py">Generator script</a>: <code>N17-name-empty.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p>The name field is all NULs. An implementation may skip the member, take it for the end of the archive, extract it as the destination directory itself, or fail.</p>

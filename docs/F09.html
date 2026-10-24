@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F09 end-zero-block-then-member · Tar file extraction test suite</title>
 <meta name="description" content="A zero block, then another member: the end of the archive, or not?">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F08.html">F08 end-truncated-in-member</a> · next: <a href="F10.html">F10 extended-pax-size-before-gnu-long</a></nav>
 <h1><code>F09</code> end-zero-block-then-member</h1>
 <p>A zero block, then another member: the end of the archive, or not?</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F09-end-zero-block-then-member.tar">Archive</a>
-(<code>.tar</code>, 3,584 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F09-end-zero-block-then-member.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F09-end-zero-block-then-member.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F09-end-zero-block-then-member.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F09-end-zero-block-then-member.tar">Test archive</a>: <code>F09-end-zero-block-then-member.tar</code>,
+3,584 bytes<br>sha256 <code class="hash">a566a4c712a67bab3070c4f042888573467116d1df8db69ef9d1879d1c63ccf2</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F09-end-zero-block-then-member.json">Expected result</a>: <code>F09-end-zero-block-then-member.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F09-end-zero-block-then-member.txt">Annotated blocks</a>: <code>F09-end-zero-block-then-member.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F09-end-zero-block-then-member.py">Generator script</a>: <code>F09-end-zero-block-then-member.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p>POSIX ends an archive with two zero blocks, and GNU tar stops at the first zero block it reads by default, while <code>--ignore-zeros</code> reads on. After one zero block comes a file, <code>hidden</code>, which some implementations extract and others never see.</p>

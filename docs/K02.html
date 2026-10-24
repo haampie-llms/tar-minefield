@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>K02 linkname-on-file · Tar file extraction test suite</title>
 <meta name="description" content="A regular file with a link target.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="K01.html">K01 kind-trailing-slash-file</a> · next: <a href="K03.html">K03 symlink-trailing-slash</a></nav>
 <h1><code>K02</code> linkname-on-file</h1>
 <p>A regular file with a link target.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>kind</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/K02-linkname-on-file.tar">Archive</a>
-(<code>.tar</code>, 2,048 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K02-linkname-on-file.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K02-linkname-on-file.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/K02-linkname-on-file.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/K02-linkname-on-file.tar">Test archive</a>: <code>K02-linkname-on-file.tar</code>,
+2,048 bytes<br>sha256 <code class="hash">1b77d16a3f4fbb1d66ac96272a4c330f06fe43e657bee3e0b26edba9e27b90b6</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K02-linkname-on-file.json">Expected result</a>: <code>K02-linkname-on-file.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/K02-linkname-on-file.txt">Annotated blocks</a>: <code>K02-linkname-on-file.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/K02-linkname-on-file.py">Generator script</a>: <code>K02-linkname-on-file.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p>The header has typeflag <code>0</code> and the linkname <code>target</code>. An implementation that decides the kind by the typeflag extracts a file; one that takes a linkname to mean a link makes a link to <code>target</code>.</p>

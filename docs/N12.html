@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>N12 name-absolute · Tar file extraction test suite</title>
 <meta name="description" content="An absolute name, which points outside the directory the archive is extracted to.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="N11.html">N11 gnu-prefix-field</a> · next: <a href="N13.html">N13 name-backslash</a></nav>
 <h1><code>N12</code> name-absolute</h1>
 <p>An absolute name, which points outside the directory the archive is extracted to.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>name</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N12-name-absolute.tar">Archive</a>
-(<code>.tar</code>, 2,048 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N12-name-absolute.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N12-name-absolute.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N12-name-absolute.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/N12-name-absolute.tar">Test archive</a>: <code>N12-name-absolute.tar</code>,
+2,048 bytes<br>sha256 <code class="hash">51b8d98ca9e298c9cbd977dee0832f486fc585cdea47ec710d90e65085bd1711</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N12-name-absolute.json">Expected result</a>: <code>N12-name-absolute.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/N12-name-absolute.txt">Annotated blocks</a>: <code>N12-name-absolute.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/N12-name-absolute.py">Generator script</a>: <code>N12-name-absolute.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p>The name <code>/tar-minefield-absolute</code> is a path from the root. An extractor may refuse it, strip the leading slash, or write to the root. The file is harmless, and writing to the root fails unless the extractor runs as root.</p>

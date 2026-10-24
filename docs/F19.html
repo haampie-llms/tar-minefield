@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>F19 pax-global-between-extended-and-member · Tar file extraction test suite</title>
 <meta name="description" content="A global pax header between an extended header and its member.">
-<link rel="stylesheet" href="style.css?24cd578e">
+<link rel="stylesheet" href="style.css?2efe4a8b">
 </head>
 <body>
 <nav><a href="index.html">all cases</a> · previous: <a href="F16.html">F16 type-unknown</a> · next: <a href="N08.html">N08 extended-pax-path-and-gnu-long-name</a></nav>
 <h1><code>F19</code> pax-global-between-extended-and-member</h1>
 <p>A global pax header between an extended header and its member.</p>
+<div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
 <dl>
-<dt>Verdict</dt><dd>to reject: implementations disagree on its tree</dd>
 <dt>Category</dt><dd>framing</dd>
 <dt>Default policy</dt><dd>rejects it</dd>
-<dt>Files</dt><dd><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F19-pax-global-between-extended-and-member.tar">Archive</a>
-(<code>.tar</code>, 4,096 bytes) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F19-pax-global-between-extended-and-member.json">Expected result</a> (<code>.json</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F19-pax-global-between-extended-and-member.txt">Annotated blocks</a> (<code>.txt</code>) ·
-<a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F19-pax-global-between-extended-and-member.py">Generator script</a> (<code>.py</code>)</dd>
+<dt>Files</dt><dd><ul>
+<li><a href="https://github.com/haampie-llms/tar-minefield/raw/main/suite/archives/F19-pax-global-between-extended-and-member.tar">Test archive</a>: <code>F19-pax-global-between-extended-and-member.tar</code>,
+4,096 bytes<br>sha256 <code class="hash">209743f9e0712252bfe2f137a3ddc245e9ca40f3774de1aefc9679e9ce92a2d9</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F19-pax-global-between-extended-and-member.json">Expected result</a>: <code>F19-pax-global-between-extended-and-member.json</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/archives/F19-pax-global-between-extended-and-member.txt">Annotated blocks</a>: <code>F19-pax-global-between-extended-and-member.txt</code></li>
+<li><a href="https://github.com/haampie-llms/tar-minefield/blob/main/suite/cases/F19-pax-global-between-extended-and-member.py">Generator script</a>: <code>F19-pax-global-between-extended-and-member.py</code></li>
+</ul></dd>
 </dl>
 <h2>The case</h2>
 <p>An <code>x</code> header, then a <code>g</code> header, then the member. An implementation may apply the extended header to the global header, which is the next header, or skip the global header and apply it to the member.</p>
