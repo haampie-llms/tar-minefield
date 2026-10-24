@@ -383,7 +383,7 @@ GROUPS = {
 
 
 def category(info):
-    """The group of a case: its verdict, and for cases to reject the level of the catalogue that
+    """The group of a case: its verdict, and for cases to reject the category that
     scanner/strict.py gives its features; a case without any is one the scanner cannot read
     past, which is framing."""
     if info["verdict"] != "reject":
@@ -391,8 +391,9 @@ def category(info):
     sys.path.insert(0, os.path.join(HERE, "..", "scanner"))
     import strict
 
-    levels = [strict.classify(f)[1] for f in info["features"] if strict.classify(f)[0] == "strict"]
-    return levels[0] if levels else "framing"
+    categories = [strict.classify(f)[1] for f in info["features"]
+                  if strict.classify(f)[0] == "strict"]
+    return categories[0] if categories else "framing"
 
 
 def label(case, info):
@@ -678,7 +679,7 @@ def readme(path, results, cases):
     impls = [n for n in names if not n.startswith("strict.py")]
     lines = [
         f"What {len(impls)} implementations make of the {len(cases)} cases: a row per case, by "
-        "level, and a column per implementation, with the outcomes of all cases at the top. "
+        "category, and a column per implementation, with the outcomes of all cases at the top. "
         f"[The website]({SITE}) has a page per case.",
         "",
         "[![What every implementation makes of every case of the test suite. Outcomes of all cases: "

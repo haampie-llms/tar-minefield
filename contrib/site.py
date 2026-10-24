@@ -277,14 +277,14 @@ def case_page(case, info, previous, following, results, data):
         if other:
             nav.append(f'{rel}: <a href="{other[1]["id"]}.html">'
                        f"{html.escape(matrix.label(*other))}</a>")
-    level = strict.LEVELS["FNKS".index(ident[0])]
+    category = strict.CATEGORIES["FNKS".index(ident[0])]
     files = f"{REPO}/blob/main/suite"
     body = f"""<nav>{" · ".join(nav)}</nav>
 <h1><code>{ident}</code> {html.escape(name)}</h1>
 <p>{inline(info["description"])}</p>
 <dl>
 <dt>Verdict</dt><dd>{VERDICTS[info["verdict"]]}</dd>
-<dt>Level</dt><dd>{html.escape(level)}</dd>
+<dt>Category</dt><dd>{html.escape(category)}</dd>
 <dt>Default policy</dt><dd>{policy(info, features)}</dd>
 <dt>Files</dt><dd><a href="{REPO}/raw/main/suite/archives/{case}.tar">Archive</a>
 (<code>.tar</code>, {len(archive):,} bytes) ·
@@ -430,15 +430,12 @@ def index_page(cases, results, data):
                         + table("cases", rows))
     body = f"""<h1>{TITLE}</h1>
 {readme_intro()}
-<p>Each case has a permanent identifier, such as F15, whose letter is its level:</p>
+<p>Each case has a permanent identifier, such as F15, whose letter is its category:</p>
 <ul>
-<li><strong>F</strong> framing: which members an archive has, from where each header and its data
-end.</li>
-<li><strong>N</strong> names: what path each member has, and what a link points to.</li>
-<li><strong>K</strong> kinds: what kind each member is, a file, a directory or a link, and whether
-a file is executable.</li>
-<li><strong>S</strong> order and state: how members combine into one tree, through duplicate paths
-and links.</li>
+<li><strong>F</strong> framing: which members an archive has.</li>
+<li><strong>N</strong> names: what path each member has.</li>
+<li><strong>K</strong> kinds: the mode of each member: file, directory, link or executable.</li>
+<li><strong>S</strong> order and state: how members combine into a directory tree.</li>
 </ul>
 <p>A case's page shows its archive block by block, what every implementation makes of it, and how
 common it is in source tarballs.</p>

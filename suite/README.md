@@ -31,7 +31,7 @@ Every case is an uncompressed archive, `archives/<case>.tar`, with its manifest
   (`file`, `directory` or `symlink`), the `target` of a symlink, and of a file its `size`,
   `sha256` and whether it is `executable`. An extraction passes if it has exactly these paths,
   and every entry has the values the manifest gives. It is absent from the cases to reject.
-- `id`: the case's identifier, such as `N07`, which stays with it. Its letter is the level: F
+- `id`: the case's identifier, such as `N07`, which stays with it. Its letter is the category: F
   framing, N names, K kinds, S order and state.
 - `features`: what [the scanner](../contrib/scanner) reports of the archive, for reference.
 

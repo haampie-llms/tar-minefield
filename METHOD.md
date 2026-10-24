@@ -12,14 +12,14 @@ cases are produced so that anyone can audit them. It is a working draft.
 | **member** | One entry of an archive: a header, its extended headers, and its data. |
 | **tree** | What an implementation extracts: paths, each with a kind (file, directory, symlink, hardlink), the contents of a file or the target of a link, and whether a file is executable. Nothing else, such as mtimes and owners. |
 | **ambiguity** | Something in an archive from which two implementations, each following a defensible reading of POSIX, GNU tar or practice, extract different trees. |
-| **level** | The class of an ambiguity, by what it changes in the tree: **F** framing (where a member's data ends), **N** names, **K** kinds, **S** order and state (duplicates and links). |
+| **category** | What an ambiguity changes in the tree, in no order: **F** framing, **N** names, **K** kinds, **S** order and state. |
 | **strict parser** | An implementation that rejects an archive with an ambiguity, rather than extracting one of its trees. |
 | **feature** | What the scanner reports of an archive, such as `name.leading-dot-slash`. |
 | **criterion** | A feature that is an ambiguity, for which a strict parser may reject an archive. The [catalogue](#initial-catalogue) lists them. |
 | **policy** | The criteria a strict parser rejects: either *every criterion*, or the [default policy](#the-default-policy). |
 | **test suite** | The archives of [suite/](suite), each a case, for implementations to run against. |
-| **identifier** | The permanent name of a case: the letter of its level and a number, such as `F15`. |
-| **case** | An archive of the test suite, named by its identifier (its level and a number) and a few words, such as `F15-pax-size-on-dir`, with a verdict, and a manifest unless it is to reject. |
+| **identifier** | The permanent name of a case: the letter of its category and a number, such as `F15`. |
+| **case** | An archive of the test suite, named by its identifier (its category and a number) and a few words, such as `F15-pax-size-on-dir`, with a verdict, and a manifest unless it is to reject. |
 | **verdict** | What a case requires: **reject**, a strict parser must reject it; **accept**, every implementation must accept it; **tolerate**, a strict parser may reject it, and the default policy accepts it. See [Verdicts](#verdicts). |
 | **manifest** | The tree an implementation must extract from a case to accept or a tolerated case, if it accepts it. |
 | **outcome** | What an implementation makes of a case: ✅ as its verdict says, ⚠️ accepts a case to reject, ⛔ rejects a tolerated case, ❌ rejects a case to accept or extracts another tree than the manifest, 💥 writes outside its destination. |
@@ -61,14 +61,14 @@ An archive is ambiguous if two implementations, each following a defensible read
 GNU tar documentation or long-standing practice, produce different trees from it. For each case we
 name the *decision point*: the place in an implementation where two reasonable choices exist.
 
-Ambiguities fall into four levels, by what they change in the tree:
+Ambiguities fall into four categories, by what they change in the tree:
 
-1. **Framing**: where a member's data ends and the next header begins, and which headers belong to
-   a member. An implementation that frames an archive differently sees different members, so whole
-   files can be hidden from one implementation and visible to another.
-2. **Name**: which of several fields gives a member its path, and how a path is normalized.
-3. **Kind**: whether a member is a file, a directory or a link.
-4. **Order and state**: what happens when members interact, through duplicate paths or links.
+- **Framing**: where a member's data ends and the next header begins, and which headers belong to
+  a member. An implementation that frames an archive differently sees different members, so whole
+  files can be hidden from one implementation and visible to another.
+- **Name**: which of several fields gives a member its path, and how a path is normalized.
+- **Kind**: the mode of a member: file, directory, link or executable.
+- **Order and state**: what happens when members interact, through duplicate paths or links.
 
 ### Initial catalogue
 

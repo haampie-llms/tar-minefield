@@ -35,9 +35,9 @@ from report import load, origin, tidy_tables  # noqa: E402
 
 SITE = "https://haampie-llms.github.io/tar-minefield/"
 
-LEVELS = ("framing", "name", "kind", "order and state")
+CATEGORIES = ("framing", "name", "kind", "order and state")
 
-# (pattern, level, what it means), in order: the first pattern that matches a feature applies.
+# (pattern, category, what it means), in order: the first pattern that matches a feature applies.
 STRICT = [
     ("scan.error", "framing", "the scanner could not read past a header"),
     ("checksum.*", "framing", "a checksum that matches only one way of summing"),
@@ -170,15 +170,15 @@ UNREAD = (".tar.lz", ".tar.zst", ".tzst", ".tar.lzma", ".tlz", ".tar.Z")
 
 
 def classify(feature):
-    """("platform" | "allowed" | "strict" | "unclassified", level, description)"""
+    """("platform" | "allowed" | "strict" | "unclassified", category, description)"""
     if feature.startswith("platform."):
         return "platform", None, None
     for pattern, reason in ALLOWED:
         if fnmatch.fnmatchcase(feature, pattern):
             return "allowed", None, reason
-    for pattern, level, description in STRICT:
+    for pattern, category, description in STRICT:
         if fnmatch.fnmatchcase(feature, pattern):
-            return "strict", level, description
+            return "strict", category, description
     return "unclassified", None, None
 
 
@@ -475,20 +475,20 @@ def main():
         "allowing it would let through.\n"
     )
     print(
-        "| level | criterion | default | " + " | ".join(short[n] for n in names)
+        "| category | criterion | default | " + " | ".join(short[n] for n in names)
         + " | alone | examples |"
     )
     print("|---|---|---|" + "---|" * len(names) + "---|---|")
     order = sorted(
         failing,
         key=lambda f: (
-            LEVELS.index(classify(f)[1]) if f != "scan.error" else 0,
+            CATEGORIES.index(classify(f)[1]) if f != "scan.error" else 0,
             -sum(len(v) for v in failing[f].values()),
             f,
         ),
     )
     for f in order:
-        level, description = ("framing", STRICT[0][2]) if f == "scan.error" else classify(f)[1:]
+        category, description = ("framing", STRICT[0][2]) if f == "scan.error" else classify(f)[1:]
         cells = " | ".join(
             f"{len(failing[f][n])} ({percent(len(failing[f][n]), len(rated[n]))})"
             if failing[f][n]
@@ -497,7 +497,7 @@ def main():
         )
         rule = default_rule(f)
         print(
-            f"| {level} | `{f}`: {description} | {rule[1] if rule else 'reject'} | {cells} | "
+            f"| {category} | `{f}`: {description} | {rule[1] if rule else 'reject'} | {cells} | "
             f"{sole[f]} | {', '.join(examples[f])} |"
         )
     print()

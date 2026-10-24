@@ -14,15 +14,12 @@
 <p>This is a security concern: for example, a security scanner could see different files than what is ultimately extracted.</p>
 <p>By assigning <a href="#policy">identifiers</a> to these ambiguities, and providing test cases and usage data, the hope is that tar implementations can converge on a strict parser and identical behavior.</p>
 <p>This project proposes a <strong><a href="#policy">default policy</a></strong> that rejects the vast majority of ambiguities in tar files that could make implementations extract different files, while ensuring that nearly every source tarball already published can still be extracted. Of the 62,622 source tarballs of Spack, nixpkgs, Guix and live-bootstrap, it accepts 99.76% (<a href="#tarballs">per ecosystem</a>).</p>
-<p>Each case has a permanent identifier, such as F15, whose letter is its level:</p>
+<p>Each case has a permanent identifier, such as F15, whose letter is its category:</p>
 <ul>
-<li><strong>F</strong> framing: which members an archive has, from where each header and its data
-end.</li>
-<li><strong>N</strong> names: what path each member has, and what a link points to.</li>
-<li><strong>K</strong> kinds: what kind each member is, a file, a directory or a link, and whether
-a file is executable.</li>
-<li><strong>S</strong> order and state: how members combine into one tree, through duplicate paths
-and links.</li>
+<li><strong>F</strong> framing: which members an archive has.</li>
+<li><strong>N</strong> names: what path each member has.</li>
+<li><strong>K</strong> kinds: the mode of each member: file, directory, link or executable.</li>
+<li><strong>S</strong> order and state: how members combine into a directory tree.</li>
 </ul>
 <p>A case's page shows its archive block by block, what every implementation makes of it, and how
 common it is in source tarballs.</p>
