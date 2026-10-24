@@ -187,6 +187,14 @@ def implementations(work, only=None):
                           lambda a, b=binary: ["env", "GODEBUG=tarinsecurepath=0", b, a]))
         else:
             print("go runner:", err, file=sys.stderr)
+    if want("Go containerd archive.Apply") and shutil.which("go"):
+        binary = os.path.join(build, "containerd-runner")
+        code, _, err = run(["go", "build", "-o", binary, "."], cwd=os.path.join(RUNNERS, "containerd"))
+        if code == 0:
+            found.append(("Go containerd archive.Apply", first_line([binary, "--version"]), "extract",
+                          lambda a, d, b=binary: [b, a, d]))
+        else:
+            print("containerd runner:", err, file=sys.stderr)
     if want("Rust tar", "Rust astral-tokio-tar", "Rust tar-codec, as in uv") and shutil.which("cargo"):
         target = os.path.join(build, "rust")
         code, _, err = run(["cargo", "build", "--release", "--quiet", "--target-dir", target],
@@ -546,7 +554,7 @@ POPULARITY = [
     "node-tar", "node-tar, strict", "tar-fs",
     "Java Commons Compress", ".NET System.Formats.Tar",
     "PHP PharData, as in Composer", "PHP Archive_Tar",
-    "Go archive/tar", "Go archive/tar, tarinsecurepath=0",
+    "Go archive/tar", "Go archive/tar, tarinsecurepath=0", "Go containerd archive.Apply",
     "Rust tar", "Rust astral-tokio-tar", "Rust tar-codec, as in uv",
     "RubyGems", "R untar, internal", "Perl Archive::Tar", "Haskell tar", "Julia Tar.jl",
     "live-bootstrap untar", "live-bootstrap untar, --non-strict",

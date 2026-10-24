@@ -73,6 +73,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e47fbedb2823cf1ae4d4cdb8273635be2024cb870588e259c9b23d76ae49d484",
+      "size": 7
+     }
+    }
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -374,6 +386,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -704,6 +728,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Haskell tar": {
     "error": "ShortTrailer",
     "outside": {},
@@ -1012,6 +1048,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -1335,6 +1383,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Haskell tar": {
     "error": "UnrecognisedTarFormat",
     "outside": {},
@@ -1626,6 +1686,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Haskell tar": {
     "error": "ChecksumIncorrect",
     "outside": {},
@@ -1864,6 +1936,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -2212,6 +2296,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": "unexpected EOF",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "64164443bb63e338ef1cfdb12a57117cd1212270cc935a798f6e8a665cdf4659",
+      "size": 512
+     }
+    }
+   },
    "Haskell tar": {
     "error": "TruncatedArchive",
     "outside": {},
@@ -2484,6 +2580,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": "archive/tar: invalid tar header",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": "archive/tar: invalid tar header",
     "outside": {},
     "tree": {
@@ -2843,6 +2951,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "long-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "917dba8e5120183529f6939caddf79878ed752eaf72b9a195a0450eac5d4de3b",
+      "size": 512
+     }
+    }
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -3178,6 +3298,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Haskell tar": {
     "error": "UnrecognisedTarFormat",
     "outside": {},
@@ -3473,6 +3605,11 @@
     "outside": {},
     "tree": {}
    },
+   "Go containerd archive.Apply": {
+    "error": "archive/tar: invalid tar header",
+    "outside": {},
+    "tree": {}
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -3752,6 +3889,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "good\n1 path=evil": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -4093,6 +4242,24 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     },
+     "smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -4515,6 +4682,21 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/smuggled": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -4848,6 +5030,11 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": "unhandled tar header type 90",
+    "outside": {},
+    "tree": {}
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -5108,6 +5295,21 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "project": {
+      "kind": "directory"
+     },
+     "project/README": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03",
+      "size": 6
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -5532,6 +5734,24 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -5993,6 +6213,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "header-name": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -6320,6 +6552,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+     }
+    }
+   },
    "Haskell tar": {
     "error": "DEST/a/: withFile: inappropriate type (Is a directory)",
     "outside": {},
@@ -6576,6 +6820,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bc34584905a5181d95c6e40e9230db4c9e2d85e6e73d3335837078cd12168cb9",
+      "size": 19
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -6878,6 +7134,19 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "link": {
+      "kind": "symlink",
+      "target": "target"
+     },
+     "target": {
+      "kind": "directory"
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -7198,6 +7467,21 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -7571,6 +7855,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0e716a5fef4e6dc1bcfff22ad52f73ca4eee3f4ea8292f4a1918daa32592889f",
+      "size": 5
+     }
+    }
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -7894,6 +8190,21 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd": {
+      "kind": "directory"
+     },
+     "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "bbdbb75b415ee9a40f0b3796a8b41a0b7723afe5726b870474ad220a4886d06d",
+      "size": 5
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -8317,6 +8628,21 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp": {
+      "kind": "directory"
+     },
+     "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp/file": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "7dd9c6f93ad04e58505b507580eaf064f0240ce4567f9ca5e741ec09a5cc08be",
+      "size": 9
+     }
+    }
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -8690,6 +9016,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -8984,6 +9322,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -9297,6 +9647,16 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "link": {
+      "kind": "symlink",
+      "target": "/tar-minefield-nonexistent"
+     }
+    }
+   },
    "Haskell tar": {
     "error": "Absolute file name in tar archive: \"/tar-minefield-nonexistent\"",
     "outside": {},
@@ -9529,6 +9889,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "from-gnu": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -9806,6 +10178,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "second": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -10117,6 +10501,21 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "dir": {
+      "kind": "directory"
+     },
+     "dir/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -10500,6 +10899,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -10815,6 +11226,18 @@
     "outside": {},
     "tree": {}
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "tar-minefield-absolute": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "3b7f22a5047de6b9d309eaf4177f04f29cf5fb3ddd008137ce35ac23f466b13b",
+      "size": 89
+     }
+    }
+   },
    "Haskell tar": {
     "error": "Absolute file name in tar archive: \"/tar-minefield-absolute\"",
     "outside": {},
@@ -11053,6 +11476,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\\b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "15acfc3964b079ab6ebbd9d9b221baa8de131a1201dd6938e1bed5779633cc37",
+      "size": 21
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -11376,6 +11811,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ef476e8dd053036dc13248a09bb0be746485e3067bb5979943b7d6972be0604e",
+      "size": 10
+     }
+    }
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -11670,6 +12117,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a\nb": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "93d2f8418e760b244545798b892899921327396ea6913af7482bd1c845b9d2bb",
+      "size": 21
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -11984,6 +12443,18 @@
     "outside": {},
     "tree": {}
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "tar-minefield-escaped": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "fc503701b7c2d35ae68aaa9df3f75232b90d497dc21bbba36c43d5d91194ec27",
+      "size": 85
+     }
+    }
+   },
    "Haskell tar": {
     "error": "Unsafe link target in tar archive: \"tar-minefield/../../tar-minefield-escaped\"",
     "outside": {},
@@ -12175,6 +12646,11 @@
     "outside": {},
     "tree": {}
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {}
+   },
    "Haskell tar": {
     "error": "Invalid file name in tar archive: \"\"",
     "outside": {},
@@ -12347,6 +12823,18 @@
     "outside": {},
     "tree": {
      "caf\ufffd": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
+      "size": 8
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "caf\udce9": {
       "executable": false,
       "kind": "file",
       "sha256": "ff3f1fa3c91cb8860152fd87c5d02ce40fe42fd3b2bbd2f5c22edebd216bbcaa",
@@ -12638,6 +13126,11 @@
     "outside": {},
     "tree": {}
    },
+   "Go containerd archive.Apply": {
+    "error": "archive/tar: invalid tar header",
+    "outside": {},
+    "tree": {}
+   },
    "Haskell tar": {
     "error": "Invalid file name in tar archive: \"a\\NULb\"",
     "outside": {},
@@ -12874,6 +13367,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "second": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a578eb499fb3e6e7b3cf1a53e6f0574968909fde18a8cb8b1e05ef91cd5c3dee",
+      "size": 12
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -13215,6 +13720,24 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     },
+     "b": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f",
+      "size": 2
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -13658,6 +14181,21 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "size": 2
+     }
+    }
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -14027,6 +14565,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "directory"
+     },
+     "d/sub": {
+      "kind": "directory"
+     }
+    }
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -14298,6 +14848,11 @@
     "outside": {},
     "tree": {}
    },
+   "Go containerd archive.Apply": {
+    "error": "link DEST/missing DEST/h: no such file or directory",
+    "outside": {},
+    "tree": {}
+   },
    "Haskell tar": {
     "error": "DEST/missing: copyFile:atomicCopyFileContents:withReplacementFile:copyFileToHandle:openFdAt: does not exist (No such file or directory)",
     "outside": {},
@@ -14483,6 +15038,11 @@
       "size": 2
      }
     }
+   },
+   "Go containerd archive.Apply": {
+    "error": "link DEST/a DEST/a: no such file or directory",
+    "outside": {},
+    "tree": {}
    },
    "Haskell tar": {
     "error": null,
@@ -14765,6 +15325,11 @@
       "size": 2
      }
     }
+   },
+   "Go containerd archive.Apply": {
+    "error": "link DEST/f DEST/h: no such file or directory",
+    "outside": {},
+    "tree": {}
    },
    "Haskell tar": {
     "error": null,
@@ -15050,6 +15615,26 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "f": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "092fcfbbcfca3b5be7ae1b5e58538e92c35ab273ae13664fed0d67484c8e78a6",
+      "size": 2
+     },
+     "h": {
+      "kind": "symlink",
+      "target": "f"
+     },
+     "s": {
+      "kind": "symlink",
+      "target": "f"
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -15515,6 +16100,18 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "761d1fb145ca8c7130231412276df60f34dd34554c4d174b973a45e3222475a9",
+      "size": 5
+     }
+    }
+   },
    "Haskell tar": {
     "error": null,
     "outside": {},
@@ -15825,6 +16422,15 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "kind": "directory"
+     }
+    }
+   },
    "Haskell tar": {
     "error": "DEST/a: createDirectory: already exists (File exists)",
     "outside": {},
@@ -16105,6 +16711,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "a6328afc76e9db71da297ebff4b0d3e7a7eb3b01d917c05a6573fef121b6ecb6",
+      "size": 5
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -16422,6 +17040,18 @@
     }
    },
    "Go archive/tar, tarinsecurepath=0": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "d5a04bbbfe088df673a06a4550290ced19ea7d4205c7d21de7567ddf67db0012",
+      "size": 28
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
     "error": null,
     "outside": {},
     "tree": {
@@ -16778,6 +17408,22 @@
      }
     }
    },
+   "Go containerd archive.Apply": {
+    "error": null,
+    "outside": {},
+    "tree": {
+     "d": {
+      "kind": "symlink",
+      "target": ".."
+     },
+     "tar-minefield-through-symlink": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "3b7f22a5047de6b9d309eaf4177f04f29cf5fb3ddd008137ce35ac23f466b13b",
+      "size": 89
+     }
+    }
+   },
    "Haskell tar": {
     "error": "Unsafe link target in tar archive: \"./..\"",
     "outside": {},
@@ -17051,6 +17697,18 @@
       "kind": "file",
       "sha256": "8e53e3786fd1019a1eaf9a9defce99066a193ce65fe511a2a988cd67cadf6016",
       "size": 13
+     }
+    }
+   },
+   "Go containerd archive.Apply": {
+    "error": "mkparent DEST/a: not a directory",
+    "outside": {},
+    "tree": {
+     "a": {
+      "executable": false,
+      "kind": "file",
+      "sha256": "da69f286f03c0d2131b3f95afe7c8d31b4f65cbf5ca49a12c41d8bf02d366a34",
+      "size": 7
      }
     }
    },
@@ -17434,6 +18092,11 @@
    "kind": "extract",
    "name": "tar-fs",
    "version": "tar-fs 3.1.3, on tar-stream 3.2.2"
+  },
+  {
+   "kind": "extract",
+   "name": "Go containerd archive.Apply",
+   "version": "containerd v2.4.2, archive.Apply, of go1.27.3"
   }
  ]
 }

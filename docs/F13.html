@@ -305,6 +305,7 @@ Seen in: no source tarball. Newlines in pax values are only in xattrs, such as M
 <tr><td>PHP Archive_Tar</td><td>PEAR Archive_Tar 1.6.1, extract, on PHP 8.5.12</td><td>⚠️ accepts</td><td>tree B: <code>plain</code> (12 B, a578eb49)</td></tr>
 <tr><td>Go archive/tar</td><td>archive/tar of go1.26.8</td><td>⚠️ accepts</td><td>tree A: <code>good\x0a1 path=evil</code> (12 B, a578eb49)</td></tr>
 <tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>⚠️ accepts</td><td>tree A: <code>good\x0a1 path=evil</code> (12 B, a578eb49)</td></tr>
+<tr><td>Go containerd archive.Apply</td><td>containerd v2.4.2, archive.Apply, of go1.27.3</td><td>⚠️ accepts</td><td>tree A: <code>good\x0a1 path=evil</code> (12 B, a578eb49)</td></tr>
 <tr><td>Rust tar</td><td>tar 0.4.46, unpack</td><td>⚠️ accepts</td><td>tree B: <code>plain</code> (12 B, a578eb49)</td></tr>
 <tr><td>Rust astral-tokio-tar</td><td>astral-tokio-tar 0.7.0, unpack</td><td>⚠️ accepts</td><td>tree A: <code>good\x0a1 path=evil</code> (12 B, a578eb49)</td></tr>
 <tr><td>Rust tar-codec, as in uv</td><td>tar-codec 0.0.15, with the policies of uv 0.13</td><td>✅ as the verdict says</td><td>error: at byte 1024: extraction policy rejected input: archive member path rejected by name policy: &quot;good\n1 path=evil&quot;</td></tr>
