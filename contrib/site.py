@@ -372,7 +372,7 @@ def rejected_page(cases, data):
     reasons = {r["sha256"]: {} for r in rejected}  # {reason: example or None}, per tarball
     ids = collections.defaultdict(set)
     for r in rejected:
-        for c in strict.default_rejects(r):
+        for c in sorted(strict.default_rejects(r)):
             example = next((e[0] for f, e in (r.get("examples") or {}).items()
                             if strict.criterion(f) == c and e), None)
             reasons[r["sha256"]].setdefault(what(c), example)
