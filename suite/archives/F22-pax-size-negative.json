@@ -1,0 +1,8 @@
+{
+ "id": "F22",
+ "verdict": "reject",
+ "description": "A negative pax `size`, which hides a header from the implementations that read it as a number.",
+ "features": [
+  "pax.invalid-size"
+ ]
+}

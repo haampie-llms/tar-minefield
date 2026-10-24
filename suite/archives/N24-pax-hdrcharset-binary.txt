@@ -1,0 +1,57 @@
+N24-pax-hdrcharset-binary: must reject: implementations disagree on its tree
+
+`hdrcharset=BINARY`, which declares a pax path that is not UTF-8 as bytes.
+
+POSIX lets a pax header declare with `hdrcharset=BINARY` that its names are bytes in no particular
+encoding, rather than UTF-8. Here the path is `caf\xe9`, in Latin-1. Implementations write the bytes
+as they are, decode them as Latin-1 or with replacement characters, or fail, as they do with N18:
+the name of the extracted file differs. A strict parser has no use for names that are not UTF-8.
+
+Decision point: how a name that is not UTF-8 becomes a path.
+Seen in: no source tarball.
+
+0x000000  header: pax extended header, for the next member, a path in Latin-1
+          name     [  0,100)  "PaxHeader" + 91 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000042" + NUL  34
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "011075\0 "  4669: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "x"  pax extended header, for the next member
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000200  data: pax records
+          34 bytes of pax records, then 478 NUL
+          "21 hdrcharset=BINARY\n"
+          "13 path=caf\xe9\n"
+0x000400  header: regular file
+          name     [  0,100)  "cafe" + 96 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000014" + NUL  12
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "010021\0 "  4113: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "0"  regular file
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000600  data
+          12 bytes, then 500 NUL to the end of the block
+          "which name?\n"
+0x000800  2 zero blocks: the end-of-archive marker
+0x000c00  end of file

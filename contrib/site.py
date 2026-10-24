@@ -49,6 +49,7 @@ OUTCOMES = {
     "⛔": "rejects",
     "❌": "another tree, or rejects",
     "💥": "writes outside the destination",
+    "❔": "not run, so not verified",
 }
 # Tables of one kind have the same columns, in the same widths
 COLUMNS = {
@@ -154,6 +155,19 @@ def prevalence(k, n):
     return "&lt;0.01%" if 0 < 10000 * k < n else f"{100 * k / n:.2f}%"
 
 
+# The footnote of the index for a prevalence marked with *
+UNMEASURED = ('<p class="note" id="unmeasured">* Not measured in some tarballs, which an earlier '
+              "version of <code>tarscan.py</code> scanned: it did not report this, and what it did "
+              "record does not rule it out. The case's page says how many.</p>")
+
+
+def unmeasured(features, rows):
+    """The tarballs of rows that may have one of features, which the version of tarscan.py that
+    scanned them did not report, and what else it recorded does not rule out."""
+    return [r for r in rows if strict.unreported(features, r)
+            and any(strict.overlap(f, u) for f in features for u in strict.unmeasured(r))]
+
+
 def table(kind, rows):
     """A table of a kind of COLUMNS, with rows of HTML."""
     columns = COLUMNS[kind]
@@ -208,6 +222,20 @@ def readme_examples():
     rows = ["<tr>" + "".join(f"<td>{markdown(c.strip())}</td>" for c in line.split(" | ")) + "</tr>"
             for line in lines[2:]]
     return table("examples", rows)
+
+
+def readme_section(title):
+    """A section of the README of paragraphs and lists, as HTML."""
+    section = readme().split(f"\n## {title}\n", 1)[1].split("\n## ", 1)[0]
+    blocks = []
+    for block in section.strip().split("\n\n"):
+        lines = block.splitlines()
+        if all(line.startswith("- ") for line in lines):
+            blocks.append("<ul>\n" + "\n".join(f"<li>{markdown(line[2:])}</li>" for line in lines)
+                          + "\n</ul>")
+        else:
+            blocks.append(f"<p>{markdown(' '.join(block.split()))}</p>")
+    return "\n".join(blocks)
 
 
 def inline(text):
@@ -341,21 +369,32 @@ def data_section(ident, features, names, short, rated, union):
     counts = []
     for n, rs in [(short[n], rated[n]) for n in names] + [("all, distinct", union)]:
         with_it = [r for r in rs if has(r)]
-        counts.append((n, len(rs), len(with_it), sum(rejected(r) for r in with_it)))
-    _, _, k, j = counts[-1]
+        counts.append((n, len(rs), len(with_it), sum(rejected(r) for r in with_it),
+                       len(unmeasured(features, rs))))
+    _, _, k, j, u = counts[-1]
     mixed = 0 < j < k
     rows = []
-    for n, total, k, j in counts:
-        cells = [html.escape(n), f"{total:,}", f"{k:,}", prevalence(k, total)]
+    for n, total, k, j, un in counts:
+        cells = [html.escape(n), f"{total:,}", f"{k:,}" + ("*" if un else ""),
+                 prevalence(k, total) + ("*" if un else "")]
         cells += [str(j)] if mixed else []
         rows.append("<tr><td>" + "</td><td class=n>".join(cells) + "</td></tr>")
     policy = ("" if not k else " The default policy rejects some of them, as the last column "
               "says, and accepts the others." if mixed else " The default policy rejects all of "
               "them." if j else " The default policy accepts them.")
+    old = sum(1 for r in union if strict.unreported(features, r))
+    note = (f'<p class="note">* Not measured in {u:,} tarballs, which an earlier version of '
+            "<code>tarscan.py</code> scanned: it did not report this, and what it did record does "
+            "not rule it out. They are counted as not having it, so the share may be higher.</p>\n"
+            if u else
+            f'<p class="note">{old:,} of these tarballs were scanned by an earlier version of '
+            "<code>tarscan.py</code>, which did not report this. What it did record rules it out "
+            'for all of them: see <a href="' + REPO + '/blob/main/contrib/data/STRICT.md#not-measured">'
+            "STRICT.md</a>.</p>\n" if old else "")
     return (
         "<p>Release tarballs of Spack, nixpkgs, Guix and live-bootstrap with "
         + ", ".join(f"<code>{f}</code>" for f in features) + "." + policy + "</p>\n"
-        + table("data-policy" if mixed else "data", rows) + "\n"
+        + table("data-policy" if mixed else "data", rows) + "\n" + note
         + ("" if not k else f'<p>See <a href="seen-in.html#{ident}">'
            + (f"the list of the {j:,} it rejects" if mixed
               else f"the list of these {k:,} tarballs" if j or k <= EXAMPLES
@@ -367,14 +406,16 @@ def data_section(ident, features, names, short, rated, union):
 def implementations_section(case, info, results):
     names = matrix.columns(results)
     versions = {i["name"]: i["version"] for i in results["implementations"]}
-    cells, letters = matrix.case_cells(info, results["cases"][case], names)
+    cells, letters = matrix.case_cells(info, results["cases"].get(case, {}), names)
     trees = {v: k for k, v in letters.items()}
     rows = []
     for n in names:
-        r = results["cases"][case][n]
+        r = results["cases"].get(case, {}).get(n)
         symbol = next(s for s in matrix.ORDER if cells[n].startswith(s))
         letter = cells[n][len(symbol):].lstrip("️")
-        if r["outside"]:
+        if r is None:
+            what = "not installed where this case was run"
+        elif r["outside"]:
             what = "writes outside: " + inline(matrix.describe(r["outside"]))
         elif r["error"] == "rejected":
             what = "rejects it"
@@ -600,7 +641,7 @@ def index_page(cases, results, data):
     groups = {}
     for case, info in cases.items():
         groups.setdefault(matrix.category(info), []).append((case, info))
-    sections = []
+    sections, footnote = [], False
     for group, members in groups.items():
         rows = []
         for case, info in members:
@@ -608,6 +649,9 @@ def index_page(cases, results, data):
             features = features_of(case, info)
             k = sum(1 for r in union if any(f in r["features"] for f in features))
             share = prevalence(k, len(union)) if features else "not measured"
+            if features and unmeasured(features, union):
+                share += '<a href="#unmeasured">*</a>'
+                footnote = True
             rows.append(f'<tr><td><a href="{ident}.html"><code>{ident}</code></a></td>'
                         f"<td>{html.escape(name)}</td><td>{inline(info['description'])}</td>"
                         f"<td class=n>{share}</td></tr>")
@@ -638,9 +682,12 @@ cases, at the cost of rejecting tarballs that are fairly common. That suits spec
 such as an extractor for a single ecosystem, where it can be checked against every tarball ever
 published there.</p>
 {chr(10).join(sections)}
+{UNMEASURED if footnote else ""}
 {tarballs_section(names, short, rated, union)}
 <h2 id="examples">Motivating examples</h2>
 {readme_examples()}
+<h2 id="contributing">Contributing</h2>
+{readme_section("Contributing")}
 """
     intro = re.sub(r"<[^>]+>", "", readme_intro().split("</p>", 1)[0])
     return page(f"{TITLE} · tar-minefield", html.unescape(intro), body)

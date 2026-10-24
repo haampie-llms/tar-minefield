@@ -54,7 +54,12 @@ STRICT = [
     ("type.gnu-sparse", "framing", "GNU's old sparse files"),
     ("type.contiguous", "framing", "contiguous files (7)"),
     ("pax.invalid-size", "framing", "a pax size that is not a number"),
+    ("pax.size-leading-zero", "framing",
+     "a pax size with leading zeros, which a reader may take as octal"),
+    ("pax.size-too-large", "framing",
+     "a pax size of 2^63 or more, which readers wrap, cut or reject"),
     ("pax.size-on-*", "framing", "a pax size on a member without data"),
+    ("size.on-*", "framing", "a size on a member without data, which some implementations skip"),
     ("pax.size-*", "framing", "a pax size that disagrees with the header"),
     ("extended.pax-size-before-gnu-long", "framing", "a pax size that a GNU long name may take"),
     ("extended.without-member", "framing", "an extended header without a member"),
@@ -64,6 +69,13 @@ STRICT = [
     ("pax-global.size", "framing", "a size in a global header"),
     ("pax.newline-in-value.*", "framing",
      "a newline in a pax value, where implementations split lines"),
+    ("pax.invalid-length", "framing", "a pax record whose length is not a number, or is wrong"),
+    ("pax.length-leading-zero", "framing", "a pax record whose length has leading zeros"),
+    ("pax.trailing-nuls", "framing", "NULs after the last pax record"),
+    ("pax.no-newline", "framing", "a pax record that does not end in a newline"),
+    ("pax.no-equals", "framing", "a pax record without `=`"),
+    ("pax.empty-key", "framing", "a pax record with an empty key"),
+    ("pax.empty-value.size", "framing", "an empty pax size, which in POSIX removes it"),
     ("end.missing", "framing", "no end-of-archive marker"),
     ("end.lone-zero-block", "framing", "an end-of-archive marker of one zero block, not two"),
     ("end.data-after", "framing", "data other than zeros after the end-of-archive marker"),
@@ -86,6 +98,8 @@ STRICT = [
     ("name.not-utf8", "name", "a name that is not UTF-8"),
     ("name.bytes-after-nul", "name", "bytes after the NUL that ends a name"),
     ("name.*", "name", "a name that implementations may normalize differently"),
+    ("extended.gnu-long-and-pax", "name",
+     "a GNU long name or link and a pax header for one member, which may apply to the other"),
     ("extended.*", "name", "several sources for one name or link target"),
     ("pax.hdrcharset", "name", "names that are not UTF-8 by declaration"),
     ("pax.path-not-utf8", "name", "a pax path that is not UTF-8"),
@@ -95,9 +109,12 @@ STRICT = [
     ("pax.repeated-key", "name", "a pax key twice in one extended header"),
     ("pax.nul-in-value.path", "name", "NUL in a pax path"),
     ("pax.nul-in-value.linkpath", "name", "NUL in a pax link path"),
+    ("pax.key-whitespace", "name", "whitespace around a pax key, which GNU tar strips"),
+    ("pax.empty-value.*", "name", "an empty pax value, which in POSIX removes the key"),
+    ("pax.value-not-utf8.*", "name", "a pax value that is not UTF-8, which POSIX does not allow"),
     ("pax-global.path", "name", "a path in a global header"),
     ("pax-global.linkpath", "name", "a link path in a global header"),
-    ("pax-global.empty-value", "name", "an empty value in a global header, which removes one"),
+    ("pax-global.empty-value.*", "name", "an empty value in a global header, which removes one"),
     ("pax-global.repeated-key", "name", "a pax key twice in one global header"),
     ("pax-global.nul-in-value.*", "name", "NUL in a value of a global header"),
     ("gnu.*", "name", "the prefix field of a GNU header, which GNU tar uses for times"),
@@ -144,6 +161,13 @@ ALLOWED = [
     ("pax.LIBARCHIVE.*", "vendor pax keys outside the tree"),
     ("pax.nul-in-value.SCHILY.xattr.*", "NUL in xattrs, which are outside the tree"),
     ("pax.nul-in-value.LIBARCHIVE.xattr.*", "NUL in xattrs, which are outside the tree"),
+    ("pax.value-not-utf8.SCHILY.*",
+     "binary values of vendor pax keys, such as xattrs, outside the tree"),
+    ("pax.value-not-utf8.LIBARCHIVE.*",
+     "binary values of vendor pax keys, such as xattrs, outside the tree"),
+    ("pax.value-not-utf8.[acm]time", "outside the tree"),
+    ("pax.value-not-utf8.[ug]id", "outside the tree"),
+    ("pax.value-not-utf8.[ug]name", "outside the tree"),
 ]
 
 # The default policy: the strict criteria that it lets through, and how; it rejects the others.
@@ -162,6 +186,8 @@ DEFAULT = [
     ("end.data-after", "accept", "ignored: a header there is `end.archive-after`, rejected"),
     ("pax-global.after-members", "accept", "if every global header has only a `comment`"),
     ("magic.posix-version-nuls", "accept", "as some Java archivers write it: `ustar\\0\\0\\0`"),
+    ("pax.size-disagrees", "accept",
+     "the pax size frames the member, as POSIX says: it is how sizes over 8 GiB are written"),
     ("pax.newline-in-value.SCHILY.xattr.*", "accept", "xattrs are not extracted"),
     ("pax.newline-in-value.LIBARCHIVE.xattr.*", "accept", "xattrs are not extracted"),
 ]
@@ -223,6 +249,62 @@ def condition(feature, r):
 def default_rejects(r):
     """The strict features of a tarball that the default policy rejects."""
     return {f for f in strict_features(r) if not (default_rule(f) and condition(f, r))}
+
+
+def may_have_25bfa32e6e71(r):
+    """The features of UNREPORTED that a tarball that version 25bfa32e6e71 scanned may have: it
+    reported what each of them implies, or recorded the pax keys and extended headers they need."""
+    features, fingerprint = r["features"], r.get("fingerprint", {})
+    pax, pax_global = fingerprint.get("pax_keys", {}), fingerprint.get("pax_global_keys", {})
+    git = fingerprint.get("producer_hint", {}).get("git-archive", 0)
+    may = {f"pax.value-not-utf8.{k}" for k in pax if k != "path"}
+    # a comment that git archive wrote is a commit in hex
+    may |= {f"pax-global.value-not-utf8.{k}" for k in pax_global
+            if not (k == "comment" and git >= pax_global[k])}
+    may |= {f + "-too-large" for f in features if f.endswith(".base256")}
+    if "pax.empty-value" in features:
+        may.add("pax.empty-value.*")
+    if "pax-global.empty-value" in features:
+        may.add("pax-global.empty-value.*")
+    if "size" in pax:
+        may |= {"pax.size-leading-zero", "pax.size-too-large"}
+    if any("x" in s and ("L" in s or "K" in s) for s in fingerprint.get("extended_sequence", {})):
+        may.add("extended.gnu-long-and-pax")
+    return may
+
+
+# Versions of tarscan.py that did not report some features: (those features, and a function of a
+# tarball that version scanned to the ones it may have). A tarball that may have none of them is
+# measured for them all the same; the others are not, until they are scanned again.
+UNREPORTED = {
+    "25bfa32e6e71": (
+        ["pax.empty-value.*", "pax-global.empty-value.*", "pax.value-not-utf8.*",
+         "pax-global.value-not-utf8.*", "pax.size-leading-zero", "pax.size-too-large",
+         "extended.gnu-long-and-pax", "number.*.base256-too-large"],
+        may_have_25bfa32e6e71,
+    ),
+}
+
+
+def overlap(a, b):
+    """Whether two features, either of which may be a pattern, can be the same."""
+    return fnmatch.fnmatchcase(a, b) or fnmatch.fnmatchcase(b, a)
+
+
+def unreported(features, r):
+    """Whether the version of tarscan.py that scanned a tarball did not report some of features."""
+    return any(overlap(f, u) for f in features for u in UNREPORTED.get(r.get("scanner"), ([],))[0])
+
+
+def unmeasured(r):
+    """The features that a tarball may have, which the version of tarscan.py that scanned it did not
+    report."""
+    return UNREPORTED[r["scanner"]][1](r) if r.get("scanner") in UNREPORTED else set()
+
+
+def unmeasured_criteria(r):
+    """The strict criteria that may reject a tarball, unmeasured."""
+    return {criterion(f) for f in unmeasured(r) if classify(f)[0] == "strict"}
 
 
 def percent(n, total):
@@ -505,6 +587,48 @@ def main():
         + ", ".join(f"{bound(len(rated[n]))[1:]} of {short[n]}" for n in names)
         + ".\n"
     )
+
+    print("## Not measured\n")
+    old = [r for r in union if r.get("scanner") in UNREPORTED]
+    if not old:
+        print("Every tarball was scanned by a version of `tarscan.py` that reports every feature.\n")
+    else:
+        versions = collections.Counter(r["scanner"] for r in old)
+        print(
+            f"Of the {len(union):,} tarballs, "
+            + "; ".join(f"{k:,} were scanned by `{v}`, a version of `tarscan.py` that did not "
+                        "report " + ", ".join(f"`{f}`" for f in UNREPORTED[v][0])
+                        for v, k in versions.most_common())
+            + f"; the other {len(union) - len(old):,} were scanned by a later version. What the "
+            "earlier versions did record rules out most of these features: a tarball without a "
+            "pax `size` has no pax size with a leading zero. `UNREPORTED` in "
+            "`contrib/scanner/strict.py` says how, for each version.\n"
+        )
+        missing = collections.Counter(f for r in old for f in unmeasured_criteria(r))
+        if missing:
+            print(
+                "It does not rule out all strict criteria. These are not measured in some "
+                "tarballs, which they may reject, more than the tables above say:\n"
+            )
+            print("| criterion | tarballs not measured |")
+            print("|---|---|")
+            for f, count in missing.most_common():
+                print(f"| `{f}` | {count} |")
+            print()
+        else:
+            print("It rules out every strict criterion for every one of them, so the tables "
+                  "above measure every tarball.", end="")
+        allowed = collections.Counter(
+            f for r in old for f in unmeasured(r) if classify(f)[0] == "allowed")
+        if allowed:
+            print(
+                ("" if missing else " ")
+                + "It does not rule out these allowed features, in fields outside the tree, which "
+                "the table below counts only where they were reported: "
+                + ", ".join(f"`{f}` in {c:,}" for f, c in allowed.most_common()) + ".",
+                end="",
+            )
+        print("\n")
 
     print("## Allowed features\n")
     print("Not ambiguous, or confined to fields outside the tree. Tarballs of all ecosystems:\n")

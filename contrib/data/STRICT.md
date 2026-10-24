@@ -72,6 +72,7 @@ The strict criteria that the default policy lets through, and how; it rejects al
 | `end.data-after` | accept | ignored: a header there is `end.archive-after`, rejected | 25 |
 | `pax-global.after-members` | accept | if every global header has only a `comment` | 82 |
 | `magic.posix-version-nuls` | accept | as some Java archivers write it: `ustar\0\0\0` | 60 |
+| `pax.size-disagrees` | accept | the pax size frames the member, as POSIX says: it is how sizes over 8 GiB are written | 0 |
 | `pax.newline-in-value.SCHILY.xattr.*` | accept | xattrs are not extracted | 12 |
 | `pax.newline-in-value.LIBARCHIVE.xattr.*` | accept | xattrs are not extracted | 0 |
 
@@ -115,6 +116,12 @@ Tarballs that each criterion rejects, per ecosystem. Default: what the default p
 
 Other criteria reject no tarball here. That is no proof that they cost nothing: with 95% confidence, each rejects less than 0.03% of guix, 1.8% of live-bootstrap, 0.016% of nix, 0.008% of spack.
 
+## Not measured
+
+Of the 62,622 tarballs, 62,544 were scanned by `25bfa32e6e71`, a version of `tarscan.py` that did not report `pax.empty-value.*`, `pax-global.empty-value.*`, `pax.value-not-utf8.*`, `pax-global.value-not-utf8.*`, `pax.size-leading-zero`, `pax.size-too-large`, `extended.gnu-long-and-pax`, `number.*.base256-too-large`; the other 78 were scanned by a later version. What the earlier versions did record rules out most of these features: a tarball without a pax `size` has no pax size with a leading zero. `UNREPORTED` in `contrib/scanner/strict.py` says how, for each version.
+
+It rules out every strict criterion for every one of them, so the tables above measure every tarball. It does not rule out these allowed features, in fields outside the tree, which the table below counts only where they were reported: `pax.value-not-utf8.mtime` in 10,790, `pax.value-not-utf8.atime` in 703, `pax.value-not-utf8.ctime` in 687, `number.uid.base256-too-large` in 143, `number.gid.base256-too-large` in 136, `pax.value-not-utf8.uid` in 100, `pax.value-not-utf8.gid` in 67.
+
 ## Allowed features
 
 Not ambiguous, or confined to fields outside the tree. Tarballs of all ecosystems:
@@ -139,6 +146,7 @@ Not ambiguous, or confined to fields outside the tree. Tarballs of all ecosystem
 | `number.mode.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 142 |
 | `number.mtime.leading-space` | octal padded with spaces, not zeros, which implementations read alike | 66 |
 | `pax.nul-in-value.SCHILY.xattr.*` | NUL in xattrs, which are outside the tree | 32 |
+| `pax.value-not-utf8.SCHILY.xattr.*` | binary values of vendor pax keys, such as xattrs, outside the tree | 31 |
 | `linkname.no-nul` | a link name of exactly 100 bytes, without NUL | 31 |
 | `name.not-nfc` | names not in NFC: one tree, which macOS may not hold | 29 |
 | `pax.LIBARCHIVE.creationtime` | vendor pax keys outside the tree | 21 |

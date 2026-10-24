@@ -207,6 +207,8 @@ def number(field, name, features):
         if field[0] == 0xFF:
             n -= 256 ** (len(field) - 1)
         features.add(f"number.{name}.base256" + ("-negative" if n < 0 else ""))
+        if abs(n) >= 1 << 63:
+            features.add(f"number.{name}.base256-too-large")
         return n, "b256"
     shape = pattern(field)
     if shape.startswith("n") and "d" in shape:
@@ -251,7 +253,7 @@ def pax_records(data, features, kind):
             break
         space = data.find(b" ", pos)
         length = data[pos:space] if space >= 0 else b""
-        if not length.isdigit():
+        if not length.isdigit() or len(length.lstrip(b"0")) > 9:
             features.add(f"{kind}.invalid-length")
             break
         if length.startswith(b"0"):
@@ -277,7 +279,12 @@ def pax_records(data, features, kind):
         if b"\0" in value:
             features.add(f"{kind}.nul-in-value.{key_family(key)}")
         if not value:
-            features.add(f"{kind}.empty-value")
+            features.add(f"{kind}.empty-value.{key_family(key)}")
+        if key != b"path":
+            try:
+                value.decode("utf-8")
+            except UnicodeDecodeError:
+                features.add(f"{kind}.value-not-utf8.{key_family(key)}")
         if key in keys:
             features.add(f"{kind}.repeated-key")
         keys.add(key)
@@ -627,6 +634,8 @@ class Scanner:
             features.add("extended.two-gnu-long-names", header_name)
         if len(long_links) > 1:
             features.add("extended.two-gnu-long-links", header_name)
+        if "x" in seq and ("L" in seq or "K" in seq):
+            features.add("extended.gnu-long-and-pax", header_name)
         if pax_names and long_names:
             features.add("extended.pax-path-and-gnu-long-name", header_name)
         if b"linkpath" in pax and long_links:
@@ -659,6 +668,11 @@ class Scanner:
             if not value.isdigit():
                 features.add("pax.invalid-size")
             else:
+                if value.startswith(b"0") and value != b"0":
+                    features.add("pax.size-leading-zero")
+                if len(value.lstrip(b"0")) > 19 or int(value) >= 1 << 63:
+                    features.add("pax.size-too-large")
+                    raise Error("a pax size of 2^63 or more")
                 if int(value) != size and size != 0 and size_shape_is_octal(block[124:136]):
                     features.add("pax.size-disagrees")
                 size = int(value)

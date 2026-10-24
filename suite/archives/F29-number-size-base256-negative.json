@@ -1,0 +1,8 @@
+{
+ "id": "F29",
+ "verdict": "reject",
+ "description": "A negative base-256 size in the header, -512, which no member can have.",
+ "features": [
+  "number.size.base256-negative"
+ ]
+}

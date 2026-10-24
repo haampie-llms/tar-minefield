@@ -42,3 +42,21 @@ them: only whether untar extracts them is not. REPORT.md lists them.
 Downloads: mirror.spack.io first, then the upstream URL. REPORT.md counts the downloads by host.
 Every tarball that could not be downloaded failed with 404 on the mirror, and upstream mostly
 with 404 too, or with a file of a different sha256.
+
+## Scanned again, 2026-10-24
+
+`tarscan.py` `5b9b83abac66` reports features that `25bfa32e6e71` did not, for the cases F20 to F31
+and N22 to N24. `UNREPORTED` in `contrib/scanner/strict.py` lists them, and rules them out from
+what `25bfa32e6e71` recorded in most tarballs. The 44 tarballs of this scan where it rules out
+neither a strict criterion nor a binary value of a vendor pax key were scanned again, with the
+same untar, and their rows in `results.jsonl` replaced:
+
+```console
+$ python -I contrib/scanner/run.py scan sample-spack.jsonl results-spack.jsonl --untar ~/untar --jobs 8
+```
+
+where `sample-spack.jsonl` has the lines of `sample.jsonl` for those tarballs: those for which
+`strict.unmeasured_criteria(r)` is not empty, or `strict.unmeasured(r)` has a
+`pax.value-not-utf8.*` feature of a key other than `mtime`, `atime`, `ctime`, `uid` and `gid`.
+Every row is as it was, but for the new features: 11 tarballs have
+`pax.value-not-utf8.SCHILY.xattr.*`, which is allowed. The other rows keep `25bfa32e6e71`.

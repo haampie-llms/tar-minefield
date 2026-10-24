@@ -23,6 +23,8 @@ outcome is compared with the case's verdict:
 - ⛔ rejects a tolerated case, which a strict parser may
 - ❌ rejects a case to accept, or extracts another tree than the manifest
 - 💥 writes outside the destination
+- ❔ not run: matrix.json has no result of the implementation for the case, which is so not verified,
+  as when it was not installed where the case was first run
 """
 
 import hashlib
@@ -488,11 +490,13 @@ def main():
     results = {"implementations": [{"name": n, "version": v, "kind": k} for n, v, k, _ in impls],
                "cases": {}}
     if only:
-        # the other columns are kept as they are in matrix.json
+        # the other columns, and those of names in only that were not found, are kept as they are
+        # in matrix.json
         with open(os.path.join(HERE, "matrix.json")) as f:
             previous = json.load(f)
+        ran = {name for name, _, _, _ in impls}
         results["implementations"] = [i for i in previous["implementations"]
-                                      if i["name"] not in only] + results["implementations"]
+                                      if i["name"] not in ran] + results["implementations"]
     rejected_by = policies()
     runs = os.path.join(work, "runs")
     shutil.rmtree(runs, ignore_errors=True)
@@ -524,7 +528,9 @@ def main():
 
 
 def outcome(case, r):
-    """(symbol, tree or None) of one run."""
+    """(symbol, tree or None) of one run, or of None where there was no run."""
+    if r is None:
+        return "❔", None
     if r["outside"]:
         return "💥", None
     if case["verdict"] == "reject":
@@ -536,7 +542,7 @@ def outcome(case, r):
     return "❌", r["tree"]
 
 
-ORDER = ["✅", "⚠️", "⛔", "❌", "💥"]
+ORDER = ["✅", "⚠️", "⛔", "❌", "💥", "❔"]
 LEGEND = [
     "- ✅ as the verdict says: rejects a case to reject; extracts the manifest of the others",
     "- ⚠️ accepts a case to reject. The letter is the tree it extracts: in one row, the same letter is"
@@ -545,6 +551,7 @@ LEGEND = [
     "- ⛔ rejects a tolerated case, which a strict parser may",
     "- ❌ rejects a case to accept, or extracts another tree than its manifest",
     "- 💥 writes outside the destination",
+    "- ❔ not run, so not verified: the implementation was not installed where the case was run",
 ]
 # The order of the columns, roughly by how widely used an implementation is: command-line tools,
 # then libraries by the popularity of their language, and niche tools last. Others go at the end.
@@ -577,7 +584,7 @@ def case_cells(info, row, names):
     """The cell of every implementation for one case, and the trees its letters stand for."""
     letters, cells = {}, {}
     for n in names:
-        symbol, tree = outcome(info, row[n])
+        symbol, tree = outcome(info, row.get(n))
         cells[n] = symbol
         if tree is not None:
             key = describe(tree)
@@ -590,7 +597,7 @@ def totals(results, cases, names):
     counts = {n: {} for n in names}
     for case, info in cases.items():
         for n in names:
-            symbol = outcome(info, results["cases"][case][n])[0]
+            symbol = outcome(info, results["cases"].get(case, {}).get(n))[0]
             counts[n][symbol] = counts[n].get(symbol, 0) + 1
     return {n: " ".join(f"{s}{counts[n][s]}" for s in ORDER if counts[n].get(s)) for n in names}
 
@@ -609,6 +616,8 @@ CLASSES = {
            "rejects a case to accept, or extracts another tree than its manifest", "✗"),
     "💥": ("boom", ("#dcc8ff", "#6639ba"),
            "writes outside the destination", "↑"),
+    "❔": ("none", ("#ffffff", "#59636e"),
+          "not run, so not verified: the implementation was not installed where the case was run", "?"),
 }
 FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
 
@@ -634,7 +643,7 @@ def svg_style():
     return (
         f"<style>text{{font-family:{FONT};font-size:12px;fill:#1f2328}}.head{{font-weight:600}}"
         f".cell{{font-size:11px;font-weight:700;text-anchor:middle}}.rule{{stroke:#d0d7de}}{colours}"
-        ".hit{fill:transparent}a.row:hover .hit{fill:#eaeef2}a.row:hover .name{text-decoration:underline}"
+        ".none{stroke:#8c959f;stroke-dasharray:2 2}.hit{fill:transparent}a.row:hover .hit{fill:#eaeef2}a.row:hover .name{text-decoration:underline}"
         '</style><rect width="100%" height="100%" fill="#ffffff"/>'
     )
 
@@ -667,7 +676,7 @@ def svg(results, cases, link=None):
     counts = {n: {} for n in names}
     for case, info in cases.items():
         for n in names:
-            symbol = outcome(info, results["cases"][case][n])[0]
+            symbol = outcome(info, results["cases"].get(case, {}).get(n))[0]
             counts[n][symbol] = counts[n].get(symbol, 0) + 1
     left = 20 + 7 * max(len(label(c, i)) for c, i in cases.items())
     cw, ch, gap, top = 22, 16, 2, 230
@@ -711,10 +720,10 @@ def svg(results, cases, link=None):
                        f'y="{y - gap / 2}" width="{x - gap - 10}" height="{ch + gap}" rx="3"/>')
         out.append(f'<text class="name" x="{left - 10}" y="{y + ch / 2 + 4}" text-anchor="end">'
                    f"{esc(label(case, info))}</text>")
-        cells, letters = case_cells(info, results["cases"][case], names)
+        cells, letters = case_cells(info, results["cases"].get(case, {}), names)
         trees = {v: k for k, v in letters.items()}
         for n in names:
-            letter = cells[n].lstrip("✅⚠️⛔❌💥\ufe0f")
+            letter = cells[n].lstrip("✅⚠️⛔❌💥❔\ufe0f")
             title = f"{n}: {label(case, info)}" + (f", tree {letter}: {trees[letter]}" if letter in trees else "")
             out.append(cell_svg(xs[n], y, cw, ch, cells[n], title.replace("`", "")))
         if link:
@@ -788,7 +797,7 @@ def table(results, cases):
         if category(info) != previous:
             previous = category(info)
             lines.append(f"| **{GROUPS[previous]}** |" + " |" * len(names))
-        cells, letters = case_cells(info, results["cases"][case], names)
+        cells, letters = case_cells(info, results["cases"].get(case, {}), names)
         ident, name = label(case, info).split(" ", 1)
         lines.append(f"| [{ident}]({SITE}{ident}.html) {name} | "
                      + " | ".join(cells[n] for n in names) + " |")

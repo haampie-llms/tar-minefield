@@ -1,0 +1,57 @@
+F31-pax-xattr-not-utf8: must accept, and extract its tree
+
+An xattr in a pax header whose value is not UTF-8, as libarchive and star write them.
+
+POSIX says that pax records are UTF-8, apart from names under `hdrcharset=BINARY`. But xattrs are
+bytes, and libarchive and star write them in pax headers, as `LIBARCHIVE.xattr.*` (in base64) and
+`SCHILY.xattr.*` (as they are). Here `SCHILY.xattr.user.data` is `\xff\xfe`. xattrs are not
+part of the tree, and implementations that do not extract them have no reason to decode them, so
+every implementation must extract `a`.
+
+Seen in: 31 source tarballs, such as R 4.5.2, Minion 10.31 and keepassxc 2.7.8, all in
+`SCHILY.xattr.*`. No source tarball has another pax value that is not UTF-8, apart from names.
+
+0x000000  header: pax extended header, for the next member, an xattr of two bytes that are not UTF-8
+          name     [  0,100)  "PaxHeader" + 91 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000035" + NUL  29
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "011077\0 "  4671: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "x"  pax extended header, for the next member
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000200  data: pax records
+          29 bytes of pax records, then 483 NUL
+          "29 SCHILY.xattr.user.data=\xff\xfe\n"
+0x000400  header: regular file
+          name     [  0,100)  "a" + 99 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000002" + NUL  2
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "007340\0 "  3808: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "0"  regular file
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000600  data
+          2 bytes, then 510 NUL to the end of the block
+          "a\n"
+0x000800  2 zero blocks: the end-of-archive marker
+0x000c00  end of file

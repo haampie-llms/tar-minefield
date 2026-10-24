@@ -1,0 +1,71 @@
+F21-pax-size-empty: must reject: implementations disagree on its tree
+
+An empty pax `size`, which in POSIX removes the size rather than giving one.
+
+A record with an empty value deletes the key: `size=` leaves `a` with no size at all, not even that
+of its header, which says 512. Implementations take it as 0, and read the next block as the header
+of `smuggled`; or fall back to the header's size, and read that block as the data of `a`; or reject
+it. Nothing defines what a member without a size is, so a strict parser rejects it.
+
+Decision point: what an empty pax size means: no size, 0, or the header's size.
+Seen in: no source tarball.
+
+0x000000  header: pax extended header, for the next member, size=, which removes the size
+          name     [  0,100)  "PaxHeader" + 91 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000010" + NUL  8
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "011070\0 "  4664: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "x"  pax extended header, for the next member
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000200  data: pax records
+          8 bytes of pax records, then 504 NUL
+          "8 size=\n"
+0x000400  header: regular file, size 512
+          name     [  0,100)  "a" + 99 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000001000" + NUL  512
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "007337\0 "  3807: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "0"  regular file
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000600  header: regular file, the data of a, to an implementation that takes the header's size
+          name     [  0,100)  "smuggled" + 92 NUL
+          mode     [100,108)  "0000644" + NUL  644 (octal)
+          uid      [108,116)  "0000000" + NUL  0
+          gid      [116,124)  "0000000" + NUL  0
+          size     [124,136)  "00000000000" + NUL  0
+          mtime    [136,148)  "00000000000" + NUL  0
+          chksum   [148,156)  "010725\0 "  4565: the unsigned sum of the header, this field as spaces
+          typeflag [156,157)  "0"  regular file
+          linkname [157,257)  100 NUL
+          magic    [257,263)  "ustar" + NUL
+          version  [263,265)  "00"
+          uname    [265,297)  32 NUL
+          gname    [297,329)  32 NUL
+          devmajor [329,337)  "0000000" + NUL  0
+          devminor [337,345)  "0000000" + NUL  0
+          prefix   [345,500)  155 NUL
+          pad      [500,512)  12 NUL
+0x000800  2 zero blocks: the end-of-archive marker
+0x000c00  end of file

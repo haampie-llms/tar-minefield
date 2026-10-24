@@ -11,8 +11,8 @@ Rates are per ecosystem. Counts below are of the distinct tarballs of all ecosys
 
 - tarballs: 62947, scanned: 62670 (31701 latest versions, 30969 older)
 - not downloaded: 277, scanner crashed: 0
-- downloaded from the first of their URLs (a mirror): 50798
-- copied from other scans with `--reuse`: 2491, read from `--cache`: 33; sources by host: mirror.spack.io 35704, tarballs.nixos.org 9418, bordeaux.guix.gnu.org 7090, hackage.haskell.org 6143, files.pythonhosted.org 1509, download.kde.org 488
+- downloaded from the first of their URLs (a mirror): 50796
+- copied from other scans with `--reuse`: 2494, read from `--cache`: 33; sources by host: mirror.spack.io 35707, tarballs.nixos.org 9416, bordeaux.guix.gnu.org 7090, hackage.haskell.org 6143, files.pythonhosted.org 1509, download.kde.org 488
 - size: 1216.4 GB compressed
 - origins: other 20752, pypi 14006, github-archive 12103, cran/bioconductor 7204, github-release 3896, cpan 2696, gnu 1290, gitlab 723
 - producers: GNU format 18225, ustar 14967, git archive 14654, Python tarfile (pax) 10268, v7 3456, GNU tar (pax) 902, libarchive (pax) 87, posix-version-0000 60, none 49, star 2
@@ -227,6 +227,7 @@ Number of tarballs with each feature, of which latest versions; their origins, p
 | `platform.windows-trailing-dot-or-space` | 33 | 16 | other 23, pypi 4, github-archive 4 | v7 12, git archive 9, Python tarfile (pax) 5 | 1994–2026 | 0 | texi2html@5.0 `texi2html-5.0/test/manuals/res_info/ccvs_mediawiki_nosplit/c`; giac_2.0.0@21 `giac-2.0.0/check/oim.tst.` |
 | `pax.nul-in-value.SCHILY.xattr.*` | 32 | 25 | other 12, cpan 10, github-release 9 | libarchive (pax) 31, git archive 1 | 2018–2026 | 0 | Healpix_3.82_2024Nov13@ `Healpix_3.82/src/common_libraries/libsharp/m4/PaxHeader/ltop`; libmygpo-qt.1.2.0@ `PaxHeader/libmygpo-qt` |
 | `linkname.no-nul` | 31 | 9 | other 24, github-release 5, github-archive 2 | GNU format 22, git archive 6, Python tarfile (pax) 3 | 2014–2026 | 0 | ghc@9.10.2-src `ghc-9.10.2/libraries/Cabal/cabal-testsuite/PackageTests/Back`; gnome-software@49.3 `gnome-software-49.3/plugins/flatpak/tests/app-update/org.tes` |
+| `pax.value-not-utf8.SCHILY.xattr.*` | 31 | 24 | other 11, cpan 10, github-release 9 | libarchive (pax) 30, git archive 1 | 2018–2026 | 0 | Healpix_3.82_2024Nov13@ `Healpix_3.82/src/common_libraries/libsharp/m4/PaxHeader/ltop`; asio@1.36.0 `asio-1.36.0/doc/PaxHeader/proactor.png` |
 | `name.not-nfc` | 29 | 3 | github-archive 20, pypi 7, other 2 | git archive 20, GNU format 8, Python tarfile (pax) 1 | 2016–2026 | 0 | discount@2.2.7d `discount-2.2.7d/tests/muñoz.t`; discount@3.0.2.0 `discount-3.0.2.0/tests/muñoz.t` |
 | `hardlink.to-itself` | 27 | 4 | other 27 | GNU format 26, GNU tar (pax) 1 | 2012–2022 | 0 | xscreensaver@6.12 `xscreensaver-6.12/driver/wayland-dpy.c`; ghc@7.8.4-x86_64-unknown-linux-deb7 `ghc-7.8.4/utils/haddock/dist/build/tmp/haddock` |
 | `tree.duplicate.file-hardlink` | 27 | 4 | other 27 | GNU format 26, GNU tar (pax) 1 | 2012–2022 | 0 | xscreensaver@6.12 `xscreensaver-6.12/driver/wayland-dpy.c`; ghc@7.8.4-x86_64-unknown-linux-deb7 `ghc-7.8.4/utils/haddock/dist/build/tmp/haddock` |

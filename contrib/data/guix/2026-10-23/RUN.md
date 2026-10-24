@@ -55,3 +55,21 @@ Like Nix, Guix has some `.tar.lz` and `.tar.zst` tarballs, which `tarscan.py` do
 decompress: it stops at the first header (`invalid checksum at offset 0`), and untar rejects
 them. REPORT.md lists them among the tarballs where the scanner stopped early; `strict.py` counts
 them as not assessed.
+
+## Scanned again, 2026-10-24
+
+`tarscan.py` `5b9b83abac66` reports features that `25bfa32e6e71` did not, for the cases F20 to F31
+and N22 to N24. `UNREPORTED` in `contrib/scanner/strict.py` lists them, and rules them out from
+what `25bfa32e6e71` recorded in most tarballs. The 10 tarballs of this scan where it rules out
+neither a strict criterion nor a binary value of a vendor pax key were scanned again, with the
+same untar, and their rows in `results.jsonl` replaced:
+
+```console
+$ python -I contrib/scanner/run.py scan sample-guix.jsonl results-guix.jsonl --untar ~/untar --jobs 8 --reuse results-spack.jsonl --reuse results-nix.jsonl
+```
+
+where `sample-guix.jsonl` has the lines of `sample.jsonl` for those tarballs: those for which
+`strict.unmeasured_criteria(r)` is not empty, or `strict.unmeasured(r)` has a
+`pax.value-not-utf8.*` feature of a key other than `mtime`, `atime`, `ctime`, `uid` and `gid`.
+Every row is as it was, but for the new features: 6 tarballs have
+`pax.value-not-utf8.SCHILY.xattr.*`, which is allowed. The other rows keep `25bfa32e6e71`.

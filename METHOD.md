@@ -77,7 +77,7 @@ Framing:
 
 - Number fields: a leading NUL (GNU tar skips it, `tarfile` stops at it), spaces or NULs
   between digits, no terminator, digits 8 and 9, an empty field, base-256 (positive and
-  negative).
+  negative, and sizes past 64 bits, which some readers wrap around).
 - Checksums: signed versus unsigned sums, and the formats of the checksum field.
 - Sizes of members that carry no data in some implementations: directories, hardlinks, symlinks,
   devices, fifos.
@@ -85,13 +85,19 @@ Framing:
   them without data.
 - GNU's old sparse (`S`), multivolume (`M`), volume label (`V`) and dumpdir (`D`) headers, and
   contiguous files (`7`).
-- A pax `size` that disagrees with the header's size, a pax `size` on a member that has no data,
-  and a pax `size` applied to an extended header rather than to the member, which is the bug class
-  of CVE-2025-62518 (tokio-tar), GHSA-3pv8-6f4r-ffg2 (tar-rs) and CVE-2026-53655 (node-tar).
+- A pax `size` that disagrees with the header's size (POSIX says the pax size wins: it is how
+  sizes over 8 GiB are written), a pax `size` on a member that has no data, and a pax `size`
+  applied to an extended header rather than to the member, which is the bug class of
+  CVE-2025-62518 (tokio-tar), GHSA-3pv8-6f4r-ffg2 (tar-rs) and CVE-2026-53655 (node-tar).
+- pax numbers, which are ASCII decimal digits: a sign, leading whitespace, other digits of Unicode
+  (which conversions of strings to numbers, such as Python's `int`, accept), leading zeros
+  (decimal to POSIX, octal to `strtoul(s, NULL, 0)`), and values past 64 bits.
+- Empty values in pax headers, which in POSIX remove a key: an empty `size` leaves a member
+  without a size, which implementations take as 0, as the header's size, or reject.
 - pax record framing: the length counts itself, leading zeros in the length, data after the last
   record, records not ending in a newline, values that contain a newline (records are delimited by
-  length, so an implementation that splits on lines sees different records), keys with whitespace
-  (GNU tar strips it, `tarfile` does not).
+  length, so an implementation that splits on lines sees different records, even in a `comment`
+  that no implementation applies), keys with whitespace (GNU tar strips it, `tarfile` does not).
 - The end of the archive: a lone zero block, zero blocks followed by more members (GNU tar's
   `--ignore-zeros`), data other than zeros after the end-of-archive marker, no marker at all.
 - Recognizing a header: v7 headers without magic, the POSIX magic `ustar\0` with the GNU version
@@ -105,11 +111,16 @@ Name:
 - Several sources for one name: a pax `path`, a GNU long name (`L`), the ustar prefix and name,
   the star prefix, Solaris `X` headers, two extended headers of one kind, one key twice in an
   extended header, or one of each.
+- GNU long names and pax headers for one member, in either order: each extends the next header,
+  and does not know the other, so a GNU long name before a pax header may name the pax header.
 - The prefix field in a header with GNU magic, which GNU tar uses for times in incremental
   archives (`tarfile` reads it as a prefix: gh-155629).
 - pax keys that change the name or kind from inside: `GNU.sparse.name`, `SCHILY.filetype`.
 - NUL inside a pax path or GNU long name, and GNU long names padded with NULs or spaces.
-- `hdrcharset=BINARY`, names that are not UTF-8.
+- `hdrcharset=BINARY`, names that are not UTF-8, and other pax values that are not UTF-8, which
+  POSIX does not allow, but libarchive and star write xattrs as.
+- An empty pax `path` or `linkpath`, which in POSIX removes it, rather than falling back to the
+  header's name.
 - Normalization: `./a` and `a`, `a//b`, `a/./b`, a trailing slash, `.`, an empty name, `\` as a
   separator on Windows, drive letters.
 - The same questions for link targets: `linkpath`, GNU long links (`K`) and the linkname field.
@@ -156,7 +167,8 @@ parser would trip over:
   [the scans](contrib/data) find no tarball where implementations read such a field differently,
 - base-256 sizes of files over 8 GiB,
 - vendor pax keys that do not affect the tree, such as `LIBARCHIVE.xattr.*` and `SCHILY.*` from
-  macOS and star, and the AppleDouble `._` files next to them,
+  macOS and star, also with values that are not UTF-8, and the AppleDouble `._` files next to
+  them,
 - directories after their contents, and parent directories that have no member of their own,
 - the same directory listed twice, as `tar cf x.tar dir dir/sub` writes.
 
@@ -191,6 +203,9 @@ costs. The tolerated cases are:
 - the POSIX magic with NULs for its version, `ustar\0\0\0`, which some Java archivers write,
   as in the tarballs of Apache's commons-lang, Solr and Hadoop. Any other version is rejected.
 - newlines in the values of xattr pax keys, which are not extracted.
+- a pax `size` that disagrees with the header's, when the pax size frames the member, as POSIX
+  says. A strict parser may reject a header that could hold the size and gives another, but must
+  not take the header's size.
 
 Everything else in the catalogue is rejected. Duplicate files are rejected even where their copies
 are identical, as they are in most tarballs that have them: in some, a file was changed and appended

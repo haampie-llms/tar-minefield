@@ -26,9 +26,9 @@ Use **[the test suite](suite/)** in your tests, or browse **[the website](https:
 ## Comparison
 
 <!-- begin matrix.py -->
-What 27 implementations make of the 55 cases: a row per case, by category, and a column per implementation, with the outcomes of all cases at the top. [The website](https://stoppels.ch/tar/) has a page per case.
+What 27 implementations make of the 70 cases: a row per case, by category, and a column per implementation, with the outcomes of all cases at the top. [The website](https://stoppels.ch/tar/) has a page per case.
 
-[![What every implementation makes of every case of the test suite. Outcomes of all cases: strict.py: ✅55; GNU tar: ✅23 ⚠️32; bsdtar: ✅26 ⚠️29; BusyBox tar: ✅23 ⚠️32; 7-Zip: ✅22 ⚠️31 ⛔1 ❌1; Python tarfile, filter=data, as in pip: ✅26 ⚠️28 ⛔1; Python tarfile, filter=tar: ✅26 ⚠️29; Python tarfile, filter=fully_trusted: ✅25 ⚠️28 💥2; node-tar: ✅19 ⚠️35 ❌1; node-tar, strict: ✅27 ⚠️27 ⛔1; tar-fs: ✅27 ⚠️26 ⛔2; Java Commons Compress: ✅24 ⚠️30 ❌1; .NET System.Formats.Tar: ✅38 ⚠️15 ⛔2; PHP PharData, as in Composer: ✅20 ⚠️31 ⛔1 ❌3; PHP Archive_Tar: ✅22 ⚠️30 ⛔2 ❌1; Go archive/tar: ✅22 ⚠️33; Go archive/tar, tarinsecurepath=0: ✅25 ⚠️30; Go containerd archive.Apply: ✅25 ⚠️30; Rust tar: ✅27 ⚠️28; Rust astral-tokio-tar: ✅27 ⚠️27 ⛔1; Rust tar-codec, as in uv: ✅40 ⚠️10 ⛔4 ❌1; RubyGems: ✅19 ⚠️30 ⛔2 ❌4; R untar, internal: ✅27 ⚠️28; Perl Archive::Tar: ✅26 ⚠️27 ⛔1 ❌1; Haskell tar: ✅30 ⚠️20 ⛔5; Julia Tar.jl: ✅32 ⚠️23; live-bootstrap untar: ✅17 ⚠️30 ❌6 💥2; live-bootstrap untar, --non-strict: ✅12 ⚠️35 ❌6 💥2](contrib/matrix/matrix.svg)](https://stoppels.ch/tar/)
+[![What every implementation makes of every case of the test suite. Outcomes of all cases: strict.py: ✅70; GNU tar: ✅33 ⚠️37; bsdtar: ✅32 ⚠️38; BusyBox tar: ✅25 ⚠️44 ❌1; 7-Zip: ✅26 ⚠️42 ⛔1 ❌1; Python tarfile, filter=data, as in pip: ✅32 ⚠️37 ⛔1; Python tarfile, filter=tar: ✅32 ⚠️38; Python tarfile, filter=fully_trusted: ✅31 ⚠️37 💥2; node-tar: ✅22 ⚠️47 ❌1; node-tar, strict: ✅32 ⚠️37 ⛔1; tar-fs: ✅34 ⚠️34 ⛔2; Java Commons Compress: ✅31 ⚠️38 ❌1; .NET System.Formats.Tar: ✅47 ⚠️21 ⛔2; PHP PharData, as in Composer: ✅23 ⚠️42 ⛔1 ❌4; PHP Archive_Tar: ✅25 ⚠️41 ⛔2 ❌2; Go archive/tar: ✅30 ⚠️40; Go archive/tar, tarinsecurepath=0: ✅33 ⚠️37; Go containerd archive.Apply: ✅33 ⚠️37; Rust tar: ✅30 ⚠️40; Rust astral-tokio-tar: ✅37 ⚠️32 ⛔1; Rust tar-codec, as in uv: ✅54 ⚠️11 ⛔4 ❌1; RubyGems: ✅22 ⚠️41 ⛔2 ❌5; R untar, internal: ✅36 ⚠️34; Perl Archive::Tar: ✅28 ⚠️39 ⛔1 ❌2; Haskell tar: ✅32 ⚠️32 ⛔5 ❌1; Julia Tar.jl: ✅42 ⚠️28; live-bootstrap untar: ✅18 ⚠️42 ❌8 💥2; live-bootstrap untar, --non-strict: ✅13 ⚠️47 ❌8 💥2](contrib/matrix/matrix.svg)](https://stoppels.ch/tar/)
 <!-- end matrix.py -->
 
 ## Contents
@@ -37,3 +37,12 @@ What 27 implementations make of the 55 cases: a row per case, by category, and a
 - [METHOD.md](METHOD.md): the terms, the catalogue of ambiguities, the verdicts and the default policy.
 - [contrib/](contrib): how the data was made.
 - [docs/](docs): the website.
+
+## Contributing
+
+Issues and pull requests are welcome on [GitHub](https://github.com/haampie/tar-minefield/issues): a new case, an implementation for the comparison, or a tarball that the default policy gets wrong.
+
+Contributors:
+
+- [Harmen Stoppels](https://github.com/haampie)
+- [William Woodruff](https://github.com/woodruffw)

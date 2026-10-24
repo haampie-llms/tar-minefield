@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://stoppels.ch/tar/N21.html">
 </head>
 <body>
-<nav><a class="prev" href="N20.html" rel="prev" title="N20 pax-repeated-key">‹ N20 pax-repeated-key</a><a href="index.html">all cases</a><a class="next" href="K01.html" rel="next" title="K01 kind-trailing-slash-file">K01 kind-trailing-slash-file ›</a></nav>
+<nav><a class="prev" href="N20.html" rel="prev" title="N20 pax-repeated-key">‹ N20 pax-repeated-key</a><a href="index.html">all cases</a><a class="next" href="N22.html" rel="next" title="N22 pax-path-empty">N22 pax-path-empty ›</a></nav>
 <h1><code>N21</code> pax-global-path</h1>
 <p>A global pax header with a <code>path</code>.</p>
 <div class="verdict reject"><p><span class="badge">Must reject</span> A strict parser must reject this archive: implementations disagree on its tree.</p></div>
@@ -386,8 +386,8 @@ Seen in: no source tarball.
 <tr><td>tar-fs</td><td>tar-fs 3.1.3, on tar-stream 3.2.2</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (2 B, 87428fc5), <code>b</code> (2 B, 02638299)</td></tr>
 <tr><td>Java Commons Compress</td><td>Commons Compress 1.28.0, Expander, on Java 25.0.4.1</td><td>⚠️ accepts</td><td>tree A: <code>global-name</code> (2 B, 02638299)</td></tr>
 <tr><td>.NET System.Formats.Tar</td><td>System.Formats.Tar of .NET 10.0.13, ExtractToDirectory</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (2 B, 87428fc5), <code>b</code> (2 B, 02638299)</td></tr>
-<tr><td>PHP PharData, as in Composer</td><td>PharData of PHP 8.5.12, as Composer&#x27;s TarDownloader calls it</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (2 B, 87428fc5), <code>b</code> (2 B, 02638299)</td></tr>
-<tr><td>PHP Archive_Tar</td><td>PEAR Archive_Tar 1.6.1, extract, on PHP 8.5.12</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (2 B, 87428fc5), <code>b</code> (2 B, 02638299)</td></tr>
+<tr><td>PHP PharData, as in Composer</td><td>PharData of PHP 8.5.4, as Composer&#x27;s TarDownloader calls it</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (2 B, 87428fc5), <code>b</code> (2 B, 02638299)</td></tr>
+<tr><td>PHP Archive_Tar</td><td>PEAR Archive_Tar 1.6.1, extract, on PHP 8.5.4</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (2 B, 87428fc5), <code>b</code> (2 B, 02638299)</td></tr>
 <tr><td>Go archive/tar</td><td>archive/tar of go1.26.8</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (2 B, 87428fc5), <code>b</code> (2 B, 02638299)</td></tr>
 <tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (2 B, 87428fc5), <code>b</code> (2 B, 02638299)</td></tr>
 <tr><td>Go containerd archive.Apply</td><td>containerd v2.4.2, archive.Apply, of go1.27.3</td><td>⚠️ accepts</td><td>tree B: <code>a</code> (2 B, 87428fc5), <code>b</code> (2 B, 02638299)</td></tr>

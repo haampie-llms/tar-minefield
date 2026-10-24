@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://stoppels.ch/tar/F05.html">
 </head>
 <body>
-<nav><a class="prev" href="F04.html" rel="prev" title="F04 end-missing">‹ F04 end-missing</a><a href="index.html">all cases</a><a class="next" href="F18.html" rel="next" title="F18 pax-global-comment-after-members">F18 pax-global-comment-after-members ›</a></nav>
+<nav><a class="prev" href="F04.html" rel="prev" title="F04 end-missing">‹ F04 end-missing</a><a href="index.html">all cases</a><a class="next" href="F14.html" rel="next" title="F14 pax-size-disagrees">F14 pax-size-disagrees ›</a></nav>
 <h1><code>F05</code> magic-version-nuls</h1>
 <p>The POSIX magic with NULs for its version, <code>ustar\0\0\0</code>, as some Java archivers write.</p>
 <div class="verdict tolerate"><p><span class="badge">Tolerated</span> A strict parser may reject this archive. If it accepts it, it must extract this tree: <code>a</code> (2 B, 87428fc5).</p></div>
@@ -210,8 +210,8 @@ Seen in: commons-lang 2.6, apache-solr 3.6.2 and commons-logging 1.2.
 <tr><td>tar-fs</td><td>tar-fs 3.1.3, on tar-stream 3.2.2</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>Java Commons Compress</td><td>Commons Compress 1.28.0, Expander, on Java 25.0.4.1</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>.NET System.Formats.Tar</td><td>System.Formats.Tar of .NET 10.0.13, ExtractToDirectory</td><td>⛔ rejects</td><td>error: InvalidDataException: A POSIX format was expected (Ustar or PAX), but could not be reliably determined for entry &#x27;a&#x27;.</td></tr>
-<tr><td>PHP PharData, as in Composer</td><td>PharData of PHP 8.5.12, as Composer&#x27;s TarDownloader calls it</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
-<tr><td>PHP Archive_Tar</td><td>PEAR Archive_Tar 1.6.1, extract, on PHP 8.5.12</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>PHP PharData, as in Composer</td><td>PharData of PHP 8.5.4, as Composer&#x27;s TarDownloader calls it</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
+<tr><td>PHP Archive_Tar</td><td>PEAR Archive_Tar 1.6.1, extract, on PHP 8.5.4</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>Go archive/tar</td><td>archive/tar of go1.26.8</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>
 <tr><td>Go containerd archive.Apply</td><td>containerd v2.4.2, archive.Apply, of go1.27.3</td><td>✅ as the verdict says</td><td>the tree of the case</td></tr>

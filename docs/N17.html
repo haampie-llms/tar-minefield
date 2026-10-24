@@ -216,8 +216,8 @@ Seen in: no source tarball.
 <tr><td>tar-fs</td><td>tar-fs 3.1.3, on tar-stream 3.2.2</td><td>✅ as the verdict says</td><td>error: Error: EISDIR: illegal operation on a directory, open &#x27;DEST/&#x27;</td></tr>
 <tr><td>Java Commons Compress</td><td>Commons Compress 1.28.0, Expander, on Java 25.0.4.1</td><td>✅ as the verdict says</td><td>error: java.nio.file.FileSystemException: DEST: Is a directory</td></tr>
 <tr><td>.NET System.Formats.Tar</td><td>System.Formats.Tar of .NET 10.0.13, ExtractToDirectory</td><td>✅ as the verdict says</td><td>error: IOException: Cannot create &#x27;DEST/&#x27; because a file or directory with the same name already exists.</td></tr>
-<tr><td>PHP PharData, as in Composer</td><td>PharData of PHP 8.5.12, as Composer&#x27;s TarDownloader calls it</td><td>✅ as the verdict says</td><td>error: PharException: Extraction from phar &quot;suite/archives/N17-name-empty.tar&quot; failed: Cannot extract &quot;&quot;, internal error</td></tr>
-<tr><td>PHP Archive_Tar</td><td>PEAR Archive_Tar 1.6.1, extract, on PHP 8.5.12</td><td>✅ as the verdict says</td><td>error: Invalid checksum for file &quot;no name &quot; : 936 calculated, 0 expected</td></tr>
+<tr><td>PHP PharData, as in Composer</td><td>PharData of PHP 8.5.4, as Composer&#x27;s TarDownloader calls it</td><td>✅ as the verdict says</td><td>error: PharException: Extraction from phar &quot;suite/archives/N17-name-empty.tar&quot; failed: Cannot extract &quot;&quot;, internal error</td></tr>
+<tr><td>PHP Archive_Tar</td><td>PEAR Archive_Tar 1.6.1, extract, on PHP 8.5.4</td><td>✅ as the verdict says</td><td>error: Invalid checksum for file &quot;no name &quot; : 936 calculated, 0 expected</td></tr>
 <tr><td>Go archive/tar</td><td>archive/tar of go1.26.8</td><td>⚠️ accepts</td><td>tree B: nothing</td></tr>
 <tr><td>Go archive/tar, tarinsecurepath=0</td><td>archive/tar of go1.26.8</td><td>✅ as the verdict says</td><td>error: archive/tar: insecure file path</td></tr>
 <tr><td>Go containerd archive.Apply</td><td>containerd v2.4.2, archive.Apply, of go1.27.3</td><td>⚠️ accepts</td><td>tree B: nothing</td></tr>
