@@ -76,6 +76,7 @@ svg { max-width: 100%; height: auto; }
 .wide { overflow-x: auto; }
 dt { font-weight: 600; }
 .note { color: #59636e; font-size: 0.875em; }
+nav .none { color: #8c959f; }
 /* The link to a section, next to its heading when it is hovered */
 .anchor { margin-left: 0.375rem; color: #8c959f; text-decoration: none; visibility: hidden; }
 h2:hover .anchor, h3:hover .anchor, .anchor:focus { visibility: visible; }
@@ -356,7 +357,7 @@ def verdict(info):
     return f'<div class="verdict {v}"><p><span class="badge">{badge}</span> {text}</p></div>'
 
 
-def case_page(case, info, previous, following, results, data):
+def case_page(case, info, results, data):
     ident, name = matrix.label(case, info).split(" ", 1)
     with open(os.path.join(CASES, case + ".py")) as f:
         doc = f.read().split('"""')[1]
@@ -367,15 +368,9 @@ def case_page(case, info, previous, following, results, data):
     with open(os.path.join(matrix.ARCHIVES, case + ".tar"), "rb") as f:
         archive = f.read()
     features = features_of(case, info)
-    nav = ['<a href="index.html">all cases</a>']
-    for rel, other in (("previous", previous), ("next", following)):
-        if other:
-            nav.append(f'{rel}: <a href="{other[1]["id"]}.html">'
-                       f"{html.escape(matrix.label(*other))}</a>")
     category = strict.CATEGORIES["FNKS".index(ident[0])]
     files = f"{REPO}/blob/main/suite"
-    body = f"""<nav>{" · ".join(nav)}</nav>
-<h1><code>{ident}</code> {html.escape(name)}</h1>
+    body = f"""<h1><code>{ident}</code> {html.escape(name)}</h1>
 <p>{inline(info["description"])}</p>
 {verdict(info)}
 <dl>
@@ -536,8 +531,7 @@ def seen_page(cases, data):
         ident, name = matrix.label(case, info).split(" ", 1)
         examples.append(f'<h3 id="{ident}"><a href="{ident}.html"><code>{ident}</code></a> '
                         f"{html.escape(name)}: {len(picks)} of {len(has):,}</h3>\n" + table("seen", rows))
-    body = f"""<nav><a href="index.html">all cases</a></nav>
-<h1>Seen in source tarballs</h1>
+    body = f"""<h1>Seen in source tarballs</h1>
 <p>Unlike the test archives, which are crafted, these are real release tarballs: of the
 {len(union):,} distinct ones of Spack, nixpkgs, Guix and live-bootstrap, those that cases are seen
 in. Each links to where it was downloaded from, with the sha256 that its package pins, and an
@@ -633,11 +627,23 @@ def main():
              "rejected.html": page(f"Seen in source tarballs · {TITLE}", "Now seen-in.html.",
                                    '<meta http-equiv="refresh" content="0; url=seen-in.html#rejected">\n'
                                    '<p>Now <a href="seen-in.html#rejected">seen-in.html</a>.</p>')}
-    ordered = list(cases.items())
-    for i, (case, info) in enumerate(ordered):
-        previous = ordered[i - 1] if i else None
-        following = ordered[i + 1] if i + 1 < len(ordered) else None
-        files[info["id"] + ".html"] = case_page(case, info, previous, following, results, data)
+    for case, info in cases.items():
+        files[info["id"] + ".html"] = case_page(case, info, results, data)
+    # the pages in order, each with links to the one before and after it and to the index, whose
+    # texts do not change, so that clicking through them the links stay where they are
+    sequence = ([("index.html", "all cases")]
+                + [(info["id"] + ".html", matrix.label(case, info)) for case, info in cases.items()]
+                + [("seen-in.html", "Seen in source tarballs")])
+    for i, (name, _) in enumerate(sequence):
+        links = []
+        for rel, text, j in (("prev", "‹ previous", i - 1), ("next", "next ›", i + 1)):
+            if 0 <= j < len(sequence):
+                links.append(f'<a href="{sequence[j][0]}" rel="{rel}" '
+                             f'title="{html.escape(sequence[j][1])}">{text}</a>')
+            else:
+                links.append(f'<span class="none">{text}</span>')
+        links.append('<a href="index.html">all cases</a>')
+        files[name] = files[name].replace("<body>\n", f'<body>\n<nav>{" · ".join(links)}</nav>\n', 1)
     for old, new in MOVED.items():
         files[old + ".html"] = page(f"{old} is {new} · tar-minefield", f"{old} is now {new}.",
                                     f'<meta http-equiv="refresh" content="0; url={new}.html">\n'
