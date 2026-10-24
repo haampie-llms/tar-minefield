@@ -1,6 +1,6 @@
 # Tar file extraction test suite
 
-This repo provides an extensive **[test suite for tar file extraction](suite/)**, with the goal to ensure implementations extract tar archives the same way.
+This repo provides an extensive **[test suite for tar file extraction](suite/)** and a **[website](https://haampie-llms.github.io/tar-minefield/)** that documents every case, with the goal to ensure implementations extract tar archives the same way.
 
 There are dozens of implementations of tar file extraction out there, from command line tools to libraries for programming languages. Because the tar file format leaves room for interpretation, different implementations can extract certain crafted tar files in different ways.
 
