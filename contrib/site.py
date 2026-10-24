@@ -178,8 +178,9 @@ def readme_intro():
     """The introduction of the README, between its title and its first section, as HTML: so that
     the site says what the README says."""
     text = readme().split("\n## ", 1)[0].split("\n", 1)[1]
+    # badges, such as the DOI's, are for GitHub: they are images of other sites
     return "\n".join(f"<p>{markdown(' '.join(p.split()))}</p>"
-                     for p in text.strip().split("\n\n"))
+                     for p in text.strip().split("\n\n") if not p.startswith("[!["))
 
 
 def readme_examples():
