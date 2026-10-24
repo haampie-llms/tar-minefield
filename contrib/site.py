@@ -84,12 +84,16 @@ table.files td:first-child { white-space: nowrap; }
   dd { margin-left: 1rem; }
   table.files, table.files tr, table.files td { display: block; }
   table.files td + td { padding: 0 0 0.375rem 1rem; }
-  /* the tarballs of seen-in.html, one block per tarball */
-  table.seen, table.seen tr, table.seen td { display: block; }
-  table.seen colgroup, table.seen th { display: none; }
-  table.seen tr { margin-bottom: 0.5rem; border: 1px solid #d0d7de; }
-  table.seen td { border: 0; }
+  /* the tarballs of seen-in.html and the implementations of a case, one block per row */
+  table.seen, table.seen tr, table.seen td,
+  table.implementations, table.implementations tr, table.implementations td { display: block; }
+  table.seen colgroup, table.seen th,
+  table.implementations colgroup, table.implementations th { display: none; }
+  table.seen tr, table.implementations tr { margin-bottom: 0.5rem; border: 1px solid #d0d7de; }
+  table.seen td, table.implementations td { border: 0; }
   table.seen td:nth-child(2):not(:empty)::before { content: "packaged by "; color: #59636e; }
+  table.implementations td:first-child { font-weight: 600; }
+  table.implementations td:nth-child(2) { color: #59636e; font-size: 0.875em; }
 }
 .hash { display: block; background: none; padding: 0; color: #59636e; font-size: 0.8125em;
         word-break: break-all; }
@@ -261,9 +265,11 @@ def data_section(ident, features, names, short, rated, union):
         "<p>Release tarballs of Spack, nixpkgs, Guix and live-bootstrap with "
         + ", ".join(f"<code>{f}</code>" for f in features) + "." + policy + "</p>\n"
         + table("data-policy" if mixed else "data", rows) + "\n"
-        + ("" if not k else f'<p><a href="seen-in.html#{ident}">Seen in source tarballs</a> lists '
-           + ("the rejected ones" if j else "all of them" if k <= EXAMPLES else f"{EXAMPLES} of them")
-           + ", with their sha256 and an example from each.</p>")
+        + ("" if not k else f'<p>See <a href="seen-in.html#{ident}">'
+           + (f"the list of the {j:,} it rejects" if mixed
+              else f"the list of these {k:,} tarballs" if j or k <= EXAMPLES
+              else f"a list of {EXAMPLES} of these {k:,} tarballs")
+           + "</a>, with the sha256 of each and an example from it.</p>")
     )
 
 
@@ -468,8 +474,9 @@ def seen_page(cases, data):
         if not has or any(strict.criterion(f) in strict.default_rejects(r)
                           for r in has for f in features):
             continue
+        # a sample that does not depend on the order of the scans: by sha256, as a random key
         picks, seen = [], set()
-        for r in has:
+        for r in sorted(has, key=lambda r: r["sha256"]):
             name = (r["package"], r["version"])
             if name not in seen and len(picks) < EXAMPLES:
                 seen.add(name)
@@ -492,7 +499,8 @@ one reason is listed under each.</p>
 {chr(10).join(sections)}
 <h2 id="accepted">Accepted, with the feature of a case</h2>
 <p>For the cases whose tarballs the default policy accepts: up to {EXAMPLES} of them, of how many
-there are.</p>
+there are, those with the lowest sha256, which is a sample as good as random, and the same on
+every run.</p>
 {chr(10).join(examples)}
 """
     return page(f"Seen in source tarballs · {TITLE}",
